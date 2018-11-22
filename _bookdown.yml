@@ -1,7 +1,7 @@
 new_session: yes
 
 rmd_files: [
-  "intro.Rmd",
+  "index.Rmd", "intro.Rmd",
 ]
 
 before_chapter_script: "_common.R"

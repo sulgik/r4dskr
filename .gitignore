@@ -3,9 +3,7 @@
 *_cache
 *_files
 _main.rds
-*.md
 search_index.json
-libs
 *.rds
 _main.*
 tmp-pdfcrop-*
