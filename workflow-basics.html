@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="-.html">
+<link rel="next" href="transform.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -216,26 +216,103 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R for Data Science</h1>
-<p class="author"><em>Garrett Grolemund</em></p>
-<p class="author"><em>Hadley Wickham</em></p>
+<div id="workflow-basics" class="section level1">
+<h1><span class="header-section-number">4</span> Workflow: basics</h1>
+<p>You now have some experience running R code. I didn’t give you many details, but you’ve obviously figured out the basics, or you would’ve thrown this book away in frustration! Frustration is natural when you start programming in R, because it is such a stickler for punctuation, and even one character out of place will cause it to complain. But while you should expect to be a little frustrated, take comfort in that it’s both typical and temporary: it happens to everyone, and the only way to get over it is to keep trying.</p>
+<p>Before we go any further, let’s make sure you’ve got a solid foundation in running R code, and that you know about some of the most helpful RStudio features.</p>
+<div id="coding-basics" class="section level2">
+<h2><span class="header-section-number">4.1</span> Coding basics</h2>
+<p>Let’s review some basics we’ve so far omitted in the interests of getting you plotting as quickly as possible. You can use R as a calculator:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">200</span> <span class="op">*</span><span class="st"> </span><span class="dv">30</span>
+<span class="co">#&gt; [1] 0.15</span>
+(<span class="dv">59</span> <span class="op">+</span><span class="st"> </span><span class="dv">73</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="dv">3</span>
+<span class="co">#&gt; [1] 44.7</span>
+<span class="kw">sin</span>(pi <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)
+<span class="co">#&gt; [1] 1</span></code></pre></div>
+<p>You can create new objects with <code>&lt;-</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">4</span></code></pre></div>
+<p>All R statements where you create objects, <strong>assignment</strong> statements, have the same form:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">object_name &lt;-<span class="st"> </span>value</code></pre></div>
+<p>When reading that code say “object name gets value” in your head.</p>
+<p>You will make lots of assignments and <code>&lt;-</code> is a pain to type. Don’t be lazy and use <code>=</code>: it will work, but it will cause confusion later. Instead, use RStudio’s keyboard shortcut: Alt + - (the minus sign). Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which is a good code formatting practice. Code is miserable to read on a good day, so giveyoureyesabreak and use spaces.</p>
 </div>
-<div id="ed9998ec9881ed95a9eb8b88eb8ba4" class="section level1 unnumbered">
-<h1>환영합니다</h1>
-<p><a href="http://amzn.to/2aHLAQ1"><img src="cover.png" width="250" height="375" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /></a> This is the website for <strong>“R for Data Science”</strong>. This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.</p>
-<p>This website is (and will always be) <strong>free to use</strong>, and is licensed under the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0</a> License. If you’d like a <strong>physical copy</strong> of the book, you can order it from <a href="http://amzn.to/2aHLAQ1">amazon</a>; it was published by O’Reilly in January 2017. If you’d like to <strong>give back</strong> please make a donation to <a href="https://www.doc.govt.nz/kakapo-donate">Kākāpō Recovery</a>: the <a href="https://www.youtube.com/watch?v=9T1vfsHYiKY">kākāpō</a> (which appears on the cover of R4DS) is a critically endangered native NZ parrot; there are only 148 left.</p>
-<p>The book is written in <a href="https://rmarkdown.rstudio.com">RMarkdown</a> with <a href="https://bookdown.org">bookdown</a>. It is automatically rebuilt from <a href="https://github.com/hadley/r4ds">source</a> by <a href="http://travis-ci.org/">travis</a>. R4DS is a collaborative effort and many people have contributed fixes and improvements via pull request.</p>
-<p>A big thanks goes to everyone who has contributed! adi pradhan (<a href="https://github.com/adidoit">@adidoit</a>), Andrea Gilardi (<a href="https://github.com/agila5">@agila5</a>), Ajay Deonarine (<a href="https://github.com/ajay-d">@ajay-d</a>), <a href="https://github.com/AlanFeder">@AlanFeder</a>, pete (<a href="https://github.com/alonzi">@alonzi</a>), Alex (<a href="https://github.com/ALShum">@ALShum</a>), Andrew Landgraf (<a href="https://github.com/andland">@andland</a>), <a href="https://github.com/andrewmacfarland">@andrewmacfarland</a>, Michael Henry (<a href="https://github.com/aviast">@aviast</a>), Mara Averick (<a href="https://github.com/batpigandme">@batpigandme</a>), Brent Brewington (<a href="https://github.com/bbrewington">@bbrewington</a>), Bill Behrman (<a href="https://github.com/behrman">@behrman</a>), Ben Herbertson (<a href="https://github.com/benherbertson">@benherbertson</a>), Ben Marwick (<a href="https://github.com/benmarwick">@benmarwick</a>), Ben Steinberg (<a href="https://github.com/bensteinberg">@bensteinberg</a>), Brandon Greenwell (<a href="https://github.com/bgreenwell">@bgreenwell</a>), Brett Klamer (<a href="https://github.com/bklamer">@bklamer</a>), Christian Mongeau (<a href="https://github.com/chrMongeau">@chrMongeau</a>), Cooper Morris (<a href="https://github.com/coopermor">@coopermor</a>), Colin Gillespie (<a href="https://github.com/csgillespie">@csgillespie</a>), Rademeyer Vermaak (<a href="https://github.com/csrvermaak">@csrvermaak</a>), Abhinav Singh (<a href="https://github.com/curious-abhinav">@curious-abhinav</a>), Curtis Alexander (<a href="https://github.com/curtisalexander">@curtisalexander</a>), Christian G. Warden (<a href="https://github.com/cwarden">@cwarden</a>), Kenny Darrell (<a href="https://github.com/darrkj">@darrkj</a>), David Rubinger (<a href="https://github.com/davidrubinger">@davidrubinger</a>), David Clark (<a href="https://github.com/DDClark">@DDClark</a>), Derwin McGeary (<a href="https://github.com/derwinmcgeary">@derwinmcgeary</a>), Daniel Gromer (<a href="https://github.com/dgromer">@dgromer</a>), <a href="https://github.com/djbirke">@djbirke</a>, Devin Pastoor (<a href="https://github.com/dpastoor">@dpastoor</a>), Julian During (<a href="https://github.com/duju211">@duju211</a>), Dylan Cashman (<a href="https://github.com/dylancashman">@dylancashman</a>), Dirk Eddelbuettel (<a href="https://github.com/eddelbuettel">@eddelbuettel</a>), Edwin Thoen (<a href="https://github.com/EdwinTh">@EdwinTh</a>), Ahmed El-Gabbas (<a href="https://github.com/elgabbas">@elgabbas</a>), Eric Watt (<a href="https://github.com/ericwatt">@ericwatt</a>), Erik Erhardt (<a href="https://github.com/erikerhardt">@erikerhardt</a>), Etienne B. Racine (<a href="https://github.com/etiennebr">@etiennebr</a>), Everett Robinson (<a href="https://github.com/evjrob">@evjrob</a>), Flemming Villalona (<a href="https://github.com/flemingspace">@flemingspace</a>), Floris Vanderhaeghe (<a href="https://github.com/florisvdh">@florisvdh</a>), Garrick Aden-Buie (<a href="https://github.com/gadenbuie">@gadenbuie</a>), Garrett Grolemund (<a href="https://github.com/garrettgman">@garrettgman</a>), Josh Goldberg (<a href="https://github.com/GoldbergData">@GoldbergData</a>), bahadir cankardes (<a href="https://github.com/gridgrad">@gridgrad</a>), Gustav W Delius (<a href="https://github.com/gustavdelius">@gustavdelius</a>), Hadley Wickham (<a href="https://github.com/hadley">@hadley</a>), Hao Chen (<a href="https://github.com/hao-trivago">@hao-trivago</a>), Harris McGehee (<a href="https://github.com/harrismcgehee">@harrismcgehee</a>), Hengni Cai (<a href="https://github.com/hengnicai">@hengnicai</a>), Ian Sealy (<a href="https://github.com/iansealy">@iansealy</a>), Ian Lyttle (<a href="https://github.com/ijlyttle">@ijlyttle</a>), Ivan Krukov (<a href="https://github.com/ivan-krukov">@ivan-krukov</a>), Jacob Kaplan (<a href="https://github.com/jacobkap">@jacobkap</a>), Jazz Weisman (<a href="https://github.com/jazzlw">@jazzlw</a>), John D. Storey (<a href="https://github.com/jdstorey">@jdstorey</a>), Jeff Boichuk (<a href="https://github.com/jeffboichuk">@jeffboichuk</a>), Gregory Jefferis (<a href="https://github.com/jefferis">@jefferis</a>), 蒋雨蒙 (<a href="https://github.com/JeldorPKU">@JeldorPKU</a>), Jennifer (Jenny) Bryan (<a href="https://github.com/jennybc">@jennybc</a>), Jen Ren (<a href="https://github.com/jenren">@jenren</a>), Jeroen Janssens (<a href="https://github.com/jeroenjanssens">@jeroenjanssens</a>), Jim Hester (<a href="https://github.com/jimhester">@jimhester</a>), JJ Chen (<a href="https://github.com/jjchern">@jjchern</a>), Joanne Jang (<a href="https://github.com/joannejang">@joannejang</a>), John Sears (<a href="https://github.com/johnsears">@johnsears</a>), <a href="https://github.com/jonathanflint">@jonathanflint</a>, Jon Calder (<a href="https://github.com/jonmcalder">@jonmcalder</a>), Jonathan Page (<a href="https://github.com/jonpage">@jonpage</a>), Justinas Petuchovas (<a href="https://github.com/jpetuchovas">@jpetuchovas</a>), Jose Roberto Ayala Solares (<a href="https://github.com/jroberayalas">@jroberayalas</a>), Julia Stewart Lowndes (<a href="https://github.com/jules32">@jules32</a>), Sonja (<a href="https://github.com/kaetschap">@kaetschap</a>), Kara Woo (<a href="https://github.com/karawoo">@karawoo</a>), Katrin Leinweber (<a href="https://github.com/katrinleinweber">@katrinleinweber</a>), Karandeep Singh (<a href="https://github.com/kdpsingh">@kdpsingh</a>), Kyle Humphrey (<a href="https://github.com/khumph">@khumph</a>), Kirill Sevastyanenko (<a href="https://github.com/kirillseva">@kirillseva</a>), <a href="https://github.com/koalabearski">@koalabearski</a>, Kirill Müller (<a href="https://github.com/krlmlr">@krlmlr</a>), Noah Landesberg (<a href="https://github.com/landesbergn">@landesbergn</a>), <a href="https://github.com/lindbrook">@lindbrook</a>, Mauro Lepore (<a href="https://github.com/maurolepore">@maurolepore</a>), Mark Beveridge (<a href="https://github.com/mbeveridge">@mbeveridge</a>), Matt Herman (<a href="https://github.com/mfherman">@mfherman</a>), Mine Cetinkaya-Rundel (<a href="https://github.com/mine-cetinkaya-rundel">@mine-cetinkaya-rundel</a>), Matthew Hendrickson (<a href="https://github.com/mjhendrickson">@mjhendrickson</a>), <a href="https://github.com/MJMarshall">@MJMarshall</a>, Mustafa Ascha (<a href="https://github.com/mustafaascha">@mustafaascha</a>), Nelson Areal (<a href="https://github.com/nareal">@nareal</a>), Nate Olson (<a href="https://github.com/nate-d-olson">@nate-d-olson</a>), Nathanael (<a href="https://github.com/nateaff">@nateaff</a>), Nick Clark (<a href="https://github.com/nickclark1000">@nickclark1000</a>), <a href="https://github.com/nickelas">@nickelas</a>, Nirmal Patel (<a href="https://github.com/nirmalpatel">@nirmalpatel</a>), Nina Munkholt Jakobsen (<a href="https://github.com/nmjakobsen">@nmjakobsen</a>), Jakub Nowosad (<a href="https://github.com/Nowosad">@Nowosad</a>), Peter Hurford (<a href="https://github.com/peterhurford">@peterhurford</a>), Patrick Kennedy (<a href="https://github.com/pkq">@pkq</a>), Radu Grosu (<a href="https://github.com/radugrosu">@radugrosu</a>), Ranae Dietzel (<a href="https://github.com/Ranae">@Ranae</a>), Robin Gertenbach (<a href="https://github.com/rgertenbach">@rgertenbach</a>), Richard Zijdeman (<a href="https://github.com/rlzijdeman">@rlzijdeman</a>), Robin (<a href="https://github.com/Robinlovelace">@Robinlovelace</a>), Emily Robinson (<a href="https://github.com/robinsones">@robinsones</a>), Rohan Alexander (<a href="https://github.com/RohanAlexander">@RohanAlexander</a>), Romero Morais (<a href="https://github.com/RomeroBarata">@RomeroBarata</a>), Albert Y. Kim (<a href="https://github.com/rudeboybert">@rudeboybert</a>), Saghir (<a href="https://github.com/saghirb">@saghirb</a>), Jonas (<a href="https://github.com/sauercrowd">@sauercrowd</a>), Robert Schuessler (<a href="https://github.com/schuess">@schuess</a>), Seamus McKinsey (<a href="https://github.com/seamus-mckinsey">@seamus-mckinsey</a>), <a href="https://github.com/seanpwilliams">@seanpwilliams</a>, Luke Smith (<a href="https://github.com/seasmith">@seasmith</a>), Matthew Sedaghatfar (<a href="https://github.com/sedaghatfar">@sedaghatfar</a>), Sebastian Kraus (<a href="https://github.com/sekR4">@sekR4</a>), Sam Firke (<a href="https://github.com/sfirke">@sfirke</a>), Shannon Ellis (<a href="https://github.com/ShanEllis">@ShanEllis</a>), <a href="https://github.com/shoili">@shoili</a>, S’busiso Mkhondwane (<a href="https://github.com/sibusiso16">@sibusiso16</a>), <a href="https://github.com/spirgel">@spirgel</a>, Steven M. Mortimer (<a href="https://github.com/StevenMMortimer">@StevenMMortimer</a>), Stéphane Guillou (<a href="https://github.com/stragu">@stragu</a>), Sergiusz Bleja (<a href="https://github.com/svenski">@svenski</a>), Tal Galili (<a href="https://github.com/talgalili">@talgalili</a>), Tim Waterhouse (<a href="https://github.com/timwaterhouse">@timwaterhouse</a>), TJ Mahr (<a href="https://github.com/tjmahr">@tjmahr</a>), Thomas Klebel (<a href="https://github.com/tklebel">@tklebel</a>), Tom Prior (<a href="https://github.com/tomjamesprior">@tomjamesprior</a>), Terence Teo (<a href="https://github.com/tteo">@tteo</a>), Will Beasley (<a href="https://github.com/wibeasley">@wibeasley</a>), <a href="https://github.com/yahwes">@yahwes</a>, Yihui Xie (<a href="https://github.com/yihui">@yihui</a>), Yiming (Paul) Li (<a href="https://github.com/yimingli">@yimingli</a>), Hiroaki Yutani (<a href="https://github.com/yutannihilation">@yutannihilation</a>), <a href="https://github.com/zeal626">@zeal626</a>, Azza Ahmed (<a href="https://github.com/zo0z">@zo0z</a>)</p>
+<div id="whats-in-a-name" class="section level2">
+<h2><span class="header-section-number">4.2</span> What’s in a name?</h2>
+<p>Object names must start with a letter, and can only contain letters, numbers, <code>_</code> and <code>.</code>. You want your object names to be descriptive, so you’ll need a convention for multiple words. I recommend <strong>snake_case</strong> where you separate lowercase words with <code>_</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">i_use_snake_case
+otherPeopleUseCamelCase
+some.people.use.periods
+And_aFew.People_RENOUNCEconvention</code></pre></div>
+<p>We’ll come back to code style later, in [functions].</p>
+<p>You can inspect an object by typing its name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x
+<span class="co">#&gt; [1] 12</span></code></pre></div>
+<p>Make another assignment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name &lt;-<span class="st"> </span><span class="fl">2.5</span></code></pre></div>
+<p>To inspect this object, try out RStudio’s completion facility: type “this”, press TAB, add characters until you have a unique prefix, then press return.</p>
+<p>Ooops, you made a mistake! <code>this_is_a_really_long_name</code> should have value 3.5 not 2.5. Use another keyboard shortcut to help you fix it. Type “this” then press Cmd/Ctrl + ↑. That will list all the commands you’ve typed that start those letters. Use the arrow keys to navigate, then press enter to retype the command. Change 2.5 to 3.5 and rerun.</p>
+<p>Make yet another assignment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">r_rocks &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">^</span><span class="st"> </span><span class="dv">3</span></code></pre></div>
+<p>Let’s try to inspect it:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">r_rock
+<span class="co">#&gt; Error: object &#39;r_rock&#39; not found</span>
+R_rocks
+<span class="co">#&gt; Error: object &#39;R_rocks&#39; not found</span></code></pre></div>
+<p>There’s an implied contract between you and R: it will do the tedious computation for you, but in return, you must be completely precise in your instructions. Typos matter. Case matters.</p>
+</div>
+<div id="calling-functions" class="section level2">
+<h2><span class="header-section-number">4.3</span> Calling functions</h2>
+<p>R has a large collection of built-in functions that are called like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">function_name</span>(<span class="dt">arg1 =</span> val1, <span class="dt">arg2 =</span> val2, ...)</code></pre></div>
+<p>Let’s try using <code>seq()</code> which makes regular <strong>seq</strong>uences of numbers and, while we’re at it, learn more helpful features of RStudio. Type <code>se</code> and hit TAB. A popup shows you possible completions. Specify <code>seq()</code> by typing more (a “q”) to disambiguate, or by using ↑/↓ arrows to select. Notice the floating tooltip that pops up, reminding you of the function’s arguments and purpose. If you want more help, press F1 to get all the details in the help tab in the lower right pane.</p>
+<p>Press TAB once more when you’ve selected the function you want. RStudio will add matching opening (<code>(</code>) and closing (<code>)</code>) parentheses for you. Type the arguments <code>1, 10</code> and hit return.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
+<p>Type this code and notice you get similar assistance with the paired quotation marks:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> &quot;hello world&quot;</span></code></pre></div>
+<p>Quotation marks and parentheses must always come in a pair. RStudio does its best to help you, but it’s still possible to mess up and end up with a mismatch. If this happens, R will show you the continuation character “+”:</p>
+<pre><code>&gt; x &lt;- &quot;hello
++</code></pre>
+<p>The <code>+</code> tells you that R is waiting for more input; it doesn’t think you’re done yet. Usually that means you’ve forgotten either a <code>&quot;</code> or a <code>)</code>. Either add the missing pair, or press ESCAPE to abort the expression and try again.</p>
+<p>If you make an assignment, you don’t get to see the value. You’re then tempted to immediately double-check the result:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">5</span>)
+y
+<span class="co">#&gt; [1]  1.00  3.25  5.50  7.75 10.00</span></code></pre></div>
+<p>This common action can be shortened by surrounding the assignment with parentheses, which causes assignment and “print to screen” to happen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">5</span>))
+<span class="co">#&gt; [1]  1.00  3.25  5.50  7.75 10.00</span></code></pre></div>
+<p>Now look at your environment in the upper right pane:</p>
+<p><img src="screenshots/rstudio-env.png" width="597" style="display: block; margin: auto;" /></p>
+<p>Here you can see all of the objects that you’ve created.</p>
+</div>
+<div id="practice" class="section level2">
+<h2><span class="header-section-number">4.4</span> Practice</h2>
+<ol style="list-style-type: decimal">
+<li><p>Why does this code not work?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_variable &lt;-<span class="st"> </span><span class="dv">10</span>
+my_varıable
+<span class="co">#&gt; Error in eval(expr, envir, enclos): object &#39;my_varıable&#39; not found</span></code></pre></div>
+<p>Look carefully! (This may seem like an exercise in pointlessness, but training your brain to notice even the tiniest difference will pay off when programming.)</p></li>
+<li><p>Tweak each of the following R commands so that they run correctly:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 
+<span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))
+
+<span class="kw">fliter</span>(mpg, <span class="dt">cyl =</span> <span class="dv">8</span>)
+<span class="kw">filter</span>(diamond, carat <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>)</code></pre></div></li>
+<li><p>Press Alt + Shift + K. What happens? How can you get to the same place using the menus?</p></li>
+</ol>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="transform.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -255,7 +332,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hadley/r4ds/edit/master/index.Rmd",
+"link": "https://github.com/hadley/r4ds/edit/master/workflow-basics.Rmd",
 "text": "Edit"
 },
 "history": {

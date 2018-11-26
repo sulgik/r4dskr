@@ -137,7 +137,7 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-이것은 tidyverse가 ggplot2, tibble, tidyr, readr, purrr, dplyr 패키지를 로드하고 있음을 나타낸다. 이 패키지들은 거의 모든 분석에서 사용될 것이기 때문에 tidyverse의 **핵심**이라 할 수 있다. 
+이것은 tidyverse가 ggplot2, tibble, tidyr, readr, purrr, dplyr 패키지를 로드하고 있음을 나타낸다. 이 패키지들은 거의 모든 분석에서 사용될 것이기 때문에 tidyverse의 **코어**라 할 수 있다. 
 
 tidyverse의 패키지는 상당히 자주 변경된다. `tidyverse_update()`를 실행하여 업데이트가 가능한지 확인할 수 있다.
 
@@ -196,7 +196,7 @@ Throughout the book we use a consistent set of conventions to refer to code:
 
 1. **패키지**는 스크립트 맨 위에 로드해야 어떤 패키지가 예제에 필요한지 쉽게 볼 수 있다. 각 패키지의 최신 버전을 사용하고 있는지 확인해 보자. 즉, 발견한 버그가 패키지 설치 이후 이미 해결되었을 가능성이 있다. tidyverse에 있는 패키지의 경우 `tidyverse_update()`를 실행하는 것이 가장 쉬운 방법이다.  
 
-1.  질문에 **데이터**를 포함시키는 가장 쉬운 방법은 `dput()` 을 사용하여 재현되는 R 코드를 생성하는 것이다. 예를 들어, R에서 `mtcars` 데이터셋을 다시 만들려면 다음 단계로 수행하라.  
+1.  질문에 **데이터**를 포함시키는 가장 쉬운 방법은 `dput()`을 사용하여 재현되는 R 코드를 생성하는 것이다. 예를 들어, R에서 `mtcars` 데이터셋을 다시 만들려면 다음 단계로 수행하라.  
 
     1. R 에서 `dput(mtcars)`를 실행한다.  
     1. 출력을 복사한다.
@@ -215,9 +215,9 @@ Throughout the book we use a consistent set of conventions to refer to code:
 
 새로운 R 세션을 시작하고 스크립트를 복사-붙여넣기하여 실제로 재현할 수 있는 예제를 만들었는지 확인하는 것으로 마무리하라. 
 
-문제가 발생하기 전에 문제를 해결할 수 있게 스스로 준비시키는데 시간을 써야 한다. 매일 R을 배우는 데 약간의 시간을 투자하면 결국에는 멋지게 보상받을 것이다. 한 가지 방법은 RStudio의 해들리, 개럿 및 다른 모든 사람들이 [RStudio 블로그](https://blog.rstudio.org)에서 수행하는 작업을 팔로우하는 것이다. RStudio 블로그는 우리가 새로운 패키지, 새로운 IDE 기능 및 직접 진행하는 수업에 대한 공지 사항을 게시하는 곳이다. 트위터에서 해들리 [@hadleywickham](https://twitter.com/hadleywickham) 또는 개럿 [@statgarrett](https://twitter.com/statgarrett)을 팔로우하거나 [\@rstudiotips](https://twitter.com/rstudiotips)를 팔로우해서 IDE의 새로운 기능을 계속 전달받을 수 있다. 
+문제가 발생하기 전에 문제를 해결할 수 있게 스스로 준비시키는데 시간을 써야 한다. 매일 R을 배우는 데 약간의 시간을 투자하면 결국에는 멋지게 보상받을 것이다. 한 가지 방법은 RStudio의 해들리, 개럿 및 다른 모든 사람들이 [RStudio 블로그](https://blog.rstudio.org)에서 수행하는 작업을 팔로우하는 것이다. RStudio 블로그는 우리가 새로운 패키지, 새로운 IDE 기능 및 직접 진행하는 수업에 대한 공지 사항을 게시하는 곳이다. 트위터에서 해들리 [\@hadleywickham](https://twitter.com/hadleywickham) 또는 개럿 [\@statgarrett](https://twitter.com/statgarrett)을 팔로우하거나 [\@rstudiotips](https://twitter.com/rstudiotips)를 팔로우해서 IDE의 새로운 기능을 계속 전달받을 수 있다. 
 
-R 커뮤니티를 보다 폭넓게 소통하기 위해서는 <http://www.r-bloggers.com>을 읽는 것이 좋은데 여기에는 전세계로부터 R에 대한 500 개 이상의 블로그가 모여있다. 트위터 유저인 경우 `#rstats` 해시 태그를 팔로우하라. 트위터는 해들리가 커뮤니티의 새로운 발전을 따라가기 위해 사용하는 핵심 도구이다. 
+R 커뮤니티를 보다 폭넓게 소통하기 위해서는 <http://www.r-bloggers.com>을 읽는 것이 좋은데 여기에는 전세계로부터 R에 대한 500개 이상의 블로그가 모여있다. 트위터 유저인 경우 `#rstats` 해시 태그를 팔로우하라. 트위터는 해들리가 커뮤니티의 새로운 발전을 따라가기 위해 사용하는 핵심 도구이다.
 
 ## Acknowledgements
 

@@ -1,5 +1,5 @@
 
-# (PART) Explore {-}
+# (PART) 탐색하기 {-}
 
 # Introduction {#explore-intro}
 

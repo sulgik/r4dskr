@@ -1,6 +1,6 @@
-# Data visualisation
+# 데이터 시각화
 
-## Introduction
+## 들어가기
 
 > "The simple graph has brought more information to the data analyst’s mind 
 > than any other device." --- John Tukey
@@ -9,7 +9,7 @@ This chapter will teach you how to visualise your data using ggplot2. R has seve
 
 If you'd like to learn more about the theoretical underpinnings of ggplot2 before you start, I'd recommend reading "The Layered Grammar of Graphics", <http://vita.had.co.nz/papers/layered-grammar.pdf>.
 
-### Prerequisites
+### 준비하기
 
 This chapter focusses on ggplot2, one of the core members of the tidyverse. To access the datasets, help pages, and functions that we will use in this chapter, load the tidyverse by running this code:
 
@@ -34,9 +34,9 @@ If we need to be explicit about where a function (or dataset) comes from, we'll 
 
 Let's use our first graph to answer a question: Do cars with big engines use more fuel than cars with small engines? You probably already have an answer, but try to make your answer precise. What does the relationship between engine size and fuel efficiency look like? Is it positive? Negative? Linear? Nonlinear?
 
-### The `mpg` data frame
+### `mpg` 데이터프레임
 
-You can test your answer with the `mpg` __data frame__ found in ggplot2 (aka  `ggplot2::mpg`). A data frame is a rectangular collection of variables (in the columns) and observations (in the rows). `mpg` contains observations collected by the US Environmental Protection Agency on 38 models of car. 
+You can test your answer with the `mpg` **데이터프레임** found in ggplot2 (aka  `ggplot2::mpg`). A data frame is a rectangular collection of variables (in the columns) and observations (in the rows). `mpg` contains observations collected by the US Environmental Protection Agency on 38 models of car. 
 
 ```{r}
 mpg
@@ -52,7 +52,7 @@ Among the variables in `mpg` are:
 
 To learn more about `mpg`, open its help page by running `?mpg`.
 
-### Creating a ggplot
+### ggplot 생성하기
 
 To plot `mpg`, run this code to put `displ` on the x-axis and `hwy` on the y-axis:
 
