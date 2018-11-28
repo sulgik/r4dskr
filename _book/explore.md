@@ -1,7 +1,7 @@
 
 # (PART) 탐색하기 {-}
 
-# Introduction {#explore-intro}
+# 탐색하기 소개 {#explore-intro}
 
 The goal of the first part of this book is to get you up to speed with the basic tools of __data exploration__ as quickly as possible. Data exploration is the art of looking at your data, rapidly generating hypotheses, quickly testing them, then repeating again and again and again. The goal of data exploration is to generate many promising leads that you can later explore in more depth.
 
