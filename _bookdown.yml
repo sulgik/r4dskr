@@ -3,11 +3,20 @@ new_session: yes
 rmd_files: [
   "index.Rmd",
   "intro.Rmd",
+
   "explore.Rmd",
   "visualize.Rmd",
   "workflow-basics.Rmd",
   "transform.Rmd",
+  "workflow-scripts.Rmd",
+  "EDA.Rmd",
+  "workflow-projects.Rmd",
 
+  "wrangle.Rmd",
+  "tibble.Rmd",
+
+  "communicate.Rmd",
+  "rmarkdown.Rmd",
 ]
 
 before_chapter_script: "_common.R"

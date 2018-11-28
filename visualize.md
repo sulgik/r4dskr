@@ -3,16 +3,17 @@
 
 ## 들어가기
 
-> "The simple graph has brought more information to the data analyst’s mind 
-> than any other device." --- John Tukey
+> “간단한 그래프는 다른 어떤 방법보다 데이터분석가에게 
+> 더 많은 정보를 제공한다.” — 죤 튜키 (John Tukey)
 
-This chapter will teach you how to visualise your data using ggplot2. R has several systems for making graphs, but ggplot2 is one of the most elegant and most versatile. ggplot2 implements the __grammar of graphics__, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.
 
-If you'd like to learn more about the theoretical underpinnings of ggplot2 before you start, I'd recommend reading "The Layered Grammar of Graphics", <http://vita.had.co.nz/papers/layered-grammar.pdf>.
+이 장에서는 **ggplot2**를 이용하여 데이터를 시각화하는 법을 배울 것이다. R 은 그래프를 만드는 몇몇 시스템이 있지만 **ggplot2**는 가장 우아하고 다재다능한 시스템 중 하나이다. **ggplot2**는 그래프를 기술하고 구축하는 시스템인 **그래픽 문법**을 구현한다. **ggplot2**으로 하나의 시스템을 배우고 이를 여러 곳에서 적용하여 빠르게 진행할 수 있다. 
+
+시작하기 전 **ggplot2**의 이론적 토대에 대해 더 자세히 알고 싶다면 [The Layered Grammar of Graphics](http://vita.had.co.nz/papers/layered-grammar.pdf)를 읽을 것을 추천한다.  
 
 ### 준비하기
 
-This chapter focusses on ggplot2, one of the core members of the tidyverse. To access the datasets, help pages, and functions that we will use in this chapter, load the tidyverse by running this code:
+이 장에서는 tidyverse의 핵심 구성원 중 하나인 **ggplot2**을 집중하여 살펴본다. 이 장에서 사용할 데이터셋, 도움말 페이지, 함수에 접근하기 위해 다음 코드를 실행하여 tidyverse를 로드하라.  
 
 
 ```r
@@ -27,9 +28,9 @@ library(tidyverse)
 #> ✖ dplyr::lag()    masks stats::lag()
 ```
 
-That one line of code loads the core tidyverse; packages which you will use in almost every data analysis. It also tells you which functions from the tidyverse conflict with functions in base R (or from other packages you might have loaded). 
+이 한 줄의 코드만 입력하면 tidyverse 핵심패키지들이 로드되는데, 거의 모든 데이터 분석에서 이 패키지들을 사용할 것이다. 또한 이 코드는 tidyverse의 어떤 함수가 베이스 R 함수들 (혹은 이미 로드한 다른 패키지의 함수들)과 충돌하는지도 알려준다. 
 
-If you run this code and get the error message "there is no package called ‘tidyverse’", you'll need to first install it, then run `library()` once again.
+만약 이 코드를 실행하고 "there is no package called 'tidyverse’"라는 오류 메시지가 뜨면 먼저 패키지를 설치한 후 `library()`를 다시 실행해야 한다. 
 
 
 ```r
@@ -37,17 +38,17 @@ install.packages("tidyverse")
 library(tidyverse)
 ```
 
-You only need to install a package once, but you need to reload it every time you start a new session.
+패키지는 한 번만 인스톨하면 되지만, 새로운 세션을 시작할 때마다 다시 로드해야 한다. 
 
-If we need to be explicit about where a function (or dataset) comes from, we'll use the special form `package::function()`. For example, `ggplot2::ggplot()` tells you explicitly that we're using the `ggplot()` function from the ggplot2 package.
+어떤 함수나 데이터셋이 어느 패키지에서 왔는지 명시할 필요가 있는 경우에는 특수 형식인 `package::function()`를 사용할 것이다. 예를 들어 `ggplot2::ggplot()`는 **ggplot2** 패키지의 `ggplot()` 함수를 사용한다는 것을 명시한다. 
 
-## First steps
+## 첫 단계
 
-Let's use our first graph to answer a question: Do cars with big engines use more fuel than cars with small engines? You probably already have an answer, but try to make your answer precise. What does the relationship between engine size and fuel efficiency look like? Is it positive? Negative? Linear? Nonlinear?
+다음의 질문에 답하기 위해 그래프를 이용해 보자. 엔진이 큰 차가 작은 차보다 연료를 더 많이 사용하는가? 이미 답은 알고 있겠지만, 답을 정교하게 만들어보자. 엔진 크기와 연비의 관계는 어떠한가? 양의 관계? 음의 관계? 선형? 비선형? 
 
 ### `mpg` 데이터프레임
 
-You can test your answer with the `mpg` **데이터프레임** found in ggplot2 (aka  `ggplot2::mpg`). A data frame is a rectangular collection of variables (in the columns) and observations (in the rows). `mpg` contains observations collected by the US Environmental Protection Agency on 38 models of car. 
+**ggplot2** (다른 표현으로 `ggplot2::mpg`)에 있는 `mpg` 데이터프레임으로 여러분의 답을 테스트할 수 있다. 데이터프레임은 변수들(열)과 관측값들(행)의 직사각형 형태 집합체이다. `mpg`에는 미 환경보호당국이 수집한 38개의 차 모델들에 대한 관측값들이 포함되어 있다. 
 
 
 ```r
@@ -64,19 +65,17 @@ mpg
 #> # ... with 228 more rows
 ```
 
-Among the variables in `mpg` are:
+`mpg`에는 다음과 같은 변수들이 있다. 
 
-1. `displ`, a car's engine size, in litres.
+1. `displ`: 엔진 크기 (단위: 리터) 
 
-1. `hwy`, a car's fuel efficiency on the highway, in miles per gallon (mpg). 
-  A car with a low fuel efficiency consumes more fuel than a car with a high 
-  fuel efficiency when they travel the same distance. 
+1. `hwy`: 고속도로에서의 자동차 연비 (단위: 갤런당 마일, mpg). 같은 거리를 주행할 때, 연비가 낮은 차는 연비가 높은 차보다 연료를 더 많이 소비한다. 
 
-To learn more about `mpg`, open its help page by running `?mpg`.
+`mpg`에 대해 더 알고자 한다면 `?mpg`를 실행하여 해당 도움말 페이지를 이용하라. 
 
 ### ggplot 생성하기
 
-To plot `mpg`, run this code to put `displ` on the x-axis and `hwy` on the y-axis:
+다음 코드를 실행하여 `mpg`를 플롯할 때 `displ`을 x축, `hwy`를 y축에 놓아라. 
 
 
 ```r
@@ -86,17 +85,23 @@ ggplot(data = mpg) +
 
 <img src="visualize_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
 
-The plot shows a negative relationship between engine size (`displ`) and fuel efficiency (`hwy`). In other words, cars with big engines use more fuel. Does this confirm or refute your hypothesis about fuel efficiency and engine size?
+이 플롯은 엔진 크기(`displ`)와 연비(`hwy`) 사이에 음의 관계가 있음을 보여준다. 다른 말로 하면 엔진이 큰 차들은 연료를 더 많이 사용한다. 이제 연비와 엔진 크기에 대한 여러분의 가설이 확인되거나 반증되었는가? 
 
-With ggplot2, you begin a plot with the function `ggplot()`. `ggplot()` creates a coordinate system that you can add layers to. The first argument of `ggplot()` is the dataset to use in the graph. So `ggplot(data = mpg)` creates an empty graph, but it's not very interesting so I'm not going to show it here.
+ 
 
-You complete your graph by adding one or more layers to `ggplot()`. The function `geom_point()` adds a layer of points to your plot, which creates a scatterplot. ggplot2 comes with many geom functions that each add a different type of layer to a plot. You'll learn a whole bunch of them throughout this chapter.
+**ggplot2**에서는 `ggplot()` 함수로 플롯을 시작한다. `ggplot()`을 하면 레이어를 추가시킬 수 있는 좌표 시스템이 생성된다. `ggplot()`의 첫 번째 인수는 그래프에서 사용할 데이터셋이다. 따라서 `ggplot(data = mpg)`를 하면 빈 그래프가 생성되지만, 그리 흥미로운 것이 아니므로 생략하겠다. 
 
-Each geom function in ggplot2 takes a `mapping` argument. This defines how variables in your dataset are mapped to visual properties. The `mapping` argument is always paired with `aes()`, and the `x` and `y` arguments of `aes()` specify which variables to map to the x and y axes. ggplot2 looks for the mapped variables in the `data` argument, in this case, `mpg`.
+ 
 
-### A graphing template
+그래프는 `ggplot()`에 레이어를 하나 이상 추가해서 완성된다. 함수 `geom_point()`는 플롯에 점 레이어를 추가하여 산점도를 생성한다. **ggplot2**에는 많은 geom 함수가 있는데, 각각은 플롯에 다른 유형의 레이어를 추가한다. 이 장에서 이 많은 함수를 모두 배울 것이다. 
 
-Let's turn this code into a reusable template for making graphs with ggplot2. To make a graph, replace the bracketed sections in the code below with a dataset, a geom function, or a collection of mappings.
+ 
+
+**ggplot2**의 각각의 geom 함수에는 매핑 인수가 있다. 이 인수는 데이터셋의 변수들이 시각적 속성으로 어떻게 매핑될 지를 정의한다. 이 인수는 항상 `aes()`와 쌍을 이루는데, `aes()`의 `x, y` 인수는 x, y축으로 매핑될 변수를 지정한다. **ggplot2**는 매핑된 변수를 데이터 인수(우리 경우엔 `mpg`)에서 찾는다. 
+
+### 그래프 작성 탬플릿
+
+이제 이 코드를 **ggplot2**로 그래프를 만드는, 재사용 가능한 템플릿으로 바꿔보자. 그래프를 만들려면 다음의 코드에서 괄호 안의 부분을 해당되는 데이터셋, geom함수나 매핑모음으로 바꾸라. 
 
 
 ```r
@@ -104,38 +109,38 @@ ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 
-The rest of this chapter will show you how to complete and extend this template to make different types of graphs. We will begin with the `<MAPPINGS>` component.
+이 장의 나머지 부분에서는 이 템플릿을 완성하고 확장하여 다른 유형의 그래프들을 만드는 법을 살펴볼 것이다. `<MAPPINGS>` 부분부터 시작해보자. 
 
-### Exercises
 
-1.  Run `ggplot(data = mpg)`. What do you see?
+### 연습문제
 
-1.  How many rows are in `mpg`? How many columns?
+1. `ggplot(data = mpg)`을 실행하라. 무엇이 나타나는가? 
 
-1.  What does the `drv` variable describe?  Read the help for `?mpg` to find
-    out.
-     
-1.  Make a scatterplot of `hwy` vs `cyl`.
+1. `mpg`는 행이 몇 개인가? 열은 몇 개인가? 
 
-1.  What happens if you make a scatterplot of `class` vs `drv`? Why is
-    the plot not useful?
+1. `drv` 변수는 무엇을 나타내는가? `?mpg`로 도움말 페이지를 참고하여 알아보자. 
+
+1. `hwy` 대 **cyl`의 산점도를 만들어라. 
+
+1. `class` 대 `drv` 산점도를 만들면 어떻게 되는가? 이 플롯이 유용하지 않은 이유는 무엇인가? 
 
 ## Aesthetic mappings
 
-> "The greatest value of a picture is when it forces us to notice what we
-> never expected to see." --- John Tukey
+> "그래프는 전혀 예상하지 못한 것을 보여줄 때 가장 큰 가치가 있다." - 죤 튜키
 
-In the plot below, one group of points (highlighted in red) seems to fall outside of the linear trend. These cars have a higher mileage than you might expect. How can you explain these cars? 
+다음 플롯에서 한 그룹의 포인트들은(빨간색으로 강조) 선형 추세를 벗어나는 것 처럼 보인다. 이 차들은 예상한 것보다 더 높은 연비를 가진다. 이 차들을 어떻게 설명할 수 있을까?  
+
 
 <img src="visualize_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
 
-Let's hypothesize that the cars are hybrids. One way to test this hypothesis is to look at the `class` value for each car. The `class` variable of the `mpg` dataset classifies cars into groups such as compact, midsize, and SUV. If the outlying points are hybrids, they should be classified as compact cars or, perhaps, subcompact cars (keep in mind that this data was collected before hybrid trucks and SUVs became popular).
+이 차들은 하이브리드 차라고 가설을 세워보자. 이 가설을 검정하는 방법으로 각 차의 <코드체>class</코드체> 값을 살펴보는 방법이 있다. <코드체>mpg</코드체> 데이터셋의 <코드체>class</코드체> 변수는 차를 소형, 중형, SUV 같은 그룹으로 분류한다. 이상점들이 하이브리드 차들이라면 소형이나 경차로 분류되었을 것이다. (이 데이터들은 하이브리드 트럭이나 SUV가 대중화되기 전에 수집되었음을 염두에 두자.) 
 
-You can add a third variable, like `class`, to a two dimensional scatterplot by mapping it to an __aesthetic__. An aesthetic is a visual property of the objects in your plot. Aesthetics include things like the size, the shape, or the color of your points. You can display a point (like the one below) in different ways by changing the values of its aesthetic properties. Since we already use the word "value" to describe data, let's use the word "level" to describe aesthetic properties. Here we change the levels of a point's size, shape, and color to make the point small, triangular, or blue:
+<코드체>class</코드체> 같은 세 번째 변수를 **aesthetics(aesthetic)**에 매핑하여 이차원 산점도에 추가할 수도 있다. aesthetics은 플롯에 객체들의 시각적 속성이다. aesthetics에는 포인트의 크기, 모양, 색상 같은 것들이 포함된다. aesthetics 속성 값을 변경하여 점을 (아래와 같이) 다른 방법으로 표시할 수 있다. 데이터를 설명할 때 ’값’이라는 용어를 이미 사용했으므로 aesthetics 속성을 설명할 때는 단어 ’수준(level)’이라는 용어를 사용하자. 여기에서는 크기, 모양, 색상의 수준을 변경하여 다음과 같이 점을 작게 혹은 삼각형이나 파란색으로 만들었다. 
+
 
 <img src="visualize_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
 
-You can convey information about your data by mapping the aesthetics in your plot to the variables in your dataset. For example, you can map the colors of your points to the `class` variable to reveal the class of each car.
+플롯의 aesthetics를 데이터셋의 변수들에 매핑해서 데이터에 대한 정보를 전달할 수 있다. 예를 들어 점의 색상을 <코드체>class</코드체> 변수에 매핑하여 각 차의 차종을 나타낼 수 있다. 
 
 
 ```r
@@ -145,13 +150,13 @@ ggplot(data = mpg) +
 
 <img src="visualize_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
-(If you prefer British English, like Hadley, you can use `colour` instead of `color`.)
+(해들리처럼 영국식 영어를 선호한다면 <코드체>color</코드체> 대신 </코드체>colour</코드체>를 사용할 수도 있다.) 
 
-To map an aesthetic to a variable, associate the name of the aesthetic to the name of the variable inside `aes()`. ggplot2 will automatically assign a unique level of the aesthetic (here a unique color) to each unique value of the variable, a process known as __scaling__. ggplot2 will also add a legend that explains which levels correspond to which values.
+aesthetics을 변수에 매핑하기 위해서는 <코드체>aes()</코드체> 내부에서 aesthetics 이름을 변수 이름과 연결해야 한다. **ggplot2**는 변수의 고유한 값에 aesthetics의 고유한 수준(여기서는 고유한 색상)을 자동으로 지정하는데, 이 과정을 **스케일링 (scaling)**이라고 한다. **ggplot2**는 어떤 수준이 어떤 값에 해당하는지를 설명하는 범례도 추가한다. 
 
-The colors reveal that many of the unusual points are two-seater cars. These cars don't seem like hybrids, and are, in fact, sports cars! Sports cars have large engines like SUVs and pickup trucks, but small bodies like midsize and compact cars, which improves their gas mileage. In hindsight, these cars were unlikely to be hybrids since they have large engines.
+플롯의 색상들을 보면 이상점 중 다수가 2인승 차임을 보여준다. 이 차들은 하이브리드 차가 아닌 것 같고, 놀랍게도 스포츠카들이다! 스포츠카들은 SUV와 픽업트럭처럼 엔진이 크지만, 차체가 중형차나 소형차처럼 작아서 연비가 좋다. 다시 생각해보면 이 차들은 엔진 크기가 컸기 때문에 하이브리드일 가능성이 낮다. 
 
-In the above example, we mapped `class` to the color aesthetic, but we could have mapped `class` to the size aesthetic in the same way. In this case, the exact size of each point would reveal its class affiliation. We get a _warning_ here, because mapping an unordered variable (`class`) to an ordered aesthetic (`size`) is not a good idea.
+위의 예제에서 <코드체>class</코드체> 변수를 색상 aesthetics에 매핑했지만 이 변수를 같은 방법으로 크기 aesthetics에 매핑할 수도 있다. 이 경우, 각 포인트의 정확한 크기는 차종을 나타낼 것이다. 여기서 **경고**가 뜨는데, 비순서 변수 (<코드체>class</코드체>)를 순서형 aesthetics (<코드체>size</코드체>)로 매핑하는 것은 좋은 생각이 아니기 때문이다. 
 
 
 ```r
@@ -162,7 +167,7 @@ ggplot(data = mpg) +
 
 <img src="visualize_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
-Or we could have mapped `class` to the _alpha_ aesthetic, which controls the transparency of the points, or to the shape aesthetic, which controls the shape of the points.
+<코드체>class</코드체>를 **alpha** 심미성에 매핑할 수도 있었는데, 이는 포인트의 투명도 혹은 모양을 제어한다.
 
 
 ```r

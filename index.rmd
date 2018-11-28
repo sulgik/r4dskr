@@ -19,17 +19,3 @@ This website is (and will always be) __free to use__, and is licensed under the 
 please make a donation to [Kākāpō Recovery](https://www.doc.govt.nz/kakapo-donate): the [kākāpō](https://www.youtube.com/watch?v=9T1vfsHYiKY) (which appears on the cover of R4DS) is a critically endangered native NZ parrot; there are only 148 left.
 
 The book is written in [RMarkdown](https://rmarkdown.rstudio.com) with [bookdown](https://bookdown.org). It is automatically rebuilt from [source](https://github.com/hadley/r4ds) by [travis](http://travis-ci.org/). R4DS is a collaborative effort and many people have contributed fixes and improvements via pull request. 
-
-```{r, results = "asis", echo = FALSE, message = FALSE}
-library(dplyr)
-contributors <- readr::read_csv("contributors.csv", col_types = list())
-contributors <- contributors %>% 
-  mutate(
-    link = glue::glue("[\\@{login}](https://github.com/{login})"),
-    desc = ifelse(is.na(name), link, glue::glue("{name} ({link})"))
-  )
-
-cat("A big thanks goes to everyone who has contributed!\n")
-cat(paste0(contributors$desc, collapse = ", "))
-```
-

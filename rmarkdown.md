@@ -1,3 +1,4 @@
+
 # R 마크다운
 
 ## 들어가기
@@ -23,21 +24,41 @@ R마크다운에는 수많은 R 패키지와 외부 도구가 통합되어 있�
 
 ### 준비하기
 
-__rmarkdown__ 패키지가 필요하지만, 명시적으로 설치하거나 로드할 필요는 없다. RStudio가 필요에 따라 자동으로 이를 수행하기 때문이다.  
+<볼드>rmarkdown</볼드> 패키지가 필요하지만, 명시적으로 설치하거나 로드할 필요는 없다. RStudio가 필요에 따라 자동으로 이를 수행하기 때문이다.  
 
-```{r setup, include = FALSE}
-chunk <- "```"
-inline <- function(x = "") paste0("`` `r ", x, "` ``")
-library(tidyverse)
-```
+
 
 ## R 마크다운 기초
 
 다음은 R 마크다운 파일, 즉 확장자가 `.Rmd` 인 포맷이 없는 텍스트 파일이다.  
 
-```{r echo = FALSE, comment = ""}
-cat(htmltools::includeText("rmarkdown/diamond-sizes.Rmd"))
+
+````
+---
+title: "Diamond sizes"
+date: 2016-08-25
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(dplyr)
+
+smaller <- diamonds %>% 
+  filter(carat <= 2.5)
 ```
+
+We have data about `r nrow(diamonds)` diamonds. Only 
+`r nrow(diamonds) - nrow(smaller)` are larger than
+2.5 carats. The distribution of the remainder is shown
+below:
+
+```{r, echo = FALSE}
+smaller %>% 
+  ggplot(aes(carat)) + 
+  geom_freqpoly(binwidth = 0.01)
+```
+````
  
 
 위 파일에는 세 가지 중요한 내용이 포함되어 있다. 
@@ -50,21 +71,15 @@ cat(htmltools::includeText("rmarkdown/diamond-sizes.Rmd"))
 
 확장자 __.Rmd__ 파일을 열면 코드와 출력이 번갈아 표시되는 노트북 인터페이스가 나온다. Run 아이콘 (청크 상단의 재생 버튼처럼 생김)을 클릭하거나 Cmd/Ctrl+Shift+Enter를 눌러 각 코드 청크를 실행할 수 있다. RStudio에서 코드가 실행되고, 실행결과가 코드와 함께 인라인(inline)으로 표시된다. 
 
-```{r, echo = FALSE, out.width = "75%"}
-knitr::include_graphics("rmarkdown/diamond-sizes-notebook.png")
-```
+<img src="rmarkdown/diamond-sizes-notebook.png" width="75%" style="display: block; margin: auto;" />
 
 텍스트, 코드 및 실행 결과 모두가 포함된 최종 보고서를 작성하려면 ’Knit’을 클릭하거나 Cmd/Ctrl-Shift-K를 입력하면 된다. 혹은 `rmarkdown::render("1-example.Rmd")`으로 프로그램화할 수도 있다. 이렇게 하면 뷰어 창에 보고서가 나타나고, 다른 사용자와 공유할 수 있는 온전한 HTML 파일이 만들어진다. 
 
-```{r, echo = FALSE, out.width = "75%"}
-knitr::include_graphics("rmarkdown/diamond-sizes-report.png")
-```
+<img src="rmarkdown/diamond-sizes-report.png" width="75%" style="display: block; margin: auto;" />
  
 문서를 니트(knit) 하면 R마크다운은 .Rmd 파일을 [__knitr__](http://yihui.name/knitr/), 로 보내는데, __knitr__는 모든 코드 청크를 실행하고 코드와 그 출력을 포함하는 새로운 마크다운 문서(.md)를 생성한다.<옮긴이 주: 이 책에서 ‘니트하다’는 이런 과정을 의미한다> 이렇게 생성된 마크다운 파일은 이후 [__pandoc__]<http://pandoc.org/>이 처리하는데, pandoc은 완성 파일을 생성하는 역할을 한다. 이와 같이 작업이 두 단계로 나누어져서, 다양한 출력 형식을 만들 수 있다는 장점이 있다. [R markdown formats]에서 이를 배우도록 하겠다. 
 
-```{r, echo = FALSE, out.width = "75%"}
-knitr::include_graphics("images/RMarkdownFlow.png")
-```
+<img src="images/RMarkdownFlow.png" width="75%" style="display: block; margin: auto;" />
 
 이제 .Rmd 파일을 만들어보자. 메뉴 모음에서 *File > New File > R Markdown ...* 을 선택하라. RStudio는 파일에 콘텐츠를 미리 채우는 마법사를 실행시키는데, 이 컨텐츠들은 R마크다운의 주요 기능이 어떻게 작동하는지를 보여준다. 
 
@@ -84,8 +99,56 @@ knitr::include_graphics("images/RMarkdownFlow.png")
 
 확장자 __.Rmd__ 파일 내부의 문장은 마크다운 문법으로 작성되는데, 이는 일반 텍스트 파일의 형식을 지정하기 위한 간단한 규칙이다. 마크다운은 읽고 쓰기 쉽도록 설계되었다. 또한 배우기도 쉽다. 다음의 가이드는 R마크다운에서도 실행되는 마크다운의 소폭 확장 버전인 Pandoc 마크다운을 사용하는 방법을 보여준다. 
 
-```{r, echo = FALSE, comment = ""}
-cat(readr::read_file("rmarkdown/markdown.Rmd"))
+
+```
+Text formatting 
+------------------------------------------------------------
+
+*italic*  or _italic_
+**bold**   __bold__
+`code`
+superscript^2^ and subscript~2~
+
+Headings
+------------------------------------------------------------
+
+# 1st Level Header
+
+## 2nd Level Header
+
+### 3rd Level Header
+
+Lists
+------------------------------------------------------------
+
+*   Bulleted list item 1
+
+*   Item 2
+
+    * Item 2a
+
+    * Item 2b
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+
+Links and images
+------------------------------------------------------------
+
+<http://example.com>
+
+[linked phrase](http://example.com)
+
+![optional caption text](path/to/img.png)
+
+Tables 
+------------------------------------------------------------
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 ```
 
 이것들을 익히는 가장 좋은 방법은 한 번 만들어 보는 것이다. 며칠이 걸리겠지만, 곧 익숙해질 것이며, 일부러 생각해 낼 필요도 없게 될 것이다. 잊어버린 경우 *Help > Markdown Quick Reference*를 사용하여 편리한 참조 시트를 찾아볼 수 있다. 
@@ -125,9 +188,7 @@ R마크다운 문서에서 코드를 실행하려면 청크를 삽입해야 한�
 
 1.    스크립트 편집기의 왼쪽 하단에 있는 드롭 다운 코드 탐색기를 사용하여 특정 청크로 쉽게 옮겨갈 수 있다. 
 
-    ```{r, echo = FALSE, out.width = "30%"}
-    knitr::include_graphics("screenshots/rmarkdown-chunk-nav.png")
-    ```
+    <img src="screenshots/rmarkdown-chunk-nav.png" width="30%" style="display: block; margin: auto;" />
 
 1. 청크에 의해 생성된 그래프가 유용한 이름을 갖게 되어, 다른 곳에서 쉽게 사용할 수 있다. [기타 중요한 옵션]에서 이에 대해 자세히 다룰 것이다. 
 
@@ -170,18 +231,38 @@ Option             | Run code | Show code | Output | Plots | Messages | Warnings
 
 기본적으로 R 마크다운은 콘솔에서 보이는 대로 데이터프레임과 행렬을 인쇄한다. 
 
-```{r}
+
+```r
 mtcars[1:5, ]
+#>                    mpg cyl disp  hp drat   wt qsec vs am gear carb
+#> Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4
+#> Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4
+#> Datsun 710        22.8   4  108  93 3.85 2.32 18.6  1  1    4    1
+#> Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1
+#> Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2
 ```
 
 추가 서식으로 데이터를 표시하려면 `knitr::kable` 함수를 사용하면 된다. 표 \@ref(tab:kable)는 다음 코드로 생성되었다. 
 
-```{r kable}
+
+```r
 knitr::kable(
   mtcars[1:5, ], 
   caption = "A knitr kable."
 )
 ```
+
+
+
+Table: (\#tab:kable)A knitr kable.
+
+                      mpg   cyl   disp    hp   drat     wt   qsec   vs   am   gear   carb
+------------------  -----  ----  -----  ----  -----  -----  -----  ---  ---  -----  -----
+Mazda RX4            21.0     6    160   110   3.90   2.62   16.5    0    1      4      4
+Mazda RX4 Wag        21.0     6    160   110   3.90   2.88   17.0    0    1      4      4
+Datsun 710           22.8     4    108    93   3.85   2.32   18.6    1    1      4      1
+Hornet 4 Drive       21.4     6    258   110   3.08   3.21   19.4    1    0      3      1
+Hornet Sportabout    18.7     8    360   175   3.15   3.44   17.0    0    0      3      2
 
 표를 사용자 정의할 수 있는 다른 방법을 보려면 `?knitr::kable`를 통해 설명서를 읽어라. 더 자세한 사용자 정의를 원한다면 __xtable__, __stargazer__, __pander__, __tables__, __ascii__ 패키지를 고려하라. 각각에는 R 코드로 서식화된 표를 반환하는 도구들이 있다. 
 
@@ -194,31 +275,31 @@ Normally, each knit of a document starts from a completely clean slate. This is 
 
 The caching system must be used with care, because by default it is based on the code only, not its dependencies. For example, here the `processed_data` chunk depends on the `raw_data` chunk:
 
-    `r chunk`{r raw_data}
+    ```{r raw_data}
     rawdata <- readr::read_csv("a_very_large_file.csv")
-    `r chunk`
+    ```
     
-    `r chunk`{r processed_data, cache = TRUE}
+    ```{r processed_data, cache = TRUE}
     processed_data <- rawdata %>% 
       filter(!is.na(import_var)) %>% 
       mutate(new_variable = complicated_transformation(x, y, z))
-    `r chunk`
+    ```
 
 Caching the `processed_data` chunk means that it will get re-run if the dplyr pipeline is changed, but it won't get rerun if the `read_csv()` call changes. You can avoid that problem with the `dependson` chunk option:
 
-    `r chunk`{r processed_data, cache = TRUE, dependson = "raw_data"}
+    ```{r processed_data, cache = TRUE, dependson = "raw_data"}
     processed_data <- rawdata %>% 
       filter(!is.na(import_var)) %>% 
       mutate(new_variable = complicated_transformation(x, y, z))
-    `r chunk`
+    ```
 
 `dependson` should contain a character vector of *every* chunk that the cached chunk depends on. Knitr will update the results for the cached chunk whenever it detects that one of its dependencies have changed.
 
 Note that the chunks won't update if `a_very_large_file.csv` changes, because knitr caching only tracks changes within the `.Rmd` file. If you want to also track changes to that file you can use the `cache.extra` option. This is an arbitrary R expression that will invalidate the cache whenever it changes. A good function to use is `file.info()`: it returns a bunch of information about the file including when it was last modified. Then you can write:
 
-    `r chunk`{r raw_data, cache.extra = file.info("a_very_large_file.csv")}
+    ```{r raw_data, cache.extra = file.info("a_very_large_file.csv")}
     rawdata <- readr::read_csv("a_very_large_file.csv")
-    `r chunk`
+    ```
 
 As your caching strategies get progressively more complicated, it's a good idea to regularly clear out all your caches with `knitr::clean_cache()`.
 
@@ -228,7 +309,8 @@ I've used the advice of [David Robinson](https://twitter.com/drob/status/7387866
 
 __knitr__로 작업하다 보면 일부 기본 청크 옵션은 필요에 맞지 않아 변경하고자 할 것이다. 코드 청크에서 `knitr::opts_chunk$set()`을 호출하면 된다. 예를 들어 책과 튜토리얼을 작성할 때 나는 다음과 같이 설정한다. 
 
-```{r, eval = FALSE}
+
+```r
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE
@@ -237,7 +319,8 @@ knitr::opts_chunk$set(
 
 이는 내가 선호하는 주석 형식을 사용하고 코드와 출력이 밀접하게 붙어있게 하는 설정이다. 반면에 보고서를 준비하고 있다면 다음과 같이 설정할 수 있다. 
 
-```{r eval = FALSE}
+
+```r
 knitr::opts_chunk$set(
   echo = FALSE
 )
@@ -247,10 +330,10 @@ knitr::opts_chunk$set(
 
 ### Inline code
 
-There is one other way to embed R code into an R Markdown document: directly into the text, with:  `r inline()`. This can be very useful if you mention properties of your data in the text. For example, in the example document I used at the start of the chapter I had:
+There is one other way to embed R code into an R Markdown document: directly into the text, with:  `` `r ` ``. This can be very useful if you mention properties of your data in the text. For example, in the example document I used at the start of the chapter I had:
 
-> We have data about `r inline('nrow(diamonds)')` diamonds. 
-> Only `r inline('nrow(diamonds) - nrow(smaller)')` are larger 
+> We have data about `` `r nrow(diamonds)` `` diamonds. 
+> Only `` `r nrow(diamonds) - nrow(smaller)` `` are larger 
 > than 2.5 carats. The distribution of the remainder is shown below:
 
 When the report is knit, the results of these computations are inserted into the text:
@@ -260,10 +343,13 @@ When the report is knit, the results of these computations are inserted into the
 
 When inserting numbers into text, `format()` is your friend. It allows you to set the number of `digits` so you don't print to a ridiculous degree of accuracy, and a `big.mark` to make numbers easier to read. I'll often combine these into a helper function:
 
-```{r}
+
+```r
 comma <- function(x) format(x, digits = 2, big.mark = ",")
 comma(3452345)
+#> [1] "3,452,345"
 comma(.12358124331)
+#> [1] "0.12"
 ```
 
 ### Exercises
@@ -304,9 +390,29 @@ R Markdown documents can include one or more parameters whose values can be set 
 
 This example uses a `my_class` parameter to determine which class of cars to display:
 
-```{r, echo = FALSE, out.width = "100%", comment = ""}
-cat(readr::read_file("rmarkdown/fuel-economy.Rmd"))
+
+````
+---
+output: html_document
+params:
+  my_class: "suv"
+---
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(dplyr)
+
+class <- mpg %>% filter(class == params$my_class)
 ```
+
+# Fuel economy for `r params$my_class`s
+
+```{r, message = FALSE}
+ggplot(class, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
+````
 
 As you can see, parameters are available within the code chunks as a read-only list named `params`.
 
@@ -322,24 +428,37 @@ In RStudio, you can click the "Knit with Parameters" option in the Knit dropdown
 
 Alternatively, if you need to produce many such paramterised reports, you can call `rmarkdown::render()` with a list of `params`:
 
-```{r eval = FALSE}
+
+```r
 rmarkdown::render("fuel-economy.Rmd", params = list(my_class = "suv"))
 ```
 
 This is particularly powerful in conjunction with `purrr:pwalk()`. The following example creates a report for each value of `class` found in `mpg`. First we create a data frame that has one row for each class, giving the `filename` of the report and the `params`:
 
-```{r}
+
+```r
 reports <- tibble(
   class = unique(mpg$class),
   filename = stringr::str_c("fuel-economy-", class, ".html"),
   params = purrr::map(class, ~ list(my_class = .))
 )
 reports
+#> # A tibble: 7 x 3
+#>   class   filename                  params    
+#>   <chr>   <chr>                     <list>    
+#> 1 compact fuel-economy-compact.html <list [1]>
+#> 2 midsize fuel-economy-midsize.html <list [1]>
+#> 3 suv     fuel-economy-suv.html     <list [1]>
+#> 4 2seater fuel-economy-2seater.html <list [1]>
+#> 5 minivan fuel-economy-minivan.html <list [1]>
+#> 6 pickup  fuel-economy-pickup.html  <list [1]>
+#> # ... with 1 more row
 ```
 
 Then we match the column names to the argument names of `render()`, and use purrr's __parallel__ walk to call `render()` once for each row:
 
-```{r, eval = FALSE}
+
+```r
 reports %>% 
   select(output_file = filename, params) %>% 
   purrr::pwalk(rmarkdown::render, input = "fuel-economy.Rmd")
