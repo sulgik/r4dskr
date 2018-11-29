@@ -1,7 +1,7 @@
 
-# (PART) Program {-}
+# (PART) 프로그래밍 {-}
 
-# Introduction {#program-intro}
+# 소개 {#program-intro}
 
 In this part of the book, you'll improve your programming skills. Programming is a cross-cutting skill needed for all data science work: you must use a computer to do data science; you cannot do it in your head, or with pencil and paper. 
 
