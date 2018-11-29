@@ -1,7 +1,6 @@
 .Rproj.user
 .Rhistory
 *_cache
-*_files
 _main.rds
 search_index.json
 *.rds
