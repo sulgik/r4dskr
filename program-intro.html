@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="section-1.html">
+<link rel="prev" href="tibble.html">
+<link rel="next" href="model-intro.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -301,25 +301,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R for Data Science</h1>
-<p class="author"><em>Garrett Grolemund</em></p>
-<p class="author"><em>Hadley Wickham</em></p>
-</div>
-<div id="ed9998ec9881ed95a9eb8b88eb8ba4" class="section level1 unnumbered">
-<h1>환영합니다</h1>
-<p><a href="http://amzn.to/2aHLAQ1"><img src="cover.png" width="250" height="375" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /></a> This is the website for <strong>“R for Data Science”</strong>. This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.</p>
-<p>This website is (and will always be) <strong>free to use</strong>, and is licensed under the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0</a> License. If you’d like a <strong>physical copy</strong> of the book, you can order it from <a href="http://amzn.to/2aHLAQ1">amazon</a>; it was published by O’Reilly in January 2017. If you’d like to <strong>give back</strong> please make a donation to <a href="https://www.doc.govt.nz/kakapo-donate">Kākāpō Recovery</a>: the <a href="https://www.youtube.com/watch?v=9T1vfsHYiKY">kākāpō</a> (which appears on the cover of R4DS) is a critically endangered native NZ parrot; there are only 148 left.</p>
-<p>The book is written in <a href="https://rmarkdown.rstudio.com">RMarkdown</a> with <a href="https://bookdown.org">bookdown</a>. It is automatically rebuilt from <a href="https://github.com/hadley/r4ds">source</a> by <a href="http://travis-ci.org/">travis</a>. R4DS is a collaborative effort and many people have contributed fixes and improvements via pull request.</p>
+<div id="program-intro" class="section level1">
+<h1><span class="header-section-number">11</span> 소개</h1>
+<p>In this part of the book, you’ll improve your programming skills. Programming is a cross-cutting skill needed for all data science work: you must use a computer to do data science; you cannot do it in your head, or with pencil and paper.</p>
+<p><img src="diagrams/data-science-program.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>Programming produces code, and code is a tool of communication. Obviously code tells the computer what you want it to do. But it also communicates meaning to other humans. Thinking about code as a vehicle for communication is important because every project you do is fundamentally collaborative. Even if you’re not working with other people, you’ll definitely be working with future-you! Writing clear code is important so that others (like future-you) can understand why you tackled an analysis in the way you did. That means getting better at programming also involves getting better at communicating. Over time, you want your code to become not just easier to write, but easier for others to read.</p>
+<p>Writing code is similar in many ways to writing prose. One parallel which I find particularly useful is that in both cases rewriting is the key to clarity. The first expression of your ideas is unlikely to be particularly clear, and you may need to rewrite multiple times. After solving a data analysis challenge, it’s often worth looking at your code and thinking about whether or not it’s obvious what you’ve done. If you spend a little time rewriting your code while the ideas are fresh, you can save a lot of time later trying to recreate what your code did. But this doesn’t mean you should rewrite every function: you need to balance what you need to achieve now with saving time in the long run. (But the more you rewrite your functions the more likely your first attempt will be clear.)</p>
+<p>In the following four chapters, you’ll learn skills that will allow you to both tackle new programs and to solve existing problems with greater clarity and ease:</p>
+<ol style="list-style-type: decimal">
+<li><p>In [pipes], you will dive deep into the <strong>pipe</strong>, <code>%&gt;%</code>, and learn more about how it works, what the alternatives are, and when not to use it.</p></li>
+<li><p>Copy-and-paste is a powerful tool, but you should avoid doing it more than twice. Repeating yourself in code is dangerous because it can easily lead to errors and inconsistencies. Instead, in [functions], you’ll learn how to write <strong>functions</strong> which let you extract out repeated code so that it can be easily reused.</p></li>
+<li><p>As you start to write more powerful functions, you’ll need a solid grounding in R’s <strong>data structures</strong>, provided by [vectors]. You must master the four common atomic vectors, the three important S3 classes built on top of them, and understand the mysteries of the list and data frame.</p></li>
+<li><p>Functions extract out repeated code, but you often need to repeat the same actions on different inputs. You need tools for <strong>iteration</strong> that let you do similar things again and again. These tools include for loops and functional programming, which you’ll learn about in [iteration].</p></li>
+</ol>
+<div id="learning-more-1" class="section level2">
+<h2><span class="header-section-number">11.1</span> Learning more</h2>
+<p>The goal of these chapters is to teach you the minimum about programming that you need to practice data science, which turns out to be a reasonable amount. Once you have mastered the material in this book, I strongly believe you should invest further in your programming skills. Learning more about programming is a long-term investment: it won’t pay off immediately, but in the long term it will allow you to solve new problems more quickly, and let you reuse your insights from previous problems in new scenarios.</p>
+<p>To learn more you need to study R as a programming language, not just an interactive environment for data science. We have written two books that will help you do so:</p>
+<ul>
+<li><p><a href="https://amzn.com/1449359019"><em>Hands on Programming with R</em></a>, by Garrett Grolemund. This is an introduction to R as a programming language and is a great place to start if R is your first programming language. It covers similar material to these chapters, but with a different style and different motivation examples (based in the casino). It’s a useful complement if you find that these four chapters go by too quickly.</p></li>
+<li><p><a href="https://amzn.com/1466586966"><em>Advanced R</em></a> by Hadley Wickham. This dives into the details of R the programming language. This is a great place to start if you have existing programming experience. It’s also a great next step once you’ve internalised the ideas in these chapters. You can read it online at <a href="http://adv-r.had.co.nz" class="uri">http://adv-r.had.co.nz</a>.</p></li>
+</ul>
 
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="section-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tibble.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -339,7 +354,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hadley/r4ds/edit/master/index.Rmd",
+"link": "https://github.com/hadley/r4ds/edit/master/program.Rmd",
 "text": "Edit"
 },
 "history": {

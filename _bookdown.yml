@@ -15,6 +15,10 @@ rmd_files: [
   "wrangle.Rmd",
   "tibble.Rmd",
 
+  "program.Rmd",
+
+  "model.Rmd",
+
   "communicate.Rmd",
   "rmarkdown.Rmd",
 ]
