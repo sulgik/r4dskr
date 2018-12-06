@@ -76,8 +76,8 @@ read_csv("a,b,c
 매우 일반적인 규칙이다. 이 동작을 조정해야 하는 경우는 두 가지이다.
 
 1.  파일 앞 부분에 메타 데이터 몇 줄이 있는 경우가 있다. `skip = n`을 사용하여
-첫 `n`줄을 건너 뛸 수 있다. 또는 `comment = "#"`을 사용하여 `#`으로 시작하는 모
-든 줄을 무시할 수 있다.
+첫 `n`줄을 건너 뛸 수 있다. 또는 `comment = "#"`을 사용하여 `#`으로 시작하는
+모든 줄을 무시할 수 있다.
 
     
     ```r
@@ -114,8 +114,8 @@ read_csv("a,b,c
 
 (`"\n"`은 새 줄을 추가하는 편리한 단축키이다. [문자열 기초]에서 이
 단축어와 문자열 이스케이프의 다른 유형에 대해 자세히 배운다.)
-다른 방법으로는 `col_names`에 열 이름으로 사용할 문자형 벡터를 전달할 수
-도 있다.
+다른 방법으로는 `col_names`에 열 이름으로 사용할 문자형 벡터를 전달할
+수도 있다.
 
     
     ```r
@@ -368,14 +368,17 @@ charToRaw("Hadley")
 영어가 아닌 다른 언어의 경우 더욱 복잡해진다. 컴퓨터 시대 초창기에는 비영어권 
 문자 인코딩을 위한 여러 표준 규격이 있었다. 문자열을 정확하게 해석하기 위해서는 
 값과 인코딩을 모두 알아야했다. 예를 들어 두 가지 일반적인 인코딩은 
-Latin1(ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2(ISO-8859-2, 동유럽 언어들에서 사용)이다. Latin1에서 바이트 `b1`은 ‘±’이지만, Latin2에서는 ‘ą’이다! 다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8이 있다. UTF-8은 오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
+Latin1(ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2(ISO-8859-2, 동유럽 언어들에서 사용)이다. 
+Latin1에서 바이트 `b1`은 ‘±’이지만, Latin2에서는 ‘ą’이다! 
+다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8이 있다. UTF-8은 
+오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
 인코딩할 수 있다.
 
-readr은 모든 곳에서 UTF-8을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정
-하며, 쓸 때는 항상 사용한다. UTF-8은 좋은 기본값이지만, 이를 인식하지 못하
-는 구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
-화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 완전
-히 외계어들을 볼 수도 있다. 다음의 예를 보자.
+readr은 모든 곳에서 UTF-8을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정하며, 
+쓸 때는 항상 사용한다. UTF-8은 좋은 기본값이지만, 이를 인식하지 못하는 
+구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
+화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 
+완전히 외계어들을 볼 수도 있다. 다음의 예를 보자.
 
 
 
@@ -451,15 +454,16 @@ parse_factor(c("apple", "banana", "bananana"), levels = fruit)
 그러나 입력값에 문제가 많이 있는 경우에는, 그 입력값을 우선 문자형 벡터로
 남겨두고 [문자열]과 [팩터형]에서 배울 도구를 사용하여 정리하는 것이 쉬울 때가 많다.
 
-### Dates, date-times, 시간 {#readr-datetimes}
+### Dates, date-times, times {#readr-datetimes}
 
-You pick between three parsers depending on whether you want a date (the number of days since 1970-01-01), a date-time (the number of seconds since midnight 1970-01-01), or a time (the number of seconds since midnight). When called without any additional arguments:
+원하는 것이 date (1970-01-01 이후의 일 수), date-time (1970-01-01 자정 이후의
+초 수), time (자정 이후의 초 수)인지에 따라 세 가지 파서 중에서 선택하면 된
+다. 추가 인수 없는 각 파서의 동작은 다음과 같다.
 
-*   `parse_datetime()` expects an ISO8601 date-time. ISO8601 is an
-    international standard in which the components of a date are
-    organised from biggest to smallest: year, month, day, hour, minute, 
-    second.
-    
+* `parse_datetime()`은 ISO 8601 date-time 을 입력으로 한다. ISO
+8601은 국제 표준인데 날짜가 가장 큰 것부터 가장 작은 것(즉, 년, 월, 일, 시,
+분, 초)으로 구성된다.
+
     
     ```r
     parse_datetime("2010-10-01T2010")
@@ -469,10 +473,9 @@ You pick between three parsers depending on whether you want a date (the number 
     #> [1] "2010-10-10 UTC"
     ```
     
-    This is the most important date/time standard, and if you work with
-    dates and times frequently, I recommend reading
-    <https://en.wikipedia.org/wiki/ISO_8601>
-    
+    ISO 8601은 가장 중요한 날짜/시간 표준이며, 날짜와 시간을 자주 다루는 경우 
+    <https://en.wikipedia.org/wiki/ISO_8601>을 읽어볼 것을 추천한다.
+
 *   `parse_date()` expects a four digit year, a `-` or `/`, the month, a `-` 
     or `/`, then the day:
     
