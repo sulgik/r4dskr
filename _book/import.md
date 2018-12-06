@@ -48,8 +48,8 @@ heights <- read_csv("data/heights.csv")
 #>   earn = col_double(),
 #>   height = col_double(),
 #>   sex = col_character(),
-#>   ed = col_double(),
-#>   age = col_double(),
+#>   ed = col_integer(),
+#>   age = col_integer(),
 #>   race = col_character()
 #> )
 ```
@@ -67,7 +67,7 @@ read_csv("a,b,c
 4,5,6")
 #> # A tibble: 2 x 3
 #>       a     b     c
-#>   <dbl> <dbl> <dbl>
+#>   <int> <int> <int>
 #> 1     1     2     3
 #> 2     4     5     6
 ```
@@ -87,7 +87,7 @@ read_csv("a,b,c
       1,2,3", skip = 2)
     #> # A tibble: 1 x 3
     #>       x     y     z
-    #>   <dbl> <dbl> <dbl>
+    #>   <int> <int> <int>
     #> 1     1     2     3
     
     read_csv("# A comment I want to skip
@@ -95,7 +95,7 @@ read_csv("a,b,c
       1,2,3", comment = "#")
     #> # A tibble: 1 x 3
     #>       x     y     z
-    #>   <dbl> <dbl> <dbl>
+    #>   <int> <int> <int>
     #> 1     1     2     3
     ```
     
@@ -107,7 +107,7 @@ read_csv("a,b,c
     read_csv("1,2,3\n4,5,6", col_names = FALSE)
     #> # A tibble: 2 x 3
     #>      X1    X2    X3
-    #>   <dbl> <dbl> <dbl>
+    #>   <int> <int> <int>
     #> 1     1     2     3
     #> 2     4     5     6
     ```
@@ -122,7 +122,7 @@ read_csv("a,b,c
     read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
     #> # A tibble: 2 x 3
     #>       x     y     z
-    #>   <dbl> <dbl> <dbl>
+    #>   <int> <int> <int>
     #> 1     1     2     3
     #> 2     4     5     6
     ```
@@ -135,8 +135,8 @@ read_csv("a,b,c
 read_csv("a,b,c\n1,2,.", na = ".")
 #> # A tibble: 1 x 3
 #>       a     b c    
-#>   <dbl> <dbl> <lgl>
-#> 1     1     2 NA
+#>   <int> <int> <chr>
+#> 1     1     2 <NA>
 ```
 
 여기까지 배운 것들로 실제로 마주하게 될 CSV 파일의 75% 정도를 불러올 수
@@ -230,10 +230,10 @@ parse_integer(c("1", "231", ".", "456"), na = ".")
 
 ```r
 x <- parse_integer(c("123", "345", "abc", "123.45"))
+#> Warning in rbind(names(probs), probs_f): number of columns of result is not
+#> a multiple of vector length (arg 1)
 #> Warning: 2 parsing failures.
-#> row col               expected actual
-#>   3  -- an integer                abc
-#>   4  -- no trailing characters    .45
+#> row # A tibble: 2 x 4 col     row   col expected               actual expected   <int> <int> <chr>                  <chr>  actual 1     3    NA an integer             abc    row 2     4    NA no trailing characters .45
 ```
 
 이런 경우에는 출력에서 누락될 것이다.
@@ -368,14 +368,17 @@ charToRaw("Hadley")
 영어가 아닌 다른 언어의 경우 더욱 복잡해진다. 컴퓨터 시대 초창기에는 비영어권 
 문자 인코딩을 위한 여러 표준 규격이 있었다. 문자열을 정확하게 해석하기 위해서는 
 값과 인코딩을 모두 알아야했다. 예를 들어 두 가지 일반적인 인코딩은 
-Latin1(ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2(ISO-8859-2, 동유럽 언어들에서 사용)이다. Latin1에서 바이트 `b1`은 ‘±’이지만, Latin2에서는 ‘ą’이다! 다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8이 있다. UTF-8은 오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
+Latin1(ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2(ISO-8859-2, 동유럽 언어들에서 사용)이다. 
+Latin1에서 바이트 `b1`은 ‘±’이지만, Latin2에서는 ‘ą’이다! 
+다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8이 있다. UTF-8은 
+오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
 인코딩할 수 있다.
 
-readr은 모든 곳에서 UTF-8을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정
-하며, 쓸 때는 항상 사용한다. UTF-8은 좋은 기본값이지만, 이를 인식하지 못하
-는 구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
-화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 완전
-히 외계어들을 볼 수도 있다. 다음의 예를 보자.
+readr은 모든 곳에서 UTF-8을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정하며, 
+쓸 때는 항상 사용한다. UTF-8은 좋은 기본값이지만, 이를 인식하지 못하는 
+구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
+화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 
+완전히 외계어들을 볼 수도 있다. 다음의 예를 보자.
 
 
 
@@ -437,8 +440,7 @@ R은 팩터형을 사용하여, 가질 수 있는 값을 미리 알고 있는 �
 fruit <- c("apple", "banana")
 parse_factor(c("apple", "banana", "bananana"), levels = fruit)
 #> Warning: 1 parsing failure.
-#> row col           expected   actual
-#>   3  -- value in level set bananana
+#> row # A tibble: 1 x 4 col     row   col expected           actual   expected   <int> <int> <chr>              <chr>    actual 1     3    NA value in level set bananana
 #> [1] apple  banana <NA>  
 #> attr(,"problems")
 #> # A tibble: 1 x 4
@@ -453,7 +455,9 @@ parse_factor(c("apple", "banana", "bananana"), levels = fruit)
 
 ### Dates, date-times, 시간 {#readr-datetimes}
 
-You pick between three parsers depending on whether you want a date (the number of days since 1970-01-01), a date-time (the number of seconds since midnight 1970-01-01), or a time (the number of seconds since midnight). When called without any additional arguments:
+You pick between three parsers depending on whether you want a date (the number of days since 1970-01-01), 
+a date-time (the number of seconds since midnight 1970-01-01), or a time (the number of seconds since midnight). 
+When called without any additional arguments:
 
 *   `parse_datetime()` expects an ISO8601 date-time. ISO8601 is an
     international standard in which the components of a date are
@@ -605,7 +609,7 @@ guess_parser("15:01")
 guess_parser(c("TRUE", "FALSE"))
 #> [1] "logical"
 guess_parser(c("1", "5", "9"))
-#> [1] "double"
+#> [1] "integer"
 guess_parser(c("12,352,561"))
 #> [1] "number"
 
@@ -645,17 +649,14 @@ readr contains a challenging CSV that illustrates both of these problems:
 challenge <- read_csv(readr_example("challenge.csv"))
 #> Parsed with column specification:
 #> cols(
-#>   x = col_double(),
-#>   y = col_logical()
+#>   x = col_integer(),
+#>   y = col_character()
 #> )
+#> Warning in rbind(names(probs), probs_f): number of columns of result is not
+#> a multiple of vector length (arg 1)
 #> Warning: 1000 parsing failures.
-#>  row col           expected     actual                                                                                         file
-#> 1001   y 1/0/T/F/TRUE/FALSE 2015-01-16 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1002   y 1/0/T/F/TRUE/FALSE 2018-05-18 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1003   y 1/0/T/F/TRUE/FALSE 2015-09-05 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1004   y 1/0/T/F/TRUE/FALSE 2012-11-28 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1005   y 1/0/T/F/TRUE/FALSE 2020-01-13 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> .... ... .................. .......... ............................................................................................
+#> row # A tibble: 5 x 5 col     row col   expected               actual             file               expected   <int> <chr> <chr>                  <chr>              <chr>              actual 1  1001 x     no trailing characters .23837975086644292 '/Library/Framewo… file 2  1002 x     no trailing characters .41167997173033655 '/Library/Framewo… row 3  1003 x     no trailing characters .7460716762579978  '/Library/Framewo… col 4  1004 x     no trailing characters .723450553836301   '/Library/Framewo… expected 5  1005 x     no trailing characters .614524137461558   '/Library/Framewo…
+#> ... ................. ... .......................................................................... ........ .......................................................................... ...... .......................................................................... .... .......................................................................... ... .......................................................................... ... .......................................................................... ........ ..........................................................................
 #> See problems(...) for more details.
 ```
 
@@ -667,14 +668,14 @@ There are two printed outputs: the column specification generated by looking at 
 ```r
 problems(challenge)
 #> # A tibble: 1,000 x 5
-#>     row col   expected      actual   file                                 
-#>   <int> <chr> <chr>         <chr>    <chr>                                
-#> 1  1001 y     1/0/T/F/TRUE… 2015-01… '/Library/Frameworks/R.framework/Ver…
-#> 2  1002 y     1/0/T/F/TRUE… 2018-05… '/Library/Frameworks/R.framework/Ver…
-#> 3  1003 y     1/0/T/F/TRUE… 2015-09… '/Library/Frameworks/R.framework/Ver…
-#> 4  1004 y     1/0/T/F/TRUE… 2012-11… '/Library/Frameworks/R.framework/Ver…
-#> 5  1005 y     1/0/T/F/TRUE… 2020-01… '/Library/Frameworks/R.framework/Ver…
-#> 6  1006 y     1/0/T/F/TRUE… 2016-04… '/Library/Frameworks/R.framework/Ver…
+#>     row col   expected               actual             file              
+#>   <int> <chr> <chr>                  <chr>              <chr>             
+#> 1  1001 x     no trailing characters .23837975086644292 '/Library/Framewo…
+#> 2  1002 x     no trailing characters .41167997173033655 '/Library/Framewo…
+#> 3  1003 x     no trailing characters .7460716762579978  '/Library/Framewo…
+#> 4  1004 x     no trailing characters .723450553836301   '/Library/Framewo…
+#> 5  1005 x     no trailing characters .614524137461558   '/Library/Framewo…
+#> 6  1006 x     no trailing characters .473980569280684   '/Library/Framewo…
 #> # ... with 994 more rows
 ```
 
@@ -811,12 +812,12 @@ There are a few other general strategies to help you parse files:
     type_convert(df)
     #> Parsed with column specification:
     #> cols(
-    #>   x = col_double(),
+    #>   x = col_integer(),
     #>   y = col_double()
     #> )
     #> # A tibble: 3 x 2
     #>       x     y
-    #>   <dbl> <dbl>
+    #>   <int> <dbl>
     #> 1     1  1.21
     #> 2     2  2.32
     #> 3     3  4.56
@@ -869,18 +870,18 @@ write_csv(challenge, "challenge-2.csv")
 read_csv("challenge-2.csv")
 #> Parsed with column specification:
 #> cols(
-#>   x = col_double(),
-#>   y = col_logical()
+#>   x = col_integer(),
+#>   y = col_character()
 #> )
 #> # A tibble: 2,000 x 2
 #>       x y    
-#>   <dbl> <lgl>
-#> 1   404 NA   
-#> 2  4172 NA   
-#> 3  3004 NA   
-#> 4   787 NA   
-#> 5    37 NA   
-#> 6  2332 NA   
+#>   <int> <chr>
+#> 1   404 <NA> 
+#> 2  4172 <NA> 
+#> 3  3004 <NA> 
+#> 4   787 <NA> 
+#> 5    37 <NA> 
+#> 6  2332 <NA> 
 #> # ... with 1,994 more rows
 ```
 
