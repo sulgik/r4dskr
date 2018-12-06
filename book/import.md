@@ -1,5 +1,5 @@
 
-# 데이터 불러오기
+# 데이터 불러오기 {#import}
 
 ## 들어가기
 
@@ -368,14 +368,17 @@ charToRaw("Hadley")
 영어가 아닌 다른 언어의 경우 더욱 복잡해진다. 컴퓨터 시대 초창기에는 비영어권 
 문자 인코딩을 위한 여러 표준 규격이 있었다. 문자열을 정확하게 해석하기 위해서는 
 값과 인코딩을 모두 알아야했다. 예를 들어 두 가지 일반적인 인코딩은 
-Latin1(ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2(ISO-8859-2, 동유럽 언어들에서 사용)이다. Latin1에서 바이트 `b1`은 ‘±’이지만, Latin2에서는 ‘ą’이다! 다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8이 있다. UTF-8은 오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
+Latin1(ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2(ISO-8859-2, 동유럽 언어들에서 사용)이다. 
+Latin1에서 바이트 `b1`은 ‘±’이지만, Latin2에서는 ‘ą’이다! 
+다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8이 있다. UTF-8은 
+오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
 인코딩할 수 있다.
 
-readr은 모든 곳에서 UTF-8을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정
-하며, 쓸 때는 항상 사용한다. UTF-8은 좋은 기본값이지만, 이를 인식하지 못하
-는 구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
-화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 완전
-히 외계어들을 볼 수도 있다. 다음의 예를 보자.
+readr은 모든 곳에서 UTF-8을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정하며, 
+쓸 때는 항상 사용한다. UTF-8은 좋은 기본값이지만, 이를 인식하지 못하는 
+구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
+화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 
+완전히 외계어들을 볼 수도 있다. 다음의 예를 보자.
 
 
 
@@ -453,7 +456,9 @@ parse_factor(c("apple", "banana", "bananana"), levels = fruit)
 
 ### Dates, date-times, 시간 {#readr-datetimes}
 
-You pick between three parsers depending on whether you want a date (the number of days since 1970-01-01), a date-time (the number of seconds since midnight 1970-01-01), or a time (the number of seconds since midnight). When called without any additional arguments:
+You pick between three parsers depending on whether you want a date (the number of days since 1970-01-01), 
+a date-time (the number of seconds since midnight 1970-01-01), or a time (the number of seconds since midnight). 
+When called without any additional arguments:
 
 *   `parse_datetime()` expects an ISO8601 date-time. ISO8601 is an
     international standard in which the components of a date are
