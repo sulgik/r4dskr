@@ -120,12 +120,11 @@ ggplot(data = <DATA>) +
 
 1. `drv` 변수는 무엇을 나타내는가? `?mpg`로 도움말 페이지를 참고하여 알아보자. 
 
-1. `hwy` 대 **cyl`의 산점도를 만들어라. 
+1. `hwy` 대 `cyl`의 산점도를 만들어라. 
 
 1. `class` 대 `drv` 산점도를 만들면 어떻게 되는가? 이 플롯이 유용하지 않은 이유는 무엇인가? 
 
-## Aesthetic mappings
-
+## Aesthetic 매핑
 > "그래프는 전혀 예상하지 못한 것을 보여줄 때 가장 큰 가치가 있다." - 죤 튜키
 
 다음 플롯에서 한 그룹의 포인트들은(빨간색으로 강조) 선형 추세를 벗어나는 것 처럼 보인다. 이 차들은 예상한 것보다 더 높은 연비를 가진다. 이 차들을 어떻게 설명할 수 있을까?  
@@ -407,7 +406,6 @@ ggplot(data = mpg) +
 <img src="visualize_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
 
  
-
 그러나 이렇게 하면 코드에 중복이 생긴다. y-축을 `hwy` 대신 `cty`을 표시하도록 변경한다고 해보자. 두 군데에서 변수를 변경해야 하는데, 하나를 업데이트하는 것을 잊어버릴 수 있다. 이러한 종류의 중복은 매핑 집합을 `ggplot()`으로 전달하여 피할 수 있다. 이렇게 하면 **ggplot2**는 이 매핑들을 전역 매핑으로 처리하여 그래프의 각 지옴에 적용한다. 다른 말로 하면 다음의 코드는 이전 코드와 동일한 플롯을 생성한다.  
 
 
@@ -444,7 +442,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
 ### 연습문제
 
-1. 선 차트를 그리기 위해 어떤 지옴을 사용하겠는가? 박스플롯인가? 히스토그램인가? 면적(area) 차트인가? 
+1. 선 차트를 그리기 위해 어떤 지옴을 사용하겠는가? 박스플롯을 그리려면? 히스토그램은? 면적(area) 차트는? 
 
 1. 머릿속으로 다음의 코드를 실행하고 출력이 어떨지 예측해보라. 그 후, R 에서 코드를 실행하고 여러분의 예측을 확인하라. 
     
@@ -488,13 +486,10 @@ ggplot(data = diamonds) +
 
 <img src="visualize_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
 
-이 차트는 x-축으로 `diamond`의 변수 중 하나인 `cut`을 표시한다. y-축으로 `count`를 표시하는데 `count`는 `diamonds`의 변수가 아니다! `count`는 어디서 오는가? 산점도와 같은 다수의 그래프는 데이터셋의 원 값을 플롯한다. 막대 차트와 같은 다른 그래프는 플롯할 새로운 값을 계산한다. 
+이 차트는 x-축으로 `diamond`의 변수 중 하나인 `cut`을 표시한다. y-축으로 count를 표시하는데 count는 `diamonds`의 변수가 아니다! count는 어디서 오는가? 산점도와 같은 다수의 그래프는 데이터셋의 원 값을 플롯한다. 막대 차트와 같은 다른 그래프는 플롯할 새로운 값을 계산한다. 
 
- 
 
 * 막대 차트, 히스토그램, 빈도 다각형은 데이터를 계급(bin)으로 만든 후, 각 계급에 떨어지는 점들의 개수인 도수를 플롯한다.   
-
- 
 
 * 평활 차트들은 데이터에 모델을 적합한 후 모델을 이용한 예측값을 플롯한다. 
 
@@ -785,9 +780,11 @@ Coordinate systems are probably the most complicated part of ggplot2. The defaul
     
     <img src="visualize_files/figure-html/unnamed-chunk-48-1.png" width="50%" style="display: block; margin: auto;" />
 
-## The layered grammar of graphics
+## 그래프 레이어 문법
 
-In the previous sections, you learned much more than how to make scatterplots, bar charts, and boxplots. You learned a foundation that you can use to make _any_ type of plot with ggplot2. To see this, let's add position adjustments, stats, coordinate systems, and faceting to our code template:
+이전 절에서 산점도, 막대 그래프, 박스 플롯을 만드는 법뿐만 아니라 훨씬 많은
+것을 배웠다. ggplot2로 어떤 유형의 플롯도 만들 수 있는 기반을 배웠다. 이를
+확인하기 위해 코드 템플릿에 위치 조정, 스탯, 좌표계, 면분할을 추가해보자.
 
 ```
 ggplot(data = <DATA>) + 
@@ -800,11 +797,18 @@ ggplot(data = <DATA>) +
   <FACET_FUNCTION>
 ```
 
-Our new template takes seven parameters, the bracketed words that appear in the template. In practice, you rarely need to supply all seven parameters to make a graph because ggplot2 will provide useful defaults for everything except the data, the mappings, and the geom function.
+새 템플릿에는 7개의 파라미터가 있는데, 괄호 안에 표시되어 있다. ggplot2가
+데이터, 매핑, 지옴 함수를 제외하고는 유용한 기본값들을 제공하기 때문에 실제로는 
+일곱 파라미터 모두 제공해야 하는 경우는 거의 없다.
 
-The seven parameters in the template compose the grammar of graphics, a formal system for building plots. The grammar of graphics is based on the insight that you can uniquely describe _any_ plot as a combination of a dataset, a geom, a set of mappings, a stat, a position adjustment, a coordinate system, and a faceting scheme. 
+템플릿의 일곱 파라미터로 그래픽 문법이 구성되는데, 이는 플롯을 작성하는
+공식 시스템이다. 이 그래픽 문법은, 어떤 플롯도 데이터셋, 지옴, 매핑 집합, 스탯, 
+위치 조정, 좌표계, 면분할 구성표의 조합으로 고유하게 설명할 수 있다는 
+직관에 기반하고 있다.
 
-To see how this works, consider how you could build a basic plot from scratch: you could start with a dataset and then transform it into the information that you want to display (with a stat).
+어떻게 작동하는지 보기 위해 맨 처음부터 기본 플롯을 어떻게 만들지를 생각해보라. 
+데이터셋부터 시작해서 이를 (스탯을 이용하여) 표시하고 싶은 정보로
+변환할 것이다.
 
 <img src="images/visualization-grammar-1.png" width="100%" style="display: block; margin: auto;" />
 

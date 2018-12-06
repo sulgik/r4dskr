@@ -1,11 +1,11 @@
 
-# Workflow: basics
+# 워크플로: 기초 {#workflow: basics}
 
 You now have some experience running R code. I didn't give you many details, but you've obviously figured out the basics, or you would've thrown this book away in frustration! Frustration is natural when you start programming in R, because it is such a stickler for punctuation, and even one character out of place will cause it to complain. But while you should expect to be a little frustrated, take comfort in that it's both typical and temporary: it happens to everyone, and the only way to get over it is to keep trying.
 
 Before we go any further, let's make sure you've got a solid foundation in running R code, and that you know about some of the most helpful RStudio features.
 
-## Coding basics
+## 코딩 기초
 
 Let's review some basics we've so far omitted in the interests of getting you plotting as quickly as possible. You can use R as a calculator:
 
@@ -37,9 +37,12 @@ When reading that code say "object name gets value" in your head.
 
 You will make lots of assignments and `<-` is a pain to type. Don't be lazy and use `=`: it will work, but it will cause confusion later. Instead, use RStudio's keyboard shortcut: Alt + - (the minus sign). Notice that RStudio automagically surrounds `<-` with spaces, which is a good code formatting practice. Code is miserable to read on a good day, so giveyoureyesabreak and use spaces.
 
-## What's in a name?
+## 이름에 들어갈 것
 
-Object names must start with a letter, and can only contain letters, numbers, `_` and `.`. You want your object names to be descriptive, so you'll need a convention for multiple words. I recommend __snake_case__ where you separate lowercase words with `_`. 
+객체 이름은 문자로 시작해야만 하고 문자, 숫자, _, .만 포함해야 한다. 객체 이
+름이 설명력이 있으면 좋으므로 여러 단어에 관한 규칙(convention)이 필요하
+다. 소문자 단어들을 `_`으로 구분하는 **snake_case**를 추천한다.
+
 
 
 ```r
@@ -89,7 +92,7 @@ R_rocks
 
 There's an implied contract between you and R: it will do the tedious computation for you, but in return, you must be completely precise in your instructions. Typos matter. Case matters.
 
-## Calling functions
+## 함수 호출하기
 
 R has a large collection of built-in functions that are called like this:
 
@@ -147,7 +150,7 @@ Now look at your environment in the upper right pane:
 
 Here you can see all of the objects that you've created.
 
-## Practice
+## 연습문제
 
 1.  Why does this code not work?
 
