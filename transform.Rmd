@@ -15,90 +15,108 @@ knitr::opts_chunk$set(
 
 options(dplyr.print_min = 6, dplyr.print_max = 6)
 ```
-# Data transformation {#transform}
+# 데이터 변형 {#transform}
 
-## Introduction
+## 들어가기
 
-Visualisation is an important tool for insight generation, but it is rare that you get the data in exactly the right form you need. Often you'll need to create some new variables or summaries, or maybe you just want to rename the variables or reorder the observations in order to make the data a little easier to work with. You'll learn how to do all that (and more!) in this chapter, which will teach you how to transform your data using the dplyr package and a new dataset on flights departing New York City in 2013.
+시각화는 직관을 얻을 수 있는 중요한 도구이다. 하지만 데이터가 정확히 필요한 형태를 취하는 경우는 거의 없다. 
+데이터를 좀 더 쉽게 사용할 수 있도록 새로운 변수나 요약값을 만들어야 할 수도 있고, 아니면 변수 이름을 변경하거나 관측값들을 재정렬해야 되는 경우가 종종 있다. 
+이 장에서 이 모든 것을 배울 것인데, dplyr 패키지와 2013년 뉴욕시 출발 항공편에 대한 새로운 데이터셋을 이용하여 데이터 변형 방법을 배울 것이다.
 
-### Prerequisites
+### 준비하기
 
-In this chapter we're going to focus on how to use the dplyr package, another core member of the tidyverse. We'll illustrate the key ideas using data from the nycflights13 package, and use ggplot2 to help us understand the data. 
+이 장에서 우리는 tidyverse의 또 다른 핵심 구성원인 dplyr 패키지를 사용하는 법에 집중할 것이다. nycflights13 패키지의 데이터를 이용하여 핵심 아이디어를
+배우고, ggplot2를 이용하여 데이터를 이해해볼 것이다.
 
 ```{r setup, message = FALSE}
 library(nycflights13)
 library(tidyverse)
 ```
 
-Take careful note of the conflicts message that's printed when you load the tidyverse. It tells you that dplyr overwrites some functions in base R. If you want to use the base version of these functions after loading dplyr, you'll need to use their full names: `stats::filter()` and `stats::lag()`.
+tidyverse를 로드할 때 출력되는 충돌 메시지를 조심히 살펴보라. dplyr이 베이스 R 함수 몇 개를 덮어쓴다고 알려준다. 
+dplyr를 로딩한 후 이 함수들의 베이스 버전을 사용하고 싶다면 `stats::filter()` 혹은 `stats::lag()` 와 같이 전체 이름을
+사용해야 한다.
 
 ### nycflights13
 
-To explore the basic data manipulation verbs of dplyr, we'll use `nycflights13::flights`. This data frame contains all `r format(nrow(nycflights13::flights), big.mark = ",")` flights that departed from New York City in 2013. The data comes from the US [Bureau of Transportation Statistics](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0), and is documented in `?flights`.
+dplyr의 기본 데이터 작업(manipulation) 동사를 탐색하기 위해  `nycflights13::flights` 를 사용할 것이다. 
+이 데이터프레임에는 뉴욕시에서 2013년에 출발한 336,776개의 모든 항공편이 포함되어 있다. 
+데이터의 출처는 US [Bureau of Transportation Statistics](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0)이며 `?flights`에 문서화되어 있다.
 
 ```{r}
 flights
 ```
 
-You might notice that this data frame prints a little differently from other data frames you might have used in the past: it only shows the first few rows and all the columns that fit on one screen. (To see the whole dataset, you can run `View(flights)` which will open the dataset in the RStudio viewer). It prints differently because it's a __tibble__. Tibbles are data frames, but slightly tweaked to work better in the tidyverse. For now, you don't need to worry about the differences; we'll come back to tibbles in more detail in [wrangle](#wrangle-intro).
- 
-You might also have noticed the row of three (or four) letter abbreviations under the column names. These describe the type of each variable:
+이 데이터프레임은 이전에 사용했던 데이터프레임과 조금 다르게 출력되는 것을 알아차렸을 것이다. 
+즉, 처음 몇 행과 화면에 들어가는 열만 표시되었다. 
+(데이터셋 전체를 보려면 `View(flights)`를 실행하여 RStudio 뷰어에서 데이터셋을 열 수 있다.) 
+**티블(tibble)**이라서 다르게 출력되었다. 티블은 데이터프레임이지만 tidyverse에서 더 잘 작동하도록 약간 조정되었다. 
+지금은 차이를 알 필요가 없고 [wrangle](#wrangle-intro) 에서 티블에 대해 더 깊이 살펴볼 것이다.
 
-* `int` stands for integers.
+열 이름 아래의 세 글자(또는 네 글자) 줄임말 행을 봤을 것이다. 이는 각 변수의 유형을 설명한다.
 
-* `dbl` stands for doubles, or real numbers.
+* `int` 는 정수를 의미한다.
 
-* `chr` stands for character vectors, or strings.
+* `dbl` 은 더블형, 또는 실수를 의미한다.
 
-* `dttm` stands for date-times (a date + a time).
+* `chr` 은 문자형 벡터, 혹은 문자열을 의미한다.
 
-There are three other common types of variables that aren't used in this dataset but you'll encounter later in the book:
+* `dttm` 은 데이트-타임형(날짜 + 시간)을 의미한다.
 
-* `lgl` stands for logical, vectors that contain only `TRUE` or `FALSE`.
+이 데이터셋에서 사용되지 않은 세 가지 일반적인 변수 유형이 있는데 이 책 뒤에서 살펴볼 것이다.
 
-* `fctr` stands for factors, which R uses to represent categorical variables
-  with fixed possible values.
+* `lgl` 은 `TRUE` 혹은 `FALSE` 만 포함하는 벡터인 논리형을 의미한다.
 
-* `date` stands for dates.
+* `fctr` 은 팩터형을 의미하는데, R은 이를 이용하여 가능한 값이 미리 정해진 범주형 변수를 나타낸다.
+
+* `date` 는 데이트형을 의미한다.
+
 
 ### dplyr basics
 
-In this chapter you are going to learn the five key dplyr functions that allow you to solve the vast majority of your data manipulation challenges:
+이 장에서 대부분의 데이터 작업 문제를 풀 수 있는 다섯 개의 핵심 dplyr 함수들
+을 배울 것이다.
 
-* Pick observations by their values (`filter()`).
-* Reorder the rows (`arrange()`).
-* Pick variables by their names (`select()`).
-* Create new variables with functions of existing variables (`mutate()`).
-* Collapse many values down to a single summary (`summarise()`).
+* 값을 기준으로 선택하라 (`filter()`).
+* 행을 재정렬하라 (`arrange()`).
+* 이름으로 변수를 선택하라 (`select()`).
+* 기존 변수들의 함수로 새로운 변수를 생성하라 (`mutate()`).
+* 많은 값을 하나의 요약값으로 합쳐라 (`summarize()`).
 
-These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation.
+이것들은 모두 `group_by()` 와 함께 사용할 수 있는데, 
+이는 전체 데이터셋에 동작하지 않고 그룹마다 동작하도록 각 함수의 범위를 변경한다. 
+이 여섯 함수가 데이터 작업 언어에서 동사가 된다.
 
-All verbs work similarly: 
+모든 동사는 비슷하게 작동한다.
 
-1.  The first argument is a data frame.
+1. 첫 인수는 데이터프레임이다.
 
-1.  The subsequent arguments describe what to do with the data frame,
-    using the variable names (without quotes).
-    
-1.  The result is a new data frame.
+1. 그 이후의 인수들은 (따옴표가 없는) 변수 이름을 사용하여 데이터프레임에
+무엇을 할지를 설명한다.
 
-Together these properties make it easy to chain together multiple simple steps to achieve a complex result. Let's dive in and see how these verbs work.
+1. 결과는 새로운 데이터프레임이다.
+
+이 속성들을 함께 이용하면 여러 단순한 단계를 쉽게 연결하여 복잡한 결과를
+얻을 수 있다. 이 동사들이 어떻게 작동하는지 좀 더 살펴보자.
 
 ## Filter rows with `filter()`
 
-`filter()` allows you to subset observations based on their values. The first argument is the name of the data frame. The second and subsequent arguments are the expressions that filter the data frame. For example, we can select all flights on January 1st with:
+`filter()` 를 이용하면 값을 기준으로 데이터를 서브셋할 수 있다. 
+첫 번째 인수는 데이터프레임 이름이다. 두 번째 이후의 인수들은 데이터프레임을 필터링하는 표현식들이다. 예를 들어 1월 1일 항공편 모두를 다음과 같이
+선택할 수 있다.
 
 ```{r}
 filter(flights, month == 1, day == 1)
 ```
 
-When you run that line of code, dplyr executes the filtering operation and returns a new data frame. dplyr functions never modify their inputs, so if you want to save the result, you'll need to use the assignment operator, `<-`:
+해당 코드 라인을 실행하면 dplyr은 필터링 연산을 실행하고 새로운 데이터프레임을 반환한다. 
+dplyr 함수들은 입력을 절대 수정하지 않기 때문에, 결과를 저장하려면 할당 연산자 `<-` 를 사용해야 한다.
 
 ```{r}
 jan1 <- filter(flights, month == 1, day == 1)
 ```
 
-R either prints out the results, or saves them to a variable. If you want to do both, you can wrap the assignment in parentheses:
+R은 결과를 출력하거나 변수에 저장한다. 둘 다 수행되게 하려면 할당문을 괄호로 묶으면 된다.
 
 ```{r}
 (dec25 <- filter(flights, month == 12, day == 25))
@@ -106,22 +124,24 @@ R either prints out the results, or saves them to a variable. If you want to do 
 
 ### Comparisons
 
-To use filtering effectively, you have to know how to select the observations that you want using the comparison operators. R provides the standard suite: `>`, `>=`, `<`, `<=`, `!=` (not equal), and `==` (equal). 
-
-When you're starting out with R, the easiest mistake to make is to use `=` instead of `==` when testing for equality. When this happens you'll get an informative error:
+필터링을 효과적으로 사용하려면 비교 연산자를 사용하여 원하는 관측값을 선택하는 방법을 알아야 한다. 
+R에는 표준연산자군이 있다. `>`, `>=`, `<`, `<=`, `!=` (같지 않음), `==` (같음).
+R을 배우기 시작할 때, 가장 범하기 쉬운 실수는, 같음을 테스트할 때 `==` 대신 `=` 를 사용하는 것이다. 
+이런 실수를 하면 오류가 발생하면서 해당 내용을 알려준다.
 
 ```{r, error = TRUE}
 filter(flights, month = 1)
 ```
 
-There's another common problem you might encounter when using `==`: floating point numbers. These results might surprise you!
+`==` 를 사용할 때 자주 발생하는 다른 문제는 부동소수점 숫자이다. 다음 결과들에 놀랄 것이다.
 
 ```{r}
 sqrt(2) ^ 2 == 2
 1 / 49 * 49 == 1
 ```
 
-Computers use finite precision arithmetic (they obviously can't store an infinite number of digits!) so remember that every number you see is an approximation. Instead of relying on `==`, use `near()`:
+컴퓨터는 유한 정밀도 산술을 사용하므로(무한대 수를 저장할 수 없는 건 당연하다) 눈 앞에 보이는 숫자는 근사값이라는 것을 기억하라. 
+`==` 대신, `near()` 를 사용하라.
 
 ```{r}
 near(sqrt(2) ^ 2,  2)
@@ -130,40 +150,50 @@ near(1 / 49 * 49, 1)
 
 ### Logical operators
 
-Multiple arguments to `filter()` are combined with "and": every expression must be true in order for a row to be included in the output. For other types of combinations, you'll need to use Boolean operators yourself: `&` is "and", `|` is "or", and `!` is "not". Figure \@ref(fig:bool-ops) shows the complete set of Boolean operations.
+`filter()` 의 인수들은 ‘and’로 결합된다. 즉, 모든 표현식이 참이어야 행이 출력에
+포함된다. 다른 유형의 조합을 만들려면 직접 불(Boolean) 연산자를 사용해야
+한다. `&` 는 ‘and’, `|` 는 ‘or’, `!` 는 ‘not’이다. 다음의 그림은 불 연산자 전체 집합을 보여준다.
 
 ```{r bool-ops, echo = FALSE, fig.cap = "Complete set of boolean operations. `x` is the left-hand circle, `y` is the right-hand circle, and the shaded region show which parts each operator selects."}
 knitr::include_graphics("diagrams/transform-logical.png")
 ```
 
-The following code finds all flights that departed in November or December:
+다음 코드는 11월이나 12월에 출발한 항공편 모두를 찾는다.
 
 ```{r, eval = FALSE}
 filter(flights, month == 11 | month == 12)
 ```
 
-The order of operations doesn't work like English. You can't write `filter(flights, month == 11 | 12)`, which you might literally translate into  "finds all flights that departed in November or December". Instead it finds all months that equal `11 | 12`, an expression that evaluates to `TRUE`. In a numeric context (like here), `TRUE` becomes one, so this finds all flights in January, not November or December. This is quite confusing!
+연산 순서는 영어에서의 순서와 다르다. `filter(flights, month == 11 | 12)` 로 쓰면 
+직역으로 ‘finds all flights that departed in November or December’로 번역되겠지만 이렇게 쓰면 안 된다. 
+대신 `11 | 12` (이 표현식은 `TRUE`가 됨)와 같은 달을 모두 찾는다. 
+수치형 문맥에서 `TRUE` 는 1 이 되므로 이는 11월이나 12월이 아닌 1월의 모든 항공편을 찾는다. 꽤 혼란스럽다!
 
-A useful short-hand for this problem is `x %in% y`. This will select every row where `x` is one of the values in `y`. We could use it to rewrite the code above:
+이 문제에 유용한 팁은 `x %in% y`이다. 이는 `x`가 `y`에 있는 값 중 하나인 행을 모두 선택한다.
 
 ```{r, eval = FALSE}
 nov_dec <- filter(flights, month %in% c(11, 12))
 ```
 
-Sometimes you can simplify complicated subsetting by remembering De Morgan's law: `!(x & y)` is the same as `!x | !y`, and `!(x | y)` is the same as `!x & !y`. For example, if you wanted to find flights that weren't delayed (on arrival or departure) by more than two hours, you could use either of the following two filters:
+드 모르간 법칙을 기억에서 불러내어 복잡한 서브셋 동작을
+단순화할 수도 있다. `!(x & y)` 는 `!x | !y` 와 같고 `!(x | y)` 는 `!x & !y` 와 같다. 
+예를 들어 (출발 혹은 도착에서) 두 시간 이상 지연되지 않은 항공편을 모두 찾고 싶다면 다음의 두 필터 중 하나를 사용해도 된다.
 
 ```{r, eval = FALSE}
 filter(flights, !(arr_delay > 120 | dep_delay > 120))
 filter(flights, arr_delay <= 120, dep_delay <= 120)
 ```
 
-As well as `&` and `|`, R also has `&&` and `||`. Don't use them here! You'll learn when you should use them in [conditional execution].
+R에는 `&` 와 `|` 외에도 `&&` 와 `||` 도 있다. 여기서는 사용하지 않는다! [conditional execution]에서 이들을 사용해야 할 때 배울 것이다.
 
-Whenever you start using complicated, multipart expressions in `filter()`, consider making them explicit variables instead. That makes it much easier to check your work. You'll learn how to create new variables shortly.
+`filter()` 안의 표현식이 복잡하고 다중으로 되기 시작하면, 항상 이들을 명시적 변수들로 만드는 것을 고려하라. 
+이렇게 하면 작업을 확인하기 훨씬 쉬워진다. 새 변수를 만드는 법은 곧 배울 것이다.
 
-### Missing values
+### 결측값
 
-One important feature of R that can make comparison tricky are missing values, or `NA`s ("not availables"). `NA` represents an unknown value so missing values are "contagious": almost any operation involving an unknown value will also be unknown.
+R에서 비교를 까다롭게 만드는 중요한 특징은 결측값, 즉 `NA` (‘not available, 이용불가’)이다. 
+`NA` 는 모르는 값을 나타내므로 결측값은 ‘파급된다(contagious)’. 즉,
+모르는 값이 연관된 연산의 결과도 대부분 모르는 값이 된다.
 
 ```{r}
 NA > 5
@@ -172,33 +202,33 @@ NA + 10
 NA / 2
 ```
 
-The most confusing result is this one:
+가장 헷갈리는 결과는 이것이다.
 
 ```{r}
 NA == NA
 ```
 
-It's easiest to understand why this is true with a bit more context:
+문맥이 더 있으면 왜 이것이 사실인지 이해하기 쉽다.
 
 ```{r}
-# Let x be Mary's age. We don't know how old she is.
+# 메리의 나이를 x 라고 하자. 우리는 그녀가 몇 살인지 모른다.
 x <- NA
 
-# Let y be John's age. We don't know how old he is.
+# 존의 나이를 y 라고 하자. 우리는 그가 몇 살인지 모른다. 
 y <- NA
 
-# Are John and Mary the same age?
+# 존과 메리는 같은 나이인가?
 x == y
-# We don't know!
+# 우린 모른다!
 ```
 
-If you want to determine if a value is missing, use `is.na()`:
+값이 결측인지를 확인하고 싶으면 `is.na()` 를 사용하라.
 
 ```{r}
 is.na(x)
 ```
 
-`filter()` only includes rows where the condition is `TRUE`; it excludes both `FALSE` and `NA` values. If you want to preserve missing values, ask for them explicitly:
+`filter()` 는 조건이 `TRUE` 인 열만 포함한다. `FALSE` 와 `NA` 값들은 제외한다. 결측값들을 남기려면 명시적으로 요청하라.
 
 ```{r}
 df <- tibble(x = c(1, NA, 3))
@@ -206,44 +236,45 @@ filter(df, x > 1)
 filter(df, is.na(x) | x > 1)
 ```
 
-### Exercises
+### 연습문제
 
-1.  Find all flights that
+1.  다음 조건을 만족하는 항공편을 모두 찾아라.
 
-    1. Had an arrival delay of two or more hours
-    1. Flew to Houston (`IAH` or `HOU`)
-    1. Were operated by United, American, or Delta
-    1. Departed in summer (July, August, and September)
-    1. Arrived more than two hours late, but didn't leave late
-    1. Were delayed by at least an hour, but made up over 30 minutes in flight
-    1. Departed between midnight and 6am (inclusive)
+    1. 2시간 이상 도착 지연
+    1. 휴스턴(IAH 혹은 HOU)으로 운항
+    1. 유나이티드항공(United), 아메리칸항공(American), 델타항공(Delta)이 운항
+    1. 여름 (7, 8, 9월)에 출발
+    1. 2시간 이상 지연 도착했지만, 지연 출발하지는 않음
+    1. 최소 한 시간 이상 지연됐지만 운항 중 30분 이상 단축
+    1. 자정과 6am (포함) 사이에 출발
 
-1.  Another useful dplyr filtering helper is `between()`. What does it do?
-    Can you use it to simplify the code needed to answer the previous 
-    challenges?
+1.  다른 유용한 dplyr 필터링 도우미로 `between()` 이 있다. 어떤 일을 하는가? 이
+도우미로 이전 문제들을 해결하는 데 사용한 코드들을 단순하게 할 수 있는가?
 
-1.  How many flights have a missing `dep_time`? What other variables are 
-    missing? What might these rows represent?
+1. `dep_time` 이 결측인 항공편은 몇 편인가? 어떤 다른 변수들이 결측인가? 이 열들이 나타내는 것은 무엇이겠는가?
 
-1.  Why is `NA ^ 0` not missing? Why is `NA | TRUE` not missing?
-    Why is `FALSE & NA` not missing? Can you figure out the general
-    rule?  (`NA * 0` is a tricky counterexample!)
+1. `NA ^ 0` 은 왜 결측이 아닌가? `NA | TRUE` 는 왜 결측이 아닌가? `FALSE & NA` 는 왜
+결측이 아닌가? 일반 규칙을 발견할 수 있겠는가? (`NA * 0` 은 까다로운 반례이다!)
+
 
 ## Arrange rows with `arrange()`
 
-`arrange()` works similarly to `filter()` except that instead of selecting rows, it changes their order. It takes a data frame and a set of column names (or more complicated expressions) to order by. If you provide more than one column name, each additional column will be used to break ties in the values of preceding columns:
+`arrange()` 는 행을 선택하는 것 대신, 순서를 바꾼다는 것만 제외하고는 `filter()`
+와 유사하게 작동한다. 데이터프레임과 정렬기준으로 지정할 열 이름 집합(혹은
+복잡한 표현식)을 입력으로 한다. 하나 이상의 열 이름을 제공하면 각 열은 이전
+열의 동점값(tie) 상황을 해결하는 데 사용된다.
 
 ```{r}
 arrange(flights, year, month, day)
 ```
 
-Use `desc()` to re-order by a column in descending order:
+`desc()` 를 사용하여 내림차순으로 열을 재정렬하라.
 
 ```{r}
 arrange(flights, desc(dep_delay))
 ```
 
-Missing values are always sorted at the end:
+결측값은 항상 마지막에 정렬된다.
 
 ```{r}
 df <- tibble(x = c(5, 2, NA))
@@ -251,19 +282,25 @@ arrange(df, x)
 arrange(df, desc(x))
 ```
 
-### Exercises
+### 연습문제
 
-1.  How could you use `arrange()` to sort all missing values to the start?
-    (Hint: use `is.na()`).
-    
-1.  Sort `flights` to find the most delayed flights. Find the flights that
-    left earliest.
+1.  `arrange()` 를 사용하여 모든 결측값을 앞에 오도록 정렬하라 (힌트: `is.na()` 를
+사용하라).
 
-1.  Sort `flights` to find the fastest flights.
+1. `flights` 를 정렬하여 가장 지연된 항공편을 찾아라. 가장 일찍 출발한 항공편을 찾아라.
 
-1.  Which flights travelled the longest? Which travelled the shortest?
+1. `flights` 를 정렬하여 가장 빠른 항공편을 찾아라.
+
+1. 어떤 항공편이 가장 멀리 운항했는가? 가장 짧게 운항한 항공편은?
 
 ## Select columns with `select()` {#select}
+
+변수가 수백, 수천 개인 데이터셋을 심심치 않게 만날 것이다. 
+이 경우 첫 과제는 실제로 관심 있는 변수들로 좁히는 것이다. `select()` 와 변수 이름에 
+기반한 연산들을 이용하면 유용한 서브셋으로 신속하게 줌인(zoom in)해 볼 수 있다.
+
+변수가 19개밖에 없는 항공편 데이터에서는 `select()` 가 엄청나게 유용하지는
+않지만 일반적인 개념을 볼 수는 있다.
 
 It's not uncommon to get datasets with hundreds or even thousands of variables. In this case, the first challenge is often narrowing in on the variables you're actually interested in. `select()` allows you to rapidly zoom in on a useful subset using operations based on the names of the variables.
 
