@@ -74,8 +74,7 @@ flights
 
 ### dplyr basics
 
-이 장에서 대부분의 데이터 작업 문제를 풀 수 있는 다섯 개의 핵심 dplyr 함수들
-을 배울 것이다.
+이 장에서 대부분의 데이터 작업 문제를 풀 수 있는 다섯 개의 핵심 dplyr 함수들을 배울 것이다.
 
 * 값을 기준으로 선택하라 (`filter()`).
 * 행을 재정렬하라 (`arrange()`).
@@ -131,7 +130,7 @@ dplyr 함수들은 입력을 절대 수정하지 않기 때문에, 결과를 저
 jan1 <- filter(flights, month == 1, day == 1)
 ```
 
-R은 결과를 출력하거나 변수에 저장한다. 둘 다 수행되게 하려면 할당문을 괄호로 묶으면 된다.
+R 은 결과를 출력하거나 변수에 저장한다. 둘 다 수행되게 하려면 할당문을 괄호로 묶으면 된다.
 
 
 ```r
@@ -174,7 +173,7 @@ sqrt(2) ^ 2 == 2
 #> [1] FALSE
 ```
 
-컴퓨터는 유한 정밀도 산술을 사용하므로(무한대 수를 저장할 수 없는 건 당연하다) 눈 앞에 보이는 숫자는 근사값이라는 것을 기억하라. 
+컴퓨터는 유한 정밀도 산술을 사용하므로 (무한대 수를 저장할 수 없는 건 당연하다) 눈 앞에 보이는 숫자는 근사값이라는 것을 기억하라. 
 `==` 대신, `near()` 를 사용하라.
 
 
@@ -233,8 +232,8 @@ R에는 `&` 와 `|` 외에도 `&&` 와 `||` 도 있다. 여기서는 사용하�
 ### 결측값
 
 R에서 비교를 까다롭게 만드는 중요한 특징은 결측값, 즉 `NA` (‘not available, 이용불가’)이다. 
-`NA` 는 모르는 값을 나타내므로 결측값은 ‘파급된다(contagious)’. 즉,
-모르는 값이 연관된 연산의 결과도 대부분 모르는 값이 된다.
+`NA` 는 모르는 값을 나타내므로 결측값은 ‘파급된다’. 
+즉, 모르는 값이 연관된 연산의 결과도 대부분 모르는 값이 된다.
 
 
 ```r
@@ -400,14 +399,11 @@ arrange(df, desc(x))
 
 변수가 수백, 수천 개인 데이터셋을 심심치 않게 만날 것이다. 
 이 경우 첫 과제는 실제로 관심 있는 변수들로 좁히는 것이다. `select()` 와 변수 이름에 
-기반한 연산들을 이용하면 유용한 서브셋으로 신속하게 줌인(zoom in)해 볼 수 있다.
+기반한 연산들을 이용하면 유용한 서브셋으로 신속하게 줌 인 해 볼 수 있다.
 
-변수가 19개밖에 없는 항공편 데이터에서는 `select()` 가 엄청나게 유용하지는
+변수가 19 개 밖에 없는 항공편 데이터에서는 `select()` 가 엄청나게 유용하지는
 않지만 일반적인 개념을 볼 수는 있다.
 
-It's not uncommon to get datasets with hundreds or even thousands of variables. In this case, the first challenge is often narrowing in on the variables you're actually interested in. `select()` allows you to rapidly zoom in on a useful subset using operations based on the names of the variables.
-
-`select()` is not terribly useful with the flights data because we only have 19 variables, but you can still get the general idea:
 
 
 ```r
@@ -451,23 +447,22 @@ select(flights, -(year:day))
 #> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
-There are a number of helper functions you can use within `select()`:
+`select()` 안에서 사용할 수 있는 도우미 함수들이 많다.
 
-* `starts_with("abc")`: matches names that begin with "abc".
+* `starts_with("abc")`: ‘abc’로 시작하는 이름에 매칭
 
-* `ends_with("xyz")`: matches names that end with "xyz".
+* `ends_with("xyz")`: ‘xyz’로 끝나는 이름에 매칭
 
-* `contains("ijk")`: matches names that contain "ijk".
+* `contains("ijk")`: ‘ijk’를 포함하는 이름에 매칭
 
-* `matches("(.)\\1")`: selects variables that match a regular expression.
-   This one matches any variables that contain repeated characters. You'll 
-   learn more about regular expressions in [strings].
-   
-*  `num_range("x", 1:3)`: matches `x1`, `x2` and `x3`.
-   
-See `?select` for more details.
+* `matches("(.)\\1")`: 정규표현식에 매칭되는 변수들을 선택. 이 표현식은 반복되는 문자를 포함하는 변수에 매칭된다. 11장에서 정규표현식에 대해 더 배울 것이다.
 
-`select()` can be used to rename variables, but it's rarely useful because it drops all of the variables not explicitly mentioned. Instead, use `rename()`, which is a variant of `select()` that keeps all the variables that aren't explicitly mentioned:
+* num_range("x", 1:3): x1, x2, x3에 매칭
+
+자세한 내용은 `?select`를 보자.
+
+변수명 변경에 `select()` 를 이용할 수 있지만, 명시적으로 언급하지 않은 모든
+변수를 누락하기 때문에 유용하지 않다. 대신 `select()` 의 변형인 `rename()` 을 사용하면 명시적으로 언급하지 않은 모든 변수를 유지한다.
 
 
 ```r
@@ -487,7 +482,7 @@ rename(flights, tail_num = tailnum)
 #> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
-Another option is to use `select()` in conjunction with the `everything()` helper. This is useful if you have a handful of variables you'd like to move to the start of the data frame.
+다른 방법은 `select()` 를 도우미 함수인 `everything()` 과 함께 사용하는 것이다. 데이터프레임의 시작 부분으로 옮기고 싶은 변수들이 몇 개 있을 때 유용하다.
 
 
 ```r
@@ -507,24 +502,20 @@ select(flights, time_hour, air_time, everything())
 #> #   hour <dbl>, minute <dbl>
 ```
 
-### Exercises
+### 연습문제
 
-1.  Brainstorm as many ways as possible to select `dep_time`, `dep_delay`,
-    `arr_time`, and `arr_delay` from `flights`.
-    
-1.  What happens if you include the name of a variable multiple times in
-    a `select()` call?
-  
-1.  What does the `one_of()` function do? Why might it be helpful in conjunction
-    with this vector?
-    
+1. `flights` 에서 `dep_time, dep_delay, arr_time, arr_delay` 를 선택할 수 있는, 가능한 모든 방법들에 대해 브레인스토밍 하라.
+
+1. `select()`  호출에서 한 변수 이름을 여러 번 포함하면 어떻게 되는가?
+
+1. `one_of()`  함수는 어떤 일을 하는가? 다음의 벡터와 함께 사용하면 도움이 되는 이유는 무엇인가?
+
     
     ```r
     vars <- c("year", "month", "day", "dep_delay", "arr_delay")
     ```
     
-1.  Does the result of running the following code surprise you?  How do the
-    select helpers deal with case by default? How can you change that default?
+1.  다음 코드의 실행 결과를 예상했는가? 선택 도우미(select helpers)는 기본적으로 이 경우를 어떻게 다루는가? 이 기본값 설정을 어떻게 바꾸겠는가?
 
     
     ```r
@@ -533,9 +524,9 @@ select(flights, time_hour, air_time, everything())
 
 ## Add new variables with `mutate()`
 
-Besides selecting sets of existing columns, it's often useful to add new columns that are functions of existing columns. That's the job of `mutate()`. 
+기존 열 집합을 선택하는 것 외에도 기존 열들의 함수인 새로운 열을 추가하는 것이 유용한 경우가 많다. `mutate()` 가 바로 이 일을 한다.
 
-`mutate()` always adds new columns at the end of your dataset so we'll start by creating a narrower dataset so we can see the new variables. Remember that when you're in RStudio, the easiest way to see all the columns is `View()`.
+`mutate()` 는 새로운 열을 항상 데이터셋 마지막에 추가하기 때문에,  새로운 변수를 보기 편하게 우선 더 좁은 데이터셋을 생성해 보자. RStudio에서 모든 열을 볼 수 있는 가장 쉬운 방법은 <코드체 >View()` 라는 것을 기억하자.
 
 
 ```r
@@ -561,7 +552,7 @@ mutate(flights_sml,
 #> # ... with 3.368e+05 more rows
 ```
 
-Note that you can refer to columns that you've just created:
+방금 생성한 열을 참조할 수 있다는 것을 주목하라.
 
 
 ```r
@@ -582,7 +573,7 @@ mutate(flights_sml,
 #> # ... with 3.368e+05 more rows, and 1 more variable: gain_per_hour <dbl>
 ```
 
-If you only want to keep the new variables, use `transmute()`:
+새 변수만을 남기고 싶다면 `transmute()` 을 사용하라.
 
 
 ```r
@@ -603,25 +594,21 @@ transmute(flights,
 #> # ... with 3.368e+05 more rows
 ```
 
-### Useful creation functions {#mutate-funs}
+### 유용한 생성 함수 {#mutate-funs}
 
-There are many functions for creating new variables that you can use with `mutate()`. The key property is that the function must be vectorised: it must take a vector of values as input, return a vector with the same number of values as output. There's no way to list every possible function that you might use, but here's a selection of functions that are frequently useful:
+`mutate()` 과 사용할 수 있는 변수 생성 함수가 많다. 핵심  속성은 이 함수들이 벡터화되어야 한다는 것이다. 즉, 값의 벡터를 입력으로 하여 같은 개수의 값을 가진 벡터를 출력해야 한다. 사용할 수 있는 함수를 모두 나열할 방법은 없지만 다음은 자주 사용되는 함수 모음이다.
 
-*   Arithmetic operators: `+`, `-`, `*`, `/`, `^`. These are all vectorised,
-    using the so called "recycling rules". If one parameter is shorter than 
-    the other, it will be automatically extended to be the same length. This 
-    is most useful when one of the arguments is a single number: `air_time / 60`,
-    `hours * 60 + minute`, etc.
-    
-    Arithmetic operators are also useful in conjunction with the aggregate
-    functions you'll learn about later. For example, `x / sum(x)` calculates 
-    the proportion of a total, and `y - mean(y)` computes the difference from 
-    the mean.
-    
-*   Modular arithmetic: `%/%` (integer division) and `%%` (remainder), where
-    `x == y * (x %/% y) + (x %% y)`. Modular arithmetic is a handy tool because 
-    it allows you to break integers up into pieces. For example, in the 
-    flights dataset, you can compute `hour` and `minute` from `dep_time` with:
+*   **산술 연산자**  `+, -, *, /, ^` 
+    소위 ’재활용 규칙’을 이용하여 이들은 모두 벡터화된다. 한 파라미터가 다른 것보다 짧으면 같은 길이로 자동 연장된다. 인수 하나가 단일 숫자인 경우에 가장 유용하다. 
+    `air_time / 60, hours * 60 + minute`  등.
+
+    산술 연산자는 또한 나중에 배우게 될 집계 함수(aggregate function)와 함께 사용할 때 유용하다. 예를 들어 `x / sum(x)` 는 전체 비율을 계산하고, 
+    `y -     mean(y)` 는 평균으로부터 차이를 계산한다.
+
+*   **모듈러 연산**  `%/%` , `%%` 
+    `%/%` (정수 나누기), `%%` (나머지), 여기서 `x == y * (x %/% y) + (x %% y)` 이다. 모듈러 연산은 정수를 조각으로 분해할 수 있기 때문에 편리한 도구이다. 
+    예를 들어 `flights` 데이터셋의 `dep_time` 으로부터 `hour` 와 `minute` 을 다음과 같이 계산할 수 있다.
+
     
     
     ```r
@@ -642,20 +629,20 @@ There are many functions for creating new variables that you can use with `mutat
     #> # ... with 3.368e+05 more rows
     ```
   
-*   Logs: `log()`, `log2()`, `log10()`. Logarithms are an incredibly useful
-    transformation for dealing with data that ranges across multiple orders of
-    magnitude. They also convert multiplicative relationships to additive, a
-    feature we'll come back to in modelling.
+*   **로그** `log(), log2(), log10()` . 
+    로그는 여러 차수를 넘나드는 데이터를 처리하는 데 매우 유용한 변환이다. 
+    곱하기(multiplicative) 관계를 더하기(additive) 관계로도 변환하는데, 이는 4부에서 다시 살펴볼 것이다.
     
-    All else being equal, I recommend using `log2()` because it's easy to
-    interpret: a difference of 1 on the log scale corresponds to doubling on
-    the original scale and a difference of -1 corresponds to halving.
+    다른 조건이 같다면 나는 `log2()` 를 사용할 것을 추천하는데 해석이 다음과 같이 쉽기 때문이다. 
+    로그 스케일에서 1 차이는 원 스케일에서 두 배에 해당하고 -1 차이는 절반에 해당한다.
 
-*   Offsets: `lead()` and `lag()` allow you to refer to leading or lagging 
-    values. This allows you to compute running differences (e.g. `x - lag(x)`) 
-    or find when values change (`x != lag(x)`). They are most useful in 
-    conjunction with `group_by()`, which you'll learn about shortly.
-    
+*   **오프셋** 
+    `lead()` 와 `lag()` 를 사용하면 값을 당기거나(leading) 미는(laging) 것을 참조할 수 있다. 
+    또 연속된 차이값(running differences)을 계산하거나 
+    (예: `x - lag(x)` ) 값들이 변경된 곳을 찾는 데(`x != lag(x)` ) 사용할 수 있다. `group_by()` 와 함께 사용할 때 가장 유용한데, 
+    곧 배울 것이다.
+
+
     
     ```r
     (x <- 1:10)
@@ -666,12 +653,11 @@ There are many functions for creating new variables that you can use with `mutat
     #>  [1]  2  3  4  5  6  7  8  9 10 NA
     ```
   
-*   Cumulative and rolling aggregates: R provides functions for running sums,
-    products, mins and maxes: `cumsum()`, `cumprod()`, `cummin()`, `cummax()`; 
-    and dplyr provides `cummean()` for cumulative means. If you need rolling
-    aggregates (i.e. a sum computed over a rolling window), try the RcppRoll
-    package.
-    
+*   **누적 및 롤링 집계** 
+    R에는 연속하는(running) 합계, 곱셈, 최소값, 최대값 함수</주석> `cumsum(), cumprod(), cummin(), cummax()` 가 있다. 
+    **dplyr**  에는 누적평균을 구하는 `cummean()` 이 있다. 
+    연속하는(rolling) 집계</주석>가 필요하면 **RcppRoll**  패키지를 사용해보라.
+
     
     ```r
     x
@@ -682,15 +668,13 @@ There are many functions for creating new variables that you can use with `mutat
     #>  [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0 5.5
     ```
 
-*   Logical comparisons, `<`, `<=`, `>`, `>=`, `!=`, and `==`, which you learned about
-    earlier. If you're doing a complex sequence of logical operations it's 
-    often a good idea to store the interim values in new variables so you can
-    check that each step is working as expected.
+*   **논리형 비교 연산자**  `<, <=, >, >=, !=` 
+    이에 대해선 앞에서 배웠다. 복잡한 일련의 논리형 연산을 수행한다면 새 변수에 중간 값들을 저장하여 각 단계가 예상대로 작동하는지 확인하는 것이 좋다.
 
-*   Ranking: there are a number of ranking functions, but you should 
-    start with `min_rank()`. It does the most usual type of ranking 
-    (e.g. 1st, 2nd, 2nd, 4th). The default gives smallest values the small
-    ranks; use `desc(x)` to give the largest values the smallest ranks. 
+*   **랭킹** 
+    랭킹 함수들은 많지만, `min_rank()` 부터 시작해야 한다. 가장 평범한 유형의 랭킹을 수행한다(예: 첫 번째, 두 번째, 세 번째, 네 번째). 
+    기본값에선 가장 작은 값이 가장 낮은 순서가 된다. 가장 큰 값을 가장 낮은 순서로 만들려면 `desc(x)` 를 사용하라.
+
     
     
     ```r
@@ -701,9 +685,8 @@ There are many functions for creating new variables that you can use with `mutat
     #> [1]  5  3  3 NA  2  1
     ```
     
-    If `min_rank()` doesn't do what you need, look at the variants
-    `row_number()`, `dense_rank()`, `percent_rank()`, `cume_dist()`,
-    `ntile()`.  See their help pages for more details.
+    `min_rank()` 를 사용하여 원하는 작업을 해결하지 못했다면 변형 함수 
+    `row_number(), dense_rank(), percent_rank(), cume_dist(), ntile()` 를 살펴보라. 자세한 내용을 보려면 해당 도움말 페이지를 보자.
     
     
     ```r
@@ -717,49 +700,44 @@ There are many functions for creating new variables that you can use with `mutat
     #> [1] 0.2 0.6 0.6  NA 0.8 1.0
     ```
 
-### Exercises
+### 연습문제
 
 
 
-1.  Currently `dep_time` and `sched_dep_time` are convenient to look at, but
-    hard to compute with because they're not really continuous numbers. 
-    Convert them to a more convenient representation of number of minutes
-    since midnight.
-    
-1.  Compare `air_time` with `arr_time - dep_time`. What do you expect to see?
-    What do you see? What do you need to do to fix it?
-    
-1.  Compare `dep_time`, `sched_dep_time`, and `dep_delay`. How would you
-    expect those three numbers to be related?
+1.  현재 `dep_time` 과 `sched_dep_time` 은 보기 편하지만 실제 연속형 숫자가 아니기 때문에 이들을 가지고 계산하기는 쉽지 않다. 이들을 편리한 표현식인 자정 이후 분으로 변환하라.
 
-1.  Find the 10 most delayed flights using a ranking function. How do you want 
-    to handle ties? Carefully read the documentation for `min_rank()`.
+1. `air_time` 와 `arr_time - dep_time` 을 비교하라. 무엇이 나올까? 무엇이 나왔는가? 문제를 해결하기 위해 어떻게 해야 하는가?
 
-1.  What does `1:3 + 1:10` return? Why?
+1. `dep_time, sched_dep_time, dep_delay` 를 비교하라. 이 세 숫자가 어떻게 연결되었겠는가?
 
-1.  What trigonometric functions does R provide?
+1. 랭킹 함수를 사용하여 가장 지연된 10개의 항공편을 찾아라. 동점을 어떻게 하고 싶은가? `min_rank()` 의 설명서를 주의 깊게 읽어라.
 
-## Grouped summaries with `summarise()`
+1. `1:3 + 1:10` 은 무엇을 반환하는가? 이유는?
 
-The last key verb is `summarise()`. It collapses a data frame to a single row:
+1. R에는 어떤 삼각함수들이 있는가?
+
+## Grouped summaries with `summarize()`
+
+마지막 핵심 동사는 `summarize()` 이다. 이는 데이터프레임을 하나의 행으로 축약한다.
 
 
 ```r
-summarise(flights, delay = mean(dep_delay, na.rm = TRUE))
+summarize(flights, delay = mean(dep_delay, na.rm = TRUE))
 #> # A tibble: 1 x 1
 #>   delay
 #>   <dbl>
 #> 1  12.6
 ```
 
-(We'll come back to what that `na.rm = TRUE` means very shortly.)
+(`na.rm = TRUE` 의 의미는 곧바로 살펴볼 것이다.)
 
-`summarise()` is not terribly useful unless we pair it with `group_by()`. This changes the unit of analysis from the complete dataset to individual groups. Then, when you use the dplyr verbs on a grouped data frame they'll be automatically applied "by group". For example, if we applied exactly the same code to a data frame grouped by date, we get the average delay per date:
+`summarize()` 는 `group_by()` 와 함께 사용하지 않으면 별로 유용하지 않다. `group_by()` 는 분석의 단위를 전체 데이터셋에서 개별 그룹으로 변경시킨다. 이후 **dplyr**  동사를 그룹화된 데이터프레임에 사용하면 이 동사가 ’그룹마다(by group)’ 적용된다. 예를 들어 날짜로 그룹화된 데이터프레임에 정확히 같은 코드를 적용하면 날짜별 평균 지연 시간이 나온다.
+
 
 
 ```r
 by_day <- group_by(flights, year, month, day)
-summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
+summarize(by_day, delay = mean(dep_delay, na.rm = TRUE))
 #> # A tibble: 365 x 4
 #> # Groups:   year, month [?]
 #>    year month   day delay
@@ -773,25 +751,25 @@ summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
 #> # ... with 359 more rows
 ```
 
-Together `group_by()` and `summarise()` provide one of the tools that you'll use most commonly when working with dplyr: grouped summaries. But before we go any further with this, we need to introduce a powerful new idea: the pipe.
+`group_by()` 와 `summarize()` 를 조합하면 **dplyr** 로 작업할 때 가장 빈번히 사용할 도구들 중 하나가 되는데, 
+바로 그룹화된 요약이 된다. 그런데 이에 대해 더 살펴보기 전에 강력한 새로운 개념인 파이프를 알아보아야 한다.
 
 ### Combining multiple operations with the pipe
 
-Imagine that we want to explore the relationship between the distance and average delay for each location. Using what you know about dplyr, you might write code like this:
+각 위치에 대해 거리와 평균 지연 사이에 관계를 탐색하고 싶다고 해보자. **dplyr** 에 대해 배운 것들을 사용하면 다음과 같이 코드를 작성할 것이다.
 
 
 ```r
 by_dest <- group_by(flights, dest)
-delay <- summarise(by_dest,
+delay <- summarize(by_dest,
   count = n(),
   dist = mean(distance, na.rm = TRUE),
   delay = mean(arr_delay, na.rm = TRUE)
 )
 delay <- filter(delay, count > 20, dest != "HNL")
 
-# It looks like delays increase with distance up to ~750 miles 
-# and then decrease. Maybe as flights get longer there's more 
-# ability to make up delays in the air?
+# 지연 시간은 거리에 따라 ~750 마일까지는 증가하다가 감소하는 것 같다.
+# 항로가 길수록 비행 중에 지연 시간을 만회할 여력이 더 있는 것인가?
 ggplot(data = delay, mapping = aes(x = dist, y = delay)) +
   geom_point(aes(size = count), alpha = 1/3) +
   geom_smooth(se = FALSE)
@@ -800,24 +778,23 @@ ggplot(data = delay, mapping = aes(x = dist, y = delay)) +
 
 <img src="transform_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
 
-There are three steps to prepare this data:
+세 단계로 이 데이터를 전처리한다.
 
-1.  Group flights by destination.
+1. 목적지별로 항공편을 그룹화.
 
-1.  Summarise to compute distance, average delay, and number of flights.
+1. 거리, 평균 지연 시간, 항공편 수를 계산하여 요약.
 
-1.  Filter to remove noisy points and Honolulu airport, which is almost
-    twice as far away as the next closest airport.
+1. 잡음이 많은 포인트와 호놀룰루 공항(다음으로 먼 공항보다 거의 두 배가 먼 공항)을 제거하는 필터링.
 
-This code is a little frustrating to write because we have to give each intermediate data frame a name, even though we don't care about it. Naming things is hard, so this slows down our analysis. 
+이 코드는 작성하기 조금 내키지 않는데, 크게 상관없는 중간 데이터프레임들에 이름을 모두 지어 주어야 하기 때문이다. 이름 짓는 것은 쉽지 않아서 분석 속도를 늦춘다.
 
-There's another way to tackle the same problem with the pipe, `%>%`:
+이 문제를 파이프, `%>%` 로 해결하는 방법이 있다.
 
 
 ```r
 delays <- flights %>% 
   group_by(dest) %>% 
-  summarise(
+  summarize(
     count = n(),
     dist = mean(distance, na.rm = TRUE),
     delay = mean(arr_delay, na.rm = TRUE)
@@ -825,21 +802,21 @@ delays <- flights %>%
   filter(count > 20, dest != "HNL")
 ```
 
-This focuses on the transformations, not what's being transformed, which makes the code easier to read. You can read it as a series of imperative statements: group, then summarise, then filter. As suggested by this reading, a good way to pronounce `%>%` when reading code is "then".
+이 방법은 변환되는 것이 아닌 변환 자체에 초점을 맞춰서, 코드를 더 읽기 쉽게 만든다. 다음과 같이 연속된 명령문으로 읽을 수 있다. 그룹화하고, 그 다음 요약하고, 그 다음 필터링하라. 여기에서 제안된 것처럼 코드를 읽을 때 `%>%`  를 그 다음 (then) 으로 읽는 것이 좋다.
 
-Behind the scenes, `x %>% f(y)` turns into `f(x, y)`, and `x %>% f(y) %>% g(z)` turns into `g(f(x, y), z)` and so on. You can use the pipe to rewrite multiple operations in a way that you can read left-to-right, top-to-bottom. We'll use piping frequently from now on because it considerably improves the readability of code, and we'll come back to it in more detail in [pipes].
+기저에서는 `x %>% f(y)`  는 `f(x, y)`  로 바뀌고, `x %>% f(y) %>% g(z) `  는 `g(f(x, y), z) `  로 바뀐다. 파이프를 사용하여 다중 작업을 좌-에서-우, 위-에서-아래로 읽을 수 있게 다시 쓸 수 있다. 파이프를 사용하면 코드 가독성이 현격하게 좋아지므로 지금부터는 파이프를 자주 사용할 것이다. 파이프의 세부 사항에 대해서는 나중에 다시 살펴볼 것이다.
 
-Working with the pipe is one of the key criteria for belonging to the tidyverse. The only exception is ggplot2: it was written before the pipe was discovered. Unfortunately, the next iteration of ggplot2, ggvis, which does use the pipe, isn't quite ready for prime time yet. 
+파이프로 작업하는 것은 **tidyverse**  에 속하기 위한 핵심 기준 중 하나이다. 유일한 예외는 **ggplot2**  인데 이는 파이프가 발견되기 전에 작성되었다. **ggplot2**  의 다음 버전이며 파이프를 사용하는 **ggvis** 도 안타깝게도 무대에 나오기에는 아직 준비가 되지 않았다.
 
 ### Missing values
 
-You may have wondered about the `na.rm` argument we used above. What happens if we don't set it?
+위에서 우리가 사용한 `na.rm`  인수에 대해 궁금해 했을 것이다. 이를 설정하지 않았다면 어떻게 되었을까?
 
 
 ```r
 flights %>% 
   group_by(year, month, day) %>% 
-  summarise(mean = mean(dep_delay))
+  summarize(mean = mean(dep_delay))
 #> # A tibble: 365 x 4
 #> # Groups:   year, month [?]
 #>    year month   day  mean
@@ -853,13 +830,13 @@ flights %>%
 #> # ... with 359 more rows
 ```
 
-We get a lot of missing values! That's because aggregation functions obey the usual rule of missing values: if there's any missing value in the input, the output will be a missing value. Fortunately, all aggregation functions have an `na.rm` argument which removes the missing values prior to computation:
+결측값이 많이 생겼다. 집계 함수는 결측값에 관한 일반적인 법칙을 따르기 때문 (즉, 입력에 결측값이 있으면 출력도 결측값이 된다) 이다. 다행스럽게도, 모든 집계 함수에는 `na.rm`  인수가 있어서 계산 전에 결측값들을 제거할 수 있다.
 
 
 ```r
 flights %>% 
   group_by(year, month, day) %>% 
-  summarise(mean = mean(dep_delay, na.rm = TRUE))
+  summarize(mean = mean(dep_delay, na.rm = TRUE))
 #> # A tibble: 365 x 4
 #> # Groups:   year, month [?]
 #>    year month   day  mean
@@ -873,7 +850,7 @@ flights %>%
 #> # ... with 359 more rows
 ```
 
-In this case, where missing values represent cancelled flights, we could also tackle the problem by first removing the cancelled flights. We'll save this dataset so we can reuse it in the next few examples.
+이 경우에서 결측값은 취소된 항공편을 나타내므로, 취소된 항공편을 제거해서 문제를 해결할 수 있다. 이 데이터셋을 저장하여 다음 몇 가지 예제에서 재사용할 것이다. 
 
 
 ```r
@@ -882,7 +859,7 @@ not_cancelled <- flights %>%
 
 not_cancelled %>% 
   group_by(year, month, day) %>% 
-  summarise(mean = mean(dep_delay))
+  summarize(mean = mean(dep_delay))
 #> # A tibble: 365 x 4
 #> # Groups:   year, month [?]
 #>    year month   day  mean
@@ -898,13 +875,13 @@ not_cancelled %>%
 
 ### Counts
 
-Whenever you do any aggregation, it's always a good idea to include either a count (`n()`), or a count of non-missing values (`sum(!is.na(x))`). That way you can check that you're not drawing conclusions based on very small amounts of data. For example, let's look at the planes (identified by their tail number) that have the highest average delays:
+집계를 수행할 때마다, 카운트 (`n()` ) 혹은, 결측이 아닌 값의 카운트 (`sum(!is.na(x))` )를 포함하는 것이 좋다. 이렇게 하면 매우 적은 양의 데이터를 기반으로 결론을 도출하지 않는지 확인할 수 있다. 예를 들어 평균 지연 시간이 가장 긴 항공기(꼬리 번호로 식별)를 보자.
 
 
 ```r
 delays <- not_cancelled %>% 
   group_by(tailnum) %>% 
-  summarise(
+  summarize(
     delay = mean(arr_delay)
   )
 
@@ -914,15 +891,15 @@ ggplot(data = delays, mapping = aes(x = delay)) +
 
 <img src="transform_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
 
-Wow, there are some planes that have an _average_ delay of 5 hours (300 minutes)!
+우와, 어떤 항공기들은 평균 5시간(300분)이 지연되었다!
 
-The story is actually a little more nuanced. We can get more insight if we draw a scatterplot of number of flights vs. average delay:
+이 이야기는 사실 조금 더 미묘한 문제이다. 비행 횟수 대 평균 지연 시간의 산점도를 그리면 더 많은 통찰력을 얻을 수 있다.
 
 
 ```r
 delays <- not_cancelled %>% 
   group_by(tailnum) %>% 
-  summarise(
+  summarize(
     delay = mean(arr_delay, na.rm = TRUE),
     n = n()
   )
@@ -933,9 +910,10 @@ ggplot(data = delays, mapping = aes(x = n, y = delay)) +
 
 <img src="transform_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" />
 
-Not surprisingly, there is much greater variation in the average delay when there are few flights. The shape of this plot is very characteristic: whenever you plot a mean (or other summary) vs. group size, you'll see that the variation decreases as the sample size increases.
+당연히 비행이 적을 때 평균 지연 시간에 변동이 훨씬 더 크다. 이 플롯의 모양은 매우 특징적이다. 평균(혹은 다른 요약값) 대 그룹 크기의 플롯을 그리면 표본 크기가 커짐에 따라 변동이 줄어드는 것을 볼 수 있다.
 
-When looking at this sort of plot, it's often useful to filter out the groups with the smallest numbers of observations, so you can see more of the pattern and less of the extreme variation in the smallest groups. This is what the following code does, as well as showing you a handy pattern for integrating ggplot2 into dplyr flows. It's a bit painful that you have to switch from `%>%` to `+`, but once you get the hang of it, it's quite convenient.
+이런 종류의 플롯을 살펴볼 때는, 관측값 개수가 가장 적은 그룹을 필터링하는 것이 좋은 경우가 많다. 심한 변동이 아닌 패턴을 더 볼 수 있기 때문이다. 이를 수행하는 다음 코드는 **ggplot2** 를 **dplyr**  플로에 통합하는 편리한 패턴도 보여준다. `%>%` 에서 `+` 로 전환해야 한다는 것은 조금 고통스러운 일이지만, 일단 요령을 터득하면 꽤 편리하다.
+
 
 
 ```r
@@ -949,29 +927,28 @@ delays %>%
 
 --------------------------------------------------------------------------------
 
-RStudio tip: a useful keyboard shortcut is Cmd/Ctrl + Shift + P. This resends the previously sent chunk from the editor to the console. This is very convenient when you're (e.g.) exploring the value of `n` in the example above. You send the whole block once with Cmd/Ctrl + Enter, then you modify the value of `n` and press Cmd/Ctrl + Shift + P to resend the complete block.
+RStudio 팁: 유용한 키보드 단축키는 Cmd/Ctrl + Shift + P이다. 이 단축키는 이전에 보낸 청크를 편집기에서 콘솔로 다시 보낸다. 이는 (예를 들어) 위의 예에서 `n`  값을 탐색할 때 매우 편리하다. Cmd/Ctrl + Enter로 전체 블록을 한 번 보내고, `n`  값을 수정한 후 Cmd/Ctrl + Shift + P을 눌러 전체 블록을 다시 보낼 수 있다.
 
 --------------------------------------------------------------------------------
 
-There's another common variation of this type of pattern. Let's look at how the average performance of batters in baseball is related to the number of times they're at bat. Here I use data from the __Lahman__ package to compute the batting average (number of hits / number of attempts) of every major league baseball player.  
+이 유형의 패턴에는 또 다른 변형이 있다. 야구에서 타자의 평균 능력치가 타석 수와 어떻게 관련되었는지 살펴보자. 여기에서 **Lahman**  패키지 데이터를 사용하여 메이저리그의 모든 야구 선수의 타율 (안타수/유효타석수)을 계산한다.
 
-When I plot the skill of the batter (measured by the batting average, `ba`) against the number of opportunities to hit the ball (measured by at bat, `ab`), you see two patterns:
+타자의 기술(타율, `ba` 로 측정)을 안타 기회 횟수에 대해 플롯하면 두 가지 패턴이 보인다.
 
-1.  As above, the variation in our aggregate decreases as we get more 
-    data points.
-    
-2.  There's a positive correlation between skill (`ba`) and opportunities to 
-    hit the ball (`ab`). This is because teams control who gets to play, 
-    and obviously they'll pick their best players.
+1.  위에서와 같이 집계값의 변동량은 데이터 포인트가 많아짐에 따라 감소한다.
+
+2.  기술 수준(`ba` )과 볼을 칠 기회(`ab` ) 사이에 양의 상관관계가 있다. 
+    팀이 누구를 타석에 내보낼지 선택할 때 당연히 최고의 선수를 선택할 것이기 때문이다.
+
 
 
 ```r
-# Convert to a tibble so it prints nicely
+# 보기 좋게 화면출력되도록 티블로 변환
 batting <- as_tibble(Lahman::Batting)
 
 batters <- batting %>% 
   group_by(playerID) %>% 
-  summarise(
+  summarize(
     ba = sum(H, na.rm = TRUE) / sum(AB, na.rm = TRUE),
     ab = sum(AB, na.rm = TRUE)
   )
@@ -986,7 +963,7 @@ batters %>%
 
 <img src="transform_files/figure-html/unnamed-chunk-45-1.png" width="70%" style="display: block; margin: auto;" />
 
-This also has important implications for ranking. If you naively sort on `desc(ba)`, the people with the best batting averages are clearly lucky, not skilled:
+이 사실은 순위에 중요한 영향을 준다. 단순히 `desc(ba)` 로 정렬하면 평균 타율이 가장 높은 선수는 능력치가 좋은 것이 아니라 단순히 운이 좋은 선수들이다.
 
 
 ```r
@@ -1004,25 +981,21 @@ batters %>%
 #> # ... with 1.891e+04 more rows
 ```
 
-You can find a good explanation of this problem at <http://varianceexplained.org/r/empirical_bayes_baseball/> and <http://www.evanmiller.org/how-not-to-sort-by-average-rating.html>.
+이 문제에 자세한 설명은 <http://bit.ly/Bayesbbal>과 <http://bit.ly/notsortavg> 에서 확인할 수 있다
 
-### Useful summary functions {#summarise-funs}
+### Useful summary functions {#summarize-funs}
 
-Just using means, counts, and sum can get you a long way, but R provides many other useful summary functions:
+mean, count, sum을 사용하면 많은 이점을 얻을 수 있지만, R에는 다른 유용한 요약 함수들이 많다.
 
-*   Measures of location: we've used `mean(x)`, but `median(x)` is also
-    useful. The mean is the sum divided by the length; the median is a value 
-    where 50% of `x` is above it, and 50% is below it.
-    
-    It's sometimes useful to combine aggregation with logical subsetting. 
-    We haven't talked about this sort of subsetting yet, but you'll learn more
-    about it in [subsetting].
-    
+*   **위치 측정값**: 앞서 `mean(x)` 를 사용했지만, `median(x)` 도 유용하다. 평균(mean)은 총합 나누기 길이이고 중앙값(median)은 `x` 의 50%가 위에 위치하고, 50%는 아래에 위치하게 되는 값이다.
+
+    집계와 논리형 서브셋을 조합하는 것이 유용할 때가 있다. 이러한 종류의 서브셋하기를 아직 우리가 다루지는 않았지만, [subsetting] 에서 더 배울 것이다.
+
     
     ```r
     not_cancelled %>% 
       group_by(year, month, day) %>% 
-      summarise(
+      summarize(
         avg_delay1 = mean(arr_delay),
         avg_delay2 = mean(arr_delay[arr_delay > 0]) # the average positive delay
       )
@@ -1039,17 +1012,14 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> # ... with 359 more rows
     ```
 
-*   Measures of spread: `sd(x)`, `IQR(x)`, `mad(x)`. The root mean squared deviation,
-    or standard deviation `sd(x)`, is the standard measure of spread.
-    The interquartile range `IQR(x)` and median absolute deviation `mad(x)`
-    are robust equivalents that may be more useful if you have outliers.
-    
+*   **산포 측정값**: `sd(x), IQR(x), mad(x)` . 평균제곱편차, 다른 말로는 표준 편차(standard deviation, sd)는 산포의 표준 측정값이다. 사분위범위(interquantile range), `IQR()` 과 중위절대편차(median absolute deviation), `mad(x)` 는 이상값이 있을 때 더 유용할 수 있는 로버스트 대체값들이다.
+
     
     ```r
     # Why is distance to some destinations more variable than to others?
     not_cancelled %>% 
       group_by(dest) %>% 
-      summarise(distance_sd = sd(distance)) %>% 
+      summarize(distance_sd = sd(distance)) %>% 
       arrange(desc(distance_sd))
     #> # A tibble: 104 x 2
     #>   dest  distance_sd
@@ -1063,17 +1033,14 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> # ... with 98 more rows
     ```
   
-*   Measures of rank: `min(x)`, `quantile(x, 0.25)`, `max(x)`. Quantiles
-    are a generalisation of the median. For example, `quantile(x, 0.25)`
-    will find a value of `x` that is greater than 25% of the values,
-    and less than the remaining 75%.
+*   **순위 측정값**: `min(x), quntile(x, 0.25), max(x)` . 분위수는 중앙값의 일반화이다. 예를 들어 `quantile(x, 0.25)` 는 25%`보다는 크고, 나머지 75%보다는 작은 값을 찾는다.
 
     
     ```r
     # When do the first and last flights leave each day?
     not_cancelled %>% 
       group_by(year, month, day) %>% 
-      summarise(
+      summarize(
         first = min(dep_time),
         last = max(dep_time)
       )
@@ -1090,17 +1057,13 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> # ... with 359 more rows
     ```
   
-*   Measures of position: `first(x)`, `nth(x, 2)`, `last(x)`. These work 
-    similarly to `x[1]`, `x[2]`, and `x[length(x)]` but let you set a default 
-    value if that position does not exist (i.e. you're trying to get the 3rd
-    element from a group that only has two elements). For example, we can
-    find the first and last departure for each day:
-    
+*   **자리(position) 측정값**: `first(x), nth(x, 2), last(x)` . `x[1], x[2], x[length(x)]` 와 유사하게 동작하지만 자리가 존재하지 않을 때(예를 들어 두 개의 요소만 있는 그룹에서 세 번째 요소를 접근하려고 할 때) 기본값을 설정할 수 있다. 예를 들어 각 날짜에 처음과 마지막 출발을 찾을 수 있다.
+
     
     ```r
     not_cancelled %>% 
       group_by(year, month, day) %>% 
-      summarise(
+      summarize(
         first_dep = first(dep_time), 
         last_dep = last(dep_time)
       )
@@ -1117,8 +1080,7 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> # ... with 359 more rows
     ```
     
-    These functions are complementary to filtering on ranks. Filtering gives
-    you all variables, with each observation in a separate row:
+    이 함수들은 순위로 필터링하는 것을 보완한다. 필터링하면 모든 변수를 얻을 수 있는데, 각 관측값을 별도의 행으로 얻을 수 있다.
     
     
     ```r
@@ -1142,17 +1104,14 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> #   minute <dbl>, time_hour <dttm>, r <int>
     ```
 
-*   Counts: You've seen `n()`, which takes no arguments, and returns the 
-    size of the current group. To count the number of non-missing values, use
-    `sum(!is.na(x))`. To count the number of distinct (unique) values, use
-    `n_distinct(x)`.
-    
+*   **카운트**: 인수가 없고 현재 그룹의 크기를 반환하는 `n()` 을 이미 보았다. 결측이 아닌 값의 수를 카운트하려면 `sum(!is.na(x))` 를 사용하라. 유일값 개수를 카운트하려면 `n_distinct(x)` 를 사용하라.
+
     
     ```r
     # Which destinations have the most carriers?
     not_cancelled %>% 
       group_by(dest) %>% 
-      summarise(carriers = n_distinct(carrier)) %>% 
+      summarize(carriers = n_distinct(carrier)) %>% 
       arrange(desc(carriers))
     #> # A tibble: 104 x 2
     #>   dest  carriers
@@ -1166,8 +1125,7 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> # ... with 98 more rows
     ```
     
-    Counts are so useful that dplyr provides a simple helper if all you want is 
-    a count:
+    카운트는 유용하기 때문에 **dplyr** 에는 단순히 카운트만 원할 경우 사용할 수 있는 단순한 도우미함수가 있다.
     
     
     ```r
@@ -1185,8 +1143,7 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> # ... with 98 more rows
     ```
     
-    You can optionally provide a weight variable. For example, you could use 
-    this to "count" (sum) the total number of miles a plane flew:
+    가중치 변수를 선택적으로 지정할 수 있다. 예를 들어 이를 사용하여 항공기가 비행한 마일 수를 ’카운트‘(합)할 수 있다.
     
     
     ```r
@@ -1204,18 +1161,15 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     #> # ... with 4,031 more rows
     ```
   
-*   Counts and proportions of logical values: `sum(x > 10)`, `mean(y == 0)`.
-    When used with numeric functions, `TRUE` is converted to 1 and `FALSE` to 0. 
-    This makes `sum()` and `mean()` very useful: `sum(x)` gives the number of 
-    `TRUE`s in `x`, and `mean(x)` gives the proportion.
-    
+*   **논리형 값의 카운트와 비율**: `sum(x > 10), mean(y == 0)` . 수치형 함수와 사용할 경우 `TRUE` 는 1로 `FALSE` 는 0으로 바뀐다. 이렇게 되면 `sum()` 과 `mean()` 가 매우 유용해진다. `sum(x)` 는 `TRUE` 의 개수를, `mean(x)` 는 비율을 제공한다.
+
     
     ```r
     # How many flights left before 5am? (these usually indicate delayed
     # flights from the previous day)
     not_cancelled %>% 
       group_by(year, month, day) %>% 
-      summarise(n_early = sum(dep_time < 500))
+      summarize(n_early = sum(dep_time < 500))
     #> # A tibble: 365 x 4
     #> # Groups:   year, month [?]
     #>    year month   day n_early
@@ -1231,7 +1185,7 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
     # What proportion of flights are delayed by more than an hour?
     not_cancelled %>% 
       group_by(year, month, day) %>% 
-      summarise(hour_perc = mean(arr_delay > 60))
+      summarize(hour_perc = mean(arr_delay > 60))
     #> # A tibble: 365 x 4
     #> # Groups:   year, month [?]
     #>    year month   day hour_perc
@@ -1247,12 +1201,12 @@ Just using means, counts, and sum can get you a long way, but R provides many ot
 
 ### Grouping by multiple variables
 
-When you group by multiple variables, each summary peels off one level of the grouping. That makes it easy to progressively roll up a dataset:
+여러 변수로 그룹화하면 각 요약값은 그룹화의 한 수준씩 벗겨낸다. 이를 이용하면 데이터셋을 점진적으로 쉽게 요약할 수 있다.
 
 
 ```r
 daily <- group_by(flights, year, month, day)
-(per_day   <- summarise(daily, flights = n()))
+(per_day   <- summarize(daily, flights = n()))
 #> # A tibble: 365 x 4
 #> # Groups:   year, month [?]
 #>    year month   day flights
@@ -1264,7 +1218,7 @@ daily <- group_by(flights, year, month, day)
 #> 5  2013     1     5     720
 #> 6  2013     1     6     832
 #> # ... with 359 more rows
-(per_month <- summarise(per_day, flights = sum(flights)))
+(per_month <- summarize(per_day, flights = sum(flights)))
 #> # A tibble: 12 x 3
 #> # Groups:   year [?]
 #>    year month flights
@@ -1276,69 +1230,59 @@ daily <- group_by(flights, year, month, day)
 #> 5  2013     5   28796
 #> 6  2013     6   28243
 #> # ... with 6 more rows
-(per_year  <- summarise(per_month, flights = sum(flights)))
+(per_year  <- summarize(per_month, flights = sum(flights)))
 #> # A tibble: 1 x 2
 #>    year flights
 #>   <int>   <int>
 #> 1  2013  336776
 ```
 
-Be careful when progressively rolling up summaries: it's OK for sums and counts, but you need to think about weighting means and variances, and it's not possible to do it exactly for rank-based statistics like the median. In other words, the sum of groupwise sums is the overall sum, but the median of groupwise medians is not the overall median.
+점진적으로 요약할 때 조심해야 한다. 합계와 카운트는 괜찮지만 가중평균과 가중분산에 대해서는 한번 생각해보아야 한다. 중앙값 같은 순위기반 통계량에 대해 정확히 점진적으로 요약하는 것은 가능하지 않다. 쉬운 예를 들면 그룹별 합계의 합계는 전체 합계이지만 그룹별 중앙값의 중앙값은 전체 중앙값이 아니다.
 
-### Ungrouping
+### 그룹화 해제
 
-If you need to remove grouping, and return to operations on ungrouped data, use `ungroup()`. 
+그룹화를 제거하고 그룹화되지 않은 데이터 작업으로 돌아가려면 `ungroup()` 을 사용하라.
 
 
 ```r
 daily %>% 
   ungroup() %>%             # no longer grouped by date
-  summarise(flights = n())  # all flights
+  summarize(flights = n())  # all flights
 #> # A tibble: 1 x 1
 #>   flights
 #>     <int>
 #> 1  336776
 ```
 
-### Exercises
+### 연습문제
 
-1.  Brainstorm at least 5 different ways to assess the typical delay 
-    characteristics of a group of flights. Consider the following scenarios:
-    
-    * A flight is 15 minutes early 50% of the time, and 15 minutes late 50% of 
-      the time.
-      
-    * A flight is always 10 minutes late.
+1.  한 그룹의 항공편의 일반적인 지연 특성들을 평가하는 방법 최소 5개를 브레인스토밍 하라. 다음의 시나리오를 고려하라. 
 
-    * A flight is 30 minutes early 50% of the time, and 30 minutes late 50% of 
-      the time.
-      
-    * 99% of the time a flight is on time. 1% of the time it's 2 hours late.
-    
-    Which is more important: arrival delay or departure delay?
+    * 항공편은 50% 경우 15분 단축, 50% 경우 15분 늦는다.
 
-1.  Come up with another approach that will give you the same output as 
-    `not_cancelled %>% count(dest)` and 
-    `not_cancelled %>% count(tailnum, wt = distance)` (without using 
-    `count()`).
+    * 항공편은 항상 10분 늦는다.
 
-1.  Our definition of cancelled flights (`is.na(dep_delay) | is.na(arr_delay)`
-    ) is slightly suboptimal. Why? Which is the most important column?
+    * 항공편은 50% 경우 30 분 단축, 50% 경우 30 분 늦는다.
 
-1.  Look at the number of cancelled flights per day. Is there a pattern?
-    Is the proportion of cancelled flights related to the average delay?
+    * 99% 경우 항공편은 정시 도착한다. 1% 경우 2시간 늦는다.
 
-1.  Which carrier has the worst delays? Challenge: can you disentangle the
-    effects of bad airports vs. bad carriers? Why/why not? (Hint: think about
-    `flights %>% group_by(carrier, dest) %>% summarise(n())`)
+    다음 중 무엇이 더 중요한가, 지연 도착 혹은 지연 출발?
 
-1.  What does the `sort` argument to `count()` do. When might you use it?
+1. `not_canceled %>% count(dest)` 와 `not_cancelled %>% count(tailnum, wt = distance)` 와 같은 출력을 주는 다른 접근법(`count()` 를 사용하지 않고)을 생각해보라.
+
+1. 취소된 항공편에 대한 우리의 정의(`is.na(dep_delay) | is.na(arr_delay)` )는 최선은 아니다. 왜 그런가? 가장 중요한 열은 무엇인가?
+
+1. 일간 취소된 항공편의 수를 살펴보라. 패턴이 있는가? 취소된 항공편 비율이 평균 지연시간과 관련이 있는가?
+
+1. 가장 심한 지연 시간을 가진 항공사는 무엇인가? 도전 과제: 나쁜 공항 효과와 나쁜 항공사 효과를 분리할 수 있겠는가? 왜 그런가?(힌트: `flights %>% group_by(carrier, dest) %>% summarize(n())` 에 관해 생각해보라.)
+
+1. `count()`  의 `sort`  인수의 역할은 무엇인가? 언제 사용하겠는가?
 
 ## Grouped mutates (and filters)
 
-Grouping is most useful in conjunction with `summarise()`, but you can also do convenient operations with `mutate()` and `filter()`:
+그룹화는 `summarize()` 와 조합하여 사용하면 가장 유용하지만 `mutate()` 와 `filter()` 로 편리한 작업을 할 수도 있다.
 
-*   Find the worst members of each group:
+*   각 그룹에서 최악의 멤버들을 찾아보자.
 
     
     ```r
@@ -1358,7 +1302,7 @@ Grouping is most useful in conjunction with `summarise()`, but you can also do c
     #> # ... with 3,300 more rows
     ```
 
-*   Find all groups bigger than a threshold:
+*   기준값보다 큰 그룹을 모두 찾아보자.
 
     
     ```r
@@ -1382,7 +1326,7 @@ Grouping is most useful in conjunction with `summarise()`, but you can also do c
     #> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
     ```
 
-*   Standardise to compute per group metrics:
+*   그룹별 척도를 위해 표준화해보자.
 
     
     ```r
@@ -1403,35 +1347,24 @@ Grouping is most useful in conjunction with `summarise()`, but you can also do c
     #> # ... with 1.311e+05 more rows
     ```
 
-A grouped filter is a grouped mutate followed by an ungrouped filter. I generally avoid them except for quick and dirty manipulations: otherwise it's hard to check that you've done the manipulation correctly.
+그룹화 필터링은 그룹화 뮤테이트 이후 그룹화하지 않은 필터링이다. 나는 데이터 응급 조작의 경우가 아니면 일반적으로 이를 사용하지 않는다. 조작을 올바르게 했는지 확인하기 어렵기 때문이다. 
 
-Functions that work most naturally in grouped mutates and filters are known as  window functions (vs. the summary functions used for summaries). You can learn more about useful window functions in the corresponding vignette: `vignette("window-functions")`.
+그룹화 뮤테이트와 필터링에서 가장 자연스럽게 작동하는 함수는 (요약값을 내는 요약 함수들 대비) 윈도우 함수들로 알려져 있다. 유용한 윈도우 함수들의 세부사항에 대해서는 해당되는 비그넷(`vignette("window-functions")`) 에서 알아보라.
 
-### Exercises
+### 연습문제
 
-1.  Refer back to the lists of useful mutate and filtering functions. 
-    Describe how each operation changes when you combine it with grouping.
+1.  유용한 뮤테이트와 필터링 함수들 목록을 다시 참조하라. 이들의 작업들은 그룹화와 결합하면 어떻게 바뀌는지 설명하라.
 
-1.  Which plane (`tailnum`) has the worst on-time record?
+1. 어떤 항공기(`tailnum`)가 최악의 정시 기록을 가지고 있는가?
 
-1.  What time of day should you fly if you want to avoid delays as much
-    as possible?
-    
-1.  For each destination, compute the total minutes of delay. For each 
-    flight, compute the proportion of the total delay for its destination.
-    
-1.  Delays are typically temporally correlated: even once the problem that
-    caused the initial delay has been resolved, later flights are delayed 
-    to allow earlier flights to leave. Using `lag()`, explore how the delay
-    of a flight is related to the delay of the immediately preceding flight.
-    
-1.  Look at each destination. Can you find flights that are suspiciously
-    fast? (i.e. flights that represent a potential data entry error). Compute
-    the air time a flight relative to the shortest flight to that destination.
-    Which flights were most delayed in the air?
-    
-1.  Find all destinations that are flown by at least two carriers. Use that
-    information to rank the carriers.
+1. 지연을 최대한 피하려면 몇 시에 비행해야 하는가?
 
-1.  For each plane, count the number of flights before the first delay 
-    of greater than 1 hour.
+1. 각 목적지별로 총 지연 시간을 분으로 계산하라. 각 항공편별로 목적지까지의 총 지연 시간의 비율을 계산하라.
+
+1. 지연 시간은 일반적으로 시간적으로 상관되어있다. 즉, 처음 지연을 야기한 문제가 해결되었어도 이전 항공편이 출발하도록 이후 항공편들이 지연된다. `lag()` 을 사용하면 항공편 지연 시간이 바로 직전 항공편의 지연 시간과 어떻게 연관되었는지 탐색할 수 있다.
+
+1. 각 목적지를 살펴보라. 의심스럽게 빠른 항공편들을 찾을 수 있는가? (즉, 데이터 입력 오류가 있는 것 같은 항공편). 동일 목적지까지 가장 짧은 비행에 상대하여 비행 시간(air time)을 계산하라. 어떤 항공편이 비행 중 가장 지연되었는가?
+
+1. 적어도 두 항공사 이상이 비행한 목적지를 모두 찾아라. 이 정보를 이용하여 항공사들의 순위를 매겨보자(rank).
+
+1. 각 항공기에 대해 1 시간 이상 첫 지연 전 비행 횟수를 카운트하라.
