@@ -1,30 +1,30 @@
 
-# Tidy data
+# Tidy Data
 
-## Introduction
+## 들어가기
 
-> "Happy families are all alike; every unhappy family is unhappy in its
-> own way." --– Leo Tolstoy
+> 행복한 가정은 모두 비슷하다. 모든 불행한 가족은 자기 멋대로 불행하다. 
+> --- 레프 톨스토이 (Leo Tolstoy)
 
-> "Tidy datasets are all alike, but every messy dataset is messy in its
-> own way." --– Hadley Wickham
+> "깔끔한 데이터셋은 모두 비슷하지만 모든 엉망인 데이터셋은 자기 멋대로 엉망이다. 
+> --- 해들리 위컴 
 
-In this chapter, you will learn a consistent way to organise your data in R, an organisation called __tidy data__. Getting your data into this format requires some upfront work, but that work pays off in the long term. Once you have tidy data and the tidy tools provided by packages in the tidyverse, you will spend much less time munging data from one representation to another, allowing you to spend more time on the analytic questions at hand.
+이 장에서는 R에서 데이터를 일관성 있게 정리하는 법을 학습한다. 이는 타이디(tidy, 깔끔한) 데이터라는 구조이다. 타이디 데이터 형식으로 만들기 위해서는 일부 선행되는 작업이 필요하지만, 장기적으로 이러한 작업이 큰 도움이 된다. tidyverse의 패키지들에 있는 타이디 데이터와 도구를 사용하면 데이터를 기존 표현법에서 다른 표현법으로 훨씬 짧은 시간 안에 처리할 수 있고, 따라서 분석 문제를 다루는 일에 더 많은 시간을 쓸 수 있게 된다. 
 
-This chapter will give you a practical introduction to tidy data and the accompanying tools in the __tidyr__ package. If you'd like to learn more about the underlying theory, you might enjoy the *Tidy Data* paper published in the Journal of Statistical Software, <http://www.jstatsoft.org/v59/i10/paper>.
+이 장에서는 타이디 데이터에 대해 실무적으로 소개하고, <볼드>tidyr</볼드> 패키지에 포함된 도구를 살펴본다. 기본 이론에 대해 더 자세히 알고 싶다면 Journal of Statistical Software 에 실린 Tidy Data 논문을 읽어라. <http://www.jstatsoft.org/v59/i10/paper>
 
-### Prerequisites
+### 준비하기
 
-In this chapter we'll focus on tidyr, a package that provides a bunch of tools to help tidy up your messy datasets. tidyr is a member of the core tidyverse.
+이 장에서는 지저분한 데이터셋을 정리하는 도구가 있는 <볼드>tidyr</볼드> 패키지에 중점을 둘 것이다. <볼드>tidyr</볼드>은 tidyverse의 핵심 구성원이다. 
 
 
 ```r
 library(tidyverse)
 ```
 
-## Tidy data
+## Tidy Data
 
-You can represent the same underlying data in multiple ways. The example below shows the same data organised in four different ways. Each dataset shows the same values of four variables *country*, *year*, *population*, and *cases*, but each dataset organises the values in a different way.
+하나의 기본 데이터를 표현하는 방식은 다양하다. 다음 예는 같은 데이터를 다른 네 가지 방식으로 구성하여 보여준다. 각 데이터셋은 country(국가), year(연도), population(인구) 및 cases(사례), 네 개의 변수 값을 동일하게 보여주지만 다른 방식으로 구성한다. 
 
 
 ```r
@@ -77,19 +77,19 @@ table4b  # population
 #> 3 China       1272915272 1280428583
 ```
 
-These are all representations of the same underlying data, but they are not equally easy to use. One dataset, the tidy dataset, will be much easier to work with inside the tidyverse. 
+이들은 모두 같은 데이터를 표현한 것이지만, 사용성이 같지는 않다. 타이디 데이터셋만이 tidyverse 내부에서 작업하기 훨씬 쉬울 것이다. 
 
-There are three interrelated rules which make a dataset tidy:
+데이터셋을 타이디하게 만드는, 서로 연관된 세 가지 규칙이 있다. 
+ 
+1. 변수마다 해당되는 열이 있어야 한다.  
+1. 관측값마다 해당되는 행이 있어야 한다. 
+1. 값마다 해당하는 하나의 셀이 있어야 한다.  
 
-1.  Each variable must have its own column.
-1.  Each observation must have its own row.
-1.  Each value must have its own cell.
-
-Figure \@ref(fig:tidy-structure) shows the rules visually.
+Figure \@ref(fig:tidy-structure) 은 이러한 규칙을 시각적으로 보여준다. 
 
 <div class="figure" style="text-align: center">
-<img src="images/tidy-1.png" alt="Following three rules makes a dataset tidy: variables are in columns, observations are in rows, and values are in cells." width="100%" />
-<p class="caption">(\#fig:tidy-structure)Following three rules makes a dataset tidy: variables are in columns, observations are in rows, and values are in cells.</p>
+<img src="images/tidy-1.png" alt="데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다." width="100%" />
+<p class="caption">(\#fig:tidy-structure)데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다.</p>
 </div>
 
 These three rules are interrelated because it's impossible to only satisfy two of the three. That interrelationship leads to an even simpler set of practical instructions:
@@ -660,14 +660,14 @@ There's a wealth of epidemiological information in this dataset, but it's challe
 ```r
 who
 #> # A tibble: 7,240 x 60
-#>   country     iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534
-#>   <chr>       <chr> <chr> <int>       <int>        <int>        <int>
-#> 1 Afghanistan AF    AFG    1980          NA           NA           NA
-#> 2 Afghanistan AF    AFG    1981          NA           NA           NA
-#> 3 Afghanistan AF    AFG    1982          NA           NA           NA
-#> 4 Afghanistan AF    AFG    1983          NA           NA           NA
-#> 5 Afghanistan AF    AFG    1984          NA           NA           NA
-#> 6 Afghanistan AF    AFG    1985          NA           NA           NA
+#>   country iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534
+#>   <chr>   <chr> <chr> <int>       <int>        <int>        <int>
+#> 1 Afghan… AF    AFG    1980          NA           NA           NA
+#> 2 Afghan… AF    AFG    1981          NA           NA           NA
+#> 3 Afghan… AF    AFG    1982          NA           NA           NA
+#> 4 Afghan… AF    AFG    1983          NA           NA           NA
+#> 5 Afghan… AF    AFG    1984          NA           NA           NA
+#> 6 Afghan… AF    AFG    1985          NA           NA           NA
 #> # ... with 7,234 more rows, and 53 more variables: new_sp_m3544 <int>,
 #> #   new_sp_m4554 <int>, new_sp_m5564 <int>, new_sp_m65 <int>,
 #> #   new_sp_f014 <int>, new_sp_f1524 <int>, new_sp_f2534 <int>,

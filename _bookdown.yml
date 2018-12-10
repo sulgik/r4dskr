@@ -9,12 +9,13 @@ rmd_files: [
   "workflow-basics.Rmd",
   "transform.Rmd",
   "workflow-scripts.Rmd",
-  "EDA.Rmd",
+#  "EDA.Rmd",
   "workflow-projects.Rmd",
 
   "wrangle.Rmd",
   "tibble.Rmd",
   "import.Rmd",
+  "tidy.Rmd",
 
   "program.Rmd",
 
