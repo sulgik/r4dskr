@@ -11,8 +11,7 @@ R 패키지가 제공하는 데이터를 이용하여 데이터 과학 도구를
 
 ### 준비하기
 
-이 장에서는 tidyverse의 핵심인 **readr** 패키지를 사용하여 플랫 파일을 불러오
-는 방법을 학습한다.
+이 장에서는 tidyverse의 핵심인 **readr** 패키지를 사용하여 플랫 파일을 불러오는 방법을 학습한다.
 
 ```{r setup, message = FALSE}
 library(tidyverse)
@@ -360,7 +359,7 @@ parse_factor(c("apple", "banana", "bananana"), levels = fruit)
     ```
     
     ISO 8601은 가장 중요한 날짜/시간 표준이며, 날짜와 시간을 자주 다루는 경우 
-    <https://en.wikipedia.org/wiki/ISO_8601>을 읽어볼 것을 추천한다.
+    <https://en.wikipedia.org/wiki/ISO_8601> 을 읽어볼 것을 추천한다.
 
 *   `parse_date()` 는 네 자리 연도, `-` 또는 `/`, 월, `-` 또는 `/`, 날짜를 입력으로 한다.
     
@@ -380,8 +379,7 @@ parse_factor(c("apple", "banana", "bananana"), levels = fruit)
     베이스 R에는 시간 데이터를 위한 훌륭한 내장 클래스가 없기 때문에, 우리는
     hms 패키지에서 제공되는 클래스를 사용한다.
 
-이러한 기본 설정으로 주어진 데이터를 처리하지 못한다면 다음의 요소들로 이
-루어진 자신만의 날짜-시간 형식(`format`)을 만들어 쓸 수 있다.
+이러한 기본 설정으로 주어진 데이터를 처리하지 못한다면 다음의 요소들로 이루어진 자신만의 날짜-시간 형식(`format`)을 만들어 쓸 수 있다.
 
 Year
 : `%Y` (4 자리). 
