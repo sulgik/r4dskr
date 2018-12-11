@@ -47,8 +47,8 @@ heights <- read_csv("data/heights.csv")
 #>   earn = col_double(),
 #>   height = col_double(),
 #>   sex = col_character(),
-#>   ed = col_integer(),
-#>   age = col_integer(),
+#>   ed = col_double(),
+#>   age = col_double(),
 #>   race = col_character()
 #> )
 ```
@@ -66,7 +66,7 @@ read_csv("a,b,c
 4,5,6")
 #> # A tibble: 2 x 3
 #>       a     b     c
-#>   <int> <int> <int>
+#>   <dbl> <dbl> <dbl>
 #> 1     1     2     3
 #> 2     4     5     6
 ```
@@ -86,7 +86,7 @@ read_csv("a,b,c
       1,2,3", skip = 2)
     #> # A tibble: 1 x 3
     #>       x     y     z
-    #>   <int> <int> <int>
+    #>   <dbl> <dbl> <dbl>
     #> 1     1     2     3
     
     read_csv("# A comment I want to skip
@@ -94,7 +94,7 @@ read_csv("a,b,c
       1,2,3", comment = "#")
     #> # A tibble: 1 x 3
     #>       x     y     z
-    #>   <int> <int> <int>
+    #>   <dbl> <dbl> <dbl>
     #> 1     1     2     3
     ```
     
@@ -106,7 +106,7 @@ read_csv("a,b,c
     read_csv("1,2,3\n4,5,6", col_names = FALSE)
     #> # A tibble: 2 x 3
     #>      X1    X2    X3
-    #>   <int> <int> <int>
+    #>   <dbl> <dbl> <dbl>
     #> 1     1     2     3
     #> 2     4     5     6
     ```
@@ -121,7 +121,7 @@ read_csv("a,b,c
     read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
     #> # A tibble: 2 x 3
     #>       x     y     z
-    #>   <int> <int> <int>
+    #>   <dbl> <dbl> <dbl>
     #> 1     1     2     3
     #> 2     4     5     6
     ```
@@ -134,8 +134,8 @@ read_csv("a,b,c
 read_csv("a,b,c\n1,2,.", na = ".")
 #> # A tibble: 1 x 3
 #>       a     b c    
-#>   <int> <int> <chr>
-#> 1     1     2 <NA>
+#>   <dbl> <dbl> <lgl>
+#> 1     1     2 NA
 ```
 
 여기까지 배운 것들로 실제로 마주하게 될 CSV 파일의 75% 정도를 불러올 수
@@ -229,10 +229,10 @@ parse_integer(c("1", "231", ".", "456"), na = ".")
 
 ```r
 x <- parse_integer(c("123", "345", "abc", "123.45"))
-#> Warning in rbind(names(probs), probs_f): number of columns of result is not
-#> a multiple of vector length (arg 1)
 #> Warning: 2 parsing failures.
-#> row # A tibble: 2 x 4 col     row   col expected               actual expected   <int> <int> <chr>                  <chr>  actual 1     3    NA an integer             abc    row 2     4    NA no trailing characters .45
+#> row col               expected actual
+#>   3  -- an integer                abc
+#>   4  -- no trailing characters    .45
 ```
 
 이런 경우에는 출력에서 누락될 것이다.
@@ -439,7 +439,8 @@ R은 팩터형을 사용하여, 가질 수 있는 값을 미리 알고 있는 �
 fruit <- c("apple", "banana")
 parse_factor(c("apple", "banana", "bananana"), levels = fruit)
 #> Warning: 1 parsing failure.
-#> row # A tibble: 1 x 4 col     row   col expected           actual   expected   <int> <int> <chr>              <chr>    actual 1     3    NA value in level set bananana
+#> row col           expected   actual
+#>   3  -- value in level set bananana
 #> [1] apple  banana <NA>  
 #> attr(,"problems")
 #> # A tibble: 1 x 4
@@ -605,7 +606,7 @@ guess_parser("15:01")
 guess_parser(c("TRUE", "FALSE"))
 #> [1] "logical"
 guess_parser(c("1", "5", "9"))
-#> [1] "integer"
+#> [1] "double"
 guess_parser(c("12,352,561"))
 #> [1] "number"
 
@@ -644,14 +645,17 @@ readr에는 이러한 두 가지 문제를 모두 보여주는 까다로운 CSV�
 challenge <- read_csv(readr_example("challenge.csv"))
 #> Parsed with column specification:
 #> cols(
-#>   x = col_integer(),
-#>   y = col_character()
+#>   x = col_double(),
+#>   y = col_logical()
 #> )
-#> Warning in rbind(names(probs), probs_f): number of columns of result is not
-#> a multiple of vector length (arg 1)
 #> Warning: 1000 parsing failures.
-#> row # A tibble: 5 x 5 col     row col   expected               actual             file               expected   <int> <chr> <chr>                  <chr>              <chr>              actual 1  1001 x     no trailing characters .23837975086644292 '/Library/Framewo… file 2  1002 x     no trailing characters .41167997173033655 '/Library/Framewo… row 3  1003 x     no trailing characters .7460716762579978  '/Library/Framewo… col 4  1004 x     no trailing characters .723450553836301   '/Library/Framewo… expected 5  1005 x     no trailing characters .614524137461558   '/Library/Framewo…
-#> ... ................. ... .......................................................................... ........ .......................................................................... ...... .......................................................................... .... .......................................................................... ... .......................................................................... ... .......................................................................... ........ ..........................................................................
+#>  row col           expected     actual                                                                                         file
+#> 1001   y 1/0/T/F/TRUE/FALSE 2015-01-16 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
+#> 1002   y 1/0/T/F/TRUE/FALSE 2018-05-18 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
+#> 1003   y 1/0/T/F/TRUE/FALSE 2015-09-05 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
+#> 1004   y 1/0/T/F/TRUE/FALSE 2012-11-28 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
+#> 1005   y 1/0/T/F/TRUE/FALSE 2020-01-13 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
+#> .... ... .................. .......... ............................................................................................
 #> See problems(...) for more details.
 ```
 
@@ -664,14 +668,14 @@ challenge <- read_csv(readr_example("challenge.csv"))
 ```r
 problems(challenge)
 #> # A tibble: 1,000 x 5
-#>     row col   expected               actual             file              
-#>   <int> <chr> <chr>                  <chr>              <chr>             
-#> 1  1001 x     no trailing characters .23837975086644292 '/Library/Framewo…
-#> 2  1002 x     no trailing characters .41167997173033655 '/Library/Framewo…
-#> 3  1003 x     no trailing characters .7460716762579978  '/Library/Framewo…
-#> 4  1004 x     no trailing characters .723450553836301   '/Library/Framewo…
-#> 5  1005 x     no trailing characters .614524137461558   '/Library/Framewo…
-#> 6  1006 x     no trailing characters .473980569280684   '/Library/Framewo…
+#>     row col   expected           actual     file                          
+#>   <int> <chr> <chr>              <chr>      <chr>                         
+#> 1  1001 y     1/0/T/F/TRUE/FALSE 2015-01-16 '/Library/Frameworks/R.framew…
+#> 2  1002 y     1/0/T/F/TRUE/FALSE 2018-05-18 '/Library/Frameworks/R.framew…
+#> 3  1003 y     1/0/T/F/TRUE/FALSE 2015-09-05 '/Library/Frameworks/R.framew…
+#> 4  1004 y     1/0/T/F/TRUE/FALSE 2012-11-28 '/Library/Frameworks/R.framew…
+#> 5  1005 y     1/0/T/F/TRUE/FALSE 2020-01-13 '/Library/Frameworks/R.framew…
+#> 6  1006 y     1/0/T/F/TRUE/FALSE 2016-04-17 '/Library/Frameworks/R.framew…
 #> # ... with 994 more rows
 ```
 
@@ -872,18 +876,18 @@ write_csv(challenge, "challenge-2.csv")
 read_csv("challenge-2.csv")
 #> Parsed with column specification:
 #> cols(
-#>   x = col_integer(),
-#>   y = col_character()
+#>   x = col_double(),
+#>   y = col_logical()
 #> )
 #> # A tibble: 2,000 x 2
 #>       x y    
-#>   <int> <chr>
-#> 1   404 <NA> 
-#> 2  4172 <NA> 
-#> 3  3004 <NA> 
-#> 4   787 <NA> 
-#> 5    37 <NA> 
-#> 6  2332 <NA> 
+#>   <dbl> <lgl>
+#> 1   404 NA   
+#> 2  4172 NA   
+#> 3  3004 NA   
+#> 4   787 NA   
+#> 5    37 NA   
+#> 6  2332 NA   
 #> # ... with 1,994 more rows
 ```
 

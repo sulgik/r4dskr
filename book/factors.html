@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>13 Factors | R for Data Science</title>
+  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="13 Factors | R for Data Science />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://r4ds.had.co.nz/" />
+  <meta property="og:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <meta name="github-repo" content="hadley/r4ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13 Factors | R for Data Science />
+  <meta name="twitter:site" content="@hadley" />
+  <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <meta name="twitter:image" content="https://r4ds.had.co.nz/cover.png" />
+
+<meta name="author" content="Garrett Grolemund">
+<meta name="author" content="Hadley Wickham">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="section-12.html">
+<link rel="next" href="dates-and-times.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.3.1/str_view.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="r4ds.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R for Data Science</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>환영합니다</a></li>
+<li class="chapter" data-level="1" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>1</b> 서문</a><ul>
+<li class="chapter" data-level="1.1" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.1</b> 무엇을 배우게 될까</a></li>
+<li class="chapter" data-level="1.2" data-path="section-1.html"><a href="section-1.html#how-this-book-is-organised"><i class="fa fa-check"></i><b>1.2</b> How this book is organised</a></li>
+<li class="chapter" data-level="1.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.3</b> 배우지 않는 것</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="section-1.html"><a href="section-1.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 빅데이터</a></li>
+<li class="chapter" data-level="1.3.2" data-path="section-1.html"><a href="section-1.html#python-julia-and-friends"><i class="fa fa-check"></i><b>1.3.2</b> Python, Julia, and friends</a></li>
+<li class="chapter" data-level="1.3.3" data-path="section-1.html"><a href="section-1.html#non-rectangular-data"><i class="fa fa-check"></i><b>1.3.3</b> Non-rectangular data</a></li>
+<li class="chapter" data-level="1.3.4" data-path="section-1.html"><a href="section-1.html#hypothesis-confirmation"><i class="fa fa-check"></i><b>1.3.4</b> Hypothesis confirmation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="section-1.html"><a href="section-1.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 준비하기</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>1.4.1</b> R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="section-1.html"><a href="section-1.html#rstudio"><i class="fa fa-check"></i><b>1.4.2</b> RStudio</a></li>
+<li class="chapter" data-level="1.4.3" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>1.4.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="1.4.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>1.4.4</b> 기타 패키지들</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>1.5</b> R 코드 실행하기</a></li>
+<li class="chapter" data-level="1.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.6</b> 도움받기, 더 배우기</a></li>
+<li class="chapter" data-level="1.7" data-path="section-1.html"><a href="section-1.html#acknowledgements"><i class="fa fa-check"></i><b>1.7</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.8" data-path="section-1.html"><a href="section-1.html#colophon"><i class="fa fa-check"></i><b>1.8</b> Colophon</a></li>
+</ul></li>
+<li class="part"><span><b>I 탐색하기</b></span></li>
+<li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> 소개</a></li>
+<li class="chapter" data-level="3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3</b> 데이터 시각화</a><ul>
+<li class="chapter" data-level="3.1" data-path="-.html"><a href="-.html"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.2</b> 첫 단계</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="-.html"><a href="-.html#mpg-"><i class="fa fa-check"></i><b>3.2.1</b> <code>mpg</code> 데이터프레임</a></li>
+<li class="chapter" data-level="3.2.2" data-path="-.html"><a href="-.html#ggplot-"><i class="fa fa-check"></i><b>3.2.2</b> ggplot 생성하기</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 탬플릿</a></li>
+<li class="chapter" data-level="3.2.4" data-path="-.html"><a href="-.html#section-3.2.4"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="-.html"><a href="-.html#aesthetic-"><i class="fa fa-check"></i><b>3.3</b> Aesthetic 매핑</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>3.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="-.html"><a href="-.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
+<li class="chapter" data-level="3.5" data-path="-.html"><a href="-.html#facet"><i class="fa fa-check"></i><b>3.5</b> 면분할(facet)</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>3.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.6</b> 기하 객체</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="-.html"><a href="-.html#-3"><i class="fa fa-check"></i><b>3.6.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.7</b> 통계적 변환</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="-.html"><a href="-.html#-4"><i class="fa fa-check"></i><b>3.7.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.8</b> 위치 조정</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="-.html"><a href="-.html#-5"><i class="fa fa-check"></i><b>3.8.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="-.html"><a href="-.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 좌표계</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="-.html"><a href="-.html#-6"><i class="fa fa-check"></i><b>3.9.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>3.10</b> 그래프 레이어 문법</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.1</b> 코딩 기초</a></li>
+<li class="chapter" data-level="4.2" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>4.2</b> 이름에 들어갈 것</a></li>
+<li class="chapter" data-level="4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.3</b> 함수 호출하기</a></li>
+<li class="chapter" data-level="4.4" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>4.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>5</b> 데이터 변형</a><ul>
+<li class="chapter" data-level="5.1" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>5.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>5.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="5.1.2" data-path="transform.html"><a href="transform.html#nycflights13"><i class="fa fa-check"></i><b>5.1.2</b> nycflights13</a></li>
+<li class="chapter" data-level="5.1.3" data-path="transform.html"><a href="transform.html#dplyr-"><i class="fa fa-check"></i><b>5.1.3</b> dplyr 기초</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="transform.html"><a href="transform.html#filter--"><i class="fa fa-check"></i><b>5.2</b> <code>filter()</code> 로 필터링하기</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="transform.html"><a href="transform.html#section-5.2.1"><i class="fa fa-check"></i><b>5.2.1</b> 비교</a></li>
+<li class="chapter" data-level="5.2.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>5.2.2</b> 논리 연산자</a></li>
+<li class="chapter" data-level="5.2.3" data-path="transform.html"><a href="transform.html#section-5.2.3"><i class="fa fa-check"></i><b>5.2.3</b> 결측값</a></li>
+<li class="chapter" data-level="5.2.4" data-path="transform.html"><a href="transform.html#-8"><i class="fa fa-check"></i><b>5.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="transform.html"><a href="transform.html#arrange--"><i class="fa fa-check"></i><b>5.3</b> <code>arrange()</code> 로 정렬하기</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>5.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="transform.html"><a href="transform.html#select"><i class="fa fa-check"></i><b>5.4</b> <code>select()</code> 로 열 선택하기</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>5.4.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="transform.html"><a href="transform.html#mutate----"><i class="fa fa-check"></i><b>5.5</b> <code>mutate()</code> 로 새로운 변수 추가하기</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="transform.html"><a href="transform.html#mutate-funs"><i class="fa fa-check"></i><b>5.5.1</b> 유용한 생성 함수</a></li>
+<li class="chapter" data-level="5.5.2" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>5.5.2</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="transform.html"><a href="transform.html#summarize---"><i class="fa fa-check"></i><b>5.6</b> <code>summarize()</code> 로 그룹화 요약하기</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>5.6.1</b> 파이프로 여러 작업 조합하기</a></li>
+<li class="chapter" data-level="5.6.2" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>5.6.2</b> 결측값</a></li>
+<li class="chapter" data-level="5.6.3" data-path="transform.html"><a href="transform.html#section-5.6.3"><i class="fa fa-check"></i><b>5.6.3</b> 카운트</a></li>
+<li class="chapter" data-level="5.6.4" data-path="transform.html"><a href="transform.html#summarize-funs"><i class="fa fa-check"></i><b>5.6.4</b> 유용한 요약 함수</a></li>
+<li class="chapter" data-level="5.6.5" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>5.6.5</b> 다중 변수로 그룹화</a></li>
+<li class="chapter" data-level="5.6.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>5.6.6</b> 그룹화 해제</a></li>
+<li class="chapter" data-level="5.6.7" data-path="transform.html"><a href="transform.html#-12"><i class="fa fa-check"></i><b>5.6.7</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>5.7</b> 그룹화 뮤테이트(와 필터링)</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="transform.html"><a href="transform.html#-13"><i class="fa fa-check"></i><b>5.7.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a><ul>
+<li class="chapter" data-level="6.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
+<li class="chapter" data-level="6.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
+<li class="chapter" data-level="6.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#practice"><i class="fa fa-check"></i><b>6.3</b> Practice</a></li>
+</ul></li>
+<li class="part"><span><b>II 길들이기</b></span></li>
+<li class="chapter" data-level="7" data-path="wrangle-intro.html"><a href="wrangle-intro.html"><i class="fa fa-check"></i><b>7</b> 소개</a></li>
+<li class="chapter" data-level="8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>8</b> Tibble</a><ul>
+<li class="chapter" data-level="8.1" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>8.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="-.html"><a href="-.html#-3"><i class="fa fa-check"></i><b>8.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>8.2</b> tibble 생성하기</a></li>
+<li class="chapter" data-level="8.3" data-path="tibble.html"><a href="tibble.html#tibble-vs.data.frame"><i class="fa fa-check"></i><b>8.3</b> Tibble vs. data.frame</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="tibble.html"><a href="tibble.html#section-8.3.1"><i class="fa fa-check"></i><b>8.3.1</b> 화면출력</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tibble.html"><a href="tibble.html#section-8.3.2"><i class="fa fa-check"></i><b>8.3.2</b> 서브셋하기</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>8.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="8.5" data-path="tibble.html"><a href="tibble.html#-14"><i class="fa fa-check"></i><b>8.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>9</b> 데이터 불러오기</a><ul>
+<li class="chapter" data-level="9.1" data-path="-.html"><a href="-.html#-3"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="-.html"><a href="-.html#-4"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="import.html"><a href="import.html#section-9.2"><i class="fa fa-check"></i><b>9.2</b> 시작하기</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="import.html"><a href="import.html#-r-"><i class="fa fa-check"></i><b>9.2.1</b> 베이스 R과 비교</a></li>
+<li class="chapter" data-level="9.2.2" data-path="import.html"><a href="import.html#-15"><i class="fa fa-check"></i><b>9.2.2</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.3</b> 벡터 파싱하기</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="import.html"><a href="import.html#section-9.3.1"><i class="fa fa-check"></i><b>9.3.1</b> 숫자</a></li>
+<li class="chapter" data-level="9.3.2" data-path="import.html"><a href="import.html#readr-strings"><i class="fa fa-check"></i><b>9.3.2</b> 문자열</a></li>
+<li class="chapter" data-level="9.3.3" data-path="import.html"><a href="import.html#readr-factors"><i class="fa fa-check"></i><b>9.3.3</b> 팩터형</a></li>
+<li class="chapter" data-level="9.3.4" data-path="import.html"><a href="import.html#readr-datetimes"><i class="fa fa-check"></i><b>9.3.4</b> Dates, date-times, times</a></li>
+<li class="chapter" data-level="9.3.5" data-path="import.html"><a href="import.html#-16"><i class="fa fa-check"></i><b>9.3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.4</b> 파일 파싱하기</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="import.html"><a href="import.html#section-9.4.1"><i class="fa fa-check"></i><b>9.4.1</b> 전략</a></li>
+<li class="chapter" data-level="9.4.2" data-path="import.html"><a href="import.html#section-9.4.2"><i class="fa fa-check"></i><b>9.4.2</b> 문제점</a></li>
+<li class="chapter" data-level="9.4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.4.3</b> 기타 전략</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.5</b> 파일에 쓰기</a></li>
+<li class="chapter" data-level="9.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>9.6</b> 기타 데이터 유형</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>10</b> Tidy Data</a><ul>
+<li class="chapter" data-level="10.1" data-path="-.html"><a href="-.html#-4"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="-.html"><a href="-.html#-5"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>10.2</b> Tidy Data</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="tidy-data.html"><a href="tidy-data.html#-17"><i class="fa fa-check"></i><b>10.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="tidy-data.html"><a href="tidy-data.html#gather--spread"><i class="fa fa-check"></i><b>10.3</b> gather 와 spread</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>10.3.1</b> Gather</a></li>
+<li class="chapter" data-level="10.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>10.3.2</b> Spread</a></li>
+<li class="chapter" data-level="10.3.3" data-path="tidy-data.html"><a href="tidy-data.html#-18"><i class="fa fa-check"></i><b>10.3.3</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="tidy-data.html"><a href="tidy-data.html#separate--unite"><i class="fa fa-check"></i><b>10.4</b> Separate 과 Unite</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="tidy-data.html"><a href="tidy-data.html#separate"><i class="fa fa-check"></i><b>10.4.1</b> Separate</a></li>
+<li class="chapter" data-level="10.4.2" data-path="tidy-data.html"><a href="tidy-data.html#unite"><i class="fa fa-check"></i><b>10.4.2</b> Unite</a></li>
+<li class="chapter" data-level="10.4.3" data-path="tidy-data.html"><a href="tidy-data.html#-19"><i class="fa fa-check"></i><b>10.4.3</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>10.5</b> 결측값</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="tidy-data.html"><a href="tidy-data.html#-20"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>10.6</b> 사례 연구</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="tidy-data.html"><a href="tidy-data.html#-21"><i class="fa fa-check"></i><b>10.6.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>10.7</b> 타이디하지 않은 데이터</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>11</b> Relational data</a><ul>
+<li class="chapter" data-level="11.1" data-path="-.html"><a href="-.html#-5"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="-.html"><a href="-.html#-6"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>11.2</b> nycflights13</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="relational-data.html"><a href="relational-data.html#-22"><i class="fa fa-check"></i><b>11.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="relational-data.html"><a href="relational-data.html#section-11.3"><i class="fa fa-check"></i><b>11.3</b> 키</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="relational-data.html"><a href="relational-data.html#-23"><i class="fa fa-check"></i><b>11.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>11.4</b> Mutating joins</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="11.4.2" data-path="relational-data.html"><a href="relational-data.html#inner-join"><i class="fa fa-check"></i><b>11.4.2</b> 내부 조인</a></li>
+<li class="chapter" data-level="11.4.3" data-path="relational-data.html"><a href="relational-data.html#outer-join"><i class="fa fa-check"></i><b>11.4.3</b> 외부 조인</a></li>
+<li class="chapter" data-level="11.4.4" data-path="relational-data.html"><a href="relational-data.html#join-matches"><i class="fa fa-check"></i><b>11.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="11.4.5" data-path="relational-data.html"><a href="relational-data.html#join-by"><i class="fa fa-check"></i><b>11.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="11.4.6" data-path="relational-data.html"><a href="relational-data.html#-24"><i class="fa fa-check"></i><b>11.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="11.4.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>11.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="relational-data.html"><a href="relational-data.html#-25"><i class="fa fa-check"></i><b>11.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="11.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>11.7</b> 집합 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="section-12.html"><a href="section-12.html"><i class="fa fa-check"></i><b>12</b> 문자열</a><ul>
+<li class="chapter" data-level="12.1" data-path="-.html"><a href="-.html#-6"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="12.2.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="12.2.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="12.2.4" data-path="section-12.html"><a href="section-12.html#section-12.2.4"><i class="fa fa-check"></i><b>12.2.4</b> 로캘</a></li>
+<li class="chapter" data-level="12.2.5" data-path="section-12.html"><a href="section-12.html#-26"><i class="fa fa-check"></i><b>12.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>12.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.3.1</b> 기초 매칭</a></li>
+<li class="chapter" data-level="12.3.2" data-path="section-12.html"><a href="section-12.html#section-12.3.2"><i class="fa fa-check"></i><b>12.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="12.3.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="12.3.4" data-path="section-12.html"><a href="section-12.html#section-12.3.4"><i class="fa fa-check"></i><b>12.3.4</b> 반복</a></li>
+<li class="chapter" data-level="12.3.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="section-12.html"><a href="section-12.html#section-12.4"><i class="fa fa-check"></i><b>12.4</b> 도구</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="12.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="12.4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="12.4.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="12.4.5" data-path="section-12.html"><a href="section-12.html#splitting"><i class="fa fa-check"></i><b>12.4.5</b> Splitting</a></li>
+<li class="chapter" data-level="12.4.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="section-12.html"><a href="section-12.html#-37"><i class="fa fa-check"></i><b>12.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.6</b> 정규표현식의 기타 용도</a></li>
+<li class="chapter" data-level="12.7" data-path="section-12.html"><a href="section-12.html#stringi"><i class="fa fa-check"></i><b>12.7</b> stringi</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="section-12.html"><a href="section-12.html#-38"><i class="fa fa-check"></i><b>12.7.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>13</b> Factors</a><ul>
+<li class="chapter" data-level="13.1" data-path="factors.html"><a href="factors.html#introduction"><i class="fa fa-check"></i><b>13.1</b> Introduction</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="factors.html"><a href="factors.html#prerequisites"><i class="fa fa-check"></i><b>13.1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="13.1.2" data-path="factors.html"><a href="factors.html#learning-more"><i class="fa fa-check"></i><b>13.1.2</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>13.2</b> Creating factors</a></li>
+<li class="chapter" data-level="13.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>13.3</b> General Social Survey</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="factors.html"><a href="factors.html#exercise"><i class="fa fa-check"></i><b>13.3.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="factors.html"><a href="factors.html#modifying-factor-order"><i class="fa fa-check"></i><b>13.4</b> Modifying factor order</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="factors.html"><a href="factors.html#exercises"><i class="fa fa-check"></i><b>13.4.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="factors.html"><a href="factors.html#modifying-factor-levels"><i class="fa fa-check"></i><b>13.5</b> Modifying factor levels</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="factors.html"><a href="factors.html#exercises-1"><i class="fa fa-check"></i><b>13.5.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>14</b> Dates and times</a><ul>
+<li class="chapter" data-level="14.1" data-path="dates-and-times.html"><a href="dates-and-times.html#introduction-1"><i class="fa fa-check"></i><b>14.1</b> Introduction</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="dates-and-times.html"><a href="dates-and-times.html#prerequisites-1"><i class="fa fa-check"></i><b>14.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="dates-and-times.html"><a href="dates-and-times.html#creating-datetimes"><i class="fa fa-check"></i><b>14.2</b> Creating date/times</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="dates-and-times.html"><a href="dates-and-times.html#from-strings"><i class="fa fa-check"></i><b>14.2.1</b> From strings</a></li>
+<li class="chapter" data-level="14.2.2" data-path="dates-and-times.html"><a href="dates-and-times.html#from-individual-components"><i class="fa fa-check"></i><b>14.2.2</b> From individual components</a></li>
+<li class="chapter" data-level="14.2.3" data-path="dates-and-times.html"><a href="dates-and-times.html#from-other-types"><i class="fa fa-check"></i><b>14.2.3</b> From other types</a></li>
+<li class="chapter" data-level="14.2.4" data-path="dates-and-times.html"><a href="dates-and-times.html#exercises-2"><i class="fa fa-check"></i><b>14.2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="dates-and-times.html"><a href="dates-and-times.html#date-time-components"><i class="fa fa-check"></i><b>14.3</b> Date-time components</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="dates-and-times.html"><a href="dates-and-times.html#getting-components"><i class="fa fa-check"></i><b>14.3.1</b> Getting components</a></li>
+<li class="chapter" data-level="14.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#rounding"><i class="fa fa-check"></i><b>14.3.2</b> Rounding</a></li>
+<li class="chapter" data-level="14.3.3" data-path="dates-and-times.html"><a href="dates-and-times.html#setting-components"><i class="fa fa-check"></i><b>14.3.3</b> Setting components</a></li>
+<li class="chapter" data-level="14.3.4" data-path="dates-and-times.html"><a href="dates-and-times.html#exercises-3"><i class="fa fa-check"></i><b>14.3.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="dates-and-times.html"><a href="dates-and-times.html#time-spans"><i class="fa fa-check"></i><b>14.4</b> Time spans</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#durations"><i class="fa fa-check"></i><b>14.4.1</b> Durations</a></li>
+<li class="chapter" data-level="14.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#periods"><i class="fa fa-check"></i><b>14.4.2</b> Periods</a></li>
+<li class="chapter" data-level="14.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#intervals"><i class="fa fa-check"></i><b>14.4.3</b> Intervals</a></li>
+<li class="chapter" data-level="14.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#summary"><i class="fa fa-check"></i><b>14.4.4</b> Summary</a></li>
+<li class="chapter" data-level="14.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#exercises-4"><i class="fa fa-check"></i><b>14.4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>14.5</b> Time zones</a></li>
+</ul></li>
+<li class="part"><span><b>III 프로그래밍</b></span></li>
+<li class="chapter" data-level="15" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>15</b> 소개</a><ul>
+<li class="chapter" data-level="15.1" data-path="program-intro.html"><a href="program-intro.html#learning-more-1"><i class="fa fa-check"></i><b>15.1</b> Learning more</a></li>
+</ul></li>
+<li class="part"><span><b>IV 모델</b></span></li>
+<li class="chapter" data-level="16" data-path="model-intro.html"><a href="model-intro.html"><i class="fa fa-check"></i><b>16</b> 소개</a><ul>
+<li class="chapter" data-level="16.1" data-path="model-intro.html"><a href="model-intro.html#hypothesis-generation-vs.hypothesis-confirmation"><i class="fa fa-check"></i><b>16.1</b> Hypothesis generation vs. hypothesis confirmation</a></li>
+</ul></li>
+<li class="part"><span><b>V 의사소통하기</b></span></li>
+<li class="chapter" data-level="17" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a></li>
+<li class="chapter" data-level="18" data-path="r-.html"><a href="r-.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
+<li class="chapter" data-level="18.1" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="transform.html"><a href="transform.html#-8"><i class="fa fa-check"></i><b>18.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>18.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="r-.html"><a href="r-.html#-39"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>18.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="r-.html"><a href="r-.html#-40"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.1</b> 청크 이름</a></li>
+<li class="chapter" data-level="18.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.2</b> 청크 옵션</a></li>
+<li class="chapter" data-level="18.4.3" data-path="r-.html"><a href="r-.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
+<li class="chapter" data-level="18.4.4" data-path="r-.html"><a href="r-.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="18.4.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.5</b> 전역 옵션</a></li>
+<li class="chapter" data-level="18.4.6" data-path="r-.html"><a href="r-.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="18.4.7" data-path="r-.html"><a href="r-.html#exercises-5"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="r-.html"><a href="r-.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="18.6" data-path="r-.html"><a href="r-.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
+<li class="chapter" data-level="18.6.1" data-path="r-.html"><a href="r-.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="18.6.2" data-path="r-.html"><a href="r-.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="18.7" data-path="r-.html"><a href="r-.html#learning-more-2"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="factors" class="section level1">
+<h1><span class="header-section-number">13</span> Factors</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">13.1</span> Introduction</h2>
+<p>In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values. They are also useful when you want to display character vectors in a non-alphabetical order.</p>
+<p>Historically, factors were much easier to work with than characters. As a result, many of the functions in base R automatically convert characters to factors. This means that factors often crop up in places where they’re not actually helpful. Fortunately, you don’t need to worry about that in the tidyverse, and can focus on situations where factors are genuinely useful.</p>
+<div id="prerequisites" class="section level3">
+<h3><span class="header-section-number">13.1.1</span> Prerequisites</h3>
+<p>To work with factors, we’ll use the <strong>forcats</strong> package, which provides tools for dealing with <strong>cat</strong>egorical variables (and it’s an anagram of factors!). It provides a wide range of helpers for working with factors. forcats is not part of the core tidyverse, so we need to load it explicitly.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(forcats)</code></pre></div>
+</div>
+<div id="learning-more" class="section level3">
+<h3><span class="header-section-number">13.1.2</span> Learning more</h3>
+<p>If you want to learn more about factors, I recommend reading Amelia McNamara and Nicholas Horton’s paper, <a href="https://peerj.com/preprints/3163/"><em>Wrangling categorical data in R</em></a>. This paper lays out some of the history discussed in <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> and <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a>, and compares the tidy approaches to categorical data outlined in this book with base R methods. A early version of the paper help motivate and scope the forcats package; thanks Amelia &amp; Nick!</p>
+</div>
+</div>
+<div id="creating-factors" class="section level2">
+<h2><span class="header-section-number">13.2</span> Creating factors</h2>
+<p>Imagine that you have a variable that records month:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Dec&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</code></pre></div>
+<p>Using a string to record this variable has two problems:</p>
+<ol style="list-style-type: decimal">
+<li><p>There are only twelve possible months, and there’s nothing saving you from typos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Dec&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Jam&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</code></pre></div></li>
+<li><p>It doesn’t sort in a useful way:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(x1)
+<span class="co">#&gt; [1] &quot;Apr&quot; &quot;Dec&quot; &quot;Jan&quot; &quot;Mar&quot;</span></code></pre></div></li>
+</ol>
+<p>You can fix both of these problems with a factor. To create a factor you must start by creating a list of the valid <strong>levels</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(
+  <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Feb&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;May&quot;</span>, <span class="st">&quot;Jun&quot;</span>, 
+  <span class="st">&quot;Jul&quot;</span>, <span class="st">&quot;Aug&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Oct&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Dec&quot;</span>
+)</code></pre></div>
+<p>Now you can create a factor:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> month_levels)
+y1
+<span class="co">#&gt; [1] Dec Apr Jan Mar</span>
+<span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+<span class="kw">sort</span>(y1)
+<span class="co">#&gt; [1] Jan Mar Apr Dec</span>
+<span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></code></pre></div>
+<p>And any values not in the set will be silently converted to NA:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y2 &lt;-<span class="st"> </span><span class="kw">factor</span>(x2, <span class="dt">levels =</span> month_levels)
+y2
+<span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span>
+<span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></code></pre></div>
+<p>If you want a warning, you can use <code>readr::parse_factor()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y2 &lt;-<span class="st"> </span><span class="kw">parse_factor</span>(x2, <span class="dt">levels =</span> month_levels)
+<span class="co">#&gt; Warning: 1 parsing failure.</span>
+<span class="co">#&gt; row col           expected actual</span>
+<span class="co">#&gt;   3  -- value in level set    Jam</span></code></pre></div>
+<p>If you omit the levels, they’ll be taken from the data in alphabetical order:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factor</span>(x1)
+<span class="co">#&gt; [1] Dec Apr Jan Mar</span>
+<span class="co">#&gt; Levels: Apr Dec Jan Mar</span></code></pre></div>
+<p>Sometimes you’d prefer that the order of the levels match the order of the first appearance in the data. You can do that when creating the factor by setting levels to <code>unique(x)</code>, or after the fact, with <code>fct_inorder()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> <span class="kw">unique</span>(x1))
+f1
+<span class="co">#&gt; [1] Dec Apr Jan Mar</span>
+<span class="co">#&gt; Levels: Dec Apr Jan Mar</span>
+
+f2 &lt;-<span class="st"> </span>x1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">factor</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_inorder</span>()
+f2
+<span class="co">#&gt; [1] Dec Apr Jan Mar</span>
+<span class="co">#&gt; Levels: Dec Apr Jan Mar</span></code></pre></div>
+<p>If you ever need to access the set of valid levels directly, you can do so with <code>levels()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(f2)
+<span class="co">#&gt; [1] &quot;Dec&quot; &quot;Apr&quot; &quot;Jan&quot; &quot;Mar&quot;</span></code></pre></div>
+</div>
+<div id="general-social-survey" class="section level2">
+<h2><span class="header-section-number">13.3</span> General Social Survey</h2>
+<p>For the rest of this chapter, we’re going to focus on <code>forcats::gss_cat</code>. It’s a sample of data from the <a href="http://gss.norc.org">General Social Survey</a>, which is a long-running US survey conducted by the independent research organization NORC at the University of Chicago. The survey has thousands of questions, so in <code>gss_cat</code> I’ve selected a handful that will illustrate some common challenges you’ll encounter when working with factors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat
+<span class="co">#&gt; # A tibble: 21,483 x 9</span>
+<span class="co">#&gt;    year marital         age race  rincome  partyid   relig  denom  tvhours</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span>
+<span class="co">#&gt; 1  2000 Never married    26 White $8000 t… Ind,near… Prote… South…      12</span>
+<span class="co">#&gt; 2  2000 Divorced         48 White $8000 t… Not str … Prote… Bapti…      NA</span>
+<span class="co">#&gt; 3  2000 Widowed          67 White Not app… Independ… Prote… No de…       2</span>
+<span class="co">#&gt; 4  2000 Never married    39 White Not app… Ind,near… Ortho… Not a…       4</span>
+<span class="co">#&gt; 5  2000 Divorced         25 White Not app… Not str … None   Not a…       1</span>
+<span class="co">#&gt; 6  2000 Married          25 White $20000 … Strong d… Prote… South…      NA</span>
+<span class="co">#&gt; # ... with 2.148e+04 more rows</span></code></pre></div>
+<p>(Remember, since this dataset is provided by a package, you can get more information about the variables with <code>?gss_cat</code>.)</p>
+<p>When factors are stored in a tibble, you can’t see their levels so easily. One way to see them is with <code>count()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(race)
+<span class="co">#&gt; # A tibble: 3 x 2</span>
+<span class="co">#&gt;   race      n</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1 Other  1959</span>
+<span class="co">#&gt; 2 Black  3129</span>
+<span class="co">#&gt; 3 White 16395</span></code></pre></div>
+<p>Or with a bar chart:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gss_cat, <span class="kw">aes</span>(race)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>By default, ggplot2 will drop levels that don’t have any values. You can force them to display with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(gss_cat, <span class="kw">aes</span>(race)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">drop =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>These levels represent valid values that simply did not occur in this dataset. Unfortunately, dplyr doesn’t yet have a <code>drop</code> option, but it will in the future.</p>
+<p>When working with factors, the two most common operations are changing the order of the levels, and changing the values of the levels. Those operations are described in the sections below.</p>
+<div id="exercise" class="section level3">
+<h3><span class="header-section-number">13.3.1</span> Exercise</h3>
+<ol style="list-style-type: decimal">
+<li><p>Explore the distribution of <code>rincome</code> (reported income). What makes the default bar chart hard to understand? How could you improve the plot?</p></li>
+<li><p>What is the most common <code>relig</code> in this survey? What’s the most common <code>partyid</code>?</p></li>
+<li><p>Which <code>relig</code> does <code>denom</code> (denomination) apply to? How can you find out with a table? How can you find out with a visualisation?</p></li>
+</ol>
+</div>
+</div>
+<div id="modifying-factor-order" class="section level2">
+<h2><span class="header-section-number">13.4</span> Modifying factor order</h2>
+<p>It’s often useful to change the order of the factor levels in a visualisation. For example, imagine you want to explore the average number of hours spent watching TV per day across religions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+    <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+    <span class="dt">n =</span> <span class="kw">n</span>()
+  )
+
+<span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(tvhours, relig)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>It is difficult to interpret this plot because there’s no overall pattern. We can improve it by reordering the levels of <code>relig</code> using <code>fct_reorder()</code>. <code>fct_reorder()</code> takes three arguments:</p>
+<ul>
+<li><code>f</code>, the factor whose levels you want to modify.</li>
+<li><code>x</code>, a numeric vector that you want to use to reorder the levels.</li>
+<li>Optionally, <code>fun</code>, a function that’s used if there are multiple values of <code>x</code> for each value of <code>f</code>. The default value is <code>median</code>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(tvhours, <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Reordering religion makes it much easier to see that people in the “Don’t know” category watch much more TV, and Hinduism &amp; Other Eastern religions watch much less.</p>
+<p>As you start making more complicated transformations, I’d recommend moving them out of <code>aes()</code> and into a separate <code>mutate()</code> step. For example, you could rewrite the plot above as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">relig_summary <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">relig =</span> <span class="kw">fct_reorder</span>(relig, tvhours)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tvhours, relig)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
+<p>What if we create a similar plot looking at how average age varies across reported income level?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rincome_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(rincome) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+    <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+    <span class="dt">n =</span> <span class="kw">n</span>()
+  )
+
+<span class="kw">ggplot</span>(rincome_summary, <span class="kw">aes</span>(age, <span class="kw">fct_reorder</span>(rincome, age))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Here, arbitrarily reordering the levels isn’t a good idea! That’s because <code>rincome</code> already has a principled order that we shouldn’t mess with. Reserve <code>fct_reorder()</code> for factors whose levels are arbitrarily ordered.</p>
+<p>However, it does make sense to pull “Not applicable” to the front with the other special levels. You can use <code>fct_relevel()</code>. It takes a factor, <code>f</code>, and then any number of levels that you want to move to the front of the line.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(rincome_summary, <span class="kw">aes</span>(age, <span class="kw">fct_relevel</span>(rincome, <span class="st">&quot;Not applicable&quot;</span>))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Why do you think the average age for “Not applicable” is so high?</p>
+<p>Another type of reordering is useful when you are colouring the lines on a plot. <code>fct_reorder2()</code> reorders the factor by the <code>y</code> values associated with the largest <code>x</code> values. This makes the plot easier to read because the line colours line up with the legend.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">by_age &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(age)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(age, marital) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(age) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))
+
+<span class="kw">ggplot</span>(by_age, <span class="kw">aes</span>(age, prop, <span class="dt">colour =</span> marital)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">ggplot</span>(by_age, <span class="kw">aes</span>(age, prop, <span class="dt">colour =</span> <span class="kw">fct_reorder2</span>(marital, age, prop))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;marital&quot;</span>)</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-21-1.png" width="50%" /><img src="factors_files/figure-html/unnamed-chunk-21-2.png" width="50%" /></p>
+<p>Finally, for bar plots, you can use <code>fct_infreq()</code> to order levels in increasing frequency: this is the simplest type of reordering because it doesn’t need any extra variables. You may want to combine with <code>fct_rev()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">marital =</span> marital <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_infreq</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_rev</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(marital)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="factors_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="exercises" class="section level3">
+<h3><span class="header-section-number">13.4.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>There are some suspiciously high numbers in <code>tvhours</code>. Is the mean a good summary?</p></li>
+<li><p>For each factor in <code>gss_cat</code> identify whether the order of the levels is arbitrary or principled.</p></li>
+<li><p>Why did moving “Not applicable” to the front of the levels move it to the bottom of the plot?</p></li>
+</ol>
+</div>
+</div>
+<div id="modifying-factor-levels" class="section level2">
+<h2><span class="header-section-number">13.5</span> Modifying factor levels</h2>
+<p>More powerful than changing the orders of the levels is changing their values. This allows you to clarify labels for publication, and collapse levels for high-level displays. The most general and powerful tool is <code>fct_recode()</code>. It allows you to recode, or change, the value of each level. For example, take the <code>gss_cat$partyid</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(partyid)
+<span class="co">#&gt; # A tibble: 10 x 2</span>
+<span class="co">#&gt;   partyid                n</span>
+<span class="co">#&gt;   &lt;fct&gt;              &lt;int&gt;</span>
+<span class="co">#&gt; 1 No answer            154</span>
+<span class="co">#&gt; 2 Don&#39;t know             1</span>
+<span class="co">#&gt; 3 Other party          393</span>
+<span class="co">#&gt; 4 Strong republican   2314</span>
+<span class="co">#&gt; 5 Not str republican  3032</span>
+<span class="co">#&gt; 6 Ind,near rep        1791</span>
+<span class="co">#&gt; # ... with 4 more rows</span></code></pre></div>
+<p>The levels are terse and inconsistent. Let’s tweak them to be longer and use a parallel construction.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partyid =</span> <span class="kw">fct_recode</span>(partyid,
+    <span class="st">&quot;Republican, strong&quot;</span>    =<span class="st"> &quot;Strong republican&quot;</span>,
+    <span class="st">&quot;Republican, weak&quot;</span>      =<span class="st"> &quot;Not str republican&quot;</span>,
+    <span class="st">&quot;Independent, near rep&quot;</span> =<span class="st"> &quot;Ind,near rep&quot;</span>,
+    <span class="st">&quot;Independent, near dem&quot;</span> =<span class="st"> &quot;Ind,near dem&quot;</span>,
+    <span class="st">&quot;Democrat, weak&quot;</span>        =<span class="st"> &quot;Not str democrat&quot;</span>,
+    <span class="st">&quot;Democrat, strong&quot;</span>      =<span class="st"> &quot;Strong democrat&quot;</span>
+  )) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(partyid)
+<span class="co">#&gt; # A tibble: 10 x 2</span>
+<span class="co">#&gt;   partyid                   n</span>
+<span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span>
+<span class="co">#&gt; 1 No answer               154</span>
+<span class="co">#&gt; 2 Don&#39;t know                1</span>
+<span class="co">#&gt; 3 Other party             393</span>
+<span class="co">#&gt; 4 Republican, strong     2314</span>
+<span class="co">#&gt; 5 Republican, weak       3032</span>
+<span class="co">#&gt; 6 Independent, near rep  1791</span>
+<span class="co">#&gt; # ... with 4 more rows</span></code></pre></div>
+<p><code>fct_recode()</code> will leave levels that aren’t explicitly mentioned as is, and will warn you if you accidentally refer to a level that doesn’t exist.</p>
+<p>To combine groups, you can assign multiple old levels to the same new level:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partyid =</span> <span class="kw">fct_recode</span>(partyid,
+    <span class="st">&quot;Republican, strong&quot;</span>    =<span class="st"> &quot;Strong republican&quot;</span>,
+    <span class="st">&quot;Republican, weak&quot;</span>      =<span class="st"> &quot;Not str republican&quot;</span>,
+    <span class="st">&quot;Independent, near rep&quot;</span> =<span class="st"> &quot;Ind,near rep&quot;</span>,
+    <span class="st">&quot;Independent, near dem&quot;</span> =<span class="st"> &quot;Ind,near dem&quot;</span>,
+    <span class="st">&quot;Democrat, weak&quot;</span>        =<span class="st"> &quot;Not str democrat&quot;</span>,
+    <span class="st">&quot;Democrat, strong&quot;</span>      =<span class="st"> &quot;Strong democrat&quot;</span>,
+    <span class="st">&quot;Other&quot;</span>                 =<span class="st"> &quot;No answer&quot;</span>,
+    <span class="st">&quot;Other&quot;</span>                 =<span class="st"> &quot;Don&#39;t know&quot;</span>,
+    <span class="st">&quot;Other&quot;</span>                 =<span class="st"> &quot;Other party&quot;</span>
+  )) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(partyid)
+<span class="co">#&gt; # A tibble: 8 x 2</span>
+<span class="co">#&gt;   partyid                   n</span>
+<span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span>
+<span class="co">#&gt; 1 Other                   548</span>
+<span class="co">#&gt; 2 Republican, strong     2314</span>
+<span class="co">#&gt; 3 Republican, weak       3032</span>
+<span class="co">#&gt; 4 Independent, near rep  1791</span>
+<span class="co">#&gt; 5 Independent            4119</span>
+<span class="co">#&gt; 6 Independent, near dem  2499</span>
+<span class="co">#&gt; # ... with 2 more rows</span></code></pre></div>
+<p>You must use this technique with care: if you group together categories that are truly different you will end up with misleading results.</p>
+<p>If you want to collapse a lot of levels, <code>fct_collapse()</code> is a useful variant of <code>fct_recode()</code>. For each new variable, you can provide a vector of old levels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partyid =</span> <span class="kw">fct_collapse</span>(partyid,
+    <span class="dt">other =</span> <span class="kw">c</span>(<span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Don&#39;t know&quot;</span>, <span class="st">&quot;Other party&quot;</span>),
+    <span class="dt">rep =</span> <span class="kw">c</span>(<span class="st">&quot;Strong republican&quot;</span>, <span class="st">&quot;Not str republican&quot;</span>),
+    <span class="dt">ind =</span> <span class="kw">c</span>(<span class="st">&quot;Ind,near rep&quot;</span>, <span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Ind,near dem&quot;</span>),
+    <span class="dt">dem =</span> <span class="kw">c</span>(<span class="st">&quot;Not str democrat&quot;</span>, <span class="st">&quot;Strong democrat&quot;</span>)
+  )) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(partyid)
+<span class="co">#&gt; # A tibble: 4 x 2</span>
+<span class="co">#&gt;   partyid     n</span>
+<span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt;</span>
+<span class="co">#&gt; 1 other     548</span>
+<span class="co">#&gt; 2 rep      5346</span>
+<span class="co">#&gt; 3 ind      8409</span>
+<span class="co">#&gt; 4 dem      7180</span></code></pre></div>
+<p>Sometimes you just want to lump together all the small groups to make a plot or table simpler. That’s the job of <code>fct_lump()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">relig =</span> <span class="kw">fct_lump</span>(relig)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(relig)
+<span class="co">#&gt; # A tibble: 2 x 2</span>
+<span class="co">#&gt;   relig          n</span>
+<span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span>
+<span class="co">#&gt; 1 Protestant 10846</span>
+<span class="co">#&gt; 2 Other      10637</span></code></pre></div>
+<p>The default behaviour is to progressively lump together the smallest groups, ensuring that the aggregate is still the smallest group. In this case it’s not very helpful: it is true that the majority of Americans in this survey are Protestant, but we’ve probably over collapsed.</p>
+<p>Instead, we can use the <code>n</code> parameter to specify how many groups (excluding other) we want to keep:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">relig =</span> <span class="kw">fct_lump</span>(relig, <span class="dt">n =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>(relig, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">print</span>(<span class="dt">n =</span> <span class="ot">Inf</span>)
+<span class="co">#&gt; # A tibble: 10 x 2</span>
+<span class="co">#&gt;    relig                       n</span>
+<span class="co">#&gt;    &lt;fct&gt;                   &lt;int&gt;</span>
+<span class="co">#&gt;  1 Protestant              10846</span>
+<span class="co">#&gt;  2 Catholic                 5124</span>
+<span class="co">#&gt;  3 None                     3523</span>
+<span class="co">#&gt;  4 Christian                 689</span>
+<span class="co">#&gt;  5 Other                     458</span>
+<span class="co">#&gt;  6 Jewish                    388</span>
+<span class="co">#&gt;  7 Buddhism                  147</span>
+<span class="co">#&gt;  8 Inter-nondenominational   109</span>
+<span class="co">#&gt;  9 Moslem/islam              104</span>
+<span class="co">#&gt; 10 Orthodox-christian         95</span></code></pre></div>
+<div id="exercises-1" class="section level3">
+<h3><span class="header-section-number">13.5.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>How have the proportions of people identifying as Democrat, Republican, and Independent changed over time?</p></li>
+<li><p>How could you collapse <code>rincome</code> into a small set of categories?</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-12.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dates-and-times.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/hadley/r4ds/edit/master/factors.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

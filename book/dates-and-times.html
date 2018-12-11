@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>14 Dates and times | R for Data Science</title>
+  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="14 Dates and times | R for Data Science />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://r4ds.had.co.nz/" />
+  <meta property="og:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <meta name="github-repo" content="hadley/r4ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14 Dates and times | R for Data Science />
+  <meta name="twitter:site" content="@hadley" />
+  <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <meta name="twitter:image" content="https://r4ds.had.co.nz/cover.png" />
+
+<meta name="author" content="Garrett Grolemund">
+<meta name="author" content="Hadley Wickham">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="factors.html">
+<link rel="next" href="program-intro.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.3.1/str_view.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="r4ds.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R for Data Science</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>환영합니다</a></li>
+<li class="chapter" data-level="1" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>1</b> 서문</a><ul>
+<li class="chapter" data-level="1.1" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.1</b> 무엇을 배우게 될까</a></li>
+<li class="chapter" data-level="1.2" data-path="section-1.html"><a href="section-1.html#how-this-book-is-organised"><i class="fa fa-check"></i><b>1.2</b> How this book is organised</a></li>
+<li class="chapter" data-level="1.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.3</b> 배우지 않는 것</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="section-1.html"><a href="section-1.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 빅데이터</a></li>
+<li class="chapter" data-level="1.3.2" data-path="section-1.html"><a href="section-1.html#python-julia-and-friends"><i class="fa fa-check"></i><b>1.3.2</b> Python, Julia, and friends</a></li>
+<li class="chapter" data-level="1.3.3" data-path="section-1.html"><a href="section-1.html#non-rectangular-data"><i class="fa fa-check"></i><b>1.3.3</b> Non-rectangular data</a></li>
+<li class="chapter" data-level="1.3.4" data-path="section-1.html"><a href="section-1.html#hypothesis-confirmation"><i class="fa fa-check"></i><b>1.3.4</b> Hypothesis confirmation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="section-1.html"><a href="section-1.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 준비하기</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>1.4.1</b> R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="section-1.html"><a href="section-1.html#rstudio"><i class="fa fa-check"></i><b>1.4.2</b> RStudio</a></li>
+<li class="chapter" data-level="1.4.3" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>1.4.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="1.4.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>1.4.4</b> 기타 패키지들</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>1.5</b> R 코드 실행하기</a></li>
+<li class="chapter" data-level="1.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.6</b> 도움받기, 더 배우기</a></li>
+<li class="chapter" data-level="1.7" data-path="section-1.html"><a href="section-1.html#acknowledgements"><i class="fa fa-check"></i><b>1.7</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.8" data-path="section-1.html"><a href="section-1.html#colophon"><i class="fa fa-check"></i><b>1.8</b> Colophon</a></li>
+</ul></li>
+<li class="part"><span><b>I 탐색하기</b></span></li>
+<li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> 소개</a></li>
+<li class="chapter" data-level="3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3</b> 데이터 시각화</a><ul>
+<li class="chapter" data-level="3.1" data-path="-.html"><a href="-.html"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.2</b> 첫 단계</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="-.html"><a href="-.html#mpg-"><i class="fa fa-check"></i><b>3.2.1</b> <code>mpg</code> 데이터프레임</a></li>
+<li class="chapter" data-level="3.2.2" data-path="-.html"><a href="-.html#ggplot-"><i class="fa fa-check"></i><b>3.2.2</b> ggplot 생성하기</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 탬플릿</a></li>
+<li class="chapter" data-level="3.2.4" data-path="-.html"><a href="-.html#section-3.2.4"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="-.html"><a href="-.html#aesthetic-"><i class="fa fa-check"></i><b>3.3</b> Aesthetic 매핑</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>3.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="-.html"><a href="-.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
+<li class="chapter" data-level="3.5" data-path="-.html"><a href="-.html#facet"><i class="fa fa-check"></i><b>3.5</b> 면분할(facet)</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>3.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.6</b> 기하 객체</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="-.html"><a href="-.html#-3"><i class="fa fa-check"></i><b>3.6.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.7</b> 통계적 변환</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="-.html"><a href="-.html#-4"><i class="fa fa-check"></i><b>3.7.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.8</b> 위치 조정</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="-.html"><a href="-.html#-5"><i class="fa fa-check"></i><b>3.8.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="-.html"><a href="-.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 좌표계</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="-.html"><a href="-.html#-6"><i class="fa fa-check"></i><b>3.9.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>3.10</b> 그래프 레이어 문법</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.1</b> 코딩 기초</a></li>
+<li class="chapter" data-level="4.2" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>4.2</b> 이름에 들어갈 것</a></li>
+<li class="chapter" data-level="4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.3</b> 함수 호출하기</a></li>
+<li class="chapter" data-level="4.4" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>4.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>5</b> 데이터 변형</a><ul>
+<li class="chapter" data-level="5.1" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>5.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>5.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="5.1.2" data-path="transform.html"><a href="transform.html#nycflights13"><i class="fa fa-check"></i><b>5.1.2</b> nycflights13</a></li>
+<li class="chapter" data-level="5.1.3" data-path="transform.html"><a href="transform.html#dplyr-"><i class="fa fa-check"></i><b>5.1.3</b> dplyr 기초</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="transform.html"><a href="transform.html#filter--"><i class="fa fa-check"></i><b>5.2</b> <code>filter()</code> 로 필터링하기</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="transform.html"><a href="transform.html#section-5.2.1"><i class="fa fa-check"></i><b>5.2.1</b> 비교</a></li>
+<li class="chapter" data-level="5.2.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>5.2.2</b> 논리 연산자</a></li>
+<li class="chapter" data-level="5.2.3" data-path="transform.html"><a href="transform.html#section-5.2.3"><i class="fa fa-check"></i><b>5.2.3</b> 결측값</a></li>
+<li class="chapter" data-level="5.2.4" data-path="transform.html"><a href="transform.html#-8"><i class="fa fa-check"></i><b>5.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="transform.html"><a href="transform.html#arrange--"><i class="fa fa-check"></i><b>5.3</b> <code>arrange()</code> 로 정렬하기</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>5.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="transform.html"><a href="transform.html#select"><i class="fa fa-check"></i><b>5.4</b> <code>select()</code> 로 열 선택하기</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>5.4.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="transform.html"><a href="transform.html#mutate----"><i class="fa fa-check"></i><b>5.5</b> <code>mutate()</code> 로 새로운 변수 추가하기</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="transform.html"><a href="transform.html#mutate-funs"><i class="fa fa-check"></i><b>5.5.1</b> 유용한 생성 함수</a></li>
+<li class="chapter" data-level="5.5.2" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>5.5.2</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="transform.html"><a href="transform.html#summarize---"><i class="fa fa-check"></i><b>5.6</b> <code>summarize()</code> 로 그룹화 요약하기</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>5.6.1</b> 파이프로 여러 작업 조합하기</a></li>
+<li class="chapter" data-level="5.6.2" data-path="-.html"><a href="-.html#-1"><i class="fa fa-check"></i><b>5.6.2</b> 결측값</a></li>
+<li class="chapter" data-level="5.6.3" data-path="transform.html"><a href="transform.html#section-5.6.3"><i class="fa fa-check"></i><b>5.6.3</b> 카운트</a></li>
+<li class="chapter" data-level="5.6.4" data-path="transform.html"><a href="transform.html#summarize-funs"><i class="fa fa-check"></i><b>5.6.4</b> 유용한 요약 함수</a></li>
+<li class="chapter" data-level="5.6.5" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>5.6.5</b> 다중 변수로 그룹화</a></li>
+<li class="chapter" data-level="5.6.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>5.6.6</b> 그룹화 해제</a></li>
+<li class="chapter" data-level="5.6.7" data-path="transform.html"><a href="transform.html#-12"><i class="fa fa-check"></i><b>5.6.7</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>5.7</b> 그룹화 뮤테이트(와 필터링)</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="transform.html"><a href="transform.html#-13"><i class="fa fa-check"></i><b>5.7.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a><ul>
+<li class="chapter" data-level="6.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
+<li class="chapter" data-level="6.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
+<li class="chapter" data-level="6.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#practice"><i class="fa fa-check"></i><b>6.3</b> Practice</a></li>
+</ul></li>
+<li class="part"><span><b>II 길들이기</b></span></li>
+<li class="chapter" data-level="7" data-path="wrangle-intro.html"><a href="wrangle-intro.html"><i class="fa fa-check"></i><b>7</b> 소개</a></li>
+<li class="chapter" data-level="8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>8</b> Tibble</a><ul>
+<li class="chapter" data-level="8.1" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>8.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="-.html"><a href="-.html#-3"><i class="fa fa-check"></i><b>8.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>8.2</b> tibble 생성하기</a></li>
+<li class="chapter" data-level="8.3" data-path="tibble.html"><a href="tibble.html#tibble-vs.data.frame"><i class="fa fa-check"></i><b>8.3</b> Tibble vs. data.frame</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="tibble.html"><a href="tibble.html#section-8.3.1"><i class="fa fa-check"></i><b>8.3.1</b> 화면출력</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tibble.html"><a href="tibble.html#section-8.3.2"><i class="fa fa-check"></i><b>8.3.2</b> 서브셋하기</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>8.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="8.5" data-path="tibble.html"><a href="tibble.html#-14"><i class="fa fa-check"></i><b>8.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>9</b> 데이터 불러오기</a><ul>
+<li class="chapter" data-level="9.1" data-path="-.html"><a href="-.html#-3"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="-.html"><a href="-.html#-4"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="import.html"><a href="import.html#section-9.2"><i class="fa fa-check"></i><b>9.2</b> 시작하기</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="import.html"><a href="import.html#-r-"><i class="fa fa-check"></i><b>9.2.1</b> 베이스 R과 비교</a></li>
+<li class="chapter" data-level="9.2.2" data-path="import.html"><a href="import.html#-15"><i class="fa fa-check"></i><b>9.2.2</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.3</b> 벡터 파싱하기</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="import.html"><a href="import.html#section-9.3.1"><i class="fa fa-check"></i><b>9.3.1</b> 숫자</a></li>
+<li class="chapter" data-level="9.3.2" data-path="import.html"><a href="import.html#readr-strings"><i class="fa fa-check"></i><b>9.3.2</b> 문자열</a></li>
+<li class="chapter" data-level="9.3.3" data-path="import.html"><a href="import.html#readr-factors"><i class="fa fa-check"></i><b>9.3.3</b> 팩터형</a></li>
+<li class="chapter" data-level="9.3.4" data-path="import.html"><a href="import.html#readr-datetimes"><i class="fa fa-check"></i><b>9.3.4</b> Dates, date-times, times</a></li>
+<li class="chapter" data-level="9.3.5" data-path="import.html"><a href="import.html#-16"><i class="fa fa-check"></i><b>9.3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.4</b> 파일 파싱하기</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="import.html"><a href="import.html#section-9.4.1"><i class="fa fa-check"></i><b>9.4.1</b> 전략</a></li>
+<li class="chapter" data-level="9.4.2" data-path="import.html"><a href="import.html#section-9.4.2"><i class="fa fa-check"></i><b>9.4.2</b> 문제점</a></li>
+<li class="chapter" data-level="9.4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.4.3</b> 기타 전략</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.5</b> 파일에 쓰기</a></li>
+<li class="chapter" data-level="9.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>9.6</b> 기타 데이터 유형</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>10</b> Tidy Data</a><ul>
+<li class="chapter" data-level="10.1" data-path="-.html"><a href="-.html#-4"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="-.html"><a href="-.html#-5"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>10.2</b> Tidy Data</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="tidy-data.html"><a href="tidy-data.html#-17"><i class="fa fa-check"></i><b>10.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="tidy-data.html"><a href="tidy-data.html#gather--spread"><i class="fa fa-check"></i><b>10.3</b> gather 와 spread</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>10.3.1</b> Gather</a></li>
+<li class="chapter" data-level="10.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>10.3.2</b> Spread</a></li>
+<li class="chapter" data-level="10.3.3" data-path="tidy-data.html"><a href="tidy-data.html#-18"><i class="fa fa-check"></i><b>10.3.3</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="tidy-data.html"><a href="tidy-data.html#separate--unite"><i class="fa fa-check"></i><b>10.4</b> Separate 과 Unite</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="tidy-data.html"><a href="tidy-data.html#separate"><i class="fa fa-check"></i><b>10.4.1</b> Separate</a></li>
+<li class="chapter" data-level="10.4.2" data-path="tidy-data.html"><a href="tidy-data.html#unite"><i class="fa fa-check"></i><b>10.4.2</b> Unite</a></li>
+<li class="chapter" data-level="10.4.3" data-path="tidy-data.html"><a href="tidy-data.html#-19"><i class="fa fa-check"></i><b>10.4.3</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="-.html"><a href="-.html#-2"><i class="fa fa-check"></i><b>10.5</b> 결측값</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="tidy-data.html"><a href="tidy-data.html#-20"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>10.6</b> 사례 연구</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="tidy-data.html"><a href="tidy-data.html#-21"><i class="fa fa-check"></i><b>10.6.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>10.7</b> 타이디하지 않은 데이터</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>11</b> Relational data</a><ul>
+<li class="chapter" data-level="11.1" data-path="-.html"><a href="-.html#-5"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="-.html"><a href="-.html#-6"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>11.2</b> nycflights13</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="relational-data.html"><a href="relational-data.html#-22"><i class="fa fa-check"></i><b>11.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="relational-data.html"><a href="relational-data.html#section-11.3"><i class="fa fa-check"></i><b>11.3</b> 키</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="relational-data.html"><a href="relational-data.html#-23"><i class="fa fa-check"></i><b>11.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>11.4</b> Mutating joins</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="11.4.2" data-path="relational-data.html"><a href="relational-data.html#inner-join"><i class="fa fa-check"></i><b>11.4.2</b> 내부 조인</a></li>
+<li class="chapter" data-level="11.4.3" data-path="relational-data.html"><a href="relational-data.html#outer-join"><i class="fa fa-check"></i><b>11.4.3</b> 외부 조인</a></li>
+<li class="chapter" data-level="11.4.4" data-path="relational-data.html"><a href="relational-data.html#join-matches"><i class="fa fa-check"></i><b>11.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="11.4.5" data-path="relational-data.html"><a href="relational-data.html#join-by"><i class="fa fa-check"></i><b>11.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="11.4.6" data-path="relational-data.html"><a href="relational-data.html#-24"><i class="fa fa-check"></i><b>11.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="11.4.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>11.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="relational-data.html"><a href="relational-data.html#-25"><i class="fa fa-check"></i><b>11.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="11.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>11.7</b> 집합 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="section-12.html"><a href="section-12.html"><i class="fa fa-check"></i><b>12</b> 문자열</a><ul>
+<li class="chapter" data-level="12.1" data-path="-.html"><a href="-.html#-6"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="12.2.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="12.2.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="12.2.4" data-path="section-12.html"><a href="section-12.html#section-12.2.4"><i class="fa fa-check"></i><b>12.2.4</b> 로캘</a></li>
+<li class="chapter" data-level="12.2.5" data-path="section-12.html"><a href="section-12.html#-26"><i class="fa fa-check"></i><b>12.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>12.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.3.1</b> 기초 매칭</a></li>
+<li class="chapter" data-level="12.3.2" data-path="section-12.html"><a href="section-12.html#section-12.3.2"><i class="fa fa-check"></i><b>12.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="12.3.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="12.3.4" data-path="section-12.html"><a href="section-12.html#section-12.3.4"><i class="fa fa-check"></i><b>12.3.4</b> 반복</a></li>
+<li class="chapter" data-level="12.3.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="section-12.html"><a href="section-12.html#section-12.4"><i class="fa fa-check"></i><b>12.4</b> 도구</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="12.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="12.4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="12.4.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="12.4.5" data-path="section-12.html"><a href="section-12.html#splitting"><i class="fa fa-check"></i><b>12.4.5</b> Splitting</a></li>
+<li class="chapter" data-level="12.4.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="section-12.html"><a href="section-12.html#-37"><i class="fa fa-check"></i><b>12.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.6</b> 정규표현식의 기타 용도</a></li>
+<li class="chapter" data-level="12.7" data-path="section-12.html"><a href="section-12.html#stringi"><i class="fa fa-check"></i><b>12.7</b> stringi</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="section-12.html"><a href="section-12.html#-38"><i class="fa fa-check"></i><b>12.7.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>13</b> Factors</a><ul>
+<li class="chapter" data-level="13.1" data-path="factors.html"><a href="factors.html#introduction"><i class="fa fa-check"></i><b>13.1</b> Introduction</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="factors.html"><a href="factors.html#prerequisites"><i class="fa fa-check"></i><b>13.1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="13.1.2" data-path="factors.html"><a href="factors.html#learning-more"><i class="fa fa-check"></i><b>13.1.2</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>13.2</b> Creating factors</a></li>
+<li class="chapter" data-level="13.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>13.3</b> General Social Survey</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="factors.html"><a href="factors.html#exercise"><i class="fa fa-check"></i><b>13.3.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="factors.html"><a href="factors.html#modifying-factor-order"><i class="fa fa-check"></i><b>13.4</b> Modifying factor order</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="factors.html"><a href="factors.html#exercises"><i class="fa fa-check"></i><b>13.4.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="factors.html"><a href="factors.html#modifying-factor-levels"><i class="fa fa-check"></i><b>13.5</b> Modifying factor levels</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="factors.html"><a href="factors.html#exercises-1"><i class="fa fa-check"></i><b>13.5.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>14</b> Dates and times</a><ul>
+<li class="chapter" data-level="14.1" data-path="dates-and-times.html"><a href="dates-and-times.html#introduction-1"><i class="fa fa-check"></i><b>14.1</b> Introduction</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="dates-and-times.html"><a href="dates-and-times.html#prerequisites-1"><i class="fa fa-check"></i><b>14.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="dates-and-times.html"><a href="dates-and-times.html#creating-datetimes"><i class="fa fa-check"></i><b>14.2</b> Creating date/times</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="dates-and-times.html"><a href="dates-and-times.html#from-strings"><i class="fa fa-check"></i><b>14.2.1</b> From strings</a></li>
+<li class="chapter" data-level="14.2.2" data-path="dates-and-times.html"><a href="dates-and-times.html#from-individual-components"><i class="fa fa-check"></i><b>14.2.2</b> From individual components</a></li>
+<li class="chapter" data-level="14.2.3" data-path="dates-and-times.html"><a href="dates-and-times.html#from-other-types"><i class="fa fa-check"></i><b>14.2.3</b> From other types</a></li>
+<li class="chapter" data-level="14.2.4" data-path="dates-and-times.html"><a href="dates-and-times.html#exercises-2"><i class="fa fa-check"></i><b>14.2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="dates-and-times.html"><a href="dates-and-times.html#date-time-components"><i class="fa fa-check"></i><b>14.3</b> Date-time components</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="dates-and-times.html"><a href="dates-and-times.html#getting-components"><i class="fa fa-check"></i><b>14.3.1</b> Getting components</a></li>
+<li class="chapter" data-level="14.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#rounding"><i class="fa fa-check"></i><b>14.3.2</b> Rounding</a></li>
+<li class="chapter" data-level="14.3.3" data-path="dates-and-times.html"><a href="dates-and-times.html#setting-components"><i class="fa fa-check"></i><b>14.3.3</b> Setting components</a></li>
+<li class="chapter" data-level="14.3.4" data-path="dates-and-times.html"><a href="dates-and-times.html#exercises-3"><i class="fa fa-check"></i><b>14.3.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="dates-and-times.html"><a href="dates-and-times.html#time-spans"><i class="fa fa-check"></i><b>14.4</b> Time spans</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#durations"><i class="fa fa-check"></i><b>14.4.1</b> Durations</a></li>
+<li class="chapter" data-level="14.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#periods"><i class="fa fa-check"></i><b>14.4.2</b> Periods</a></li>
+<li class="chapter" data-level="14.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#intervals"><i class="fa fa-check"></i><b>14.4.3</b> Intervals</a></li>
+<li class="chapter" data-level="14.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#summary"><i class="fa fa-check"></i><b>14.4.4</b> Summary</a></li>
+<li class="chapter" data-level="14.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#exercises-4"><i class="fa fa-check"></i><b>14.4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>14.5</b> Time zones</a></li>
+</ul></li>
+<li class="part"><span><b>III 프로그래밍</b></span></li>
+<li class="chapter" data-level="15" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>15</b> 소개</a><ul>
+<li class="chapter" data-level="15.1" data-path="program-intro.html"><a href="program-intro.html#learning-more-1"><i class="fa fa-check"></i><b>15.1</b> Learning more</a></li>
+</ul></li>
+<li class="part"><span><b>IV 모델</b></span></li>
+<li class="chapter" data-level="16" data-path="model-intro.html"><a href="model-intro.html"><i class="fa fa-check"></i><b>16</b> 소개</a><ul>
+<li class="chapter" data-level="16.1" data-path="model-intro.html"><a href="model-intro.html#hypothesis-generation-vs.hypothesis-confirmation"><i class="fa fa-check"></i><b>16.1</b> Hypothesis generation vs. hypothesis confirmation</a></li>
+</ul></li>
+<li class="part"><span><b>V 의사소통하기</b></span></li>
+<li class="chapter" data-level="17" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a></li>
+<li class="chapter" data-level="18" data-path="r-.html"><a href="r-.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
+<li class="chapter" data-level="18.1" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="transform.html"><a href="transform.html#-8"><i class="fa fa-check"></i><b>18.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>18.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="r-.html"><a href="r-.html#-39"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>18.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="r-.html"><a href="r-.html#-40"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.1</b> 청크 이름</a></li>
+<li class="chapter" data-level="18.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.2</b> 청크 옵션</a></li>
+<li class="chapter" data-level="18.4.3" data-path="r-.html"><a href="r-.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
+<li class="chapter" data-level="18.4.4" data-path="r-.html"><a href="r-.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="18.4.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.5</b> 전역 옵션</a></li>
+<li class="chapter" data-level="18.4.6" data-path="r-.html"><a href="r-.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="18.4.7" data-path="r-.html"><a href="r-.html#exercises-5"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="r-.html"><a href="r-.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="18.6" data-path="r-.html"><a href="r-.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
+<li class="chapter" data-level="18.6.1" data-path="r-.html"><a href="r-.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="18.6.2" data-path="r-.html"><a href="r-.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="18.7" data-path="r-.html"><a href="r-.html#learning-more-2"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dates-and-times" class="section level1">
+<h1><span class="header-section-number">14</span> Dates and times</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">14.1</span> Introduction</h2>
+<p>This chapter will show you how to work with dates and times in R. At first glance, dates and times seem simple. You use them all the time in your regular life, and they don’t seem to cause much confusion. However, the more you learn about dates and times, the more complicated they seem to get. To warm up, try these three seemingly simple questions:</p>
+<ul>
+<li>Does every year have 365 days?</li>
+<li>Does every day have 24 hours?</li>
+<li>Does every minute have 60 seconds?</li>
+</ul>
+<p>I’m sure you know that not every year has 365 days, but do you know the full rule for determining if a year is a leap year? (It has three parts.) You might have remembered that many parts of the world use daylight savings time (DST), so that some days have 23 hours, and others have 25. You might not have known that some minutes have 61 seconds because every now and then leap seconds are added because the Earth’s rotation is gradually slowing down.</p>
+<p>Dates and times are hard because they have to reconcile two physical phenomena (the rotation of the Earth and its orbit around the sun) with a whole raft of geopolitical phenomena including months, time zones, and DST. This chapter won’t teach you every last detail about dates and times, but it will give you a solid grounding of practical skills that will help you with common data analysis challenges.</p>
+<div id="prerequisites-1" class="section level3">
+<h3><span class="header-section-number">14.1.1</span> Prerequisites</h3>
+<p>This chapter will focus on the <strong>lubridate</strong> package, which makes it easier to work with dates and times in R. lubridate is not part of core tidyverse because you only need it when you’re working with dates/times. We will also need nycflights13 for practice data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+
+<span class="kw">library</span>(lubridate)
+<span class="kw">library</span>(nycflights13)</code></pre></div>
+</div>
+</div>
+<div id="creating-datetimes" class="section level2">
+<h2><span class="header-section-number">14.2</span> Creating date/times</h2>
+<p>There are three types of date/time data that refer to an instant in time:</p>
+<ul>
+<li><p>A <strong>date</strong>. Tibbles print this as <code>&lt;date&gt;</code>.</p></li>
+<li><p>A <strong>time</strong> within a day. Tibbles print this as <code>&lt;time&gt;</code>.</p></li>
+<li><p>A <strong>date-time</strong> is a date plus a time: it uniquely identifies an instant in time (typically to the nearest second). Tibbles print this as <code>&lt;dttm&gt;</code>. Elsewhere in R these are called POSIXct, but I don’t think that’s a very useful name.</p></li>
+</ul>
+<p>In this chapter we are only going to focus on dates and date-times as R doesn’t have a native class for storing times. If you need one, you can use the <strong>hms</strong> package.</p>
+<p>You should always use the simplest possible data type that works for your needs. That means if you can use a date instead of a date-time, you should. Date-times are substantially more complicated because of the need to handle time zones, which we’ll come back to at the end of the chapter.</p>
+<p>To get the current date or date-time you can use <code>today()</code> or <code>now()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">today</span>()
+<span class="co">#&gt; [1] &quot;2018-12-11&quot;</span>
+<span class="kw">now</span>()
+<span class="co">#&gt; [1] &quot;2018-12-11 16:57:50 KST&quot;</span></code></pre></div>
+<p>Otherwise, there are three ways you’re likely to create a date/time:</p>
+<ul>
+<li>From a string.</li>
+<li>From individual date-time components.</li>
+<li>From an existing date/time object.</li>
+</ul>
+<p>They work as follows.</p>
+<div id="from-strings" class="section level3">
+<h3><span class="header-section-number">14.2.1</span> From strings</h3>
+<p>Date/time data often comes as strings. You’ve seen one approach to parsing strings into date-times in <a href="import.html#readr-datetimes">date-times</a>. Another approach is to use the helpers provided by lubridate. They automatically work out the format once you specify the order of the component. To use them, identify the order in which year, month, and day appear in your dates, then arrange “y”, “m”, and “d” in the same order. That gives you the name of the lubridate function that will parse your date. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="st">&quot;2017-01-31&quot;</span>)
+<span class="co">#&gt; [1] &quot;2017-01-31&quot;</span>
+<span class="kw">mdy</span>(<span class="st">&quot;January 31st, 2017&quot;</span>)
+<span class="co">#&gt; [1] &quot;2017-01-31&quot;</span>
+<span class="kw">dmy</span>(<span class="st">&quot;31-Jan-2017&quot;</span>)
+<span class="co">#&gt; [1] &quot;2017-01-31&quot;</span></code></pre></div>
+<p>These functions also take unquoted numbers. This is the most concise way to create a single date/time object, as you might need when filtering date/time data. <code>ymd()</code> is short and unambiguous:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="dv">20170131</span>)
+<span class="co">#&gt; [1] &quot;2017-01-31&quot;</span></code></pre></div>
+<p><code>ymd()</code> and friends create dates. To create a date-time, add an underscore and one or more of “h”, “m”, and “s” to the name of the parsing function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd_hms</span>(<span class="st">&quot;2017-01-31 20:11:59&quot;</span>)
+<span class="co">#&gt; [1] &quot;2017-01-31 20:11:59 UTC&quot;</span>
+<span class="kw">mdy_hm</span>(<span class="st">&quot;01/31/2017 08:01&quot;</span>)
+<span class="co">#&gt; [1] &quot;2017-01-31 08:01:00 UTC&quot;</span></code></pre></div>
+<p>You can also force the creation of a date-time from a date by supplying a timezone:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="dv">20170131</span>, <span class="dt">tz =</span> <span class="st">&quot;UTC&quot;</span>)
+<span class="co">#&gt; [1] &quot;2017-01-31 UTC&quot;</span></code></pre></div>
+</div>
+<div id="from-individual-components" class="section level3">
+<h3><span class="header-section-number">14.2.2</span> From individual components</h3>
+<p>Instead of a single string, sometimes you’ll have the individual components of the date-time spread across multiple columns. This is what we have in the flights data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(year, month, day, hour, minute)
+<span class="co">#&gt; # A tibble: 336,776 x 5</span>
+<span class="co">#&gt;    year month   day  hour minute</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1  2013     1     1     5     15</span>
+<span class="co">#&gt; 2  2013     1     1     5     29</span>
+<span class="co">#&gt; 3  2013     1     1     5     40</span>
+<span class="co">#&gt; 4  2013     1     1     5     45</span>
+<span class="co">#&gt; 5  2013     1     1     6      0</span>
+<span class="co">#&gt; 6  2013     1     1     5     58</span>
+<span class="co">#&gt; # ... with 3.368e+05 more rows</span></code></pre></div>
+<p>To create a date/time from this sort of input, use <code>make_date()</code> for dates, or <code>make_datetime()</code> for date-times:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(year, month, day, hour, minute) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">departure =</span> <span class="kw">make_datetime</span>(year, month, day, hour, minute))
+<span class="co">#&gt; # A tibble: 336,776 x 6</span>
+<span class="co">#&gt;    year month   day  hour minute departure          </span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             </span>
+<span class="co">#&gt; 1  2013     1     1     5     15 2013-01-01 05:15:00</span>
+<span class="co">#&gt; 2  2013     1     1     5     29 2013-01-01 05:29:00</span>
+<span class="co">#&gt; 3  2013     1     1     5     40 2013-01-01 05:40:00</span>
+<span class="co">#&gt; 4  2013     1     1     5     45 2013-01-01 05:45:00</span>
+<span class="co">#&gt; 5  2013     1     1     6      0 2013-01-01 06:00:00</span>
+<span class="co">#&gt; 6  2013     1     1     5     58 2013-01-01 05:58:00</span>
+<span class="co">#&gt; # ... with 3.368e+05 more rows</span></code></pre></div>
+<p>Let’s do the same thing for each of the four time columns in <code>flights</code>. The times are represented in a slightly odd format, so we use modulus arithmetic to pull out the hour and minute components. Once I’ve created the date-time variables, I focus in on the variables we’ll explore in the rest of the chapter.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">make_datetime_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="cf">function</span>(year, month, day, time) {
+  <span class="kw">make_datetime</span>(year, month, day, time <span class="op">%/%</span><span class="st"> </span><span class="dv">100</span>, time <span class="op">%%</span><span class="st"> </span><span class="dv">100</span>)
+}
+
+flights_dt &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(dep_time), <span class="op">!</span><span class="kw">is.na</span>(arr_time)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">dep_time =</span> <span class="kw">make_datetime_100</span>(year, month, day, dep_time),
+    <span class="dt">arr_time =</span> <span class="kw">make_datetime_100</span>(year, month, day, arr_time),
+    <span class="dt">sched_dep_time =</span> <span class="kw">make_datetime_100</span>(year, month, day, sched_dep_time),
+    <span class="dt">sched_arr_time =</span> <span class="kw">make_datetime_100</span>(year, month, day, sched_arr_time)
+  ) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(origin, dest, <span class="kw">ends_with</span>(<span class="st">&quot;delay&quot;</span>), <span class="kw">ends_with</span>(<span class="st">&quot;time&quot;</span>))
+
+flights_dt
+<span class="co">#&gt; # A tibble: 328,063 x 9</span>
+<span class="co">#&gt;   origin dest  dep_delay arr_delay dep_time            sched_dep_time     </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             </span>
+<span class="co">#&gt; 1 EWR    IAH           2        11 2013-01-01 05:17:00 2013-01-01 05:15:00</span>
+<span class="co">#&gt; 2 LGA    IAH           4        20 2013-01-01 05:33:00 2013-01-01 05:29:00</span>
+<span class="co">#&gt; 3 JFK    MIA           2        33 2013-01-01 05:42:00 2013-01-01 05:40:00</span>
+<span class="co">#&gt; 4 JFK    BQN          -1       -18 2013-01-01 05:44:00 2013-01-01 05:45:00</span>
+<span class="co">#&gt; 5 LGA    ATL          -6       -25 2013-01-01 05:54:00 2013-01-01 06:00:00</span>
+<span class="co">#&gt; 6 EWR    ORD          -4        12 2013-01-01 05:54:00 2013-01-01 05:58:00</span>
+<span class="co">#&gt; # ... with 3.281e+05 more rows, and 3 more variables: arr_time &lt;dttm&gt;,</span>
+<span class="co">#&gt; #   sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;</span></code></pre></div>
+<p>With this data, I can visualise the distribution of departure times across the year:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(dep_time)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="dv">86400</span>) <span class="co"># 86400 seconds = 1 day</span></code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Or within a single day:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(dep_time <span class="op">&lt;</span><span class="st"> </span><span class="kw">ymd</span>(<span class="dv">20130102</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(dep_time)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="dv">600</span>) <span class="co"># 600 s = 10 minutes</span></code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Note that when you use date-times in a numeric context (like in a histogram), 1 means 1 second, so a binwidth of 86400 means one day. For dates, 1 means 1 day.</p>
+</div>
+<div id="from-other-types" class="section level3">
+<h3><span class="header-section-number">14.2.3</span> From other types</h3>
+<p>You may want to switch between a date-time and a date. That’s the job of <code>as_datetime()</code> and <code>as_date()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_datetime</span>(<span class="kw">today</span>())
+<span class="co">#&gt; [1] &quot;2018-12-11 UTC&quot;</span>
+<span class="kw">as_date</span>(<span class="kw">now</span>())
+<span class="co">#&gt; [1] &quot;2018-12-11&quot;</span></code></pre></div>
+<p>Sometimes you’ll get date/times as numeric offsets from the “Unix Epoch”, 1970-01-01. If the offset is in seconds, use <code>as_datetime()</code>; if it’s in days, use <code>as_date()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_datetime</span>(<span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>)
+<span class="co">#&gt; [1] &quot;1970-01-01 10:00:00 UTC&quot;</span>
+<span class="kw">as_date</span>(<span class="dv">365</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>)
+<span class="co">#&gt; [1] &quot;1980-01-01&quot;</span></code></pre></div>
+</div>
+<div id="exercises-2" class="section level3">
+<h3><span class="header-section-number">14.2.4</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>What happens if you parse a string that contains invalid dates?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="kw">c</span>(<span class="st">&quot;2010-10-10&quot;</span>, <span class="st">&quot;bananas&quot;</span>))</code></pre></div></li>
+<li><p>What does the <code>tzone</code> argument to <code>today()</code> do? Why is it important?</p></li>
+<li><p>Use the appropriate lubridate function to parse each of the following dates:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d1 &lt;-<span class="st"> &quot;January 1, 2010&quot;</span>
+d2 &lt;-<span class="st"> &quot;2015-Mar-07&quot;</span>
+d3 &lt;-<span class="st"> &quot;06-Jun-2017&quot;</span>
+d4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;August 19 (2015)&quot;</span>, <span class="st">&quot;July 1 (2015)&quot;</span>)
+d5 &lt;-<span class="st"> &quot;12/30/14&quot;</span> <span class="co"># Dec 30, 2014</span></code></pre></div></li>
+</ol>
+</div>
+</div>
+<div id="date-time-components" class="section level2">
+<h2><span class="header-section-number">14.3</span> Date-time components</h2>
+<p>Now that you know how to get date-time data into R’s date-time data structures, let’s explore what you can do with them. This section will focus on the accessor functions that let you get and set individual components. The next section will look at how arithmetic works with date-times.</p>
+<div id="getting-components" class="section level3">
+<h3><span class="header-section-number">14.3.1</span> Getting components</h3>
+<p>You can pull out individual parts of the date with the accessor functions <code>year()</code>, <code>month()</code>, <code>mday()</code> (day of the month), <code>yday()</code> (day of the year), <code>wday()</code> (day of the week), <code>hour()</code>, <code>minute()</code>, and <code>second()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>)
+
+<span class="kw">year</span>(datetime)
+<span class="co">#&gt; [1] 2016</span>
+<span class="kw">month</span>(datetime)
+<span class="co">#&gt; [1] 7</span>
+<span class="kw">mday</span>(datetime)
+<span class="co">#&gt; [1] 8</span>
+
+<span class="kw">yday</span>(datetime)
+<span class="co">#&gt; [1] 190</span>
+<span class="kw">wday</span>(datetime)
+<span class="co">#&gt; [1] 6</span></code></pre></div>
+<p>For <code>month()</code> and <code>wday()</code> you can set <code>label = TRUE</code> to return the abbreviated name of the month or day of the week. Set <code>abbr = FALSE</code> to return the full name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">month</span>(datetime, <span class="dt">label =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; [1] Jul</span>
+<span class="co">#&gt; 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</span>
+<span class="kw">wday</span>(datetime, <span class="dt">label =</span> <span class="ot">TRUE</span>, <span class="dt">abbr =</span> <span class="ot">FALSE</span>)
+<span class="co">#&gt; [1] Friday</span>
+<span class="co">#&gt; 7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday</span></code></pre></div>
+<p>We can use <code>wday()</code> to see that more flights depart during the week than on the weekend:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wday =</span> <span class="kw">wday</span>(dep_time, <span class="dt">label =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> wday)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>There’s an interesting pattern if we look at the average departure delay by minute within the hour. It looks like flights leaving in minutes 20-30 and 50-60 have much lower delays than the rest of the hour!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">minute =</span> <span class="kw">minute</span>(dep_time)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(minute) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">avg_delay =</span> <span class="kw">mean</span>(arr_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+    <span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(minute, avg_delay)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Interestingly, if we look at the <em>scheduled</em> departure time we don’t see such a strong pattern:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sched_dep &lt;-<span class="st"> </span>flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">minute =</span> <span class="kw">minute</span>(sched_dep_time)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(minute) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">avg_delay =</span> <span class="kw">mean</span>(arr_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+    <span class="dt">n =</span> <span class="kw">n</span>())
+
+<span class="kw">ggplot</span>(sched_dep, <span class="kw">aes</span>(minute, avg_delay)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>So why do we see that pattern with the actual departure times? Well, like much data collected by humans, there’s a strong bias towards flights leaving at “nice” departure times. Always be alert for this sort of pattern whenever you work with data that involves human judgement!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sched_dep, <span class="kw">aes</span>(minute, n)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="rounding" class="section level3">
+<h3><span class="header-section-number">14.3.2</span> Rounding</h3>
+<p>An alternative approach to plotting individual components is to round the date to a nearby unit of time, with <code>floor_date()</code>, <code>round_date()</code>, and <code>ceiling_date()</code>. Each function takes a vector of dates to adjust and then the name of the unit round down (floor), round up (ceiling), or round to. This, for example, allows us to plot the number of flights per week:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">count</span>(<span class="dt">week =</span> <span class="kw">floor_date</span>(dep_time, <span class="st">&quot;week&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(week, n)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Computing the difference between a rounded and unrounded date can be particularly useful.</p>
+</div>
+<div id="setting-components" class="section level3">
+<h3><span class="header-section-number">14.3.3</span> Setting components</h3>
+<p>You can also use each accessor function to set the components of a date/time:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>))
+<span class="co">#&gt; [1] &quot;2016-07-08 12:34:56 UTC&quot;</span>
+
+<span class="kw">year</span>(datetime) &lt;-<span class="st"> </span><span class="dv">2020</span>
+datetime
+<span class="co">#&gt; [1] &quot;2020-07-08 12:34:56 UTC&quot;</span>
+<span class="kw">month</span>(datetime) &lt;-<span class="st"> </span><span class="dv">01</span>
+datetime
+<span class="co">#&gt; [1] &quot;2020-01-08 12:34:56 UTC&quot;</span>
+<span class="kw">hour</span>(datetime) &lt;-<span class="st"> </span><span class="kw">hour</span>(datetime) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+datetime
+<span class="co">#&gt; [1] &quot;2020-01-08 13:34:56 UTC&quot;</span></code></pre></div>
+<p>Alternatively, rather than modifying in place, you can create a new date-time with <code>update()</code>. This also allows you to set multiple values at once.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">update</span>(datetime, <span class="dt">year =</span> <span class="dv">2020</span>, <span class="dt">month =</span> <span class="dv">2</span>, <span class="dt">mday =</span> <span class="dv">2</span>, <span class="dt">hour =</span> <span class="dv">2</span>)
+<span class="co">#&gt; [1] &quot;2020-02-02 02:34:56 UTC&quot;</span></code></pre></div>
+<p>If values are too big, they will roll-over:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="st">&quot;2015-02-01&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">update</span>(<span class="dt">mday =</span> <span class="dv">30</span>)
+<span class="co">#&gt; [1] &quot;2015-03-02&quot;</span>
+<span class="kw">ymd</span>(<span class="st">&quot;2015-02-01&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">update</span>(<span class="dt">hour =</span> <span class="dv">400</span>)
+<span class="co">#&gt; [1] &quot;2015-02-17 16:00:00 UTC&quot;</span></code></pre></div>
+<p>You can use <code>update()</code> to show the distribution of flights across the course of the day for every day of the year:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dep_hour =</span> <span class="kw">update</span>(dep_time, <span class="dt">yday =</span> <span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(dep_hour)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="dv">300</span>)</code></pre></div>
+<p><img src="datetimes_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Setting larger components of a date to a constant is a powerful technique that allows you to explore patterns in the smaller components.</p>
+</div>
+<div id="exercises-3" class="section level3">
+<h3><span class="header-section-number">14.3.4</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>How does the distribution of flight times within a day change over the course of the year?</p></li>
+<li><p>Compare <code>dep_time</code>, <code>sched_dep_time</code> and <code>dep_delay</code>. Are they consistent? Explain your findings.</p></li>
+<li><p>Compare <code>air_time</code> with the duration between the departure and arrival. Explain your findings. (Hint: consider the location of the airport.)</p></li>
+<li><p>How does the average delay time change over the course of a day? Should you use <code>dep_time</code> or <code>sched_dep_time</code>? Why?</p></li>
+<li><p>On what day of the week should you leave if you want to minimise the chance of a delay?</p></li>
+<li><p>What makes the distribution of <code>diamonds$carat</code> and <code>flights$sched_dep_time</code> similar?</p></li>
+<li><p>Confirm my hypothesis that the early departures of flights in minutes 20-30 and 50-60 are caused by scheduled flights that leave early. Hint: create a binary variable that tells you whether or not a flight was delayed.</p></li>
+</ol>
+</div>
+</div>
+<div id="time-spans" class="section level2">
+<h2><span class="header-section-number">14.4</span> Time spans</h2>
+<p>Next you’ll learn about how arithmetic with dates works, including subtraction, addition, and division. Along the way, you’ll learn about three important classes that represent time spans:</p>
+<ul>
+<li><strong>durations</strong>, which represent an exact number of seconds.</li>
+<li><strong>periods</strong>, which represent human units like weeks and months.</li>
+<li><strong>intervals</strong>, which represent a starting and ending point.</li>
+</ul>
+<div id="durations" class="section level3">
+<h3><span class="header-section-number">14.4.1</span> Durations</h3>
+<p>In R, when you subtract two dates, you get a difftime object:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># How old is Hadley?</span>
+h_age &lt;-<span class="st"> </span><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">ymd</span>(<span class="dv">19791014</span>)
+h_age
+<span class="co">#&gt; Time difference of 14303 days</span></code></pre></div>
+<p>A difftime class object records a time span of seconds, minutes, hours, days, or weeks. This ambiguity can make difftimes a little painful to work with, so lubridate provides an alternative which always uses seconds: the <strong>duration</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.duration</span>(h_age)
+<span class="co">#&gt; [1] &quot;1235779200s (~39.16 years)&quot;</span></code></pre></div>
+<p>Durations come with a bunch of convenient constructors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dseconds</span>(<span class="dv">15</span>)
+<span class="co">#&gt; [1] &quot;15s&quot;</span>
+<span class="kw">dminutes</span>(<span class="dv">10</span>)
+<span class="co">#&gt; [1] &quot;600s (~10 minutes)&quot;</span>
+<span class="kw">dhours</span>(<span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">24</span>))
+<span class="co">#&gt; [1] &quot;43200s (~12 hours)&quot; &quot;86400s (~1 days)&quot;</span>
+<span class="kw">ddays</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">5</span>)
+<span class="co">#&gt; [1] &quot;0s&quot;                &quot;86400s (~1 days)&quot;  &quot;172800s (~2 days)&quot;</span>
+<span class="co">#&gt; [4] &quot;259200s (~3 days)&quot; &quot;345600s (~4 days)&quot; &quot;432000s (~5 days)&quot;</span>
+<span class="kw">dweeks</span>(<span class="dv">3</span>)
+<span class="co">#&gt; [1] &quot;1814400s (~3 weeks)&quot;</span>
+<span class="kw">dyears</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;31536000s (~52.14 weeks)&quot;</span></code></pre></div>
+<p>Durations always record the time span in seconds. Larger units are created by converting minutes, hours, days, weeks, and years to seconds at the standard rate (60 seconds in a minute, 60 minutes in an hour, 24 hours in day, 7 days in a week, 365 days in a year).</p>
+<p>You can add and multiply durations:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">dyears</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;63072000s (~2 years)&quot;</span>
+<span class="kw">dyears</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">dweeks</span>(<span class="dv">12</span>) <span class="op">+</span><span class="st"> </span><span class="kw">dhours</span>(<span class="dv">15</span>)
+<span class="co">#&gt; [1] &quot;38847600s (~1.23 years)&quot;</span></code></pre></div>
+<p>You can add and subtract durations to and from days:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tomorrow &lt;-<span class="st"> </span><span class="kw">today</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ddays</span>(<span class="dv">1</span>)
+last_year &lt;-<span class="st"> </span><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">dyears</span>(<span class="dv">1</span>)</code></pre></div>
+<p>However, because durations represent an exact number of seconds, sometimes you might get an unexpected result:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">one_pm &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-03-12 13:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/New_York&quot;</span>)
+
+one_pm
+<span class="co">#&gt; [1] &quot;2016-03-12 13:00:00 EST&quot;</span>
+one_pm <span class="op">+</span><span class="st"> </span><span class="kw">ddays</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;2016-03-13 14:00:00 EDT&quot;</span></code></pre></div>
+<p>Why is one day after 1pm on March 12, 2pm on March 13?! If you look carefully at the date you might also notice that the time zones have changed. Because of DST, March 12 only has 23 hours, so if we add a full days worth of seconds we end up with a different time.</p>
+</div>
+<div id="periods" class="section level3">
+<h3><span class="header-section-number">14.4.2</span> Periods</h3>
+<p>To solve this problem, lubridate provides <strong>periods</strong>. Periods are time spans but don’t have a fixed length in seconds, instead they work with “human” times, like days and months. That allows them work in a more intuitive way:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">one_pm
+<span class="co">#&gt; [1] &quot;2016-03-12 13:00:00 EST&quot;</span>
+one_pm <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;2016-03-13 13:00:00 EDT&quot;</span></code></pre></div>
+<p>Like durations, periods can be created with a number of friendly constructor functions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seconds</span>(<span class="dv">15</span>)
+<span class="co">#&gt; [1] &quot;15S&quot;</span>
+<span class="kw">minutes</span>(<span class="dv">10</span>)
+<span class="co">#&gt; [1] &quot;10M 0S&quot;</span>
+<span class="kw">hours</span>(<span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">24</span>))
+<span class="co">#&gt; [1] &quot;12H 0M 0S&quot; &quot;24H 0M 0S&quot;</span>
+<span class="kw">days</span>(<span class="dv">7</span>)
+<span class="co">#&gt; [1] &quot;7d 0H 0M 0S&quot;</span>
+<span class="kw">months</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)
+<span class="co">#&gt; [1] &quot;1m 0d 0H 0M 0S&quot; &quot;2m 0d 0H 0M 0S&quot; &quot;3m 0d 0H 0M 0S&quot; &quot;4m 0d 0H 0M 0S&quot;</span>
+<span class="co">#&gt; [5] &quot;5m 0d 0H 0M 0S&quot; &quot;6m 0d 0H 0M 0S&quot;</span>
+<span class="kw">weeks</span>(<span class="dv">3</span>)
+<span class="co">#&gt; [1] &quot;21d 0H 0M 0S&quot;</span>
+<span class="kw">years</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;1y 0m 0d 0H 0M 0S&quot;</span></code></pre></div>
+<p>You can add and multiply periods:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">*</span><span class="st"> </span>(<span class="kw">months</span>(<span class="dv">6</span>) <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>))
+<span class="co">#&gt; [1] &quot;60m 10d 0H 0M 0S&quot;</span>
+<span class="kw">days</span>(<span class="dv">50</span>) <span class="op">+</span><span class="st"> </span><span class="kw">hours</span>(<span class="dv">25</span>) <span class="op">+</span><span class="st"> </span><span class="kw">minutes</span>(<span class="dv">2</span>)
+<span class="co">#&gt; [1] &quot;50d 25H 2M 0S&quot;</span></code></pre></div>
+<p>And of course, add them to dates. Compared to durations, periods are more likely to do what you expect:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># A leap year</span>
+<span class="kw">ymd</span>(<span class="st">&quot;2016-01-01&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">dyears</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;2016-12-31&quot;</span>
+<span class="kw">ymd</span>(<span class="st">&quot;2016-01-01&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">years</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;2017-01-01&quot;</span>
+
+<span class="co"># Daylight Savings Time</span>
+one_pm <span class="op">+</span><span class="st"> </span><span class="kw">ddays</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;2016-03-13 14:00:00 EDT&quot;</span>
+one_pm <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] &quot;2016-03-13 13:00:00 EDT&quot;</span></code></pre></div>
+<p>Let’s use periods to fix an oddity related to our flight dates. Some planes appear to have arrived at their destination <em>before</em> they departed from New York City.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(arr_time <span class="op">&lt;</span><span class="st"> </span>dep_time) 
+<span class="co">#&gt; # A tibble: 10,633 x 9</span>
+<span class="co">#&gt;   origin dest  dep_delay arr_delay dep_time            sched_dep_time     </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             </span>
+<span class="co">#&gt; 1 EWR    BQN           9        -4 2013-01-01 19:29:00 2013-01-01 19:20:00</span>
+<span class="co">#&gt; 2 JFK    DFW          59        NA 2013-01-01 19:39:00 2013-01-01 18:40:00</span>
+<span class="co">#&gt; 3 EWR    TPA          -2         9 2013-01-01 20:58:00 2013-01-01 21:00:00</span>
+<span class="co">#&gt; 4 EWR    SJU          -6       -12 2013-01-01 21:02:00 2013-01-01 21:08:00</span>
+<span class="co">#&gt; 5 EWR    SFO          11       -14 2013-01-01 21:08:00 2013-01-01 20:57:00</span>
+<span class="co">#&gt; 6 LGA    FLL         -10        -2 2013-01-01 21:20:00 2013-01-01 21:30:00</span>
+<span class="co">#&gt; # ... with 1.063e+04 more rows, and 3 more variables: arr_time &lt;dttm&gt;,</span>
+<span class="co">#&gt; #   sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;</span></code></pre></div>
+<p>These are overnight flights. We used the same date information for both the departure and the arrival times, but these flights arrived on the following day. We can fix this by adding <code>days(1)</code> to the arrival time of each overnight flight.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt &lt;-<span class="st"> </span>flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">overnight =</span> arr_time <span class="op">&lt;</span><span class="st"> </span>dep_time,
+    <span class="dt">arr_time =</span> arr_time <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(overnight <span class="op">*</span><span class="st"> </span><span class="dv">1</span>),
+    <span class="dt">sched_arr_time =</span> sched_arr_time <span class="op">+</span><span class="st"> </span><span class="kw">days</span>(overnight <span class="op">*</span><span class="st"> </span><span class="dv">1</span>)
+  )</code></pre></div>
+<p>Now all of our flights obey the laws of physics.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(overnight, arr_time <span class="op">&lt;</span><span class="st"> </span>dep_time) 
+<span class="co">#&gt; # A tibble: 0 x 10</span>
+<span class="co">#&gt; # ... with 10 variables: origin &lt;chr&gt;, dest &lt;chr&gt;, dep_delay &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   arr_delay &lt;dbl&gt;, dep_time &lt;dttm&gt;, sched_dep_time &lt;dttm&gt;,</span>
+<span class="co">#&gt; #   arr_time &lt;dttm&gt;, sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   overnight &lt;lgl&gt;</span></code></pre></div>
+</div>
+<div id="intervals" class="section level3">
+<h3><span class="header-section-number">14.4.3</span> Intervals</h3>
+<p>It’s obvious what <code>dyears(1) / ddays(365)</code> should return: one, because durations are always represented by a number of seconds, and a duration of a year is defined as 365 days worth of seconds.</p>
+<p>What should <code>years(1) / days(1)</code> return? Well, if the year was 2015 it should return 365, but if it was 2016, it should return 366! There’s not quite enough information for lubridate to give a single clear answer. What it does instead is give an estimate, with a warning:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">years</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>)
+<span class="co">#&gt; estimate only: convert to intervals for accuracy</span>
+<span class="co">#&gt; [1] 365</span></code></pre></div>
+<p>If you want a more accurate measurement, you’ll have to use an <strong>interval</strong>. An interval is a duration with a starting point: that makes it precise so you can determine exactly how long it is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">next_year &lt;-<span class="st"> </span><span class="kw">today</span>() <span class="op">+</span><span class="st"> </span><span class="kw">years</span>(<span class="dv">1</span>)
+(<span class="kw">today</span>() <span class="op">%--%</span><span class="st"> </span>next_year) <span class="op">/</span><span class="st"> </span><span class="kw">ddays</span>(<span class="dv">1</span>)
+<span class="co">#&gt; [1] 365</span></code></pre></div>
+<p>To find out how many periods fall into an interval, you need to use integer division:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">today</span>() <span class="op">%--%</span><span class="st"> </span>next_year) <span class="op">%/%</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>)
+<span class="co">#&gt; Note: method with signature &#39;Timespan#Timespan&#39; chosen for function &#39;%/%&#39;,</span>
+<span class="co">#&gt;  target signature &#39;Interval#Period&#39;.</span>
+<span class="co">#&gt;  &quot;Interval#ANY&quot;, &quot;ANY#Period&quot; would also be valid</span>
+<span class="co">#&gt; [1] 365</span></code></pre></div>
+</div>
+<div id="summary" class="section level3">
+<h3><span class="header-section-number">14.4.4</span> Summary</h3>
+<p>How do you pick between duration, periods, and intervals? As always, pick the simplest data structure that solves your problem. If you only care about physical time, use a duration; if you need to add human times, use a period; if you need to figure out how long a span is in human units, use an interval.</p>
+<p>Figure <a href="dates-and-times.html#fig:dt-algebra">14.1</a> summarises permitted arithmetic operations between the different data types.</p>
+<div class="figure" style="text-align: center"><span id="fig:dt-algebra"></span>
+<img src="diagrams/datetimes-arithmetic.png" alt="The allowed arithmetic operations between pairs of date/time classes." width="70%" />
+<p class="caption">
+Figure 14.1: The allowed arithmetic operations between pairs of date/time classes.
+</p>
+</div>
+</div>
+<div id="exercises-4" class="section level3">
+<h3><span class="header-section-number">14.4.5</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>Why is there <code>months()</code> but no <code>dmonths()</code>?</p></li>
+<li><p>Explain <code>days(overnight * 1)</code> to someone who has just started learning R. How does it work?</p></li>
+<li><p>Create a vector of dates giving the first day of every month in 2015. Create a vector of dates giving the first day of every month in the <em>current</em> year.</p></li>
+<li><p>Write a function that given your birthday (as a date), returns how old you are in years.</p></li>
+<li><p>Why can’t <code>(today() %--% (today() + years(1)) / months(1)</code> work?</p></li>
+</ol>
+</div>
+</div>
+<div id="time-zones" class="section level2">
+<h2><span class="header-section-number">14.5</span> Time zones</h2>
+<p>Time zones are an enormously complicated topic because of their interaction with geopolitical entities. Fortunately we don’t need to dig into all the details as they’re not all important for data analysis, but there are a few challenges we’ll need to tackle head on.</p>
+<p>The first challenge is that everyday names of time zones tend to be ambiguous. For example, if you’re American you’re probably familiar with EST, or Eastern Standard Time. However, both Australia and Canada also have EST! To avoid confusion, R uses the international standard IANA time zones. These use a consistent naming scheme “<area>/<location>”, typically in the form “&lt;continent&gt;/&lt;city&gt;” (there are a few exceptions because not every country lies on a continent). Examples include “America/New_York”, “Europe/Paris”, and “Pacific/Auckland”.</p>
+<p>You might wonder why the time zone uses a city, when typically you think of time zones as associated with a country or region within a country. This is because the IANA database has to record decades worth of time zone rules. In the course of decades, countries change names (or break apart) fairly frequently, but city names tend to stay the same. Another problem is that name needs to reflect not only to the current behaviour, but also the complete history. For example, there are time zones for both “America/New_York” and “America/Detroit”. These cities both currently use Eastern Standard Time but in 1969-1972 Michigan (the state in which Detroit is located), did not follow DST, so it needs a different name. It’s worth reading the raw time zone database (available at <a href="http://www.iana.org/time-zones" class="uri">http://www.iana.org/time-zones</a>) just to read some of these stories!</p>
+<p>You can find out what R thinks your current time zone is with <code>Sys.timezone()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.timezone</span>()
+<span class="co">#&gt; [1] &quot;Asia/Seoul&quot;</span></code></pre></div>
+<p>(If R doesn’t know, you’ll get an <code>NA</code>.)</p>
+<p>And see the complete list of all time zone names with <code>OlsonNames()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">OlsonNames</span>())
+<span class="co">#&gt; [1] 592</span>
+<span class="kw">head</span>(<span class="kw">OlsonNames</span>())
+<span class="co">#&gt; [1] &quot;Africa/Abidjan&quot;     &quot;Africa/Accra&quot;       &quot;Africa/Addis_Ababa&quot;</span>
+<span class="co">#&gt; [4] &quot;Africa/Algiers&quot;     &quot;Africa/Asmara&quot;      &quot;Africa/Asmera&quot;</span></code></pre></div>
+<p>In R, the time zone is an attribute of the date-time that only controls printing. For example, these three objects represent the same instant in time:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(x1 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2015-06-01 12:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/New_York&quot;</span>))
+<span class="co">#&gt; [1] &quot;2015-06-01 12:00:00 EDT&quot;</span>
+(x2 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2015-06-01 18:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;Europe/Copenhagen&quot;</span>))
+<span class="co">#&gt; [1] &quot;2015-06-01 18:00:00 CEST&quot;</span>
+(x3 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2015-06-02 04:00:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;Pacific/Auckland&quot;</span>))
+<span class="co">#&gt; [1] &quot;2015-06-02 04:00:00 NZST&quot;</span></code></pre></div>
+<p>You can verify that they’re the same time using subtraction:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 <span class="op">-</span><span class="st"> </span>x2
+<span class="co">#&gt; Time difference of 0 secs</span>
+x1 <span class="op">-</span><span class="st"> </span>x3
+<span class="co">#&gt; Time difference of 0 secs</span></code></pre></div>
+<p>Unless otherwise specified, lubridate always uses UTC. UTC (Coordinated Universal Time) is the standard time zone used by the scientific community and roughly equivalent to its predecessor GMT (Greenwich Mean Time). It does not have DST, which makes a convenient representation for computation. Operations that combine date-times, like <code>c()</code>, will often drop the time zone. In that case, the date-times will display in your local time zone:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x4 &lt;-<span class="st"> </span><span class="kw">c</span>(x1, x2, x3)
+x4
+<span class="co">#&gt; [1] &quot;2015-06-01 12:00:00 EDT&quot; &quot;2015-06-01 12:00:00 EDT&quot;</span>
+<span class="co">#&gt; [3] &quot;2015-06-01 12:00:00 EDT&quot;</span></code></pre></div>
+<p>You can change the time zone in two ways:</p>
+<ul>
+<li><p>Keep the instant in time the same, and change how it’s displayed. Use this when the instant is correct, but you want a more natural display.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x4a &lt;-<span class="st"> </span><span class="kw">with_tz</span>(x4, <span class="dt">tzone =</span> <span class="st">&quot;Australia/Lord_Howe&quot;</span>)
+x4a
+<span class="co">#&gt; [1] &quot;2015-06-02 02:30:00 +1030&quot; &quot;2015-06-02 02:30:00 +1030&quot;</span>
+<span class="co">#&gt; [3] &quot;2015-06-02 02:30:00 +1030&quot;</span>
+x4a <span class="op">-</span><span class="st"> </span>x4
+<span class="co">#&gt; Time differences in secs</span>
+<span class="co">#&gt; [1] 0 0 0</span></code></pre></div>
+<p>(This also illustrates another challenge of times zones: they’re not all integer hour offsets!)</p></li>
+<li><p>Change the underlying instant in time. Use this when you have an instant that has been labelled with the incorrect time zone, and you need to fix it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x4b &lt;-<span class="st"> </span><span class="kw">force_tz</span>(x4, <span class="dt">tzone =</span> <span class="st">&quot;Australia/Lord_Howe&quot;</span>)
+x4b
+<span class="co">#&gt; [1] &quot;2015-06-01 12:00:00 +1030&quot; &quot;2015-06-01 12:00:00 +1030&quot;</span>
+<span class="co">#&gt; [3] &quot;2015-06-01 12:00:00 +1030&quot;</span>
+x4b <span class="op">-</span><span class="st"> </span>x4
+<span class="co">#&gt; Time differences in hours</span>
+<span class="co">#&gt; [1] -14.5 -14.5 -14.5</span></code></pre></div></li>
+</ul>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="program-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/hadley/r4ds/edit/master/datetimes.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

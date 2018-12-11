@@ -11,11 +11,11 @@
 
 이 장에서는 R에서 데이터를 일관성 있게 정리하는 법을 학습한다. 이는 타이디(tidy, 깔끔한) 데이터라는 구조이다. 타이디 데이터 형식으로 만들기 위해서는 일부 선행되는 작업이 필요하지만, 장기적으로 이러한 작업이 큰 도움이 된다. tidyverse의 패키지들에 있는 타이디 데이터와 도구를 사용하면 데이터를 기존 표현법에서 다른 표현법으로 훨씬 짧은 시간 안에 처리할 수 있고, 따라서 분석 문제를 다루는 일에 더 많은 시간을 쓸 수 있게 된다. 
 
-이 장에서는 타이디 데이터에 대해 실무적으로 소개하고, <볼드>tidyr</볼드> 패키지에 포함된 도구를 살펴본다. 기본 이론에 대해 더 자세히 알고 싶다면 Journal of Statistical Software 에 실린 Tidy Data 논문을 읽어라. <http://www.jstatsoft.org/v59/i10/paper>
+이 장에서는 타이디 데이터에 대해 실무적으로 소개하고, **tidyr** 패키지에 포함된 도구를 살펴본다. 기본 이론에 대해 더 자세히 알고 싶다면 Journal of Statistical Software 에 실린 [Tidy Data 논문](http://www.jstatsoft.org/v59/i10/paper)을 읽어라. 
 
 ### 준비하기
 
-이 장에서는 지저분한 데이터셋을 정리하는 도구가 있는 <볼드>tidyr</볼드> 패키지에 중점을 둘 것이다. <볼드>tidyr</볼드>은 tidyverse의 핵심 구성원이다. 
+이 장에서는 지저분한 데이터셋을 정리하는 도구가 있는 **tidyr** 패키지에 중점을 둘 것이다. **tidyr** 은 tidyverse 의 핵심 구성원이다. 
 
 
 ```r
@@ -97,7 +97,7 @@ Figure \@ref(fig:tidy-structure) 은 이러한 규칙을 시각적으로 보여�
 1. 데이터셋을 티블에 각각 넣어라. 
 1. 변수를 열에 각각 넣어라. 
  
-위의 예에서는 table1만 타이디하다. 이 테이블만 유일하게 각 열이 변수인 표현이다. 
+위의 예에서는 table1 만 타이디하다. 이 테이블만 유일하게 각 열이 변수인 표현이다. 
  
 데이터가 타이디해야 하는 이유는 무엇인가? 주요 장점은 두 가지이다. 
  
@@ -105,7 +105,7 @@ Figure \@ref(fig:tidy-structure) 은 이러한 규칙을 시각적으로 보여�
 
 1. 변수를 열에 배치하면 R의 벡터화 속성이 가장 잘 발휘된다는 점에서 구체적인 장점이 있다. [뮤테이트](#mutate-funs) 와 [요약 함수](#summary-funs)에서 배웠겠지만, 대부분의 내장 R 함수는 벡터에 작동한다. 이러한 성질 때문에 타이디 데이터로 작업하는 것이 더 자연스럽게 된다. 
  
-<볼드>dplyr, ggplot2</볼드>를 비롯한 tidyverse의 모든 패키지는 타이디 데이터로 동작하도록 설계되었다. 다음은 <코드체>table1</코드체>을 사용하여 작업하는 방법을 보여주는 몇 가지 간단한 예제이다. 
+**dplyr, ggplot2** 를 비롯한 tidyverse의 모든 패키지는 타이디 데이터로 동작하도록 설계되었다. 다음은 `table1` 을 사용하여 작업하는 방법을 보여주는 몇 가지 간단한 예제이다. 
 
 
 ```r
@@ -142,44 +142,38 @@ ggplot(table1, aes(year, cases)) +
 
 ### 연습문제
 
-1.  Using prose, describe how the variables and observations are organised in
-    each of the sample tables.
+1. 변수와 관측값이 각 샘플 테이블에서 어떻게 구성되어 있는지 설명하라. 
 
-1.  Compute the `rate` for `table2`, and `table4a` + `table4b`. 
-    You will need to perform four operations:
+1. `table2` 와 `table4a + table4b` 에서 비율 (`rate` )을 계산하라. 다음의 네 가지 작업을 수행해야 한다. 
 
-    1.  Extract the number of TB cases per country per year.
-    1.  Extract the matching population per country per year.
-    1.  Divide cases by population, and multiply by 10000.
-    1.  Store back in the appropriate place.
-    
-    Which representation is easiest to work with? Which is hardest? Why?
+    1. 연도별, 국가별로 결핵 사례수(case)를 추출하라.   
 
-1.  Recreate the plot showing change in cases over time using `table2`
-    instead of `table1`. What do you need to do first?
+    1. 연도별, 국가별로 해당하는 인구를 추출하라. 
 
-## spread 와 gather
+    1. 사례수를 인구로 나누고 10,000을 곱하라. 
 
-The principles of tidy data seem so obvious that you might wonder if you'll ever encounter a dataset that isn't tidy. Unfortunately, however, most data that you will encounter will be untidy. There are two main reasons:
+    1. 적절한 곳에 다시 저장하라.  
 
-1.  Most people aren't familiar with the principles of tidy data, and it's hard
-    to derive them yourself unless you spend a _lot_ of time working with data.
-    
-1.  Data is often organised to facilitate some use other than analysis. For 
-    example, data is often organised to make entry as easy as possible.
-    
-This means for most real analyses, you'll need to do some tidying. The first step is always to figure out what the variables and observations are. Sometimes this is easy; other times you'll need to consult with the people who originally generated the data. 
-The second step is to resolve one of two common problems:
+1. 가장 쉬운 표현법은 무엇인가? 어느 것이 가장 어려운가? 이유는? 
 
-1. One variable might be spread across multiple columns.
+1. `table1`  대신 `table2` 를 사용하여 시간 경과에 따른 사례수의 변화를 보여주는 플롯을 재생성하라. 먼저 무엇을 해야 하는가? 
 
-1. One observation might be scattered across multiple rows.
+## gather 와 spread
 
-Typically a dataset will only suffer from one of these problems; it'll only suffer from both if you're really unlucky! To fix these problems, you'll need the two most important functions in tidyr: `gather()` and `spread()`.
+타이디 데이터의 원리는 너무 당연해 보여서, 과연 타이디하지 않은 데이터셋을 볼 일은 있을지 의문이 들 것이다. 하지만, 불행하게도 여러분이 마주치게 될 대부분의 데이터는 타이디하지 않을 것이다. 크게 두 가지 이유가 있다. 
 
-### Gathering
+1.  대부분의 사람들은 타이디 데이터의 원리에 익숙하지 않으며, 데이터 작업에 많은 시간을 써야만 타이디 데이터로 만들 수 있다. 
 
-A common problem is a dataset where some of the column names are not names of variables, but _values_ of a variable. Take `table4a`: the column names `1999` and `2000` represent values of the `year` variable, and each row represents two observations, not one.
+1. 데이터는 분석보다는 다른 용도에 편리하도록 구성되는 경우가 많다. 예를 들어 데이터는 가능한 한 쉽게 입력할 수 있도록 구성되기도 한다. 
+ 
+따라서, 대부분의 실제 분석에서는 타이디하게 만드는 작업이 필요하다. 첫번째 단계는 항상 변수와 관측값이 무엇인지 파악하는 것이다. 이 작업이 쉬울 때도 있지만, 어떤 경우에는 데이터를 처음 생성한 사람들과 상의해야 할 수도 있다. 두 번째 단계는 자주 일어나는 다음의 두 가지 문제 중 하나를 해결하는 것이다. 
+
+1. 하나의 변수가 여러 열에 분산되어 있을 수 있다. 
+1. 하나의 관측값이 여러 행에 흩어져 있을 수 있다. 
+
+### Gather
+
+자주 생기는 문제는 데이터셋의 일부 열 이름이 변수 이름이 아니라 변수 값인 경우이다. `table4a` 를 보면 열 이름 1999와 2000은 `year`  변수 값을 나타내며, 각 행은 하나가 아닌 두 개의 관측값을 나타낸다. 
 
 
 ```r
@@ -192,18 +186,15 @@ table4a
 #> 3 China       212258 213766
 ```
 
-To tidy a dataset like this, we need to __gather__ those columns into a new pair of variables. To describe that operation we need three parameters:
+이와 같은 데이터셋을 타이디하게 만들려면 해당 열을 새로운 두 변수로 수집**(gather)** 해야 한다. 이 작업을 설명하기 위해 세 가지 파라미터가 필요하다.
 
-* The set of columns that represent values, not variables. In this example, 
-  those are the columns `1999` and `2000`.
+* 변수가 아니라 값을 나타내는 열 집합. 이 예에서는 열 `1999` 과 열 `2000` 이다.
 
-* The name of the variable whose values form the column names. I call that
-  the `key`, and here it is `year`.
+* 열 이름 자리에 나타난 값의 변수 이름. 이를 나는 `key` 라고 부르며, 여기에서는 `year` 이다.
 
-* The name of the variable whose values are spread over the cells. I call 
-  that `value`, and here it's the number of `cases`.
-  
-Together those parameters generate the call to `gather()`:
+* 셀에 값이 분산되어 있는 변수의 이름. 이를 나는 `value` 라고 부르며, 여기에서는 `cases` (사례수) 이다.
+ 
+이러한 파라미터와 함께 `gather()`  호출을 생성할 수 있다.
 
 
 ```r
@@ -220,14 +211,14 @@ table4a %>%
 #> 6 China       2000  213766
 ```
 
-The columns to gather are specified with `dplyr::select()` style notation. Here there are only two columns, so we list them individually. Note that "1999" and "2000" are non-syntactic names (because they don't start with a letter) so we have to surround them in backticks. To refresh your memory of the other ways to select columns, see [select](#select).
+수집하고자 하는 열을 지정하는 법은 `dplyr::select()`  스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’와 ’2000’은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 [select() 로 열 선택](#select)’을 참조하라.
 
 <div class="figure" style="text-align: center">
 <img src="images/tidy-9.png" alt="Gathering `table4` into a tidy form." width="100%" />
 <p class="caption">(\#fig:tidy-gather)Gathering `table4` into a tidy form.</p>
 </div>
 
-In the final result, the gathered columns are dropped, and we get new `key` and `value` columns. Otherwise, the relationships between the original variables are preserved. Visually, this is shown in Figure \@ref(fig:tidy-gather). We can use `gather()` to tidy `table4b` in a similar fashion. The only difference is the variable stored in the cell values:
+최종 결과에서, 수집된 열은 삭제되고 새 `key` 와 `value`  열이 생성된다. 한편, 원래 변수 간의 관계는 보존된다. 이는 Figure \@ref(fig:tidy-gather) 에 시각적으로 표현되어 있다. `table4b` 를 비슷한 방법으로 타이디하게 할 때 `gather()` 를 사용할 수 있다. 유일한 차이점은 셀 값에 저장된 변수이다.
 
 
 ```r
@@ -244,7 +235,7 @@ table4b %>%
 #> 6 China       2000  1280428583
 ```
 
-To combine the tidied versions of `table4a` and `table4b` into a single tibble, we need to use `dplyr::left_join()`, which you'll learn about in [relational data].
+`table4a` 와 `table4b` 의 타이디하게 된 버전을 하나의 티블로 결합하려면 `dplyr::left_join()` 을 사용해야 한다. 이 내용은 [relational data]에서 다룰 것이다.
 
 
 ```r
@@ -265,9 +256,9 @@ left_join(tidy4a, tidy4b)
 #> 6 China       2000  213766 1280428583
 ```
 
-### Spreading
+### Spread
 
-Spreading is the opposite of gathering. You use it when an observation is scattered across multiple rows. For example, take `table2`: an observation is a country in a year, but each observation is spread across two rows.
+펼치기는 수집하기의 반대이다. 관측값이 여러 행에 흩어져 있을 때 사용한다. 예를 들어 `table2` 를 보자. 하나의 관측값은 한 해, 한 국가에 대한 것이지만, 각 관측값이 두 행에 흩어져 있다.
 
 
 ```r
@@ -284,15 +275,13 @@ table2
 #> # ... with 6 more rows
 ```
 
-To tidy this up, we first analyse the representation in similar way to `gather()`. This time, however, we only need two parameters:
+이것을 타이디하게 하기 위해, 먼저 `gather()` 와 비슷한 방식으로 표현방법을 분석한다. 그러나 이번에는 파라미터가 두 개만 필요하다.
 
-* The column that contains variable names, the `key` column. Here, it's 
-  `type`.
+* 변수 이름을 포함하는 열, 즉 `key` 열. 여기에서는 `type` 이다.
 
-* The column that contains values from multiple variables, the `value`
-  column. Here it's `count`.
+* 여러 변수를 형성하는 값을 포함하는 열, 즉 `value` 열. 여기에서는 `count` 이다.
 
-Once we've figured that out, we can use `spread()`, as shown programmatically below, and visually in Figure \@ref(fig:tidy-spread).
+이 파라미터들을 정하면 `spread()` 를 사용할 수 있다. 코드로는 아래에서 보여주고, 시각적으로는 Figure \@ref(fig:tidy-spread) 에서 보여주고 있다.
 
 
 ```r
@@ -314,13 +303,12 @@ table2 %>%
 <p class="caption">(\#fig:tidy-spread)Spreading `table2` makes it tidy</p>
 </div>
 
-As you might have guessed from the common `key` and `value` arguments, `spread()` and `gather()` are complements. `gather()` makes wide tables narrower and longer; `spread()` makes long tables shorter and wider.
+공통의 `key` 와 `value`  인수를 통해 추측해 본 사람도 있었겠지만, `spread()` 와 `gather()` 는 보완 관계이다. `gather()` 는 넓은 테이블을 더 좁고 길게, `spread()` 는 긴 테이블을 더 짧고 넓게 만든다.
 
-### Exercises
+### 연습문제
 
-1.  Why are `gather()` and `spread()` not perfectly symmetrical?  
-    Carefully consider the following example:
-    
+1.  `gather()` 와 `spread()` 가 완벽하게 대칭이 아닌 이유는 무엇인가? 다음 예제를 주의 깊게 살펴보라.
+
     
     ```r
     stocks <- tibble(
@@ -333,12 +321,11 @@ As you might have guessed from the common `key` and `value` arguments, `spread()
       gather("year", "return", `2015`:`2016`)
     ```
     
-    (Hint: look at the variable types and think about column _names_.)
+    (힌트: 변수 유형을 보고 열 이름에 대해 생각해보라.)
     
-    Both `spread()` and `gather()` have a `convert` argument. What does it 
-    do?
+    `spread()` 와 `gather()` 에는 모두 `convert`  인수가 있다. 어떤 역할을 하는가?
 
-1.  Why does this code fail?
+1.  이 코드가 작동하지 않는 이유는 무엇인가?
 
     
     ```r
@@ -347,8 +334,7 @@ As you might have guessed from the common `key` and `value` arguments, `spread()
     #> Error in inds_combine(.vars, ind_list): Position must be between 0 and n
     ```
 
-1.  Why does spreading this tibble fail? How could you add a new column to fix
-    the problem?
+1.  티블을 펼치는 다음의 코드는 왜 에러가 나는가? 새로운 열을 추가해서 어떻게 문제를 해결할 수 있는가?
 
     
     ```r
@@ -363,8 +349,7 @@ As you might have guessed from the common `key` and `value` arguments, `spread()
     )
     ```
 
-1.  Tidy the simple tibble below. Do you need to spread or gather it?
-    What are the variables?
+1.  다음의 간단한 티블을 타이디하게 하라. 펼치거나 수집할 필요가 있는가? 변수는 무엇인가?
 
     
     ```r
@@ -375,13 +360,13 @@ As you might have guessed from the common `key` and `value` arguments, `spread()
     )
     ```
 
-## Separating and uniting
+## Separate 과 Unite
 
-So far you've learned how to tidy `table2` and `table4`, but not `table3`. `table3` has a different problem: we have one column (`rate`) that contains two variables (`cases` and `population`). To fix this problem, we'll need the `separate()` function. You'll also learn about the complement of `separate()`: `unite()`, which you use if a single variable is spread across multiple columns.
+지금까지 `table2` 와 `table4` 를 타이디하게 하는 방법을 배웠지만 `table3` 은 하지 않았다. `table3` 에는 다른 문제가 있다. 두 개의 변수(`cases`  및 `population` )가 포함된 한 개의 열(`rate` )이 있다. 이 문제를 해결하려면 `separate()` 함수가 필요하다. 또한 하나의 변수가 여러 열에 분산되어 있는 경우에 사용하는, `separate()` 의 보완 함수인 `unite()` 에 대해서도 학습한다.
 
 ### Separate
 
-`separate()` pulls apart one column into multiple columns, by splitting wherever a separator character appears. Take `table3`:
+`separate()` 는 구분 문자가 나타나는 곳마다 쪼개서 하나의 열을 여러 열로 분리한다. `table3` 를 보자.
 
 
 ```r
@@ -397,7 +382,7 @@ table3
 #> 6 China        2000 213766/1280428583
 ```
 
-The `rate` column contains both `cases` and `population` variables, and we need to split it into two variables. `separate()` takes the name of the column to separate, and the names of the columns to separate into, as shown in Figure \@ref(fig:tidy-separate) and the code below.
+`rate` 열은 `cases` 와 `population` 변수를 모두 포함하므로 두 변수로 쪼개야 한다. `separate()` 는 분리할 열 이름과, 분리하여 만들 열 이름을 필요로 한다. Figure \@ref(fig:tidy-separate) 와 다음 코드에서 이를 확인하자.  
 
 
 ```r
@@ -419,7 +404,7 @@ table3 %>%
 <p class="caption">(\#fig:tidy-separate)Separating `table3` makes it tidy</p>
 </div>
 
-By default, `separate()` will split values wherever it sees a non-alphanumeric character (i.e. a character that isn't a number or letter). For example, in the code above, `separate()` split the values of `rate` at the forward slash characters. If you wish to use a specific character to separate a column, you can pass the character to the `sep` argument of `separate()`. For example, we could rewrite the code above as:
+기본적으로 `separate()` 는 숫자나 글자가 아닌 문자를 볼 때마다 값을 쪼갠다. 예를 들어 앞의 코드에서 `separate()` 는 슬래시 문자로 `rate` 값을 쪼갠다. 특정 문자를 사용하여 열을 구분하려면 이를 `separate()` 의 `sep` 인수로 전달하면 된다. 예를 들어 이전 코드를 다음과 같이 다시 작성할 수 있다.
 
 
 ```r
@@ -427,9 +412,9 @@ table3 %>%
   separate(rate, into = c("cases", "population"), sep = "/")
 ```
 
-(Formally, `sep` is a regular expression, which you'll learn more about in [strings].)
+(공식적으로 말하면 `sep` 은 정규표현식이며, [문자열]에서 자세히 배울 것이다.)
 
-Look carefully at the column types: you'll notice that `cases` and `population` are character columns. This is the default behaviour in `separate()`: it leaves the type of the column as is. Here, however, it's not very useful as those really are numbers. We can ask `separate()` to try and convert to better types using `convert = TRUE`:
+열 유형을 주의 깊게 살펴보라. `case` 와 `population` 은 문자형 열이라는 것을 알아챘을 것이다. 이는 `separate()` 의 기본 동작이다. 즉, 열의 유형을 그대로 유지한다. 그러나 이들이 사실은 숫자이므로 기본 동작이 유용하지는 않다. `convert = TRUE` 를 하면 `separate()` 이 더 나은 유형으로 변환을 시도한다.
 
 
 ```r
@@ -446,9 +431,9 @@ table3 %>%
 #> 6 China        2000 213766 1280428583
 ```
 
-You can also pass a vector of integers to `sep`. `separate()` will interpret the integers as positions to split at. Positive values start at 1 on the far-left of the strings; negative value start at -1 on the far-right of the strings. When using integers to separate strings, the length of `sep` should be one less than the number of names in `into`. 
+`sep` 에 정수 벡터를 전달할 수도 있다. `separate()` 는 이 정수를 쪼갤 위치로 해석할 것이다. 양수 값은 문자열의 가장 왼쪽에서 1부터 시작한다. 음수 값은 문자열의 맨 오른쪽에서 -1 부터 시작한다. 정수를 사용하여 문자열을 분리할 때 `sep` 의 길이는 `into` 의 이름 개수보다 하나 작아야 한다.
 
-You can use this arrangement to separate the last two digits of each year. This make this data less tidy, but is useful in other cases, as you'll see in a little bit.
+이 배열을 사용하여 각 연도의 마지막 두 자리를 분리할 수 있다. 이렇게 하면 이 데이터가 덜 깔끔하게 되지만, 어떤 경우에는 유용하다. 잠시 뒤에 보게 될 것이다.
 
 
 ```r
@@ -467,14 +452,14 @@ table3 %>%
 
 ### Unite
 
-`unite()` is the inverse of `separate()`: it combines multiple columns into a single column. You'll need it much less frequently than `separate()`, but it's still a useful tool to have in your back pocket.
+`unite()` 는 `separate()` 의 반대이다. 여러 열을 하나의 열로 결합한다. `separate()` 보다 훨씬 드물게 필요하겠지만, 포켓에 가지고 다닐 만큼 유용한 도구이다.
 
 <div class="figure" style="text-align: center">
 <img src="images/tidy-18.png" alt="Uniting `table5` makes it tidy" width="75%" />
 <p class="caption">(\#fig:tidy-unite)Uniting `table5` makes it tidy</p>
 </div>
 
-We can use `unite()` to rejoin the *century* and *year* columns that we created in the last example. That data is saved as `tidyr::table5`. `unite()` takes a data frame, the name of the new variable to create, and a set of columns to combine, again specified in `dplyr::select()` style:
+`unite()` 를 사용하여 마지막 예제에서 만든 `century` 열과 `year` 열을 다시 결합할 수 있다. 이 데이터는 `tidyr::table5` 로 저장되어 있다. `unite()` 는 데이터프레임, 생성할 새 변수의 이름 및 결합할 열 집합 (이번에도 `dplyr::select()` 방식으로 표현) 을 필요로 한다.
 
 
 ```r
@@ -491,7 +476,7 @@ table5 %>%
 #> 6 China       20_00 213766/1280428583
 ```
 
-In this case we also need to use the `sep` argument. The default will place an underscore (`_`) between the values from different columns. Here we don't want any separator so we use `""`:
+이 경우 `sep`  인수도 사용해야 한다. 기본 설정은 다른 열의 값 사이에 언더스코어 (`_` )를 붙이는 것이다. 여기서는 분리 기호를 원하지 않으므로 `""` 을 사용한다.
 
 
 ```r
@@ -508,11 +493,10 @@ table5 %>%
 #> 6 China       2000  213766/1280428583
 ```
 
-### Exercises
+### 연습문제
 
-1.  What do the `extra` and `fill` arguments do in `separate()`? 
-    Experiment with the various options for the following two toy datasets.
-    
+1.  `separate()` 의 `extra` 인수와 `fill` 인수의 역할은 무엇인가? 다음 두 개의 토이 데이터셋에 다양한 옵션을 실험해보라.
+
     
     ```r
     tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
@@ -522,21 +506,18 @@ table5 %>%
       separate(x, c("one", "two", "three"))
     ```
 
-1.  Both `unite()` and `separate()` have a `remove` argument. What does it
-    do? Why would you set it to `FALSE`?
+1.  ` unite()`  및 `separate()` 에는 모두 `remove`  인수가 있다. 이 인수의 역할은 무엇인가? 왜 `FALSE` 로 설정하겠는가?
 
-1.  Compare and contrast `separate()` and `extract()`.  Why are there
-    three variations of separation (by position, by separator, and with
-    groups), but only one unite?
+1.  `separate()` 와 `extract()` 를 비교대조하라. 분리 방법은 세 가지(위치, 구분 기호, 그룹별)가 있지만 결합하는 방법(unite)은 한 가지인 이유는 무엇인가?
 
-## Missing values
+## 결측값
 
-Changing the representation of a dataset brings up an important subtlety of missing values. Surprisingly, a value can be missing in one of two possible ways:
+데이터셋의 표현 방식을 변경하면 결측값에 중요하고도 미묘한 이슈가 나타난다. 놀랍게도 데이터값은 다음 두 가지 방식으로 결측될 수 있다.
 
-* __Explicitly__, i.e. flagged with `NA`.
-* __Implicitly__, i.e. simply not present in the data.
+* **명시적** 으로 즉, `NA` 로 표시됨.
+* **암묵적** 으로, 즉 단순히 데이터에 존재하지 않음.
 
-Let's illustrate this idea with a very simple data set:
+아주 간단한 데이터셋으로 이를 설명해보자.
 
 
 ```r
@@ -547,17 +528,15 @@ stocks <- tibble(
 )
 ```
 
-There are two missing values in this dataset:
+이 데이터셋에는 다음 두 가지 결측값이 있다.
 
-* The return for the fourth quarter of 2015 is explicitly missing, because
-  the cell where its value should be instead contains `NA`.
-  
-* The return for the first quarter of 2016 is implicitly missing, because it
-  simply does not appear in the dataset.
-  
-One way to think about the difference is with this Zen-like koan: An explicit missing value is the presence of an absence; an implicit missing value is the absence of a presence.
+* 2015 년 4 분기 수익은 명백하게 결측되어 있다. 그 값이 있어야 할 셀에 `NA` 가 대신 있기 때문이다.
 
-The way that a dataset is represented can make implicit values explicit. For example, we can make the implicit missing value explicit by putting years in the columns:
+* 2016 년 1 분기 수익은 암묵적으로 결측되었다. 수익이 데이터셋에 없기 때문이다.
+ 
+다음의 선문답으로 둘의 차이를 생각해볼 수 있다. 명시적 결측값은 결측의 존재이다. 암묵적 결측값은 존재의 결측이다.
+
+데이터셋 표현법으로 암묵적 값을 명시적으로 만들 수 있다. 예를 들어 연도를 열로 넣어 암묵적 결측값을 명시적으로 만들 수 있다.
 
 
 ```r
@@ -572,7 +551,7 @@ stocks %>%
 #> 4     4  NA      2.66
 ```
 
-Because these explicit missing values may not be important in other representations of the data, you can set `na.rm = TRUE` in `gather()` to turn explicit missing values implicit:
+이러한 명시적인 결측값은 어떤 데이터 표현에서는 중요하지 않을 수 있으므로 `gather()` 에서 `na.rm = TRUE` 를 설정하여 명시적 결측값을 암묵적으로 전환할 수 있다.
 
 
 ```r
@@ -590,7 +569,7 @@ stocks %>%
 #> 6     4 2016    2.66
 ```
 
-Another important tool for making missing values explicit in tidy data is `complete()`:
+타이디 데이터에서 결측값을 명시적으로 표현하는 또 다른 중요한 도구로 `complete()` 가 있다.
 
 
 ```r
@@ -608,9 +587,9 @@ stocks %>%
 #> # ... with 2 more rows
 ```
 
-`complete()` takes a set of columns, and finds all unique combinations. It then ensures the original dataset contains all those values, filling in explicit `NA`s where necessary.
+`complete()` 는 열 집합을 취해, 고유한 조합을 모두 찾는다. 그런 다음 원본 데이터셋에 모든 값이 포함되도록, 필요한 곳에 명시적 `NA` 를 채운다.
 
-There's one other important tool that you should know for working with missing values. Sometimes when a data source has primarily been used for data entry, missing values indicate that the previous value should be carried forward:
+결측값 작업할 때 알아야 할 중요한 도구가 하나 더 있다. 데이터 소스가 주로 데이터 입력에 사용된 경우 결측값은 이전 값이 전달되어야 함을 나타낸다.
 
 
 ```r
@@ -623,7 +602,7 @@ treatment <- tribble(
 )
 ```
 
-You can fill in these missing values with `fill()`. It takes a set of columns where you want missing values to be replaced by the most recent non-missing value (sometimes called last observation carried forward).
+이러한 결측값을 `fill()` 을 사용하여 채울 수 있다. 이 함수는 결측값을 가장 최근의 비결측값으로 치환하고자 하는 열(집합)을 취한다. 이를 마지막 관측값 이월이라고도 한다.
 
 
 ```r
@@ -638,30 +617,30 @@ treatment %>%
 #> 4 Katherine Burke          1        4
 ```
 
-### Exercises
+### 연습문제
 
-1.  Compare and contrast the `fill` arguments to `spread()` and `complete()`. 
+1.  ` spread()` 와 `complete()` 의 `fill` 인수를 비교∙대조하라.
 
-1.  What does the direction argument to `fill()` do?
+1.  `fill()` 의 `direction` 인수는 무엇을 하는가? 
 
-## Case Study
+## 사례 연구
 
-To finish off the chapter, let's pull together everything you've learned to tackle a realistic data tidying problem. The `tidyr::who` dataset contains tuberculosis (TB) cases broken down by year, country, age, gender, and diagnosis method. The data comes from the *2014 World Health Organization Global Tuberculosis Report*, available at <http://www.who.int/tb/country/data/download/en/>.
+데이터를 타이디하게 만들기 위해 배운 것을 모두 정리하면서 이 장을 끝내자. `tidyr::who`  데이터셋에는 결핵(TB) 사례가 연도, 국가, 나이, 성별 및 진단 방법별로 세분화되어 있다. 이 데이터는 2014년 세계보건기구 전세계 결핵 보고서에 실렸으며, <http://www.who.int/tb/country/data/download/en/>에서 얻을 수 있다. 
 
-There's a wealth of epidemiological information in this dataset, but it's challenging to work with the data in the form that it's provided:
+이 데이터셋에는 역학 정보가 풍부하게 있지만, 제공된 데이터 형식으로 작업하는 것은 쉽지 않다.
 
 
 ```r
 who
 #> # A tibble: 7,240 x 60
-#>   country iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534
-#>   <chr>   <chr> <chr> <int>       <int>        <int>        <int>
-#> 1 Afghan… AF    AFG    1980          NA           NA           NA
-#> 2 Afghan… AF    AFG    1981          NA           NA           NA
-#> 3 Afghan… AF    AFG    1982          NA           NA           NA
-#> 4 Afghan… AF    AFG    1983          NA           NA           NA
-#> 5 Afghan… AF    AFG    1984          NA           NA           NA
-#> 6 Afghan… AF    AFG    1985          NA           NA           NA
+#>   country     iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534
+#>   <chr>       <chr> <chr> <int>       <int>        <int>        <int>
+#> 1 Afghanistan AF    AFG    1980          NA           NA           NA
+#> 2 Afghanistan AF    AFG    1981          NA           NA           NA
+#> 3 Afghanistan AF    AFG    1982          NA           NA           NA
+#> 4 Afghanistan AF    AFG    1983          NA           NA           NA
+#> 5 Afghanistan AF    AFG    1984          NA           NA           NA
+#> 6 Afghanistan AF    AFG    1985          NA           NA           NA
 #> # ... with 7,234 more rows, and 53 more variables: new_sp_m3544 <int>,
 #> #   new_sp_m4554 <int>, new_sp_m5564 <int>, new_sp_m65 <int>,
 #> #   new_sp_f014 <int>, new_sp_f1524 <int>, new_sp_f2534 <int>,
@@ -683,20 +662,17 @@ who
 #> #   newrel_f65 <int>
 ```
 
-This is a very typical real-life example dataset. It contains redundant columns, odd variable codes, and many missing values. In short, `who` is messy, and we'll need multiple steps to tidy it. Like dplyr, tidyr is designed so that each function does one thing well. That means in real-life situations you'll usually need to string together multiple verbs into a pipeline. 
+이 데이터셋은 매우 전형적인 실데이터이다. 여기에는 열 중복, 이상한 가변 코드 및 다수의 결측값이 있다. 즉, `who`  데이터는 지저분해서 여러 단계를 통해 타이디하게 만들어야 한다. **dplyr** 처럼, **tidyr** 은 각 함수가 한 가지를 잘하도록 설계되었다. 따라서, 일반적으로 실제 상황에서는 여러 동사를 파이프라인으로 함께 연결해야 한다.
 
-The best place to start is almost always to gather together the columns that are not variables. Let's have a look at what we've got: 
+변수가 아닌 열을 모으는 것부터 시작하는 것이 대개 가장 좋다. 다음을 살펴보자.
+ 
+* `country` , `iso2`  및 `iso3` 는 국가를 중복해서 지정하는 세 개의 변수이다.
 
-* It looks like `country`, `iso2`, and `iso3` are three variables that 
-  redundantly specify the country.
-  
-* `year` is clearly also a variable.
+* `year`  또한 분명히 변수이다.
 
-* We don't know what all the other columns are yet, but given the structure 
-  in the variable names (e.g. `new_sp_m014`, `new_ep_m014`, `new_ep_f014`) 
-  these are likely to be values, not variables.
+* 다른 모든 열은 아직 무엇인지 알 수 없지만, 변수 이름 (예: `new_sp_m014` , `new_ep_m014` , `new_ep_f014` )의 구조를 보면 이들은 변수가 아닌 값일 가능성이 있다.
 
-So we need to gather together all the columns from `new_sp_m014` to `newrel_f65`. We don't know what those values represent yet, so we'll give them the generic name `"key"`. We know the cells represent the count of cases, so we'll use the variable `cases`. There are a lot of missing values in the current representation, so for now we'll use `na.rm` just so we can focus on the values that are present.
+따라서 `new_sp_m014` 에서 `newrel_f65` 까지의 모든 열을 모을 필요가 있다. 그 값이 무엇을 나타내는지 아직 알지 못하기 때문에 일반 이름인 ’`key` ’라는 이름을 붙일 것이다. 셀이 사례수를 나타내는 것을 알고 있으므로 변수 `cases` 를 사용한다. 현재 표현에는 많은 결측값이 있으므로 `na.rm` 을 사용하여 있는 값에만 집중할 것이다.
 
 
 ```r
@@ -715,7 +691,7 @@ who1
 #> # ... with 7.604e+04 more rows
 ```
 
-We can get some hint of the structure of the values in the new `key` column by counting them:
+새로운 `key` 열의 값을 세어서 값의 구조에 대한 힌트를 얻을 수 있다.
 
 
 ```r
@@ -733,36 +709,30 @@ who1 %>%
 #> # ... with 50 more rows
 ```
 
-You might be able to parse this out by yourself with a little thought and some experimentation, but luckily we have the data dictionary handy. It tells us:
+머리를 굴려보고 몇 가지를 시도하면 나름대로 값의 구조를 분석할 수 있을 것이다. 하지만 다행스럽게도 우리는 데이터 사전을 써먹을 수 있다. 데이터 사전은 다음을 알려준다.
+ 
+1. 각 열의 처음 세 글자는 해당 열이 포함하는 결핵 사례가, 새로운 사례인지 과거 사례인지를 나타낸다. 이 데이터셋에서 각 열은 새로운 사례를 포함한다.
 
-1.  The first three letters of each column denote whether the column 
-    contains new or old cases of TB. In this dataset, each column contains 
-    new cases.
+1.  그 다음 두 글자는 다음의 결핵의 유형을 기술한다. 
 
-1.  The next two letters describe the type of TB:
-    
-    *   `rel` stands for cases of relapse
-    *   `ep` stands for cases of extrapulmonary TB
-    *   `sn` stands for cases of pulmonary TB that could not be diagnosed by 
-        a pulmonary smear (smear negative)
-    *   `sp` stands for cases of pulmonary TB that could be diagnosed be 
-        a pulmonary smear (smear positive)
+    *   `rel` 은 재발 사례를 의미한다.
+    *   `ep` 는 폐외 (extrapulmonary) 결핵 사례를 의미한다.
+    *   `sn` 은 폐 얼룩으로 보이지 않는 폐결핵의 사례를 의미한다. (smear negative)             
+    *   `sp` 는 폐 얼룩으로 보이는 폐결핵 사례를 의미한다. (smear positive)
 
-3.  The sixth letter gives the sex of TB patients. The dataset groups 
-    cases by males (`m`) and females (`f`).
+1. 여섯 번째 글자는 결핵 환자의 성별을 나타낸다. 남성(`m` )과 여성(`f` )으로 사례를 분류한다.
 
-4.  The remaining numbers gives the age group. The dataset groups cases into 
-    seven age groups:
-    
-    * `014` = 0 -- 14 years old
-    * `1524` = 15 -- 24 years old
-    * `2534` = 25 -- 34 years old
-    * `3544` = 35 -- 44 years old
-    * `4554` = 45 -- 54 years old
-    * `5564` = 55 -- 64 years old
-    * `65` = 65 or older
+1. 나머지 숫자는 연령대를 나타낸다. 다음의 7개 연령대로 사례를 분류한다.
 
-We need to make a minor fix to the format of the column names: unfortunately the names are slightly inconsistent because instead of `new_rel` we have `newrel` (it's hard to spot this here but if you don't fix it we'll get errors in subsequent steps). You'll learn about `str_replace()` in [strings], but the basic idea is pretty simple: replace the characters "newrel" with "new_rel". This makes all variable names consistent.
+    * 014 = 0-14세
+    * 1524 = 15-24세 
+    * 2534 = 25-34세 
+    * 3544 = 35-44세 
+    * 4554 = 45-54세 
+    * 5564 = 55-64세 
+    * 65 = 65세 이상
+ 
+열 이름의 형식을 약간 수정해야 한다. 열 이름이 `new_rel` 이 아니라 `newrel` 이기 때문에 불행하게도 이름에 일관성이 없다. (여기에서 이를 발견해내기는 쉽지 않지만, 수정하지 않으면 이후에 에러가 발생한다.) [문자열]에서 `str_replace()` 에 대해 배우겠지만, 기본적인 아이디어는 간단하다. ’newrel‘ 문자를 ’new_rel‘ 문자로 바꾼다. 이렇게 하면 모든 변수 이름에서 일관성이 유지된다.
 
 
 ```r
@@ -781,7 +751,7 @@ who2
 #> # ... with 7.604e+04 more rows
 ```
 
-We can separate the values in each code with two passes of `separate()`. The first pass will split the codes at each underscore.
+각 코드의 값을 `separate()`  2회 실행하여 분리할 수 있다. 첫 번째 실행은 각 언더스코어마다 코드를 쪼갠다.
 
 
 ```r
@@ -800,7 +770,7 @@ who3
 #> # ... with 7.604e+04 more rows
 ```
 
-Then we might as well drop the `new` column because it's constant in this dataset. While we're dropping columns, let's also drop `iso2` and `iso3` since they're redundant.
+그런 다음, `new` 열은 이 데이터셋에서 상수이므로 제거할 수 있다. 이 참에 `iso2` 와 `iso3` 도 중복이므로 함께 제거하자.
 
 
 ```r
@@ -814,7 +784,7 @@ who4 <- who3 %>%
   select(-new, -iso2, -iso3)
 ```
 
-Next we'll separate `sexage` into `sex` and `age` by splitting after the first character:
+다음으로 `sexage` 를 `sex` 와 `age` 로 분리할 것이다.
 
 
 ```r
@@ -833,9 +803,9 @@ who5
 #> # ... with 7.604e+04 more rows
 ```
 
-The `who` dataset is now tidy!
+자, 이제 `who`  데이터셋은 타이디해졌다!
 
-I've shown you the code a piece at a time, assigning each interim result to a new variable. This typically isn't how you'd work interactively. Instead, you'd gradually build up a complex pipe:
+여기에서 중간 결과를 새로운 변수에 할당하며, 코드를 한 번에 한 조각씩 보았었다. 이는 일반적인 대화식 작업 방식이 아니다. 대신 앞으로 다음과 같이 점차 복잡한 파이프를 만들게 될 것이다.
 
 
 ```r
@@ -847,32 +817,22 @@ who %>%
   separate(sexage, c("sex", "age"), sep = 1)
 ```
 
-### Exercises
+### 연습문제
 
-1.  In this case study I set `na.rm = TRUE` just to make it easier to
-    check that we had the correct values. Is this reasonable? Think about
-    how missing values are represented in this dataset. Are there implicit
-    missing values? What's the difference between an `NA` and zero? 
+1.  이 사례 연구에서 올바른 값을 가지고 있는지 쉽게 확인하기 위해 `na.rm = TRUE` 로 설정했다. 이것은 합리적인가? 이 데이터셋에서 결측값은 어떻게 표현될지 생각해 보라. 암묵적인 결측값이 있는가? `NA` 와 0 의 차이점은 무엇인가?
 
-1.  What happens if you neglect the `mutate()` step?
-    (`mutate(key = stringr::str_replace(key, "newrel", "new_rel"))`)
+1. `mutate()` 단계를 무시하면 어떻게 되는가? `(mutate (key = stringr::str_replace (key, "newrel", "new_rel")))` .
 
-1.  I claimed that `iso2` and `iso3` were redundant with `country`. 
-    Confirm this claim.
+1. `iso2` 와 `iso3` 가 `country` 와 중복된다는 앞의 주장을 확인하라.
 
-1.  For each country, year, and sex compute the total number of cases of 
-    TB. Make an informative visualisation of the data.
+1. 각 `country, year`  및 `sex` 에 대해 총 결핵 사례수를 계산하라. 정보를 시각적으로 보여라.
 
-## Non-tidy data
+## 타이디하지 않은 데이터
 
-Before we continue on to other topics, it's worth talking briefly about non-tidy data. Earlier in the chapter, I used the pejorative term "messy" to refer to non-tidy data. That's an oversimplification: there are lots of useful and well-founded data structures that are not tidy data. There are two main reasons to use other data structures:
+다른 주제로 넘어 가기 전에 타이디하지 않은 데이터에 대해 간단히 이야기 해보자. 이 장의 앞부분에서 타이디하지 않은 데이터를 의미하기 위해 부정적인 용어인 ’지저분한’을 사용했다. 이는 과도하게 단순화한 것이다. 타이디 데이터가 아니더라도 유용하고 잘 구성된, 많은 데이터 구조가 있다. 다른 데이터 구조를 사용하는 데는 주된 이유가 두 가지이다.
 
-* Alternative representations may have substantial performance or space 
-  advantages.
-  
-* Specialised fields have evolved their own conventions for storing data
-  that may be quite different to the conventions of  tidy data.
+* 다른 표현 방식이 성능상, 저장용량상 장점이 클 수 있다.
 
-Either of these reasons means you'll need something other than a tibble (or data frame). If your data does fit naturally into a rectangular structure composed of observations and variables, I think tidy data should be your default choice. But there are good reasons to use other structures; tidy data is not the only way.
+* 전문 분야에서 독자적으로 진화시킨 데이터 저장 규칙이 타이디 데이터의 규칙과는 꽤 다를 수 있다.
 
-If you'd like to learn more about non-tidy data, I'd highly recommend this thoughtful blog post by Jeff Leek: <http://simplystatistics.org/2016/02/17/non-tidy-data/>
+이런 이유로 인해 티블(또는 데이터프레임)이 아닌 다른 것이 필요해진다. 데이터가 관측값과 변수로 구성된 직사각형 구조에 자연스럽게 맞아떨어진다면 타이디 데이터가 기본 선택이어야 한다고 생각한다. 그러나 다른 구조를 사용하는 데도 그럴만한 충분한 이유가 있다. 타이디 데이터만이 유일한 방법은 아니다. 타이디하지 않은 데이터에 대해 더 자세히 알고 싶다면 제프 릭(Jeff Leek)의 깊이 있는 [블로그 게시물](http://simplystatistics.org/2016/02/17/non-tidy-data) 을 적극 추천한다. 

@@ -18,14 +18,6 @@
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-#> ✔ ggplot2 3.1.0.9000     ✔ purrr   0.2.5     
-#> ✔ tibble  1.4.2          ✔ dplyr   0.7.8     
-#> ✔ tidyr   0.8.2          ✔ stringr 1.3.1     
-#> ✔ readr   1.2.1          ✔ forcats 0.3.0
-#> ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
 ```
 
 이 한 줄의 코드만 입력하면 tidyverse 핵심패키지들이 로드되는데, 거의 모든 데이터 분석에서 이 패키지들을 사용할 것이다. 또한 이 코드는 tidyverse의 어떤 함수가 베이스 R 함수들 (혹은 이미 로드한 다른 패키지의 함수들)과 충돌하는지도 알려준다. 
@@ -292,8 +284,6 @@ ggplot(data = mpg) +
 
 1. `facet_grid(drv ~ cyl)`로 만든 플롯에 있는 빈 셀들은 무엇을 의미하는가? 다음의 플롯과 어떻게 연관되는가?
 
-
-    
     
     ```r
     ggplot(data = mpg) + 
@@ -426,7 +416,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
 <img src="visualize_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
 
-같은 원리로 각 레이어마다 다른 데이터를 지정할 수 있다. 여기서 우리의 평활선은 `mpg** 데이터셋의 서브셋인 경차만을 표시했다. `geom_smooth()`의 로컬 데이터 인수는 해당 레이어에 한해서만 `ggplot()`의 전역 데이터 인수를 덮어쓴다.
+같은 원리로 각 레이어마다 다른 데이터를 지정할 수 있다. 여기서 우리의 평활선은 `mpg` 데이터셋의 서브셋인 경차만을 표시했다. `geom_smooth()` 의 로컬 데이터 인수는 해당 레이어에 한해서만 `ggplot()` 의 전역 데이터 인수를 덮어쓴다.
 
 
 ```r
@@ -437,7 +427,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
 <img src="visualize_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
 
-(`filter()`의 작동방식에 대해서 다음 장에서 배울 것이다. 여기에서는 이 명령어는 경차만 선택하라는 것으로 이해하라.) 
+(`filter()` 의 작동방식에 대해서 다음 장에서 배울 것이다. 여기에서는 이 명령어는 경차만 선택하라는 것으로 이해하라.) 
 
 
 ### 연습문제
