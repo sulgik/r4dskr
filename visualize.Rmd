@@ -269,8 +269,6 @@ ggplot(data = mpg) +
 
 1. `facet_grid(drv ~ cyl)`로 만든 플롯에 있는 빈 셀들은 무엇을 의미하는가? 다음의 플롯과 어떻게 연관되는가?
 
-
-    
     ```{r, eval = FALSE}
     ggplot(data = mpg) + 
       geom_point(mapping = aes(x = drv, y = cyl))

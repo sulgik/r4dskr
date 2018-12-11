@@ -12,8 +12,7 @@ R 패키지가 제공하는 데이터를 이용하여 데이터 과학 도구를
 
 ### 준비하기
 
-이 장에서는 tidyverse의 핵심인 **readr** 패키지를 사용하여 플랫 파일을 불러오
-는 방법을 학습한다.
+이 장에서는 tidyverse의 핵심인 **readr** 패키지를 사용하여 플랫 파일을 불러오는 방법을 학습한다.
 
 
 ```r
@@ -76,8 +75,8 @@ read_csv("a,b,c
 매우 일반적인 규칙이다. 이 동작을 조정해야 하는 경우는 두 가지이다.
 
 1.  파일 앞 부분에 메타 데이터 몇 줄이 있는 경우가 있다. `skip = n`을 사용하여
-첫 `n`줄을 건너 뛸 수 있다. 또는 `comment = "#"`을 사용하여 `#`으로 시작하는 모
-든 줄을 무시할 수 있다.
+첫 `n`줄을 건너 뛸 수 있다. 또는 `comment = "#"`을 사용하여 `#`으로 시작하는
+모든 줄을 무시할 수 있다.
 
     
     ```r
@@ -114,8 +113,8 @@ read_csv("a,b,c
 
 (`"\n"`은 새 줄을 추가하는 편리한 단축키이다. [문자열 기초]에서 이
 단축어와 문자열 이스케이프의 다른 유형에 대해 자세히 배운다.)
-다른 방법으로는 `col_names`에 열 이름으로 사용할 문자형 벡터를 전달할 수
-도 있다.
+다른 방법으로는 `col_names`에 열 이름으로 사용할 문자형 벡터를 전달할
+수도 있다.
 
     
     ```r
@@ -313,7 +312,7 @@ readr의 기본 로캘은 미국 중심인데, 왜냐하면 일반적으로 R은
 중요한 것은 코드가 취약하게 된다. 자신의 컴퓨터에서 동작하더라도 코드를 다른 
 국가의 동료에게 이메일로 보낼 때 오류가 발생할 수 있다.
 
-두 번째 문제를 처리하는 `parse_number()`는 숫자 앞뒤의 non-numeric
+두 번째 문제를 처리하는 `parse_number()` 는 숫자 앞뒤의 non-numeric
 character 를 무시한다. 통화 및 백분율에 특히 유용하지만, 텍스트에 포함
 된 숫자를 추출하는 데도 효과적이다.
 
@@ -327,7 +326,7 @@ parse_number("It cost $123.45")
 #> [1] 123
 ```
 
-마지막 문제는 `parse_number()`와 로캘을 조합하여 `parse_number()`가 ‘그룹화 마크’
+마지막 문제는 `parse_number()` 와 로캘을 조합하여 `parse_number()` 가 ‘그룹화 마크’
 를 무시하도록 함으로써 해결할 수 있다.
 
 
@@ -347,10 +346,10 @@ parse_number("123'456'789", locale = locale(grouping_mark = "'"))
 
 ### 문자열 {#readr-strings}
 
-`parse_character()`는 정말 단순할 것처럼 보인다. 입력을 단순히 반환하는 것 아닌가. 
+`parse_character()` 는 정말 단순할 것처럼 보인다. 입력을 단순히 반환하는 것 아닌가. 
 그런데 불행하게도 삶은 그렇게 호락호락하지 않다. 같은 문자열을 나타내는 
 방법은 여러 가지이다. 이게 무슨 이야기인지 이해하려면 컴퓨터가 문자열을 
-표시하는 방법에 대해 깊고 상세하게 들어가야 한다. R에서는 `charToRaw()`를
+표시하는 방법에 대해 깊고 상세하게 들어가야 한다. R에서는 `charToRaw()` 를
 사용하여 문자열의 기본 표현을 볼 수 있다.
 
 
@@ -368,14 +367,14 @@ charToRaw("Hadley")
 영어가 아닌 다른 언어의 경우 더욱 복잡해진다. 컴퓨터 시대 초창기에는 비영어권 
 문자 인코딩을 위한 여러 표준 규격이 있었다. 문자열을 정확하게 해석하기 위해서는 
 값과 인코딩을 모두 알아야했다. 예를 들어 두 가지 일반적인 인코딩은 
-Latin1(ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2(ISO-8859-2, 동유럽 언어들에서 사용)이다. 
-Latin1에서 바이트 `b1`은 ‘±’이지만, Latin2에서는 ‘ą’이다! 
-다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8이 있다. UTF-8은 
-오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
+Latin1 (ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2 (ISO-8859-2, 동유럽 언어들에서 사용)이다. 
+Latin1에서 바이트 `b1` 은 ‘±’이지만, Latin2 에서는 ‘ą’이다! 
+다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8 이 있다. 
+UTF-8 은 오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 
 인코딩할 수 있다.
 
-readr은 모든 곳에서 UTF-8을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정하며, 
-쓸 때는 항상 사용한다. UTF-8은 좋은 기본값이지만, 이를 인식하지 못하는 
+**readr** 은 모든 곳에서 UTF-8 을 사용한다. 데이터를 읽을 때 UTF-8이라고 가정하며, 
+쓸 때는 항상 사용한다. UTF-8 은 좋은 기본값이지만, 이를 인식하지 못하는 
 구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
 화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 
 완전히 외계어들을 볼 수도 있다. 다음의 예를 보자.
@@ -392,7 +391,7 @@ x2
 #> [1] "\x82\xb1\x82\xf1\x82\u0242\xbf\x82\xcd"
 ```
 
-문제를 해결하려면 `parse_character()`에서 인코딩을 지정해야 한다.
+문제를 해결하려면 `parse_character()` 에서 인코딩을 지정해야 한다.
 
 
 ```r
@@ -404,7 +403,7 @@ parse_character(x2, locale = locale(encoding = "Shift-JIS"))
 
 올바른 인코딩을 어떻게 찾을 수 있을까? 운이 좋다면 데이터 문서의 어딘가
 에 포함되었을 것이다. 하지만 불행하게도 그런 경우는 거의 없으므로, readr는
-`guess_encoding()`을 제공하여 사용자가 알아낼 수 있도록 도와준다. 이것은 완벽
+`guess_encoding()` 을 제공하여 사용자가 알아낼 수 있도록 도와준다. 이것은 완벽
 하지도 않고, (앞의 사례와 달리) 텍스트가 많아야 더 잘 작동하지만, 한번 시도
 해볼 만한 방법이다. 올바른 인코딩을 찾기 전에 몇 가지 다른 인코딩을 시도해
 보라.
@@ -424,9 +423,9 @@ guess_encoding(charToRaw(x2))
 #> 1 KOI8-R         0.42
 ```
 
-`guess_encoding()`의 첫 번째 인수로는 파일의 경로 혹은, 이 예제와 같이 원시 벡터 (문자열이 이미 R에 있는 경우 유용함)가 될 수 있다.
+`guess_encoding()` 의 첫 번째 인수로는 파일의 경로 혹은, 이 예제와 같이 원시 벡터 (문자열이 이미 R에 있는 경우 유용함)가 될 수 있다.
 
-인코딩은 방대하고 복잡한 주제이며, 여기서 우리는 단지 겉핥기만 한 것이다. 더 배우고 싶으면 <http://kunststube.net/encoding>에서 자세한 설명을 읽어보길
+인코딩은 방대하고 복잡한 주제이며, 여기서 우리는 단지 겉핥기만 한 것이다. 더 배우고 싶으면 <http://kunststube.net/encoding> 에서 자세한 설명을 읽어보길
 추천한다.
 
 ### 팩터형 {#readr-factors}
@@ -454,17 +453,16 @@ parse_factor(c("apple", "banana", "bananana"), levels = fruit)
 그러나 입력값에 문제가 많이 있는 경우에는, 그 입력값을 우선 문자형 벡터로
 남겨두고 [문자열]과 [팩터형]에서 배울 도구를 사용하여 정리하는 것이 쉬울 때가 많다.
 
-### Dates, date-times, 시간 {#readr-datetimes}
+### Dates, date-times, times {#readr-datetimes}
 
-You pick between three parsers depending on whether you want a date (the number of days since 1970-01-01), 
-a date-time (the number of seconds since midnight 1970-01-01), or a time (the number of seconds since midnight). 
-When called without any additional arguments:
+원하는 것이 date (1970-01-01 이후의 일 수), date-time (1970-01-01 자정 이후의
+초 수), time (자정 이후의 초 수)인지에 따라 세 가지 파서 중에서 선택하면 된
+다. 추가 인수 없는 각 파서의 동작은 다음과 같다.
 
-*   `parse_datetime()` expects an ISO8601 date-time. ISO8601 is an
-    international standard in which the components of a date are
-    organised from biggest to smallest: year, month, day, hour, minute, 
-    second.
-    
+* `parse_datetime()`은 ISO 8601 date-time 을 입력으로 한다. ISO
+8601은 국제 표준인데 날짜가 가장 큰 것부터 가장 작은 것(즉, 년, 월, 일, 시,
+분, 초)으로 구성된다.
+
     
     ```r
     parse_datetime("2010-10-01T2010")
@@ -474,12 +472,10 @@ When called without any additional arguments:
     #> [1] "2010-10-10 UTC"
     ```
     
-    This is the most important date/time standard, and if you work with
-    dates and times frequently, I recommend reading
-    <https://en.wikipedia.org/wiki/ISO_8601>
-    
-*   `parse_date()` expects a four digit year, a `-` or `/`, the month, a `-` 
-    or `/`, then the day:
+    ISO 8601은 가장 중요한 날짜/시간 표준이며, 날짜와 시간을 자주 다루는 경우 
+    <https://en.wikipedia.org/wiki/ISO_8601> 을 읽어볼 것을 추천한다.
+
+*   `parse_date()` 는 네 자리 연도, `-` 또는 `/`, 월, `-` 또는 `/`, 날짜를 입력으로 한다.
     
     
     ```r
@@ -487,9 +483,9 @@ When called without any additional arguments:
     #> [1] "2010-10-01"
     ```
 
-*   `parse_time()` expects the hour, `:`, minutes, optionally `:` and seconds, 
-    and an optional am/pm specifier:
-  
+*   `parse_time()` 은 시, `:`, 분 그리고 선택적으로 `:`, 초, 선택적 a.m./p.m 구분자를
+입력으로 한다.
+
     
     ```r
     library(hms)
@@ -499,42 +495,41 @@ When called without any additional arguments:
     #> 20:10:01
     ```
     
-    Base R doesn't have a great built in class for time data, so we use 
-    the one provided in the hms package.
+    베이스 R에는 시간 데이터를 위한 훌륭한 내장 클래스가 없기 때문에, 우리는
+    hms 패키지에서 제공되는 클래스를 사용한다.
 
-If these defaults don't work for your data you can supply your own date-time `format`, built up of the following pieces:
+이러한 기본 설정으로 주어진 데이터를 처리하지 못한다면 다음의 요소들로 이루어진 자신만의 날짜-시간 형식(`format`)을 만들어 쓸 수 있다.
 
 Year
-: `%Y` (4 digits). 
-: `%y` (2 digits); 00-69 -> 2000-2069, 70-99 -> 1970-1999.
+: `%Y` (4 자리). 
+: `%y` (2 자리); 00-69 -> 2000-2069, 70-99 -> 1970-1999.
 
 Month
-: `%m` (2 digits).
-: `%b` (abbreviated name, like "Jan").
-: `%B` (full name, "January").
+: `%m` (2 자리).
+: `%b` ("Jan"과 같이 축약된 명칭).
+: `%B` (전체 명칭, "January").
 
 Day
-: `%d` (2 digits).
-: `%e` (optional leading space).
+: `%d` (2 자리).
+: `%e` (선택적 선행 공백).
 
 Time
-: `%H` 0-23 hour.
-: `%I` 0-12, must be used with `%p`.
-: `%p` AM/PM indicator.
-: `%M` minutes.
-: `%S` integer seconds.
-: `%OS` real seconds. 
-: `%Z` Time zone (as name, e.g. `America/Chicago`). Beware of abbreviations:
-  if you're American, note that "EST" is a Canadian time zone that does not
-  have daylight savings time. It is _not_ Eastern Standard Time! We'll
-  come back to this [time zones].
-: `%z` (as offset from UTC, e.g. `+0800`). 
+: `%H` 0-23 시간.
+: `%I` 0-12, `%p`와 함께 사용해야 함.
+: `%p` AM/PM 구분자.
+: `%M` 분.
+: `%S` 정수 초.
+: `%OS` 실수 초. 
+: `%Z` 시간대 (이름, 예 `America/Chicago`). 참고: 줄임말에 주의하라. ‘EST’는 일광 절약 시간제가 없는 
+캐나다 표준 시간대임을 주의하라. 그것은 동부 표준시가 아니다! [시간대]에서 이를 다시 살펴보겠다.
+: `%z` (UTC와의 오프셋, 예: `+0800`). 
 
-Non-digits
-: `%.` skips one non-digit character.
-: `%*` skips any number of non-digits.
+숫자가 아닌 문자
+: `%.` 숫자가 아닌 문자 하나를 건너뛴다.
+: `%*` 숫자가 아닌 문자 모두를 건너뛴다.
 
-The best way to figure out the correct format is to create a few examples in a character vector, and test with one of the parsing functions. For example:
+올바른 포맷을 파악하는 가장 좋은 방법은 문자형 벡터로 몇 가지 예제를 만들고, 
+파싱함수 중 하나로 테스트하는 것이다.
 
 
 ```r
@@ -546,7 +541,9 @@ parse_date("01/02/15", "%y/%m/%d")
 #> [1] "2001-02-15"
 ```
 
-If you're using `%b` or `%B` with non-English month names, you'll need to set the  `lang` argument to `locale()`. See the list of built-in languages in `date_names_langs()`, or if your language is not already included, create your own with `date_names()`.
+비영어권의 월 이름에 `%b` 또는 `%B`를 사용하는 경우, `locale()`의 `lang` 인수를 설정해야 한다. 
+`date_names_langs()`에 내장된 언어 목록을 보라. 자신의 언어가 아직
+포함되어 있지 않았으면 `date_names()`를 사용하여 생성하라.
 
 
 ```r
@@ -554,30 +551,25 @@ parse_date("1 janvier 2015", "%d %B %Y", locale = locale("fr"))
 #> [1] "2015-01-01"
 ```
 
-### Exercises
+### 연습문제
 
-1.  What are the most important arguments to `locale()`? 
+1.  `locale()`에서 가장 중요한 인수들은 무엇인가? 
 
-1.  What happens if you try and set `decimal_mark` and `grouping_mark` 
-    to the same character? What happens to the default value of 
-    `grouping_mark` when you set `decimal_mark` to ","? What happens
-    to the default value of `decimal_mark` when you set the `grouping_mark`
-    to "."?
+1.  `decimal_mark` 와 `grouping_mark` 를 동일 문자로 설정하려고 하면 어떻게 되는가? 
+`decimal_mark`를 ‘,’로 설정하면 `grouping_mark`의 기본값은 어떻게 되는가?
 
-1.  I didn't discuss the `date_format` and `time_format` options to
-    `locale()`. What do they do? Construct an example that shows when 
-    they might be useful.
+1.  `locale()`의 `date_format` 및 `time_format` 옵션에 대해서는 논의하지 않았다. 이
+들이 하는 일은 무엇인가? 이들이 유용할 수 있는 경우를 보여주는 예제를
+작성해보라.
 
-1.  If you live outside the US, create a new locale object that encapsulates 
-    the settings for the types of file you read most commonly.
+1.  가장 많이 읽는 파일 형식에 대한 설정을 압축한 새로운 로캘 객체를 만들어
+보라.
+
+1.  `read_csv()` 와 `read_csv2()` 은 무엇이 다른가?
     
-1.  What's the difference between `read_csv()` and `read_csv2()`?
-    
-1.  What are the most common encodings used in Europe? What are the
-    most common encodings used in Asia? Do some googling to find out.
+1.  유럽에서 사용되는 가장 일반적인 인코딩은 무엇인가? 아시아에서 가장 많이 사용되는 인코딩은 무엇인가? 구글 검색해서 알아보라.
 
-1.  Generate the correct format string to parse each of the following 
-    dates and times:
+1.  올바른 형식 문자열을 생성하여 다음 날짜와 시간을 파싱하라.
     
     
     ```r
@@ -590,16 +582,20 @@ parse_date("1 janvier 2015", "%d %B %Y", locale = locale("fr"))
     t2 <- "11:15:10.12 PM"
     ```
 
-## Parsing a file
+## 파일 파싱하기
 
-Now that you've learned how to parse an individual vector, it's time to return to the beginning and explore how readr parses a file. There are two new things that you'll learn about in this section:
+이제까지 개별 벡터를 파싱하는 방법을 배웠으므로, 처음으로 돌아가서 readr이
+파일을 파싱하는 방법을 알아볼 차례이다. 이 절에서는 다음의 두 방법을 배운다.
 
-1. How readr automatically guesses the type of each column.
-1. How to override the default specification.
+1. readr이 각 열의 유형을 자동으로 추측하는 방법.
+1. 기본 사양을 재정의하는 방법.
 
-### Strategy
+### 전략
 
-readr uses a heuristic to figure out the type of each column: it reads the first 1000 rows and uses some (moderately conservative) heuristics to figure out the type of each column. You can emulate this process with a character vector using `guess_parser()`, which returns readr's best guess, and `parse_guess()` which uses that guess to parse the column:
+readr은 휴리스틱 방법을 사용하여 각 열의 유형을 파악한다. 첫 번째 1000행을
+읽고 (적절히 보수적인) 휴리스틱 방법을 사용하여 각 열의 유형을 찾는다.
+`guess_parser()`(readr의 추정을 반환)와 `parse_guess()` (앞의 추정을 사용하여
+열을 파싱)를 사용하여 문자형 벡터에 이 과정을 재현해볼 수 있다.
 
 
 ```r
@@ -618,32 +614,31 @@ str(parse_guess("2010-10-10"))
 #>  Date[1:1], format: "2010-10-10"
 ```
 
-The heuristic tries each of the following types, stopping when it finds a match:
+이 휴리스틱 방법은 다음 유형들을 각각 시도하여 일치하는 항목을 찾으면 멈춘다.
 
-* logical: contains only "F", "T", "FALSE", or "TRUE".
-* integer: contains only numeric characters (and `-`).
-* double: contains only valid doubles (including numbers like `4.5e-5`).
-* number: contains valid doubles with the grouping mark inside.
-* time: matches the default `time_format`.
-* date: matches the default `date_format`.
-* date-time: any ISO8601 date.
+* 논리형: "F", "T", "FALSE", "TRUE"만 포함.
+* 정수형: 수치형 문자(와 `-`)만 포함.
+* 더블형: (`4.5e-5`와 같은 숫자를 포함하는) 유효한 더블형만 포함.
+* 숫자: 내부에 그룹화 마크가 있는 유효한 더블형을 포함.
+* 타임형: `time_format`의 기본형식과 일치.
+* 데이트형: `date_format`의 기본형식과 일치.
+* 데이트-시간형: ISO8601 날짜.
 
-If none of these rules apply, then the column will stay as a vector of strings.
+이러한 규칙 중 어느 것도 적용되지 않으면 해당 열은 문자열 벡터로 그대로 남는다.
 
-### Problems
+### 문제점
 
-These defaults don't always work for larger files. There are two basic problems:
+큰 파일의 경우 이러한 기본값이 항상 잘 작동하지는 않는다. 두 가지 문제가
+있다.
 
-1.  The first thousand rows might be a special case, and readr guesses
-    a type that is not sufficiently general. For example, you might have 
-    a column of doubles that only contains integers in the first 1000 rows. 
+1. 처음 1,000행이 특수한 경우이어서 readr이 충분히 일반적이지 않은 유형으로 
+추측할 수 있다. 예를 들어 첫 번째 1,000개의 행에 정수만 있는 더블형 열이 있을 수 있다.
 
-1.  The column might contain a lot of missing values. If the first 1000
-    rows contain only `NA`s, readr will guess that it's a character 
-    vector, whereas you probably want to parse it as something more
-    specific.
+1. 열에 결측값이 많이 있을 수 있다. 첫 번째 1,000개의 행에 `NA`만 있는 경우
+readr이 문자형 벡터로 추측했지만, 여러분은 좀 더 구체적으로 파싱하고 싶을 수 있다.
 
-readr contains a challenging CSV that illustrates both of these problems:
+readr에는 이러한 두 가지 문제를 모두 보여주는 까다로운 CSV가 포함되어 있다.
+
 
 
 ```r
@@ -664,9 +659,10 @@ challenge <- read_csv(readr_example("challenge.csv"))
 #> See problems(...) for more details.
 ```
 
-(Note the use of `readr_example()` which finds the path to one of the files included with the package)
-
-There are two printed outputs: the column specification generated by looking at the first 1000 rows, and the first five parsing failures. It's always a good idea to explicitly pull out the `problems()`, so you can explore them in more depth:
+(패키지에 포함된 파일의 경로를 찾아 주는 `readr_example()`을 사용한 것에 주목하라.)
+두 가지가 출력되었다. 첫 번째 1,000개의 행을 보고 생성된 열 상세 내용과
+첫 다섯 개의 파싱 오류가 그것이다. 발생한 문제들을 'problems()'로 명시적으로 추출하여 더
+깊이 탐색하는 것은 좋은 방법이다.
 
 
 ```r
@@ -683,9 +679,11 @@ problems(challenge)
 #> # ... with 994 more rows
 ```
 
-A good strategy is to work column by column until there are no problems remaining. Here we can see that there are a lot of parsing problems with the `x` column - there are trailing characters after the integer value. That suggests we need to use a double parser instead.
+문제가 남아있지 않을 때까지 열 단위로 작업하는 것은 좋은 전략이다. `x` 열에
+파싱 문제가 많다는 것을 알 수 있다. 정수값 다음에 따라오는 문자가 있었던 것이다. 이는 더블형 파서를 사용해야 함을 암시한다.
 
-To fix the call, start by copying and pasting the column specification into your original call:
+이 호출을 수정하기 위해 먼저 열 사양을 복사하여 원래 호출에 붙여 넣어보라.
+
 
 
 ```r
@@ -698,7 +696,7 @@ challenge <- read_csv(
 )
 ```
 
-Then you can tweak the type of the `x` column:
+그런 다음 `x` 열의 유형을 조정할 수 있다.
 
 
 ```r
@@ -711,7 +709,7 @@ challenge <- read_csv(
 )
 ```
 
-That fixes the first problem, but if we look at the last few rows, you'll see that they're dates stored in a character vector:
+첫 번째 문제는 해결되었지만, 마지막 몇 행을 보면 날짜가 문자형 벡터로 저장되었다.
 
 
 ```r
@@ -727,7 +725,7 @@ tail(challenge)
 #> 6 0.608 2019-01-06
 ```
 
-You can fix that by specifying that `y` is a date column:
+`y` 열을 데이트형으로 설정하여 이를 수정할 수 있다.
 
 
 ```r
@@ -750,17 +748,20 @@ tail(challenge)
 #> 6 0.608 2019-01-06
 ```
 
-Every `parse_xyz()` function has a corresponding `col_xyz()` function. You use `parse_xyz()` when the data is in a character vector in R already; you use `col_xyz()` when you want to tell readr how to load the data.
+모든 `parse_xyz()` 함수는 해당하는 `col_xyz()` 함수를 가지고 있다. 데이터가 이미
+R의 문자형 벡터인 경우에는 `parse_xyz()`를 사용하면 되고, readr 이 데이터를 불러오는 방법을 설정할 경우에는 `col_xyz()`를 사용하면 된다.
 
-I highly recommend always supplying `col_types`, building up from the print-out provided by readr. This ensures that you have a consistent and reproducible data import script. If you rely on the default guesses and your data changes, readr will continue to read it in. If you want to be really strict, use `stop_for_problems()`: that will throw an error and stop your script if there are any parsing problems.
+`col_types`를 항상 설정하여 readr 이 생성하는 출력물로부터 만들어 나가는 것을 강력히 추천한다. 
+이렇게 하면 일관되고 재현할 수 있는 데이터 불러오기 스크립트를 갖게 된다. 
+기본값으로 추측하여 데이터를 읽는다면 데이터 변경 시 readr 은 과거 설정으로 읽게 될 것이다. 
+정말로 엄격하게 하고 싶다면 `stop_for_problems()`를 사용하라. 파싱 문제가 생기면 오류를 내며 스크립트를 중단할 것이다.
 
-### Other strategies
+### 기타 전략
 
-There are a few other general strategies to help you parse files:
+파일을 파싱하는 데 도움이 되는 몇 가지 다른 일반적인 전략이 있다.
 
-*   In the previous example, we just got unlucky: if we look at just
-    one more row than the default, we can correctly parse in one shot:
-   
+*   앞의 예제에서 우리는 단지 운이 없었다. 즉, 기본값보다 한 행만 더 살펴보면 한 번에 정확하게 파싱할 수 있다.
+
     
     ```r
     challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
@@ -782,9 +783,8 @@ There are a few other general strategies to help you parse files:
     #> # ... with 1,994 more rows
     ```
 
-*   Sometimes it's easier to diagnose problems if you just read in all
-    the columns as character vectors:
-   
+*   모든 열을 문자형 벡터로 읽으면 문제를 쉽게 진단할 수 있는 경우가 많다.
+
     
     ```r
     challenge2 <- read_csv(readr_example("challenge.csv"), 
@@ -792,9 +792,8 @@ There are a few other general strategies to help you parse files:
     )
     ```
     
-    This is particularly useful in conjunction with `type_convert()`,
-    which applies the parsing heuristics to the character columns in a data
-    frame.
+    이 방법은 `type_convert()` 와 함께 사용하면 특히 유용한데, 이 함수는 휴리스틱한 
+    파싱 방법을 데이터프레임의 문자형 열에 적용한다.
 
     
     ```r
@@ -812,7 +811,7 @@ There are a few other general strategies to help you parse files:
     #> 2 2     2.32 
     #> 3 3     4.56
     
-    # Note the column types
+    # 열 유형을 주의
     type_convert(df)
     #> Parsed with column specification:
     #> cols(
@@ -827,35 +826,38 @@ There are a few other general strategies to help you parse files:
     #> 3     3  4.56
     ```
     
-*   If you're reading a very large file, you might want to set `n_max` to
-    a smallish number like 10,000 or 100,000. That will accelerate your 
-    iterations while you eliminate common problems.
+*   매우 큰 파일을 읽는 경우, `n_max`를 10,000 또는 100,000과 같이 작은 숫자로
+설정할 수 있다. 이렇게 하면 일반적인 문제를 해결하는 동시에 반복작업을
+가속화할 수 있다.
 
-*   If you're having major parsing problems, sometimes it's easier
-    to just read into a character vector of lines with `read_lines()`,
-    or even a character vector of length 1 with `read_file()`. Then you
-    can use the string parsing skills you'll learn later to parse
-    more exotic formats.
+*  파싱에 중대한 문제가 있는 경우에는 `read_lines()`을 이용하여 라인으로 이루
+어진 문자형 벡터로 읽거나 `read_file()`을 이용하여 길이가 1인 문자형 벡터
+로 읽는 것이 더 쉬울 수 있다. 그런 다음 나중에 배울 문자열 파싱 방법을 사
+용하여 좀 더 특이한 포맷을 파싱하면 된다.
 
-## Writing to a file
+## 파일에 쓰기
 
-readr also comes with two useful functions for writing data back to disk: `write_csv()` and `write_tsv()`. Both functions increase the chances of the output file being read back in correctly by:
+readr에는 디스크에 데이터를 다시 기록하는 데 유용한 함수, `write_csv()` 와
+`write_tsv()` 가 있다. 두 함수 모두 다음 동작을 통해 출력 파일이 올바르게 다시
+읽힐 수 있게 한다.
 
-* Always encoding strings in UTF-8.
-  
-* Saving dates and date-times in ISO8601 format so they are easily
-  parsed elsewhere.
+*   항상 UTF-8로 문자열을 인코딩한다.
+*   날짜와 날짜-시간을 ISO 8601 형식으로 저장하여 어디에서든 쉽게 파싱될 수 있게 한다.
 
-If you want to export a csv file to Excel, use `write_excel_csv()` --- this writes a special character (a "byte order mark") at the start of the file which tells Excel that you're using the UTF-8 encoding.
+CSV 파일을 엑셀로 내보내려면 `write_excel_csv()`를 사용하라. 이는 파일의 시작 부분에 
+특수 문자(‘byte order mark’)를 작성하여, UTF-8 인코딩을 사용하고
+있음을 엑셀에 전달한다.
 
-The most important arguments are `x` (the data frame to save), and `path` (the location to save it). You can also specify how missing values are written with `na`, and if you want to `append` to an existing file.
+가장 중요한 인수는 `x` (저장할 데이터프레임)와 `path` (그 데이터프레임을 저장할 위치)이다. 
+결측값을 `na`로 작성하는 방법과 기존 파일에 첨부(`append`) 여부를 지정할
+수도 있다.
 
 
 ```r
 write_csv(challenge, "challenge.csv")
 ```
 
-Note that the type information is lost when you save to csv:
+CSV로 저장하면 유형 정보가 없어진다는 것에 유의하라.
 
 
 ```r
@@ -889,12 +891,10 @@ read_csv("challenge-2.csv")
 #> # ... with 1,994 more rows
 ```
 
-This makes CSVs a little unreliable for caching interim results---you need to recreate the column specification every time you load in. There are two alternatives:
+이런 이유로 중간 결과를 캐싱하기에 CSV를 아주 신뢰할 수 없다. 불러올 때마다 열 사양을 다시 만들어야 한다. 두 가지 대안이 있다.
 
-1.  `write_rds()` and `read_rds()` are uniform wrappers around the base 
-    functions `readRDS()` and `saveRDS()`. These store data in R's custom 
-    binary format called RDS:
-    
+1.  `write_rds()` 과 `read_rds()` 는 베이스 함수인 `readRDS()` 와 `saveRDS()` 의 래퍼 함수들이다. 이들은 RDS라는 R의 커스텀 바이너리 형식으로 데이터를 저장한다.
+
     
     ```r
     write_rds(challenge, "challenge.rds")
@@ -911,8 +911,7 @@ This makes CSVs a little unreliable for caching interim results---you need to re
     #> # ... with 1,994 more rows
     ```
   
-1.  The feather package implements a fast binary file format that can
-    be shared across programming languages:
+1.  feather 패키지는 다른 프로그래밍 언어와 공유할 수 있는 빠른 바이너리 파일 형식을 구현한다.
     
     
     ```r
@@ -931,22 +930,27 @@ This makes CSVs a little unreliable for caching interim results---you need to re
     #> # ... with 1,994 more rows
     ```
 
-Feather tends to be faster than RDS and is usable outside of R. RDS supports list-columns (which you'll learn about in [many models]); feather currently does not.
+    feather는 RDS보다 대체적으로 빠르며 R 외부에서도 사용할 수 있다. RDS 는 리스트-열([many models]에서 배울 것이다)을 지원하지만 feather 는 현재 지원하지 않는다.
 
 
 
-## Other types of data
+## 기타 데이터 유형
 
-To get other types of data into R, we recommend starting with the tidyverse packages listed below. They're certainly not perfect, but they are a good place to start. For rectangular data:
+다른 유형의 데이터를 R로 가져오려면 다음에 나열된 tidyverse 패키지로 시작
+하는 것이 좋다. 이 패키지들은 완벽하지는 않지만 이들부터 시작하면 좋다. 직
+사각형 데이터에 대해 다음 패키지들이 있다.
 
-* __haven__ reads SPSS, Stata, and SAS files.
+* haven은 SPSS, Stata, SAS 파일을 읽을 수 있다.
 
-* __readxl__ reads excel files (both `.xls` and `.xlsx`).
+* readxl은 엑셀 파일(`.xls` 와 `.xlsx`)을 읽을 수 있다.
 
-* __DBI__, along with a database specific backend (e.g. __RMySQL__, 
-  __RSQLite__, __RPostgreSQL__ etc) allows you to run SQL queries against a 
-  database and return a data frame.
+* DBI를 데이터베이스 특화 백엔드(예: **RMySQL**, **RSQLite**, **RPostgreSQL** 등)와 함께 사용하면 데이터베이스에 대해 SQL 쿼리를 실행하고 데이터프레임을
+반환할 수 있다.
 
-For hierarchical data: use __jsonlite__ (by Jeroen Ooms) for json, and __xml2__ for XML. Jenny Bryan has some excellent worked examples at <https://jennybc.github.io/purrr-tutorial/>.
+계층적 데이터의 경우, JSON에는 Jeroen Ooms 가 개발한 **jsonlite**를
+사용하고 XML에는 **xml2**를 사용하면 된다. 이에 관한 좋은 예제는 Jenny Bryan 의 
+<https://jennybc.github.io/purrr-tutorial> 에서 볼 수 있다.
 
-For other file types, try the [R data import/export manual](https://cran.r-project.org/doc/manuals/r-release/R-data.html) and the [__rio__](https://github.com/leeper/rio) package.
+다른 파일 유형의 경우, [R 데이터 가져오기/내보내기 매뉴얼](https://cran.r-project.org/doc/manuals/r-release/R-data.html) 과
+[__rio__](https://github.com/leeper/rio) 를 참고해보라.
+

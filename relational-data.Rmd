@@ -1,6 +1,6 @@
 # Relational data
 
-## Introduction
+## 들어가기
 
 It's rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you're interested in. Collectively, multiple tables of data are called __relational data__ because it is the relations, not just the individual datasets, that are important.
 
@@ -18,7 +18,7 @@ To work with relational data you need verbs that work with pairs of tables. Ther
 
 The most common place to find relational data is in a _relational_ database management system (or RDBMS), a term that encompasses almost all modern databases. If you've used a database before, you've almost certainly used SQL. If so, you should find the concepts in this chapter familiar, although their expression in dplyr is a little different. Generally, dplyr is a little easier to use than SQL because dplyr is specialised to do data analysis: it makes common data analysis operations easier, at the expense of making it more difficult to do other things that aren't commonly needed for data analysis.
 
-### Prerequisites
+### 준비하기
 
 We will explore relational data from `nycflights13` using the two-table verbs from dplyr.
 

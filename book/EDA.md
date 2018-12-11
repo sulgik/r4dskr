@@ -1,23 +1,33 @@
 
-# Exploratory Data Analysis
+# 탐색적 데이터 분석
 
-## Introduction
+## 들어가기
 
-This chapter will show you how to use visualisation and transformation to explore your data in a systematic way, a task that statisticians call exploratory data analysis, or EDA for short. EDA is an iterative cycle. You:
+이 장에서는 데이터를 체계적으로 탐색하기 위해 시각화 및 탐색을 활용하는 과정을 보여준다. 
+통계학자들은 이 작업을 탐색적 데이터 분석 또는 간단히 EDA
+(Exploratory Data Analysis)라고 부르며, EDA는 다음과 같은 반복적인 작업으로 이루어져 있다.
 
-1. Generate questions about your data.
+1. 데이터에 대한 질문을 만든다.
 
-1. Search for answers by visualising, transforming, and modelling your data.
+1. 데이터를 시각화, 변환 및 모델링하여 질문에 대한 답을 찾는다.
 
-1. Use what you learn to refine your questions and/or generate new questions.
+1. 질문을 개선하거나 새로운 질문을 만들기 위해 학습한 방법을 사용한다.
 
-EDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. Some of these ideas will pan out, and some will be dead ends. As your exploration continues, you will home in on a few particularly productive areas that you'll eventually write up and communicate to others.
+EDA는 엄격한 규칙을 가진 형식적인 과정이 아니다. 무엇보다도 EDA는 사고하는 상태이다. 
+EDA의 초기 단계에서는 떠오르는 모든 아이디어를 마음껏 탐색해야 한다. 
+아이디어 중 일부는 진행될 것이고, 일부는 난관에 부딪힐 것이다. 
+이러한 탐색을 지속하면 결국에는 스스로 작성한 것 중 사람들과 소통할 수 있는
+몇 가지 생산적인 영역으로 집중하게 될 것이다.
 
-EDA is an important part of any data analysis, even if the questions are handed to you on a platter, because you always need to investigate the quality of your data. Data cleaning is just one application of EDA: you ask questions about whether your data meets your expectations or not. To do data cleaning, you'll need to deploy all the tools of EDA: visualisation, transformation, and modelling.
+질문이 주어진다고 해도 데이터의 품질은 항상 조사해야 하므로 EDA는 모든
+데이터 분석에서 중요한 부분을 차지한다. 데이터 정제는 EDA의 한 가지 적용일 
+뿐이며 데이터가 여러분의 기대를 충족하는지 질문한다. 데이터를 정제하기
+위해서는 EDA의 모든 도구(시각화, 변환 및 모델링)를 사용해야 한다.
 
-### Prerequisites
+### 준비하기
 
-In this chapter we'll combine what you've learned about dplyr and ggplot2 to interactively ask questions, answer them with data, and then ask new questions.
+이 장에서는 dplyr과 ggplot2에 대해 배운 내용을 질문하기, 데이터로 답하기 및
+새롭게 질문하는 과정과 결합할 것이다.
 
 
 ```r
@@ -26,49 +36,57 @@ library(tidyverse)
 
 ## Questions
 
-> "There are no routine statistical questions, only questionable statistical
-> routines." --- Sir David Cox
+> "판에 박힌 통계적 질문은 없으며 오직 의심스러운 통계적 질문만이 있다."
+> --- 데이빗 콕스 경 (Sir David Cox)
 
-> "Far better an approximate answer to the right question, which is often
-> vague, than an exact answer to the wrong question, which can always be made
-> precise." --- John Tukey
+> "꼼꼼하게 만들어진 잘못된 질문에 대해 정확한 대답을 하는 것보다, 모호하지만
+> 올바른 질문에 근사적인 대답을 하는 것이 훨씬 낫다." --- 존 튜키
 
-Your goal during EDA is to develop an understanding of your data. The easiest way to do this is to use questions as tools to guide your investigation. When you ask a question, the question focuses your attention on a specific part of your dataset and helps you decide which graphs, models, or transformations to make.
+EDA의 목표는 데이터를 이해하는 것이다. 이를 위한 가장 쉬운 방법은 탐색을
+위한 도구로 질문을 사용하는 것이다. 질문을 하면 데이터셋의 특정 부분에 집중하며 
+어떤 그래프, 어떤 모델을 만들지 또는 어떤 변환을 할지 결정하는 데 도움을 준다.
 
-EDA is fundamentally a creative process. And like most creative processes, the key to asking _quality_ questions is to generate a large _quantity_ of questions. It is difficult to ask revealing questions at the start of your analysis because you do not know what insights are contained in your dataset. On the other hand, each new question that you ask will expose you to a new aspect of your data and increase your chance of making a discovery. You can quickly drill down into the most interesting parts of your data---and develop a set of thought-provoking questions---if you follow up each question with a new question based on what you find.
+EDA는 근본적으로 창의적인 과정이다. 대부분의 창의적인 과정과 유사하게
+우수한 문제를 묻는 것의 핵심은 많은 양의 질문을 생성하는 것이다. 분석의 시작 
+단계에서는 데이터셋에 어떤 통찰력이 포함되어 있는지 알 수 없기 때문에
+흥미로운 질문을 하는 것은 어렵다. 그렇지만 각각의 새로운 질문들은 자신을
+데이터의 새로운 측면에 노출시키고 발견할 기회를 증가시킨다. 스스로 발견한
+것을 토대로 만든 새로운 질문들을 따라가다 보면, 데이터의 가장 흥미로운 
+부분을 신속하게 분석하고, 시사하는 바가 큰 질문을 발굴할 수 있다.
 
-There is no rule about which questions you should ask to guide your research. However, two types of questions will always be useful for making discoveries within your data. You can loosely word these questions as:
+탐색을 위해 어떤 질문을 해야 하는가에 대한 규칙은 없다. 그렇지만 데이터
+에서 발굴할 수 있는 언제나 유용한 두 가지 유형의 질문이 있으며, 다음과 같은
+질문들을 시도해볼 수 있다.
 
-1. What type of variation occurs within my variables?
+1. 변수 내에서 어떤 유형의 변동이 발생하는가?
 
-1. What type of covariation occurs between my variables?
+1. 변수 간에 어떤 유형의 공변동이 발생하는가?
 
-The rest of this chapter will look at these two questions. I'll explain what variation and covariation are, and I'll show you several ways to answer each question. To make the discussion easier, let's define some terms: 
+이 장의 남은 부분에서는 이 두 가지 질문에 대해 살펴볼 것이다. 변동과 공변동에 
+대해 설명하고 각 질문에 대한 몇 가지 답변을 제시할 것이다. 논의를 쉽게 하기 위해 몇 가지 용어를 정의하고자 한다.
 
-*   A __variable__ is a quantity, quality, or property that you can measure. 
+*   변수(variable)는 측정할 수 있는 양, 질 또는 속성이다.
 
-*   A __value__ is the state of a variable when you measure it. The value of a
-    variable may change from measurement to measurement.
-  
-*   An __observation__ is a set of measurements made under similar conditions
-    (you usually make all of the measurements in an observation at the same 
-    time and on the same object). An observation will contain several values, 
-    each associated with a different variable. I'll sometimes refer to 
-    an observation as a data point.
+*   값(value)은 변수가 측정될 때의 상태이다. 변수의 값은 측정에 따라 변할 수
+있다.
 
-*   __Tabular data__ is a set of values, each associated with a variable and an
-    observation. Tabular data is _tidy_ if each value is placed in its own
-    "cell", each variable in its own column, and each observation in its own 
-    row. 
+*   관측값(observation)(또는 사례(case))은 유사한 조건에서 측정된 값들의 집합이다 
+(일반적으로 동시에 같은 대상에 대해 모든 관측된 값을 사용한다.).
+관측값은 서로 다른 변수가 조합된 다양한 값을 포함한다. 관측값을 데이터
+포인트라고 부르기도 한다.
 
-So far, all of the data that you've seen has been tidy. In real-life, most data isn't tidy, so we'll come back to these ideas again in [tidy data].
+*   테이블 형식의 데이터(Tabular data)는 각 변수들과 관측값의 조합인 값들의
+집합이다. 테이블 형식의 데이터는 각 값은 ‘셀’에, 변수들은 열에, 관측값은
+행에 있을 때 타이디(tidy)하다고 한다.
+지금까지 보았던 모든 데이터는 타이디 데이터였다. 실제로 데이터 
+대부분은 타이디하지 않기 때문에 [tidy data]에서는 이 부분에 대해 다시 다룰 것이다.
 
-## Variation
+## 변동
 
 **Variation** is the tendency of the values of a variable to change from measurement to measurement. You can see variation easily in real life; if you measure any continuous variable twice, you will get two different results. This is true even if you measure quantities that are constant, like the speed of light. Each of your measurements will include a small amount of error that varies from measurement to measurement. Categorical variables can also vary if you measure across different subjects (e.g. the eye colors of different people), or different times (e.g. the energy levels of an electron at different moments). 
 Every variable has its own pattern of variation, which can reveal interesting information. The best way to understand that pattern is to visualise the distribution of the variable's values.
 
-### Visualising distributions
+### 분포 시각화
 
 How you visualise the distribution of a variable will depend on whether the variable is categorical or continuous. A variable is **categorical** if it can only take one of a small set of values. In R, categorical variables are usually saved as factors or character vectors. To examine the distribution of a categorical variable, use a bar chart:
 
