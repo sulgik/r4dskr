@@ -24,7 +24,7 @@ The easiest place to start when turning an exploratory graphic into an expositor
 ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(color = class)) +
   geom_smooth(se = FALSE) +
-  labs(title = "Fuel efficiency generally decreases with engine size")
+  labs(title = "한글")
 ```
 
 The purpose of a plot title is to summarise the main finding. Avoid titles that just describe what the plot is, e.g. "A scatterplot of engine displacement vs. fuel economy". 
@@ -41,7 +41,7 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(color = class)) +
   geom_smooth(se = FALSE) +
   labs(
-    title = "Fuel efficiency generally decreases with engine size",
+    title = "연비는 ",
     subtitle = "Two seaters (sports cars) are an exception because of their light weight",
     caption = "Data from fueleconomy.gov"
   )
