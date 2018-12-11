@@ -11,7 +11,7 @@
 
 이 장에서는 R에서 데이터를 일관성 있게 정리하는 법을 학습한다. 이는 타이디(tidy, 깔끔한) 데이터라는 구조이다. 타이디 데이터 형식으로 만들기 위해서는 일부 선행되는 작업이 필요하지만, 장기적으로 이러한 작업이 큰 도움이 된다. tidyverse의 패키지들에 있는 타이디 데이터와 도구를 사용하면 데이터를 기존 표현법에서 다른 표현법으로 훨씬 짧은 시간 안에 처리할 수 있고, 따라서 분석 문제를 다루는 일에 더 많은 시간을 쓸 수 있게 된다. 
 
-이 장에서는 타이디 데이터에 대해 실무적으로 소개하고, <볼드>tidyr</볼드> 패키지에 포함된 도구를 살펴본다. 기본 이론에 대해 더 자세히 알고 싶다면 Journal of Statistical Software 에 실린 Tidy Data 논문을 읽어라. <http://www.jstatsoft.org/v59/i10/paper>
+이 장에서는 타이디 데이터에 대해 실무적으로 소개하고, <볼드>tidyr</볼드> 패키지에 포함된 도구를 살펴본다. 기본 이론에 대해 더 자세히 알고 싶다면 Journal of Statistical Software 에 실린 [Tidy Data 논문](http://www.jstatsoft.org/v59/i10/paper)을 읽어라. 
 
 ### 준비하기
 
@@ -92,26 +92,20 @@ Figure \@ref(fig:tidy-structure) 은 이러한 규칙을 시각적으로 보여�
 <p class="caption">(\#fig:tidy-structure)데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다.</p>
 </div>
 
-These three rules are interrelated because it's impossible to only satisfy two of the three. That interrelationship leads to an even simpler set of practical instructions:
+이 세 가지 규칙은 서로 연관되어 있다. 이 셋 중 두 가지만 충족시키는 것은 불가능하기 때문이다. 이 상호 관계때문에 다음의 더 간단하고 실용적인 지침이 도출된다. 
+ 
+1. 데이터셋을 티블에 각각 넣어라. 
+1. 변수를 열에 각각 넣어라. 
+ 
+위의 예에서는 table1만 타이디하다. 이 테이블만 유일하게 각 열이 변수인 표현이다. 
+ 
+데이터가 타이디해야 하는 이유는 무엇인가? 주요 장점은 두 가지이다. 
+ 
+1. 데이터를 일관된 방식으로 저장하면 일반적으로 장점이 있다. 일관된 데이터 구조를 사용하면 이에 적용할 도구들이 공통성을 가지게 되어, 이들을 배우기가 더 쉬워진다. 
 
-1.  Put each dataset in a tibble.
-1.  Put each variable in a column.
-
-In this example, only `table1` is tidy. It's the only representation where each column is a variable.
-
-Why ensure that your data is tidy? There are two main advantages:
-
-1.  There's a general advantage to picking one consistent way of storing
-    data. If you have a consistent data structure, it's easier to learn the
-    tools that work with it because they have an underlying uniformity.
-    
-1.  There's a specific advantage to placing variables in columns because
-    it allows R's vectorised nature to shine. As you learned in
-    [mutate](#mutate-funs) and [summary functions](#summary-funs), most 
-    built-in R functions work with vectors of values. That makes transforming 
-    tidy data feel particularly natural.
-
-dplyr, ggplot2, and all the other packages in the tidyverse are designed to work with tidy data. Here are a couple of small examples showing how you might work with `table1`.
+1. 변수를 열에 배치하면 R의 벡터화 속성이 가장 잘 발휘된다는 점에서 구체적인 장점이 있다. [뮤테이트](#mutate-funs) 와 [요약 함수](#summary-funs)에서 배웠겠지만, 대부분의 내장 R 함수는 벡터에 작동한다. 이러한 성질 때문에 타이디 데이터로 작업하는 것이 더 자연스럽게 된다. 
+ 
+<볼드>dplyr, ggplot2</볼드>를 비롯한 tidyverse의 모든 패키지는 타이디 데이터로 동작하도록 설계되었다. 다음은 <코드체>table1</코드체>을 사용하여 작업하는 방법을 보여주는 몇 가지 간단한 예제이다. 
 
 
 ```r
@@ -146,7 +140,7 @@ ggplot(table1, aes(year, cases)) +
 
 <img src="tidy_files/figure-html/unnamed-chunk-3-1.png" width="50%" style="display: block; margin: auto;" />
 
-### Exercises
+### 연습문제
 
 1.  Using prose, describe how the variables and observations are organised in
     each of the sample tables.
@@ -164,7 +158,7 @@ ggplot(table1, aes(year, cases)) +
 1.  Recreate the plot showing change in cases over time using `table2`
     instead of `table1`. What do you need to do first?
 
-## Spreading and gathering
+## spread 와 gather
 
 The principles of tidy data seem so obvious that you might wonder if you'll ever encounter a dataset that isn't tidy. Unfortunately, however, most data that you will encounter will be untidy. There are two main reasons:
 
@@ -183,7 +177,7 @@ The second step is to resolve one of two common problems:
 
 Typically a dataset will only suffer from one of these problems; it'll only suffer from both if you're really unlucky! To fix these problems, you'll need the two most important functions in tidyr: `gather()` and `spread()`.
 
-### Gathering
+### Gather
 
 A common problem is a dataset where some of the column names are not names of variables, but _values_ of a variable. Take `table4a`: the column names `1999` and `2000` represent values of the `year` variable, and each row represents two observations, not one.
 
@@ -271,7 +265,7 @@ left_join(tidy4a, tidy4b)
 #> 6 China       2000  213766 1280428583
 ```
 
-### Spreading
+### Spread
 
 Spreading is the opposite of gathering. You use it when an observation is scattered across multiple rows. For example, take `table2`: an observation is a country in a year, but each observation is spread across two rows.
 
@@ -322,7 +316,7 @@ table2 %>%
 
 As you might have guessed from the common `key` and `value` arguments, `spread()` and `gather()` are complements. `gather()` makes wide tables narrower and longer; `spread()` makes long tables shorter and wider.
 
-### Exercises
+### 연습문제
 
 1.  Why are `gather()` and `spread()` not perfectly symmetrical?  
     Carefully consider the following example:
@@ -514,7 +508,7 @@ table5 %>%
 #> 6 China       2000  213766/1280428583
 ```
 
-### Exercises
+### 연습문제
 
 1.  What do the `extra` and `fill` arguments do in `separate()`? 
     Experiment with the various options for the following two toy datasets.

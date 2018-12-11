@@ -10,7 +10,7 @@ rmd_files: [
   "transform.Rmd",
   "workflow-scripts.Rmd",
 #  "EDA.Rmd",
-  "workflow-projects.Rmd",
+#  "workflow-projects.Rmd",
 
   "wrangle.Rmd",
   "tibble.Rmd",
