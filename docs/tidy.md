@@ -88,7 +88,7 @@ table4b  # population
 Figure \@ref(fig:tidy-structure) 은 이러한 규칙을 시각적으로 보여준다. 
 
 <div class="figure" style="text-align: center">
-<img src="images/tidy-1.png" alt="데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다." width="100%" />
+<img src="images/tidy-1kr.png" alt="데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다." width="100%" />
 <p class="caption">(\#fig:tidy-structure)데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다.</p>
 </div>
 
@@ -103,9 +103,9 @@ Figure \@ref(fig:tidy-structure) 은 이러한 규칙을 시각적으로 보여�
  
 1. 데이터를 일관된 방식으로 저장하면 일반적으로 장점이 있다. 일관된 데이터 구조를 사용하면 이에 적용할 도구들이 공통성을 가지게 되어, 이들을 배우기가 더 쉬워진다. 
 
-1. 변수를 열에 배치하면 R의 벡터화 속성이 가장 잘 발휘된다는 점에서 구체적인 장점이 있다. [뮤테이트](#mutate-funs) 와 [요약 함수](#summary-funs)에서 배웠겠지만, 대부분의 내장 R 함수는 벡터에 작동한다. 이러한 성질 때문에 타이디 데이터로 작업하는 것이 더 자연스럽게 된다. 
+1. 변수를 열에 배치하면 R의 벡터화 속성이 가장 잘 발휘된다는 점에서 구체적인 장점이 있다. [뮤테이트](#mutate-funs) 와 [요약 함수](#summary-funs) 에서 배웠겠지만, 대부분의 내장 R 함수는 벡터에 작동한다. 이러한 성질 때문에 타이디 데이터로 작업하는 것이 더 자연스럽게 된다. 
  
-**dplyr, ggplot2** 를 비롯한 tidyverse의 모든 패키지는 타이디 데이터로 동작하도록 설계되었다. 다음은 `table1` 을 사용하여 작업하는 방법을 보여주는 몇 가지 간단한 예제이다. 
+**dplyr, ggplot2** 를 비롯한 tidyverse 의 모든 패키지는 타이디 데이터로 동작하도록 설계되었다. 다음은 `table1` 을 사용하여 작업하는 방법을 보여주는 몇 가지 간단한 예제이다. 
 
 
 ```r
@@ -194,7 +194,7 @@ table4a
 
 * 셀에 값이 분산되어 있는 변수의 이름. 이를 나는 `value` 라고 부르며, 여기에서는 `cases` (사례수) 이다.
  
-이러한 파라미터와 함께 `gather()`  호출을 생성할 수 있다.
+이러한 파라미터와 함께 `gather()` 호출을 생성할 수 있다.
 
 
 ```r
@@ -211,7 +211,7 @@ table4a %>%
 #> 6 China       2000  213766
 ```
 
-수집하고자 하는 열을 지정하는 법은 `dplyr::select()`  스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’와 ’2000’은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 [select() 로 열 선택](#select)’을 참조하라.
+수집하고자 하는 열을 지정하는 법은 `dplyr::select()` 스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’ 와 ’2000’ 은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 [select() 로 열 선택](#select)’ 을 참조하라.
 
 <div class="figure" style="text-align: center">
 <img src="images/tidy-9.png" alt="Gathering `table4` into a tidy form." width="100%" />
@@ -235,7 +235,7 @@ table4b %>%
 #> 6 China       2000  1280428583
 ```
 
-`table4a` 와 `table4b` 의 타이디하게 된 버전을 하나의 티블로 결합하려면 `dplyr::left_join()` 을 사용해야 한다. 이 내용은 [relational data]에서 다룰 것이다.
+`table4a` 와 `table4b` 의 타이디하게 된 버전을 하나의 티블로 결합하려면 `dplyr::left_join()` 을 사용해야 한다. 이 내용은 [관계형 데이터](#relational-data) 에서 다룰 것이다.
 
 
 ```r
@@ -303,7 +303,7 @@ table2 %>%
 <p class="caption">(\#fig:tidy-spread)Spreading `table2` makes it tidy</p>
 </div>
 
-공통의 `key` 와 `value`  인수를 통해 추측해 본 사람도 있었겠지만, `spread()` 와 `gather()` 는 보완 관계이다. `gather()` 는 넓은 테이블을 더 좁고 길게, `spread()` 는 긴 테이블을 더 짧고 넓게 만든다.
+공통의 `key` 와 `value` 인수를 통해 추측해 본 사람도 있었겠지만, `spread()` 와 `gather()` 는 보완 관계이다. `gather()` 는 넓은 테이블을 더 좁고 길게, `spread()` 는 긴 테이블을 더 짧고 넓게 만든다.
 
 ### 연습문제
 

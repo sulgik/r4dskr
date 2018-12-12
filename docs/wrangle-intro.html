@@ -5,22 +5,22 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>7 소개 | R for Data Science</title>
+  <title>7 소개 | R 을 활용한 데이터과학 (R for Data Science)</title>
   <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="7 소개 | R for Data Science />
+  <meta property="og:title" content="7 소개 | R 을 활용한 데이터과학 (R for Data Science) />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://r4ds.had.co.nz/" />
-  <meta property="og:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
+  <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
   <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="github-repo" content="hadley/r4ds" />
+  <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 소개 | R for Data Science />
-  <meta name="twitter:site" content="@hadley" />
+  <meta name="twitter:title" content="7 소개 | R 을 활용한 데이터과학 (R for Data Science) />
+  <meta name="twitter:site" content="@sulgik" />
   <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="twitter:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="Garrett Grolemund">
 <meta name="author" content="Hadley Wickham">
@@ -414,7 +414,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 을 활용한 데이터과학 (R for Data Science)</a>
           </h1>
         </div>
 
@@ -425,7 +425,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="wrangle-intro" class="section level1">
 <h1><span class="header-section-number">7</span> 소개</h1>
 <p>여기에서는 시각화 및 모델링하기 편한 형태로 데이터를 R로 가져오는 기술인 데이터 길들이기(wrangling)에 대해 배운다. 이 단계 없이는 데이터 작업을 할 수 없기 때문에 매우 중요한 부분이다. 그림과 같이 ‘데이터 길들이기’에는 세 가지 주요 파트가 있다.</p>
-<p><img src="diagrams/data-science-wrangle.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="diagrams/data-science-wrangle-kr.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>다음과 같이 진행된다.</p>
 <ul>
 <li><p><a href="tibble.html#tibble">티블</a> 에서는 이 책에서 사용하는 데이터프레임의 변형인 <strong>티블(tibble)</strong> 에 대해 학습한다. 일반 데이터프레임과 어떻게 다른지를 배우고 ‘직접’ 생성하는 법을 배울 것이다.</p></li>
@@ -434,10 +434,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>데이터 길들이기에는 우리가 이미 조금 알고 있는 데이터 변환도 포함된다. 실무에서 자주 접하게 될 세 가지 유형의 데이터에 대한 새로운 기술에 중점을 둘 것이다.</p>
 <ul>
-<li><p><a href="relational-data.html#relational-data">관계형 데이터</a> 에서는 여러 개의 상호 연관된 데이터셋으로 작업하기 위한 도구를 제공한다.</p></li>
-<li><p><a href="strings.html#strings">문자열</a> 에서는 문자열 조작을 위한 강력한 도구인 정규표현식을 소개한다.</p></li>
+<li><p><a href="relational-data.html#relational-data">관계형 데이터</a> 에서는 여러 개의 상호 연관된 데이터셋으로 작업하기 위한 도구를 배운다.</p></li>
+<li><p><a href="strings.html#strings">문자열</a> 에서는 문자열 조작을 위한 강력한 도구인 정규표현식을 알아본다.</p></li>
 <li><p><a href="factors.html#factors">팩터형</a> 에서는 어떻게 R 이 범주형 자료를 저장하는지를 배운다. 이 방법은 변수가 가질 수 있는 값이 고정된 집합일 때, 또는 문자열에 대해 알파벳순이 아닌 순서를 사용하려는 경우에 사용할 수 있다.</p></li>
-<li><p><a href="dates-and-times.html#dates-and-times">날씨와 시간</a> 에서는 데이트형과 데이트-타임형을 다루는 핵심 도구를 배울 것이다.</p></li>
+<li><p><a href="dates-and-times.html#dates-and-times">날짜와 시간</a> 에서는 데이트형과 데이트-타임형을 다루는 핵심 도구를 배울 것이다.</p></li>
 </ul>
 
 </div>

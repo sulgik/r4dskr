@@ -5,22 +5,22 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>14 날짜와 시간 | R for Data Science</title>
+  <title>14 날짜와 시간 | R 을 활용한 데이터과학 (R for Data Science)</title>
   <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="14 날짜와 시간 | R for Data Science />
+  <meta property="og:title" content="14 날짜와 시간 | R 을 활용한 데이터과학 (R for Data Science) />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://r4ds.had.co.nz/" />
-  <meta property="og:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
+  <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
   <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="github-repo" content="hadley/r4ds" />
+  <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 날짜와 시간 | R for Data Science />
-  <meta name="twitter:site" content="@hadley" />
+  <meta name="twitter:title" content="14 날짜와 시간 | R 을 활용한 데이터과학 (R for Data Science) />
+  <meta name="twitter:site" content="@sulgik" />
   <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="twitter:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="Garrett Grolemund">
 <meta name="author" content="Hadley Wickham">
@@ -414,7 +414,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 을 활용한 데이터과학 (R for Data Science)</a>
           </h1>
         </div>
 
@@ -426,12 +426,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">14</span> 날짜와 시간</h1>
 <div id="-8" class="section level2">
 <h2><span class="header-section-number">14.1</span> 들어가기</h2>
-<p>이 장에서는 R에서 날짜와 시간을 다루는 법을 볼 것이다. 언뜻 생각하면 날짜와 시간은 간단해 보인다. 일상 생활에서 늘 사용하고 있으며 복잡할 것이 없을 것 같다. 그러나 날짜와 시간에 대해 배울수록 더 복잡해 보일 것이다. 몸풀기로, 간단해 보이는 다음 세 문제를 보자. * 1년은 항상 365일인가? * 1일은 항상 24시간인가? * 1분은 항상 60초인가?</p>
+<p>이 장에서는 R 에서 날짜와 시간을 다루는 법을 볼 것이다. 언뜻 생각하면 날짜와 시간은 간단해 보인다. 일상 생활에서 늘 사용하고 있으며 복잡할 것이 없을 것 같다. 그러나 날짜와 시간에 대해 배울수록 더 복잡해 보일 것이다. 몸풀기로, 간단해 보이는 다음 세 문제를 보자.</p>
+<ul>
+<li>1년은 항상 365일인가?</li>
+<li>1일은 항상 24시간인가?</li>
+<li>1분은 항상 60초인가?</li>
+</ul>
 <p>1년이 항상 365일은 아니라는 걸 대부분 알고 있을 것이다. 하지만 한 해가 윤년인지를 결정하는 규칙을 완벽하게 알고 있는가?(세 파트가 있다.) 세계 많은 곳에서 일광절약제(daylight saving time, DST)를 이용하고 있고, 따라서 어떤 날은 23시이고, 다른 날은 25시라는 것을 기억하는 사람도 있을 것이다. 지구 자전이 점차 느려지기 때문에 윤초가 추가되어 가끔씩 1분이 61초가 된다는 것을 아는 사람은 많지 않을 것이다.</p>
 <p>날짜와 시간은 두 가지 물리 현상(지구 자전과 공전)과 월, 시간대, 일광절약제를 포함한 많은 지정학적 현상을 조화시켜야 하기 때문에 쉬운 문제가 아니다. 이 장에서는 날짜와 시간에 대해 세부 사항을 속속들이 배우지는 않겠지만 일반적인 데이터 분석 문제에 이용할 수 있는 기술들을 탄탄히 배울 것이다.</p>
 <div id="-9" class="section level3">
 <h3><span class="header-section-number">14.1.1</span> 준비하기</h3>
-<p>이 장에서는 <strong>lubridate</strong> 패키지를 주로 살펴볼 것인데, 이 패키지를 쓰면 R에서 날짜와 시간을 다룰 수 있다. <strong>lubridate</strong> 는 날짜/시간 작업을 할 때만 필요하기 때문에, 핵심 tidyverse에 포함되어 있지 않다. 실습데이터로 이용할 <strong>nycflights13</strong> 도 필요하다.</p>
+<p>이 장에서는 <strong>lubridate</strong> 패키지를 주로 살펴볼 것인데, 이 패키지를 쓰면 R에서 날짜와 시간을 다룰 수 있다. <strong>lubridate</strong> 는 날짜/시간 작업을 할 때만 필요하기 때문에, 핵심 tidyverse 에 포함되어 있지 않다. 실습데이터로 이용할 <strong>nycflights13</strong> 도 필요하다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 
 <span class="kw">library</span>(lubridate)
@@ -442,9 +447,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">14.2</span> 날짜/시간 생성하기</h2>
 <p>시각을 나타내는 날짜/시간의 세 가지 유형이 있다.</p>
 <ul>
-<li><p><strong>데이트형(date)</strong> : 날짜. 티블에서 <code>&lt;date&gt;</code> 로 출력한다.</p></li>
-<li><p><strong>타임형(time)</strong> : 하루 중 시간. 티블에서 <code>&lt;time&gt;</code> 으로 출력한다.</p></li>
-<li><p><strong>데이트-타임형(date-time)</strong> : 날짜 더하기 시간. 시점을 고유하게 (일반적으로 가장 가까운 초로) 식별한다. 티블에서 <code>&lt;dttm&gt;</code> 으로 출력한다. R의 다른 부분에서는 POSIXct라고 부르지만, 그다지 유용한 이름은 아니라고 생각한다.</p></li>
+<li><p><strong>데이트형 (date)</strong> : 날짜. 티블에서 <code>&lt;date&gt;</code> 로 출력한다.</p></li>
+<li><p><strong>타임형 (time)</strong> : 하루 중 시간. 티블에서 <code>&lt;time&gt;</code> 으로 출력한다.</p></li>
+<li><p><strong>데이트-타임형 (date-time)</strong> : 날짜 더하기 시간. 시점을 고유하게 (일반적으로 가장 가까운 초로) 식별한다. 티블에서 <code>&lt;dttm&gt;</code> 으로 출력한다. R의 다른 부분에서는 POSIXct 라고 부르지만, 그다지 유용한 이름은 아니라고 생각한다.</p></li>
 </ul>
 <p>R에는 시간 저장을 위한 네이티브 클래스가 없기 때문에 이 장에서는 데이트형과 데이트-타임형에만 집중할 것이다. 네이티브 클래스가 필요하다면 <strong>hms</strong> 패키지를 이용해보라.</p>
 <p>사용자 요구를 충족하는 데이터 유형 중, 가능한 한 가장 간단한 것을 사용해야 한다. 즉 데이트-타임형 대신 데이트형을 써도 된다면 그래야 한다는 말이다. 데이트-타임형은 시간대를 다루기 때문에 훨씬 더 복잡한데 이 장의 끝에서 살펴볼 것이다.</p>

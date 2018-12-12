@@ -5,22 +5,22 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>10 타이디 데이터 | R for Data Science</title>
+  <title>10 타이디 데이터 | R 을 활용한 데이터과학 (R for Data Science)</title>
   <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="10 타이디 데이터 | R for Data Science />
+  <meta property="og:title" content="10 타이디 데이터 | R 을 활용한 데이터과학 (R for Data Science) />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://r4ds.had.co.nz/" />
-  <meta property="og:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
+  <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
   <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="github-repo" content="hadley/r4ds" />
+  <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 타이디 데이터 | R for Data Science />
-  <meta name="twitter:site" content="@hadley" />
+  <meta name="twitter:title" content="10 타이디 데이터 | R 을 활용한 데이터과학 (R for Data Science) />
+  <meta name="twitter:site" content="@sulgik" />
   <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="twitter:image" content="https://r4ds.had.co.nz/cover.png" />
+  <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="Garrett Grolemund">
 <meta name="author" content="Hadley Wickham">
@@ -414,7 +414,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 을 활용한 데이터과학 (R for Data Science)</a>
           </h1>
         </div>
 
@@ -500,7 +500,7 @@ table4b  <span class="co"># population</span>
 </ol>
 <p>Figure <a href="tidy-data.html#fig:tidy-structure">10.1</a> 은 이러한 규칙을 시각적으로 보여준다.</p>
 <div class="figure" style="text-align: center"><span id="fig:tidy-structure"></span>
-<img src="images/tidy-1.png" alt="데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다." width="100%" />
+<img src="images/tidy-1kr.png" alt="데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다." width="100%" />
 <p class="caption">
 Figure 10.1: 데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다.
 </p>
@@ -514,9 +514,9 @@ Figure 10.1: 데이터셋을 타이디하게 만드는 세 가지 규칙: 변수
 <p>데이터가 타이디해야 하는 이유는 무엇인가? 주요 장점은 두 가지이다.</p>
 <ol style="list-style-type: decimal">
 <li><p>데이터를 일관된 방식으로 저장하면 일반적으로 장점이 있다. 일관된 데이터 구조를 사용하면 이에 적용할 도구들이 공통성을 가지게 되어, 이들을 배우기가 더 쉬워진다.</p></li>
-<li><p>변수를 열에 배치하면 R의 벡터화 속성이 가장 잘 발휘된다는 점에서 구체적인 장점이 있다. <a href="transform.html#mutate-funs">뮤테이트</a> 와 <a href="#summary-funs">요약 함수</a>에서 배웠겠지만, 대부분의 내장 R 함수는 벡터에 작동한다. 이러한 성질 때문에 타이디 데이터로 작업하는 것이 더 자연스럽게 된다.</p></li>
+<li><p>변수를 열에 배치하면 R의 벡터화 속성이 가장 잘 발휘된다는 점에서 구체적인 장점이 있다. <a href="transform.html#mutate-funs">뮤테이트</a> 와 <a href="#summary-funs">요약 함수</a> 에서 배웠겠지만, 대부분의 내장 R 함수는 벡터에 작동한다. 이러한 성질 때문에 타이디 데이터로 작업하는 것이 더 자연스럽게 된다.</p></li>
 </ol>
-<p><strong>dplyr, ggplot2</strong> 를 비롯한 tidyverse의 모든 패키지는 타이디 데이터로 동작하도록 설계되었다. 다음은 <code>table1</code> 을 사용하여 작업하는 방법을 보여주는 몇 가지 간단한 예제이다.</p>
+<p><strong>dplyr, ggplot2</strong> 를 비롯한 tidyverse 의 모든 패키지는 타이디 데이터로 동작하도록 설계되었다. 다음은 <code>table1</code> 을 사용하여 작업하는 방법을 보여주는 몇 가지 간단한 예제이다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compute rate per 10,000</span>
 table1 <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rate =</span> cases <span class="op">/</span><span class="st"> </span>population <span class="op">*</span><span class="st"> </span><span class="dv">10000</span>)
@@ -601,7 +601,7 @@ table1 <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="co">#&gt; 4 Afghanistan 2000    2666</span>
 <span class="co">#&gt; 5 Brazil      2000   80488</span>
 <span class="co">#&gt; 6 China       2000  213766</span></code></pre></div>
-<p>수집하고자 하는 열을 지정하는 법은 <code>dplyr::select()</code> 스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’와 ’2000’은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 <a href="transform.html#select">select() 로 열 선택</a>’을 참조하라.</p>
+<p>수집하고자 하는 열을 지정하는 법은 <code>dplyr::select()</code> 스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’ 와 ’2000’ 은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 <a href="transform.html#select">select() 로 열 선택</a>’ 을 참조하라.</p>
 <div class="figure" style="text-align: center"><span id="fig:tidy-gather"></span>
 <img src="images/tidy-9.png" alt="Gathering `table4` into a tidy form." width="100%" />
 <p class="caption">
@@ -620,7 +620,7 @@ Figure 10.2: Gathering <code>table4</code> into a tidy form.
 <span class="co">#&gt; 4 Afghanistan 2000    20595360</span>
 <span class="co">#&gt; 5 Brazil      2000   174504898</span>
 <span class="co">#&gt; 6 China       2000  1280428583</span></code></pre></div>
-<p><code>table4a</code> 와 <code>table4b</code> 의 타이디하게 된 버전을 하나의 티블로 결합하려면 <code>dplyr::left_join()</code> 을 사용해야 한다. 이 내용은 [relational data]에서 다룰 것이다.</p>
+<p><code>table4a</code> 와 <code>table4b</code> 의 타이디하게 된 버전을 하나의 티블로 결합하려면 <code>dplyr::left_join()</code> 을 사용해야 한다. 이 내용은 <a href="relational-data.html#relational-data">관계형 데이터</a> 에서 다룰 것이다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy4a &lt;-<span class="st"> </span>table4a <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>)
 tidy4b &lt;-<span class="st"> </span>table4b <span class="op">%&gt;%</span><span class="st"> </span>
