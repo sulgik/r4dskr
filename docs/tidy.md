@@ -633,14 +633,14 @@ treatment %>%
 ```r
 who
 #> # A tibble: 7,240 x 60
-#>   country iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534
-#>   <chr>   <chr> <chr> <int>       <int>        <int>        <int>
-#> 1 Afghan… AF    AFG    1980          NA           NA           NA
-#> 2 Afghan… AF    AFG    1981          NA           NA           NA
-#> 3 Afghan… AF    AFG    1982          NA           NA           NA
-#> 4 Afghan… AF    AFG    1983          NA           NA           NA
-#> 5 Afghan… AF    AFG    1984          NA           NA           NA
-#> 6 Afghan… AF    AFG    1985          NA           NA           NA
+#>   country     iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534
+#>   <chr>       <chr> <chr> <int>       <int>        <int>        <int>
+#> 1 Afghanistan AF    AFG    1980          NA           NA           NA
+#> 2 Afghanistan AF    AFG    1981          NA           NA           NA
+#> 3 Afghanistan AF    AFG    1982          NA           NA           NA
+#> 4 Afghanistan AF    AFG    1983          NA           NA           NA
+#> 5 Afghanistan AF    AFG    1984          NA           NA           NA
+#> 6 Afghanistan AF    AFG    1985          NA           NA           NA
 #> # ... with 7,234 more rows, and 53 more variables: new_sp_m3544 <int>,
 #> #   new_sp_m4554 <int>, new_sp_m5564 <int>, new_sp_m65 <int>,
 #> #   new_sp_f014 <int>, new_sp_f1524 <int>, new_sp_f2534 <int>,

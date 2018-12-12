@@ -30,7 +30,7 @@
 타이디한 데이터를 얻었다면 첫 번째 단계는 데이터를 **변환(transform)**하는 것이다.
 관심 있는 관측값의 범위를 좁히고(예, 어떤 도시의 모든 사람, 또는 작년부터 모든 데이터), 
 기존 변수의 함수꼴인 새로운 변수를 작성하고(예, 거리와 시간으로부터 속도를 계산), 
-요약 통계량들(예, 빈도나 평균)을 계산하는 것 등이 데이터
+요약 통계량들(예, 빈도나 평균) 을 계산하는 것 등이 데이터
 변환에 속한다. 데이터 정리와 데이터 변형을 묶어서 데이터를 **길들인다(wrangling)**고
 부르는데, 작업하기에 자연스러운 형태로 데이터를 만드는 것이 종종
 싸움처럼 느껴지기 때문이다!
@@ -57,28 +57,18 @@
 모든 프로젝트의 80% 정도는 이 책에서 배울 도구들을 사용해서 해결할 수 있지만, 남은 20%를 처리하려면 다른 도구가 필요하다. 
 이 책을 따라가다 보면 더 배울 수 있는 곳들을 안내 받을 수 있다.
 
-## How this book is organised
+## 이 책의 구성
 
-The previous description of the tools of data science is organised roughly according to the order in which you use them in an analysis (although of course you'll iterate through them multiple times). In our experience, however, this is not the best way to learn them:
 
-* Starting with data ingest and tidying is sub-optimal because 80% of the time 
-  it's routine and boring, and the other 20% of the time it's weird and
-  frustrating. That's a bad place to start learning a new subject! Instead, 
-  we'll start with visualisation and transformation of data that's already been
-  imported and tidied. That way, when you ingest and tidy your own data, your
-  motivation will stay high because you know the pain is worth it.
-  
-* Some topics are best explained with other tools. For example, we believe that
-  it's easier to understand how models work if you already know about 
-  visualisation, tidy data, and programming.
-  
-* Programming tools are not necessarily interesting in their own right, 
-  but do allow you to tackle considerably more challenging problems. We'll
-  give you a selection of programming tools in the middle of the book, and 
-  then you'll see how they can combine with the data science tools to tackle 
-  interesting modelling problems.
+앞에서는 데이터과학 도구들을 분석에서 사용되는 대략의 순서대로 (물론 도구들을 여러 번 반복하겠지만) 구성하여 설명했다. 그러나 우리의 경험에 비추어 볼 때, 이것이 최선의 방법은 아니다.
 
-Within each chapter, we try and stick to a similar pattern: start with some motivating examples so you can see the bigger picture, and then dive into the details. Each section of the book is paired with exercises to help you practice what you've learned. While it's tempting to skip the exercises, there's no better way to learn than practicing on real problems.
+* 데이터 수집 및 정리부터 시작하는 것은 차선책이다. 왜냐하면 80%의 시간은 지루하고, 나머지 20%는 어색하고 힘들기 때문이다. 새로운 주제를 배우는 시작점으로는 좋지 않다! 대신 이미 불러와서 정리된 데이터의 시각화 및 변환부터 시작하겠다. 그렇게 하면 여러분이 직접 데이터를 밀어 넣고 정리할 때, 이 작업들이 힘들지만 가치 있다는 것을 알기 때문에, 동기를 잃지 않을 것이다. 
+
+* 일부 주제는 다른 도구로 가장 잘 설명할 수 있다. 예를 들어 시각화, 타이디한 데이터 및 프로그래밍에 대해 이미 알고 있다면 모델 작동 방식을 확실히 더 쉽게 이해할 수 있을 것이다. 
+
+* 프로그래밍 도구는 그 자체는 흥미로운 것이 아니지만 어려운 문제들을 해결하게 해 준다. 책 중간에 나오는 선별된 프로그래밍 도구들이 데이터 과학 도구와 결합하여 흥미로운 모델링 문제를 해결할 수 있음을 보겠다.
+
+이 책에선 각 장에서 다음의 패턴을 가능한 한 사용하려고 한다. 동기 부여하는 예제로 시작해서 보다 큰 그림을 볼 수 있도록 한 다음, 세부 사항으로 들어간다. 이 책의 각 절마다 학습한 내용을 실습할 수 있는 연습 문제가 있다. 연습 문제를 건너 뛰고 싶겠지만, 실제 문제로 실습하는 것보다 더 좋은 학습 방법은 없다.
 
 ## 배우지 않는 것
 
@@ -92,7 +82,7 @@ Within each chapter, we try and stick to a similar pattern: start with some moti
 스몰데이터부터 시작하는 것이 바람직하다. 이 책에서 배우는 도구를 사용해서 
 수백 메가 바이트의 데이터를 쉽게 처리 할 수 있으며, 조금만 신경을 쓰면
 일반적으로 1-2Gb 데이터까지 작업할 수 있다. 더 큰 데이터(말하자면 10-
-100Gb)를 일상적으로 사용한다면 [data.table](https://github.com/Rdatatable/data.table)에 대해 자세하게 알아야 한다. 
+100Gb) 를 일상적으로 사용한다면 [data.table](https://github.com/Rdatatable/data.table)에 대해 자세하게 알아야 한다. 
 이 책에서는 data.table을 배우지 않는다. 왜냐하면 data.table은 아주 간결한 인터페이스로 
 인해 인간언어를 더 적게 사용하여, 배우기가 더 어렵기 때문이다. 
 그러나 대용량 데이터 작업하는 경우에는, 따로 더 노력하여 data.table을 익히면
@@ -115,37 +105,33 @@ Within each chapter, we try and stick to a similar pattern: start with some moti
 sparklyr, rhipe, ddr과 같은 새로운 도구를 통해 전체 데이터셋에 대해 해결할
 수 있다.
 
-### Python, Julia, and friends
+### Python, Julia
 
-In this book, you won't learn anything about Python, Julia, or any other programming language useful for data science. This isn't because we think these tools are bad. They're not! And in practice, most data science teams use a mix of languages, often at least R and Python.
+이 책에서는 파이썬(Python), 줄리아(Julia) 또는 데이터 과학에 유용한 어떤 프로그래밍 언어에 대해서도 배우지 않는다. 이 도구가 좋지 않기 때문이 아니다. 이들은 훌륭하다! 실제로, 대부분의 데이터 과학팀은 종종 R과 파이썬을 포함한 언어들을 혼합하여 사용한다.
 
-However, we strongly believe that it's best to master one tool at a time. You will get better faster if you dive deep, rather than spreading yourself thinly over many topics. This doesn't mean you should only know one thing, just that you'll generally learn faster if you stick to one thing at a time. You should strive to learn new things throughout your career, but make sure your understanding is solid before you move on to the next interesting thing.
+하지만 한 번에 하나의 도구를 완전히 학습하는 것이 확실히 가장 좋다. 많은 주제를 넓고 얕게 살펴보기다는 깊게 파면 더 빨리 할 수 있을 것이다. 한 가지만 알면 된다는 말이 아니라, 한 번에 한 가지에 몰두하면 빨리 배우게 된다는 의미이다. 여러분은 경력과정에서 새로운 것을 배우려고 노력해야하지만, 재미있는 것으로 넘어가기 전에 확실히 이해했는지 확인하는 것이 좋다.
 
-We think R is a great place to start your data science journey because it is an environment designed from the ground up to support data science. R is not just a programming language, but it is also an interactive environment for doing data science. To support interaction, R is a much more flexible language than many of its peers. This flexibility comes with its downsides, but the big upside is how easy it is to evolve tailored grammars for specific parts of the data science process. These mini languages help you think about problems as a data scientist, while supporting fluent interaction between your brain and the computer.
+R은 처음부터 데이터 과학을 지원하도록 설계된 환경이기 때문에 여기에서부터 데이터과학 여정을 시작하는 것이 좋다고 생각한다. R은 프로그래밍 언어일 뿐만 아니라 데이터 과학을 수행하는 대화식 환경이기도 하다. R은 상호작용을 지원하는데 있어서 다른 것들보다 훨씬 유연하다. 이러한 유연성은 단점이 따라오지만 큰 장점은 데이터 과학 과정의 특정 부분에 맞게 맞춤형 문법을 쉽게 전개할 수 있다는 것이다. 이 미니 언어는 두뇌와 컴퓨터 간의 상호작용을 유창하게 지원하여, 문제에 대해 데이터 과학자로서 사고하게 도와준다.
 
-### Non-rectangular data
+### 비직사각형 데이터
 
-This book focuses exclusively on rectangular data: collections of values that are each associated with a variable and an observation. There are lots of datasets that do not naturally fit in this paradigm: including images, sounds, trees, and text. But rectangular data frames are extremely common in science and industry, and we believe that they are a great place to start your data science journey.
+이 책은 직사각형 데이터(즉, 변수와 관측값이 부여된 값들의 모음)에만 초점을 맞춘다. 이미지, 음성, 트리 및 텍스트와 같이 이 구조에 자연스레 들어맞지 않는 데이터셋도 많다. 그러나 직사각형 데이터프레임은 과학 및 산업 분야에서 극도로 자주 나타나기 때문에 여기에서부터 데이터과학 여정을 시작하면 매우 좋다.
 
-### Hypothesis confirmation
 
-It's possible to divide data analysis into two camps: hypothesis generation and hypothesis confirmation (sometimes called confirmatory analysis). The focus of this book is unabashedly on hypothesis generation, or data exploration. Here you'll look deeply at the data and, in combination with your subject knowledge, generate many interesting hypotheses to help explain why the data behaves the way it does. You evaluate the hypotheses informally, using your scepticism to challenge the data in multiple ways.
+### 가설 확인
 
-The complement of hypothesis generation is hypothesis confirmation. Hypothesis confirmation is hard for two reasons:
 
-1.  You need a precise mathematical model in order to generate falsifiable
-    predictions. This often requires considerable statistical sophistication.
+데이터 분석은 가설 생성과 가설 확인 (종종 확인 분석이라고 함)의 두 가지 캠프로 나눌 수 있다. 이 책의 초점은 가설 생성 또는 데이터 탐색에 있다. 여기에서는 데이터를 깊이 있게 살펴보고, 주제에 대한 지식을 함께 고려하여, 데이터가 왜 그렇게 생성되었는지 설명하는 데 도움되는 흥미로운 가설들을 다수 생성한다. 비판적인 시각으로 데이터를 여러가지 방법으로 탐색하면서 가설을 틀에 박히지 않고 평가하라. 가설 생성에는 가설 확인이 함께 필요하다. 가설 확인은 다음 두 가지 이유로 어렵다.
 
-1.  You can only use an observation once to confirm a hypothesis. As soon as
-    you use it more than once you're back to doing exploratory analysis. 
-    This means to do hypothesis confirmation you need to "preregister" 
-    (write out in advance) your analysis plan, and not deviate from it
-    even when you have seen the data. We'll talk a little about some 
-    strategies you can use to make this easier in.
+1. 조작가능한 예측값을 생성하려면 정확한 수학 모델이 필요하다. 여기에는 매우 정교한 통계학이 필요한 경우가 많다.
 
-It's common to think about modelling as a tool for hypothesis confirmation, and visualisation as a tool for hypothesis generation. But that's a false dichotomy: models are often used for exploration, and with a little care you can use visualisation for confirmation. The key difference is how often do you look at each observation: if you look only once, it's confirmation; if you look more than once, it's exploration.
+1. 가설 확인을 위해서는 관측값을 한 번만 사용할 수 있다. 한 번 이상 사용한다면 그 즉시 탐색 분석으로 돌아가는 것이다. 이는 가설 확인을 하려면 분석 계획을 "사전 등록"(사전에 기록)해야한다는 것을 의미하며, 데이터를 보았을 때에도 계획에서 벗어나지 않아야 한다. 이를 쉽게 하기 위해 사용할 수 있는 몇 가지 전략에 대해 4부에서 이야기하겠다.
+
+모델링은 가설확인 도구이고 시각화는 가설생성 도구로 여기는 것이 일반적이다. 그러나 이는 잘못된 이분법이다. 모델은 종종 탐색에 사용되며, 주의를 약간 기울여 시각화를 가설 확인에 사용할 수 있다. 주요 차이점은 각 관측값을 얼마나 자주 보느냐 하는 것이다. 한 번만 보면 확인이고, 한 번 이상 보면 탐색이다.
+
 
 ## 준비하기
+
 이 책에서는 여러분이 이미 몇 가지를 알고 있다고 가정을 했다.
 독자는 일반적으로 수학을 알고 있을 것이다. 이미 프로그래밍 경험이 있다면
 도움이 된다. 이전에 프로그래밍을 해본 적이 없다면 개럿의 [Hands on Programming with R](http://amzn.com/1449359019) 책이
@@ -171,7 +157,7 @@ RStudio를 시작하면 인터페이스에 두 개의 주요 영역이 보일 �
 
 ### Tidyverse
 
-R 패키지 몇 개도 설치해야 한다. R **패키지**란 베이스 R의 기능을 확장시키는 함수, 데이터, 문서의 집합체를 말한다. R 을 성공적으로 사용하려면 패키지 사용이 핵심이다. 이 책에서 배우게 될 패키지의 대부분은 소위 tidyverse라고 하는 패키지집합에 들어있다. tidyverse의 패키지들은 데이터 및 R 프로그래밍에 관해 같은 철학에 기반하고 있으며, 자연스럽게 함께 작동되도록 설계되었다. 
+R 패키지 몇 개도 설치해야 한다. R **패키지** 란 베이스 R의 기능을 확장시키는 함수, 데이터, 문서의 집합체를 말한다. R 을 성공적으로 사용하려면 패키지 사용이 핵심이다. 이 책에서 배우게 될 패키지의 대부분은 소위 tidyverse라고 하는 패키지집합에 들어있다. tidyverse의 패키지들은 데이터 및 R 프로그래밍에 관해 같은 철학에 기반하고 있으며, 자연스럽게 함께 작동되도록 설계되었다. 
 
 다음 한 줄의 코드로 tidyverse를 설치할 수 있다. 
 
@@ -187,23 +173,15 @@ install.packages("tidyverse")
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-#> ✔ ggplot2 3.1.0.9000     ✔ purrr   0.2.5     
-#> ✔ tibble  1.4.2          ✔ dplyr   0.7.8     
-#> ✔ tidyr   0.8.2          ✔ stringr 1.3.1     
-#> ✔ readr   1.2.1          ✔ forcats 0.3.0
-#> ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
 ```
 
-이것은 tidyverse가 ggplot2, tibble, tidyr, readr, purrr, dplyr 패키지를 로드하고 있음을 나타낸다. 이 패키지들은 거의 모든 분석에서 사용될 것이기 때문에 tidyverse의 **코어**라 할 수 있다. 
+이것은 tidyverse 가 ggplot2, tibble, tidyr, readr, purrr, dplyr 패키지를 로드하고 있음을 나타낸다. 이 패키지들은 거의 모든 분석에서 사용될 것이기 때문에 tidyverse의 **코어**라 할 수 있다. 
 
 tidyverse의 패키지는 상당히 자주 변경된다. `tidyverse_update()`를 실행하여 업데이트가 가능한지 확인할 수 있다.
 
 ### 기타 패키지들
 
-많은 훌륭한 패키지가 도메인이 다르거나 설계된 원칙이 달라서 tidyverse에 포함되지 않았다. 그 패키지들은 더 좋거나 나쁜 것이 아니라 단순히 다른 것뿐이다. 다른 말로 표현하자면 tidyverse가 아닌 패키지는 messyverse(지저분한 패키지)가 아니라 엄청나게 많은 서로 연관된 패키지들이다. R로 더 많은 데이터과학 프로젝트를 수행하면 새로운 패키지와 데이터에 대한 새로운 사고 방식을 배우게 될 것이다. 
+많은 훌륭한 패키지가 도메인이 다르거나 설계된 원칙이 달라서 tidyverse 에 포함되지 않았다. 그 패키지들은 더 좋거나 나쁜 것이 아니라 단순히 다른 것뿐이다. 다른 말로 표현하자면 tidyverse가 아닌 패키지는 messyverse(지저분한 패키지)가 아니라 엄청나게 많은 서로 연관된 패키지들이다. R로 더 많은 데이터과학 프로젝트를 수행하면 새로운 패키지와 데이터에 대한 새로운 사고 방식을 배우게 될 것이다. 
 이 책에서 우리는 tidyverse에 없는 다음의 데이터 패키지 세 개를 사용할 것이다. 
 
 
@@ -245,7 +223,7 @@ install.packages(c("nycflights13", "gapminder", "Lahman"))
 
 문제가 발생하면 구글 검색부터 시작하라. 일반적으로 검색어에 ‘R’을 추가하면 관련된 결과로 한정할 수 있다. 검색이 유용하지 않은 경우 R에 해당하는 결과가 없다는 의미일 경우가 많다. 구글은 오류 메시지에 특히 유용하다. 오류 메시지가 나타나서 그것이 무슨 뜻인지 잘 모를 경우 구글 검색해 보라! 과거에 이미 궁금해했을 누군가가 있어서, 웹 어딘가에 도움글이 있을 가능성이 있다. (오류 메시지가 영어가 아니라면 `>Sys.setenv(LANGUAGE = "en")`를 실행하고 코드를 다시 실행하라. 영어 오류 메시지에 대한 도움말을 찾을 가능성이 더 높다.) 
 
-구글 검색이 도움이 되지 않으면 [stackoverflow](http://stackoverflow.com)에 가 보라. 기존 답변을 검색하는 데 시간을 조금 투자해 보라. `[R]`을 포함하면 R 사용과 관련된 질문과 답변으로 검색을 제한한다. 유용한 정보가 없으면 최소한의 재현 가능한 예 (reproducible example, 줄임말로 __reprex__)를 준비하라. 좋은 reprex는 다른 사람들이 여러분을 도울 수 있게 해 주며, 이를 만드는 과정에서 문제의 답을 스스로 찾는 경우가 많다. 
+구글 검색이 도움이 되지 않으면 [stackoverflow](http://stackoverflow.com)에 가 보라. 기존 답변을 검색하는 데 시간을 조금 투자해 보라. `[R]`을 포함하면 R 사용과 관련된 질문과 답변으로 검색을 제한한다. 유용한 정보가 없으면 최소한의 재현 가능한 예 (reproducible example, 줄임말로 __reprex__) 를 준비하라. 좋은 reprex는 다른 사람들이 여러분을 도울 수 있게 해 주며, 이를 만드는 과정에서 문제의 답을 스스로 찾는 경우가 많다. 
 
 예제를 재현 가능하게 만들기 위해 포함해야 할 세 가지는 필요한 패키지, 데이터, 코드이다. 
 
@@ -270,9 +248,9 @@ install.packages(c("nycflights13", "gapminder", "Lahman"))
 
 새로운 R 세션을 시작하고 스크립트를 복사-붙여넣기하여 실제로 재현할 수 있는 예제를 만들었는지 확인하는 것으로 마무리하라. 
 
-문제가 발생하기 전에 문제를 해결할 수 있게 스스로 준비시키는데 시간을 써야 한다. 매일 R을 배우는 데 약간의 시간을 투자하면 결국에는 멋지게 보상받을 것이다. 한 가지 방법은 RStudio의 해들리, 개럿 및 다른 모든 사람들이 [RStudio 블로그](https://blog.rstudio.org)에서 수행하는 작업을 팔로우하는 것이다. RStudio 블로그는 우리가 새로운 패키지, 새로운 IDE 기능 및 직접 진행하는 수업에 대한 공지 사항을 게시하는 곳이다. 트위터에서 해들리 [\@hadleywickham](https://twitter.com/hadleywickham) 또는 개럿 [\@statgarrett](https://twitter.com/statgarrett)을 팔로우하거나 [\@rstudiotips](https://twitter.com/rstudiotips)를 팔로우해서 IDE의 새로운 기능을 계속 전달받을 수 있다. 
+문제가 발생하기 전에 문제를 해결할 수 있게 스스로 준비시키는데 시간을 써야 한다. 매일 R을 배우는 데 약간의 시간을 투자하면 결국에는 멋지게 보상받을 것이다. 한 가지 방법은 RStudio의 해들리, 개럿 및 다른 모든 사람들이 [RStudio 블로그](https://blog.rstudio.org)에서 수행하는 작업을 팔로우하는 것이다. RStudio 블로그는 우리가 새로운 패키지, 새로운 IDE 기능 및 직접 진행하는 수업에 대한 공지 사항을 게시하는 곳이다. 트위터에서 해들리 [\@hadleywickham](https://twitter.com/hadleywickham) 또는 개럿 [\@statgarrett](https://twitter.com/statgarrett) 을 팔로우하거나 [\@rstudiotips](https://twitter.com/rstudiotips) 를 팔로우해서 IDE의 새로운 기능을 계속 전달받을 수 있다. 
 
-R 커뮤니티를 보다 폭넓게 소통하기 위해서는 <http://www.r-bloggers.com>을 읽는 것이 좋은데 여기에는 전세계로부터 R에 대한 500개 이상의 블로그가 모여있다. 트위터 유저인 경우 `#rstats` 해시 태그를 팔로우하라. 트위터는 해들리가 커뮤니티의 새로운 발전을 따라가기 위해 사용하는 핵심 도구이다.
+R 커뮤니티를 보다 폭넓게 소통하기 위해서는 <http://www.r-bloggers.com> 을 읽는 것이 좋은데 여기에는 전세계로부터 R에 대한 500개 이상의 블로그가 모여있다. 트위터 유저인 경우 `#rstats` 해시 태그를 팔로우하라. 트위터는 해들리가 커뮤니티의 새로운 발전을 따라가기 위해 사용하는 핵심 도구이다.
 
 ## Acknowledgements
 
@@ -310,183 +288,104 @@ This book was built with:
 
 ```r
 devtools::session_info(c("tidyverse"))
-#> ─ Session info ──────────────────────────────────────────────────────────
+#> Session info -------------------------------------------------------------
 #>  setting  value                       
 #>  version  R version 3.5.1 (2018-07-02)
-#>  os       macOS  10.14                
 #>  system   x86_64, darwin15.6.0        
 #>  ui       X11                         
 #>  language (EN)                        
 #>  collate  en_US.UTF-8                 
-#>  ctype    en_US.UTF-8                 
 #>  tz       Asia/Seoul                  
-#>  date     2018-12-04                  
-#> 
-#> ─ Packages ──────────────────────────────────────────────────────────────
-#>  package      * version    date       lib
-#>  assertthat     0.2.0      2017-04-11 [1]
-#>  backports      1.1.2      2017-12-13 [1]
-#>  base64enc      0.1-3      2015-07-28 [1]
-#>  BH             1.66.0-1   2018-02-13 [1]
-#>  bindr          0.1.1      2018-03-13 [1]
-#>  bindrcpp       0.2.2      2018-03-29 [1]
-#>  broom          0.5.0      2018-07-17 [1]
-#>  callr          3.0.0      2018-08-24 [1]
-#>  cellranger     1.1.0      2016-07-27 [1]
-#>  cli            1.0.1      2018-09-25 [1]
-#>  clipr          0.4.1      2018-06-23 [1]
-#>  colorspace     1.3-2      2016-12-14 [1]
-#>  crayon         1.3.4      2017-09-16 [1]
-#>  curl           3.2        2018-03-28 [1]
-#>  DBI            1.0.0      2018-05-02 [1]
-#>  dbplyr         1.2.2      2018-07-25 [1]
-#>  digest         0.6.18     2018-10-10 [1]
-#>  dplyr        * 0.7.8      2018-11-10 [1]
-#>  evaluate       0.12       2018-10-09 [1]
-#>  fansi          0.4.0      2018-10-05 [1]
-#>  forcats      * 0.3.0      2018-02-19 [1]
-#>  fs             1.2.6      2018-08-23 [1]
-#>  ggplot2      * 3.1.0.9000 2018-12-04 [1]
-#>  glue           1.3.0      2018-07-17 [1]
-#>  gtable         0.2.0      2016-02-26 [1]
-#>  haven          2.0.0      2018-11-22 [1]
-#>  highr          0.7        2018-06-09 [1]
-#>  hms            0.4.2      2018-03-10 [1]
-#>  htmltools      0.3.6      2017-04-28 [1]
-#>  httr           1.3.1      2017-08-20 [1]
-#>  jsonlite       1.5        2017-06-01 [1]
-#>  knitr          1.20       2018-02-20 [1]
-#>  labeling       0.3        2014-08-23 [1]
-#>  lattice        0.20-35    2017-03-25 [1]
-#>  lazyeval       0.2.1      2017-10-29 [1]
-#>  lubridate      1.7.4      2018-04-11 [1]
-#>  magrittr       1.5        2014-11-22 [1]
-#>  markdown       0.8        2017-04-20 [1]
-#>  MASS           7.3-50     2018-04-30 [1]
-#>  Matrix         1.2-14     2018-04-13 [1]
-#>  mgcv           1.8-24     2018-06-23 [1]
-#>  mime           0.6        2018-10-05 [1]
-#>  modelr         0.1.2      2018-05-11 [1]
-#>  munsell        0.5.0      2018-06-12 [1]
-#>  nlme           3.1-137    2018-04-07 [1]
-#>  openssl        1.1        2018-11-15 [1]
-#>  pillar         1.3.0      2018-07-14 [1]
-#>  pkgconfig      2.0.2      2018-08-16 [1]
-#>  plogr          0.2.0      2018-03-25 [1]
-#>  plyr           1.8.4      2016-06-08 [1]
-#>  processx       3.2.0      2018-08-16 [1]
-#>  ps             1.2.1      2018-11-06 [1]
-#>  purrr        * 0.2.5      2018-05-29 [1]
-#>  R6             2.3.0      2018-10-04 [1]
-#>  RColorBrewer   1.1-2      2014-12-07 [1]
-#>  Rcpp           1.0.0      2018-11-07 [1]
-#>  readr        * 1.2.1      2018-11-22 [1]
-#>  readxl         1.1.0      2018-04-20 [1]
-#>  rematch        1.0.1      2016-04-21 [1]
-#>  reprex         0.2.1      2018-09-16 [1]
-#>  reshape2       1.4.3      2017-12-11 [1]
-#>  rlang          0.3.0.1    2018-10-25 [1]
-#>  rmarkdown      1.10.16    2018-12-04 [1]
-#>  rstudioapi     0.8        2018-10-02 [1]
-#>  rvest          0.3.2      2016-06-17 [1]
-#>  scales         1.0.0      2018-08-09 [1]
-#>  selectr        0.4-1      2018-04-06 [1]
-#>  stringi        1.2.4      2018-07-20 [1]
-#>  stringr      * 1.3.1      2018-05-10 [1]
-#>  tibble       * 1.4.2      2018-01-22 [1]
-#>  tidyr        * 0.8.2      2018-10-28 [1]
-#>  tidyselect     0.2.5      2018-10-11 [1]
-#>  tidyverse    * 1.2.1      2017-11-14 [1]
-#>  tinytex        0.9        2018-10-23 [1]
-#>  utf8           1.1.4      2018-05-24 [1]
-#>  viridisLite    0.3.0      2018-02-01 [1]
-#>  whisker        0.3-2      2013-04-28 [1]
-#>  withr          2.1.2      2018-03-15 [1]
-#>  xfun           0.4        2018-10-23 [1]
-#>  xml2           1.2.0      2018-01-24 [1]
-#>  yaml           2.2.0      2018-07-25 [1]
-#>  source                            
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  Github (hadley/ggplot2@23a23cd)   
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.1)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.1)                    
-#>  CRAN (R 3.5.1)                    
-#>  CRAN (R 3.5.1)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.1)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  Github (rstudio/rmarkdown@34d2fd0)
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#>  CRAN (R 3.5.0)                    
-#> 
-#> [1] /Library/Frameworks/R.framework/Versions/3.5/Resources/library
+#>  date     2018-12-11
+#> Packages -----------------------------------------------------------------
+#>  package      * version    date       source                            
+#>  assertthat     0.2.0      2017-04-11 CRAN (R 3.5.0)                    
+#>  backports      1.1.2      2017-12-13 CRAN (R 3.5.0)                    
+#>  base64enc      0.1-3      2015-07-28 CRAN (R 3.5.0)                    
+#>  BH             1.66.0-1   2018-02-13 CRAN (R 3.5.0)                    
+#>  bindr          0.1.1      2018-03-13 CRAN (R 3.5.0)                    
+#>  bindrcpp       0.2.2      2018-03-29 CRAN (R 3.5.0)                    
+#>  broom          0.5.1      2018-12-05 CRAN (R 3.5.0)                    
+#>  callr          2.0.3      2018-04-11 CRAN (R 3.5.0)                    
+#>  cellranger     1.1.0      2016-07-27 CRAN (R 3.5.0)                    
+#>  cli            1.0.1      2018-09-25 CRAN (R 3.5.0)                    
+#>  clipr          0.4.1      2018-06-23 CRAN (R 3.5.0)                    
+#>  colorspace     1.3-2      2016-12-14 CRAN (R 3.5.0)                    
+#>  crayon         1.3.4      2017-09-16 CRAN (R 3.5.0)                    
+#>  curl           3.2        2018-03-28 CRAN (R 3.5.0)                    
+#>  DBI            1.0.0      2018-05-02 CRAN (R 3.5.0)                    
+#>  dbplyr         1.2.2      2018-07-25 CRAN (R 3.5.0)                    
+#>  debugme        1.1.0      2017-10-22 CRAN (R 3.5.0)                    
+#>  digest         0.6.18     2018-10-10 cran (@0.6.18)                    
+#>  dplyr        * 0.7.8      2018-11-10 CRAN (R 3.5.0)                    
+#>  evaluate       0.12       2018-10-09 cran (@0.12)                      
+#>  forcats      * 0.3.0      2018-02-19 CRAN (R 3.5.0)                    
+#>  fs             1.2.6      2018-08-23 CRAN (R 3.5.0)                    
+#>  generics       0.0.2      2018-11-29 CRAN (R 3.5.0)                    
+#>  ggplot2      * 3.1.0.9000 2018-12-11 Github (tidyverse/ggplot2@4a607ca)
+#>  glue           1.3.0      2018-07-17 cran (@1.3.0)                     
+#>  graphics     * 3.5.1      2018-07-05 local                             
+#>  grDevices    * 3.5.1      2018-07-05 local                             
+#>  grid           3.5.1      2018-07-05 local                             
+#>  gtable         0.2.0      2016-02-26 CRAN (R 3.5.0)                    
+#>  haven          2.0.0      2018-11-22 CRAN (R 3.5.0)                    
+#>  highr          0.6        2016-05-09 CRAN (R 3.5.0)                    
+#>  hms            0.4.2      2018-03-10 CRAN (R 3.5.0)                    
+#>  htmltools      0.3.6      2017-04-28 CRAN (R 3.5.0)                    
+#>  httr           1.3.1      2017-08-20 CRAN (R 3.5.0)                    
+#>  jsonlite       1.6        2018-12-07 cran (@1.6)                       
+#>  knitr          1.20       2018-02-20 CRAN (R 3.5.0)                    
+#>  labeling       0.3        2014-08-23 CRAN (R 3.5.0)                    
+#>  lattice        0.20-35    2017-03-25 CRAN (R 3.5.1)                    
+#>  lazyeval       0.2.1      2017-10-29 CRAN (R 3.5.0)                    
+#>  lubridate      1.7.4      2018-04-11 CRAN (R 3.5.0)                    
+#>  magrittr       1.5        2014-11-22 CRAN (R 3.5.0)                    
+#>  markdown       0.8        2017-04-20 CRAN (R 3.5.0)                    
+#>  MASS           7.3-50     2018-04-30 CRAN (R 3.5.1)                    
+#>  Matrix         1.2-14     2018-04-13 CRAN (R 3.5.1)                    
+#>  methods      * 3.5.1      2018-07-05 local                             
+#>  mgcv           1.8-24     2018-06-23 CRAN (R 3.5.1)                    
+#>  mime           0.6        2018-10-05 cran (@0.6)                       
+#>  modelr         0.1.2      2018-05-11 CRAN (R 3.5.0)                    
+#>  munsell        0.5.0      2018-06-12 CRAN (R 3.5.0)                    
+#>  nlme           3.1-137    2018-04-07 CRAN (R 3.5.1)                    
+#>  openssl        1.0.1      2018-03-03 CRAN (R 3.5.0)                    
+#>  pillar         1.2.2      2018-04-26 CRAN (R 3.5.0)                    
+#>  pkgconfig      2.0.2      2018-08-16 cran (@2.0.2)                     
+#>  plogr          0.2.0      2018-03-25 CRAN (R 3.5.0)                    
+#>  plyr           1.8.4      2016-06-08 CRAN (R 3.5.0)                    
+#>  praise         1.0.0      2015-08-11 CRAN (R 3.5.0)                    
+#>  purrr        * 0.2.5      2018-05-29 cran (@0.2.5)                     
+#>  R6             2.3.0      2018-10-04 cran (@2.3.0)                     
+#>  RColorBrewer   1.1-2      2014-12-07 CRAN (R 3.5.0)                    
+#>  Rcpp           1.0.0      2018-11-07 cran (@1.0.0)                     
+#>  readr        * 1.2.1      2018-11-22 CRAN (R 3.5.0)                    
+#>  readxl         1.1.0      2018-04-20 CRAN (R 3.5.0)                    
+#>  rematch        1.0.1      2016-04-21 CRAN (R 3.5.0)                    
+#>  reprex         0.2.1      2018-09-16 CRAN (R 3.5.0)                    
+#>  reshape2       1.4.3      2017-12-11 CRAN (R 3.5.0)                    
+#>  rlang          0.3.0.1    2018-10-25 cran (@0.3.0.1)                   
+#>  rmarkdown      1.11       2018-12-08 cran (@1.11)                      
+#>  rstudioapi     0.8        2018-10-02 CRAN (R 3.5.0)                    
+#>  rvest          0.3.2      2016-06-17 CRAN (R 3.5.0)                    
+#>  scales         1.0.0      2018-08-09 CRAN (R 3.5.0)                    
+#>  selectr        0.4-1      2018-04-06 CRAN (R 3.5.0)                    
+#>  stats        * 3.5.1      2018-07-05 local                             
+#>  stringi        1.2.4      2018-07-20 cran (@1.2.4)                     
+#>  stringr      * 1.3.1      2018-05-10 cran (@1.3.1)                     
+#>  testthat       2.0.0      2017-12-13 CRAN (R 3.5.0)                    
+#>  tibble       * 1.4.2      2018-01-22 CRAN (R 3.5.0)                    
+#>  tidyr        * 0.8.2      2018-10-28 CRAN (R 3.5.0)                    
+#>  tidyselect     0.2.5      2018-10-11 cran (@0.2.5)                     
+#>  tidyverse    * 1.2.1      2017-11-14 CRAN (R 3.5.0)                    
+#>  tinytex        0.9        2018-10-23 CRAN (R 3.5.0)                    
+#>  tools          3.5.1      2018-07-05 local                             
+#>  utf8           1.1.3      2018-01-03 CRAN (R 3.5.0)                    
+#>  utils        * 3.5.1      2018-07-05 local                             
+#>  viridisLite    0.3.0      2018-02-01 CRAN (R 3.5.0)                    
+#>  whisker        0.3-2      2013-04-28 CRAN (R 3.5.0)                    
+#>  withr          2.1.2      2018-03-15 CRAN (R 3.5.0)                    
+#>  xfun           0.4        2018-10-23 CRAN (R 3.5.0)                    
+#>  xml2           1.2.0      2018-01-24 CRAN (R 3.5.0)                    
+#>  yaml           2.2.0      2018-07-25 cran (@2.2.0)
 ```

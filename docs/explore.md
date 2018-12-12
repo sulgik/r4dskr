@@ -3,28 +3,19 @@
 
 # 소개 {#explore-intro}
 
-The goal of the first part of this book is to get you up to speed with the basic tools of __data exploration__ as quickly as possible. Data exploration is the art of looking at your data, rapidly generating hypotheses, quickly testing them, then repeating again and again and again. The goal of data exploration is to generate many promising leads that you can later explore in more depth.
+1 부의 목표는 기본적인 데이터 탐색 도구를 이용하여 가능한 한 빨리 작업 속도를 높이는 것이다. 데이터 탐색은 데이터를 보고 신속하게 가설을 세우고 신속하게 테스트한 다음 이를 계속해서 반복, 반복, 또 반복하는 기술이다. 데이터 탐색의 목표는 나중에 더 깊게 탐색할 다수의 단서들을 생성하는 것이다.
 
 <img src="diagrams/data-science-explore.png" width="75%" style="display: block; margin: auto;" />
 
-In this part of the book you will learn some useful tools that have an immediate payoff: 
 
-*   Visualisation is a great place to start with R programming, because the 
-    payoff is so clear: you get to make elegant and informative plots that help 
-    you understand data. In [data visualisation] you'll dive into visualisation, 
-    learning the basic structure of a ggplot2 plot, and powerful techniques for 
-    turning data into plots. 
+1부에서는 즉각적인 도움을 바로 얻을 수 있는 유용한 도구 몇 개를 배울 것이다.
 
-*   Visualisation alone is typically not enough, so in [data transformation] 
-    you'll learn the key verbs that allow you to select important variables, 
-    filter out key observations, create new variables, and compute summaries.
-  
-*   Finally, in [exploratory data analysis], you'll combine visualisation and
-    transformation with your curiosity and scepticism to ask and answer 
-    interesting questions about data.
+* 시각화부터 R 프로그래밍을 시작하면 매우 좋은데, 장점이 명확하기 때문이다. 데이터를 이해하는 데 도움이 되는 우아하고 유익한 플롯을 만들 수 있다. [데이터 시각화](#data-visualization) 에서는 시각화에 대해 깊이 들어가서 <볼드>ggplot2</볼드> 플롯의 기본 구조와 데이터를 플롯으로 바꾸는 강력한 기술들을 배울 것이다.
 
-Modelling is an important part of the exploratory process, but you don't have the skills to effectively learn or apply it yet. 
-We'll come back to it in [modelling](#model-intro), once you're better equipped with more data wrangling and programming tools.
+* 일반적으로 시각화만으로는 충분하지 않으므로 [데이터 변형](#data-transformation) 에서 중요한 변수를 선택하고, 필터링하고, 새 변수를 만들고, 요약값을 계산하는 주요 동사들을 배울 것이다.
 
-Nestled among these three chapters that teach you the tools of exploration are three chapters that focus on your R workflow. 
-In [workflow: basics], [workflow: scripts], and [workflow: projects] you'll learn good practices for writing and organising your R code. These will set you up for success in the long run, as they'll give you the tools to stay organised when you tackle real projects.
+* 마지막으로, [탐색적 데이터 분석](#exploratory-data-analysis) 에서는 시각화와 변환을 호기심과 비판적 시각을 결합하여 데이터에 대한 흥미로운 질문을 만들고 답할 것이다.
+
+모델링은 탐색 과정에서 중요한 부분이지만 아직 효과적으로 학습하거나 적용할 기술을 가질 필요는 없다. 데이터 처리와 프로그래밍 도구가 더 잘 갖춰진 후  [모델링](#model-intro) 에서 이를 살펴볼 것이다.
+
+탐색 도구를 가르쳐 주는 이 세 개 장 사이사이에, R http플로에 중점을 둔 세 개의 장도 자리잡고 있다. [워크플로: 기초](#workflow-basic), [워크플로: 스크립트](#workflow-scripts), [워크플로: 프로젝트](#workflow-projects) 에서는 R 코드를 작성하고 조직하는 좋은 사례들을 배울 것이다. 이 장들에서는 실제 프로젝트에서 잘 정리할 수 있는 도구들을 배워 장기적으로 성공할 수 있는 틀을 갖추게 될 것이다.
