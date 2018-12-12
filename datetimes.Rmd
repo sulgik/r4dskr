@@ -1,20 +1,19 @@
-# Dates and times
+# 날짜와 시간 {#dates-and-times}
 
-## Introduction
+## 들어가기
 
-This chapter will show you how to work with dates and times in R. At first glance, dates and times seem simple. You use them all the time in your regular life, and they don't seem to cause much confusion. However, the more you learn about dates and times, the more complicated they seem to get. To warm up, try these three seemingly simple questions:
+이 장에서는 R에서 날짜와 시간을 다루는 법을 볼 것이다. 언뜻 생각하면 날짜와 시간은 간단해 보인다. 일상 생활에서 늘 사용하고 있으며 복잡할 것이 없을 것 같다. 그러나 날짜와 시간에 대해 배울수록 더 복잡해 보일 것이다. 몸풀기로, 간단해 보이는 다음 세 문제를 보자. 
+* 1년은 항상 365일인가?
+* 1일은 항상 24시간인가?
+* 1분은 항상 60초인가?
 
-* Does every year have 365 days?
-* Does every day have 24 hours?
-* Does every minute have 60 seconds?
+1년이 항상 365일은 아니라는 걸 대부분 알고 있을 것이다. 하지만 한 해가 윤년인지를 결정하는 규칙을 완벽하게 알고 있는가?(세 파트가 있다.) 세계 많은 곳에서 일광절약제(daylight saving time, DST)를 이용하고 있고, 따라서 어떤 날은 23시이고, 다른 날은 25시라는 것을 기억하는 사람도 있을 것이다. 지구 자전이 점차 느려지기 때문에 윤초가 추가되어 가끔씩 1분이 61초가 된다는 것을 아는 사람은 많지 않을 것이다.  
 
-I'm sure you know that not every year has 365 days, but do you know the full rule for determining if a year is a leap year? (It has three parts.) You might have remembered that many parts of the world use daylight savings time (DST), so that some days have 23 hours, and others have 25. You might not have known that some minutes have 61 seconds because every now and then leap seconds are added because the Earth's rotation is gradually slowing down.
+날짜와 시간은 두 가지 물리 현상(지구 자전과 공전)과 월, 시간대, 일광절약제를 포함한 많은 지정학적 현상을 조화시켜야 하기 때문에 쉬운 문제가 아니다. 이 장에서는 날짜와 시간에 대해 세부 사항을 속속들이 배우지는 않겠지만 일반적인 데이터 분석 문제에 이용할 수 있는 기술들을 탄탄히 배울 것이다.
 
-Dates and times are hard because they have to reconcile two physical phenomena (the rotation of the Earth and its orbit around the sun) with a whole raft of geopolitical phenomena including months, time zones, and DST. This chapter won't teach you every last detail about dates and times, but it will give you a solid grounding of practical skills that will help you with common data analysis challenges.
+### 준비하기
 
-### Prerequisites
-
-This chapter will focus on the __lubridate__ package, which makes it easier to work with dates and times in R. lubridate is not part of core tidyverse because you only need it when you're working with dates/times. We will also need nycflights13 for practice data.
+이 장에서는 **lubridate**  패키지를 주로 살펴볼 것인데, 이 패키지를 쓰면 R에서 날짜와 시간을 다룰 수 있다. **lubridate** 는 날짜/시간 작업을 할 때만 필요하기 때문에, 핵심 tidyverse에 포함되어 있지 않다. 실습데이터로 이용할 **nycflights13** 도 필요하다.
 
 ```{r setup, message = FALSE}
 library(tidyverse)
@@ -23,41 +22,39 @@ library(lubridate)
 library(nycflights13)
 ```
 
-## Creating date/times
+## 날짜/시간 생성하기
 
-There are three types of date/time data that refer to an instant in time:
+시각을 나타내는 날짜/시간의 세 가지 유형이 있다.
 
-* A __date__. Tibbles print this as `<date>`.
+* **데이트형(date)** : 날짜. 티블에서 `<date>` 로 출력한다. 
 
-* A __time__ within a day. Tibbles print this as `<time>`.
+* **타임형(time)** : 하루 중 시간. 티블에서 `<time>` 으로 출력한다.
 
-* A __date-time__ is a date plus a time: it uniquely identifies an
-  instant in time (typically to the nearest second). Tibbles print this
-  as `<dttm>`. Elsewhere in R these are called POSIXct, but I don't think
-  that's a very useful name.
-  
-In this chapter we are only going to focus on dates and date-times as R doesn't have a native class for storing times. If you need one, you can use the __hms__ package.
+* **데이트-타임형(date-time)** : 날짜 더하기 시간. 시점을 고유하게 (일반적으로 가장 가까운 초로) 식별한다. 티블에서 `<dttm>` 으로 출력한다. R의 다른 부분에서는 POSIXct라고 부르지만, 그다지 유용한 이름은 아니라고 생각한다.
 
-You should always use the simplest possible data type that works for your needs. That means if you can use a date instead of a date-time, you should. Date-times are substantially more complicated because of the need to handle time zones, which we'll come back to at the end of the chapter.
+R에는 시간 저장을 위한 네이티브 클래스가 없기 때문에 이 장에서는 데이트형과 데이트-타임형에만 집중할 것이다. 네이티브 클래스가 필요하다면 **hms**  패키지를 이용해보라.
 
-To get the current date or date-time you can use `today()` or `now()`:
+사용자 요구를 충족하는 데이터 유형 중, 가능한 한 가장 간단한 것을 사용해야 한다. 즉 데이트-타임형 대신 데이트형을 써도 된다면 그래야 한다는 말이다. 데이트-타임형은 시간대를 다루기 때문에 훨씬 더 복잡한데 이 장의 끝에서 살펴볼 것이다. 
+
+현재 날짜 또는 데이트-타임을 얻으려면 `today()`  또는 `now()` 를 사용하면 된다.
 
 ```{r}
 today()
 now()
 ```
 
-Otherwise, there are three ways you're likely to create a date/time:
+이 외에 날짜/시간을 생성하는 세 가지 방법이 있다.
 
-* From a string.
-* From individual date-time components.
-* From an existing date/time object.
+* 문자열로부터
+* 개별 데이트-타임형 구성요소로부터
+* 기존의 날짜/시간 객체로부터
 
-They work as follows.
+이들의 작동 방식을 살펴보자.
 
-### From strings
+### 문자열에서 생성
 
-Date/time data often comes as strings. You've seen one approach to parsing strings into date-times in [date-times](#readr-datetimes). Another approach is to use the helpers provided by lubridate. They automatically work out the format once you specify the order of the component. To use them, identify the order in which year, month, and day appear in your dates, then arrange "y", "m", and "d" in the same order. That gives you the name of the lubridate function that will parse your date. For example:
+
+날짜/시간 데이터는 종종 문자열로 주어진다. 우리는 이미 [date-times](#readr-datetimes) 에서 문자열을 데이트-타임형으로 파싱하는 법을 보았다. 다른 방법은 **lubridate** 에서 제공하는 도우미를 사용하는 것이다. 구성요소의 순서만 지정하면 자동으로 형식을 맞춘다. 도우미를 이용하는 법은 주어진 날짜에 나타난 연, 월, 일의 순서를 확인한 후, `“y”, “m”, “d”` 를 같은 순서로 배치하는 것이다. 이것이 바로 **lubridate**  함수의 이름이 되고 주어진 날짜를 파싱한다. 예를 들면
 
 ```{r}
 ymd("2017-01-31")
@@ -65,35 +62,35 @@ mdy("January 31st, 2017")
 dmy("31-Jan-2017")
 ```
 
-These functions also take unquoted numbers. This is the most concise way to create a single date/time object, as you might need when filtering date/time data. `ymd()` is short and unambiguous:
+이 함수들은 따옴표로 둘러싸이지 않은 숫자도 받아들인다. 이는 단일 날짜/시간 객체를 생성하는 방법들 중 가장 간결한 방법인데, 날짜/시간 데이터를 필터링할 때 사용할 수 있다. `ymd()` 는 간결하고 모호하지 않다.
 
 ```{r}
 ymd(20170131)
 ```
 
-`ymd()` and friends create dates. To create a date-time, add an underscore and one or more of "h", "m", and "s" to the name of the parsing function:
+
+`ymd()` 와 이웃들은 데이트형을 생성한다. 데이트-타임형을 생성하려면 파싱 함수 이름에 언더스코어와 "h", "m", "s" 중 하나 이상을 추가해야 한다.
 
 ```{r}
 ymd_hms("2017-01-31 20:11:59")
 mdy_hm("01/31/2017 08:01")
 ```
 
-You can also force the creation of a date-time from a date by supplying a timezone:
-
+시간대를 제공하여 날짜로부터 데이트-타임형을 강제 생성할 수도 있다.  
 ```{r}
 ymd(20170131, tz = "UTC")
 ```
 
-### From individual components
+### 개별 구성요소에서 생성
 
-Instead of a single string, sometimes you'll have the individual components of the date-time spread across multiple columns. This is what we have in the flights data:
+때로는 문자열이 아니라 데이트-타임형의 개별 구성요소들이 여러 열에 걸쳐 있는 경우가 있을 것이다. **flights**  데이터에 있는 것이 그렇다.
 
 ```{r}
 flights %>% 
   select(year, month, day, hour, minute)
 ```
 
-To create a date/time from this sort of input, use `make_date()` for dates, or `make_datetime()` for date-times:
+이러한 입력으로 날짜/시간을 생성하려면 데이트형은 `make_date()` 를, 데이트-타임형은 `make_datetime()` 를 쓰면 된다. 
 
 ```{r}
 flights %>% 
@@ -101,7 +98,8 @@ flights %>%
   mutate(departure = make_datetime(year, month, day, hour, minute))
 ```
 
-Let's do the same thing for each of the four time columns in `flights`. The times are represented in a slightly odd format, so we use modulus arithmetic to pull out the hour and minute components. Once I've created the date-time variables, I focus in on the variables we'll explore in the rest of the chapter.
+
+'flights' 네 개의 시간 열 각각에 대해 같은 작업을 하자. 시간이 약간 이상한 형식으로 표시되었으므로, 나머지 연산으로 시와 분 구성요소를 추출한다. 이제 데이트-타임형 변수를 생성했으니 이 장의 나머지 부분에서는 이 변수들을 탐색해 볼 것이다.
 
 ```{r}
 make_datetime_100 <- function(year, month, day, time) {
@@ -121,7 +119,7 @@ flights_dt <- flights %>%
 flights_dt
 ```
 
-With this data, I can visualise the distribution of departure times across the year:
+이 데이터로 한 해에 걸친 출발 시간의 분포를 시각화할 수 있다.
 
 ```{r}
 flights_dt %>% 
@@ -129,7 +127,8 @@ flights_dt %>%
   geom_freqpoly(binwidth = 86400) # 86400 seconds = 1 day
 ```
 
-Or within a single day:
+
+하루 내에서의 분포로 보려면
 
 ```{r}
 flights_dt %>% 
@@ -138,35 +137,35 @@ flights_dt %>%
   geom_freqpoly(binwidth = 600) # 600 s = 10 minutes
 ```
 
-Note that when you use date-times in a numeric context (like in a histogram), 1 means 1 second, so a binwidth of 86400 means one day. For dates, 1 means 1 day.
+수치형 맥락에서 데이트-타임형을 사용할 경우(히스토그램에서와 같이) 1은 1초를 의미하고, 따라서 86400 빈너비(binwidth)는 하루를 의미한다는 것을 주목하라. 데이트형에서는 1은 1일을 의미한다.
 
-### From other types
+### 기타 유형에서 생성
 
-You may want to switch between a date-time and a date. That's the job of `as_datetime()` and `as_date()`:
+데이트-타임형과 데이트형 사이를 상호 전환하고 싶을 때도 있을 것이다. `as_datetime()` 과 `as_date()` 가 바로 이를 수행한다.
 
 ```{r}
 as_datetime(today())
 as_date(now())
 ```
 
-Sometimes you'll get date/times as numeric offsets from the "Unix Epoch", 1970-01-01. If the offset is in seconds, use `as_datetime()`; if it's in days, use `as_date()`.
+때로 날짜/시간을 ‘유닉스 신기원(Unix Epoch)’인 1970-01-01에서 수치형 오프셋으로 가지고 있을 수 있다. 오프셋이 초 단위인 경우엔 `as_datetime()` , 일 단위인 경우엔 `as_date()` 을 사용한다.
 
 ```{r}
 as_datetime(60 * 60 * 10)
 as_date(365 * 10 + 2)
 ```
 
-### Exercises
+### 연습문제
 
-1.  What happens if you parse a string that contains invalid dates?
+1.  유효하지 않은 날짜를 포함한 문자열을 파싱하면 어떻게 되는가?
 
     ```{r, eval = FALSE}
     ymd(c("2010-10-10", "bananas"))
     ```
 
-1.  What does the `tzone` argument to `today()` do? Why is it important?
+1.  `today()` 의 `tzone`  인수의 역할은 무엇인가? 이 인수는 왜 중요한가?
 
-1.  Use the appropriate lubridate function to parse each of the following dates:
+1. 적절한 **lubridate**  함수를 이용하여, 다음 날짜를 각각 파싱하라.
 
     ```{r}
     d1 <- "January 1, 2010"
@@ -176,13 +175,13 @@ as_date(365 * 10 + 2)
     d5 <- "12/30/14" # Dec 30, 2014
     ```
 
-## Date-time components
+## 데이트-타임형 구성요소
 
-Now that you know how to get date-time data into R's date-time data structures, let's explore what you can do with them. This section will focus on the accessor functions that let you get and set individual components. The next section will look at how arithmetic works with date-times.
+날짜/시간 데이터를 R의 데이트-타임형 데이터 구조로 얻는 방법을 이제 알았으니 이를 이용해 할 수 있는 것을 탐색해보자. 이 절에서는 개별 구성요소를 얻고 설정하는 설정 함수(accessor function)에 초점을 맞출 것이다. 다음 절에서는 산술연산이 데이트-타임형에 어떻게 동작하는지 살펴 볼 것이다.
 
-### Getting components
+### 구성요소 가져오기
 
-You can pull out individual parts of the date with the accessor functions `year()`, `month()`, `mday()` (day of the month), `yday()` (day of the year), `wday()` (day of the week), `hour()`, `minute()`, and `second()`. 
+다음 설정 함수로 데이트형의 개별 부분을 가져올 수 있다. `year(), month(), mday()` (한 달에서 일), `yday()` (한 해에서 일), `wday` (한 주 중 일), `hour(), minute(), second()` .
 
 ```{r}
 datetime <- ymd_hms("2016-07-08 12:34:56")
@@ -195,14 +194,14 @@ yday(datetime)
 wday(datetime)
 ```
 
-For `month()` and `wday()` you can set `label = TRUE` to return the abbreviated name of the month or day of the week. Set `abbr = FALSE` to return the full name.
+`month()` 와 `wday()` 에서 `label = TRUE` 를 설정하여 월이나 일의 약식 이름을 반환할 수 있다. `abbr = FALSE` 를 설정하면 이름 전체를 반환할 수 있다.
 
 ```{r}
 month(datetime, label = TRUE)
 wday(datetime, label = TRUE, abbr = FALSE)
 ```
 
-We can use `wday()` to see that more flights depart during the week than on the weekend:
+`wday()` 를 사용하여 주말보다 평일에 출발하는 항공편이 더 많다는 것을 확인할 수 있다.
 
 ```{r}
 flights_dt %>% 
@@ -211,7 +210,8 @@ flights_dt %>%
     geom_bar()
 ```
 
-There's an interesting pattern if we look at the average departure delay by minute within the hour. It looks like flights leaving in minutes 20-30 and 50-60 have much lower delays than the rest of the hour!
+출발 지연시간 평균을 매 시의 각 분(0~59 분)에 대해서 살펴보면 흥미로운 패턴이 있다. 20~30분과 50~60분에 출발하는 항공편은 나머지 시간보다 훨씬 덜 지연되는 것으로 보인다.
+
 
 ```{r}
 flights_dt %>% 
@@ -224,7 +224,7 @@ flights_dt %>%
     geom_line()
 ```
 
-Interestingly, if we look at the _scheduled_ departure time we don't see such a strong pattern:
+흥미롭게도 예정된 출발시간으로 보면 이러한 강한 패턴을 볼 수 없다.
 
 ```{r}
 sched_dep <- flights_dt %>% 
@@ -238,16 +238,17 @@ ggplot(sched_dep, aes(minute, avg_delay)) +
   geom_line()
 ```
 
-So why do we see that pattern with the actual departure times? Well, like much data collected by humans, there's a strong bias towards flights leaving at "nice" departure times. Always be alert for this sort of pattern whenever you work with data that involves human judgement!
+그러면 왜 실제 출발시간에는 그 패턴이 있는가? 사람에 의해 수집된 많은 데이터가 그런 것처럼, ’좋은‘ 출발시간에 떠나는 항공편 방향으로 편향(bias)이 강하게 존재한다. 인간의 판단이 관여된 데이터로 작업할 때마다 이런 종류의 패턴을 항상 유의해야 한다.
 
 ```{r}
 ggplot(sched_dep, aes(minute, n)) +
   geom_line()
 ```
 
-### Rounding
+### 반올림
 
-An alternative approach to plotting individual components is to round the date to a nearby unit of time, with `floor_date()`, `round_date()`, and `ceiling_date()`. Each function takes a vector of dates to adjust and then the name of the unit round down (floor), round up (ceiling), or round to. This, for example, allows us to plot the number of flights per week:
+
+개별 구성요소를 플롯하는 또 다른 방법은 `floor_date()` , `round_date()` , `ceiling_date()` 로 인근 시간 단위로 날짜를 반올림하는 것이다. 각 `ceiling_date()`  함수의 입력값으로는, 조정할 날짜 벡터와, 내림(floor), 올림(ceiling), 혹은 반올림(round)해서 맞출 단위의 이름이다. 예를 들어 주당 항공편 수를 플롯할 수 있다.
 
 ```{r}
 flights_dt %>% 
@@ -256,11 +257,11 @@ flights_dt %>%
     geom_line()
 ```
 
-Computing the difference between a rounded and unrounded date can be particularly useful.
+날짜 반올림 전후 차이를 계산하는 것은 특히 유용할 수 있다.
 
-### Setting components
+### 구성요소 설정
 
-You can also use each accessor function to set the components of a date/time: 
+설정 함수를 사용하여 날짜/시간의 구성 요소를 설정할 수 있다.
 
 ```{r}
 (datetime <- ymd_hms("2016-07-08 12:34:56"))
@@ -273,13 +274,13 @@ hour(datetime) <- hour(datetime) + 1
 datetime
 ```
 
-Alternatively, rather than modifying in place, you can create a new date-time with `update()`. This also allows you to set multiple values at once.
+수정하는 대신, `update()` 로 새로운 데이트-타임형을 생성할 수도 있다. 이 방법을 사용하여 여러 개의 값을 한 번에 설정할 수도 있다.
 
 ```{r}
 update(datetime, year = 2020, month = 2, mday = 2, hour = 2)
 ```
 
-If values are too big, they will roll-over:
+값이 너무 큰 경우에는 이월된다.
 
 ```{r}
 ymd("2015-02-01") %>% 
@@ -288,7 +289,7 @@ ymd("2015-02-01") %>%
   update(hour = 400)
 ```
 
-You can use `update()` to show the distribution of flights across the course of the day for every day of the year: 
+`update()` 를 사용하여 관심있는 해의 하루 동안 항공편의 분포를 볼 수 있다.
 
 ```{r}
 flights_dt %>% 
@@ -297,58 +298,51 @@ flights_dt %>%
     geom_freqpoly(binwidth = 300)
 ```
 
-Setting larger components of a date to a constant is a powerful technique that allows you to explore patterns in the smaller components.
+날짜의 상위 구성 요소를 상수로 설정하면, 하위 구성 요소의 패턴을 탐색할 수 있어서 매우 유용한 방법이다
 
-### Exercises
+### 연습문제
 
-1.  How does the distribution of flight times within a day change over the 
-    course of the year?
-    
-1.  Compare `dep_time`, `sched_dep_time` and `dep_delay`. Are they consistent?
-    Explain your findings.
+1.  하루 동안 비행시간의 분포는 한 해 동안 어떻게 변화했는가?
 
-1.  Compare `air_time` with the duration between the departure and arrival.
-    Explain your findings. (Hint: consider the location of the airport.)
-    
-1.  How does the average delay time change over the course of a day?
-    Should you use `dep_time` or `sched_dep_time`? Why?
+1. `dep_time, sched_dep_time, dep_delay` 를 비교하라. 이들은 일관성이 있는가? 무엇을 발견했는지 설명하라.
 
-1.  On what day of the week should you leave if you want to minimise the
-    chance of a delay?
+1. 출발, 도착 사이의 시간과 `air_time` 을 비교하라. 무엇을 발견했는지 설명하라. (힌트: 공항의 위치를 살펴보라.)
 
-1.  What makes the distribution of `diamonds$carat` and 
-    `flights$sched_dep_time` similar?
+1. 하루 동안 평균 지연시간은 어떻게 변화하는가? `dep_time`  또는 `sched_dep_time` 를 사용해야 하는가? 이유는 무엇인가?
 
-1.  Confirm my hypothesis that the early departures of flights in minutes
-    20-30 and 50-60 are caused by scheduled flights that leave early. 
-    Hint: create a binary variable that tells you whether or not a flight 
-    was delayed.
+1. 지연 가능성을 최소화하려면 한 주 중 어느 요일에 떠나야 하는가?
 
-## Time spans
+1. 왜 `diamonds$carat` 과 `flights$sched_dep_time`  분포가 비슷한가?
 
-Next you'll learn about how arithmetic with dates works, including subtraction, addition, and division. Along the way, you'll learn about three important classes that represent time spans:
+1. 20-30분과 50-60분에서 출발이 빠른 것은 일찍 출발하도록 계획된 항공편 때문이라는 우리의 가설을 확인하라. 힌트: 항공편이 지연되었는지 여부를 알려주는 이진 변수를 생성하라.
 
-* __durations__, which represent an exact number of seconds.
-* __periods__, which represent human units like weeks and months.
-* __intervals__, which represent a starting and ending point.
 
-### Durations
+## 시간 범위
 
-In R, when you subtract two dates, you get a difftime object:
+
+다음으로 뺄셈, 덧셈, 나눗셈 같은 산술연산이 데이트형에 어떻게 동작하는지 알아보자. 여기에서는 시간 범위(time span)를 대표하는 중요한 클래스 세 가지를 배우게 된다.
+
+* **듀레이션형** (duration): 정확한 초를 나타냄.
+* **피리어드형** (period): 주와 월과 같은 인간의 단위를 나타냄.
+* **인터벌형** (interval): 시점과 종점을 나타냄.
+
+### 듀레이션형
+
+R에서 두 데이트형 뺄셈을 하면 difftime형 객체가 생긴다.
 
 ```{r}
-# How old is Hadley?
+# 해들리의 나이는?
 h_age <- today() - ymd(19791014)
 h_age
 ```
 
-A difftime class object records a time span of seconds, minutes, hours, days, or weeks. This ambiguity can make difftimes a little painful to work with, so lubridate provides an alternative which always uses seconds: the __duration__.
+difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 기록한다. 이러한 애매함 때문에 difftime형으로 작업하는 것이 약간 고통스러울 수 있다. 따라서 **lubridate** 는 항상 초를 사용하는 대안 클래스, **듀레이션형** 을 제공한다. 
 
 ```{r}
 as.duration(h_age)
 ```
 
-Durations come with a bunch of convenient constructors:
+듀레이션형에는 편리한 생성자가 많다.
 
 ```{r}
 dseconds(15)
@@ -359,23 +353,23 @@ dweeks(3)
 dyears(1)
 ```
 
-Durations always record the time span in seconds. Larger units are created by converting minutes, hours, days, weeks, and years to seconds at the standard rate (60 seconds in a minute, 60 minutes in an hour, 24 hours in day, 7 days in a week, 365 days in a year).
+듀레이션형은 항상 초 단위로 시간 범위를 기록한다. 이보다 큰 단위를 생성하려면 분, 시, 일, 주, 연을 표준비율로 변환해야 한다(분당 60초, 시당 60분, 일당 24시, 주당 7일, 연당 365일). 
 
-You can add and multiply durations:
+듀레이션형을 더하거나 곱할 수 있다.
 
 ```{r}
 2 * dyears(1)
 dyears(1) + dweeks(12) + dhours(15)
 ```
 
-You can add and subtract durations to and from days:
+일(day)에서 듀레이션형을 더하고 뺄 수 있다.
 
 ```{r}
 tomorrow <- today() + ddays(1)
 last_year <- today() - dyears(1)
 ```
 
-However, because durations represent an exact number of seconds, sometimes you might get an unexpected result:
+그러나 듀레이션형은 정확한 초 개수로 표시하므로 때로는 예상치 못한 결과를 얻을 수도 있다. 
 
 ```{r}
 one_pm <- ymd_hms("2016-03-12 13:00:00", tz = "America/New_York")
@@ -384,18 +378,18 @@ one_pm
 one_pm + ddays(1)
 ```
 
-Why is one day after 1pm on March 12, 2pm on March 13?! If you look carefully at the date you might also notice that the time zones have changed. Because of DST, March 12 only has 23 hours, so if we add a full days worth of seconds we end up with a different time.
+3월 12일 오후 1시의 1일 후가 왜 3월 13일 오후 2시인가? 날짜를 주의 깊게 보면 시간대가 바뀌어 있다. 일광절약제 때문에 3월 12일에는 23시만 있다. 따라서 하루에 해당하는 초를 더하면 다른 시간을 갖게 된다.    
 
-### Periods
+### 피리어드형
 
-To solve this problem, lubridate provides __periods__. Periods are time spans but don't have a fixed length in seconds, instead they work with "human" times, like days and months. That allows them work in a more intuitive way:
+이 문제를 해결하기 위해 **lubridate** 는 **피리어드형</이태틱>을 제공한다. 피리어드형은 시간 범위이지만 정해진 초 길이가 없다. 대신 일과 월과 같은 ’사람의‘ 시간으로 동작한다. 따라서 작동 방식이 보다 직관적이다.
 
 ```{r}
 one_pm
 one_pm + days(1)
 ```
 
-Like durations, periods can be created with a number of friendly constructor functions. 
+듀레이션형과 마찬가지로 피리어드형은 다수의 생성 함수로 편리하게 생성할 수 있다.
 
 ```{r}
 seconds(15)
@@ -407,33 +401,33 @@ weeks(3)
 years(1)
 ```
 
-You can add and multiply periods:
+피리어드형을 더하거나 곱할 수 있다.
 
 ```{r}
 10 * (months(6) + days(1))
 days(50) + hours(25) + minutes(2)
 ```
 
-And of course, add them to dates. Compared to durations, periods are more likely to do what you expect:
+그리고 물론, 데이트형에 더해진다. 듀레이션형과 달리 피리어드형은 의도한 대로 동작한다.
 
 ```{r}
-# A leap year
+# 윤년
 ymd("2016-01-01") + dyears(1)
 ymd("2016-01-01") + years(1)
 
-# Daylight Savings Time
+# 일광절약제
 one_pm + ddays(1)
 one_pm + days(1)
 ```
 
-Let's use periods to fix an oddity related to our flight dates. Some planes appear to have arrived at their destination _before_ they departed from New York City.
+이제 피리어드형을 사용해서 비행 날짜에 관련된 문제를 해결해보자. 일부 항공편은 뉴욕시에서 출발하기 전에 목적지에 도착한 것으로 보여진다.
 
 ```{r}
 flights_dt %>% 
   filter(arr_time < dep_time) 
 ```
 
-These are overnight flights. We used the same date information for both the departure and the arrival times, but these flights arrived on the following day. We can fix this by adding `days(1)` to the arrival time of each overnight flight.
+이들은 심야 항공편이다. 우리는 출발과 도착시간 모두에 같은 날짜 정보를 사용했었지만, 이 항공편들은 도착시간이 다음날이다. 심야 항공편의 도착시간에 `days(1)` 을 더해서 문제를 해결할 수 있다.
 
 ```{r}
 flights_dt <- flights_dt %>% 
@@ -444,125 +438,118 @@ flights_dt <- flights_dt %>%
   )
 ```
 
-Now all of our flights obey the laws of physics.
+이제 모든 항공편이 물리학의 법칙을 벗어나지 않는다.
 
 ```{r}
 flights_dt %>% 
   filter(overnight, arr_time < dep_time) 
 ```
 
-### Intervals
+### 인터벌형
 
-It's obvious what `dyears(1) / ddays(365)` should return: one, because durations are always represented by a number of seconds, and a duration of a year is defined as 365 days worth of seconds.
+`dyears(1) / ddays(365)` 가 반환해야 하는 값은 명백하다. 바로 1인데 왜냐하면, 듀레이션형은 항상 초 단위로 표현하며 듀레이션형 1년은 365일에 해당하는 초로 정의되기 때문이다.
 
-What should `years(1) / days(1)` return? Well, if the year was 2015 it should return 365, but if it was 2016, it should return 366! There's not quite enough information for lubridate to give a single clear answer. What it does instead is give an estimate, with a warning:
+`years(1) / days(1)` 이 반환해야 하는 값은 무엇인가? 음... 2015년이라면 365를 반환해야하지만 2016년이면 366을 반환해야 한다! **lubridate** 가 하나의 명확한 답을 주기에 충분한 정보가 없다. 대신 경고와 함께 예측값을 준다.
+
 
 ```{r}
 years(1) / days(1)
 ```
 
-If you want a more accurate measurement, you'll have to use an __interval__. An interval is a duration with a starting point: that makes it precise so you can determine exactly how long it is:
+더 정확한 값을 원한다면 **인터벌형** 을 사용해야 한다. 인터벌형은 시작점이 있는 듀레이션형이어서 기간이 정확히 얼마인지 확인할 수 있도록 만든다.
 
 ```{r}
 next_year <- today() + years(1)
 (today() %--% next_year) / ddays(1)
 ```
 
-To find out how many periods fall into an interval, you need to use integer division:
+한 인터벌형이 피리어드형 얼마에 해당하는지 확인하려면 정수 나누기를 사용해야 한다.
 
 ```{r}
 (today() %--% next_year) %/% days(1)
 ```
 
-### Summary
+### 요약
 
-How do you pick between duration, periods, and intervals? As always, pick the simplest data structure that solves your problem. If you only care about physical time, use a duration; if you need to add human times, use a period; if you need to figure out how long a span is in human units, use an interval.
 
-Figure \@ref(fig:dt-algebra) summarises permitted arithmetic operations between the different data types.
+듀레이션형, 피리어드형, 인터벌형 중에서 선택은 어떻게 해야 하는가? 언제나 그렇듯이 주어진 문제를 해결하는 가장 간단한 데이터 구조를 선택하라. 단지 물리적인 시간만 고려하는 경우에는 듀레이션형을 사용하라. 인간의 시간을 추가해야 하는 경우에는 피리어드형을 사용하라. 인간의 단위로 기간이 얼마인지 파악해야 하는 경우에는 인터벌형을 사용하라.
+
+Figure \@ref(fig:dt-algebra) 은 다른 데이터 유형 사이에 허용된 산술연산을 요약한 것이다.
 
 ```{r dt-algebra, echo = FALSE, fig.cap = "The allowed arithmetic operations between pairs of date/time classes."}
 knitr::include_graphics("diagrams/datetimes-arithmetic.png")
 ```
 
-### Exercises
+### 연습문제
 
-1.  Why is there `months()` but no `dmonths()`?
+1.  왜 `months()` 는 있고 `dmonths()` 는 없는가?
 
-1.  Explain `days(overnight * 1)` to someone who has just started 
-    learning R. How does it work?
+1. R을 막 배우기 시작한 사람에게 `days(overnight * 1)` 을 설명하라. 어떻게 동작하는가?
 
-1.  Create a vector of dates giving the first day of every month in 2015.
-    Create a vector of dates giving the first day of every month
-    in the _current_ year.
+1. 2015년 매월 첫 날짜를 주는 데이트형 벡터를 생성하라. 현재 연도의 매월 첫 날짜를 주는 데이트형 벡터를 생성하라.
 
-1.  Write a function that given your birthday (as a date), returns 
-    how old you are in years.
+1. 여러분의 생일이 (데이트형으로) 주어질 때, 나이를 연으로 반환하는 함수를 작성하라.
 
-1.  Why can't `(today() %--% (today() + years(1)) / months(1)` work?
+1. 왜 다음은 작동하지 않는가? `(today() %--% (today() + years(1)) / months(1)` 
 
-## Time zones 
 
-Time zones are an enormously complicated topic because of their interaction with geopolitical entities. Fortunately we don't need to dig into all the details as they're not all important for data analysis, but there are a few challenges we'll need to tackle head on.
+## 시간대
 
-The first challenge is that everyday names of time zones tend to be ambiguous. For example, if you're American you're probably familiar with EST, or Eastern Standard Time. However, both Australia and Canada also have EST! To avoid confusion, R uses the international standard IANA time zones. These use a consistent naming scheme "<area>/<location>", typically in the form "\<continent\>/\<city\>" (there are a few exceptions because not every country lies on a continent). Examples include "America/New_York", "Europe/Paris", and "Pacific/Auckland".
+시간대는 엄청나게 복잡한 주제인데, 지정학적 요소들과 상호작용이 있기 때문이다. 다행히 시간대는 데이터 분석에 모두 중요한 것은 아니기 때문에 세부사항을 모두 파고들지 않아도 되지만, 정면으로 맞서야 하는 문제가 몇 개 있다.
 
-You might wonder why the time zone uses a city, when typically you think of time zones as associated with a country or region within a country. This is because the IANA database has to record decades worth of time zone rules. In the course of decades, countries change names (or break apart) fairly frequently, but city names tend to stay the same. Another problem is that name needs to reflect not only to the current behaviour, but also the complete history. For example, there are time zones for both "America/New_York" and "America/Detroit". These cities both currently use Eastern Standard Time but in 1969-1972 Michigan (the state in which Detroit is located), did not follow DST, so it needs a different name. It's worth reading the raw time zone database (available at <http://www.iana.org/time-zones>) just to read some of these stories!
+첫 번째 문제는 일상적인 시간대 이름은 모호하다는 것이다. 예를 들어 여러분이 미국인이라면 아마 EST, 즉 동부 표준시가 익숙할 것이다. 그러나 호주와 캐나다에도 EST가 있다! 혼란을 방지하기 위해, R은 국제 표준 IANA 시간대를 사용한다. 이는 일반적으로 ’\<대륙\>/\<도시\>’ 형태로 ’/’를 쓰는 일관된 명명 체계를 사용한다 (모든 국가가 대륙에 위치하는 것은 아니기 때문에 몇 가지 예외도 있다). 예를 들면 ’America/New_York‘, ’Europe/Paris‘와 ’Pacific/Auckland‘ 등이 있다.
 
-You can find out what R thinks your current time zone is with `Sys.timezone()`:
+시간대가 국가, 혹은 국가 내 지역과 관련되었다고 일반적으로 생각하면 왜 시간대가 도시를 사용하는지 궁금할 것이다. 이는 IANA 데이터베이스가 시간대 규칙을 수십 년 분량이나 기록해야 하기 때문이다. 수십 년 사이에 국가 이름은 꽤 자주 변경(또는 분리)되지만, 도시의 이름은 유지되는 편이다. 또 다른 문제는 이름은 현재의 행동뿐만 아니라 전체 역사를 반영해야 한다는 것이다. 예를 들어 ’America/New_York‘과 ’America/Detroit‘ 시간대가 있다. 두 도시는 현재 모두 동부 표준시간을 사용하지만 (디트로이트가 위치한) 미시간주는 1969-1972’에, 일광절약제를 따르지 않았기 때문에 이름이 따로 필요한 것이다. 이러한 이야기들이 있는 원시 시간대 데이터베이스(<http://www.iana.org/time-zones>)를 읽어볼 만하다!
+
+`Sys.timezone()` 를 사용해서 현재 R이 인식하고 있는 시간대를 알아볼 수 있다. (우리나라 시간대는 “Asia/Seoul”이다.)
 
 ```{r}
 Sys.timezone()
 ```
 
-(If R doesn't know, you'll get an `NA`.)
+(R이 모르는 경우 `NA` 가 나올 것이다.)
 
-And see the complete list of all time zone names with `OlsonNames()`:
+그리고 `OlsonNames()` 를 사용해서 모든 시간대 이름의 전체 목록을 볼 수 있다.
 
 ```{r}
 length(OlsonNames())
 head(OlsonNames())
 ```
 
-In R, the time zone is an attribute of the date-time that only controls printing. For example, these three objects represent the same instant in time:
-
+R에 있어서, 시간대는 출력 제어만 하는 데이트-타임형의 한 속성이다. 예를 들어 이 세 가지 객체는 같은 시점을 나타낸다. 
 ```{r}
 (x1 <- ymd_hms("2015-06-01 12:00:00", tz = "America/New_York"))
 (x2 <- ymd_hms("2015-06-01 18:00:00", tz = "Europe/Copenhagen"))
 (x3 <- ymd_hms("2015-06-02 04:00:00", tz = "Pacific/Auckland"))
 ```
 
-You can verify that they're the same time using subtraction:
+이들이 같은 시점이라는 것을 뺄셈을 사용하여 확인할 수 있다.
 
 ```{r}
 x1 - x2
 x1 - x3
 ```
 
-Unless otherwise specified, lubridate always uses UTC. UTC (Coordinated Universal Time) is the standard time zone used by the scientific community and roughly equivalent to its predecessor GMT (Greenwich Mean Time). It does not have DST, which makes a convenient representation for computation. Operations that combine date-times, like `c()`, will often drop the time zone. In that case, the date-times will display in your local time zone:
+별도 명시가 없는 한, **lubridate** 는 항상 UTC를 사용한다. UTC(Coordinated Universal Time)는 과학계에서 사용하는 표준 시간대이며 그 전신인 GMT(그리니치 표준시)와 거의 같다. UTC는 DST가 없는데, 이로 인해 계산에 용이한 표현 방법이 된다. `c()` 와 같이 데이트-타임형을 조합하는 연산은 종종 시간대를 제거한다. 이 경우 데이트-타임형은 현지 시간대로 표시된다.
 
 ```{r}
 x4 <- c(x1, x2, x3)
 x4
 ```
 
-You can change the time zone in two ways:
+두 가지 방법으로 시간대를 변경할 수 있다.
 
-*   Keep the instant in time the same, and change how it's displayed.
-    Use this when the instant is correct, but you want a more natural
-    display.
-  
+*   시각을 유지하고 표시 방법을 변경한다. 시각은 맞지만 더 자연스러운 표시를 원한다면 이 방법을 써라.
+
     ```{r}
     x4a <- with_tz(x4, tzone = "Australia/Lord_Howe")
     x4a
     x4a - x4
     ```
     
-    (This also illustrates another challenge of times zones: they're not
-    all integer hour offsets!)
+    (이 예시는 시간대의 다른 어려운 점을 보여준다. 시간대 오프셋이 모두 정수-시 (integer hour) 인 것은 아니다!)
 
-*   Change the underlying instant in time. Use this when you have an
-    instant that has been labelled with the incorrect time zone, and you
-    need to fix it.
+*   기본 시각을 변경한다. 시각에 잘못된 시간대가 붙어 있어서 이를 수정해야 한다면 이 방법을 사용하라.
 
     ```{r}
     x4b <- force_tz(x4, tzone = "Australia/Lord_Howe")

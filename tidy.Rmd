@@ -1,4 +1,4 @@
-# Tidy Data
+# 타이디 데이터 {#tidy-data}
 
 ## 들어가기
 

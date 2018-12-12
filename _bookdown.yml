@@ -25,8 +25,8 @@ rmd_files: [
 
   "model.Rmd",
 
-   "communicate.Rmd",
-   "rmarkdown.Rmd",
+  "communicate.Rmd",
+  "rmarkdown.Rmd",
 ]
 
 before_chapter_script: "_common.R"
