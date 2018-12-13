@@ -1,36 +1,35 @@
-# R Markdown formats
+# R 마크다운 유형 {#rmarkdown-formats}
 
-## Introduction
+## 들어가기
 
-So far you've seen R Markdown used to produce HTML documents. This chapter gives a brief overview of some of the many other types of output you can produce with R Markdown. There are two ways to set the output of a document:
+지금까지 본 R마크다운은 HTML 문서를 생성하는 것이었다. 이 장에서는 R마크다운으로 생성할 수 있는 그 외의 출력 유형들에 대해 간략하게 설명한다. 출력 문서를 설정하는 방법에는 두 가지가 있다.  
 
-1.  Permanently, by modifying the YAML header: 
-    
+1. 영구적 방법은 YAML 헤더를 수정하는 것이다. 
+
     ```yaml
     title: "Viridis Demo"
     output: html_document
     ```
     
-1.  Transiently, by calling `rmarkdown::render()` by hand:
+1.  일시적 방법은 직접 `rmarkdown::render()` 를 호출하는 것이다.
     
     ```{r eval = FALSE}
     rmarkdown::render("diamond-sizes.Rmd", output_format = "word_document")
     ```
     
-    This is useful if you want to programmatically produce multiple types of
-    output.
+    여러 출력 유형을 생성하는 것을 프로그래밍하고자 할 때 유용한 방법이다.
 
-RStudio's knit button renders a file to the first format listed in its `output` field. You can render to additional formats by clicking the dropdown menu beside the knit button.
+RStudio의 knit 버튼을 클릭하면 `output`  필드의 첫 번째 형식으로 파일을 렌더링한다. knit 버튼 옆의 드롭다운 메뉴를 클릭하여 다른 형식으로 렌더링할 수 있다.
 
 ```{r, echo = FALSE, out.width = NULL}
 knitr::include_graphics("screenshots/rmarkdown-knit.png")
 ```
 
-## Output options
+## 출력 옵션
 
-Each output format is associated with an R function. You can either write `foo` or `pkg::foo`. If you omit `pkg`, the default is assumed to be rmarkdown. It's important to know the name of the function that makes the output because that's where you get help. For example, to figure out what parameters you can set with `html_document`, look at `?rmarkdown::html_document`.
+각 출력 형식은 R 함수와 연관되어 있다. `foo`  혹은 `pkg::foo` 로 작성할 수 있다. `pkg` 를 생략하면 기본값으로 rmarkdown로 간주한다. 출력을 만드는 함수 이름을 아는 것은 중요하다. 도움말을 얻을 수 있는 곳이기 때문이다. 예를 들어 `html_document` 과 함께 설정할 수 있는 파라미터가 무엇인지를 알아보기 위해서는 `?rmarkdown::html_document` 를 하면 된다.
 
-To override the default parameter values, you need to use an expanded `output` field. For example, if you wanted to render an `html_document` with a floating table of contents, you'd use:
+기본 파라미터 값을 무시하려면 확장된 출력 필드를 이용해야 한다. 예를 들어 떠다니는 목차가 있는 `html_document` 로 렌더링하고자 하면 다음 같이 하면 된다.
 
 ```yaml
 output:
@@ -39,7 +38,7 @@ output:
     toc_float: true
 ```
 
-You can even render to multiple outputs by supplying a list of formats:
+포맷 리스트를 제공하여 다중 출력으로 렌더링할 수도 있다.
 
 ```yaml
 output:
@@ -49,36 +48,31 @@ output:
   pdf_document: default
 ```
 
-Note the special syntax if you don't want to override any of the default options.
+기본 옵션을 무시하지 않으려면 특수 구문을 주의하라.
 
-## Documents
+## Document
 
-The previous chapter focused on the default `html_document` output. There are a number of basic variations on that theme, generating different types of documents:
+이전 장에서는 기본 `html_document`  출력에 중점을 두었었다. 이 테마에는 여러 가지 변종이 있는데, 이들은 다양한 유형의 문서를 생성한다.
 
-*   `pdf_document` makes a PDF with LaTeX (an open source document layout 
-    system), which you'll need to install. RStudio will prompt you if you 
-    don't already have it.
-  
-*   `word_document` for Microsoft Word documents (`.docx`).
-  
-*   `odt_document` for OpenDocument Text documents (`.odt`).
-  
-*   `rtf_document` for Rich Text Format (`.rtf`) documents.
-  
-*   `md_document` for a Markdown document. This isn't typically useful by 
-    itself, but you might use it if, for example, your corporate CMS or
-    lab wiki uses markdown.
-    
-*   `github_document`: this is a tailored version of `md_document` 
-    designed for sharing on GitHub. 
+* `pdf_document` 는 LaTeX (오픈 소스 문서 레이아웃 시스템)이 있는 PDF를 생성한다. LaTeX 설치가 필요한데, 하지 않았다면 RStudio가 안내할 것이다.
 
-Remember, when generating a document to share with decision makers, you can turn off the default display of code by setting global options in the setup chunk:
+* `word_document` 는 마이크로소프트 워드 문서(.docx)를 생성한다.
+
+* `odt_document` 는 오픈 문서 텍스트 문서(.odt)를 생성한다.
+
+* `rtf_document` 는 서식 있는 포맷(.rtf) 문서에 해당된다.
+
+* `md_document` 은 마크다운 문서에 해당된다. 일반적으로 유용하지 않은 유형이지만, 예를 들어 회사의 CMS 나 랩 위키가 마크다운을 사용한다면 이용해 볼 수 있다.
+
+* `github_document` : 깃허브에서 공유할 수 있도록 설계된 `md_document` 의 맞춤형 버전이다.
+
+의사결정권자에게 공유할 문서를 생성할 경우, 설정 청크에서 전역 옵션을 설정하여 코드를 표시하지 않을 수 있음을 기억하라.
 
 ```{r, eval = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-For `html_document`s another option is to make the code chunks hidden by default, but visible with a click:
+`html_document` 의 기타 옵션으로는 코드 청크를 기본적으로 표시하지 않다가, 클릭해야 표시하는 것이 있다.
 
 ```yaml
 output:
@@ -86,20 +80,15 @@ output:
     code_folding: hide
 ```
 
-## Notebooks
+## Notebook
 
-A notebook, `html_notebook`, is a variation on a `html_document`. The rendered outputs are very similar, but the purpose is different. A `html_document` is focused on communicating with decision makers, while a notebook is focused on collaborating with other data scientists. These different purposes lead to using the HTML output in different ways. Both HTML outputs will contain the fully rendered output, but the notebook also contains the full source code. That means you can use the `.nb.html` generated by the notebook in two ways:
+`html_notebook` (노트북)은 `html_document` 의 변형이다. 렌더링된 출력은 서로 매우 유사하지만 목적이 다르다. `html_document` 는 의사결정권자와 의사소통하는 데 맞춰져 있지만, 노트북은 다른 데이터 과학자들과의 공동작업에 초점을 맞춘다. 목적이 이렇게 다르기 때문에 HTML 출력이 다른 방식으로 사용된다. 두 HTML 출력물 모두 완전히 렌더링된 출력을 포함하지만 노트북은 소스 코드 전체도 포함한다. 이로 인해 노트북이 생성한 `.nb.html` 을 다음의 두 가지 방식으로 사용할 수 있다.
 
-1. You can view it in a web browser, and see the rendered output. Unlike
-   `html_document`, this rendering always includes an embedded copy of 
-   the source code that generated it.
+1.  웹 브라우저에서 이 파일을 보고 렌더링된 출력을 볼 수 있다. 렌더링을 생성한 소스 코드의 임베디드 복사본이 포함되는 것이 `html_document` 과 다르다. 
 
-1. You can edit it in RStudio. When you open an `.nb.html` file, RStudio will
-   automatically recreate the `.Rmd` file that generated it. In the future, you 
-   will also be able to include supporting files (e.g. `.csv` data files), which 
-   will be automatically extracted when needed. 
+1.  RStudio 에서 이 파일을 편집할 수 있다. `.nb.html`  파일을 열 때, RStudio 는 이를 생성한 _.Rmd_ 파일을 자동으로 다시 생성한다. 앞으로는 지원하는 파일들(예: _.csv_ 데이터 파일)도 포함할 수 있을 것인데, 이렇게 되면 필요할 때마다 이 파일들을 자동으로 불러올 수 있다.  
 
-Emailing `.nb.html` files is a simple way to share analyses with your colleagues. But things will get painful as soon as they want to make changes. If this starts to happen, it's a good time to learn Git and GitHub. Learning Git and GitHub is definitely painful at first, but the collaboration payoff is huge. As mentioned earlier, Git and GitHub are outside the scope of the book, but there's one tip that's useful if you're already using them: use both `html_notebook` and `github_document` outputs:
+`.nb.html`  파일들을 이메일로 보내는 것은 동료들과 분석 내용을 공유할 수 있는 간단한 방법이다. 그러나 동료들이 수정을 원하면 일이 매우 힘들어 진다. 이런 일이 발생하기 시작한다면 이 때가 깃과 깃허브를 배우기 좋은 순간이다. 깃과 깃허브를 배우는 것은 처음에는 정말 힘들지만 공동작업에서 얻는 활용도는 엄청나다. 앞서 이야기했듯이 깃과 깃허브는 이 책의 범위를 벗어나지만, 이를 사용하고 있다면 유용한 팁이 하나 있다. 다음과 같이 `html_notebook` 과 `github_document`  출력을 모두 사용하라.
 
 ```yaml
 output:
@@ -107,58 +96,59 @@ output:
   github_document: default
 ```
 
-`html_notebook` gives you a local preview, and a file that you can share via email. `github_document` creates a minimal md file that you can check into git. You can easily see how the results of your analysis (not just the code) change over time, and GitHub will render it for you nicely online.
 
-## Presentations
+`html_notebook` 은 로컬 미리보기가 가능하고 이메일을 통해 공유할 수 있는 파일을 제공한다. `github_document` 는 깃에서 확인할 수 있는 최소한의 md 파일을 생성한다. (코드뿐만 아니라) 분석 결과가 시간에 따라 어떻게 변하는지를 쉽게 볼 수 있다. 깃허브는 이를 온라인으로 멋지게 렌더링한다.
 
-You can also use R Markdown to produce presentations. You get less visual control than with a tool like Keynote or PowerPoint, but automatically inserting the results of your R code into a presentation can save a huge amount of time. Presentations work by dividing your content into slides, with a new slide beginning at each first (`#`) or second (`##`) level header. You can also insert a horizontal rule (`***`) to create a new slide without a header. 
+## Presentation
 
-R Markdown comes with three presentation formats built-in:
+R마크다운으로 프리젠테이션을 생성할 수도 있다. 키노트, 파워포인트와 같은 도구를 사용하는 것보다는 시각적인 제어에 제약이 있지만, R코드 결과를 자동으로 프리젠테이션에 삽입하여 시간을 훨씬 절약할 수 있다. 내용이 슬라이드로 나누어지는데, 첫 번째(`#`) 혹은 두 번째(`##`)레벨 헤더에서 새 슬라이드가 시작된다. 수평선(`***`)을 삽입하여 헤더없는 새로운 슬라이드를 생성할 수도 있다. 
 
-1.  `ioslides_presentation` - HTML presentation with ioslides
+R마크다운에는 세 가지 프리젠테이션 형식이 내장되어 있다.
+1.  `ioslides_presentation` 
+    ioslices 를 이용한 HTML 프리젠테이션
 
-1.  `slidy_presentation` - HTML presentation with W3C Slidy
+1.  `slidy_presentation` 
+    W2C Slidy 를 이용한 HTML 프리젠테이션
 
-1.  `beamer_presentation` - PDF presentation with LaTeX Beamer.
+1.  `beamer_presentation` 
+    LaTeX Beamer를 이용한 PDF 프리젠테이션.
 
-Two other popular formats are provided by packages:
+이 밖에 인기 있는 다음의 두 가지 형식은 패키지에 의해 제공된다.
 
-1.  `revealjs::revealjs_presentation` - HTML presentation with reveal.js. 
-    Requires the __revealjs__ package.
+1.  `revealjs::revealjs_presentation` 
+    reveal.js를 이용한 HTML 프리젠테이션. revealjs패키지 필요.
 
-1.  __rmdshower__, <https://github.com/MangoTheCat/rmdshower>, provides a 
-    wrapper around the __shower__, <https://github.com/shower/shower>, 
-    presentation engine
+1.  `rmdshower`  (https://github.com/MangoTheCat/rmdshower)는 shower(https://github.com/shower/shower) 프리젠테이션 엔진의 래퍼를 제공한다.
 
-## Dashboards
+## Dashboard
 
-Dashboards are a useful way to communicate large amounts of information visually and quickly. Flexdashboard makes it particularly easy to create dashboards using R Markdown and a convention for how the headers affect the layout:
+대시보드는 많은 양의 정보를 시각적으로 신속하게 전달할 수 있는 유용한 도구이다. flexdashboard를 사용하면 R마크다운과, 헤더의 레이아웃 표시 규칙을 이용하여 대시보드를 쉽게 생성할 수 있다.
 
-* Each level 1 header (`#`) begins a new page in the dashboard.
-* Each level 2 header (`##`) begins a new column.
-* Each level 3 header (`###`) begins a new row.
+* 레벨 1 헤더(`#`)에서 대시보드의 새로운 페이지가 시작된다.
+* 레벨 2 헤더(`##`)에서 새로운 열이 시작된다.
+* 레벨 3 헤더(`###`)에서 새로운 행이 시작된다.
 
-For example, you can produce this dashboard:
+예를 들어 아래와 같은 대시보드는, 
 
 ```{r, echo = FALSE, out.width = "75%"}
 knitr::include_graphics("screenshots/rmarkdown-flexdashboard.png")
 ```
 
-Using this code:
+다음의 코드로 만든다.
 
 ```{r comment = "", echo = FALSE}
 cat(readr::read_file("rmarkdown/dashboard.Rmd"))
 ```
 
-Flexdashboard also provides simple tools for creating sidebars, tabsets, value boxes, and gauges. To learn more about flexdashboard visit <http://rmarkdown.rstudio.com/flexdashboard/>.
+flexdashboard 에는 사이드바, 탭모음, 값상자, 게이지를 생성하는 간단한 도구들이 있다. flexdashboard 에 대한 자세한 내용은 다음을 참고하라. <http://rmarkdown.rstudio.com/flexdashboard/>
 
-## Interactivity
+## 대화형 동작
 
-Any HTML format (document, notebook, presentation, or dashboard) can contain interactive components.
+HTML 유형(문서, 노트북, 프리젠테이션, 대시보드)에는 대화형 구성요소가 포함될 수 있다.
 
 ### htmlwidgets
 
-HTML is an interactive format, and you can take advantage of that interactivity with __htmlwidgets__, R functions that produce interactive HTML visualisations. For example, take the __leaflet__ map below. If you're viewing this page on the web, you can drag the map around, zoom in and out, etc. You obviously can't do that in a book, so rmarkdown automatically inserts a static screenshot for you.
+HTML 은 대화형 포맷이므로 html위젯(대화형 HTML 시각화를 생성하는 R 함수들)으로 이러한 대화형 동작을 이용할 수 있다. 예를 들어 다음의 leaflet 지도를 보자. 웹에서 이 페이지를 보고 있다면 지도를 이리저리 드래그하거나, 확대∙축소 등을 할 수 있다. 책에서는 물론 그렇게 할 수 없으므로 rmarkdown이 스크린샷을 자동으로 삽입한다.
 
 ```{r}
 library(leaflet)
@@ -168,27 +158,25 @@ leaflet() %>%
   addMarkers(174.764, -36.877, popup = "Maungawhau") 
 ```
 
-The great thing about htmlwidgets is that you don't need to know anything about HTML or JavaScript to use them. All the details are wrapped inside the package, so you don't need to worry about it.  
+html위젯은 HTML 이나 자바스크립트를 몰라도 사용할 수 있다는 점에서 매우 좋다. 세부사항이 전부 패키지 안에 랩되어 있어서 이에 대해 신경쓸 필요가 없다. 
 
-There are many packages that provide htmlwidgets, including:
+html위젯을 제공하는 패키지들은 이 외에도 많으며, 일부는 다음과 같다.
 
-* __dygraphs__, <http://rstudio.github.io/dygraphs/>, for interactive time 
-  series visualisations.
+* dygraphs (http://rstudio.github.io/dygraphs/): 대화형 시계열 시각화 패키지.
 
-* __DT__, <http://rstudio.github.io/DT/>, for interactive tables.
+* DT (http://rstudio.github.io/DT/): 대화형 테이블 패키지.
 
-* __threejs__, <https://github.com/bwlewis/rthreejs> for interactive 3d plots.
+* threejs (https://github.com/bwlewis/rthreejs): 대화형 3d 플롯 패키지.
 
-* __DiagrammeR__, <http://rich-iannone.github.io/DiagrammeR/> for diagrams
-  (like flow charts and simple node-link diagrams).
+* DiagrammeR (http://rich-iannone.github.io/DiagrammeR/): (플로 차트와 단순한 노트링크 다이아그램과 같은) 다이어그램 패키지.
 
-To learn more about htmlwidgets and see a more complete list of packages that provide them visit <http://www.htmlwidgets.org/>.
+html위젯에 대해 더 알아보고, 제공하는 패키지의 전체 목록을 보려면 다음을 방문하라. <http://www.htmlwidgets.org/>
 
 ### Shiny
 
-htmlwidgets provide __client-side__ interactivity --- all the interactivity happens in the browser, independently of R. On one hand, that's great because you can distribute the HTML file without any connection to R. However, that fundamentally limits what you can do to things that have been implemented in HTML and JavaScript.  An alternative approach is to use __shiny__, a package that allows you to create interactivity using R code, not JavaScript.
+html위젯은 _클라이언트측_ 대화형 기능을 제공한다. 즉, 모든 대화형 기능은 R과는 독립적으로 브라우저에서 일어난다. R에 연결하지 않고 HTML 파일을 배포할 수 있기 때문에 한편으로는 편리하다. 그러나 HTML 과 자바스크립트로 구현된 것들에 할 수 있는 것이 많지 않다. 대신 Shiny를 사용할 수 있는데, 이는 자바스크립트가 아닌 R 코드를 사용하여 대화형 기능을 생성할 수 있게 하는 패키지이다.
 
-To call Shiny code from an R Markdown document, add `runtime: shiny` to the header:
+R마크다운 문서에서 Shiny 코드를 호출하려면 헤더에 `runtime: shiny` 를 추가하라.
 
 ```yaml
 title: "Shiny Web App"
@@ -196,7 +184,7 @@ output: html_document
 runtime: shiny
 ```
 
-Then you can use the "input" functions to add interactive components to the document:
+그런 다음 ’입력‘ 함수들을 이용하여 문서에 대화형 구성요소를 추가할 수 있다.
 
 ```{r, eval = FALSE}
 library(shiny)
@@ -207,73 +195,54 @@ numericInput("age", "How old are you?", NA, min = 0, max = 150)
 ```{r, echo = FALSE, out.width = NULL}
 knitr::include_graphics("screenshots/rmarkdown-shiny.png")
 ```
-You can then refer to the values with `input$name` and `input$age`, and the code that uses them will be automatically re-run whenever they change. 
+이제 `input$name` 과 `input$age` 으로 값들을 참조할 수 있고, 이 값들을 사용하는 코드는 값들이 변경될 때 마다 자동으로 다시 실행된다.
 
-I can't show you a live shiny app here because shiny interactions occur on the __server-side__. This means that you can write interactive apps without knowing JavaScript, but you need a server to run them on. This introduces a logistical issue: Shiny apps need a Shiny server to be run online. When you run shiny apps on your own computer, shiny automatically sets up a shiny server for you, but you need a public facing shiny server if you want to publish this sort of interactivity online. That's the fundamental trade-off of shiny: you can do anything in a shiny document that you can do in R, but it requires someone to be running R.
+Shiny 앱을 여기서는 보여줄 수 없는데, Shiny 대화형 기능은 _서버측_ 에서 작동하기 때문이다. 따라서 자바스크립트를 몰라도 대화형 앱을 작성할 수 있지만, 실행하기 위해서는 서버가 필요하다. 수송 문제가 생기는 것이다. 즉, Shiny앱은 이를 온라인으로 실행되기 위해서 Shiny 서버가 필요하다. 본인의 컴퓨터에서 Shiny 앱을 실행하면 Shiny는 직접 Shiny 서버를 자동으로 설정하지만, 온라인으로 이러한 대화형 기능을 공개하려면 퍼블릭 Shiny 서버가 필요하다. 
 
-Learn more about Shiny at <http://shiny.rstudio.com/>.
+Shiny에 대해서 다음에서 더 알아보라. <http://shiny.rstudio.com/>
 
-## Websites
+## Website
 
-With a little additional infrastructure you can use R Markdown to generate a complete website:
+추가 인프라를 조금 더 사용하면 R마크다운을 이용하여 완전한 웹사이트를 생성할 수 있다.
 
-*   Put your `.Rmd` files in a single directory. `index.Rmd` will become 
-    the home page.
+* 단일 디렉터리에 `.Rmd` 파일들을 넣어라. `index.Rmd` 가 홈페이지가 된다.
 
-*   Add a YAML file named `_site.yml` provides the navigation for the site.
-    For example:
+* `_site.yml` 이라는 이름의 YAML 파일을 추가하면 사이트 탐색기능이 제공된다. 예를 들면
 
     ```{r echo = FALSE, comment = ""}
     cat(readr::read_file("rmarkdown/example-site.yml"))
     ```
 
-Execute `rmarkdown::render_site()` to build `_site`, a directory of files ready to deploy as a standalone static website, or if you use an RStudio Project for your website directory. RStudio will add a Build tab to the IDE that you can use to build and preview your site. 
+독립형 정적 웹사이트로 배포할 준비가 된 파일들의 디렉터리인 _site 가 빌드하기 위해, 혹은 RStudio 프로젝트를 사용하고 있다면 `rmarkdown::render_site()` 를 실행하라. RStudio가 IDE에 Build 탭을 추가시키는데, 이 탭은 사이트를 빌드하고 미리보는 데 사용할 수 있다.
 
-Read more at <http://rmarkdown.rstudio.com/rmarkdown_websites.html>.
+다음에서 더 알아보라. <http://rmarkdown.rstudio.com/rmarkdown_websites.html>
 
 ## Other formats
 
-Other packages provide even more output formats:
+다른 패키지들은 더 많은 출력 유형을 제공한다. 
 
-*   The __bookdown__ package, <https://github.com/rstudio/bookdown>, 
-    makes it easy to write books, like this one. To learn more, read 
-    [_Authoring Books with R Markdown_](https://bookdown.org/yihui/bookdown/),
-    by Yihui Xie, which is, of course, written in bookdown. Visit
-    <http://www.bookdown.org> to see other bookdown books written by the 
-    wider R community.
+* [bookdown 패키지](https://github.com/rstudio/bookdown) 을 사용하면 책을 저술하기가 쉬운데, 이 책도 이 패키지를 사용했다. 더 알아보려면 이후이 시에(Yihui Xie)의  [_Authoring Books with R Markdown_](https://bookdown.org/yihui/bookdown/)(당연히 bookdown으로 작성됨)을 읽어보라. <http://www.bookdown.org> 을 방문하여 R 커뮤니티에서 저술한 다른 bookdown 책을 보라.
 
-*   The __prettydoc__ package, <https://github.com/yixuan/prettydoc/>, 
-    provides lightweight document formats with a range of attractive
-    themes.
+* [prettydoc 패키지](https://github.com/yixuan/prettydoc/) 는 약식 문서 포맷들을 다양한 매력적인 테마와 함께 제공한다.
 
-*   The __rticles__ package, <https://github.com/rstudio/rticles>, compiles a
-    selection of formats tailored for specific scientific journals.
+* [rticles 패키지](https://github.com/rstudio/rticles) 는 선별된 과학 학술지들에 유형이 맞도록 컴파일한다.
 
-See <http://rmarkdown.rstudio.com/formats.html> for a list of even more formats.  You can also create your own by following the instructions at <http://rmarkdown.rstudio.com/developer_custom_formats.html>.
+더 많은 유형의 목록을 다음에서 확인하라 <http://rmarkdown.rstudio.com/formats.html>. 다음 사이트에 있는 설명서를 따라하여 본인의 유형을 생성할 수도 있다. <http://rmarkdown.rstudio.com/developer_custom_formats.html>.
 
-## Learning more
+## 더 배우기
 
-To learn more about effective communication in these different formats I recommend the following resources:
+이러한 다양한 유형으로 효과적인 의사소통을 하는 법을 더 배우고 싶다면 다음의 자료들을 추천한다.
 
-* To improve your presentation skills, I recommend 
-  [_Presentation Patterns_](https://amzn.com/0321820800), by Neal Ford,
-  Matthew McCollough, and Nathaniel Schutta. It provides a set of effective
-  patterns (both low- and high-level) that you can apply to improve your 
-  presentations.
-  
-* If you give academic talks, I recommend reading the [_Leek group guide
-  to giving talks_](https://github.com/jtleek/talkguide).
-  
-* I haven't taken it myself, but I've heard good things about Matt 
-  McGarrity's online course on public speaking: 
-  <https://www.coursera.org/learn/public-speaking>.
+* 프리젠테이션 기술들을 개선하고 싶으면 닐 포드(Neal Ford), 매튜 맥컬러프(Matthew McCollough), 너쌔니얼 슈타(Nathaniel Schutta)의 [_Presentation Patterns_](https://amzn.com/0321820800) 를 추천한다. 프리젠테이션을 개선하는 데 적용할 수 있는 효과적인 패턴들(낮은 수준과 높은 수준 모두)을 제공한다.
 
-* If you are creating a lot of dashboards, make sure to read Stephen Few's
-  [Information Dashboard Design: The Effective Visual Communication 
-  of Data](https://amzn.com/0596100167). It will help you create dashboards
-  that are truly useful, not just pretty to look at.
+* 학술 발표를 한다면 [_Leek group guide
+  to giving talks_](https://github.com/jtleek/talkguide) 를 읽어보라.
 
-* Effectively communicating your ideas often benefits from some
-  knowledge of graphic design. [_The Non-Designer's Design
-  Book_](http://amzn.com/0133966151) is a great place to start.
+* 직접 수강하지는 않았지만, 맷 맥개러티(Matt McGarrity)의 [대중 연설 온라인 수업](<https://www.coursera.org/learn/public-speaking>) 이 좋다는 이야기를 들었다.
+
+* 대시보드를 많이 생성한다면 스티븐 퓨(Stephen Few)의 [Information Dashboard Design: The Effective Visual Communication 
+  of Data](https://amzn.com/0596100167) 를 읽어라. 보기에만 이쁜 것이 아니라 정말 유용한 대시보드들을 생성할 수 있게 도와줄 것이다.
+
+* 그래픽 디자인 지식이 있으면 아이디어를 효과적으로 소통하는 데 도움이 되는 경우가 많다. [_The Non-Designer's Design
+  Book_](http://amzn.com/0133966151) 부터 시작하면 좋다.
 

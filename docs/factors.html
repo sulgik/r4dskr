@@ -52,6 +52,13 @@
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.3.1/str_view.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
 
 
 <style type="text/css">
@@ -380,32 +387,72 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>V 의사소통하기</b></span></li>
 <li class="chapter" data-level="17" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a></li>
-<li class="chapter" data-level="18" data-path="r-.html"><a href="r-.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
+<li class="chapter" data-level="18" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
 <li class="chapter" data-level="18.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>18.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="18.2" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>18.2</b> R 마크다운 기초</a><ul>
-<li class="chapter" data-level="18.2.1" data-path="r-.html"><a href="r-.html#-45"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="18.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-45"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="18.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>18.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
-<li class="chapter" data-level="18.3.1" data-path="r-.html"><a href="r-.html#-46"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="18.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-46"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="18.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4</b> 코드 청크</a><ul>
 <li class="chapter" data-level="18.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.1</b> 청크 이름</a></li>
 <li class="chapter" data-level="18.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.2</b> 청크 옵션</a></li>
-<li class="chapter" data-level="18.4.3" data-path="r-.html"><a href="r-.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
-<li class="chapter" data-level="18.4.4" data-path="r-.html"><a href="r-.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="18.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
+<li class="chapter" data-level="18.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
 <li class="chapter" data-level="18.4.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.5</b> 전역 옵션</a></li>
-<li class="chapter" data-level="18.4.6" data-path="r-.html"><a href="r-.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
-<li class="chapter" data-level="18.4.7" data-path="r-.html"><a href="r-.html#exercises"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
+<li class="chapter" data-level="18.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="18.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="18.5" data-path="r-.html"><a href="r-.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="18.6" data-path="r-.html"><a href="r-.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
-<li class="chapter" data-level="18.6.1" data-path="r-.html"><a href="r-.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
-<li class="chapter" data-level="18.6.2" data-path="r-.html"><a href="r-.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
+<li class="chapter" data-level="18.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="18.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
+<li class="chapter" data-level="18.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="18.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
 </ul></li>
-<li class="chapter" data-level="18.7" data-path="r-.html"><a href="r-.html#learning-more-1"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
+<li class="chapter" data-level="18.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more-1"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
 </ul></li>
+<li class="chapter" data-level="19" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>19</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="19.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>19.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>19.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>19.2</b> Label</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>19.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>19.3</b> Annotations</a><ul>
+<li class="chapter" data-level="19.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>19.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>19.4</b> Scales</a><ul>
+<li class="chapter" data-level="19.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>19.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="19.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>19.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="19.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>19.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="19.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-3"><i class="fa fa-check"></i><b>19.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>19.5</b> Zooming</a></li>
+<li class="chapter" data-level="19.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>19.6</b> Themes</a></li>
+<li class="chapter" data-level="19.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>19.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="19.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>19.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="19.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>19.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="19.8" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#learning-more-2"><i class="fa fa-check"></i><b>19.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>20</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="20.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>20.1</b> 들어가기</a></li>
+<li class="chapter" data-level="20.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="20.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>20.3</b> Document</a></li>
+<li class="chapter" data-level="20.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>20.4</b> Notebook</a></li>
+<li class="chapter" data-level="20.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>20.5</b> Presentation</a></li>
+<li class="chapter" data-level="20.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>20.6</b> Dashboard</a></li>
+<li class="chapter" data-level="20.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="20.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>20.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="20.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>20.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>20.8</b> Website</a></li>
+<li class="chapter" data-level="20.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>20.9</b> Other formats</a></li>
+<li class="chapter" data-level="20.10" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#--1"><i class="fa fa-check"></i><b>20.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>21</b> R 마크다운 워크플로</a></li>
 </ul>
 
       </nav>
@@ -498,14 +545,14 @@ f2
 <p>이 장의 남은 부분에서는 <code>forcats::gss_cat</code> 에 초점을 맞출 것이다. 이는 시카고 대학 독립 연구기관인 NORC에서 장기간 수행한 <a href="http://gss.norc.org">General Social Survey</a> 의 샘플 데이터이다. 이 설문조사에는 수천 개의 문항이 있는데, 이 중에서 팩터형과 작업할 때 자주 발생하는 문제를 보여주는 것들을 <code>gss_cat</code> 으로 선택했다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gss_cat
 <span class="co">#&gt; # A tibble: 21,483 x 9</span>
-<span class="co">#&gt;    year marital         age race  rincome  partyid   relig  denom  tvhours</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span>
-<span class="co">#&gt; 1  2000 Never married    26 White $8000 t… Ind,near… Prote… South…      12</span>
-<span class="co">#&gt; 2  2000 Divorced         48 White $8000 t… Not str … Prote… Bapti…      NA</span>
-<span class="co">#&gt; 3  2000 Widowed          67 White Not app… Independ… Prote… No de…       2</span>
-<span class="co">#&gt; 4  2000 Never married    39 White Not app… Ind,near… Ortho… Not a…       4</span>
-<span class="co">#&gt; 5  2000 Divorced         25 White Not app… Not str … None   Not a…       1</span>
-<span class="co">#&gt; 6  2000 Married          25 White $20000 … Strong d… Prote… South…      NA</span>
+<span class="co">#&gt;    year marital     age race  rincome   partyid    relig   denom   tvhours</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;</span>
+<span class="co">#&gt; 1  2000 Never ma…    26 White $8000 to… Ind,near … Protes… Southe…      12</span>
+<span class="co">#&gt; 2  2000 Divorced     48 White $8000 to… Not str r… Protes… Baptis…      NA</span>
+<span class="co">#&gt; 3  2000 Widowed      67 White Not appl… Independe… Protes… No den…       2</span>
+<span class="co">#&gt; 4  2000 Never ma…    39 White Not appl… Ind,near … Orthod… Not ap…       4</span>
+<span class="co">#&gt; 5  2000 Divorced     25 White Not appl… Not str d… None    Not ap…       1</span>
+<span class="co">#&gt; 6  2000 Married      25 White $20000 -… Strong de… Protes… Southe…      NA</span>
 <span class="co">#&gt; # ... with 2.148e+04 more rows</span></code></pre></div>
 <p>(이 데이터셋은 패키지로 제공되기 때문에 <code>?gss_cat</code> 으로 변수들에 관한 자세한 정보를 얻을 수 있다는 것을 잊지 말라.)</p>
 <p>팩터형이 티블로 저장되면 해당하는 레벨들을 쉽게 볼 수 없게 된다. 볼 수 있는 한 가지 방법은 <code>count()</code> 이다.</p>

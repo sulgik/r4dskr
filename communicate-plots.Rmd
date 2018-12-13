@@ -1,16 +1,16 @@
-# Graphics for communication
+# 그래프를 통한 의사소통 {#graphics-for-communication}
 
-## Introduction
+## 들어가기
 
-In [exploratory data analysis], you learned how to use plots as tools for _exploration_. When you make exploratory plots, you know---even before looking---which variables the plot will display. You made each plot for a purpose, could quickly look at it, and then move on to the next plot. In the course of most analyses, you'll produce tens or hundreds of plots, most of which are immediately thrown away.
+[탐색적 데이터 분석](#eda) 에서 우리는 플롯을 <이탤릭>탐색</이탤릭> 도구로 사용하는 방법을 배웠다. 탐색용 플롯을 만들 때는 어떤 변수가 플롯에 표시될지 (플롯을 보기도 전에) 알고 있다. 우리는 목적에 따라 플롯을 하나씩 만들었고, 빨리 파악하고, 다음 플롯으로 넘어갔다. 대부분의 분석 과정에서 수십 또는 수백 개의 플롯을 그려보고, 즉시 대부분을 폐기할 것이다.
 
-Now that you understand your data, you need to _communicate_ your understanding to others. Your audience will likely not share your background knowledge and will not be deeply invested in the data. To help others quickly build up a good mental model of the data, you will need to invest considerable effort in making your plots as self-explanatory as possible. In this chapter, you'll learn some of the tools that ggplot2 provides to do so.
+데이터를 이해했다면 이제 이해한 바를 다른 사람들과 <이탤릭>의사소통</이탤릭>해야 한다. 의사소통 대상자들은 배경 지식이 없고 해당 데이터를 깊이 살펴보지 않는 경우가 많다. 다른 사람들이 데이터를 신속하게 이해할 수 있게 하려면, 플롯이 최대한 스스로 설명 가능할 수 있게 노력을 많이 기울여야 한다. 이 장에서는 <볼드>ggplot2</볼드>가 제공하는 도구에 대해 학습한다.
 
-This chapter focuses on the tools you need to create good graphics. I assume that you know what you want, and just need to know how to do it. For that reason, I highly recommend pairing this chapter with a good general visualisation book. I particularly like [_The Truthful Art_](https://amzn.com/0321934075), by Albert Cairo. It doesn't teach the mechanics of creating visualisations, but instead focuses on what you need to think about in order to create effective graphics.
+이번 장에서는 좋은 그래픽을 만드는 데 필요한 도구를 중점적으로 살펴본다. 나는 여러분이 자신이 하고자 하는 바가 무엇인지 알고 있지만, 어떻게 하는 지를 모른다고 가정한다. 이런 경우 시각화 개론 책을 이 장과 함께 읽는 것이 좋다. 나는 특히 앨버트 카이로(Albert Cairo)의  [_The Truthful Art_](https://amzn.com/0321934075) 를 좋아한다. 이 책은 시각화를 만드는 메커니즘을 가르쳐 주지 않지만 효과적인 그래프를 만들기 위해 무엇을 생각해야하는지를 중점적으로 다룬다.
 
-### Prerequisites
+### 준비하기
 
-In this chapter, we'll focus once again on ggplot2. We'll also use a little dplyr for data manipulation, and a few ggplot2 extension packages, including __ggrepel__ and __viridis__. Rather than loading those extensions here, we'll refer to their functions explicitly, using the `::` notation. This will help make it clear which functions are built into ggplot2, and which come from other packages. Don't forget you'll need to install those packages with `install.packages()` if you don't already have them.
+이 장에서는 다시 한번 <볼드>ggplot2</볼드>를 집중하여 볼 것이다. 또한 <볼드>dplyr</볼드>을 사용하여 데이터를 처리하고 <볼드>ggrepel</볼드>과 <볼드>viridis</볼드>를 포함한 몇 가지 <볼드>ggplot2</볼드> 확장 패키지를 사용할 것이다. 이 확장 패키지들을 여기에서 로드하지 않고, <코드체>::</코드체> 표기법을 사용하여 함수를 명시적으로 참조할 것이다. 이렇게 하면 어떤 함수가 <볼드>ggplot2</볼드>에 내장되어 있는지, 또 어떤 함수가 다른 패키지에서 온 것인지를 명확히 알 수 있다. 설치되지 않은 패키지는 <코드체>install.packages()</코드체>로 설치해야 한다는 것을 기억하라.
 
 ```{r, message = FALSE}
 library(tidyverse)

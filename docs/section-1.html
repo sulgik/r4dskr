@@ -52,6 +52,13 @@
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.3.1/str_view.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
 
 
 <style type="text/css">
@@ -380,32 +387,72 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>V 의사소통하기</b></span></li>
 <li class="chapter" data-level="17" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a></li>
-<li class="chapter" data-level="18" data-path="r-.html"><a href="r-.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
+<li class="chapter" data-level="18" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
 <li class="chapter" data-level="18.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>18.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="18.2" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>18.2</b> R 마크다운 기초</a><ul>
-<li class="chapter" data-level="18.2.1" data-path="r-.html"><a href="r-.html#-45"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="18.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-45"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="18.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>18.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
-<li class="chapter" data-level="18.3.1" data-path="r-.html"><a href="r-.html#-46"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="18.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-46"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="18.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4</b> 코드 청크</a><ul>
 <li class="chapter" data-level="18.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.1</b> 청크 이름</a></li>
 <li class="chapter" data-level="18.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.2</b> 청크 옵션</a></li>
-<li class="chapter" data-level="18.4.3" data-path="r-.html"><a href="r-.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
-<li class="chapter" data-level="18.4.4" data-path="r-.html"><a href="r-.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="18.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
+<li class="chapter" data-level="18.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
 <li class="chapter" data-level="18.4.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.5</b> 전역 옵션</a></li>
-<li class="chapter" data-level="18.4.6" data-path="r-.html"><a href="r-.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
-<li class="chapter" data-level="18.4.7" data-path="r-.html"><a href="r-.html#exercises"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
+<li class="chapter" data-level="18.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="18.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="18.5" data-path="r-.html"><a href="r-.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="18.6" data-path="r-.html"><a href="r-.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
-<li class="chapter" data-level="18.6.1" data-path="r-.html"><a href="r-.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
-<li class="chapter" data-level="18.6.2" data-path="r-.html"><a href="r-.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
+<li class="chapter" data-level="18.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="18.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
+<li class="chapter" data-level="18.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="18.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
 </ul></li>
-<li class="chapter" data-level="18.7" data-path="r-.html"><a href="r-.html#learning-more-1"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
+<li class="chapter" data-level="18.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more-1"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
 </ul></li>
+<li class="chapter" data-level="19" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>19</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="19.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>19.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>19.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>19.2</b> Label</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>19.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>19.3</b> Annotations</a><ul>
+<li class="chapter" data-level="19.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>19.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>19.4</b> Scales</a><ul>
+<li class="chapter" data-level="19.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>19.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="19.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>19.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="19.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>19.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="19.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-3"><i class="fa fa-check"></i><b>19.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>19.5</b> Zooming</a></li>
+<li class="chapter" data-level="19.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>19.6</b> Themes</a></li>
+<li class="chapter" data-level="19.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>19.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="19.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>19.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="19.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>19.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="19.8" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#learning-more-2"><i class="fa fa-check"></i><b>19.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>20</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="20.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>20.1</b> 들어가기</a></li>
+<li class="chapter" data-level="20.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="20.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>20.3</b> Document</a></li>
+<li class="chapter" data-level="20.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>20.4</b> Notebook</a></li>
+<li class="chapter" data-level="20.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>20.5</b> Presentation</a></li>
+<li class="chapter" data-level="20.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>20.6</b> Dashboard</a></li>
+<li class="chapter" data-level="20.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="20.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>20.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="20.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>20.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>20.8</b> Website</a></li>
+<li class="chapter" data-level="20.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>20.9</b> Other formats</a></li>
+<li class="chapter" data-level="20.10" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#--1"><i class="fa fa-check"></i><b>20.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>21</b> R 마크다운 워크플로</a></li>
 </ul>
 
       </nav>
@@ -502,7 +549,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
 <p>자신의 컴퓨터에서 콘솔에 해당 코드를 입력한 다음 엔터 키를 눌러 실행하라. R 이 CRAN에서 패키지들을 다운로드해서 여러분의 컴퓨터에 설치한다. 설치에 문제가 있으면 인터넷에 연결되어 있는지, 방화벽이나 프록시에 의해 <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a>가 차단되어 있지 않은지 확인하라.</p>
 <p><code>library()</code>를 사용하여 패키지를 로드하기 전에는, 해당 패키지의 함수, 객체 및 도움말 파일을 사용할 수 없다. 패키지를 설치하면 <code>library()</code> 함수를 사용하여 로드할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="co">#&gt; ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</span>
+<span class="co">#&gt; ✔ ggplot2 3.1.0.9000     ✔ purrr   0.2.5     </span>
+<span class="co">#&gt; ✔ tibble  1.4.2          ✔ dplyr   0.7.8     </span>
+<span class="co">#&gt; ✔ tidyr   0.8.2          ✔ stringr 1.3.1     </span>
+<span class="co">#&gt; ✔ readr   1.2.1          ✔ forcats 0.3.0</span>
+<span class="co">#&gt; ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></code></pre></div>
 <p>이것은 tidyverse 가 ggplot2, tibble, tidyr, readr, purrr, dplyr 패키지를 로드하고 있음을 나타낸다. 이 패키지들은 거의 모든 분석에서 사용될 것이기 때문에 tidyverse의 <strong>코어</strong>라 할 수 있다.</p>
 <p>tidyverse의 패키지는 상당히 자주 변경된다. <code>tidyverse_update()</code>를 실행하여 업데이트가 가능한지 확인할 수 있다.</p>
 </div>
@@ -574,106 +629,185 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>An online version of this book is available at <a href="http://r4ds.had.co.nz" class="uri">http://r4ds.had.co.nz</a>. It will continue to evolve in between reprints of the physical book. The source of the book is available at <a href="https://github.com/hadley/r4ds" class="uri">https://github.com/hadley/r4ds</a>. The book is powered by <a href="https://bookdown.org" class="uri">https://bookdown.org</a> which makes it easy to turn R markdown files into HTML, PDF, and EPUB.</p>
 <p>This book was built with:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">session_info</span>(<span class="kw">c</span>(<span class="st">&quot;tidyverse&quot;</span>))
-<span class="co">#&gt; Session info -------------------------------------------------------------</span>
+<span class="co">#&gt; ─ Session info ──────────────────────────────────────────────────────────</span>
 <span class="co">#&gt;  setting  value                       </span>
 <span class="co">#&gt;  version  R version 3.5.1 (2018-07-02)</span>
+<span class="co">#&gt;  os       macOS  10.14                </span>
 <span class="co">#&gt;  system   x86_64, darwin15.6.0        </span>
 <span class="co">#&gt;  ui       X11                         </span>
 <span class="co">#&gt;  language (EN)                        </span>
 <span class="co">#&gt;  collate  en_US.UTF-8                 </span>
+<span class="co">#&gt;  ctype    en_US.UTF-8                 </span>
 <span class="co">#&gt;  tz       Asia/Seoul                  </span>
-<span class="co">#&gt;  date     2018-12-11</span>
-<span class="co">#&gt; Packages -----------------------------------------------------------------</span>
-<span class="co">#&gt;  package      * version    date       source                            </span>
-<span class="co">#&gt;  assertthat     0.2.0      2017-04-11 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  backports      1.1.2      2017-12-13 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  base64enc      0.1-3      2015-07-28 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  BH             1.66.0-1   2018-02-13 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  bindr          0.1.1      2018-03-13 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  bindrcpp       0.2.2      2018-03-29 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  broom          0.5.1      2018-12-05 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  callr          2.0.3      2018-04-11 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  cellranger     1.1.0      2016-07-27 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  cli            1.0.1      2018-09-25 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  clipr          0.4.1      2018-06-23 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  colorspace     1.3-2      2016-12-14 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  crayon         1.3.4      2017-09-16 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  curl           3.2        2018-03-28 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  DBI            1.0.0      2018-05-02 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  dbplyr         1.2.2      2018-07-25 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  debugme        1.1.0      2017-10-22 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  digest         0.6.18     2018-10-10 cran (@0.6.18)                    </span>
-<span class="co">#&gt;  dplyr        * 0.7.8      2018-11-10 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  evaluate       0.12       2018-10-09 cran (@0.12)                      </span>
-<span class="co">#&gt;  forcats      * 0.3.0      2018-02-19 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  fs             1.2.6      2018-08-23 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  generics       0.0.2      2018-11-29 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  ggplot2      * 3.1.0.9000 2018-12-11 Github (tidyverse/ggplot2@4a607ca)</span>
-<span class="co">#&gt;  glue           1.3.0      2018-07-17 cran (@1.3.0)                     </span>
-<span class="co">#&gt;  graphics     * 3.5.1      2018-07-05 local                             </span>
-<span class="co">#&gt;  grDevices    * 3.5.1      2018-07-05 local                             </span>
-<span class="co">#&gt;  grid           3.5.1      2018-07-05 local                             </span>
-<span class="co">#&gt;  gtable         0.2.0      2016-02-26 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  haven          2.0.0      2018-11-22 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  highr          0.6        2016-05-09 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  hms            0.4.2      2018-03-10 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  htmltools      0.3.6      2017-04-28 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  httr           1.3.1      2017-08-20 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  jsonlite       1.6        2018-12-07 cran (@1.6)                       </span>
-<span class="co">#&gt;  knitr          1.20       2018-02-20 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  labeling       0.3        2014-08-23 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  lattice        0.20-35    2017-03-25 CRAN (R 3.5.1)                    </span>
-<span class="co">#&gt;  lazyeval       0.2.1      2017-10-29 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  lubridate      1.7.4      2018-04-11 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  magrittr       1.5        2014-11-22 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  markdown       0.8        2017-04-20 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  MASS           7.3-50     2018-04-30 CRAN (R 3.5.1)                    </span>
-<span class="co">#&gt;  Matrix         1.2-14     2018-04-13 CRAN (R 3.5.1)                    </span>
-<span class="co">#&gt;  methods      * 3.5.1      2018-07-05 local                             </span>
-<span class="co">#&gt;  mgcv           1.8-24     2018-06-23 CRAN (R 3.5.1)                    </span>
-<span class="co">#&gt;  mime           0.6        2018-10-05 cran (@0.6)                       </span>
-<span class="co">#&gt;  modelr         0.1.2      2018-05-11 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  munsell        0.5.0      2018-06-12 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  nlme           3.1-137    2018-04-07 CRAN (R 3.5.1)                    </span>
-<span class="co">#&gt;  openssl        1.0.1      2018-03-03 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  pillar         1.2.2      2018-04-26 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  pkgconfig      2.0.2      2018-08-16 cran (@2.0.2)                     </span>
-<span class="co">#&gt;  plogr          0.2.0      2018-03-25 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  plyr           1.8.4      2016-06-08 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  praise         1.0.0      2015-08-11 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  purrr        * 0.2.5      2018-05-29 cran (@0.2.5)                     </span>
-<span class="co">#&gt;  R6             2.3.0      2018-10-04 cran (@2.3.0)                     </span>
-<span class="co">#&gt;  RColorBrewer   1.1-2      2014-12-07 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  Rcpp           1.0.0      2018-11-07 cran (@1.0.0)                     </span>
-<span class="co">#&gt;  readr        * 1.2.1      2018-11-22 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  readxl         1.1.0      2018-04-20 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  rematch        1.0.1      2016-04-21 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  reprex         0.2.1      2018-09-16 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  reshape2       1.4.3      2017-12-11 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  rlang          0.3.0.1    2018-10-25 cran (@0.3.0.1)                   </span>
-<span class="co">#&gt;  rmarkdown      1.11       2018-12-08 cran (@1.11)                      </span>
-<span class="co">#&gt;  rstudioapi     0.8        2018-10-02 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  rvest          0.3.2      2016-06-17 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  scales         1.0.0      2018-08-09 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  selectr        0.4-1      2018-04-06 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  stats        * 3.5.1      2018-07-05 local                             </span>
-<span class="co">#&gt;  stringi        1.2.4      2018-07-20 cran (@1.2.4)                     </span>
-<span class="co">#&gt;  stringr      * 1.3.1      2018-05-10 cran (@1.3.1)                     </span>
-<span class="co">#&gt;  testthat       2.0.0      2017-12-13 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  tibble       * 1.4.2      2018-01-22 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  tidyr        * 0.8.2      2018-10-28 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  tidyselect     0.2.5      2018-10-11 cran (@0.2.5)                     </span>
-<span class="co">#&gt;  tidyverse    * 1.2.1      2017-11-14 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  tinytex        0.9        2018-10-23 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  tools          3.5.1      2018-07-05 local                             </span>
-<span class="co">#&gt;  utf8           1.1.3      2018-01-03 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  utils        * 3.5.1      2018-07-05 local                             </span>
-<span class="co">#&gt;  viridisLite    0.3.0      2018-02-01 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  whisker        0.3-2      2013-04-28 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  withr          2.1.2      2018-03-15 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  xfun           0.4        2018-10-23 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  xml2           1.2.0      2018-01-24 CRAN (R 3.5.0)                    </span>
-<span class="co">#&gt;  yaml           2.2.0      2018-07-25 cran (@2.2.0)</span></code></pre></div>
+<span class="co">#&gt;  date     2018-12-04                  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ─ Packages ──────────────────────────────────────────────────────────────</span>
+<span class="co">#&gt;  package      * version    date       lib</span>
+<span class="co">#&gt;  assertthat     0.2.0      2017-04-11 [1]</span>
+<span class="co">#&gt;  backports      1.1.2      2017-12-13 [1]</span>
+<span class="co">#&gt;  base64enc      0.1-3      2015-07-28 [1]</span>
+<span class="co">#&gt;  BH             1.66.0-1   2018-02-13 [1]</span>
+<span class="co">#&gt;  bindr          0.1.1      2018-03-13 [1]</span>
+<span class="co">#&gt;  bindrcpp       0.2.2      2018-03-29 [1]</span>
+<span class="co">#&gt;  broom          0.5.0      2018-07-17 [1]</span>
+<span class="co">#&gt;  callr          3.0.0      2018-08-24 [1]</span>
+<span class="co">#&gt;  cellranger     1.1.0      2016-07-27 [1]</span>
+<span class="co">#&gt;  cli            1.0.1      2018-09-25 [1]</span>
+<span class="co">#&gt;  clipr          0.4.1      2018-06-23 [1]</span>
+<span class="co">#&gt;  colorspace     1.3-2      2016-12-14 [1]</span>
+<span class="co">#&gt;  crayon         1.3.4      2017-09-16 [1]</span>
+<span class="co">#&gt;  curl           3.2        2018-03-28 [1]</span>
+<span class="co">#&gt;  DBI            1.0.0      2018-05-02 [1]</span>
+<span class="co">#&gt;  dbplyr         1.2.2      2018-07-25 [1]</span>
+<span class="co">#&gt;  digest         0.6.18     2018-10-10 [1]</span>
+<span class="co">#&gt;  dplyr        * 0.7.8      2018-11-10 [1]</span>
+<span class="co">#&gt;  evaluate       0.12       2018-10-09 [1]</span>
+<span class="co">#&gt;  fansi          0.4.0      2018-10-05 [1]</span>
+<span class="co">#&gt;  forcats      * 0.3.0      2018-02-19 [1]</span>
+<span class="co">#&gt;  fs             1.2.6      2018-08-23 [1]</span>
+<span class="co">#&gt;  ggplot2      * 3.1.0.9000 2018-12-04 [1]</span>
+<span class="co">#&gt;  glue           1.3.0      2018-07-17 [1]</span>
+<span class="co">#&gt;  gtable         0.2.0      2016-02-26 [1]</span>
+<span class="co">#&gt;  haven          2.0.0      2018-11-22 [1]</span>
+<span class="co">#&gt;  highr          0.7        2018-06-09 [1]</span>
+<span class="co">#&gt;  hms            0.4.2      2018-03-10 [1]</span>
+<span class="co">#&gt;  htmltools      0.3.6      2017-04-28 [1]</span>
+<span class="co">#&gt;  httr           1.3.1      2017-08-20 [1]</span>
+<span class="co">#&gt;  jsonlite       1.5        2017-06-01 [1]</span>
+<span class="co">#&gt;  knitr          1.20       2018-02-20 [1]</span>
+<span class="co">#&gt;  labeling       0.3        2014-08-23 [1]</span>
+<span class="co">#&gt;  lattice        0.20-35    2017-03-25 [1]</span>
+<span class="co">#&gt;  lazyeval       0.2.1      2017-10-29 [1]</span>
+<span class="co">#&gt;  lubridate      1.7.4      2018-04-11 [1]</span>
+<span class="co">#&gt;  magrittr       1.5        2014-11-22 [1]</span>
+<span class="co">#&gt;  markdown       0.8        2017-04-20 [1]</span>
+<span class="co">#&gt;  MASS           7.3-50     2018-04-30 [1]</span>
+<span class="co">#&gt;  Matrix         1.2-14     2018-04-13 [1]</span>
+<span class="co">#&gt;  mgcv           1.8-24     2018-06-23 [1]</span>
+<span class="co">#&gt;  mime           0.6        2018-10-05 [1]</span>
+<span class="co">#&gt;  modelr         0.1.2      2018-05-11 [1]</span>
+<span class="co">#&gt;  munsell        0.5.0      2018-06-12 [1]</span>
+<span class="co">#&gt;  nlme           3.1-137    2018-04-07 [1]</span>
+<span class="co">#&gt;  openssl        1.1        2018-11-15 [1]</span>
+<span class="co">#&gt;  pillar         1.3.0      2018-07-14 [1]</span>
+<span class="co">#&gt;  pkgconfig      2.0.2      2018-08-16 [1]</span>
+<span class="co">#&gt;  plogr          0.2.0      2018-03-25 [1]</span>
+<span class="co">#&gt;  plyr           1.8.4      2016-06-08 [1]</span>
+<span class="co">#&gt;  processx       3.2.0      2018-08-16 [1]</span>
+<span class="co">#&gt;  ps             1.2.1      2018-11-06 [1]</span>
+<span class="co">#&gt;  purrr        * 0.2.5      2018-05-29 [1]</span>
+<span class="co">#&gt;  R6             2.3.0      2018-10-04 [1]</span>
+<span class="co">#&gt;  RColorBrewer   1.1-2      2014-12-07 [1]</span>
+<span class="co">#&gt;  Rcpp           1.0.0      2018-11-07 [1]</span>
+<span class="co">#&gt;  readr        * 1.2.1      2018-11-22 [1]</span>
+<span class="co">#&gt;  readxl         1.1.0      2018-04-20 [1]</span>
+<span class="co">#&gt;  rematch        1.0.1      2016-04-21 [1]</span>
+<span class="co">#&gt;  reprex         0.2.1      2018-09-16 [1]</span>
+<span class="co">#&gt;  reshape2       1.4.3      2017-12-11 [1]</span>
+<span class="co">#&gt;  rlang          0.3.0.1    2018-10-25 [1]</span>
+<span class="co">#&gt;  rmarkdown      1.10.16    2018-12-04 [1]</span>
+<span class="co">#&gt;  rstudioapi     0.8        2018-10-02 [1]</span>
+<span class="co">#&gt;  rvest          0.3.2      2016-06-17 [1]</span>
+<span class="co">#&gt;  scales         1.0.0      2018-08-09 [1]</span>
+<span class="co">#&gt;  selectr        0.4-1      2018-04-06 [1]</span>
+<span class="co">#&gt;  stringi        1.2.4      2018-07-20 [1]</span>
+<span class="co">#&gt;  stringr      * 1.3.1      2018-05-10 [1]</span>
+<span class="co">#&gt;  tibble       * 1.4.2      2018-01-22 [1]</span>
+<span class="co">#&gt;  tidyr        * 0.8.2      2018-10-28 [1]</span>
+<span class="co">#&gt;  tidyselect     0.2.5      2018-10-11 [1]</span>
+<span class="co">#&gt;  tidyverse    * 1.2.1      2017-11-14 [1]</span>
+<span class="co">#&gt;  tinytex        0.9        2018-10-23 [1]</span>
+<span class="co">#&gt;  utf8           1.1.4      2018-05-24 [1]</span>
+<span class="co">#&gt;  viridisLite    0.3.0      2018-02-01 [1]</span>
+<span class="co">#&gt;  whisker        0.3-2      2013-04-28 [1]</span>
+<span class="co">#&gt;  withr          2.1.2      2018-03-15 [1]</span>
+<span class="co">#&gt;  xfun           0.4        2018-10-23 [1]</span>
+<span class="co">#&gt;  xml2           1.2.0      2018-01-24 [1]</span>
+<span class="co">#&gt;  yaml           2.2.0      2018-07-25 [1]</span>
+<span class="co">#&gt;  source                            </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  Github (hadley/ggplot2@23a23cd)   </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.1)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.1)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.1)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.1)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.1)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  Github (rstudio/rmarkdown@34d2fd0)</span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt;  CRAN (R 3.5.0)                    </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [1] /Library/Frameworks/R.framework/Versions/3.5/Resources/library</span></code></pre></div>
 
 </div>
 </div>

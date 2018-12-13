@@ -1179,9 +1179,9 @@ str_view(fruit, regex("nana"))
       times = 20
     )
     #> Unit: microseconds
-    #>   expr min  lq mean median  uq  max neval
-    #>  fixed 135 152  206    179 209  502    20
-    #>  regex 533 589  744    687 838 1088    20
+    #>   expr   min    lq mean median    uq max neval
+    #>  fixed  81.1  82.9  102   86.2  96.4 268    20
+    #>  regex 286.1 292.4  313  295.8 330.4 407    20
     ```
     
     `fixed()` 를 비영어에 사용할 때는 조심하라. 같은 문자를 나타내는 방법이 여러 가지이기 때문에 문제가 되는 경우가 많다. 예를 들어 ’á’를 정의하는 방법에는 두 가지가 있다. 즉, 단일한 문자로 하거나, ’a‘와 악센트로 하는 방법이다.
