@@ -5,25 +5,26 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>4 Workflow: basics | R 을 활용한 데이터과학 (R for Data Science)</title>
+  <title>4 워크플로: 기초 | R for Data Science</title>
   <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="4 Workflow: basics | R 을 활용한 데이터과학 (R for Data Science) />
+  <meta property="og:title" content="4 워크플로: 기초 | R for Data Science />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
-  <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
+  
+  <meta property="og:image" content="cover.png" />
   <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Workflow: basics | R 을 활용한 데이터과학 (R for Data Science) />
+  <meta name="twitter:title" content="4 워크플로: 기초 | R for Data Science />
   <meta name="twitter:site" content="@sulgik" />
   <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
+  <meta name="twitter:image" content="cover.png" />
 
 <meta name="author" content="Garrett Grolemund">
 <meta name="author" content="Hadley Wickham">
+<meta name="author" content="번역: Data Science 김설기">
 
 
 
@@ -51,6 +52,13 @@
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.3.1/str_view.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
 
 
 <style type="text/css">
@@ -110,12 +118,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>환영합니다</a></li>
 <li class="chapter" data-level="1" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>1</b> 서문</a><ul>
 <li class="chapter" data-level="1.1" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.1</b> 무엇을 배우게 될까</a></li>
-<li class="chapter" data-level="1.2" data-path="section-1.html"><a href="section-1.html#how-this-book-is-organised"><i class="fa fa-check"></i><b>1.2</b> How this book is organised</a></li>
+<li class="chapter" data-level="1.2" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.2</b> 이 책의 구성</a></li>
 <li class="chapter" data-level="1.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.3</b> 배우지 않는 것</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="section-1.html"><a href="section-1.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 빅데이터</a></li>
-<li class="chapter" data-level="1.3.2" data-path="section-1.html"><a href="section-1.html#python-julia-and-friends"><i class="fa fa-check"></i><b>1.3.2</b> Python, Julia, and friends</a></li>
-<li class="chapter" data-level="1.3.3" data-path="section-1.html"><a href="section-1.html#non-rectangular-data"><i class="fa fa-check"></i><b>1.3.3</b> Non-rectangular data</a></li>
-<li class="chapter" data-level="1.3.4" data-path="section-1.html"><a href="section-1.html#hypothesis-confirmation"><i class="fa fa-check"></i><b>1.3.4</b> Hypothesis confirmation</a></li>
+<li class="chapter" data-level="1.3.2" data-path="section-1.html"><a href="section-1.html#python-julia"><i class="fa fa-check"></i><b>1.3.2</b> Python, Julia</a></li>
+<li class="chapter" data-level="1.3.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>1.3.3</b> 비직사각형 데이터</a></li>
+<li class="chapter" data-level="1.3.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>1.3.4</b> 가설 확인</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="section-1.html"><a href="section-1.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 준비하기</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>1.4.1</b> R</a></li>
@@ -144,7 +152,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3.1" data-path="visualize.html"><a href="visualize.html#-1"><i class="fa fa-check"></i><b>3.3.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="visualize.html"><a href="visualize.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
-<li class="chapter" data-level="3.5" data-path="visualize.html"><a href="visualize.html#facet"><i class="fa fa-check"></i><b>3.5</b> 면분할(facet)</a><ul>
+<li class="chapter" data-level="3.5" data-path="visualize.html"><a href="visualize.html#facet"><i class="fa fa-check"></i><b>3.5</b> Facet</a><ul>
 <li class="chapter" data-level="3.5.1" data-path="visualize.html"><a href="visualize.html#-2"><i class="fa fa-check"></i><b>3.5.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.6</b> 기하 객체</a><ul>
@@ -161,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.10" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>3.10</b> 그래프 레이어 문법</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> 워크플로: 기초</a><ul>
 <li class="chapter" data-level="4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.1</b> 코딩 기초</a></li>
 <li class="chapter" data-level="4.2" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>4.2</b> 이름에 들어갈 것</a></li>
 <li class="chapter" data-level="4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.3</b> 함수 호출하기</a></li>
@@ -202,10 +210,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.7.1" data-path="transform.html"><a href="transform.html#-13"><i class="fa fa-check"></i><b>5.7.1</b> 연습문제</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a><ul>
-<li class="chapter" data-level="6.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
-<li class="chapter" data-level="6.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
-<li class="chapter" data-level="6.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#practice"><i class="fa fa-check"></i><b>6.3</b> Practice</a></li>
+<li class="chapter" data-level="6" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> 워크플로: 스크립트</a><ul>
+<li class="chapter" data-level="6.1" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
+<li class="chapter" data-level="6.2" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
+<li class="chapter" data-level="6.3" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html#practice"><i class="fa fa-check"></i><b>6.3</b> Practice</a></li>
 </ul></li>
 <li class="part"><span><b>II 데이터 길들이기</b></span></li>
 <li class="chapter" data-level="7" data-path="wrangle-intro.html"><a href="wrangle-intro.html"><i class="fa fa-check"></i><b>7</b> 소개</a></li>
@@ -379,32 +387,72 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>V 의사소통하기</b></span></li>
 <li class="chapter" data-level="17" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a></li>
-<li class="chapter" data-level="18" data-path="r-.html"><a href="r-.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
+<li class="chapter" data-level="18" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
 <li class="chapter" data-level="18.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="18.1.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>18.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="18.2" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>18.2</b> R 마크다운 기초</a><ul>
-<li class="chapter" data-level="18.2.1" data-path="r-.html"><a href="r-.html#-45"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="18.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-45"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="18.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>18.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
-<li class="chapter" data-level="18.3.1" data-path="r-.html"><a href="r-.html#-46"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="18.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-46"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="18.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4</b> 코드 청크</a><ul>
 <li class="chapter" data-level="18.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.1</b> 청크 이름</a></li>
 <li class="chapter" data-level="18.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.2</b> 청크 옵션</a></li>
-<li class="chapter" data-level="18.4.3" data-path="r-.html"><a href="r-.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
-<li class="chapter" data-level="18.4.4" data-path="r-.html"><a href="r-.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="18.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
+<li class="chapter" data-level="18.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
 <li class="chapter" data-level="18.4.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.5</b> 전역 옵션</a></li>
-<li class="chapter" data-level="18.4.6" data-path="r-.html"><a href="r-.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
-<li class="chapter" data-level="18.4.7" data-path="r-.html"><a href="r-.html#exercises"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
+<li class="chapter" data-level="18.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="18.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="18.5" data-path="r-.html"><a href="r-.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="18.6" data-path="r-.html"><a href="r-.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
-<li class="chapter" data-level="18.6.1" data-path="r-.html"><a href="r-.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
-<li class="chapter" data-level="18.6.2" data-path="r-.html"><a href="r-.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
+<li class="chapter" data-level="18.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="18.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
+<li class="chapter" data-level="18.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="18.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
 </ul></li>
-<li class="chapter" data-level="18.7" data-path="r-.html"><a href="r-.html#learning-more-1"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
+<li class="chapter" data-level="18.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more-1"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
 </ul></li>
+<li class="chapter" data-level="19" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>19</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="19.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>19.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>19.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>19.2</b> Label</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>19.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>19.3</b> Annotations</a><ul>
+<li class="chapter" data-level="19.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>19.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>19.4</b> Scales</a><ul>
+<li class="chapter" data-level="19.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>19.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="19.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>19.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="19.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>19.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="19.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-3"><i class="fa fa-check"></i><b>19.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>19.5</b> Zooming</a></li>
+<li class="chapter" data-level="19.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>19.6</b> Themes</a></li>
+<li class="chapter" data-level="19.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>19.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="19.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>19.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="19.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>19.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="19.8" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#learning-more-2"><i class="fa fa-check"></i><b>19.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>20</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="20.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>20.1</b> 들어가기</a></li>
+<li class="chapter" data-level="20.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="20.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>20.3</b> Document</a></li>
+<li class="chapter" data-level="20.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>20.4</b> Notebook</a></li>
+<li class="chapter" data-level="20.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>20.5</b> Presentation</a></li>
+<li class="chapter" data-level="20.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>20.6</b> Dashboard</a></li>
+<li class="chapter" data-level="20.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="20.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>20.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="20.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>20.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>20.8</b> Website</a></li>
+<li class="chapter" data-level="20.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>20.9</b> Other formats</a></li>
+<li class="chapter" data-level="20.10" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#--1"><i class="fa fa-check"></i><b>20.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>21</b> R 마크다운 워크플로</a></li>
 </ul>
 
       </nav>
@@ -414,7 +462,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 을 활용한 데이터과학 (R for Data Science)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science</a>
           </h1>
         </div>
 
@@ -423,24 +471,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="workflow-basics" class="section level1">
-<h1><span class="header-section-number">4</span> Workflow: basics</h1>
-<p>You now have some experience running R code. I didn’t give you many details, but you’ve obviously figured out the basics, or you would’ve thrown this book away in frustration! Frustration is natural when you start programming in R, because it is such a stickler for punctuation, and even one character out of place will cause it to complain. But while you should expect to be a little frustrated, take comfort in that it’s both typical and temporary: it happens to everyone, and the only way to get over it is to keep trying.</p>
-<p>Before we go any further, let’s make sure you’ve got a solid foundation in running R code, and that you know about some of the most helpful RStudio features.</p>
+<h1><span class="header-section-number">4</span> 워크플로: 기초</h1>
+<p>앞서 우리는 R코드를 실행해 보았다. 세부사항을 많이 보지 않았지만, 분명히 기초적인 것들을 알게 되었을 것이다. 그렇지 않았다면 좌절해서 이 책을 던져 버렸을 것이다! R로 프로그래밍을 시작할 때 좌절하는 것은 자연스러운 일인데, R은 구두점이 엄격하고 문자 하나라도 제자리를 벗어나면 바로 말을 듣지 않는다. 약간 좌절은 되겠지만 이는 일상적이고 일시적이기 때문에 걱정하지 않아도 된다. 모든 사람에게 일어나는 일이며, 계속 노력하면 극복할 수 있다.</p>
+<p>더 나아가기 전에 R 코드 실행의 튼튼한 기초를 가지고 있는지, 매우 도움이 되는 RStudio 기능들을 알고 있는지 확인해보자.</p>
 <div id="-" class="section level2">
 <h2><span class="header-section-number">4.1</span> 코딩 기초</h2>
-<p>Let’s review some basics we’ve so far omitted in the interests of getting you plotting as quickly as possible. You can use R as a calculator:</p>
+<p>플롯을 최대한 빨리 만들어보기 위해 그동안 생략한 몇 가지 기본사항을 살펴보자. R을 계산기로 사용할 수 있다</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">200</span> <span class="op">*</span><span class="st"> </span><span class="dv">30</span>
 <span class="co">#&gt; [1] 0.15</span>
 (<span class="dv">59</span> <span class="op">+</span><span class="st"> </span><span class="dv">73</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="dv">3</span>
 <span class="co">#&gt; [1] 44.7</span>
 <span class="kw">sin</span>(pi <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)
 <span class="co">#&gt; [1] 1</span></code></pre></div>
-<p>You can create new objects with <code>&lt;-</code>:</p>
+<p><code>&lt;-</code> 를 사용하여 새 객체를 생성할 수 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">4</span></code></pre></div>
-<p>All R statements where you create objects, <strong>assignment</strong> statements, have the same form:</p>
+<p>객체를 생성하는 모든 R 명령어, 즉 <strong>할당문</strong> 은 다음의 동일한 형식을 갖는다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">object_name &lt;-<span class="st"> </span>value</code></pre></div>
-<p>When reading that code say “object name gets value” in your head.</p>
-<p>You will make lots of assignments and <code>&lt;-</code> is a pain to type. Don’t be lazy and use <code>=</code>: it will work, but it will cause confusion later. Instead, use RStudio’s keyboard shortcut: Alt + - (the minus sign). Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which is a good code formatting practice. Code is miserable to read on a good day, so giveyoureyesabreak and use spaces.</p>
+<p>이 코드를 읽을 때, 객체 이름이 값을 갖는다 (obejct name gets value) 라고 마음 속으로 읽어보자. (사실 한국어로는 어색하다)</p>
+<p>앞으로 많은 할당문을 만들게 되어 <code>&lt;-</code> 를 타이핑하는 것은 고통스러울 것이다. 귀찮다고 <code>=</code> 를 사용하지 마라. 작동은 하겠지만 나중에 혼란스럽게 될 것이다. 대신 RStudio 키보드 단축키, Alt + - (빼기 기호)를 사용하라. RStudio는 자동으로 <code>&lt;-</code> 주위를 공백으로 둘러쌓는다. 이는 좋은 코드 포매팅 습관이다. 좋은 날에 코드를 읽는다는 것은 비참한 일이므로 두 눈을 위해서라도 공백을 사용하라.</p>
 </div>
 <div id="--" class="section level2">
 <h2><span class="header-section-number">4.2</span> 이름에 들어갈 것</h2>
@@ -449,57 +497,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 otherPeopleUseCamelCase
 some.people.use.periods
 And_aFew.People_RENOUNCEconvention</code></pre></div>
-<p>We’ll come back to code style later, in [functions].</p>
-<p>You can inspect an object by typing its name:</p>
+<p>나중에 [함수] 에서 코드 스타일에 대해 살펴볼 것이다.</p>
+<p>객체를 확인(inspect)하려면 이름을 타이핑하면 된다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x
 <span class="co">#&gt; [1] 12</span></code></pre></div>
-<p>Make another assignment:</p>
+<p>다른 할당문을 만들어보자.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">this_is_a_really_long_name &lt;-<span class="st"> </span><span class="fl">2.5</span></code></pre></div>
-<p>To inspect this object, try out RStudio’s completion facility: type “this”, press TAB, add characters until you have a unique prefix, then press return.</p>
-<p>Ooops, you made a mistake! <code>this_is_a_really_long_name</code> should have value 3.5 not 2.5. Use another keyboard shortcut to help you fix it. Type “this” then press Cmd/Ctrl + ↑. That will list all the commands you’ve typed that start those letters. Use the arrow keys to navigate, then press enter to retype the command. Change 2.5 to 3.5 and rerun.</p>
-<p>Make yet another assignment:</p>
+<p>이 객체를 확인하기 위해 RStudio의 완성 기능을 사용해보라. ’this‘를 타이핑하고 탭을 누르고 접두어가 고유하게 될 때까지 문자들을 추가한 후 엔터키를 눌러라.</p>
+<p>이런, 실수를 저질렀다! <code>this_is_a_really_long_name</code> 의 값은 2.5가 아닌 3.5여야 했다. 정정하게 도와주는 다른 키보드 단축어를 사용하라. this를 타이핑한 후 Cmd/Ctrl + ↑를 눌러라. 이렇게 하면 타이핑했던 명령어 중 그 문자들로 시작하는 것들을 보여준다. 화살표 키를 사용하여 움직인 후 엔터를 눌러 해당 명령어를 다시 타이핑하라. 2.5를 3.5로 변경하고 다시 실행하라.</p>
+<p>또 다른 할당문을 만들어보자.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">r_rocks &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">^</span><span class="st"> </span><span class="dv">3</span></code></pre></div>
-<p>Let’s try to inspect it:</p>
+<p>이를 확인해보자.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">r_rock
 <span class="co">#&gt; Error: object &#39;r_rock&#39; not found</span>
 R_rocks
 <span class="co">#&gt; Error: object &#39;R_rocks&#39; not found</span></code></pre></div>
-<p>There’s an implied contract between you and R: it will do the tedious computation for you, but in return, you must be completely precise in your instructions. Typos matter. Case matters.</p>
+<p>여러분과 R 사이에 암묵적인 계약이 있다. 즉, R은 지루한 계산을 해주겠지만, 대신 여러분은 지시를 완전하고 정확하게 해야 한다. 오타는 중요하다. 대소문자를 구별한다.</p>
 </div>
 <div id="-" class="section level2">
 <h2><span class="header-section-number">4.3</span> 함수 호출하기</h2>
-<p>R has a large collection of built-in functions that are called like this:</p>
+<p>R은 다음과 같이 호출되는 내장 함수가 많이 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">function_name</span>(<span class="dt">arg1 =</span> val1, <span class="dt">arg2 =</span> val2, ...)</code></pre></div>
-<p>Let’s try using <code>seq()</code> which makes regular <strong>seq</strong>uences of numbers and, while we’re at it, learn more helpful features of RStudio. Type <code>se</code> and hit TAB. A popup shows you possible completions. Specify <code>seq()</code> by typing more (a “q”) to disambiguate, or by using ↑/↓ arrows to select. Notice the floating tooltip that pops up, reminding you of the function’s arguments and purpose. If you want more help, press F1 to get all the details in the help tab in the lower right pane.</p>
-<p>Press TAB once more when you’ve selected the function you want. RStudio will add matching opening (<code>(</code>) and closing (<code>)</code>) parentheses for you. Type the arguments <code>1, 10</code> and hit return.</p>
+<p>숫자 시퀀스를 만드는 <code>seq()</code> 를 이용해보고, 동시에 RStudio 의 유용한 기능에 대해 더 배워보자. <code>se</code> 를 타이핑하고 탭을 쳐보자. 가능한 완성문을 보여주는 팝업이 나타난다. 헷갈리지 않게 하기 위해 추가로 (“q”) 타이핑하거나 ↑/↓ 화살표 키로 선택하여 <code>seq()</code> 를 지정하라. 팝업되는 툴팁은 해당 함수의 인수와 목적을 알려준다. 도움을 더 원하면 F1 키를 눌러서 하단 오른쪽 창의 헬프 탭에 있는 세부내용을 모두 참고하라.</p>
+<p>원하는 함수를 선택했을 때 탭을 한 번 더 눌러라. RStudio는 여는 괄호(<code>(</code> ))와 닫는 괄호(<code>)</code> ) 한 쌍을 추가한다. 인수 <code>1, 10</code> 을 타이핑하고 리턴을 쳐보자.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
-<p>Type this code and notice you get similar assistance with the paired quotation marks:</p>
+<p>다음의 코드를 타이핑하고, 짝을 이루는 따옴표로 비슷한 도움을 받는 것을 확인해보자.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> &quot;hello world&quot;</span></code></pre></div>
-<p>Quotation marks and parentheses must always come in a pair. RStudio does its best to help you, but it’s still possible to mess up and end up with a mismatch. If this happens, R will show you the continuation character “+”:</p>
+<p>따옴표와 괄호는 항상 짝을 이루어야 한다. RStudio는 최선을 다해 도움을 주지만, 엉망이 되어 짝이 맞지 않는 결과를 낳을 가능성도 있다. 이렇게 되면 R은 연속 문자 <code>&quot;+&quot;</code> 를 표시한다.</p>
 <pre><code>&gt; x &lt;- &quot;hello
 +</code></pre>
-<p>The <code>+</code> tells you that R is waiting for more input; it doesn’t think you’re done yet. Usually that means you’ve forgotten either a <code>&quot;</code> or a <code>)</code>. Either add the missing pair, or press ESCAPE to abort the expression and try again.</p>
-<p>If you make an assignment, you don’t get to see the value. You’re then tempted to immediately double-check the result:</p>
+<p><code>+</code> 는 R이 입력을 더 기다리고 있음을 표시한다. 즉, 여러분이 완료하지 않았다고 생각한다. 보통 여러분이 <code>&quot;</code> 나 <code>)</code> 를 잊었다는 말이다. 이 표현을 끝내고 다시 입력하기 위해 누락된 쌍을 추가하거나, 이스케이프 키를 눌러라.</p>
+<p>할당문을 만들었다면 값을 볼 수 없다. 결과를 즉시 확인하고 싶을 것이다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">5</span>)
 y
 <span class="co">#&gt; [1]  1.00  3.25  5.50  7.75 10.00</span></code></pre></div>
-<p>This common action can be shortened by surrounding the assignment with parentheses, which causes assignment and “print to screen” to happen.</p>
+<p>이런 일반적인 작업은 할당문을 괄호로 묶어 단축할 수 있다. 이렇게 하면 할당이 되고 ’스크린에 인쇄’가 된다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">5</span>))
 <span class="co">#&gt; [1]  1.00  3.25  5.50  7.75 10.00</span></code></pre></div>
-<p>Now look at your environment in the upper right pane:</p>
+<p>이제 상단 오른쪽 창에 enviroment(환경)을 보자.</p>
 <p><img src="screenshots/rstudio-env.png" width="597" style="display: block; margin: auto;" /></p>
-<p>Here you can see all of the objects that you’ve created.</p>
+<p>여기에 우리가 생성한 객체를 모두 볼 수 있다.</p>
 </div>
 <div id="-7" class="section level2">
 <h2><span class="header-section-number">4.4</span> 연습문제</h2>
 <ol style="list-style-type: decimal">
-<li><p>Why does this code not work?</p>
+<li><p>다음의 코드는 왜 작동하지 않는가?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_variable &lt;-<span class="st"> </span><span class="dv">10</span>
 my_varıable
 <span class="co">#&gt; Error in eval(expr, envir, enclos): object &#39;my_varıable&#39; not found</span></code></pre></div>
-<p>Look carefully! (This may seem like an exercise in pointlessness, but training your brain to notice even the tiniest difference will pay off when programming.)</p></li>
-<li><p>Tweak each of the following R commands so that they run correctly:</p>
+<p>주의 깊게 살펴보라! (연습문제가 의미가 없는 것처럼 보이지만, 아주 작은 차이도 알아채도록 두뇌를 훈련하면 프로그래밍할 때 큰 도움이 된다.)</p></li>
+<li><p>다음 각 R 명령어를 올바르게 실행되도록 조정하라.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 
 <span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
@@ -507,7 +555,7 @@ my_varıable
 
 <span class="kw">fliter</span>(mpg, <span class="dt">cyl =</span> <span class="dv">8</span>)
 <span class="kw">filter</span>(diamond, carat <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>)</code></pre></div></li>
-<li><p>Press Alt + Shift + K. What happens? How can you get to the same place using the menus?</p></li>
+<li><p>Alt + Shift + K를 눌러라. 어떻게 되는가? 메뉴를 사용하여 어떻게 같은 곳으로 갈 수 있는가?</p></li>
 </ol>
 
 </div>
