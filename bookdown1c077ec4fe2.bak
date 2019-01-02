@@ -1,5 +1,3 @@
-
-
 # 관계형 데이터 {#relational-data}
 
 ## 들어가기
@@ -22,8 +20,7 @@
 
 우리는 **dplyr** 의 2-테이블 동사를 사용하여 `nycflights13` 에 있는 관계형 데이터를 탐색할 것이다.
 
-
-```r
+```{r setup, message = FALSE}
 library(tidyverse)
 library(nycflights13)
 ```
@@ -34,76 +31,33 @@ library(nycflights13)
 
 * `airlines` 를 사용하면 해당 약어 코드로 전체 항공사명을 찾아볼 수 있다.
 
-    
-    ```r
+    ```{r}
     airlines
-    #> # A tibble: 16 x 2
-    #>   carrier name                    
-    #>   <chr>   <chr>                   
-    #> 1 9E      Endeavor Air Inc.       
-    #> 2 AA      American Airlines Inc.  
-    #> 3 AS      Alaska Airlines Inc.    
-    #> 4 B6      JetBlue Airways         
-    #> 5 DL      Delta Air Lines Inc.    
-    #> 6 EV      ExpressJet Airlines Inc.
-    #> # ... with 10 more rows
     ```
 
 *   `airports` 에는 각 공항에 대한 정보가 `faa`  공항 코드로 식별되어 있다.
 
-    
-    ```r
+    ```{r}
     airports
-    #> # A tibble: 1,458 x 8
-    #>   faa   name                       lat   lon   alt    tz dst   tzone       
-    #>   <chr> <chr>                    <dbl> <dbl> <int> <dbl> <chr> <chr>       
-    #> 1 04G   Lansdowne Airport         41.1 -80.6  1044    -5 A     America/New…
-    #> 2 06A   Moton Field Municipal A…  32.5 -85.7   264    -6 A     America/Chi…
-    #> 3 06C   Schaumburg Regional       42.0 -88.1   801    -6 A     America/Chi…
-    #> 4 06N   Randall Airport           41.4 -74.4   523    -5 A     America/New…
-    #> 5 09J   Jekyll Island Airport     31.1 -81.4    11    -5 A     America/New…
-    #> 6 0A9   Elizabethton Municipal …  36.4 -82.2  1593    -5 A     America/New…
-    #> # ... with 1,452 more rows
     ```
 
 *   `planes` 에는 각 여객기에 대한 정보가 `tailnum` 으로 식별되어 있다.
 
-    
-    ```r
+    ```{r}
     planes
-    #> # A tibble: 3,322 x 9
-    #>   tailnum  year type       manufacturer   model  engines seats speed engine
-    #>   <chr>   <int> <chr>      <chr>          <chr>    <int> <int> <int> <chr> 
-    #> 1 N10156   2004 Fixed win… EMBRAER        EMB-1…       2    55    NA Turbo…
-    #> 2 N102UW   1998 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
-    #> 3 N103US   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
-    #> 4 N104UW   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
-    #> 5 N10575   2002 Fixed win… EMBRAER        EMB-1…       2    55    NA Turbo…
-    #> 6 N105UW   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
-    #> # ... with 3,316 more rows
     ```
 
 *   `weather` 에는 각 NYC 공항의 매 시각 날씨 정보가 있다.
 
-    
-    ```r
+    ```{r}
     weather
-    #> # A tibble: 26,115 x 15
-    #>   origin  year month   day  hour  temp  dewp humid wind_dir wind_speed
-    #>   <chr>  <dbl> <dbl> <int> <int> <dbl> <dbl> <dbl>    <dbl>      <dbl>
-    #> 1 EWR     2013     1     1     1  39.0  26.1  59.4      270      10.4 
-    #> 2 EWR     2013     1     1     2  39.0  27.0  61.6      250       8.06
-    #> 3 EWR     2013     1     1     3  39.0  28.0  64.4      240      11.5 
-    #> 4 EWR     2013     1     1     4  39.9  28.0  62.2      250      12.7 
-    #> 5 EWR     2013     1     1     5  39.0  28.0  64.4      260      12.7 
-    #> 6 EWR     2013     1     1     6  37.9  28.0  67.2      240      11.5 
-    #> # ... with 2.611e+04 more rows, and 5 more variables: wind_gust <dbl>,
-    #> #   precip <dbl>, pressure <dbl>, visib <dbl>, time_hour <dttm>
     ```
 
 그림을 사용하여 서로 다른 테이블 간의 관계를 볼 수 있다.
 
-<img src="diagrams/relational-nycflights.png" width="70%" style="display: block; margin: auto;" />
+```{r, echo = FALSE}
+knitr::include_graphics("diagrams/relational-nycflights.png")
+```
 
 이 다이어그램은 꽤 복잡해 보이지만, 실전에서 보게 될 것과 비교하면 간단한 것이다! 이와 같은 다이어그램을 이해하는 데 핵심은 각 관계가 항상 한 쌍의 테이블과 관련되어 있음을 기억하는 것이다. 여러분은 모든 것을 이해할 필요는 없다. 관심 있는 테이블 사이의 연쇄적인 관계를 이해하면 된다.
 
@@ -141,57 +95,27 @@ nycflights13 에서
 
 테이블에서 기본키를 확인한 후에는 실제로 기본키가 각 관측값을 고유하게 식별하는지 확인하는 것이 좋다. 이를 수행하는 한 가지 방법은 기본키를 `count()` 하고 `n` 이 1보다 큰 항목을 찾는 것이다.
 
-
-```r
+```{r}
 planes %>% 
   count(tailnum) %>% 
   filter(n > 1)
-#> # A tibble: 0 x 2
-#> # ... with 2 variables: tailnum <chr>, n <int>
 
 weather %>% 
   count(year, month, day, hour, origin) %>% 
   filter(n > 1)
-#> # A tibble: 3 x 6
-#>    year month   day  hour origin     n
-#>   <dbl> <dbl> <int> <int> <chr>  <int>
-#> 1  2013    11     3     1 EWR        2
-#> 2  2013    11     3     1 JFK        2
-#> 3  2013    11     3     1 LGA        2
 ```
 
 
 때로 테이블에 명시적인 기본키가 없는 경우가 있다. 모든 행은 관측값이지만 어떤 변수를 조합해도 각 행을 신뢰성있게 구분하지 못하는 경우이다. 예를 들어, `flight`  테이블의 기본키는 무엇인가? 여러분은 `date` 에 `flight`  혹은 `tailnum` 을 더한 것으로 생각하겠지만 이들 중 어느 것도 고유하지 않다.
 
-
-```r
+```{r}
 flights %>% 
   count(year, month, day, flight) %>% 
   filter(n > 1)
-#> # A tibble: 29,768 x 5
-#>    year month   day flight     n
-#>   <int> <int> <int>  <int> <int>
-#> 1  2013     1     1      1     2
-#> 2  2013     1     1      3     2
-#> 3  2013     1     1      4     2
-#> 4  2013     1     1     11     3
-#> 5  2013     1     1     15     2
-#> 6  2013     1     1     21     2
-#> # ... with 2.976e+04 more rows
 
 flights %>% 
   count(year, month, day, tailnum) %>% 
   filter(n > 1)
-#> # A tibble: 64,928 x 5
-#>    year month   day tailnum     n
-#>   <int> <int> <int> <chr>   <int>
-#> 1  2013     1     1 N0EGMQ      2
-#> 2  2013     1     1 N11189      2
-#> 3  2013     1     1 N11536      2
-#> 4  2013     1     1 N11544      3
-#> 5  2013     1     1 N11551      2
-#> 6  2013     1     1 N12540      2
-#> # ... with 6.492e+04 more rows
 ```
 
 이 데이터로 작업을 시작할 때 나는 각 항공편 번호(`flight` )가 하루에 한 번만 사용된다고 순진하게 추측했다. 그런 경우라면 특정 항공편의 문제에 대해 훨씬 쉽게 의사 소통할 수 있었을 것이었다. 불행히도 그것은 사실이 아니다! 테이블에 기본키가 없으면 `mutate()` 와 `row_number()` 를 이용하여 기본키를 추가해 보라. 이렇게 하면 필터링을 수행하고 난 후 원래 데이터와 다시 점검할 때 관측값을 쉽게 일치시킬 수 있다. 이를 **대체키(surrogate key)** 라고 한다.
@@ -222,21 +146,10 @@ flights %>%
 
 `mutate()` 와 마찬가지로 조인 함수는 오른쪽에 변수를 추가하므로 이미 많은 변수가 있는 경우 새 변수가 출력되지 않는다. 이 예제에서는 어떤 일이 일어나는지 더 쉽게 보기 위해 더 좁은 데이터셋을 작성한다.
 
-
-```r
+```{r}
 flights2 <- flights %>% 
   select(year:day, hour, origin, dest, tailnum, carrier)
 flights2
-#> # A tibble: 336,776 x 8
-#>    year month   day  hour origin dest  tailnum carrier
-#>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>  
-#> 1  2013     1     1     5 EWR    IAH   N14228  UA     
-#> 2  2013     1     1     5 LGA    IAH   N24211  UA     
-#> 3  2013     1     1     5 JFK    MIA   N619AA  AA     
-#> 4  2013     1     1     5 JFK    BQN   N804JB  B6     
-#> 5  2013     1     1     6 LGA    ATL   N668DN  DL     
-#> 6  2013     1     1     5 EWR    ORD   N39463  UA     
-#> # ... with 3.368e+05 more rows
 ```
 
 (RStudio에서는 `View()` 를 사용하여 이 문제를 피할 수도 있음을 기억하라.)
@@ -244,40 +157,18 @@ flights2
 `flight2`  데이터에 항공사 전체 이름을 추가하려고 한다고 가정하자. `left_join()` 으로 `airlines` 와 `flights2`  데이터프레임을 결합할 수 있다.
 
 
-
-```r
+```{r}
 flights2 %>%
   select(-origin, -dest) %>% 
   left_join(airlines, by = "carrier")
-#> # A tibble: 336,776 x 7
-#>    year month   day  hour tailnum carrier name                  
-#>   <int> <int> <int> <dbl> <chr>   <chr>   <chr>                 
-#> 1  2013     1     1     5 N14228  UA      United Air Lines Inc. 
-#> 2  2013     1     1     5 N24211  UA      United Air Lines Inc. 
-#> 3  2013     1     1     5 N619AA  AA      American Airlines Inc.
-#> 4  2013     1     1     5 N804JB  B6      JetBlue Airways       
-#> 5  2013     1     1     6 N668DN  DL      Delta Air Lines Inc.  
-#> 6  2013     1     1     5 N39463  UA      United Air Lines Inc. 
-#> # ... with 3.368e+05 more rows
 ```
 
 `flights2` 은 `airlines` 와 결합하여, 새로운 변수 `name` 이 추가되었다. 이것이 내가 이 유형의 조인을 뮤테이팅 조인이라고 부르는 이유이다. 이 경우 `mutate()` 와 R 의 베이스 서브셋작업을 사용하여 같은 위치에 도달할 수 있다.
 
-
-```r
+```{r}
 flights2 %>%
   select(-origin, -dest) %>% 
   mutate(name = airlines$name[match(carrier, airlines$carrier)])
-#> # A tibble: 336,776 x 7
-#>    year month   day  hour tailnum carrier name                  
-#>   <int> <int> <int> <dbl> <chr>   <chr>   <chr>                 
-#> 1  2013     1     1     5 N14228  UA      United Air Lines Inc. 
-#> 2  2013     1     1     5 N24211  UA      United Air Lines Inc. 
-#> 3  2013     1     1     5 N619AA  AA      American Airlines Inc.
-#> 4  2013     1     1     5 N804JB  B6      JetBlue Airways       
-#> 5  2013     1     1     6 N668DN  DL      Delta Air Lines Inc.  
-#> 6  2013     1     1     5 N39463  UA      United Air Lines Inc. 
-#> # ... with 3.368e+05 more rows
 ```
 
 그러나 이 방법은 여러 변수를 매치시켜야 할 경우 일반화하기 어렵고, 또 전체적인 의도를 파악하기 위해서는 코드를 자세히 읽어야 한다는 단점이 있다.
@@ -288,9 +179,10 @@ flights2 %>%
 
 조인이 어떻게 작동하는지 배우기 위해 시각적 표현을 사용한다.
 
-<img src="diagrams/join-setup.png" width="118" style="display: block; margin: auto;" />
-
-```r
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-setup.png")
+```
+```{r}
 x <- tribble(
   ~key, ~val_x,
      1, "x1",
@@ -309,33 +201,33 @@ y <- tribble(
 
 조인은 `x` 의 각 행을 `y` 의 0, 1 개 또는 여러 행에 연결하는 방법이다. 다음 다이어그램은 각각의 매칭 후보를 한 쌍의 선의 교차점으로 보여준다.
 
-<img src="diagrams/join-setup2.png" width="166" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-setup2.png")
+```
 
 (주의 깊게 살펴보면 `x` 의 키 열과 값 열의 순서가 바뀌었음을 알 수 있다. 이는 조인이 키를 기반으로 매칭하며 값은 단지 따라간다는 것을 강조하기 위한 것이다.)
 
 실제 조인에서는 매치 항목이 점으로 표시된다. 도트 수 = 매치 수 = 출력의 행 수이다.
 
-<img src="diagrams/join-inner.png" width="338" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-inner.png")
+```
 
 ### 내부 조인 {#inner-join}
 
 가장 간단한 조인 유형은 **내부 조인** 이다. 내부 조인은 키가 같을 때마다 두 관측값을 매칭한다.
 
-<img src="diagrams/join-inner.png" width="338" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-inner.png")
+```
 
 (정확하게 말하면 같음연산자(equality operator)를 사용하여 키가 매치되기 때문에 내부 **동등 조인(equijoin)** 이다. 대부분의 조인은 동등 조인이므로 우리는 일반적으로 이러한 상세한 내용을 생략한다.)
 
 내부 조인(inner join)의 출력은 키, `x` 값 및 `y` 값을 포함하는 새로운 데이터프레임이다. `by` 를 사용하여 어떤 변수가 키인지를 지정한다.
 
-
-```r
+```{r}
 x %>% 
   inner_join(y, by = "key")
-#> # A tibble: 2 x 3
-#>     key val_x val_y
-#>   <dbl> <chr> <chr>
-#> 1     1 x1    y1   
-#> 2     2 x2    y2
 ```
 
 내부 조인의 가장 중요한 특성은 매칭되지 않는 행은 결과에 포함되지 않는다는 점이다. 즉, 내부 조인은 관측값을 잃어버리기 쉽기 때문에 일반적으로 분석에 사용하기에 적합하지 않다.
@@ -353,13 +245,17 @@ x %>%
 그래픽으로 보면 다음과 같다.
 
 
-<img src="diagrams/join-outer.png" width="355" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-outer.png")
+```
 
 가장 일반적으로 사용되는 조인은 왼쪽 조인이다. 매칭되지 않는 경우에도 원본 관측값을 보존하므로 다른 테이블에서 추가 데이터를 조회할 때마다 이 작업을 사용한다. 왼쪽 조인이, 작업 시 기본 조인이 되어야 한다. 다른 조인을 선호해야 하는 명백한 이유가 없다면 왼쪽 조인을 사용하라.
 
 서로 다른 유형의 조인을 묘사하는 또 다른 방법은 벤 다이어그램을 사용하는 것이다.
 
-<img src="diagrams/join-venn.png" width="551" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-venn.png")
+```
 
 그러나 이 표현법은 완벽하지 않다. 조인 유형들이 각각 어떤 테이블의 관측값을 보존하는지 알려주긴 하지만, 커다란 제약사항이 있다. 벤 다이어그램은 키가 고유하게 관측값을 식별하지 못할 때 어떤 일이 발생하는지를 표현할 수 없다.
 
@@ -369,12 +265,13 @@ x %>%
 
 1.  하나의 테이블에 중복키가 있다. 중복키는 추가적인 정보를 넣을 때 유용한데 일반적으로 일대다 관계가 있기 때문이다.
 
-    <img src="diagrams/join-one-to-many.png" width="279" style="display: block; margin: auto;" />
+    ```{r, echo = FALSE, out.width = NULL}
+    knitr::include_graphics("diagrams/join-one-to-many.png")
+    ```
 
     출력에서 약간 다른 위치에 키 열을 놓은 것을 확인하라. 이것은 키가 `y` 의 기본키이고 `x` 의 외래키임을 보여준다.
     
-    
-    ```r
+    ```{r}
     x <- tribble(
       ~key, ~val_x,
          1, "x1",
@@ -388,21 +285,15 @@ x %>%
          2, "y2"
     )
     left_join(x, y, by = "key")
-    #> # A tibble: 4 x 3
-    #>     key val_x val_y
-    #>   <dbl> <chr> <chr>
-    #> 1     1 x1    y1   
-    #> 2     2 x2    y2   
-    #> 3     2 x3    y2   
-    #> 4     1 x4    y1
     ```
 
 1.  두 테이블 모두 중복 키가 있다. 키가 어느 테이블에서도 고유하게 관측값을 식별하지 않기 때문에 이것은 일반적으로 에러이다. 중복 키를 결합하면 가능한 모든 조합인 데카르트곱(Cartesian product)을 얻을 수 있다.
 
-    <img src="diagrams/join-many-to-many.png" width="342" style="display: block; margin: auto;" />
+    ```{r, echo = FALSE, out.width = NULL}
+    knitr::include_graphics("diagrams/join-many-to-many.png")
+    ```
 
-    
-    ```r
+    ```{r}
     x <- tribble(
       ~key, ~val_x,
          1, "x1",
@@ -418,15 +309,6 @@ x %>%
          3, "y4"
     )
     left_join(x, y, by = "key")
-    #> # A tibble: 6 x 3
-    #>     key val_x val_y
-    #>   <dbl> <chr> <chr>
-    #> 1     1 x1    y1   
-    #> 2     2 x2    y2   
-    #> 3     2 x2    y3   
-    #> 4     2 x3    y2   
-    #> 5     2 x3    y3   
-    #> 6     3 x4    y4
     ```
 
 ### 키열 정의하기 {#join-by}
@@ -435,42 +317,16 @@ x %>%
 
   * 기본값 `by = NULL` 을 사용하면 두 테이블에 있는 모든 변수를 사용하며 이는 자연 조인(natural join)이라 부른다. 예를 들어 `flights`  및 `weather`  테이블은 공통 변수인 `year, month, day, hour, origin` 으로 매치된다.
 
-    
-    ```r
+    ```{r}
     flights2 %>% 
       left_join(weather)
-    #> Joining, by = c("year", "month", "day", "hour", "origin")
-    #> # A tibble: 336,776 x 18
-    #>    year month   day  hour origin dest  tailnum carrier  temp  dewp humid
-    #>   <dbl> <dbl> <int> <dbl> <chr>  <chr> <chr>   <chr>   <dbl> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA       39.0  28.0  64.4
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA       39.9  25.0  54.8
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA       39.0  27.0  61.6
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6       39.0  27.0  61.6
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL       39.9  25.0  54.8
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA       39.0  28.0  64.4
-    #> # ... with 3.368e+05 more rows, and 7 more variables: wind_dir <dbl>,
-    #> #   wind_speed <dbl>, wind_gust <dbl>, precip <dbl>, pressure <dbl>,
-    #> #   visib <dbl>, time_hour <dttm>
     ```
 
   * 문자형 벡터 `by = "x"` . 이것은 자연 결합과 같지만 일부 공통 변수만 사용한다. 예를 들어 `flights` 와 `planes` 에는 `year` 변수가 있지만 서로 다른 의미이므로 `tailnum` 으로만 조인하고 싶다.
   
-    
-    ```r
+    ```{r}
     flights2 %>% 
       left_join(planes, by = "tailnum")
-    #> # A tibble: 336,776 x 16
-    #>   year.x month   day  hour origin dest  tailnum carrier year.y type 
-    #>    <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>    <int> <chr>
-    #> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixe…
-    #> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixe…
-    #> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixe…
-    #> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixe…
-    #> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixe…
-    #> 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixe…
-    #> # ... with 3.368e+05 more rows, and 6 more variables: manufacturer <chr>,
-    #> #   model <chr>, engines <int>, seats <int>, speed <int>, engine <chr>
     ```
 
     `year` 변수 (두 입력 데이터프레임 모두에 나타나지만 같지 않도록 제한시킴)는 접미사가 붙어서 출력에서 헷갈리지 않게 된 것을 확인하라.
@@ -479,43 +335,19 @@ x %>%
 
     예를 들어 지도를 그리려면 `flights`  데이터를 각 공항의 위치(`lat` 과 `lon` , 위도와 경도)가 포함된 `airports`  데이터와 결합해야 한다. 각 항공편에는 출발 공항과 도착 공항이 있으므로 어떤 것에 조인할지 지정해야 한다.
 
-    
-    ```r
+    ```{r}
     flights2 %>% 
       left_join(airports, c("dest" = "faa"))
-    #> # A tibble: 336,776 x 15
-    #>    year month   day  hour origin dest  tailnum carrier name    lat   lon
-    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Geor…  30.0 -95.3
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      Geor…  30.0 -95.3
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miam…  25.8 -80.3
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      <NA>   NA    NA  
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hart…  33.6 -84.4
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Chic…  42.0 -87.9
-    #> # ... with 3.368e+05 more rows, and 4 more variables: alt <int>, tz <dbl>,
-    #> #   dst <chr>, tzone <chr>
     
     flights2 %>% 
       left_join(airports, c("origin" = "faa"))
-    #> # A tibble: 336,776 x 15
-    #>    year month   day  hour origin dest  tailnum carrier name    lat   lon
-    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newa…  40.7 -74.2
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      La G…  40.8 -73.9
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John…  40.6 -73.8
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John…  40.6 -73.8
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La G…  40.8 -73.9
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Newa…  40.7 -74.2
-    #> # ... with 3.368e+05 more rows, and 4 more variables: alt <int>, tz <dbl>,
-    #> #   dst <chr>, tzone <chr>
     ```
 
 ### 연습문제
 
 1.  목적지별 평균 연착시간을 계산한 다음, `airports`  데이터프레임에 조인하여 연착의 공간 분포를 표시하라. 다음을 이용하여 미국 지도를 쉽게 그릴 수 있다.
 
-    
-    ```r
+    ```{r, eval = FALSE}
     airports %>%
       semi_join(flights, c("faa" = "dest")) %>%
       ggplot(aes(lon, lat)) +
@@ -535,7 +367,18 @@ x %>%
 
 1. 2013년 6 월 13 일에 무슨 일이 일어났는가? 연착의 공간 패턴을 표시한 다음 구글을 사용하여 날씨와 상호참조하라.
 
-
+    ```{r, eval = FALSE, include = FALSE}
+    worst <- filter(flights, !is.na(dep_time), month == 6, day == 13)
+    worst %>%
+      group_by(dest) %>%
+      summarise(delay = mean(arr_delay), n = n()) %>%
+      filter(n > 5) %>%
+      inner_join(airports, by = c("dest" = "faa")) %>%
+      ggplot(aes(lon, lat)) +
+        borders("state") +
+        geom_point(aes(size = n, colour = delay)) +
+        coord_quickmap()
+    ```
 
 ### 기타 구현
 
@@ -572,43 +415,18 @@ dplyr                        | SQL
 
 세미 조인(Semi-joins)은 필터링된 요약 테이블을 다시 원래 행과 매치시키는 데 유용하다. 예를 들어 가장 인기 있는 상위 10개 도착지를 구했다고 가정해보자.
 
-
-```r
+```{r}
 top_dest <- flights %>%
   count(dest, sort = TRUE) %>%
   head(10)
 top_dest
-#> # A tibble: 10 x 2
-#>   dest      n
-#>   <chr> <int>
-#> 1 ORD   17283
-#> 2 ATL   17215
-#> 3 LAX   16174
-#> 4 BOS   15508
-#> 5 MCO   14082
-#> 6 CLT   14064
-#> # ... with 4 more rows
 ```
 
 이제 그 목적지 중 한 곳으로 운행한 항공편을 찾고 싶다면 직접 필터를 만들 수 있다.
 
-
-```r
+```{r}
 flights %>% 
   filter(dest %in% top_dest$dest)
-#> # A tibble: 141,145 x 19
-#>    year month   day dep_time sched_dep_time dep_delay arr_time
-#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
-#> 1  2013     1     1      542            540         2      923
-#> 2  2013     1     1      554            600        -6      812
-#> 3  2013     1     1      554            558        -4      740
-#> 4  2013     1     1      555            600        -5      913
-#> 5  2013     1     1      557            600        -3      838
-#> 6  2013     1     1      558            600        -2      753
-#> # ... with 1.411e+05 more rows, and 12 more variables:
-#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
-#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
-#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
 그러나 이러한 접근 방식을 여러 변수로 확장하는 것은 어렵다. 예를 들어 평균 연착시간이 가장 길었던 날 10일을 골라냈다고 상상해보라. `year, month, day` 를 사용하여 다시 항공편과 일치시키는 필터 구문을 어떻게 작성할 수 있는가?
@@ -616,55 +434,35 @@ flights %>%
 한편 뮤테이팅 조인과 같이 두 테이블을 연결하는 세미 조인을 사용할 수 있지만 새 열을 추가하는 대신 `y` 에서 일치하는 `x` 의 행만 보존한다.
 
 
-
-```r
+```{r}
 flights %>% 
   semi_join(top_dest)
-#> Joining, by = "dest"
-#> # A tibble: 141,145 x 19
-#>    year month   day dep_time sched_dep_time dep_delay arr_time
-#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
-#> 1  2013     1     1      542            540         2      923
-#> 2  2013     1     1      554            600        -6      812
-#> 3  2013     1     1      554            558        -4      740
-#> 4  2013     1     1      555            600        -5      913
-#> 5  2013     1     1      557            600        -3      838
-#> 6  2013     1     1      558            600        -2      753
-#> # ... with 1.411e+05 more rows, and 12 more variables:
-#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
-#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
-#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
 세미 조인은 그래픽으로 다음과 같이 표현된다.
 
-<img src="diagrams/join-semi.png" width="307" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-semi.png")
+```
 
 매칭되었는지 여부만이 중요하다. 즉, 어떤 관측값이 매칭되는지는 중요하지 않다. 이는 필터링 조인은 뮤테이팅 조인처럼 행을 복제하지는 않는다는 것을 의미한다.
 
-<img src="diagrams/join-semi-many.png" width="312" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-semi-many.png")
+```
 
 세미 조인의 반대는 안티 조인이다. 안티 조인은 매칭되지 않는 행을 보존한다.
 
-<img src="diagrams/join-anti.png" width="307" style="display: block; margin: auto;" />
+```{r, echo = FALSE, out.width = NULL}
+knitr::include_graphics("diagrams/join-anti.png")
+```
 
 안티 조인(Anti-join)은 조인 불일치를 진단하는 데 유용하다. 예를 들어 `flights`과 `planes` 를 연결하는 경우, `planes` 에 매치되지 않는 `flights` 이 많다는 것을 알고 싶을 수 있다.
 
-
-```r
+```{r}
 flights %>%
   anti_join(planes, by = "tailnum") %>%
   count(tailnum, sort = TRUE)
-#> # A tibble: 722 x 2
-#>   tailnum     n
-#>   <chr>   <int>
-#> 1 <NA>     2512
-#> 2 N725MQ    575
-#> 3 N722MQ    513
-#> 4 N723MQ    507
-#> 5 N713MQ    483
-#> 6 N735MQ    396
-#> # ... with 716 more rows
 ```
 
 ### 연습문제
@@ -691,11 +489,8 @@ flights %>%
     예를 들어 고도(altitude)와 경도는 각 공항을 고유하게 식별하지만 좋은 식별자는 아니다!
 
 
-    
-    ```r
+    ```{r}
     airports %>% count(alt, lon) %>% filter(n > 1)
-    #> # A tibble: 0 x 3
-    #> # ... with 3 variables: alt <int>, lon <dbl>, n <int>
     ```
 
 1.  기본 키의 변수들에 결측값이 없는지 확인하라. 값이 결측된 경우에는 관측값을 식별할 수 없다!
@@ -720,8 +515,7 @@ flights %>%
 아래의 간단한 데이터에 대해서,
 
 
-
-```r
+```{r}
 df1 <- tribble(
   ~x, ~y,
    1,  1,
@@ -736,32 +530,13 @@ df2 <- tribble(
 
 네 가지 연산은 다음과 같다.
 
-
-```r
+```{r}
 intersect(df1, df2)
-#> # A tibble: 1 x 2
-#>       x     y
-#>   <dbl> <dbl>
-#> 1     1     1
 
 # 열이 4개가 아니라 3개임을 주목
 union(df1, df2)
-#> # A tibble: 3 x 2
-#>       x     y
-#>   <dbl> <dbl>
-#> 1     1     2
-#> 2     2     1
-#> 3     1     1
 
 setdiff(df1, df2)
-#> # A tibble: 1 x 2
-#>       x     y
-#>   <dbl> <dbl>
-#> 1     2     1
 
 setdiff(df2, df1)
-#> # A tibble: 1 x 2
-#>       x     y
-#>   <dbl> <dbl>
-#> 1     1     2
 ```

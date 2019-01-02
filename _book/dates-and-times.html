@@ -5,26 +5,25 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>14 날짜와 시간 | R for Data Science</title>
+  <title>8 날짜와 시간 | R 을 활용한 데이터과학 (원제: R for Data Science)</title>
   <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="14 날짜와 시간 | R for Data Science />
+  <meta property="og:title" content="8 날짜와 시간 | R 을 활용한 데이터과학 (원제: R for Data Science) />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="cover.png" />
+  <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
+  <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
   <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 날짜와 시간 | R for Data Science />
+  <meta name="twitter:title" content="8 날짜와 시간 | R 을 활용한 데이터과학 (원제: R for Data Science) />
   <meta name="twitter:site" content="@sulgik" />
   <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
-  <meta name="twitter:image" content="cover.png" />
+  <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="Garrett Grolemund">
 <meta name="author" content="Hadley Wickham">
-<meta name="author" content="번역: Data Science 김설기">
 
 
 
@@ -34,7 +33,7 @@
   
   
 <link rel="prev" href="factors.html">
-<link rel="next" href="program-intro.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,13 +51,6 @@
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.3.1/str_view.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
 
 
 <style type="text/css">
@@ -116,343 +108,168 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>환영합니다</a></li>
-<li class="chapter" data-level="1" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>1</b> 서문</a><ul>
-<li class="chapter" data-level="1.1" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.1</b> 무엇을 배우게 될까</a></li>
-<li class="chapter" data-level="1.2" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.2</b> 이 책의 구성</a></li>
-<li class="chapter" data-level="1.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.3</b> 배우지 않는 것</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="section-1.html"><a href="section-1.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 빅데이터</a></li>
-<li class="chapter" data-level="1.3.2" data-path="section-1.html"><a href="section-1.html#python-julia"><i class="fa fa-check"></i><b>1.3.2</b> Python, Julia</a></li>
-<li class="chapter" data-level="1.3.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>1.3.3</b> 비직사각형 데이터</a></li>
-<li class="chapter" data-level="1.3.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>1.3.4</b> 가설 확인</a></li>
-</ul></li>
-<li class="chapter" data-level="1.4" data-path="section-1.html"><a href="section-1.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 준비하기</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>1.4.1</b> R</a></li>
-<li class="chapter" data-level="1.4.2" data-path="section-1.html"><a href="section-1.html#rstudio"><i class="fa fa-check"></i><b>1.4.2</b> RStudio</a></li>
-<li class="chapter" data-level="1.4.3" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>1.4.3</b> Tidyverse</a></li>
-<li class="chapter" data-level="1.4.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>1.4.4</b> 기타 패키지들</a></li>
-</ul></li>
-<li class="chapter" data-level="1.5" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>1.5</b> R 코드 실행하기</a></li>
-<li class="chapter" data-level="1.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>1.6</b> 도움받기, 더 배우기</a></li>
-<li class="chapter" data-level="1.7" data-path="section-1.html"><a href="section-1.html#acknowledgements"><i class="fa fa-check"></i><b>1.7</b> Acknowledgements</a></li>
-<li class="chapter" data-level="1.8" data-path="section-1.html"><a href="section-1.html#colophon"><i class="fa fa-check"></i><b>1.8</b> Colophon</a></li>
-</ul></li>
-<li class="part"><span><b>I 탐색하기</b></span></li>
-<li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> 소개</a></li>
-<li class="chapter" data-level="3" data-path="visualize.html"><a href="visualize.html"><i class="fa fa-check"></i><b>3</b> 데이터 시각화</a><ul>
-<li class="chapter" data-level="3.1" data-path="visualize.html"><a href="visualize.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="visualize.html"><a href="visualize.html#-1"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.2</b> 첫 단계</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="visualize.html"><a href="visualize.html#mpg-"><i class="fa fa-check"></i><b>3.2.1</b> <code>mpg</code> 데이터프레임</a></li>
-<li class="chapter" data-level="3.2.2" data-path="visualize.html"><a href="visualize.html#ggplot-"><i class="fa fa-check"></i><b>3.2.2</b> ggplot 생성하기</a></li>
-<li class="chapter" data-level="3.2.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 탬플릿</a></li>
-<li class="chapter" data-level="3.2.4" data-path="visualize.html"><a href="visualize.html#section-3.2.4"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="visualize.html"><a href="visualize.html#aesthetic-"><i class="fa fa-check"></i><b>3.3</b> Aesthetic 매핑</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="visualize.html"><a href="visualize.html#-1"><i class="fa fa-check"></i><b>3.3.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="visualize.html"><a href="visualize.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
-<li class="chapter" data-level="3.5" data-path="visualize.html"><a href="visualize.html#facet"><i class="fa fa-check"></i><b>3.5</b> Facet</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="visualize.html"><a href="visualize.html#-2"><i class="fa fa-check"></i><b>3.5.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.6</b> 기하 객체</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="visualize.html"><a href="visualize.html#-3"><i class="fa fa-check"></i><b>3.6.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="3.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.7</b> 통계적 변환</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="visualize.html"><a href="visualize.html#-4"><i class="fa fa-check"></i><b>3.7.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>3.8</b> 위치 조정</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="visualize.html"><a href="visualize.html#-5"><i class="fa fa-check"></i><b>3.8.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="3.9" data-path="visualize.html"><a href="visualize.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 좌표계</a><ul>
-<li class="chapter" data-level="3.9.1" data-path="visualize.html"><a href="visualize.html#-6"><i class="fa fa-check"></i><b>3.9.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="3.10" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>3.10</b> 그래프 레이어 문법</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> 워크플로: 기초</a><ul>
-<li class="chapter" data-level="4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.1</b> 코딩 기초</a></li>
-<li class="chapter" data-level="4.2" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>4.2</b> 이름에 들어갈 것</a></li>
-<li class="chapter" data-level="4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>4.3</b> 함수 호출하기</a></li>
-<li class="chapter" data-level="4.4" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>4.4</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>5</b> 데이터 변형</a><ul>
-<li class="chapter" data-level="5.1" data-path="visualize.html"><a href="visualize.html#-1"><i class="fa fa-check"></i><b>5.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="visualize.html"><a href="visualize.html#-2"><i class="fa fa-check"></i><b>5.1.1</b> 준비하기</a></li>
-<li class="chapter" data-level="5.1.2" data-path="transform.html"><a href="transform.html#nycflights13"><i class="fa fa-check"></i><b>5.1.2</b> nycflights13</a></li>
-<li class="chapter" data-level="5.1.3" data-path="transform.html"><a href="transform.html#dplyr-"><i class="fa fa-check"></i><b>5.1.3</b> dplyr 기초</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="transform.html"><a href="transform.html#filter--"><i class="fa fa-check"></i><b>5.2</b> <code>filter()</code> 로 필터링하기</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="transform.html"><a href="transform.html#section-5.2.1"><i class="fa fa-check"></i><b>5.2.1</b> 비교</a></li>
-<li class="chapter" data-level="5.2.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>5.2.2</b> 논리 연산자</a></li>
-<li class="chapter" data-level="5.2.3" data-path="transform.html"><a href="transform.html#section-5.2.3"><i class="fa fa-check"></i><b>5.2.3</b> 결측값</a></li>
-<li class="chapter" data-level="5.2.4" data-path="transform.html"><a href="transform.html#-8"><i class="fa fa-check"></i><b>5.2.4</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="transform.html"><a href="transform.html#arrange--"><i class="fa fa-check"></i><b>5.3</b> <code>arrange()</code> 로 정렬하기</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>5.3.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="transform.html"><a href="transform.html#select"><i class="fa fa-check"></i><b>5.4</b> <code>select()</code> 로 열 선택하기</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>5.4.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="transform.html"><a href="transform.html#mutate----"><i class="fa fa-check"></i><b>5.5</b> <code>mutate()</code> 로 새로운 변수 추가하기</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="transform.html"><a href="transform.html#mutate-funs"><i class="fa fa-check"></i><b>5.5.1</b> 유용한 생성 함수</a></li>
-<li class="chapter" data-level="5.5.2" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>5.5.2</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="transform.html"><a href="transform.html#summarize---"><i class="fa fa-check"></i><b>5.6</b> <code>summarize()</code> 로 그룹화 요약하기</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>5.6.1</b> 파이프로 여러 작업 조합하기</a></li>
-<li class="chapter" data-level="5.6.2" data-path="visualize.html"><a href="visualize.html#-1"><i class="fa fa-check"></i><b>5.6.2</b> 결측값</a></li>
-<li class="chapter" data-level="5.6.3" data-path="transform.html"><a href="transform.html#section-5.6.3"><i class="fa fa-check"></i><b>5.6.3</b> 카운트</a></li>
-<li class="chapter" data-level="5.6.4" data-path="transform.html"><a href="transform.html#summarize-funs"><i class="fa fa-check"></i><b>5.6.4</b> 유용한 요약 함수</a></li>
-<li class="chapter" data-level="5.6.5" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>5.6.5</b> 다중 변수로 그룹화</a></li>
-<li class="chapter" data-level="5.6.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>5.6.6</b> 그룹화 해제</a></li>
-<li class="chapter" data-level="5.6.7" data-path="transform.html"><a href="transform.html#-12"><i class="fa fa-check"></i><b>5.6.7</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="5.7" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>5.7</b> 그룹화 뮤테이트(와 필터링)</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="transform.html"><a href="transform.html#-13"><i class="fa fa-check"></i><b>5.7.1</b> 연습문제</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> 워크플로: 스크립트</a><ul>
-<li class="chapter" data-level="6.1" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
-<li class="chapter" data-level="6.2" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
-<li class="chapter" data-level="6.3" data-path="Workflow-scripts.html"><a href="Workflow-scripts.html#practice"><i class="fa fa-check"></i><b>6.3</b> Practice</a></li>
-</ul></li>
-<li class="part"><span><b>II 데이터 길들이기</b></span></li>
-<li class="chapter" data-level="7" data-path="wrangle-intro.html"><a href="wrangle-intro.html"><i class="fa fa-check"></i><b>7</b> 소개</a></li>
-<li class="chapter" data-level="8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>8</b> 티블</a><ul>
-<li class="chapter" data-level="8.1" data-path="visualize.html"><a href="visualize.html#-2"><i class="fa fa-check"></i><b>8.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="visualize.html"><a href="visualize.html#-3"><i class="fa fa-check"></i><b>8.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>8.2</b> tibble 생성하기</a></li>
-<li class="chapter" data-level="8.3" data-path="tibble.html"><a href="tibble.html#tibble-vs.data.frame"><i class="fa fa-check"></i><b>8.3</b> Tibble vs. data.frame</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="tibble.html"><a href="tibble.html#section-8.3.1"><i class="fa fa-check"></i><b>8.3.1</b> 화면출력</a></li>
-<li class="chapter" data-level="8.3.2" data-path="tibble.html"><a href="tibble.html#section-8.3.2"><i class="fa fa-check"></i><b>8.3.2</b> 서브셋하기</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>8.4</b> 이전 코드와 상호작용</a></li>
-<li class="chapter" data-level="8.5" data-path="tibble.html"><a href="tibble.html#-14"><i class="fa fa-check"></i><b>8.5</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>9</b> 데이터 불러오기</a><ul>
-<li class="chapter" data-level="9.1" data-path="visualize.html"><a href="visualize.html#-3"><i class="fa fa-check"></i><b>9.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="visualize.html"><a href="visualize.html#-4"><i class="fa fa-check"></i><b>9.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="data-import.html"><a href="data-import.html#section-9.2"><i class="fa fa-check"></i><b>9.2</b> 시작하기</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="data-import.html"><a href="data-import.html#-r-"><i class="fa fa-check"></i><b>9.2.1</b> 베이스 R과 비교</a></li>
-<li class="chapter" data-level="9.2.2" data-path="data-import.html"><a href="data-import.html#-15"><i class="fa fa-check"></i><b>9.2.2</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.3</b> 벡터 파싱하기</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="data-import.html"><a href="data-import.html#section-9.3.1"><i class="fa fa-check"></i><b>9.3.1</b> 숫자</a></li>
-<li class="chapter" data-level="9.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>9.3.2</b> 문자열</a></li>
-<li class="chapter" data-level="9.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>9.3.3</b> 팩터형</a></li>
-<li class="chapter" data-level="9.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>9.3.4</b> Dates, date-times, times</a></li>
-<li class="chapter" data-level="9.3.5" data-path="data-import.html"><a href="data-import.html#-16"><i class="fa fa-check"></i><b>9.3.5</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.4</b> 파일 파싱하기</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="data-import.html"><a href="data-import.html#section-9.4.1"><i class="fa fa-check"></i><b>9.4.1</b> 전략</a></li>
-<li class="chapter" data-level="9.4.2" data-path="data-import.html"><a href="data-import.html#section-9.4.2"><i class="fa fa-check"></i><b>9.4.2</b> 문제점</a></li>
-<li class="chapter" data-level="9.4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.4.3</b> 기타 전략</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>9.5</b> 파일에 쓰기</a></li>
-<li class="chapter" data-level="9.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>9.6</b> 기타 데이터 유형</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>10</b> 타이디 데이터</a><ul>
-<li class="chapter" data-level="10.1" data-path="visualize.html"><a href="visualize.html#-4"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="visualize.html"><a href="visualize.html#-5"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data"><i class="fa fa-check"></i><b>10.2</b> Tidy Data</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="tidy-data.html"><a href="tidy-data.html#-17"><i class="fa fa-check"></i><b>10.2.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="tidy-data.html"><a href="tidy-data.html#gather--spread"><i class="fa fa-check"></i><b>10.3</b> gather 와 spread</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>10.3.1</b> Gather</a></li>
-<li class="chapter" data-level="10.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>10.3.2</b> Spread</a></li>
-<li class="chapter" data-level="10.3.3" data-path="tidy-data.html"><a href="tidy-data.html#-18"><i class="fa fa-check"></i><b>10.3.3</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="tidy-data.html"><a href="tidy-data.html#separate--unite"><i class="fa fa-check"></i><b>10.4</b> Separate 과 Unite</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="tidy-data.html"><a href="tidy-data.html#separate"><i class="fa fa-check"></i><b>10.4.1</b> Separate</a></li>
-<li class="chapter" data-level="10.4.2" data-path="tidy-data.html"><a href="tidy-data.html#unite"><i class="fa fa-check"></i><b>10.4.2</b> Unite</a></li>
-<li class="chapter" data-level="10.4.3" data-path="tidy-data.html"><a href="tidy-data.html#-19"><i class="fa fa-check"></i><b>10.4.3</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="visualize.html"><a href="visualize.html#-2"><i class="fa fa-check"></i><b>10.5</b> 결측값</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="tidy-data.html"><a href="tidy-data.html#-20"><i class="fa fa-check"></i><b>10.5.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>10.6</b> 사례 연구</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="tidy-data.html"><a href="tidy-data.html#-21"><i class="fa fa-check"></i><b>10.6.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="10.7" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>10.7</b> 타이디하지 않은 데이터</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>11</b> 관계형 데이터</a><ul>
-<li class="chapter" data-level="11.1" data-path="visualize.html"><a href="visualize.html#-5"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="visualize.html"><a href="visualize.html#-6"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>11.2</b> nycflights13</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="relational-data.html"><a href="relational-data.html#-22"><i class="fa fa-check"></i><b>11.2.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="relational-data.html"><a href="relational-data.html#section-11.3"><i class="fa fa-check"></i><b>11.3</b> 키</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="relational-data.html"><a href="relational-data.html#-23"><i class="fa fa-check"></i><b>11.3.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>11.4</b> Mutating joins</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.4.1</b> 조인 이해하기</a></li>
-<li class="chapter" data-level="11.4.2" data-path="relational-data.html"><a href="relational-data.html#inner-join"><i class="fa fa-check"></i><b>11.4.2</b> 내부 조인</a></li>
-<li class="chapter" data-level="11.4.3" data-path="relational-data.html"><a href="relational-data.html#outer-join"><i class="fa fa-check"></i><b>11.4.3</b> 외부 조인</a></li>
-<li class="chapter" data-level="11.4.4" data-path="relational-data.html"><a href="relational-data.html#join-matches"><i class="fa fa-check"></i><b>11.4.4</b> 중복키</a></li>
-<li class="chapter" data-level="11.4.5" data-path="relational-data.html"><a href="relational-data.html#join-by"><i class="fa fa-check"></i><b>11.4.5</b> 키열 정의하기</a></li>
-<li class="chapter" data-level="11.4.6" data-path="relational-data.html"><a href="relational-data.html#-24"><i class="fa fa-check"></i><b>11.4.6</b> 연습문제</a></li>
-<li class="chapter" data-level="11.4.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.4.7</b> 기타 구현</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>11.5</b> 필터링 조인</a><ul>
-<li class="chapter" data-level="11.5.1" data-path="relational-data.html"><a href="relational-data.html#-25"><i class="fa fa-check"></i><b>11.5.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>11.6</b> 조인 문제</a></li>
-<li class="chapter" data-level="11.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>11.7</b> 집합 연산</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>12</b> 문자열</a><ul>
-<li class="chapter" data-level="12.1" data-path="visualize.html"><a href="visualize.html#-6"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2</b> 문자열 기초</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.1</b> 문자열 길이</a></li>
-<li class="chapter" data-level="12.2.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.2</b> 문자열 결합</a></li>
-<li class="chapter" data-level="12.2.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.2.3</b> 문자열 서브셋하기</a></li>
-<li class="chapter" data-level="12.2.4" data-path="strings.html"><a href="strings.html#section-12.2.4"><i class="fa fa-check"></i><b>12.2.4</b> 로캘</a></li>
-<li class="chapter" data-level="12.2.5" data-path="strings.html"><a href="strings.html#-26"><i class="fa fa-check"></i><b>12.2.5</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>12.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.3.1</b> 기초 매칭</a></li>
-<li class="chapter" data-level="12.3.2" data-path="strings.html"><a href="strings.html#section-12.3.2"><i class="fa fa-check"></i><b>12.3.2</b> 앵커</a></li>
-<li class="chapter" data-level="12.3.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.3.3</b> 문자 클래스와 대체구문</a></li>
-<li class="chapter" data-level="12.3.4" data-path="strings.html"><a href="strings.html#section-12.3.4"><i class="fa fa-check"></i><b>12.3.4</b> 반복</a></li>
-<li class="chapter" data-level="12.3.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.3.5</b> 그룹화와 역참조</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="strings.html"><a href="strings.html#section-12.4"><i class="fa fa-check"></i><b>12.4</b> 도구</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.1</b> 매칭 탐지</a></li>
-<li class="chapter" data-level="12.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.2</b> 매칭 추출</a></li>
-<li class="chapter" data-level="12.4.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.3</b> 그룹화 매칭</a></li>
-<li class="chapter" data-level="12.4.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.4</b> 매칭 치환</a></li>
-<li class="chapter" data-level="12.4.5" data-path="strings.html"><a href="strings.html#splitting"><i class="fa fa-check"></i><b>12.4.5</b> Splitting</a></li>
-<li class="chapter" data-level="12.4.6" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>12.4.6</b> 매치 찾기</a></li>
-</ul></li>
-<li class="chapter" data-level="12.5" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.5</b> 기타 패턴 유형</a><ul>
-<li class="chapter" data-level="12.5.1" data-path="strings.html"><a href="strings.html#-37"><i class="fa fa-check"></i><b>12.5.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="12.6" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>12.6</b> 정규표현식의 기타 용도</a></li>
-<li class="chapter" data-level="12.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>12.7</b> stringi</a><ul>
-<li class="chapter" data-level="12.7.1" data-path="strings.html"><a href="strings.html#-38"><i class="fa fa-check"></i><b>12.7.1</b> 연습문제</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>13</b> 팩터형</a><ul>
-<li class="chapter" data-level="13.1" data-path="workflow-basics.html"><a href="workflow-basics.html#-7"><i class="fa fa-check"></i><b>13.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="transform.html"><a href="transform.html#-8"><i class="fa fa-check"></i><b>13.1.1</b> 준비하기</a></li>
-<li class="chapter" data-level="13.1.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>13.1.2</b> 더 배우기</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>13.2</b> 팩터형 생성하기</a></li>
-<li class="chapter" data-level="13.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>13.3</b> General Social Survey</a><ul>
-<li class="chapter" data-level="13.3.1" data-path="factors.html"><a href="factors.html#-39"><i class="fa fa-check"></i><b>13.3.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="13.4" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>13.4</b> 팩터 순서 수정하기</a><ul>
-<li class="chapter" data-level="13.4.1" data-path="factors.html"><a href="factors.html#-40"><i class="fa fa-check"></i><b>13.4.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="13.5" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>13.5</b> 팩터 레벨 수정하기</a><ul>
-<li class="chapter" data-level="13.5.1" data-path="factors.html"><a href="factors.html#-41"><i class="fa fa-check"></i><b>13.5.1</b> 연습문제</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>14</b> 날짜와 시간</a><ul>
-<li class="chapter" data-level="14.1" data-path="transform.html"><a href="transform.html#-8"><i class="fa fa-check"></i><b>14.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>14.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="14.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>14.2</b> 날짜/시간 생성하기</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>14.2.1</b> 문자열에서 생성</a></li>
-<li class="chapter" data-level="14.2.2" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>14.2.2</b> 개별 구성요소에서 생성</a></li>
-<li class="chapter" data-level="14.2.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>14.2.3</b> 기타 유형에서 생성</a></li>
-<li class="chapter" data-level="14.2.4" data-path="dates-and-times.html"><a href="dates-and-times.html#-42"><i class="fa fa-check"></i><b>14.2.4</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="14.3" data-path="section-1.html"><a href="section-1.html#--"><i class="fa fa-check"></i><b>14.3</b> 데이트-타임형 구성요소</a><ul>
-<li class="chapter" data-level="14.3.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>14.3.1</b> 구성요소 가져오기</a></li>
-<li class="chapter" data-level="14.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#section-14.3.2"><i class="fa fa-check"></i><b>14.3.2</b> 반올림</a></li>
-<li class="chapter" data-level="14.3.3" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>14.3.3</b> 구성요소 설정</a></li>
-<li class="chapter" data-level="14.3.4" data-path="dates-and-times.html"><a href="dates-and-times.html#-43"><i class="fa fa-check"></i><b>14.3.4</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="14.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>14.4</b> 시간 범위</a><ul>
-<li class="chapter" data-level="14.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#section-14.4.1"><i class="fa fa-check"></i><b>14.4.1</b> 듀레이션형</a></li>
-<li class="chapter" data-level="14.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#section-14.4.2"><i class="fa fa-check"></i><b>14.4.2</b> 피리어드형</a></li>
-<li class="chapter" data-level="14.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#section-14.4.3"><i class="fa fa-check"></i><b>14.4.3</b> 인터벌형</a></li>
-<li class="chapter" data-level="14.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#section-14.4.4"><i class="fa fa-check"></i><b>14.4.4</b> 요약</a></li>
-<li class="chapter" data-level="14.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#-44"><i class="fa fa-check"></i><b>14.4.5</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="14.5" data-path="dates-and-times.html"><a href="dates-and-times.html#section-14.5"><i class="fa fa-check"></i><b>14.5</b> 시간대</a></li>
-</ul></li>
-<li class="part"><span><b>III 프로그래밍</b></span></li>
-<li class="chapter" data-level="15" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>15</b> 소개</a><ul>
-<li class="chapter" data-level="15.1" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>15.1</b> Learning more</a></li>
-</ul></li>
-<li class="part"><span><b>IV 모델</b></span></li>
-<li class="chapter" data-level="16" data-path="model-intro.html"><a href="model-intro.html"><i class="fa fa-check"></i><b>16</b> 소개</a><ul>
-<li class="chapter" data-level="16.1" data-path="model-intro.html"><a href="model-intro.html#hypothesis-generation-vs.hypothesis-confirmation"><i class="fa fa-check"></i><b>16.1</b> Hypothesis generation vs. hypothesis confirmation</a></li>
-</ul></li>
-<li class="part"><span><b>V 의사소통하기</b></span></li>
-<li class="chapter" data-level="17" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a></li>
-<li class="chapter" data-level="18" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>18</b> R 마크다운</a><ul>
-<li class="chapter" data-level="18.1" data-path="transform.html"><a href="transform.html#-9"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>18.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="18.2" data-path="section-1.html"><a href="section-1.html#r--"><i class="fa fa-check"></i><b>18.2</b> R 마크다운 기초</a><ul>
-<li class="chapter" data-level="18.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-45"><i class="fa fa-check"></i><b>18.2.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="18.3" data-path="transform.html"><a href="transform.html#---"><i class="fa fa-check"></i><b>18.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
-<li class="chapter" data-level="18.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#-46"><i class="fa fa-check"></i><b>18.3.1</b> 연습문제</a></li>
-</ul></li>
-<li class="chapter" data-level="18.4" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4</b> 코드 청크</a><ul>
-<li class="chapter" data-level="18.4.1" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.1</b> 청크 이름</a></li>
-<li class="chapter" data-level="18.4.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.2</b> 청크 옵션</a></li>
-<li class="chapter" data-level="18.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.3"><i class="fa fa-check"></i><b>18.4.3</b> 표</a></li>
-<li class="chapter" data-level="18.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#section-18.4.4"><i class="fa fa-check"></i><b>18.4.4</b> 캐싱</a></li>
-<li class="chapter" data-level="18.4.5" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>18.4.5</b> 전역 옵션</a></li>
-<li class="chapter" data-level="18.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>18.4.6</b> Inline code</a></li>
-<li class="chapter" data-level="18.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>18.4.7</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="18.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>18.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="18.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>18.6</b> YAML header</a><ul>
-<li class="chapter" data-level="18.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>18.6.1</b> Parameters</a></li>
-<li class="chapter" data-level="18.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>18.6.2</b> Bibliographies and Citations</a></li>
-</ul></li>
-<li class="chapter" data-level="18.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more-1"><i class="fa fa-check"></i><b>18.7</b> Learning more</a></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>19</b> 그래프를 통한 의사소통</a><ul>
-<li class="chapter" data-level="19.1" data-path="transform.html"><a href="transform.html#-10"><i class="fa fa-check"></i><b>19.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="19.1.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>19.1.1</b> 준비하기</a></li>
-</ul></li>
-<li class="chapter" data-level="19.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>19.2</b> Label</a><ul>
-<li class="chapter" data-level="19.2.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>19.2.1</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="19.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>19.3</b> Annotations</a><ul>
-<li class="chapter" data-level="19.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>19.3.1</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="19.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>19.4</b> Scales</a><ul>
-<li class="chapter" data-level="19.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>19.4.1</b> Axis ticks and legend keys</a></li>
-<li class="chapter" data-level="19.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>19.4.2</b> Legend layout</a></li>
-<li class="chapter" data-level="19.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>19.4.3</b> Replacing a scale</a></li>
-<li class="chapter" data-level="19.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-3"><i class="fa fa-check"></i><b>19.4.4</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="19.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>19.5</b> Zooming</a></li>
-<li class="chapter" data-level="19.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>19.6</b> Themes</a></li>
-<li class="chapter" data-level="19.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>19.7</b> Saving your plots</a><ul>
-<li class="chapter" data-level="19.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>19.7.1</b> Figure sizing</a></li>
-<li class="chapter" data-level="19.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>19.7.2</b> Other important options</a></li>
-</ul></li>
-<li class="chapter" data-level="19.8" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#learning-more-2"><i class="fa fa-check"></i><b>19.8</b> Learning more</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>20</b> R 마크다운 유형</a><ul>
-<li class="chapter" data-level="20.1" data-path="transform.html"><a href="transform.html#-11"><i class="fa fa-check"></i><b>20.1</b> 들어가기</a></li>
-<li class="chapter" data-level="20.2" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.2</b> 출력 옵션</a></li>
-<li class="chapter" data-level="20.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>20.3</b> Document</a></li>
-<li class="chapter" data-level="20.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>20.4</b> Notebook</a></li>
-<li class="chapter" data-level="20.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>20.5</b> Presentation</a></li>
-<li class="chapter" data-level="20.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>20.6</b> Dashboard</a></li>
-<li class="chapter" data-level="20.7" data-path="section-1.html"><a href="section-1.html#-"><i class="fa fa-check"></i><b>20.7</b> 대화형 동작</a><ul>
-<li class="chapter" data-level="20.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>20.7.1</b> htmlwidgets</a></li>
-<li class="chapter" data-level="20.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>20.7.2</b> Shiny</a></li>
-</ul></li>
-<li class="chapter" data-level="20.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>20.8</b> Website</a></li>
-<li class="chapter" data-level="20.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>20.9</b> Other formats</a></li>
-<li class="chapter" data-level="20.10" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#--1"><i class="fa fa-check"></i><b>20.10</b> 더 배우기</a></li>
-</ul></li>
-<li class="chapter" data-level="21" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>21</b> R 마크다운 워크플로</a></li>
+<li class="part"><span><b>I 데이터 길들이기</b></span></li>
+<li class="chapter" data-level="1" data-path="wrangle-intro.html"><a href="wrangle-intro.html"><i class="fa fa-check"></i><b>1</b> 소개</a></li>
+<li class="chapter" data-level="2" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>2</b> 티블</a><ul>
+<li class="chapter" data-level="2.1" data-path="tibble.html"><a href="tibble.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="tibble.html"><a href="tibble.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>2.2</b> tibble 생성하기</a></li>
+<li class="chapter" data-level="2.3" data-path="tibble.html"><a href="tibble.html#tibble-vs.data.frame"><i class="fa fa-check"></i><b>2.3</b> Tibble vs. data.frame</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="tibble.html"><a href="tibble.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 화면출력</a></li>
+<li class="chapter" data-level="2.3.2" data-path="tibble.html"><a href="tibble.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 서브셋하기</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>2.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.5" data-path="tibble.html"><a href="tibble.html#section-2.5"><i class="fa fa-check"></i><b>2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>3</b> 데이터 불러오기</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-import.html"><a href="data-import.html#-1"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-import.html"><a href="data-import.html#-1"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#section-3.2"><i class="fa fa-check"></i><b>3.2</b> 시작하기</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#-r-"><i class="fa fa-check"></i><b>3.2.1</b> 베이스 R과 비교</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-import.html"><a href="data-import.html#-1"><i class="fa fa-check"></i><b>3.2.2</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.3</b> 벡터 파싱하기</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-import.html"><a href="data-import.html#section-3.3.1"><i class="fa fa-check"></i><b>3.3.1</b> 숫자</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>3.3.2</b> 문자열</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>3.3.3</b> 팩터형</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> Dates, date-times, times</a></li>
+<li class="chapter" data-level="3.3.5" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>3.3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4</b> 파일 파싱하기</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="data-import.html"><a href="data-import.html#section-3.4.1"><i class="fa fa-check"></i><b>3.4.1</b> 전략</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data-import.html"><a href="data-import.html#section-3.4.2"><i class="fa fa-check"></i><b>3.4.2</b> 문제점</a></li>
+<li class="chapter" data-level="3.4.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4.3</b> 기타 전략</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.5</b> 파일에 쓰기</a></li>
+<li class="chapter" data-level="3.6" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>3.6</b> 기타 데이터 유형</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>4</b> 타이디 데이터</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>4.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>4.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data"><i class="fa fa-check"></i><b>4.2</b> Tidy Data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="tidy-data.html"><a href="tidy-data.html#-3"><i class="fa fa-check"></i><b>4.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#gather--spread"><i class="fa fa-check"></i><b>4.3</b> gather 와 spread</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>4.3.1</b> Gather</a></li>
+<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>4.3.2</b> Spread</a></li>
+<li class="chapter" data-level="4.3.3" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>4.3.3</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="tidy-data.html"><a href="tidy-data.html#separate--unite"><i class="fa fa-check"></i><b>4.4</b> separate 과 unite</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="tidy-data.html"><a href="tidy-data.html#separate"><i class="fa fa-check"></i><b>4.4.1</b> separate</a></li>
+<li class="chapter" data-level="4.4.2" data-path="tidy-data.html"><a href="tidy-data.html#unite"><i class="fa fa-check"></i><b>4.4.2</b> unite</a></li>
+<li class="chapter" data-level="4.4.3" data-path="tidy-data.html"><a href="tidy-data.html#-5"><i class="fa fa-check"></i><b>4.4.3</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="tidy-data.html"><a href="tidy-data.html#section-4.5"><i class="fa fa-check"></i><b>4.5</b> 결측값</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="tidy-data.html"><a href="tidy-data.html#-6"><i class="fa fa-check"></i><b>4.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>4.6</b> 사례 연구</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="tidy-data.html"><a href="tidy-data.html#-7"><i class="fa fa-check"></i><b>4.6.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>4.7</b> 타이디하지 않은 데이터</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>5</b> 관계형 데이터</a><ul>
+<li class="chapter" data-level="5.1" data-path="tidy-data.html"><a href="tidy-data.html#-3"><i class="fa fa-check"></i><b>5.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-3"><i class="fa fa-check"></i><b>5.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>5.2</b> nycflights13</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="relational-data.html"><a href="relational-data.html#-8"><i class="fa fa-check"></i><b>5.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="relational-data.html"><a href="relational-data.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 키</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="relational-data.html"><a href="relational-data.html#-9"><i class="fa fa-check"></i><b>5.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>5.4</b> 뮤테이팅 조인</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>5.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="5.4.2" data-path="relational-data.html"><a href="relational-data.html#inner-join"><i class="fa fa-check"></i><b>5.4.2</b> 내부 조인</a></li>
+<li class="chapter" data-level="5.4.3" data-path="relational-data.html"><a href="relational-data.html#outer-join"><i class="fa fa-check"></i><b>5.4.3</b> 외부 조인</a></li>
+<li class="chapter" data-level="5.4.4" data-path="relational-data.html"><a href="relational-data.html#join-matches"><i class="fa fa-check"></i><b>5.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="5.4.5" data-path="relational-data.html"><a href="relational-data.html#join-by"><i class="fa fa-check"></i><b>5.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="5.4.6" data-path="relational-data.html"><a href="relational-data.html#-10"><i class="fa fa-check"></i><b>5.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="5.4.7" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>5.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>5.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="relational-data.html"><a href="relational-data.html#-11"><i class="fa fa-check"></i><b>5.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>5.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="5.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>5.7</b> 집합 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>6</b> 문자열</a><ul>
+<li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="6.2.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="6.2.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="6.2.4" data-path="strings.html"><a href="strings.html#section-6.2.4"><i class="fa fa-check"></i><b>6.2.4</b> 로캘</a></li>
+<li class="chapter" data-level="6.2.5" data-path="strings.html"><a href="strings.html#-12"><i class="fa fa-check"></i><b>6.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="strings.html"><a href="strings.html#---"><i class="fa fa-check"></i><b>6.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.3.1</b> 기초 매칭</a></li>
+<li class="chapter" data-level="6.3.2" data-path="strings.html"><a href="strings.html#section-6.3.2"><i class="fa fa-check"></i><b>6.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="6.3.3" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>6.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="6.3.4" data-path="strings.html"><a href="strings.html#section-6.3.4"><i class="fa fa-check"></i><b>6.3.4</b> 반복</a></li>
+<li class="chapter" data-level="6.3.5" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="strings.html"><a href="strings.html#section-6.4"><i class="fa fa-check"></i><b>6.4</b> 도구</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="6.4.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="6.4.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="6.4.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="6.4.5" data-path="strings.html"><a href="strings.html#splitting"><i class="fa fa-check"></i><b>6.4.5</b> Splitting</a></li>
+<li class="chapter" data-level="6.4.6" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>6.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="strings.html"><a href="strings.html#-23"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>6.6</b> 정규표현식의 기타 용도</a></li>
+<li class="chapter" data-level="6.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>6.7</b> stringi</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="strings.html"><a href="strings.html#-24"><i class="fa fa-check"></i><b>6.7.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> 팩터형</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidy-data.html"><a href="tidy-data.html#-5"><i class="fa fa-check"></i><b>7.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-5"><i class="fa fa-check"></i><b>7.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="7.1.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>7.1.2</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>7.2</b> 팩터형 생성하기</a></li>
+<li class="chapter" data-level="7.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>7.3</b> General Social Survey</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="factors.html"><a href="factors.html#-25"><i class="fa fa-check"></i><b>7.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>7.4</b> 팩터 순서 수정하기</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="factors.html"><a href="factors.html#-26"><i class="fa fa-check"></i><b>7.4.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>7.5</b> 팩터 레벨 수정하기</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="factors.html"><a href="factors.html#-27"><i class="fa fa-check"></i><b>7.5.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>8</b> 날짜와 시간</a><ul>
+<li class="chapter" data-level="8.1" data-path="tidy-data.html"><a href="tidy-data.html#-6"><i class="fa fa-check"></i><b>8.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-6"><i class="fa fa-check"></i><b>8.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.2</b> 날짜/시간 생성하기</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="8.2.2" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>8.2.2</b> 개별 구성요소에서 생성</a></li>
+<li class="chapter" data-level="8.2.3" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>8.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="8.2.4" data-path="dates-and-times.html"><a href="dates-and-times.html#-28"><i class="fa fa-check"></i><b>8.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>8.3</b> 데이트-타임형 구성요소</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="8.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.3.2"><i class="fa fa-check"></i><b>8.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="8.3.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="8.3.4" data-path="dates-and-times.html"><a href="dates-and-times.html#-29"><i class="fa fa-check"></i><b>8.3.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.4</b> 시간 범위</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.1"><i class="fa fa-check"></i><b>8.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.2"><i class="fa fa-check"></i><b>8.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="8.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.3"><i class="fa fa-check"></i><b>8.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="8.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.4"><i class="fa fa-check"></i><b>8.4.4</b> 요약</a></li>
+<li class="chapter" data-level="8.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#-30"><i class="fa fa-check"></i><b>8.4.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.5"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -462,7 +279,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 을 활용한 데이터과학 (원제: R for Data Science)</a>
           </h1>
         </div>
 
@@ -471,19 +288,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="dates-and-times" class="section level1">
-<h1><span class="header-section-number">14</span> 날짜와 시간</h1>
-<div id="-8" class="section level2">
-<h2><span class="header-section-number">14.1</span> 들어가기</h2>
+<h1><span class="header-section-number">8</span> 날짜와 시간</h1>
+<div id="-6" class="section level2">
+<h2><span class="header-section-number">8.1</span> 들어가기</h2>
 <p>이 장에서는 R 에서 날짜와 시간을 다루는 법을 볼 것이다. 언뜻 생각하면 날짜와 시간은 간단해 보인다. 일상 생활에서 늘 사용하고 있으며 복잡할 것이 없을 것 같다. 그러나 날짜와 시간에 대해 배울수록 더 복잡해 보일 것이다. 몸풀기로, 간단해 보이는 다음 세 문제를 보자.</p>
 <ul>
 <li>1년은 항상 365일인가?</li>
-<li>1일은 항상 24시간인가?</li>
+<li>1일은 항상 24시인가?</li>
 <li>1분은 항상 60초인가?</li>
 </ul>
 <p>1년이 항상 365일은 아니라는 걸 대부분 알고 있을 것이다. 하지만 한 해가 윤년인지를 결정하는 규칙을 완벽하게 알고 있는가?(세 파트가 있다.) 세계 많은 곳에서 일광절약제(daylight saving time, DST)를 이용하고 있고, 따라서 어떤 날은 23시이고, 다른 날은 25시라는 것을 기억하는 사람도 있을 것이다. 지구 자전이 점차 느려지기 때문에 윤초가 추가되어 가끔씩 1분이 61초가 된다는 것을 아는 사람은 많지 않을 것이다.</p>
 <p>날짜와 시간은 두 가지 물리 현상(지구 자전과 공전)과 월, 시간대, 일광절약제를 포함한 많은 지정학적 현상을 조화시켜야 하기 때문에 쉬운 문제가 아니다. 이 장에서는 날짜와 시간에 대해 세부 사항을 속속들이 배우지는 않겠지만 일반적인 데이터 분석 문제에 이용할 수 있는 기술들을 탄탄히 배울 것이다.</p>
-<div id="-9" class="section level3">
-<h3><span class="header-section-number">14.1.1</span> 준비하기</h3>
+<div id="-6" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> 준비하기</h3>
 <p>이 장에서는 <strong>lubridate</strong> 패키지를 주로 살펴볼 것인데, 이 패키지를 쓰면 R에서 날짜와 시간을 다룰 수 있다. <strong>lubridate</strong> 는 날짜/시간 작업을 할 때만 필요하기 때문에, 핵심 tidyverse 에 포함되어 있지 않다. 실습데이터로 이용할 <strong>nycflights13</strong> 도 필요하다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 
@@ -492,7 +309,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </div>
 <div id="-" class="section level2">
-<h2><span class="header-section-number">14.2</span> 날짜/시간 생성하기</h2>
+<h2><span class="header-section-number">8.2</span> 날짜/시간 생성하기</h2>
 <p>시각을 나타내는 날짜/시간의 세 가지 유형이 있다.</p>
 <ul>
 <li><p><strong>데이트형 (date)</strong> : 날짜. 티블에서 <code>&lt;date&gt;</code> 로 출력한다.</p></li>
@@ -514,7 +331,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>이들의 작동 방식을 살펴보자.</p>
 <div id="-" class="section level3">
-<h3><span class="header-section-number">14.2.1</span> 문자열에서 생성</h3>
+<h3><span class="header-section-number">8.2.1</span> 문자열에서 생성</h3>
 <p>날짜/시간 데이터는 종종 문자열로 주어진다. 우리는 이미 <a href="data-import.html#readr-datetimes">date-times</a> 에서 문자열을 데이트-타임형으로 파싱하는 법을 보았다. 다른 방법은 <strong>lubridate</strong> 에서 제공하는 도우미를 사용하는 것이다. 구성요소의 순서만 지정하면 자동으로 형식을 맞춘다. 도우미를 이용하는 법은 주어진 날짜에 나타난 연, 월, 일의 순서를 확인한 후, <code>“y”, “m”, “d”</code> 를 같은 순서로 배치하는 것이다. 이것이 바로 <strong>lubridate</strong> 함수의 이름이 되고 주어진 날짜를 파싱한다. 예를 들면</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="st">&quot;2017-01-31&quot;</span>)
 <span class="co">#&gt; [1] &quot;2017-01-31&quot;</span>
@@ -525,7 +342,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>이 함수들은 따옴표로 둘러싸이지 않은 숫자도 받아들인다. 이는 단일 날짜/시간 객체를 생성하는 방법들 중 가장 간결한 방법인데, 날짜/시간 데이터를 필터링할 때 사용할 수 있다. <code>ymd()</code> 는 간결하고 모호하지 않다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="dv">20170131</span>)
 <span class="co">#&gt; [1] &quot;2017-01-31&quot;</span></code></pre></div>
-<p><code>ymd()</code> 와 이웃들은 데이트형을 생성한다. 데이트-타임형을 생성하려면 파싱 함수 이름에 언더스코어와 “h”, “m”, “s” 중 하나 이상을 추가해야 한다.</p>
+<p><code>ymd()</code> 와 같은 함수들은 데이트형을 생성한다. 데이트-타임형을 생성하려면 파싱 함수 이름에 언더스코어와 “h”, “m”, “s” 중 하나 이상을 추가해야 한다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd_hms</span>(<span class="st">&quot;2017-01-31 20:11:59&quot;</span>)
 <span class="co">#&gt; [1] &quot;2017-01-31 20:11:59 UTC&quot;</span>
 <span class="kw">mdy_hm</span>(<span class="st">&quot;01/31/2017 08:01&quot;</span>)
@@ -535,7 +352,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt; [1] &quot;2017-01-31 UTC&quot;</span></code></pre></div>
 </div>
 <div id="--" class="section level3">
-<h3><span class="header-section-number">14.2.2</span> 개별 구성요소에서 생성</h3>
+<h3><span class="header-section-number">8.2.2</span> 개별 구성요소에서 생성</h3>
 <p>때로는 문자열이 아니라 데이트-타임형의 개별 구성요소들이 여러 열에 걸쳐 있는 경우가 있을 것이다. <strong>flights</strong> 데이터에 있는 것이 그렇다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">select</span>(year, month, day, hour, minute)
@@ -604,7 +421,7 @@ flights_dt
 <p>수치형 맥락에서 데이트-타임형을 사용할 경우(히스토그램에서와 같이) 1은 1초를 의미하고, 따라서 86400 빈너비(binwidth)는 하루를 의미한다는 것을 주목하라. 데이트형에서는 1은 1일을 의미한다.</p>
 </div>
 <div id="--" class="section level3">
-<h3><span class="header-section-number">14.2.3</span> 기타 유형에서 생성</h3>
+<h3><span class="header-section-number">8.2.3</span> 기타 유형에서 생성</h3>
 <p>데이트-타임형과 데이트형 사이를 상호 전환하고 싶을 때도 있을 것이다. <code>as_datetime()</code> 과 <code>as_date()</code> 가 바로 이를 수행한다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_datetime</span>(<span class="kw">today</span>())
 <span class="co">#&gt; [1] &quot;2018-12-12 UTC&quot;</span>
@@ -616,8 +433,8 @@ flights_dt
 <span class="kw">as_date</span>(<span class="dv">365</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>)
 <span class="co">#&gt; [1] &quot;1980-01-01&quot;</span></code></pre></div>
 </div>
-<div id="-42" class="section level3">
-<h3><span class="header-section-number">14.2.4</span> 연습문제</h3>
+<div id="-28" class="section level3">
+<h3><span class="header-section-number">8.2.4</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p>유효하지 않은 날짜를 포함한 문자열을 파싱하면 어떻게 되는가?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ymd</span>(<span class="kw">c</span>(<span class="st">&quot;2010-10-10&quot;</span>, <span class="st">&quot;bananas&quot;</span>))</code></pre></div></li>
@@ -632,10 +449,10 @@ d5 &lt;-<span class="st"> &quot;12/30/14&quot;</span> <span class="co"># Dec 30,
 </div>
 </div>
 <div id="--" class="section level2">
-<h2><span class="header-section-number">14.3</span> 데이트-타임형 구성요소</h2>
+<h2><span class="header-section-number">8.3</span> 데이트-타임형 구성요소</h2>
 <p>날짜/시간 데이터를 R의 데이트-타임형 데이터 구조로 얻는 방법을 이제 알았으니 이를 이용해 할 수 있는 것을 탐색해보자. 이 절에서는 개별 구성요소를 얻고 설정하는 설정 함수(accessor function)에 초점을 맞출 것이다. 다음 절에서는 산술연산이 데이트-타임형에 어떻게 동작하는지 살펴 볼 것이다.</p>
 <div id="-" class="section level3">
-<h3><span class="header-section-number">14.3.1</span> 구성요소 가져오기</h3>
+<h3><span class="header-section-number">8.3.1</span> 구성요소 가져오기</h3>
 <p>다음 설정 함수로 데이트형의 개별 부분을 가져올 수 있다. <code>year(), month(), mday()</code> (한 달에서 일), <code>yday()</code> (한 해에서 일), <code>wday</code> (한 주 중 일), <code>hour(), minute(), second()</code> .</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>)
 
@@ -689,8 +506,8 @@ d5 &lt;-<span class="st"> &quot;12/30/14&quot;</span> <span class="co"># Dec 30,
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
 <p><img src="datetimes_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="section-14.3.2" class="section level3">
-<h3><span class="header-section-number">14.3.2</span> 반올림</h3>
+<div id="section-8.3.2" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> 반올림</h3>
 <p>개별 구성요소를 플롯하는 또 다른 방법은 <code>floor_date()</code> , <code>round_date()</code> , <code>ceiling_date()</code> 로 인근 시간 단위로 날짜를 반올림하는 것이다. 각 <code>ceiling_date()</code> 함수의 입력값으로는, 조정할 날짜 벡터와, 내림(floor), 올림(ceiling), 혹은 반올림(round)해서 맞출 단위의 이름이다. 예를 들어 주당 항공편 수를 플롯할 수 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights_dt <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">count</span>(<span class="dt">week =</span> <span class="kw">floor_date</span>(dep_time, <span class="st">&quot;week&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -700,7 +517,7 @@ d5 &lt;-<span class="st"> &quot;12/30/14&quot;</span> <span class="co"># Dec 30,
 <p>날짜 반올림 전후 차이를 계산하는 것은 특히 유용할 수 있다.</p>
 </div>
 <div id="-" class="section level3">
-<h3><span class="header-section-number">14.3.3</span> 구성요소 설정</h3>
+<h3><span class="header-section-number">8.3.3</span> 구성요소 설정</h3>
 <p>설정 함수를 사용하여 날짜/시간의 구성 요소를 설정할 수 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(datetime &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>))
 <span class="co">#&gt; [1] &quot;2016-07-08 12:34:56 UTC&quot;</span>
@@ -732,8 +549,8 @@ datetime
 <p><img src="datetimes_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>날짜의 상위 구성 요소를 상수로 설정하면, 하위 구성 요소의 패턴을 탐색할 수 있어서 매우 유용한 방법이다</p>
 </div>
-<div id="-43" class="section level3">
-<h3><span class="header-section-number">14.3.4</span> 연습문제</h3>
+<div id="-29" class="section level3">
+<h3><span class="header-section-number">8.3.4</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p>하루 동안 비행시간의 분포는 한 해 동안 어떻게 변화했는가?</p></li>
 <li><p><code>dep_time, sched_dep_time, dep_delay</code> 를 비교하라. 이들은 일관성이 있는가? 무엇을 발견했는지 설명하라.</p></li>
@@ -746,15 +563,15 @@ datetime
 </div>
 </div>
 <div id="-" class="section level2">
-<h2><span class="header-section-number">14.4</span> 시간 범위</h2>
+<h2><span class="header-section-number">8.4</span> 시간 범위</h2>
 <p>다음으로 뺄셈, 덧셈, 나눗셈 같은 산술연산이 데이트형에 어떻게 동작하는지 알아보자. 여기에서는 시간 범위(time span)를 대표하는 중요한 클래스 세 가지를 배우게 된다.</p>
 <ul>
 <li><strong>듀레이션형</strong> (duration): 정확한 초를 나타냄.</li>
 <li><strong>피리어드형</strong> (period): 주와 월과 같은 인간의 단위를 나타냄.</li>
 <li><strong>인터벌형</strong> (interval): 시점과 종점을 나타냄.</li>
 </ul>
-<div id="section-14.4.1" class="section level3">
-<h3><span class="header-section-number">14.4.1</span> 듀레이션형</h3>
+<div id="section-8.4.1" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> 듀레이션형</h3>
 <p>R에서 두 데이트형 뺄셈을 하면 difftime형 객체가 생긴다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 해들리의 나이는?</span>
 h_age &lt;-<span class="st"> </span><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">ymd</span>(<span class="dv">19791014</span>)
@@ -795,8 +612,8 @@ one_pm <span class="op">+</span><span class="st"> </span><span class="kw">ddays<
 <span class="co">#&gt; [1] &quot;2016-03-13 14:00:00 EDT&quot;</span></code></pre></div>
 <p>3월 12일 오후 1시의 1일 후가 왜 3월 13일 오후 2시인가? 날짜를 주의 깊게 보면 시간대가 바뀌어 있다. 일광절약제 때문에 3월 12일에는 23시만 있다. 따라서 하루에 해당하는 초를 더하면 다른 시간을 갖게 된다.</p>
 </div>
-<div id="section-14.4.2" class="section level3">
-<h3><span class="header-section-number">14.4.2</span> 피리어드형</h3>
+<div id="section-8.4.2" class="section level3">
+<h3><span class="header-section-number">8.4.2</span> 피리어드형</h3>
 <p>이 문제를 해결하기 위해 <strong>lubridate</strong> 는 **피리어드형</이태틱>을 제공한다. 피리어드형은 시간 범위이지만 정해진 초 길이가 없다. 대신 일과 월과 같은 ’사람의‘ 시간으로 동작한다. 따라서 작동 방식이 보다 직관적이다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">one_pm
 <span class="co">#&gt; [1] &quot;2016-03-12 13:00:00 EST&quot;</span>
@@ -865,8 +682,8 @@ one_pm <span class="op">+</span><span class="st"> </span><span class="kw">days</
 <span class="co">#&gt; #   arr_time &lt;dttm&gt;, sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   overnight &lt;lgl&gt;</span></code></pre></div>
 </div>
-<div id="section-14.4.3" class="section level3">
-<h3><span class="header-section-number">14.4.3</span> 인터벌형</h3>
+<div id="section-8.4.3" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> 인터벌형</h3>
 <p><code>dyears(1) / ddays(365)</code> 가 반환해야 하는 값은 명백하다. 바로 1인데 왜냐하면, 듀레이션형은 항상 초 단위로 표현하며 듀레이션형 1년은 365일에 해당하는 초로 정의되기 때문이다.</p>
 <p><code>years(1) / days(1)</code> 이 반환해야 하는 값은 무엇인가? 음… 2015년이라면 365를 반환해야하지만 2016년이면 366을 반환해야 한다! <strong>lubridate</strong> 가 하나의 명확한 답을 주기에 충분한 정보가 없다. 대신 경고와 함께 예측값을 준다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">years</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span><span class="kw">days</span>(<span class="dv">1</span>)
@@ -883,19 +700,19 @@ one_pm <span class="op">+</span><span class="st"> </span><span class="kw">days</
 <span class="co">#&gt;  &quot;Interval#ANY&quot;, &quot;ANY#Period&quot; would also be valid</span>
 <span class="co">#&gt; [1] 365</span></code></pre></div>
 </div>
-<div id="section-14.4.4" class="section level3">
-<h3><span class="header-section-number">14.4.4</span> 요약</h3>
-<p>듀레이션형, 피리어드형, 인터벌형 중에서 선택은 어떻게 해야 하는가? 언제나 그렇듯이 주어진 문제를 해결하는 가장 간단한 데이터 구조를 선택하라. 단지 물리적인 시간만 고려하는 경우에는 듀레이션형을 사용하라. 인간의 시간을 추가해야 하는 경우에는 피리어드형을 사용하라. 인간의 단위로 기간이 얼마인지 파악해야 하는 경우에는 인터벌형을 사용하라.</p>
-<p>Figure <a href="dates-and-times.html#fig:dt-algebra">14.1</a> 은 다른 데이터 유형 사이에 허용된 산술연산을 요약한 것이다.</p>
+<div id="section-8.4.4" class="section level3">
+<h3><span class="header-section-number">8.4.4</span> 요약</h3>
+<p>듀레이션형, 피리어드형, 인터벌형 중에서 선택은 어떻게 해야 하는가? 언제나 그렇듯이 주어진 문제를 해결하는 가장 간단한 데이터 구조를 선택하라. 단지 물리적인 시간만 고려하는 경우에는 듀레이션형을 사용하라. 사람의 시간을 추가해야 하는 경우에는 피리어드형을 사용하라. 사람이 사용하는 시간단위로 파악해야 하는 경우에는 인터벌형을 사용하라.</p>
+<p>Figure <a href="dates-and-times.html#fig:dt-algebra">8.1</a> 은 다른 데이터 유형 사이에 허용된 산술연산을 요약한 것이다.</p>
 <div class="figure" style="text-align: center"><span id="fig:dt-algebra"></span>
 <img src="diagrams/datetimes-arithmetic.png" alt="The allowed arithmetic operations between pairs of date/time classes." width="70%" />
 <p class="caption">
-Figure 14.1: The allowed arithmetic operations between pairs of date/time classes.
+Figure 8.1: The allowed arithmetic operations between pairs of date/time classes.
 </p>
 </div>
 </div>
-<div id="-44" class="section level3">
-<h3><span class="header-section-number">14.4.5</span> 연습문제</h3>
+<div id="-30" class="section level3">
+<h3><span class="header-section-number">8.4.5</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p>왜 <code>months()</code> 는 있고 <code>dmonths()</code> 는 없는가?</p></li>
 <li><p>R을 막 배우기 시작한 사람에게 <code>days(overnight * 1)</code> 을 설명하라. 어떻게 동작하는가?</p></li>
@@ -905,9 +722,9 @@ Figure 14.1: The allowed arithmetic operations between pairs of date/time classe
 </ol>
 </div>
 </div>
-<div id="section-14.5" class="section level2">
-<h2><span class="header-section-number">14.5</span> 시간대</h2>
-<p>시간대는 엄청나게 복잡한 주제인데, 지정학적 요소들과 상호작용이 있기 때문이다. 다행히 시간대는 데이터 분석에 모두 중요한 것은 아니기 때문에 세부사항을 모두 파고들지 않아도 되지만, 정면으로 맞서야 하는 문제가 몇 개 있다.</p>
+<div id="section-8.5" class="section level2">
+<h2><span class="header-section-number">8.5</span> 시간대</h2>
+<p>시간대는 엄청나게 복잡한 주제인데, 지정학적 요소들과 상호작용이 있기 때문이다. 다행히 데이터 분석을 할 때 시간대가 항상 중요하지는 않기 때문에 세부사항을 모두 파고들지 않아도 되지만, 정면으로 맞서야 하는 문제가 몇 개 있다.</p>
 <p>첫 번째 문제는 일상적인 시간대 이름은 모호하다는 것이다. 예를 들어 여러분이 미국인이라면 아마 EST, 즉 동부 표준시가 익숙할 것이다. 그러나 호주와 캐나다에도 EST가 있다! 혼란을 방지하기 위해, R은 국제 표준 IANA 시간대를 사용한다. 이는 일반적으로 ’&lt;대륙&gt;/&lt;도시&gt;’ 형태로 ’/’를 쓰는 일관된 명명 체계를 사용한다 (모든 국가가 대륙에 위치하는 것은 아니기 때문에 몇 가지 예외도 있다). 예를 들면 ’America/New_York‘, ’Europe/Paris‘와 ’Pacific/Auckland‘ 등이 있다.</p>
 <p>시간대가 국가, 혹은 국가 내 지역과 관련되었다고 일반적으로 생각하면 왜 시간대가 도시를 사용하는지 궁금할 것이다. 이는 IANA 데이터베이스가 시간대 규칙을 수십 년 분량이나 기록해야 하기 때문이다. 수십 년 사이에 국가 이름은 꽤 자주 변경(또는 분리)되지만, 도시의 이름은 유지되는 편이다. 또 다른 문제는 이름은 현재의 행동뿐만 아니라 전체 역사를 반영해야 한다는 것이다. 예를 들어 ’America/New_York‘과 ’America/Detroit‘ 시간대가 있다. 두 도시는 현재 모두 동부 표준시간을 사용하지만 (디트로이트가 위치한) 미시간주는 1969-1972’에, 일광절약제를 따르지 않았기 때문에 이름이 따로 필요한 것이다. 이러한 이야기들이 있는 원시 시간대 데이터베이스(<a href="http://www.iana.org/time-zones" class="uri">http://www.iana.org/time-zones</a>)를 읽어볼 만하다!</p>
 <p><code>Sys.timezone()</code> 를 사용해서 현재 R이 인식하고 있는 시간대를 알아볼 수 있다. (우리나라 시간대는 “Asia/Seoul”이다.)</p>
@@ -960,16 +777,13 @@ x4b <span class="op">-</span><span class="st"> </span>x4
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="program-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="factors.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
