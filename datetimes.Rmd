@@ -493,7 +493,7 @@ knitr::include_graphics("diagrams/datetimes-arithmetic.png")
 1. 왜 다음은 작동하지 않는가? `(today() %--% (today() + years(1)) / months(1)` 
 
 
-## 시간대
+## 시간대 {#time-zones}
 
 시간대는 엄청나게 복잡한 주제인데, 지정학적 요소들과 상호작용이 있기 때문이다. 다행히 데이터 분석을 할 때 시간대가 항상 중요하지는 않기 때문에 세부사항을 모두 파고들지 않아도 되지만, 정면으로 맞서야 하는 문제가 몇 개 있다.
 

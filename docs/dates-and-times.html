@@ -134,7 +134,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3.1" data-path="data-import.html"><a href="data-import.html#section-3.3.1"><i class="fa fa-check"></i><b>3.3.1</b> 숫자</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>3.3.2</b> 문자열</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>3.3.3</b> 팩터형</a></li>
-<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> Dates, date-times, times</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> 데이트형, 데이트-타임형, 타임형</a></li>
 <li class="chapter" data-level="3.3.5" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>3.3.5</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4</b> 파일 파싱하기</a><ul>
@@ -199,7 +199,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.1</b> 문자열 길이</a></li>
 <li class="chapter" data-level="6.2.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.2</b> 문자열 결합</a></li>
 <li class="chapter" data-level="6.2.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.3</b> 문자열 서브셋하기</a></li>
@@ -268,7 +268,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.4"><i class="fa fa-check"></i><b>8.4.4</b> 요약</a></li>
 <li class="chapter" data-level="8.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#-30"><i class="fa fa-check"></i><b>8.4.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.5"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
+<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
 </ul>
 
@@ -320,9 +320,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>사용자 요구를 충족하는 데이터 유형 중, 가능한 한 가장 간단한 것을 사용해야 한다. 즉 데이트-타임형 대신 데이트형을 써도 된다면 그래야 한다는 말이다. 데이트-타임형은 시간대를 다루기 때문에 훨씬 더 복잡한데 이 장의 끝에서 살펴볼 것이다.</p>
 <p>현재 날짜 또는 데이트-타임을 얻으려면 <code>today()</code> 또는 <code>now()</code> 를 사용하면 된다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">today</span>()
-<span class="co">#&gt; [1] &quot;2018-12-12&quot;</span>
+<span class="co">#&gt; [1] &quot;2019-01-03&quot;</span>
 <span class="kw">now</span>()
-<span class="co">#&gt; [1] &quot;2018-12-12 08:17:06 KST&quot;</span></code></pre></div>
+<span class="co">#&gt; [1] &quot;2019-01-03 20:32:30 KST&quot;</span></code></pre></div>
 <p>이 외에 날짜/시간을 생성하는 세 가지 방법이 있다.</p>
 <ul>
 <li>문자열로부터</li>
@@ -424,9 +424,9 @@ flights_dt
 <h3><span class="header-section-number">8.2.3</span> 기타 유형에서 생성</h3>
 <p>데이트-타임형과 데이트형 사이를 상호 전환하고 싶을 때도 있을 것이다. <code>as_datetime()</code> 과 <code>as_date()</code> 가 바로 이를 수행한다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_datetime</span>(<span class="kw">today</span>())
-<span class="co">#&gt; [1] &quot;2018-12-12 UTC&quot;</span>
+<span class="co">#&gt; [1] &quot;2019-01-03 UTC&quot;</span>
 <span class="kw">as_date</span>(<span class="kw">now</span>())
-<span class="co">#&gt; [1] &quot;2018-12-12&quot;</span></code></pre></div>
+<span class="co">#&gt; [1] &quot;2019-01-03&quot;</span></code></pre></div>
 <p>때로 날짜/시간을 ‘유닉스 신기원(Unix Epoch)’인 1970-01-01에서 수치형 오프셋으로 가지고 있을 수 있다. 오프셋이 초 단위인 경우엔 <code>as_datetime()</code> , 일 단위인 경우엔 <code>as_date()</code> 을 사용한다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_datetime</span>(<span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">60</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>)
 <span class="co">#&gt; [1] &quot;1970-01-01 10:00:00 UTC&quot;</span>
@@ -576,10 +576,10 @@ datetime
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 해들리의 나이는?</span>
 h_age &lt;-<span class="st"> </span><span class="kw">today</span>() <span class="op">-</span><span class="st"> </span><span class="kw">ymd</span>(<span class="dv">19791014</span>)
 h_age
-<span class="co">#&gt; Time difference of 14304 days</span></code></pre></div>
+<span class="co">#&gt; Time difference of 14326 days</span></code></pre></div>
 <p>difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 기록한다. 이러한 애매함 때문에 difftime형으로 작업하는 것이 약간 고통스러울 수 있다. 따라서 <strong>lubridate</strong> 는 항상 초를 사용하는 대안 클래스, <strong>듀레이션형</strong> 을 제공한다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.duration</span>(h_age)
-<span class="co">#&gt; [1] &quot;1235865600s (~39.16 years)&quot;</span></code></pre></div>
+<span class="co">#&gt; [1] &quot;1237766400s (~39.22 years)&quot;</span></code></pre></div>
 <p>듀레이션형에는 편리한 생성자가 많다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dseconds</span>(<span class="dv">15</span>)
 <span class="co">#&gt; [1] &quot;15s&quot;</span>
@@ -722,7 +722,7 @@ Figure 8.1: The allowed arithmetic operations between pairs of date/time classes
 </ol>
 </div>
 </div>
-<div id="section-8.5" class="section level2">
+<div id="time-zones" class="section level2">
 <h2><span class="header-section-number">8.5</span> 시간대</h2>
 <p>시간대는 엄청나게 복잡한 주제인데, 지정학적 요소들과 상호작용이 있기 때문이다. 다행히 데이터 분석을 할 때 시간대가 항상 중요하지는 않기 때문에 세부사항을 모두 파고들지 않아도 되지만, 정면으로 맞서야 하는 문제가 몇 개 있다.</p>
 <p>첫 번째 문제는 일상적인 시간대 이름은 모호하다는 것이다. 예를 들어 여러분이 미국인이라면 아마 EST, 즉 동부 표준시가 익숙할 것이다. 그러나 호주와 캐나다에도 EST가 있다! 혼란을 방지하기 위해, R은 국제 표준 IANA 시간대를 사용한다. 이는 일반적으로 ’&lt;대륙&gt;/&lt;도시&gt;’ 형태로 ’/’를 쓰는 일관된 명명 체계를 사용한다 (모든 국가가 대륙에 위치하는 것은 아니기 때문에 몇 가지 예외도 있다). 예를 들면 ’America/New_York‘, ’Europe/Paris‘와 ’Pacific/Auckland‘ 등이 있다.</p>

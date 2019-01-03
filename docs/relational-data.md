@@ -55,14 +55,14 @@ library(nycflights13)
     ```r
     airports
     #> # A tibble: 1,458 x 8
-    #>   faa   name                       lat   lon   alt    tz dst   tzone       
-    #>   <chr> <chr>                    <dbl> <dbl> <int> <dbl> <chr> <chr>       
-    #> 1 04G   Lansdowne Airport         41.1 -80.6  1044    -5 A     America/New…
-    #> 2 06A   Moton Field Municipal A…  32.5 -85.7   264    -6 A     America/Chi…
-    #> 3 06C   Schaumburg Regional       42.0 -88.1   801    -6 A     America/Chi…
-    #> 4 06N   Randall Airport           41.4 -74.4   523    -5 A     America/New…
-    #> 5 09J   Jekyll Island Airport     31.1 -81.4    11    -5 A     America/New…
-    #> 6 0A9   Elizabethton Municipal …  36.4 -82.2  1593    -5 A     America/New…
+    #>   faa   name                             lat   lon   alt    tz dst   tzone
+    #>   <chr> <chr>                          <dbl> <dbl> <int> <dbl> <chr> <chr>
+    #> 1 04G   Lansdowne Airport               41.1 -80.6  1044    -5 A     Amer…
+    #> 2 06A   Moton Field Municipal Airport   32.5 -85.7   264    -6 A     Amer…
+    #> 3 06C   Schaumburg Regional             42.0 -88.1   801    -6 A     Amer…
+    #> 4 06N   Randall Airport                 41.4 -74.4   523    -5 A     Amer…
+    #> 5 09J   Jekyll Island Airport           31.1 -81.4    11    -5 A     Amer…
+    #> 6 0A9   Elizabethton Municipal Airport  36.4 -82.2  1593    -5 A     Amer…
     #> # ... with 1,452 more rows
     ```
 
@@ -72,14 +72,14 @@ library(nycflights13)
     ```r
     planes
     #> # A tibble: 3,322 x 9
-    #>   tailnum  year type       manufacturer   model  engines seats speed engine
-    #>   <chr>   <int> <chr>      <chr>          <chr>    <int> <int> <int> <chr> 
-    #> 1 N10156   2004 Fixed win… EMBRAER        EMB-1…       2    55    NA Turbo…
-    #> 2 N102UW   1998 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
-    #> 3 N103US   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
-    #> 4 N104UW   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
-    #> 5 N10575   2002 Fixed win… EMBRAER        EMB-1…       2    55    NA Turbo…
-    #> 6 N105UW   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…
+    #>   tailnum  year type       manufacturer  model  engines seats speed engine
+    #>   <chr>   <int> <chr>      <chr>         <chr>    <int> <int> <int> <chr> 
+    #> 1 N10156   2004 Fixed win… EMBRAER       EMB-1…       2    55    NA Turbo…
+    #> 2 N102UW   1998 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…
+    #> 3 N103US   1999 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…
+    #> 4 N104UW   1999 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…
+    #> 5 N10575   2002 Fixed win… EMBRAER       EMB-1…       2    55    NA Turbo…
+    #> 6 N105UW   1999 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…
     #> # ... with 3,316 more rows
     ```
 
@@ -461,14 +461,14 @@ x %>%
     flights2 %>% 
       left_join(planes, by = "tailnum")
     #> # A tibble: 336,776 x 16
-    #>   year.x month   day  hour origin dest  tailnum carrier year.y type 
-    #>    <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>    <int> <chr>
-    #> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixe…
-    #> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixe…
-    #> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixe…
-    #> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixe…
-    #> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixe…
-    #> 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixe…
+    #>   year.x month   day  hour origin dest  tailnum carrier year.y type       
+    #>    <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>    <int> <chr>      
+    #> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing…
+    #> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing…
+    #> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing…
+    #> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing…
+    #> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing…
+    #> 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing…
     #> # ... with 3.368e+05 more rows, and 6 more variables: manufacturer <chr>,
     #> #   model <chr>, engines <int>, seats <int>, speed <int>, engine <chr>
     ```
@@ -484,28 +484,28 @@ x %>%
     flights2 %>% 
       left_join(airports, c("dest" = "faa"))
     #> # A tibble: 336,776 x 15
-    #>    year month   day  hour origin dest  tailnum carrier name    lat   lon
-    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Geor…  30.0 -95.3
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      Geor…  30.0 -95.3
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miam…  25.8 -80.3
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      <NA>   NA    NA  
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hart…  33.6 -84.4
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Chic…  42.0 -87.9
+    #>    year month   day  hour origin dest  tailnum carrier name      lat   lon
+    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl>
+    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      George…  30.0 -95.3
+    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      George…  30.0 -95.3
+    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami …  25.8 -80.3
+    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      <NA>     NA    NA  
+    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsf…  33.6 -84.4
+    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Chicag…  42.0 -87.9
     #> # ... with 3.368e+05 more rows, and 4 more variables: alt <int>, tz <dbl>,
     #> #   dst <chr>, tzone <chr>
     
     flights2 %>% 
       left_join(airports, c("origin" = "faa"))
     #> # A tibble: 336,776 x 15
-    #>    year month   day  hour origin dest  tailnum carrier name    lat   lon
-    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newa…  40.7 -74.2
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      La G…  40.8 -73.9
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John…  40.6 -73.8
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John…  40.6 -73.8
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La G…  40.8 -73.9
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Newa…  40.7 -74.2
+    #>    year month   day  hour origin dest  tailnum carrier name      lat   lon
+    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl>
+    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newark…  40.7 -74.2
+    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      La Gua…  40.8 -73.9
+    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John F…  40.6 -73.8
+    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John F…  40.6 -73.8
+    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La Gua…  40.8 -73.9
+    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Newark…  40.7 -74.2
     #> # ... with 3.368e+05 more rows, and 4 more variables: alt <int>, tz <dbl>,
     #> #   dst <chr>, tzone <chr>
     ```
@@ -535,7 +535,7 @@ x %>%
 
 1. 2013년 6 월 13 일에 무슨 일이 일어났는가? 연착의 공간 패턴을 표시한 다음 구글을 사용하여 날씨와 상호참조하라.
 
-
+    
 
 ### 기타 구현
 

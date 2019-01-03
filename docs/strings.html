@@ -134,7 +134,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3.1" data-path="data-import.html"><a href="data-import.html#section-3.3.1"><i class="fa fa-check"></i><b>3.3.1</b> 숫자</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>3.3.2</b> 문자열</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>3.3.3</b> 팩터형</a></li>
-<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> Dates, date-times, times</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> 데이트형, 데이트-타임형, 타임형</a></li>
 <li class="chapter" data-level="3.3.5" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>3.3.5</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4</b> 파일 파싱하기</a><ul>
@@ -199,7 +199,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.1</b> 문자열 길이</a></li>
 <li class="chapter" data-level="6.2.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.2</b> 문자열 결합</a></li>
 <li class="chapter" data-level="6.2.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.3</b> 문자열 서브셋하기</a></li>
@@ -268,7 +268,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.4"><i class="fa fa-check"></i><b>8.4.4</b> 요약</a></li>
 <li class="chapter" data-level="8.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#-30"><i class="fa fa-check"></i><b>8.4.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.5"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
+<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
 </ul>
 
@@ -299,7 +299,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">library</span>(stringr)</code></pre></div>
 </div>
 </div>
-<div id="-" class="section level2">
+<div id="strings-basics" class="section level2">
 <h2><span class="header-section-number">6.2</span> 문자열 기초</h2>
 <p>작은따옴표나 큰따옴표로 문자열을 생성할 수 있다. 다른 언어와는 달리 두 동작에 차이가 없다. 여러 개의 <code>&quot;</code> 를 포함하는 문자열을 생성하려는 것이 아니라면 항상 <code>&quot;</code> 를 사용할 것을 추천한다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">string1 &lt;-<span class="st"> &quot;문자열입니다&quot;</span>
@@ -1092,9 +1092,9 @@ fields <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">s
   <span class="dt">times =</span> <span class="dv">20</span>
 )
 <span class="co">#&gt; Unit: microseconds</span>
-<span class="co">#&gt;   expr   min    lq mean median    uq max neval</span>
-<span class="co">#&gt;  fixed  81.1  82.9  102   86.2  96.4 268    20</span>
-<span class="co">#&gt;  regex 286.1 292.4  313  295.8 330.4 407    20</span></code></pre></div>
+<span class="co">#&gt;   expr min  lq mean median  uq max neval</span>
+<span class="co">#&gt;  fixed 108 110  130    114 119 369    20</span>
+<span class="co">#&gt;  regex 380 382  396    385 396 496    20</span></code></pre></div>
 <p><code>fixed()</code> 를 비영어에 사용할 때는 조심하라. 같은 문자를 나타내는 방법이 여러 가지이기 때문에 문제가 되는 경우가 많다. 예를 들어 ’á’를 정의하는 방법에는 두 가지가 있다. 즉, 단일한 문자로 하거나, ’a’와 악센트로 하는 방법이다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a1 &lt;-<span class="st"> &quot;\u00e1&quot;</span>
 a2 &lt;-<span class="st"> &quot;a\u0301&quot;</span>
@@ -1160,8 +1160,8 @@ i
 <span class="co">#&gt; [7] &quot;str_replace_na&quot;   &quot;theme_replace&quot;</span></code></pre></div></li>
 <li><p><code>dir()</code> 은 디렉터리에 있는 모든 파일을 나열한다. <code>pattern</code> 인자는 정규표현식을 취해, 매치하는 파일 이름만 반환한다. 예를 들어 현재 디렉터리에 있는 모든 R마크다운 파일을 다음과 같이 찾을 수 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">dir</span>(<span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.Rmd$&quot;</span>))
-<span class="co">#&gt; [1] &quot;communicate-plots.Rmd&quot; &quot;communicate.Rmd&quot;       &quot;datetimes.Rmd&quot;        </span>
-<span class="co">#&gt; [4] &quot;EDA.Rmd&quot;               &quot;explore.Rmd&quot;           &quot;factors.Rmd&quot;</span></code></pre></div>
+<span class="co">#&gt; [1] &quot;datetimes.Rmd&quot; &quot;EDA.Rmd&quot;       &quot;explore.Rmd&quot;   &quot;factors.Rmd&quot;  </span>
+<span class="co">#&gt; [5] &quot;functions.Rmd&quot; &quot;hierarchy.Rmd&quot;</span></code></pre></div>
 <p>(<code>*.Rmd</code> 같은 ’글로브(globs) 패턴’에 익숙한 경우, <code>glob2rx()</code> 를 사용하여 이를 정규표현식으로 변환할 수 있다.)</p></li>
 </ul>
 </div>

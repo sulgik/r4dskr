@@ -134,7 +134,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3.1" data-path="data-import.html"><a href="data-import.html#section-3.3.1"><i class="fa fa-check"></i><b>3.3.1</b> 숫자</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>3.3.2</b> 문자열</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>3.3.3</b> 팩터형</a></li>
-<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> Dates, date-times, times</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> 데이트형, 데이트-타임형, 타임형</a></li>
 <li class="chapter" data-level="3.3.5" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>3.3.5</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4</b> 파일 파싱하기</a><ul>
@@ -199,7 +199,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.1</b> 문자열 길이</a></li>
 <li class="chapter" data-level="6.2.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.2</b> 문자열 결합</a></li>
 <li class="chapter" data-level="6.2.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.3</b> 문자열 서브셋하기</a></li>
@@ -268,7 +268,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.4"><i class="fa fa-check"></i><b>8.4.4</b> 요약</a></li>
 <li class="chapter" data-level="8.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#-30"><i class="fa fa-check"></i><b>8.4.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.5"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
+<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
 </ul>
 
@@ -326,26 +326,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><code>airports</code> 에는 각 공항에 대한 정보가 <code>faa</code> 공항 코드로 식별되어 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airports
 <span class="co">#&gt; # A tibble: 1,458 x 8</span>
-<span class="co">#&gt;   faa   name                       lat   lon   alt    tz dst   tzone       </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt; 1 04G   Lansdowne Airport         41.1 -80.6  1044    -5 A     America/New…</span>
-<span class="co">#&gt; 2 06A   Moton Field Municipal A…  32.5 -85.7   264    -6 A     America/Chi…</span>
-<span class="co">#&gt; 3 06C   Schaumburg Regional       42.0 -88.1   801    -6 A     America/Chi…</span>
-<span class="co">#&gt; 4 06N   Randall Airport           41.4 -74.4   523    -5 A     America/New…</span>
-<span class="co">#&gt; 5 09J   Jekyll Island Airport     31.1 -81.4    11    -5 A     America/New…</span>
-<span class="co">#&gt; 6 0A9   Elizabethton Municipal …  36.4 -82.2  1593    -5 A     America/New…</span>
+<span class="co">#&gt;   faa   name                             lat   lon   alt    tz dst   tzone</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 04G   Lansdowne Airport               41.1 -80.6  1044    -5 A     Amer…</span>
+<span class="co">#&gt; 2 06A   Moton Field Municipal Airport   32.5 -85.7   264    -6 A     Amer…</span>
+<span class="co">#&gt; 3 06C   Schaumburg Regional             42.0 -88.1   801    -6 A     Amer…</span>
+<span class="co">#&gt; 4 06N   Randall Airport                 41.4 -74.4   523    -5 A     Amer…</span>
+<span class="co">#&gt; 5 09J   Jekyll Island Airport           31.1 -81.4    11    -5 A     Amer…</span>
+<span class="co">#&gt; 6 0A9   Elizabethton Municipal Airport  36.4 -82.2  1593    -5 A     Amer…</span>
 <span class="co">#&gt; # ... with 1,452 more rows</span></code></pre></div></li>
 <li><p><code>planes</code> 에는 각 여객기에 대한 정보가 <code>tailnum</code> 으로 식별되어 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">planes
 <span class="co">#&gt; # A tibble: 3,322 x 9</span>
-<span class="co">#&gt;   tailnum  year type       manufacturer   model  engines seats speed engine</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1 N10156   2004 Fixed win… EMBRAER        EMB-1…       2    55    NA Turbo…</span>
-<span class="co">#&gt; 2 N102UW   1998 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…</span>
-<span class="co">#&gt; 3 N103US   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…</span>
-<span class="co">#&gt; 4 N104UW   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…</span>
-<span class="co">#&gt; 5 N10575   2002 Fixed win… EMBRAER        EMB-1…       2    55    NA Turbo…</span>
-<span class="co">#&gt; 6 N105UW   1999 Fixed win… AIRBUS INDUST… A320-…       2   182    NA Turbo…</span>
+<span class="co">#&gt;   tailnum  year type       manufacturer  model  engines seats speed engine</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; </span>
+<span class="co">#&gt; 1 N10156   2004 Fixed win… EMBRAER       EMB-1…       2    55    NA Turbo…</span>
+<span class="co">#&gt; 2 N102UW   1998 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…</span>
+<span class="co">#&gt; 3 N103US   1999 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…</span>
+<span class="co">#&gt; 4 N104UW   1999 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…</span>
+<span class="co">#&gt; 5 N10575   2002 Fixed win… EMBRAER       EMB-1…       2    55    NA Turbo…</span>
+<span class="co">#&gt; 6 N105UW   1999 Fixed win… AIRBUS INDUS… A320-…       2   182    NA Turbo…</span>
 <span class="co">#&gt; # ... with 3,316 more rows</span></code></pre></div></li>
 <li><p><code>weather</code> 에는 각 NYC 공항의 매 시각 날씨 정보가 있다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weather
@@ -636,14 +636,14 @@ y &lt;-<span class="st"> </span><span class="kw">tribble</span>(
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights2 <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">left_join</span>(planes, <span class="dt">by =</span> <span class="st">&quot;tailnum&quot;</span>)
 <span class="co">#&gt; # A tibble: 336,776 x 16</span>
-<span class="co">#&gt;   year.x month   day  hour origin dest  tailnum carrier year.y type </span>
-<span class="co">#&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixe…</span>
-<span class="co">#&gt; 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixe…</span>
-<span class="co">#&gt; 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixe…</span>
-<span class="co">#&gt; 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixe…</span>
-<span class="co">#&gt; 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixe…</span>
-<span class="co">#&gt; 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixe…</span>
+<span class="co">#&gt;   year.x month   day  hour origin dest  tailnum carrier year.y type       </span>
+<span class="co">#&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;      </span>
+<span class="co">#&gt; 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing…</span>
+<span class="co">#&gt; 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing…</span>
+<span class="co">#&gt; 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing…</span>
+<span class="co">#&gt; 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing…</span>
+<span class="co">#&gt; 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing…</span>
+<span class="co">#&gt; 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing…</span>
 <span class="co">#&gt; # ... with 3.368e+05 more rows, and 6 more variables: manufacturer &lt;chr&gt;,</span>
 <span class="co">#&gt; #   model &lt;chr&gt;, engines &lt;int&gt;, seats &lt;int&gt;, speed &lt;int&gt;, engine &lt;chr&gt;</span></code></pre></div>
 <p><code>year</code> 변수 (두 입력 데이터프레임 모두에 나타나지만 같지 않도록 제한시킴)는 접미사가 붙어서 출력에서 헷갈리지 않게 된 것을 확인하라.</p></li>
@@ -652,28 +652,28 @@ y &lt;-<span class="st"> </span><span class="kw">tribble</span>(
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights2 <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;dest&quot;</span> =<span class="st"> &quot;faa&quot;</span>))
 <span class="co">#&gt; # A tibble: 336,776 x 15</span>
-<span class="co">#&gt;    year month   day  hour origin dest  tailnum carrier name    lat   lon</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  2013     1     1     5 EWR    IAH   N14228  UA      Geor…  30.0 -95.3</span>
-<span class="co">#&gt; 2  2013     1     1     5 LGA    IAH   N24211  UA      Geor…  30.0 -95.3</span>
-<span class="co">#&gt; 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miam…  25.8 -80.3</span>
-<span class="co">#&gt; 4  2013     1     1     5 JFK    BQN   N804JB  B6      &lt;NA&gt;   NA    NA  </span>
-<span class="co">#&gt; 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hart…  33.6 -84.4</span>
-<span class="co">#&gt; 6  2013     1     1     5 EWR    ORD   N39463  UA      Chic…  42.0 -87.9</span>
+<span class="co">#&gt;    year month   day  hour origin dest  tailnum carrier name      lat   lon</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1  2013     1     1     5 EWR    IAH   N14228  UA      George…  30.0 -95.3</span>
+<span class="co">#&gt; 2  2013     1     1     5 LGA    IAH   N24211  UA      George…  30.0 -95.3</span>
+<span class="co">#&gt; 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami …  25.8 -80.3</span>
+<span class="co">#&gt; 4  2013     1     1     5 JFK    BQN   N804JB  B6      &lt;NA&gt;     NA    NA  </span>
+<span class="co">#&gt; 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsf…  33.6 -84.4</span>
+<span class="co">#&gt; 6  2013     1     1     5 EWR    ORD   N39463  UA      Chicag…  42.0 -87.9</span>
 <span class="co">#&gt; # ... with 3.368e+05 more rows, and 4 more variables: alt &lt;int&gt;, tz &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   dst &lt;chr&gt;, tzone &lt;chr&gt;</span>
 
 flights2 <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">left_join</span>(airports, <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span> =<span class="st"> &quot;faa&quot;</span>))
 <span class="co">#&gt; # A tibble: 336,776 x 15</span>
-<span class="co">#&gt;    year month   day  hour origin dest  tailnum carrier name    lat   lon</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  2013     1     1     5 EWR    IAH   N14228  UA      Newa…  40.7 -74.2</span>
-<span class="co">#&gt; 2  2013     1     1     5 LGA    IAH   N24211  UA      La G…  40.8 -73.9</span>
-<span class="co">#&gt; 3  2013     1     1     5 JFK    MIA   N619AA  AA      John…  40.6 -73.8</span>
-<span class="co">#&gt; 4  2013     1     1     5 JFK    BQN   N804JB  B6      John…  40.6 -73.8</span>
-<span class="co">#&gt; 5  2013     1     1     6 LGA    ATL   N668DN  DL      La G…  40.8 -73.9</span>
-<span class="co">#&gt; 6  2013     1     1     5 EWR    ORD   N39463  UA      Newa…  40.7 -74.2</span>
+<span class="co">#&gt;    year month   day  hour origin dest  tailnum carrier name      lat   lon</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1  2013     1     1     5 EWR    IAH   N14228  UA      Newark…  40.7 -74.2</span>
+<span class="co">#&gt; 2  2013     1     1     5 LGA    IAH   N24211  UA      La Gua…  40.8 -73.9</span>
+<span class="co">#&gt; 3  2013     1     1     5 JFK    MIA   N619AA  AA      John F…  40.6 -73.8</span>
+<span class="co">#&gt; 4  2013     1     1     5 JFK    BQN   N804JB  B6      John F…  40.6 -73.8</span>
+<span class="co">#&gt; 5  2013     1     1     6 LGA    ATL   N668DN  DL      La Gua…  40.8 -73.9</span>
+<span class="co">#&gt; 6  2013     1     1     5 EWR    ORD   N39463  UA      Newark…  40.7 -74.2</span>
 <span class="co">#&gt; # ... with 3.368e+05 more rows, and 4 more variables: alt &lt;int&gt;, tz &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   dst &lt;chr&gt;, tzone &lt;chr&gt;</span></code></pre></div></li>
 </ul>

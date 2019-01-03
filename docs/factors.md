@@ -132,14 +132,14 @@ levels(f2)
 ```r
 gss_cat
 #> # A tibble: 21,483 x 9
-#>    year marital     age race  rincome   partyid    relig   denom   tvhours
-#>   <int> <fct>     <int> <fct> <fct>     <fct>      <fct>   <fct>     <int>
-#> 1  2000 Never ma…    26 White $8000 to… Ind,near … Protes… Southe…      12
-#> 2  2000 Divorced     48 White $8000 to… Not str r… Protes… Baptis…      NA
-#> 3  2000 Widowed      67 White Not appl… Independe… Protes… No den…       2
-#> 4  2000 Never ma…    39 White Not appl… Ind,near … Orthod… Not ap…       4
-#> 5  2000 Divorced     25 White Not appl… Not str d… None    Not ap…       1
-#> 6  2000 Married      25 White $20000 -… Strong de… Protes… Southe…      NA
+#>    year marital         age race  rincome  partyid   relig  denom  tvhours
+#>   <int> <fct>         <int> <fct> <fct>    <fct>     <fct>  <fct>    <int>
+#> 1  2000 Never married    26 White $8000 t… Ind,near… Prote… South…      12
+#> 2  2000 Divorced         48 White $8000 t… Not str … Prote… Bapti…      NA
+#> 3  2000 Widowed          67 White Not app… Independ… Prote… No de…       2
+#> 4  2000 Never married    39 White Not app… Ind,near… Ortho… Not a…       4
+#> 5  2000 Divorced         25 White Not app… Not str … None   Not a…       1
+#> 6  2000 Married          25 White $20000 … Strong d… Prote… South…      NA
 #> # ... with 2.148e+04 more rows
 ```
 

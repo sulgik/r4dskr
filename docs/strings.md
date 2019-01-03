@@ -15,7 +15,7 @@ library(tidyverse)
 library(stringr)
 ```
 
-## 문자열 기초
+## 문자열 기초 {#strings-basics}
 
 작은따옴표나 큰따옴표로 문자열을 생성할 수 있다. 다른 언어와는 달리 두 동작에 차이가 없다. 여러 개의 `"` 를 포함하는 문자열을 생성하려는 것이 아니라면 항상 `"` 를 사용할 것을 추천한다. 
 
@@ -1180,9 +1180,9 @@ str_view(fruit, regex("nana"))
       times = 20
     )
     #> Unit: microseconds
-    #>   expr   min    lq mean median    uq max neval
-    #>  fixed  81.1  82.9  102   86.2  96.4 268    20
-    #>  regex 286.1 292.4  313  295.8 330.4 407    20
+    #>   expr min  lq mean median  uq max neval
+    #>  fixed 108 110  130    114 119 369    20
+    #>  regex 380 382  396    385 396 496    20
     ```
     
     `fixed()` 를 비영어에 사용할 때는 조심하라. 같은 문자를 나타내는 방법이 여러 가지이기 때문에 문제가 되는 경우가 많다. 예를 들어 'á'를 정의하는 방법에는 두 가지가 있다. 즉, 단일한 문자로 하거나, 'a'와 악센트로 하는 방법이다.
@@ -1285,8 +1285,8 @@ str_view(fruit, regex("nana"))
     
     ```r
     head(dir(pattern = "\\.Rmd$"))
-    #> [1] "communicate-plots.Rmd" "communicate.Rmd"       "datetimes.Rmd"        
-    #> [4] "EDA.Rmd"               "explore.Rmd"           "factors.Rmd"
+    #> [1] "datetimes.Rmd" "EDA.Rmd"       "explore.Rmd"   "factors.Rmd"  
+    #> [5] "functions.Rmd" "hierarchy.Rmd"
     ```
     
     (`*.Rmd` 같은 '글로브(globs) 패턴'에 익숙한 경우, `glob2rx()` 를 사용하여 이를 정규표현식으로 변환할 수 있다.) 

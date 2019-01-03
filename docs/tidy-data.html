@@ -134,7 +134,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3.1" data-path="data-import.html"><a href="data-import.html#section-3.3.1"><i class="fa fa-check"></i><b>3.3.1</b> 숫자</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>3.3.2</b> 문자열</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>3.3.3</b> 팩터형</a></li>
-<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> Dates, date-times, times</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> 데이트형, 데이트-타임형, 타임형</a></li>
 <li class="chapter" data-level="3.3.5" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>3.3.5</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4</b> 파일 파싱하기</a><ul>
@@ -199,7 +199,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.1</b> 문자열 길이</a></li>
 <li class="chapter" data-level="6.2.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.2</b> 문자열 결합</a></li>
 <li class="chapter" data-level="6.2.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.3</b> 문자열 서브셋하기</a></li>
@@ -268,7 +268,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.4"><i class="fa fa-check"></i><b>8.4.4</b> 요약</a></li>
 <li class="chapter" data-level="8.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#-30"><i class="fa fa-check"></i><b>8.4.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.5"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
+<li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
 </ul>
 
@@ -778,14 +778,14 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 <p>이 데이터셋에는 역학 정보가 풍부하게 있지만, 제공된 데이터 형식으로 작업하는 것은 쉽지 않다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">who
 <span class="co">#&gt; # A tibble: 7,240 x 60</span>
-<span class="co">#&gt;   country iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;int&gt;       &lt;int&gt;        &lt;int&gt;        &lt;int&gt;</span>
-<span class="co">#&gt; 1 Afghan… AF    AFG    1980          NA           NA           NA</span>
-<span class="co">#&gt; 2 Afghan… AF    AFG    1981          NA           NA           NA</span>
-<span class="co">#&gt; 3 Afghan… AF    AFG    1982          NA           NA           NA</span>
-<span class="co">#&gt; 4 Afghan… AF    AFG    1983          NA           NA           NA</span>
-<span class="co">#&gt; 5 Afghan… AF    AFG    1984          NA           NA           NA</span>
-<span class="co">#&gt; 6 Afghan… AF    AFG    1985          NA           NA           NA</span>
+<span class="co">#&gt;   country     iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt;       &lt;int&gt;        &lt;int&gt;        &lt;int&gt;</span>
+<span class="co">#&gt; 1 Afghanistan AF    AFG    1980          NA           NA           NA</span>
+<span class="co">#&gt; 2 Afghanistan AF    AFG    1981          NA           NA           NA</span>
+<span class="co">#&gt; 3 Afghanistan AF    AFG    1982          NA           NA           NA</span>
+<span class="co">#&gt; 4 Afghanistan AF    AFG    1983          NA           NA           NA</span>
+<span class="co">#&gt; 5 Afghanistan AF    AFG    1984          NA           NA           NA</span>
+<span class="co">#&gt; 6 Afghanistan AF    AFG    1985          NA           NA           NA</span>
 <span class="co">#&gt; # ... with 7,234 more rows, and 53 more variables: new_sp_m3544 &lt;int&gt;,</span>
 <span class="co">#&gt; #   new_sp_m4554 &lt;int&gt;, new_sp_m5564 &lt;int&gt;, new_sp_m65 &lt;int&gt;,</span>
 <span class="co">#&gt; #   new_sp_f014 &lt;int&gt;, new_sp_f1524 &lt;int&gt;, new_sp_f2534 &lt;int&gt;,</span>
