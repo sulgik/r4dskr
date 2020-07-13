@@ -1,4 +1,3 @@
-
 # 팩터형 {#factors}
 
 ## 들어가기
@@ -132,15 +131,15 @@ levels(f2)
 ```r
 gss_cat
 #> # A tibble: 21,483 x 9
-#>    year marital         age race  rincome  partyid   relig  denom  tvhours
-#>   <int> <fct>         <int> <fct> <fct>    <fct>     <fct>  <fct>    <int>
-#> 1  2000 Never married    26 White $8000 t… Ind,near… Prote… South…      12
-#> 2  2000 Divorced         48 White $8000 t… Not str … Prote… Bapti…      NA
-#> 3  2000 Widowed          67 White Not app… Independ… Prote… No de…       2
-#> 4  2000 Never married    39 White Not app… Ind,near… Ortho… Not a…       4
-#> 5  2000 Divorced         25 White Not app… Not str … None   Not a…       1
-#> 6  2000 Married          25 White $20000 … Strong d… Prote… South…      NA
-#> # ... with 2.148e+04 more rows
+#>    year marital      age race  rincome    partyid     relig     denom    tvhours
+#>   <int> <fct>      <int> <fct> <fct>      <fct>       <fct>     <fct>      <int>
+#> 1  2000 Never mar…    26 White $8000 to … Ind,near r… Protesta… Souther…      12
+#> 2  2000 Divorced      48 White $8000 to … Not str re… Protesta… Baptist…      NA
+#> 3  2000 Widowed       67 White Not appli… Independent Protesta… No deno…       2
+#> 4  2000 Never mar…    39 White Not appli… Ind,near r… Orthodox… Not app…       4
+#> 5  2000 Divorced      25 White Not appli… Not str de… None      Not app…       1
+#> 6  2000 Married       25 White $20000 - … Strong dem… Protesta… Souther…      NA
+#> # … with 21,477 more rows
 ```
 
 (이 데이터셋은 패키지로 제공되기 때문에 `?gss_cat` 으로 변수들에 관한 자세한 정보를 얻을 수 있다는 것을 잊지 말라.)
@@ -167,7 +166,7 @@ ggplot(gss_cat, aes(race)) +
   geom_bar()
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="factors_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
 
 기본적으로 ggplot2는 값이 없는 레벨을 제거한다. 다음과 같이 강제적으로 표시하도록 할 수 있다.
 
@@ -178,7 +177,7 @@ ggplot(gss_cat, aes(race)) +
   scale_x_discrete(drop = FALSE)
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="factors_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
 
 이 레벨들은 유효하지만 이 데이터셋에서 나타나지 않는 값을 나타낸다. dplyr에는 `drop`  옵션이 아직 없지만 향후 제공될 예정이다.
 
@@ -206,11 +205,12 @@ relig_summary <- gss_cat %>%
     tvhours = mean(tvhours, na.rm = TRUE),
     n = n()
   )
+#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(relig_summary, aes(tvhours, relig)) + geom_point()
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="factors_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 
 전반적인 패턴이 없기 때문에 이 플롯을 해석하기는 어렵다. `fct_reorder()` 를 사용하여 `relig` 의 레벨을 재정렬해서 개선할 수 있다. `fct_reorder()` 에는 세 개의 인수가 있다.
 
@@ -224,7 +224,7 @@ ggplot(relig_summary, aes(tvhours, fct_reorder(relig, tvhours))) +
   geom_point()
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="factors_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
 
 종교를 재배열하면 ’모름(Don't know)’ 범주의 사람들이 TV를 훨씬 많이 보고, 힌두교와 다른 동양 종교 사람들이 훨씬 덜 본다는 것을 쉽게 알 수 있다. 
 
@@ -249,11 +249,12 @@ rincome_summary <- gss_cat %>%
     tvhours = mean(tvhours, na.rm = TRUE),
     n = n()
   )
+#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(rincome_summary, aes(age, fct_reorder(rincome, age))) + geom_point()
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="factors_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 여기에서 레벨을 임의로 재정렬하는 것은 좋은 생각이 아니다! `rincome` 은 이미 원칙 있게 정렬되어 있어서 건드리지 말아야 하기 때문이다. `fct_reorder()` 는 레벨이 임의적으로 정렬된 팩터의 경우에만 사용해야 한다.
  
@@ -265,7 +266,7 @@ ggplot(rincome_summary, aes(age, fct_relevel(rincome, "Not applicable"))) +
   geom_point()
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="factors_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
 
 'Not applicable' 의 평균 연령이 왜 이렇게 높을까?
 
@@ -287,7 +288,7 @@ ggplot(by_age, aes(age, prop, colour = fct_reorder2(marital, age, prop))) +
   labs(colour = "marital")
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-21-1.png" width="50%" /><img src="factors_files/figure-html/unnamed-chunk-21-2.png" width="50%" />
+<img src="factors_files/figure-html/unnamed-chunk-20-1.png" width="50%" /><img src="factors_files/figure-html/unnamed-chunk-20-2.png" width="50%" />
 
 마지막으로, `fct_infreq()` 를 사용하여 빈도 오름차순으로 레벨을 정렬할 수 있다. 추가 변수가 필요 없기 때문에, 재정렬 방법 중 가장 간단한 유형이다. `fct_rev()` 와 조합하여 사용할 수 있다.
 
@@ -299,7 +300,7 @@ gss_cat %>%
     geom_bar()
 ```
 
-<img src="factors_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="factors_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### 연습문제
 
@@ -325,7 +326,7 @@ gss_cat %>% count(partyid)
 #> 4 Strong republican   2314
 #> 5 Not str republican  3032
 #> 6 Ind,near rep        1791
-#> # ... with 4 more rows
+#> # … with 4 more rows
 ```
 
 이 레벨들은 짧고 일관성이 없다. 이 레벨들을 풀어쓰고, 병렬 구조를 사용해보자. 
@@ -351,7 +352,7 @@ gss_cat %>%
 #> 4 Republican, strong     2314
 #> 5 Republican, weak       3032
 #> 6 Independent, near rep  1791
-#> # ... with 4 more rows
+#> # … with 4 more rows
 ```
 
 `fct_recode()` 는 명시적으로 언급되지 않은 레벨은 그대로 둔다. 존재하지 않은 레벨을 참조하면 경고를 발생한다.
@@ -383,7 +384,7 @@ gss_cat %>%
 #> 4 Independent, near rep  1791
 #> 5 Independent            4119
 #> 6 Independent, near dem  2499
-#> # ... with 2 more rows
+#> # … with 2 more rows
 ```
 
 이 기술은 신중하게 사용해야 한다. 서로 같지 않은 범주들을 함께 묶는다면 잘못된 결과를 도출하게 될 것이다.

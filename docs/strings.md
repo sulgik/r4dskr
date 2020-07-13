@@ -1,4 +1,3 @@
-
 # 문자열 {#strings}
 
 ## 들어가기
@@ -244,8 +243,8 @@ x <- c("apple", "banana", "pear")
 str_view(x, "an")
 ```
 
-<!--html_preserve--><div id="htmlwidget-14d5992801777f4abbc5" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-14d5992801777f4abbc5">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 다음으로 간단한 단계는 (줄바꿈을 제외한) 임의의 문자와 매칭하는 `.` 이다. 
 
@@ -254,8 +253,8 @@ str_view(x, "an")
 str_view(x, ".a.")
 ```
 
-<!--html_preserve--><div id="htmlwidget-df2c08526632671063f9" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-df2c08526632671063f9">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>p<span class='match'>ear<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-e5c8c404fe174e4c81bd" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>p<span class='match'>ear<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 그런데 `"."` 이 임의의 문자와 매칭된다면, 문자 `"."` 는 어떻게 매칭하겠는가? '이스케이프'를 사용하여 우리가 특별 동작을 사용하려는 것이 아니라, 정확하게 매칭하고 싶다는 것을 정규표현식에 표현해야 한다. 정규표현식도 문자열과 마찬가지로 특별한 동작을 이스케이프하기 위해 역슬래시(`\` )를 사용한다. 따라서 `.` 를 매칭하기 위해서는 정규표현식 `\.` 을 써야한다. 그런데 이렇게 하면 문제가 생긴다. 정규표현식을 나타내기 위해 문자열을 사용했고 `\` 도 문자열에서 이스케이프 상징어로 사용하였다. 따라서 정규표현식 `\.` 를 작성하기 위해서는 문자열 `"\\."` 이 필요하다.  
  
@@ -272,8 +271,8 @@ writeLines(dot)
 str_view(c("abc", "a.c", "bef"), "a\\.c")
 ```
 
-<!--html_preserve--><div id="htmlwidget-4aadbc32fbbd0d87b2b0" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4aadbc32fbbd0d87b2b0">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-36aa3d2a04d42bbc2145" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-36aa3d2a04d42bbc2145">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 정규표현식에서 `\` 를 이스케이프 문자로 사용한다면 문자 `\` 는 도대체 어떻게 매칭하겠는가? 정규표현식 `\\` 를 만들어 이스케이프해야 한다. 앞의 정규표현식을 만들려면 `\` 를 이스케이프하는 문자열이 필요하다. 즉, 문자 `\` 을 매칭하기 위해서 `"\\\\"` 라고 작성해야 한다. 즉, 하나를 매칭하기 위해 네 개의 역슬래시가 필요하다!
 
@@ -286,8 +285,8 @@ writeLines(x)
 str_view(x, "\\\\")
 ```
 
-<!--html_preserve--><div id="htmlwidget-07394da27a6eb4f22e37" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-07394da27a6eb4f22e37">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-febe03efa1a2d8d52a86" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-febe03efa1a2d8d52a86">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 이 책에서 정규표현식은 `\.` 과 같이 쓰고 정규표현식을 나타내는 문자열은 `"\\."` 과 같이 쓸 것이다. 
 
@@ -313,15 +312,15 @@ x <- c("apple", "banana", "pear")
 str_view(x, "^a")
 ```
 
-<!--html_preserve--><div id="htmlwidget-ae7fa4a918c3c5fdf863" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ae7fa4a918c3c5fdf863">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>pple<\/li>\n  <li>banana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-1fb4450895fe099f74a1" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1fb4450895fe099f74a1">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>pple<\/li>\n  <li>banana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(x, "a$")
 ```
 
-<!--html_preserve--><div id="htmlwidget-76502c887ec734b6105a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-76502c887ec734b6105a">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-10b3b7155e8045a1b2ad" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-10b3b7155e8045a1b2ad">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 두 기호를 올바로 기억하기 위해, [에반 미슐라](https://twitter.com/emisshula/status/323863393167613953)가 알려준 다음의 연상 구문을 시도해보자. 파워(`^` )로 시작하면, 돈(`$` )으로 끝나게 된다.  
@@ -334,15 +333,15 @@ x <- c("apple pie", "apple", "apple cake")
 str_view(x, "apple")
 ```
 
-<!--html_preserve--><div id="htmlwidget-d34691559831f28a8b47" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d34691559831f28a8b47">{"x":{"html":"<ul>\n  <li><span class='match'>apple<\/span> pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li><span class='match'>apple<\/span> cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-4018eef1a407a0df6b52" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4018eef1a407a0df6b52">{"x":{"html":"<ul>\n  <li><span class='match'>apple<\/span> pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li><span class='match'>apple<\/span> cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(x, "^apple$")
 ```
 
-<!--html_preserve--><div id="htmlwidget-725f07776305608fdb62" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-725f07776305608fdb62">{"x":{"html":"<ul>\n  <li>apple pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li>apple cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-5b1b2f4ad92281566982" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5b1b2f4ad92281566982">{"x":{"html":"<ul>\n  <li>apple pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li>apple cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 단어 사이의 경계(boundary)를 매칭시키려면 `\b` 를 사용하면 된다. 나는 R에서 이 방법을 자주 사용하지는 않지만 RStudio에서 다른 함수의 구성요소인 함수의 이름을 찾고자 할 때 한 번씩 사용한다. 예를 들어 `\bsum\b` 를 사용하여 `summarize, summary, rowsum`  등이 매칭되는 것을 피할 수 있다. 
@@ -381,22 +380,22 @@ str_view(x, "^apple$")
 str_view(c("abc", "a.c", "a*c", "a c"), "a[.]c")
 ```
 
-<!--html_preserve--><div id="htmlwidget-8799424a7aeb6636ab0f" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8799424a7aeb6636ab0f">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>a*c<\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-25c3e940e6859592f801" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-25c3e940e6859592f801">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>a*c<\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(c("abc", "a.c", "a*c", "a c"), ".[*]c")
 ```
 
-<!--html_preserve--><div id="htmlwidget-ff2684d8b73d8cd50778" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff2684d8b73d8cd50778">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li><span class='match'>a*c<\/span><\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-3f27c09be0c60bb52829" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f27c09be0c60bb52829">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li><span class='match'>a*c<\/span><\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(c("abc", "a.c", "a*c", "a c"), "a[ ]")
 ```
 
-<!--html_preserve--><div id="htmlwidget-ced067376bab81a983d5" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ced067376bab81a983d5">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li>a*c<\/li>\n  <li><span class='match'>a <\/span>c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-416566eb193bf50d04e6" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-416566eb193bf50d04e6">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li>a*c<\/li>\n  <li><span class='match'>a <\/span>c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 이 방법은 대부분 (전부는 아님) 정규표현식 메타문자에 적용된다: `$` `.` `|` `?` `*` `+` `(` `)` `[` `{`. 안타깝게도 문자 클래스 내에서 조차 특수 의미가 있는 문자가 몇 있으며 백슬래시 이스케이프와 함께 해야 한다. `]` `\` `^` `-`.
 
@@ -407,8 +406,8 @@ str_view(c("abc", "a.c", "a*c", "a c"), "a[ ]")
 str_view(c("grey", "gray"), "gr(e|a)y")
 ```
 
-<!--html_preserve--><div id="htmlwidget-b5df02e3ff805bc695a2" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b5df02e3ff805bc695a2">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-72cbf064100ce560a04c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-72cbf064100ce560a04c">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 #### 연습문제
 
@@ -443,22 +442,22 @@ x <- "1888 is the longest year in Roman numerals: MDCCCLXXXVIII"
 str_view(x, "CC?")
 ```
 
-<!--html_preserve--><div id="htmlwidget-db9140ebde3f67c51e31" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-db9140ebde3f67c51e31">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-d11fc4360aa0230696d7" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d11fc4360aa0230696d7">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(x, "CC+")
 ```
 
-<!--html_preserve--><div id="htmlwidget-2aa9dbed8d93af3e0be8" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2aa9dbed8d93af3e0be8">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-21c7483268bafca56cec" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-21c7483268bafca56cec">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(x, 'C[LX]+')
 ```
 
-<!--html_preserve--><div id="htmlwidget-12ff9c2ce809973ce8d1" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-12ff9c2ce809973ce8d1">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CLXXX<\/span>VIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-1834a22cd196f3aa03a1" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1834a22cd196f3aa03a1">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CLXXX<\/span>VIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 이 연산자의 우선순위는 낮음을 주목하라. 예를 들어 `colou?r` 를 사용하여 미국식이나 영국식 스펠링을 매치할 수 있다. 따라서 `bana(na)+` 에서와 같이 대부분의 경우 괄호가 필요하다. 
 
@@ -474,22 +473,22 @@ str_view(x, 'C[LX]+')
 str_view(x, "C{2}")
 ```
 
-<!--html_preserve--><div id="htmlwidget-b338ba377455914076ea" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b338ba377455914076ea">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-28515d92cb327f90c9eb" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-28515d92cb327f90c9eb">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(x, "C{2,}")
 ```
 
-<!--html_preserve--><div id="htmlwidget-f9d1e794c5feb6374ab8" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f9d1e794c5feb6374ab8">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-0caf26d4e3c00206b0c5" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0caf26d4e3c00206b0c5">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(x, "C{2,3}")
 ```
 
-<!--html_preserve--><div id="htmlwidget-dd3d01f170c0aa6859bc" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dd3d01f170c0aa6859bc">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-da0b268a2927f570ebf3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-da0b268a2927f570ebf3">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 기본값으로 이러한 매칭은 '그리디(greedy)' 매칭이다. 즉, 가능한 가장 긴 문자열과 매칭한다. 이를 '게으르게(lazy)' 만들 수 있다. 뒤에 `?` 를 넣으면 가장 짧은 문자열과 매칭된다. 정규표현식의 고급 기능이지만 이런 것도 있다는 것을 알아놓으면 유용하다.
 
@@ -498,15 +497,15 @@ str_view(x, "C{2,3}")
 str_view(x, 'C{2,3}?')
 ```
 
-<!--html_preserve--><div id="htmlwidget-aa15db13da1b7c3faf29" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aa15db13da1b7c3faf29">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-0ed12bb554391c49c2e3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0ed12bb554391c49c2e3">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 str_view(x, 'C[LX]+?')
 ```
 
-<!--html_preserve--><div id="htmlwidget-f3525ce3d319e7c562ff" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f3525ce3d319e7c562ff">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CL<\/span>XXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-ec658d41f8c4f2d124e9" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ec658d41f8c4f2d124e9">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CL<\/span>XXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 #### 연습문제
 
@@ -536,8 +535,8 @@ str_view(x, 'C[LX]+?')
 str_view(fruit, "(..)\\1", match = TRUE)
 ```
 
-<!--html_preserve--><div id="htmlwidget-59f2370825da36350af1" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-59f2370825da36350af1">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>coco<\/span>nut<\/li>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>juju<\/span>be<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li>s<span class='match'>alal<\/span> berry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-6b83523733b890d61edc" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b83523733b890d61edc">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>coco<\/span>nut<\/li>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>juju<\/span>be<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li>s<span class='match'>alal<\/span> berry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 (`str_match()` 와 함께 쓰면 왜 유용한지 곧 알게 될 것이다.) 
 
@@ -761,7 +760,7 @@ df %>%
 #> 4 absolute     4      4          4
 #> 5 accept       5      2          4
 #> 6 account      6      3          4
-#> # ... with 974 more rows
+#> # … with 974 more rows
 ```
 
 매칭들끼리 서로 겹치지 않는다는 것을 주의하라. 예를 들어 `"abababa"` 에서 `"aba"` 패턴이 몇 번 매칭하는가? 정규표현식에선 세 번이 아닌 두 번이라고 답한다. 
@@ -773,8 +772,8 @@ str_count("abababa", "aba")
 str_view_all("abababa", "aba")
 ```
 
-<!--html_preserve--><div id="htmlwidget-3ec749e04bfb96c2d6c3" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3ec749e04bfb96c2d6c3">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-b3f7c917b6c8ff580948" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b3f7c917b6c8ff580948">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 `str_view_all()` 의 용법에 주의하라. 곧 배우겠지만 많은 stringr 함수는 짝으로 제공된다. 즉, 단일 매칭에 동작하는 함수와, 모든 매칭에 동작하는 함수가 있다. 후자는 접미사 `_all` 이 붙는다. 
 
@@ -835,8 +834,8 @@ more <- sentences[str_count(sentences, colour_match) > 1]
 str_view_all(more, colour_match)
 ```
 
-<!--html_preserve--><div id="htmlwidget-6a2314a79aa854fab7df" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a2314a79aa854fab7df">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flicke<span class='match'>red<\/span>.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-d258b2ee1c304ebe1664" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d258b2ee1c304ebe1664">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flicke<span class='match'>red<\/span>.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 
@@ -945,7 +944,7 @@ tibble(sentence = sentences) %>%
 #> 4 These days a chicken leg is a rare dish.    a       chicken
 #> 5 Rice is often served in round bowls.        <NA>    <NA>   
 #> 6 The juice of lemons makes fine punch.       <NA>    <NA>   
-#> # ... with 714 more rows
+#> # … with 714 more rows
 ```
 
 
@@ -1046,18 +1045,18 @@ sentences %>%
 sentences %>%
   head(5) %>% 
   str_split(" ", simplify = TRUE)
-#>      [,1]    [,2]    [,3]    [,4]      [,5]  [,6]    [,7]    
-#> [1,] "The"   "birch" "canoe" "slid"    "on"  "the"   "smooth"
-#> [2,] "Glue"  "the"   "sheet" "to"      "the" "dark"  "blue"  
-#> [3,] "It's"  "easy"  "to"    "tell"    "the" "depth" "of"    
-#> [4,] "These" "days"  "a"     "chicken" "leg" "is"    "a"     
-#> [5,] "Rice"  "is"    "often" "served"  "in"  "round" "bowls."
-#>      [,8]          [,9]   
-#> [1,] "planks."     ""     
-#> [2,] "background." ""     
-#> [3,] "a"           "well."
-#> [4,] "rare"        "dish."
-#> [5,] ""            ""
+#>      [,1]    [,2]    [,3]    [,4]      [,5]  [,6]    [,7]     [,8]         
+#> [1,] "The"   "birch" "canoe" "slid"    "on"  "the"   "smooth" "planks."    
+#> [2,] "Glue"  "the"   "sheet" "to"      "the" "dark"  "blue"   "background."
+#> [3,] "It's"  "easy"  "to"    "tell"    "the" "depth" "of"     "a"          
+#> [4,] "These" "days"  "a"     "chicken" "leg" "is"    "a"      "rare"       
+#> [5,] "Rice"  "is"    "often" "served"  "in"  "round" "bowls." ""           
+#>      [,9]   
+#> [1,] ""     
+#> [2,] ""     
+#> [3,] "well."
+#> [4,] "dish."
+#> [5,] ""
 ```
 
 조각을 최대 개수만큼 요청할 수도 있다.
@@ -1080,8 +1079,8 @@ x <- "This is a sentence.  This is another sentence."
 str_view_all(x, boundary("word"))
 ```
 
-<!--html_preserve--><div id="htmlwidget-fb37aa630b9d9968db84" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fb37aa630b9d9968db84">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.  <span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>another<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-b8f31ebacaee3527bb86" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b8f31ebacaee3527bb86">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.  <span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>another<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```r
 
@@ -1089,8 +1088,8 @@ str_split(x, " ")[[1]]
 #> [1] "This"      "is"        "a"         "sentence." ""          "This"     
 #> [7] "is"        "another"   "sentence."
 str_split(x, boundary("word"))[[1]]
-#> [1] "This"     "is"       "a"        "sentence" "This"     "is"      
-#> [7] "another"  "sentence"
+#> [1] "This"     "is"       "a"        "sentence" "This"     "is"       "another" 
+#> [8] "sentence"
 ```
 
 #### 연습문제
@@ -1126,15 +1125,15 @@ str_view(fruit, regex("nana"))
     str_view(bananas, "banana")
     ```
     
-    <!--html_preserve--><div id="htmlwidget-fa04ac5febadaac18a3d" style="width:960px;height:100%;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-fa04ac5febadaac18a3d">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li>Banana<\/li>\n  <li>BANANA<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+    <!--html_preserve--><div id="htmlwidget-b25b670b028f478bf741" style="width:960px;height:100%;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-b25b670b028f478bf741">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li>Banana<\/li>\n  <li>BANANA<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
     
     ```r
     str_view(bananas, regex("banana", ignore_case = TRUE))
     ```
     
-    <!--html_preserve--><div id="htmlwidget-826abaa365f54c0c9337" style="width:960px;height:100%;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-826abaa365f54c0c9337">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li><span class='match'>Banana<\/span><\/li>\n  <li><span class='match'>BANANA<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+    <!--html_preserve--><div id="htmlwidget-46d1193f7ba074d981c8" style="width:960px;height:100%;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-46d1193f7ba074d981c8">{"x":{"html":"<ul>\n  <li><span class='match'>banana<\/span><\/li>\n  <li><span class='match'>Banana<\/span><\/li>\n  <li><span class='match'>BANANA<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
     
 * `multiline = TRUE` 를 하면 `^` 와 `$` 이 전체 문자열의 시작, 끝이 아니라, 각 라인의 시작과 끝이 매칭된다. 
     
@@ -1180,9 +1179,9 @@ str_view(fruit, regex("nana"))
       times = 20
     )
     #> Unit: microseconds
-    #>   expr min  lq mean median  uq max neval
-    #>  fixed 108 110  130    114 119 369    20
-    #>  regex 380 382  396    385 396 496    20
+    #>   expr min  lq mean median   uq  max neval
+    #>  fixed 114 168  398    199  229 3384    20
+    #>  regex 519 651 1048    798 1290 2628    20
     ```
     
     `fixed()` 를 비영어에 사용할 때는 조심하라. 같은 문자를 나타내는 방법이 여러 가지이기 때문에 문제가 되는 경우가 많다. 예를 들어 'á'를 정의하는 방법에는 두 가지가 있다. 즉, 단일한 문자로 하거나, 'a'와 악센트로 하는 방법이다.
@@ -1251,8 +1250,8 @@ str_view(fruit, regex("nana"))
     str_view_all(x, boundary("word"))
     ```
     
-    <!--html_preserve--><div id="htmlwidget-20f0cdc2888b18632cb0" style="width:960px;height:100%;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-20f0cdc2888b18632cb0">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+    <!--html_preserve--><div id="htmlwidget-382a200f56fb8e6a1fd3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-382a200f56fb8e6a1fd3">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
     
     ```r
     str_extract_all(x, boundary("word"))
@@ -1275,9 +1274,8 @@ str_view(fruit, regex("nana"))
     
     ```r
     apropos("replace")
-    #> [1] "%+replace%"       "replace"          "replace_na"      
-    #> [4] "setReplaceMethod" "str_replace"      "str_replace_all" 
-    #> [7] "str_replace_na"   "theme_replace"
+    #> [1] "%+replace%"       "replace"          "replace_na"       "setReplaceMethod"
+    #> [5] "str_replace"      "str_replace_all"  "str_replace_na"   "theme_replace"
     ```
     
 *   `dir()` 은 디렉터리에 있는 모든 파일을 나열한다. `pattern`  인자는 정규표현식을 취해, 매치하는 파일 이름만 반환한다. 예를 들어 현재 디렉터리에 있는 모든 R마크다운 파일을 다음과 같이 찾을 수 있다. 
@@ -1285,15 +1283,15 @@ str_view(fruit, regex("nana"))
     
     ```r
     head(dir(pattern = "\\.Rmd$"))
-    #> [1] "datetimes.Rmd" "EDA.Rmd"       "explore.Rmd"   "factors.Rmd"  
-    #> [5] "functions.Rmd" "hierarchy.Rmd"
+    #> [1] "communicate-plots.Rmd" "communicate.Rmd"       "datetimes.Rmd"        
+    #> [4] "EDA.Rmd"               "explore.Rmd"           "factors.Rmd"
     ```
     
     (`*.Rmd` 같은 '글로브(globs) 패턴'에 익숙한 경우, `glob2rx()` 를 사용하여 이를 정규표현식으로 변환할 수 있다.) 
 
 ## stringi
 
-stringr 은 **stringi**  패키지 기반으로 만들어졌다. **stringr** 은 학습할 때 유용한데, 왜냐하면 이 패키지는 자주 사용하는 문자열 조작 함수들을 다루기 위해 엄선된 최소한의 함수들만 보여주기 때문이다. 반면, **stringi** 는 전체를 포괄하도록 설계되었고, 필요한 거의 모든 함수를 포함한다. **stringi** 에는 234 개의 함수가 있지만, **stringr** 에는 46개가 있다.
+stringr 은 **stringi**  패키지 기반으로 만들어졌다. **stringr** 은 학습할 때 유용한데, 왜냐하면 이 패키지는 자주 사용하는 문자열 조작 함수들을 다루기 위해 엄선된 최소한의 함수들만 보여주기 때문이다. 반면, **stringi** 는 전체를 포괄하도록 설계되었고, 필요한 거의 모든 함수를 포함한다. **stringi** 에는 244 개의 함수가 있지만, **stringr** 에는 49개가 있다.
 
 stringr 에서 잘 안될 경우, **stringi** 에서 한 번 찾아보는 것이 좋다. 두 패키지는 매우 유사하게 동작하므로, **stringr** 에서 배운 것을 자연스럽게 활용할 수 있을 것이다. 주요 차이점은 접두사이다(`str_` 과 `stri_` ).
 

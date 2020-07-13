@@ -1,4 +1,3 @@
-
 # 데이터 불러오기 {#data-import}
 
 ## 들어가기
@@ -630,11 +629,11 @@ challenge <- read_csv(readr_example("challenge.csv"))
 #> )
 #> Warning: 1000 parsing failures.
 #>  row col           expected     actual                                                                                         file
-#> 1001   y 1/0/T/F/TRUE/FALSE 2015-01-16 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1002   y 1/0/T/F/TRUE/FALSE 2018-05-18 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1003   y 1/0/T/F/TRUE/FALSE 2015-09-05 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1004   y 1/0/T/F/TRUE/FALSE 2012-11-28 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
-#> 1005   y 1/0/T/F/TRUE/FALSE 2020-01-13 '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv'
+#> 1001   y 1/0/T/F/TRUE/FALSE 2015-01-16 '/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv'
+#> 1002   y 1/0/T/F/TRUE/FALSE 2018-05-18 '/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv'
+#> 1003   y 1/0/T/F/TRUE/FALSE 2015-09-05 '/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv'
+#> 1004   y 1/0/T/F/TRUE/FALSE 2012-11-28 '/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv'
+#> 1005   y 1/0/T/F/TRUE/FALSE 2020-01-13 '/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv'
 #> .... ... .................. .......... ............................................................................................
 #> See problems(...) for more details.
 ```
@@ -648,15 +647,15 @@ challenge <- read_csv(readr_example("challenge.csv"))
 ```r
 problems(challenge)
 #> # A tibble: 1,000 x 5
-#>     row col   expected           actual     file                          
-#>   <int> <chr> <chr>              <chr>      <chr>                         
-#> 1  1001 y     1/0/T/F/TRUE/FALSE 2015-01-16 '/Library/Frameworks/R.framew…
-#> 2  1002 y     1/0/T/F/TRUE/FALSE 2018-05-18 '/Library/Frameworks/R.framew…
-#> 3  1003 y     1/0/T/F/TRUE/FALSE 2015-09-05 '/Library/Frameworks/R.framew…
-#> 4  1004 y     1/0/T/F/TRUE/FALSE 2012-11-28 '/Library/Frameworks/R.framew…
-#> 5  1005 y     1/0/T/F/TRUE/FALSE 2020-01-13 '/Library/Frameworks/R.framew…
-#> 6  1006 y     1/0/T/F/TRUE/FALSE 2016-04-17 '/Library/Frameworks/R.framew…
-#> # ... with 994 more rows
+#>     row col   expected       actual   file                                      
+#>   <int> <chr> <chr>          <chr>    <chr>                                     
+#> 1  1001 y     1/0/T/F/TRUE/… 2015-01… '/Library/Frameworks/R.framework/Versions…
+#> 2  1002 y     1/0/T/F/TRUE/… 2018-05… '/Library/Frameworks/R.framework/Versions…
+#> 3  1003 y     1/0/T/F/TRUE/… 2015-09… '/Library/Frameworks/R.framework/Versions…
+#> 4  1004 y     1/0/T/F/TRUE/… 2012-11… '/Library/Frameworks/R.framework/Versions…
+#> 5  1005 y     1/0/T/F/TRUE/… 2020-01… '/Library/Frameworks/R.framework/Versions…
+#> 6  1006 y     1/0/T/F/TRUE/… 2016-04… '/Library/Frameworks/R.framework/Versions…
+#> # … with 994 more rows
 ```
 
 문제가 남아있지 않을 때까지 열 단위로 작업하는 것은 좋은 전략이다. `x` 열에
@@ -757,7 +756,7 @@ R 의 문자형 벡터인 경우에는 `parse_xyz()` 를 사용하면 되고, re
     #> 4   787 NA        
     #> 5    37 NA        
     #> 6  2332 NA        
-    #> # ... with 1,994 more rows
+    #> # … with 1,994 more rows
     ```
 
 *   모든 열을 문자형 벡터로 읽으면 문제를 쉽게 진단할 수 있는 경우가 많다.
@@ -837,7 +836,7 @@ challenge
 #> 4   787 NA        
 #> 5    37 NA        
 #> 6  2332 NA        
-#> # ... with 1,994 more rows
+#> # … with 1,994 more rows
 write_csv(challenge, "challenge-2.csv")
 read_csv("challenge-2.csv")
 #> Parsed with column specification:
@@ -854,7 +853,7 @@ read_csv("challenge-2.csv")
 #> 4   787 NA   
 #> 5    37 NA   
 #> 6  2332 NA   
-#> # ... with 1,994 more rows
+#> # … with 1,994 more rows
 ```
 
 이런 이유로 중간 결과를 캐싱하기에 CSV 를 아주 신뢰할 수 없다. 불러올 때마다 열 사양을 다시 만들어야 한다. 두 가지 대안이 있다.
@@ -874,7 +873,7 @@ read_csv("challenge-2.csv")
     #> 4   787 NA        
     #> 5    37 NA        
     #> 6  2332 NA        
-    #> # ... with 1,994 more rows
+    #> # … with 1,994 more rows
     ```
   
 1.  feather 패키지는 다른 프로그래밍 언어와 공유할 수 있는 빠른 바이너리 파일 형식을 구현한다.

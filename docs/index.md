@@ -1,4 +1,3 @@
-
 ---
 knit: "bookdown::render_book"
 title: "R 을 활용한 데이터과학"

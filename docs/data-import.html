@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 데이터 불러오기 | R 을 활용한 데이터과학</title>
-  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 데이터 불러오기 | R 을 활용한 데이터과학 />
+  <meta property="og:title" content="3 데이터 불러오기 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
@@ -17,23 +16,23 @@
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 데이터 불러오기 | R 을 활용한 데이터과학 />
+  <meta name="twitter:title" content="3 데이터 불러오기 | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
   <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
-<meta name="author" content="개럿 그롤문드">
-<meta name="author" content="해들리 위컴">
+<meta name="author" content="개럿 그롤문드" />
+<meta name="author" content="해들리 위컴" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tibble.html">
-<link rel="next" href="tidy-data.html">
+<link rel="prev" href="tibble.html"/>
+<link rel="next" href="tidy-data.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,47 +48,81 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
-<script src="libs/str_view-binding-1.3.1/str_view.js"></script>
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="r4ds.css" type="text/css" />
@@ -111,165 +145,233 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="part"><span><b>I 데이터 길들이기</b></span></li>
 <li class="chapter" data-level="1" data-path="wrangle-intro.html"><a href="wrangle-intro.html"><i class="fa fa-check"></i><b>1</b> 소개</a></li>
 <li class="chapter" data-level="2" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>2</b> 티블</a><ul>
-<li class="chapter" data-level="2.1" data-path="tibble.html"><a href="tibble.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="tibble.html"><a href="tibble.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="2.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>2.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>2.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>2.2</b> tibble 생성하기</a></li>
 <li class="chapter" data-level="2.3" data-path="tibble.html"><a href="tibble.html#tibble-vs.data.frame"><i class="fa fa-check"></i><b>2.3</b> Tibble vs. data.frame</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="tibble.html"><a href="tibble.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 화면출력</a></li>
-<li class="chapter" data-level="2.3.2" data-path="tibble.html"><a href="tibble.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 서브셋하기</a></li>
+<li class="chapter" data-level="2.3.1" data-path="tibble.html"><a href="tibble.html#화면출력"><i class="fa fa-check"></i><b>2.3.1</b> 화면출력</a></li>
+<li class="chapter" data-level="2.3.2" data-path="tibble.html"><a href="tibble.html#서브셋하기"><i class="fa fa-check"></i><b>2.3.2</b> 서브셋하기</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>2.4</b> 이전 코드와 상호작용</a></li>
-<li class="chapter" data-level="2.5" data-path="tibble.html"><a href="tibble.html#section-2.5"><i class="fa fa-check"></i><b>2.5</b> 연습문제</a></li>
+<li class="chapter" data-level="2.4" data-path="tibble.html"><a href="tibble.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>2.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="2.5" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>2.5</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>3</b> 데이터 불러오기</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-import.html"><a href="data-import.html#-1"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="data-import.html"><a href="data-import.html#-1"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="3.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#section-3.2"><i class="fa fa-check"></i><b>3.2</b> 시작하기</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#-r-"><i class="fa fa-check"></i><b>3.2.1</b> 베이스 R과 비교</a></li>
-<li class="chapter" data-level="3.2.2" data-path="data-import.html"><a href="data-import.html#-1"><i class="fa fa-check"></i><b>3.2.2</b> 연습문제</a></li>
+<li class="chapter" data-level="3.2" data-path="data-import.html"><a href="data-import.html#시작하기"><i class="fa fa-check"></i><b>3.2</b> 시작하기</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-import.html"><a href="data-import.html#베이스-r과-비교"><i class="fa fa-check"></i><b>3.2.1</b> 베이스 R과 비교</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>3.2.2</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.3</b> 벡터 파싱하기</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="data-import.html"><a href="data-import.html#section-3.3.1"><i class="fa fa-check"></i><b>3.3.1</b> 숫자</a></li>
+<li class="chapter" data-level="3.3" data-path="data-import.html"><a href="data-import.html#벡터-파싱하기"><i class="fa fa-check"></i><b>3.3</b> 벡터 파싱하기</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-import.html"><a href="data-import.html#숫자"><i class="fa fa-check"></i><b>3.3.1</b> 숫자</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>3.3.2</b> 문자열</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>3.3.3</b> 팩터형</a></li>
 <li class="chapter" data-level="3.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>3.3.4</b> 데이트형, 데이트-타임형, 타임형</a></li>
-<li class="chapter" data-level="3.3.5" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>3.3.5</b> 연습문제</a></li>
+<li class="chapter" data-level="3.3.5" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>3.3.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4</b> 파일 파싱하기</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="data-import.html"><a href="data-import.html#section-3.4.1"><i class="fa fa-check"></i><b>3.4.1</b> 전략</a></li>
-<li class="chapter" data-level="3.4.2" data-path="data-import.html"><a href="data-import.html#section-3.4.2"><i class="fa fa-check"></i><b>3.4.2</b> 문제점</a></li>
-<li class="chapter" data-level="3.4.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.4.3</b> 기타 전략</a></li>
+<li class="chapter" data-level="3.4" data-path="data-import.html"><a href="data-import.html#파일-파싱하기"><i class="fa fa-check"></i><b>3.4</b> 파일 파싱하기</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="data-import.html"><a href="data-import.html#전략"><i class="fa fa-check"></i><b>3.4.1</b> 전략</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data-import.html"><a href="data-import.html#문제점"><i class="fa fa-check"></i><b>3.4.2</b> 문제점</a></li>
+<li class="chapter" data-level="3.4.3" data-path="data-import.html"><a href="data-import.html#기타-전략"><i class="fa fa-check"></i><b>3.4.3</b> 기타 전략</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>3.5</b> 파일에 쓰기</a></li>
-<li class="chapter" data-level="3.6" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>3.6</b> 기타 데이터 유형</a></li>
+<li class="chapter" data-level="3.5" data-path="data-import.html"><a href="data-import.html#파일에-쓰기"><i class="fa fa-check"></i><b>3.5</b> 파일에 쓰기</a></li>
+<li class="chapter" data-level="3.6" data-path="data-import.html"><a href="data-import.html#기타-데이터-유형"><i class="fa fa-check"></i><b>3.6</b> 기타 데이터 유형</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>4</b> 타이디 데이터</a><ul>
-<li class="chapter" data-level="4.1" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>4.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="data-import.html"><a href="data-import.html#-2"><i class="fa fa-check"></i><b>4.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="4.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>4.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>4.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data"><i class="fa fa-check"></i><b>4.2</b> Tidy Data</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="tidy-data.html"><a href="tidy-data.html#-3"><i class="fa fa-check"></i><b>4.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="4.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>4.2</b> Tidy Data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>4.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#gather--spread"><i class="fa fa-check"></i><b>4.3</b> gather 와 spread</a><ul>
+<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#gather-와-spread"><i class="fa fa-check"></i><b>4.3</b> gather 와 spread</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>4.3.1</b> Gather</a></li>
 <li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>4.3.2</b> Spread</a></li>
-<li class="chapter" data-level="4.3.3" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>4.3.3</b> 연습문제</a></li>
+<li class="chapter" data-level="4.3.3" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>4.3.3</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="tidy-data.html"><a href="tidy-data.html#separate--unite"><i class="fa fa-check"></i><b>4.4</b> separate 과 unite</a><ul>
+<li class="chapter" data-level="4.4" data-path="tidy-data.html"><a href="tidy-data.html#separate-과-unite"><i class="fa fa-check"></i><b>4.4</b> separate 과 unite</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="tidy-data.html"><a href="tidy-data.html#separate"><i class="fa fa-check"></i><b>4.4.1</b> separate</a></li>
 <li class="chapter" data-level="4.4.2" data-path="tidy-data.html"><a href="tidy-data.html#unite"><i class="fa fa-check"></i><b>4.4.2</b> unite</a></li>
-<li class="chapter" data-level="4.4.3" data-path="tidy-data.html"><a href="tidy-data.html#-5"><i class="fa fa-check"></i><b>4.4.3</b> 연습문제</a></li>
+<li class="chapter" data-level="4.4.3" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-2"><i class="fa fa-check"></i><b>4.4.3</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="tidy-data.html"><a href="tidy-data.html#section-4.5"><i class="fa fa-check"></i><b>4.5</b> 결측값</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="tidy-data.html"><a href="tidy-data.html#-6"><i class="fa fa-check"></i><b>4.5.1</b> 연습문제</a></li>
+<li class="chapter" data-level="4.5" data-path="tidy-data.html"><a href="tidy-data.html#결측값"><i class="fa fa-check"></i><b>4.5</b> 결측값</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-3"><i class="fa fa-check"></i><b>4.5.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>4.6</b> 사례 연구</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="tidy-data.html"><a href="tidy-data.html#-7"><i class="fa fa-check"></i><b>4.6.1</b> 연습문제</a></li>
+<li class="chapter" data-level="4.6" data-path="tidy-data.html"><a href="tidy-data.html#사례-연구"><i class="fa fa-check"></i><b>4.6</b> 사례 연구</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-4"><i class="fa fa-check"></i><b>4.6.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>4.7</b> 타이디하지 않은 데이터</a></li>
+<li class="chapter" data-level="4.7" data-path="tidy-data.html"><a href="tidy-data.html#타이디하지-않은-데이터"><i class="fa fa-check"></i><b>4.7</b> 타이디하지 않은 데이터</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>5</b> 관계형 데이터</a><ul>
-<li class="chapter" data-level="5.1" data-path="tidy-data.html"><a href="tidy-data.html#-3"><i class="fa fa-check"></i><b>5.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-3"><i class="fa fa-check"></i><b>5.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="5.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>5.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>5.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>5.2</b> nycflights13</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="relational-data.html"><a href="relational-data.html#-8"><i class="fa fa-check"></i><b>5.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="5.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>5.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="relational-data.html"><a href="relational-data.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 키</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="relational-data.html"><a href="relational-data.html#-9"><i class="fa fa-check"></i><b>5.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="5.3" data-path="relational-data.html"><a href="relational-data.html#키"><i class="fa fa-check"></i><b>5.3</b> 키</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>5.3.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>5.4</b> 뮤테이팅 조인</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>5.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="5.4.1" data-path="relational-data.html"><a href="relational-data.html#조인-이해하기"><i class="fa fa-check"></i><b>5.4.1</b> 조인 이해하기</a></li>
 <li class="chapter" data-level="5.4.2" data-path="relational-data.html"><a href="relational-data.html#inner-join"><i class="fa fa-check"></i><b>5.4.2</b> 내부 조인</a></li>
 <li class="chapter" data-level="5.4.3" data-path="relational-data.html"><a href="relational-data.html#outer-join"><i class="fa fa-check"></i><b>5.4.3</b> 외부 조인</a></li>
 <li class="chapter" data-level="5.4.4" data-path="relational-data.html"><a href="relational-data.html#join-matches"><i class="fa fa-check"></i><b>5.4.4</b> 중복키</a></li>
 <li class="chapter" data-level="5.4.5" data-path="relational-data.html"><a href="relational-data.html#join-by"><i class="fa fa-check"></i><b>5.4.5</b> 키열 정의하기</a></li>
-<li class="chapter" data-level="5.4.6" data-path="relational-data.html"><a href="relational-data.html#-10"><i class="fa fa-check"></i><b>5.4.6</b> 연습문제</a></li>
-<li class="chapter" data-level="5.4.7" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>5.4.7</b> 기타 구현</a></li>
+<li class="chapter" data-level="5.4.6" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-2"><i class="fa fa-check"></i><b>5.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="5.4.7" data-path="relational-data.html"><a href="relational-data.html#기타-구현"><i class="fa fa-check"></i><b>5.4.7</b> 기타 구현</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>5.5</b> 필터링 조인</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="relational-data.html"><a href="relational-data.html#-11"><i class="fa fa-check"></i><b>5.5.1</b> 연습문제</a></li>
+<li class="chapter" data-level="5.5.1" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-3"><i class="fa fa-check"></i><b>5.5.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>5.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="5.6" data-path="relational-data.html"><a href="relational-data.html#조인-문제"><i class="fa fa-check"></i><b>5.6</b> 조인 문제</a></li>
 <li class="chapter" data-level="5.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>5.7</b> 집합 연산</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>6</b> 문자열</a><ul>
-<li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-4"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="6.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>6.2</b> 문자열 기초</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.1</b> 문자열 길이</a></li>
-<li class="chapter" data-level="6.2.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.2</b> 문자열 결합</a></li>
-<li class="chapter" data-level="6.2.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.2.3</b> 문자열 서브셋하기</a></li>
-<li class="chapter" data-level="6.2.4" data-path="strings.html"><a href="strings.html#section-6.2.4"><i class="fa fa-check"></i><b>6.2.4</b> 로캘</a></li>
-<li class="chapter" data-level="6.2.5" data-path="strings.html"><a href="strings.html#-12"><i class="fa fa-check"></i><b>6.2.5</b> 연습문제</a></li>
+<li class="chapter" data-level="6.2.1" data-path="strings.html"><a href="strings.html#문자열-길이"><i class="fa fa-check"></i><b>6.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="6.2.2" data-path="strings.html"><a href="strings.html#문자열-결합"><i class="fa fa-check"></i><b>6.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="6.2.3" data-path="strings.html"><a href="strings.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>6.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="6.2.4" data-path="strings.html"><a href="strings.html#로캘"><i class="fa fa-check"></i><b>6.2.4</b> 로캘</a></li>
+<li class="chapter" data-level="6.2.5" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>6.2.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="strings.html"><a href="strings.html#---"><i class="fa fa-check"></i><b>6.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.3.1</b> 기초 매칭</a></li>
-<li class="chapter" data-level="6.3.2" data-path="strings.html"><a href="strings.html#section-6.3.2"><i class="fa fa-check"></i><b>6.3.2</b> 앵커</a></li>
-<li class="chapter" data-level="6.3.3" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>6.3.3</b> 문자 클래스와 대체구문</a></li>
-<li class="chapter" data-level="6.3.4" data-path="strings.html"><a href="strings.html#section-6.3.4"><i class="fa fa-check"></i><b>6.3.4</b> 반복</a></li>
-<li class="chapter" data-level="6.3.5" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.3.5</b> 그룹화와 역참조</a></li>
+<li class="chapter" data-level="6.3" data-path="strings.html"><a href="strings.html#정규표현식을-이용한-패턴-매칭"><i class="fa fa-check"></i><b>6.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="strings.html"><a href="strings.html#기초-매칭"><i class="fa fa-check"></i><b>6.3.1</b> 기초 매칭</a></li>
+<li class="chapter" data-level="6.3.2" data-path="strings.html"><a href="strings.html#앵커"><i class="fa fa-check"></i><b>6.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="6.3.3" data-path="strings.html"><a href="strings.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>6.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="6.3.4" data-path="strings.html"><a href="strings.html#반복"><i class="fa fa-check"></i><b>6.3.4</b> 반복</a></li>
+<li class="chapter" data-level="6.3.5" data-path="strings.html"><a href="strings.html#그룹화와-역참조"><i class="fa fa-check"></i><b>6.3.5</b> 그룹화와 역참조</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="strings.html"><a href="strings.html#section-6.4"><i class="fa fa-check"></i><b>6.4</b> 도구</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.1</b> 매칭 탐지</a></li>
-<li class="chapter" data-level="6.4.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.2</b> 매칭 추출</a></li>
-<li class="chapter" data-level="6.4.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.3</b> 그룹화 매칭</a></li>
-<li class="chapter" data-level="6.4.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="6.4" data-path="strings.html"><a href="strings.html#도구"><i class="fa fa-check"></i><b>6.4</b> 도구</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="strings.html"><a href="strings.html#매칭-탐지"><i class="fa fa-check"></i><b>6.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="6.4.2" data-path="strings.html"><a href="strings.html#매칭-추출"><i class="fa fa-check"></i><b>6.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="6.4.3" data-path="strings.html"><a href="strings.html#그룹화-매칭"><i class="fa fa-check"></i><b>6.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="6.4.4" data-path="strings.html"><a href="strings.html#매칭-치환"><i class="fa fa-check"></i><b>6.4.4</b> 매칭 치환</a></li>
 <li class="chapter" data-level="6.4.5" data-path="strings.html"><a href="strings.html#splitting"><i class="fa fa-check"></i><b>6.4.5</b> Splitting</a></li>
-<li class="chapter" data-level="6.4.6" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>6.4.6</b> 매치 찾기</a></li>
+<li class="chapter" data-level="6.4.6" data-path="strings.html"><a href="strings.html#매치-찾기"><i class="fa fa-check"></i><b>6.4.6</b> 매치 찾기</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>6.5</b> 기타 패턴 유형</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="strings.html"><a href="strings.html#-23"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
+<li class="chapter" data-level="6.5" data-path="strings.html"><a href="strings.html#기타-패턴-유형"><i class="fa fa-check"></i><b>6.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="strings.html"><a href="strings.html#연습문제-11"><i class="fa fa-check"></i><b>6.5.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>6.6</b> 정규표현식의 기타 용도</a></li>
+<li class="chapter" data-level="6.6" data-path="strings.html"><a href="strings.html#정규표현식의-기타-용도"><i class="fa fa-check"></i><b>6.6</b> 정규표현식의 기타 용도</a></li>
 <li class="chapter" data-level="6.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>6.7</b> stringi</a><ul>
-<li class="chapter" data-level="6.7.1" data-path="strings.html"><a href="strings.html#-24"><i class="fa fa-check"></i><b>6.7.1</b> 연습문제</a></li>
+<li class="chapter" data-level="6.7.1" data-path="strings.html"><a href="strings.html#연습문제-12"><i class="fa fa-check"></i><b>6.7.1</b> 연습문제</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> 팩터형</a><ul>
-<li class="chapter" data-level="7.1" data-path="tidy-data.html"><a href="tidy-data.html#-5"><i class="fa fa-check"></i><b>7.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-5"><i class="fa fa-check"></i><b>7.1.1</b> 준비하기</a></li>
-<li class="chapter" data-level="7.1.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>7.1.2</b> 더 배우기</a></li>
+<li class="chapter" data-level="7.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>7.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>7.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="7.1.2" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>7.1.2</b> 더 배우기</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>7.2</b> 팩터형 생성하기</a></li>
+<li class="chapter" data-level="7.2" data-path="factors.html"><a href="factors.html#팩터형-생성하기"><i class="fa fa-check"></i><b>7.2</b> 팩터형 생성하기</a></li>
 <li class="chapter" data-level="7.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>7.3</b> General Social Survey</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="factors.html"><a href="factors.html#-25"><i class="fa fa-check"></i><b>7.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="7.3.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>7.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>7.4</b> 팩터 순서 수정하기</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="factors.html"><a href="factors.html#-26"><i class="fa fa-check"></i><b>7.4.1</b> 연습문제</a></li>
+<li class="chapter" data-level="7.4" data-path="factors.html"><a href="factors.html#팩터-순서-수정하기"><i class="fa fa-check"></i><b>7.4</b> 팩터 순서 수정하기</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>7.4.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>7.5</b> 팩터 레벨 수정하기</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="factors.html"><a href="factors.html#-27"><i class="fa fa-check"></i><b>7.5.1</b> 연습문제</a></li>
+<li class="chapter" data-level="7.5" data-path="factors.html"><a href="factors.html#팩터-레벨-수정하기"><i class="fa fa-check"></i><b>7.5</b> 팩터 레벨 수정하기</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-2"><i class="fa fa-check"></i><b>7.5.1</b> 연습문제</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>8</b> 날짜와 시간</a><ul>
-<li class="chapter" data-level="8.1" data-path="tidy-data.html"><a href="tidy-data.html#-6"><i class="fa fa-check"></i><b>8.1</b> 들어가기</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="tidy-data.html"><a href="tidy-data.html#-6"><i class="fa fa-check"></i><b>8.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="8.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>8.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>8.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.2</b> 날짜/시간 생성하기</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.2.1</b> 문자열에서 생성</a></li>
-<li class="chapter" data-level="8.2.2" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>8.2.2</b> 개별 구성요소에서 생성</a></li>
-<li class="chapter" data-level="8.2.3" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>8.2.3</b> 기타 유형에서 생성</a></li>
-<li class="chapter" data-level="8.2.4" data-path="dates-and-times.html"><a href="dates-and-times.html#-28"><i class="fa fa-check"></i><b>8.2.4</b> 연습문제</a></li>
+<li class="chapter" data-level="8.2" data-path="dates-and-times.html"><a href="dates-and-times.html#날짜시간-생성하기"><i class="fa fa-check"></i><b>8.2</b> 날짜/시간 생성하기</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="dates-and-times.html"><a href="dates-and-times.html#문자열에서-생성"><i class="fa fa-check"></i><b>8.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="8.2.2" data-path="dates-and-times.html"><a href="dates-and-times.html#개별-구성요소에서-생성"><i class="fa fa-check"></i><b>8.2.2</b> 개별 구성요소에서 생성</a></li>
+<li class="chapter" data-level="8.2.3" data-path="dates-and-times.html"><a href="dates-and-times.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>8.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="8.2.4" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>8.2.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="tibble.html"><a href="tibble.html#--"><i class="fa fa-check"></i><b>8.3</b> 데이트-타임형 구성요소</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.3.1</b> 구성요소 가져오기</a></li>
-<li class="chapter" data-level="8.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.3.2"><i class="fa fa-check"></i><b>8.3.2</b> 반올림</a></li>
-<li class="chapter" data-level="8.3.3" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.3.3</b> 구성요소 설정</a></li>
-<li class="chapter" data-level="8.3.4" data-path="dates-and-times.html"><a href="dates-and-times.html#-29"><i class="fa fa-check"></i><b>8.3.4</b> 연습문제</a></li>
+<li class="chapter" data-level="8.3" data-path="dates-and-times.html"><a href="dates-and-times.html#데이트-타임형-구성요소"><i class="fa fa-check"></i><b>8.3</b> 데이트-타임형 구성요소</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="dates-and-times.html"><a href="dates-and-times.html#구성요소-가져오기"><i class="fa fa-check"></i><b>8.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="8.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#반올림"><i class="fa fa-check"></i><b>8.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="8.3.3" data-path="dates-and-times.html"><a href="dates-and-times.html#구성요소-설정"><i class="fa fa-check"></i><b>8.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="8.3.4" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>8.3.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="data-import.html"><a href="data-import.html#-"><i class="fa fa-check"></i><b>8.4</b> 시간 범위</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.1"><i class="fa fa-check"></i><b>8.4.1</b> 듀레이션형</a></li>
-<li class="chapter" data-level="8.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.2"><i class="fa fa-check"></i><b>8.4.2</b> 피리어드형</a></li>
-<li class="chapter" data-level="8.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.3"><i class="fa fa-check"></i><b>8.4.3</b> 인터벌형</a></li>
-<li class="chapter" data-level="8.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#section-8.4.4"><i class="fa fa-check"></i><b>8.4.4</b> 요약</a></li>
-<li class="chapter" data-level="8.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#-30"><i class="fa fa-check"></i><b>8.4.5</b> 연습문제</a></li>
+<li class="chapter" data-level="8.4" data-path="dates-and-times.html"><a href="dates-and-times.html#시간-범위"><i class="fa fa-check"></i><b>8.4</b> 시간 범위</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#듀레이션형"><i class="fa fa-check"></i><b>8.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#피리어드형"><i class="fa fa-check"></i><b>8.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="8.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#인터벌형"><i class="fa fa-check"></i><b>8.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="8.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#요약"><i class="fa fa-check"></i><b>8.4.4</b> 요약</a></li>
+<li class="chapter" data-level="8.4.5" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-2"><i class="fa fa-check"></i><b>8.4.5</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
+<li class="part"><span><b>II 의사소통하기</b></span></li>
+<li class="chapter" data-level="9" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a></li>
+<li class="chapter" data-level="10" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>10</b> R 마크다운</a><ul>
+<li class="chapter" data-level="10.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>10.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>10.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>10.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>10.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>10.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>10.4.1</b> 청크 이름</a></li>
+<li class="chapter" data-level="10.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>10.4.2</b> 청크 옵션</a></li>
+<li class="chapter" data-level="10.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>10.4.3</b> 표</a></li>
+<li class="chapter" data-level="10.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>10.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="10.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>10.4.5</b> 전역 옵션</a></li>
+<li class="chapter" data-level="10.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>10.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="10.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>10.4.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>10.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="10.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>10.6</b> YAML header</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>10.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="10.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>10.6.2</b> Bibliographies and Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>10.7</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>11</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="11.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>11.2</b> Label</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>11.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>11.3</b> Annotations</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>11.4</b> Scales</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>11.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="11.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>11.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="11.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>11.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="11.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>11.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>11.5</b> Zooming</a></li>
+<li class="chapter" data-level="11.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>11.6</b> Themes</a></li>
+<li class="chapter" data-level="11.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>11.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>11.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="11.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>11.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>11.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>12</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="12.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a></li>
+<li class="chapter" data-level="12.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>12.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="12.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>12.3</b> Document</a></li>
+<li class="chapter" data-level="12.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>12.4</b> Notebook</a></li>
+<li class="chapter" data-level="12.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>12.5</b> Presentation</a></li>
+<li class="chapter" data-level="12.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>12.6</b> Dashboard</a></li>
+<li class="chapter" data-level="12.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>12.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>12.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="12.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>12.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>12.8</b> Website</a></li>
+<li class="chapter" data-level="12.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>12.9</b> Other formats</a></li>
+<li class="chapter" data-level="12.10" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>12.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>13</b> R 마크다운 워크플로</a></li>
 </ul>
 
       </nav>
@@ -289,73 +391,91 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="data-import" class="section level1">
 <h1><span class="header-section-number">3</span> 데이터 불러오기</h1>
-<div id="-1" class="section level2">
+<div id="들어가기" class="section level2">
 <h2><span class="header-section-number">3.1</span> 들어가기</h2>
-<p>R 패키지가 제공하는 데이터를 이용하여 데이터 과학 도구를 익히는 것은 좋은 방법이다. 그렇지만 어느 시점에 이르러서는 학습을 중단하고 자신의 데이터로 작업해보고 싶어질 것이다. 이 장에서는 일반 텍스트 직사각형 파일을 R로 불러오는 방법을 배운다. 데이터 불러오기 맛보기만 할 뿐이지만, 여기에서 배우는 많은 원칙을 다른 형태의 데이터에도 적용할 수 있다. 이 장의 마무리에서 다른 유형의 데이터에 유용한 패키지 몇 가지를 소개한다.</p>
-<div id="-1" class="section level3">
+<p>R 패키지가 제공하는 데이터를 이용하여 데이터 과학 도구를 익히는 것은 좋은
+방법이다. 그렇지만 어느 시점에 이르러서는 학습을 중단하고 자신의 데이터로
+작업해보고 싶어질 것이다. 이 장에서는 일반 텍스트 직사각형 파일을 R로 불러오는
+방법을 배운다. 데이터 불러오기 맛보기만 할 뿐이지만, 여기에서 배우는
+많은 원칙을 다른 형태의 데이터에도 적용할 수 있다. 이 장의 마무리에서 다른
+유형의 데이터에 유용한 패키지 몇 가지를 소개한다.</p>
+<div id="준비하기" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> 준비하기</h3>
 <p>이 장에서는 tidyverse 의 핵심 구성요소인 <strong>readr</strong> 패키지를 사용하여 플랫 파일을 불러오는 방법을 학습한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 </div>
 </div>
-<div id="section-3.2" class="section level2">
+<div id="시작하기" class="section level2">
 <h2><span class="header-section-number">3.2</span> 시작하기</h2>
 <p>readr 함수 대부분은 플랫 파일을 데이터프레임으로 바꾸는 것과 연관이 있다.</p>
 <ul>
 <li><p><code>read_csv()</code> 는 쉼표로 구분된 파일을 읽고, <code>read_tsv()</code> 는 탭-구분 파일을 읽는다. <code>read_delim()</code> 은 임의의 구분자로 된 파일을 읽는다.</p></li>
-<li><p><code>read_fwf()</code> 는 고정 너비 파일을 읽는다. 필드 너비는 <code>fwf_widths()</code> 를 이용하여, 필드 위치는 <code>fwf_positions()</code> 를 이용하여 지정할 수 있다. <code>read_table()</code> 은 고정 너비 파일의 일반적 변형 형태인 열이 공백으로 구분된 파일을 읽는다.</p></li>
-<li><p><code>read_log()</code> 는 Apache 스타일의 로그 파일을 읽는다. (하지만 <code>read_log()</code> 기반 구축되어 더 많은 유용한 도구를 제공하는 <a href="https://github.com/Ironholds/webreadr">webreadr</a> 도 확인하라.)</p></li>
+<li><p><code>read_fwf()</code> 는 고정 너비 파일을 읽는다. 필드 너비는 <code>fwf_widths()</code> 를 이용하여,
+필드 위치는 <code>fwf_positions()</code> 를 이용하여 지정할 수 있다. <code>read_table()</code> 은 고정
+너비 파일의 일반적 변형 형태인 열이 공백으로 구분된 파일을 읽는다.</p></li>
+<li><p><code>read_log()</code> 는 Apache 스타일의 로그 파일을 읽는다. (하지만 <code>read_log()</code> 기반
+구축되어 더 많은 유용한 도구를 제공하는 <a href="https://github.com/Ironholds/webreadr">webreadr</a> 도 확인하라.)</p></li>
 </ul>
-<p>이 함수들은 문법이 모두 비슷하다. 하나를 익히면 나머지는 쉽게 사용할 수 있다. 이 장의 나머지 부분에서는 <code>read_csv()</code> 에 초점을 맞출 것이다. CSV 파일은 가장 일반적인 형태의 데이터 저장 형태일 뿐 아니라 <code>read_csv()</code> 를 이해하면 readr 의 다른 모든 함수에 쉽게 적용할 수 있다.</p>
+<p>이 함수들은 문법이 모두 비슷하다. 하나를 익히면 나머지는 쉽게 사용할 수 있다.
+이 장의 나머지 부분에서는 <code>read_csv()</code> 에 초점을 맞출 것이다. CSV 파일은 가장
+일반적인 형태의 데이터 저장 형태일 뿐 아니라 <code>read_csv()</code> 를 이해하면 readr 의
+다른 모든 함수에 쉽게 적용할 수 있다.</p>
 <p><code>read_csv()</code> 의 첫 번째 인수가 가장 중요한데 바로 읽으려고 하는 파일의 경로다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/heights.csv&quot;</span>)
-<span class="co">#&gt; Parsed with column specification:</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   earn = col_double(),</span>
-<span class="co">#&gt;   height = col_double(),</span>
-<span class="co">#&gt;   sex = col_character(),</span>
-<span class="co">#&gt;   ed = col_double(),</span>
-<span class="co">#&gt;   age = col_double(),</span>
-<span class="co">#&gt;   race = col_character()</span>
-<span class="co">#&gt; )</span></code></pre></div>
-<p><code>read_csv()</code> 를 실행하면 각 열의 이름과 유형을 제공하는 열 사양이 화면 출력된다. 이는 readr 에서 중요한 부분이다. <a href="data-import.html#-">파일 파싱하기</a>에서 다시 살펴보겠다.</p>
-<p>인라인 CSV 파일을 넣을 수도 있다. 이것은 readr 로 실험해볼 때와 다른 사람들과 공유할 재현 가능한 예제를 만들 때 유용하다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_csv</span>(<span class="st">&quot;a,b,c</span>
-<span class="st">1,2,3</span>
-<span class="st">4,5,6&quot;</span>)
-<span class="co">#&gt; # A tibble: 2 x 3</span>
-<span class="co">#&gt;       a     b     c</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     1     2     3</span>
-<span class="co">#&gt; 2     4     5     6</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">heights &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/heights.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt;   earn = col_double(),</span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt;   height = col_double(),</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt;   sex = col_character(),</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt;   ed = col_double(),</span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt;   age = col_double(),</span></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt;   race = col_character()</span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt; )</span></a></code></pre></div>
+<p><code>read_csv()</code> 를 실행하면 각 열의 이름과 유형을 제공하는 열 사양이 화면 출력된다. 이는 readr 에서 중요한 부분이다. <a href="data-import.html#파일-파싱하기">파일 파싱하기</a>에서 다시 살펴보겠다.</p>
+<p>인라인 CSV 파일을 넣을 수도 있다. 이것은 readr 로 실험해볼 때와 다른 사람들과
+공유할 재현 가능한 예제를 만들 때 유용하다.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">read_csv</span>(<span class="st">&quot;a,b,c</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">1,2,3</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">4,5,6&quot;</span>)</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">#&gt; # A tibble: 2 x 3</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt;       a     b     c</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt; 1     1     2     3</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt; 2     4     5     6</span></a></code></pre></div>
 <p>두 경우 모두 <code>read_csv()</code> 는 데이터의 첫 번째 줄을 열 이름으로 사용한다. 이는 매우 일반적인 규칙이다. 이 동작을 조정해야 하는 경우는 두 가지이다.</p>
 <ol style="list-style-type: decimal">
-<li><p>파일 앞 부분에 메타 데이터 몇 줄이 있는 경우가 있다. <code>skip = n</code> 을 사용하여 첫 <code>n</code> 줄을 건너 뛸 수 있다. 또는 <code>comment = &quot;#&quot;</code> 을 사용하여 <code>#</code> 으로 시작하는 모든 줄을 무시할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_csv</span>(<span class="st">&quot;메타 데이터 첫번째 행</span>
-<span class="st">  메타 데이터 두번째 행</span>
-<span class="st">  x,y,z</span>
-<span class="st">  1,2,3&quot;</span>, <span class="dt">skip =</span> <span class="dv">2</span>)
-<span class="co">#&gt; # A tibble: 1 x 3</span>
-<span class="co">#&gt;       x     y     z</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     1     2     3</span>
-
-<span class="kw">read_csv</span>(<span class="st">&quot;# 건너뛰고 싶은 주석</span>
-<span class="st">  x,y,z</span>
-<span class="st">  1,2,3&quot;</span>, <span class="dt">comment =</span> <span class="st">&quot;#&quot;</span>)
-<span class="co">#&gt; # A tibble: 1 x 3</span>
-<span class="co">#&gt;       x     y     z</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     1     2     3</span></code></pre></div></li>
-<li><p>데이터에 열 이름이 없을 수 있다. <code>col_names = FALSE</code> 를 사용하면 <code>read_csv()</code> 가 첫 행을 헤드로 취급하지 않고 대신 X1에서 Xn까지 순차적으로 이름을 붙인다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_csv</span>(<span class="st">&quot;1,2,3</span><span class="ch">\n</span><span class="st">4,5,6&quot;</span>, <span class="dt">col_names =</span> <span class="ot">FALSE</span>)
-<span class="co">#&gt; # A tibble: 2 x 3</span>
-<span class="co">#&gt;      X1    X2    X3</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     1     2     3</span>
-<span class="co">#&gt; 2     4     5     6</span></code></pre></div></li>
+<li><p>파일 앞 부분에 메타 데이터 몇 줄이 있는 경우가 있다. <code>skip = n</code> 을 사용하여
+첫 <code>n</code> 줄을 건너 뛸 수 있다. 또는 <code>comment = &quot;#&quot;</code> 을 사용하여 <code>#</code> 으로 시작하는
+모든 줄을 무시할 수 있다.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">read_csv</span>(<span class="st">&quot;메타 데이터 첫번째 행</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  메타 데이터 두번째 행</span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  x,y,z</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="st">  1,2,3&quot;</span>, <span class="dt">skip =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="co">#&gt; # A tibble: 1 x 3</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">#&gt;       x     y     z</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="co">#&gt; 1     1     2     3</span></a>
+<a class="sourceLine" id="cb17-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb17-10" data-line-number="10"><span class="kw">read_csv</span>(<span class="st">&quot;# 건너뛰고 싶은 주석</span></a>
+<a class="sourceLine" id="cb17-11" data-line-number="11"><span class="st">  x,y,z</span></a>
+<a class="sourceLine" id="cb17-12" data-line-number="12"><span class="st">  1,2,3&quot;</span>, <span class="dt">comment =</span> <span class="st">&quot;#&quot;</span>)</a>
+<a class="sourceLine" id="cb17-13" data-line-number="13"><span class="co">#&gt; # A tibble: 1 x 3</span></a>
+<a class="sourceLine" id="cb17-14" data-line-number="14"><span class="co">#&gt;       x     y     z</span></a>
+<a class="sourceLine" id="cb17-15" data-line-number="15"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb17-16" data-line-number="16"><span class="co">#&gt; 1     1     2     3</span></a></code></pre></div></li>
+<li><p>데이터에 열 이름이 없을 수 있다. <code>col_names = FALSE</code> 를 사용하면 <code>read_csv()</code> 가
+첫 행을 헤드로 취급하지 않고 대신 X1에서 Xn까지 순차적으로 이름을 붙인다.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">read_csv</span>(<span class="st">&quot;1,2,3</span><span class="ch">\n</span><span class="st">4,5,6&quot;</span>, <span class="dt">col_names =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 3</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co">#&gt;      X1    X2    X3</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co">#&gt; 1     1     2     3</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="co">#&gt; 2     4     5     6</span></a></code></pre></div></li>
 </ol>
-<p>(<code>&quot;\n&quot;</code> 은 새 줄을 추가하는 편리한 단축키이다. <a href="strings.html#strings-basics">문자열 기초</a>에서 이 단축어와 문자열 이스케이프의 다른 유형에 대해 자세히 배운다.) 다른 방법으로는 <code>col_names</code> 에 열 이름으로 사용할 문자형 벡터를 전달할 수도 있다.</p>
+<p>(<code>&quot;\n&quot;</code> 은 새 줄을 추가하는 편리한 단축키이다. <a href="strings.html#strings-basics">문자열 기초</a>에서 이
+단축어와 문자열 이스케이프의 다른 유형에 대해 자세히 배운다.)
+다른 방법으로는 <code>col_names</code> 에 열 이름으로 사용할 문자형 벡터를 전달할
+수도 있다.</p>
 <pre><code>```r
 read_csv(&quot;1,2,3\n4,5,6&quot;, col_names = c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;))
 #&gt; # A tibble: 2 x 3
@@ -365,187 +485,247 @@ read_csv(&quot;1,2,3\n4,5,6&quot;, col_names = c(&quot;x&quot;, &quot;y&quot;, &
 #&gt; 2     4     5     6
 ```</code></pre>
 <p>일반적으로 조정이 필요한 또 다른 옵션은 <code>na</code> 이다. 파일에서 결측값을 나타내는데 사용되는 값(들)을 지정한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_csv</span>(<span class="st">&quot;a,b,c</span><span class="ch">\n</span><span class="st">1,2,.&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>)
-<span class="co">#&gt; # A tibble: 1 x 3</span>
-<span class="co">#&gt;       a     b c    </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;</span>
-<span class="co">#&gt; 1     1     2 NA</span></code></pre></div>
-<p>여기까지 배운 것들로 실제로 마주하게 될 CSV 파일의 75% 정도를 불러올 수 있다. 또한 탭으로 구분된 파일을 <code>read_tsv()</code> 를 사용하여, 혹은 고정간격 파일을 <code>read_fwf()</code> 를 사용하여 불러오는 데도 쉽게 적용할 수 있다. 더 복잡한 파일을 읽으려면 readr 이 각 열을 파싱하여 R 벡터로 바꾸는 방법에 대해 자세히 배워야한다.</p>
-<div id="-r-" class="section level3">
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">read_csv</span>(<span class="st">&quot;a,b,c</span><span class="ch">\n</span><span class="st">1,2,.&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co">#&gt; # A tibble: 1 x 3</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co">#&gt;       a     b c    </span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co">#&gt; 1     1     2 NA</span></a></code></pre></div>
+<p>여기까지 배운 것들로 실제로 마주하게 될 CSV 파일의 75% 정도를 불러올 수
+있다. 또한 탭으로 구분된 파일을 <code>read_tsv()</code> 를 사용하여, 혹은 고정간격 파일을
+<code>read_fwf()</code> 를 사용하여 불러오는 데도 쉽게 적용할 수 있다. 더 복잡한 파일을 읽으려면
+readr 이 각 열을 파싱하여 R 벡터로 바꾸는 방법에 대해 자세히 배워야한다.</p>
+<div id="베이스-r과-비교" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> 베이스 R과 비교</h3>
 <p>R을 이전에 사용한 사람은 우리가 <code>read.csv()</code> 를 사용하지 않는 이유가 궁금할 것이다. 베이스 함수보다 readr 함수가 좋은 이유는 다음과 같다.</p>
 <ul>
-<li><p>일반적으로 베이스 함수보다 훨씬 더(~10배) 빠르다. 오래 걸리는 작업은 진 행 표시줄을 통해 상황을 알 수 있다. raw speed로 작업하려면 <code>data.table::fread()</code> 를 사용해보라. 이 함수는 tidyverse 에 잘 어울리지는 않지만, 훨씬 더 빠를 수 있다.</p></li>
-<li><p>티블을 생성한다. 문자 벡터를 팩터형으로 변환하지도, 행 이름을 사용하거 나 열 이름을 변경하지도 않는다. 베이스 R 함수는 변환, 변경하기 때문에 불 편하다.</p></li>
-<li><p>좀 더 재현 가능하다. 베이스 R 함수는 운영체제 및 환경 변수의 일부 동작을 상속하므로 자신의 컴퓨터에서 작동하는 불러오기 코드가 다른 사람의 컴퓨터에서 작동하지 않을 수 있다.</p></li>
+<li><p>일반적으로 베이스 함수보다 훨씬 더(~10배) 빠르다. 오래 걸리는 작업은 진
+행 표시줄을 통해 상황을 알 수 있다. raw speed로 작업하려면
+<code>data.table::fread()</code> 를 사용해보라. 이 함수는 tidyverse 에 잘 어울리지는 않지만, 훨씬 더 빠를 수 있다.</p></li>
+<li><p>티블을 생성한다. 문자 벡터를 팩터형으로 변환하지도, 행 이름을 사용하거
+나 열 이름을 변경하지도 않는다. 베이스 R 함수는 변환, 변경하기 때문에 불
+편하다.</p></li>
+<li><p>좀 더 재현 가능하다. 베이스 R 함수는 운영체제 및 환경 변수의 일부 동작을
+상속하므로 자신의 컴퓨터에서 작동하는 불러오기 코드가 다른 사람의 컴퓨터에서
+작동하지 않을 수 있다.</p></li>
 </ul>
 </div>
-<div id="-1" class="section level3">
+<div id="연습문제" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p>필드가 “|” 로 분리된 파일을 읽으려면 어떤 함수를 사용하겠는가?</p></li>
 <li><p><code>read_csv()</code> 와 <code>read_tsv()</code> 가 공통으로 가진 인수는 <code>file</code>, <code>skip</code>, <code>comment</code> 외에 또 무엇이 있는가?</p></li>
 <li><p><code>read_fwf()</code> 에서 가장 중요한 인수는 무엇인가?</p></li>
-<li><p>CSV 파일의 문자열에 쉼표가 포함되는 경우가 있다. 그것들이 문제를 일으 키지 않게 하려면 <code>&quot;</code> 혹은 <code>'</code>와 같은 인용 문자로 둘러싸일 필요가 있다. <code>read_csv()</code> 는 인용 문자가 <code>&quot;</code>라고 가정한다. 이를 변경하려면 <code>read_delim()</code> 을 대신 사용하면 된다. 다음 텍스트를 데이터프레임으로 읽으려면 어떤 인수를 설정해야하는가?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&quot;x,y</span><span class="ch">\n</span><span class="st">1,&#39;a,b&#39;&quot;</span></code></pre></div></li>
-<li><p>다음 각 인라인 CSV 파일에 어떤 문제가 있는지 확인하라. 코드를 실행하면 어떻게 되는가?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_csv</span>(<span class="st">&quot;a,b</span><span class="ch">\n</span><span class="st">1,2,3</span><span class="ch">\n</span><span class="st">4,5,6&quot;</span>)
-<span class="kw">read_csv</span>(<span class="st">&quot;a,b,c</span><span class="ch">\n</span><span class="st">1,2</span><span class="ch">\n</span><span class="st">1,2,3,4&quot;</span>)
-<span class="kw">read_csv</span>(<span class="st">&quot;a,b</span><span class="ch">\n\&quot;</span><span class="st">1&quot;</span>)
-<span class="kw">read_csv</span>(<span class="st">&quot;a,b</span><span class="ch">\n</span><span class="st">1,2</span><span class="ch">\n</span><span class="st">a,b&quot;</span>)
-<span class="kw">read_csv</span>(<span class="st">&quot;a;b</span><span class="ch">\n</span><span class="st">1;3&quot;</span>)</code></pre></div></li>
+<li><p>CSV 파일의 문자열에 쉼표가 포함되는 경우가 있다. 그것들이 문제를 일으
+키지 않게 하려면 <code>&quot;</code> 혹은 <code>'</code>와 같은 인용 문자로 둘러싸일 필요가 있다.
+<code>read_csv()</code> 는 인용 문자가 <code>&quot;</code>라고 가정한다. 이를 변경하려면 <code>read_delim()</code> 을 대신
+사용하면 된다. 다음 텍스트를 데이터프레임으로 읽으려면 어떤 인수를 설정해야하는가?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="st">&quot;x,y</span><span class="ch">\n</span><span class="st">1,&#39;a,b&#39;&quot;</span></a></code></pre></div></li>
+<li><p>다음 각 인라인 CSV 파일에 어떤 문제가 있는지 확인하라. 코드를 실행하면
+어떻게 되는가?</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">read_csv</span>(<span class="st">&quot;a,b</span><span class="ch">\n</span><span class="st">1,2,3</span><span class="ch">\n</span><span class="st">4,5,6&quot;</span>)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw">read_csv</span>(<span class="st">&quot;a,b,c</span><span class="ch">\n</span><span class="st">1,2</span><span class="ch">\n</span><span class="st">1,2,3,4&quot;</span>)</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="kw">read_csv</span>(<span class="st">&quot;a,b</span><span class="ch">\n\&quot;</span><span class="st">1&quot;</span>)</a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="kw">read_csv</span>(<span class="st">&quot;a,b</span><span class="ch">\n</span><span class="st">1,2</span><span class="ch">\n</span><span class="st">a,b&quot;</span>)</a>
+<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="kw">read_csv</span>(<span class="st">&quot;a;b</span><span class="ch">\n</span><span class="st">1;3&quot;</span>)</a></code></pre></div></li>
 </ol>
 </div>
 </div>
-<div id="-" class="section level2">
+<div id="벡터-파싱하기" class="section level2">
 <h2><span class="header-section-number">3.3</span> 벡터 파싱하기</h2>
-<p>readr 이 디스크에서 파일을 읽는 방법에 대해 깊이 알아보기 전에, 잠깐 벗어나서 <code>parse_*()</code> 함수에 대해 살펴볼 필요가 있다. 이 함수들은 문자형 벡터를 입력으로 하여 논리형, 정수형 또는 데이트형과 같은 좀 더 특수화된 벡터를 반환한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">parse_logical</span>(<span class="kw">c</span>(<span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;NA&quot;</span>)))
-<span class="co">#&gt;  logi [1:3] TRUE FALSE NA</span>
-<span class="kw">str</span>(<span class="kw">parse_integer</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>)))
-<span class="co">#&gt;  int [1:3] 1 2 3</span>
-<span class="kw">str</span>(<span class="kw">parse_date</span>(<span class="kw">c</span>(<span class="st">&quot;2010-01-01&quot;</span>, <span class="st">&quot;1979-10-14&quot;</span>)))
-<span class="co">#&gt;  Date[1:2], format: &quot;2010-01-01&quot; &quot;1979-10-14&quot;</span></code></pre></div>
-<p>이 함수들은 독립적으로도 유용하지만, readr의 중요한 구성요소이기도 하다. 이 절에서는 개별 파서(parser)가 어떻게 동작하는지를 우선 배우고, 다음 절에 서 개별 파서들이 어떻게 구성되어 파일 전체를 파싱하는지 살펴볼 것이다</p>
-<p>tidyverse의 모든 함수와 마찬가지로, <code>parse_*()</code> 함수는 동일한 형태이다. 즉, 첫 번째 인수는 파싱할 문자형 벡터이며 <code>na</code> 인수는 결측으로 처리되어야 하는 문자열을 지정한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_integer</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;231&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="st">&quot;456&quot;</span>), <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>)
-<span class="co">#&gt; [1]   1 231  NA 456</span></code></pre></div>
+<p>readr 이 디스크에서 파일을 읽는 방법에 대해 깊이 알아보기 전에, 잠깐 벗어나서
+<code>parse_*()</code> 함수에 대해 살펴볼 필요가 있다. 이 함수들은 문자형 벡터를 입력으로
+하여 논리형, 정수형 또는 데이트형과 같은 좀 더 특수화된 벡터를 반환한다.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">str</span>(<span class="kw">parse_logical</span>(<span class="kw">c</span>(<span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;NA&quot;</span>)))</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co">#&gt;  logi [1:3] TRUE FALSE NA</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="kw">str</span>(<span class="kw">parse_integer</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>)))</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="co">#&gt;  int [1:3] 1 2 3</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="kw">str</span>(<span class="kw">parse_date</span>(<span class="kw">c</span>(<span class="st">&quot;2010-01-01&quot;</span>, <span class="st">&quot;1979-10-14&quot;</span>)))</a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="co">#&gt;  Date[1:2], format: &quot;2010-01-01&quot; &quot;1979-10-14&quot;</span></a></code></pre></div>
+<p>이 함수들은 독립적으로도 유용하지만, readr의 중요한 구성요소이기도 하다.
+이 절에서는 개별 파서(parser)가 어떻게 동작하는지를 우선 배우고, 다음 절에
+서 개별 파서들이 어떻게 구성되어 파일 전체를 파싱하는지 살펴볼 것이다</p>
+<p>tidyverse의 모든 함수와 마찬가지로, <code>parse_*()</code> 함수는 동일한 형태이다. 즉,
+첫 번째 인수는 파싱할 문자형 벡터이며 <code>na</code> 인수는 결측으로 처리되어야 하는 문자열을
+지정한다.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">parse_integer</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;231&quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="st">&quot;456&quot;</span>), <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="co">#&gt; [1]   1 231  NA 456</span></a></code></pre></div>
 <p>파싱에 실패하면 경고 메시지가 나타난다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">parse_integer</span>(<span class="kw">c</span>(<span class="st">&quot;123&quot;</span>, <span class="st">&quot;345&quot;</span>, <span class="st">&quot;abc&quot;</span>, <span class="st">&quot;123.45&quot;</span>))
-<span class="co">#&gt; Warning: 2 parsing failures.</span>
-<span class="co">#&gt; row col               expected actual</span>
-<span class="co">#&gt;   3  -- an integer                abc</span>
-<span class="co">#&gt;   4  -- no trailing characters    .45</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">parse_integer</span>(<span class="kw">c</span>(<span class="st">&quot;123&quot;</span>, <span class="st">&quot;345&quot;</span>, <span class="st">&quot;abc&quot;</span>, <span class="st">&quot;123.45&quot;</span>))</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="co">#&gt; Warning: 2 parsing failures.</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="co">#&gt; row col               expected actual</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#&gt;   3  -- an integer                abc</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#&gt;   4  -- no trailing characters    .45</span></a></code></pre></div>
 <p>이런 경우에는 출력에서 누락될 것이다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x
-<span class="co">#&gt; [1] 123 345  NA  NA</span>
-<span class="co">#&gt; attr(,&quot;problems&quot;)</span>
-<span class="co">#&gt; # A tibble: 2 x 4</span>
-<span class="co">#&gt;     row   col expected               actual</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt; </span>
-<span class="co">#&gt; 1     3    NA an integer             abc   </span>
-<span class="co">#&gt; 2     4    NA no trailing characters .45</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">x</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="co">#&gt; [1] 123 345  NA  NA</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="co">#&gt; attr(,&quot;problems&quot;)</span></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co">#&gt; # A tibble: 2 x 4</span></a>
+<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="co">#&gt;     row   col expected               actual</span></a>
+<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb26-7" data-line-number="7"><span class="co">#&gt; 1     3    NA an integer             abc   </span></a>
+<a class="sourceLine" id="cb26-8" data-line-number="8"><span class="co">#&gt; 2     4    NA no trailing characters .45</span></a></code></pre></div>
 <p>파싱에 실패한 경우가 많으면 <code>problems()</code> 를 사용하여 실패 전체를 가져와야 한다. <code>problems()</code> 이 반환한 티블을 dplyr로 작업할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">problems</span>(x)
-<span class="co">#&gt; # A tibble: 2 x 4</span>
-<span class="co">#&gt;     row   col expected               actual</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt; </span>
-<span class="co">#&gt; 1     3    NA an integer             abc   </span>
-<span class="co">#&gt; 2     4    NA no trailing characters .45</span></code></pre></div>
-<p>파서를 잘 활용하려면 어떤 종류가 있는지, 각종 입력 유형을 어떻게 다루는지 를 잘 이해해야 한다. 특별히 중요한 8개의 파서가 있다.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">problems</span>(x)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 4</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co">#&gt;     row   col expected               actual</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#&gt; 1     3    NA an integer             abc   </span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#&gt; 2     4    NA no trailing characters .45</span></a></code></pre></div>
+<p>파서를 잘 활용하려면 어떤 종류가 있는지, 각종 입력 유형을 어떻게 다루는지
+를 잘 이해해야 한다. 특별히 중요한 8개의 파서가 있다.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>parse_logical()</code> 과 <code>parse_integer()</code> 는 각각 논리형 및 정수형을 파싱한다. 기본적으로 이 파서에 잘못될 수 있는 것은 없으므로 여기서 더 설명하지 않겠다.</p></li>
 <li><p><code>parse_double()</code> 은 엄격한 수치형 파서이고, <code>parse_number()</code> 는 유연한 수치형 파서이다. 이들은 예상보다 더 복잡하다. 왜냐하면 세계 여러 지역이 각자 다른 방식으로 숫자를 쓰기 때문이다.</p></li>
-<li><p><code>parse_character()</code> 는 너무 단순해서 필요 없을 것 같다고 생각할지도 모른다. 그러나 어떤 복잡성 때문에 이 파서가 매우 중요하다. 바로 문자 인코딩이 그것이다.</p></li>
-<li><p><code>parse_factor()</code> 는 팩터형을 생성하는데, 팩터형은 R이 미리 정해지고 알려진 값으로 범주형 변수를 나타내기 위해 사용하는 데이터 구조이다.</p></li>
-<li><p><code>parse_datetime()</code>, <code>parse_date()</code>, <code>parse_time()</code> 을 사용하면 다양한 날짜와 시간 데이터를 파싱할 수 있다. 날짜를 쓰는 방법은 다양하기 때문에 이 함수들이 가장 복잡하다. 다음 절들에서 더 자세히 살펴보기로 하자.</p></li>
+<li><p><code>parse_character()</code> 는 너무 단순해서 필요 없을 것 같다고 생각할지도 모른다.
+그러나 어떤 복잡성 때문에 이 파서가 매우 중요하다. 바로 문자 인코딩이 그것이다.</p></li>
+<li><p><code>parse_factor()</code> 는 팩터형을 생성하는데, 팩터형은 R이 미리 정해지고 알려진
+값으로 범주형 변수를 나타내기 위해 사용하는 데이터 구조이다.</p></li>
+<li><p><code>parse_datetime()</code>, <code>parse_date()</code>, <code>parse_time()</code> 을 사용하면 다양한 날짜와 시간
+데이터를 파싱할 수 있다. 날짜를 쓰는 방법은 다양하기 때문에 이 함수들이
+가장 복잡하다. 다음 절들에서 더 자세히 살펴보기로 하자.</p></li>
 </ol>
-<div id="section-3.3.1" class="section level3">
+<div id="숫자" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> 숫자</h3>
 <p>숫자 파싱하는 것은 간단한 것처럼 보이지만, 까다로운 세 가지 문제가 있다.</p>
 <ol style="list-style-type: decimal">
 <li><p>세계 여러 지역에서 사람들은 숫자를 다르게 쓴다. 예를 들어 어떤 국가에서는 실수의 정수 부분과 소수 부분 사이에 <code>.</code> 를 쓰고 다른 국가에서는 <code>,</code> 를 쓴다.</p></li>
 <li><p>숫자는 ‘$1000’, ‘10%’ 와 같이 단위를 나타내는 다른 문자가 붙어있을 때가 많다.</p></li>
-<li><p>숫자는 ‘1,000,000’ 과 같이 쉽게 읽을 수 있도록 ‘그룹화’ 문자가 포함되는 경우가 많다. 이러한 그룹화 문자는 국가마다 다르다.</p></li>
+<li><p>숫자는 ‘1,000,000’ 과 같이 쉽게 읽을 수 있도록 ‘그룹화’ 문자가 포함되는 경우가
+많다. 이러한 그룹화 문자는 국가마다 다르다.</p></li>
 </ol>
-<p>첫 번째 문제를 해결하기 위해서 readr 은 지역에 따라 파싱 옵션을 지정하는 객체인 ‘로캘(locale)’이라는 개념을 사용한다. 숫자를 파싱할 때 가장 중요한 옵션은 소수점으로 사용하는 문자이다. 새로운 로캘을 생성하고 <code>decimal_mark</code> 인수를 설정하여 기본값인 <code>.</code> 를 다른 값으로 재정의할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_double</span>(<span class="st">&quot;1.23&quot;</span>)
-<span class="co">#&gt; [1] 1.23</span>
-<span class="kw">parse_double</span>(<span class="st">&quot;1,23&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">decimal_mark =</span> <span class="st">&quot;,&quot;</span>))
-<span class="co">#&gt; [1] 1.23</span></code></pre></div>
-<p>readr 의 기본 로캘은 미국 중심인데, 왜냐하면 일반적으로 R 은 미국 중심이기 때문이다 (즉, 베이스 R의 문서가 미국식 영어로 작성되었다). 다른 방법은 운영체제의 기본값을 추측하여 시도하는 것이다. 이러한 방법은 잘 동작하지 않고, 더 중요한 것은 코드가 취약하게 된다. 자신의 컴퓨터에서 동작하더라도 코드를 다른 국가의 동료에게 이메일로 보낼 때 오류가 발생할 수 있다.</p>
-<p>두 번째 문제를 처리하는 <code>parse_number()</code> 는 숫자 앞뒤의 숫자가 아닌 문자 (non-numeric character) 를 무시한다. 통화 및 백분율에 특히 유용하지만, 텍스트에 포함 된 숫자를 추출하는 데도 효과적이다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_number</span>(<span class="st">&quot;$100&quot;</span>)
-<span class="co">#&gt; [1] 100</span>
-<span class="kw">parse_number</span>(<span class="st">&quot;20%&quot;</span>)
-<span class="co">#&gt; [1] 20</span>
-<span class="kw">parse_number</span>(<span class="st">&quot;It cost $123.45&quot;</span>)
-<span class="co">#&gt; [1] 123</span></code></pre></div>
+<p>첫 번째 문제를 해결하기 위해서 readr 은 지역에 따라 파싱 옵션을 지정하는 객체인 ‘로캘(locale)’이라는 개념을 사용한다. 숫자를 파싱할 때 가장 중요한 옵션은
+소수점으로 사용하는 문자이다. 새로운 로캘을 생성하고 <code>decimal_mark</code> 인수를
+설정하여 기본값인 <code>.</code> 를 다른 값으로 재정의할 수 있다.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">parse_double</span>(<span class="st">&quot;1.23&quot;</span>)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co">#&gt; [1] 1.23</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">parse_double</span>(<span class="st">&quot;1,23&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">decimal_mark =</span> <span class="st">&quot;,&quot;</span>))</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="co">#&gt; [1] 1.23</span></a></code></pre></div>
+<p>readr 의 기본 로캘은 미국 중심인데, 왜냐하면 일반적으로 R 은 미국 중심이기 때문이다
+(즉, 베이스 R의 문서가 미국식 영어로 작성되었다). 다른 방법은 운영체제의
+기본값을 추측하여 시도하는 것이다. 이러한 방법은 잘 동작하지 않고, 더
+중요한 것은 코드가 취약하게 된다. 자신의 컴퓨터에서 동작하더라도 코드를 다른
+국가의 동료에게 이메일로 보낼 때 오류가 발생할 수 있다.</p>
+<p>두 번째 문제를 처리하는 <code>parse_number()</code> 는 숫자 앞뒤의 숫자가 아닌 문자 (non-numeric
+character) 를 무시한다. 통화 및 백분율에 특히 유용하지만, 텍스트에 포함
+된 숫자를 추출하는 데도 효과적이다.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">parse_number</span>(<span class="st">&quot;$100&quot;</span>)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="co">#&gt; [1] 100</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="kw">parse_number</span>(<span class="st">&quot;20%&quot;</span>)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="co">#&gt; [1] 20</span></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="kw">parse_number</span>(<span class="st">&quot;It cost $123.45&quot;</span>)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="co">#&gt; [1] 123</span></a></code></pre></div>
 <p>마지막 문제는 <code>parse_number()</code> 와 로캘을 조합하여 <code>parse_number()</code> 가 ‘그룹화 마크’를 무시하도록 함으로써 해결할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 미주 방식</span>
-<span class="kw">parse_number</span>(<span class="st">&quot;$123,456,789&quot;</span>)
-<span class="co">#&gt; [1] 1.23e+08</span>
-
-<span class="co"># 유럽의 많은 국가 방식</span>
-<span class="kw">parse_number</span>(<span class="st">&quot;123.456.789&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">grouping_mark =</span> <span class="st">&quot;.&quot;</span>))
-<span class="co">#&gt; [1] 1.23e+08</span>
-
-<span class="co"># 스위스 방식</span>
-<span class="kw">parse_number</span>(<span class="st">&quot;123&#39;456&#39;789&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">grouping_mark =</span> <span class="st">&quot;&#39;&quot;</span>))
-<span class="co">#&gt; [1] 1.23e+08</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co"># 미주 방식</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">parse_number</span>(<span class="st">&quot;$123,456,789&quot;</span>)</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="co">#&gt; [1] 1.23e+08</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="co"># 유럽의 많은 국가 방식</span></a>
+<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="kw">parse_number</span>(<span class="st">&quot;123.456.789&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">grouping_mark =</span> <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7"><span class="co">#&gt; [1] 1.23e+08</span></a>
+<a class="sourceLine" id="cb30-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb30-9" data-line-number="9"><span class="co"># 스위스 방식</span></a>
+<a class="sourceLine" id="cb30-10" data-line-number="10"><span class="kw">parse_number</span>(<span class="st">&quot;123&#39;456&#39;789&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">grouping_mark =</span> <span class="st">&quot;&#39;&quot;</span>))</a>
+<a class="sourceLine" id="cb30-11" data-line-number="11"><span class="co">#&gt; [1] 1.23e+08</span></a></code></pre></div>
 </div>
 <div id="readr-strings" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> 문자열</h3>
-<p><code>parse_character()</code> 는 정말 단순해 보인다. 입력을 단순히 반환하는 것 아닌가. 그런데 불행하게도 삶은 그렇게 호락호락하지 않다. 같은 문자열을 나타내는 방법은 여러 가지이다. 이게 무슨 이야기인지 이해하려면 컴퓨터가 문자열을 표시하는 방법에 대해 깊고 상세하게 들어가야 한다. R에서는 <code>charToRaw()</code> 를 사용하여 문자열의 기본 표현을 볼 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">charToRaw</span>(<span class="st">&quot;Hadley&quot;</span>)
-<span class="co">#&gt; [1] 48 61 64 6c 65 79</span></code></pre></div>
-<p>각 16진수값은 정보 바이트를 나타낸다. 예를 들면 <code>48</code> 은 H를 나타내고, <code>61</code> 은 a 를 나타낸다. 16진수 수치를 문자로 매핑하는 것을 인코딩이라고 하며, 앞의 인코딩은 ASCII 라고 한다. ASCII 는 정보 교환을 위한 미국 표준 코드 (American Standard Code for Information Interchange)의 줄임말이며 따라서 영문자를 잘 표현한다.</p>
-<p>영어가 아닌 다른 언어의 경우 더욱 복잡해진다. 컴퓨터 시대 초창기에는 비영어권 문자 인코딩을 위한 여러 표준 규격이 있었다. 문자열을 정확하게 해석하기 위해서는 값과 인코딩을 모두 알아야했다. 예를 들어 두 가지 일반적인 인코딩은 Latin1 (ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2 (ISO-8859-2, 동유럽 언어들에서 사용)이다. Latin1에서 바이트 <code>b1</code> 은 ‘±’이지만, Latin2 에서는 ‘ą’이다! 다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8 이 있다. UTF-8 은 오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을 인코딩할 수 있다.</p>
-<p><strong>readr</strong> 은 모든 곳에서 UTF-8 을 사용한다. 데이터를 읽을 때 UTF-8 이라고 가정하며, 쓸 때는 항상 사용한다. UTF-8 은 좋은 기본값이지만, 이를 인식하지 못하는 구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을 화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고, 완전히 외계어들을 볼 수도 있다. 다음의 예를 보자.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> &quot;El Ni</span><span class="ch">\xf1</span><span class="st">o was particularly bad this year&quot;</span>
-x2 &lt;-<span class="st"> &quot;</span><span class="ch">\x82\xb1\x82\xf1\x82\xc9\x82\xbf\x82\xcd</span><span class="st">&quot;</span>
-
-x1
-<span class="co">#&gt; [1] &quot;El Ni\xf1o was particularly bad this year&quot;</span>
-x2
-<span class="co">#&gt; [1] &quot;\x82\xb1\x82\xf1\x82\u0242\xbf\x82\xcd&quot;</span></code></pre></div>
+<p><code>parse_character()</code> 는 정말 단순해 보인다. 입력을 단순히 반환하는 것 아닌가.
+그런데 불행하게도 삶은 그렇게 호락호락하지 않다. 같은 문자열을 나타내는
+방법은 여러 가지이다. 이게 무슨 이야기인지 이해하려면 컴퓨터가 문자열을
+표시하는 방법에 대해 깊고 상세하게 들어가야 한다. R에서는 <code>charToRaw()</code> 를
+사용하여 문자열의 기본 표현을 볼 수 있다.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">charToRaw</span>(<span class="st">&quot;Hadley&quot;</span>)</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="co">#&gt; [1] 48 61 64 6c 65 79</span></a></code></pre></div>
+<p>각 16진수값은 정보 바이트를 나타낸다. 예를 들면 <code>48</code> 은 H를 나타내고, <code>61</code> 은 a
+를 나타낸다. 16진수 수치를 문자로 매핑하는 것을 인코딩이라고 하며, 앞의
+인코딩은 ASCII 라고 한다. ASCII 는 정보 교환을 위한 미국 표준 코드
+(American Standard Code for Information Interchange)의 줄임말이며 따라서
+영문자를 잘 표현한다.</p>
+<p>영어가 아닌 다른 언어의 경우 더욱 복잡해진다. 컴퓨터 시대 초창기에는 비영어권
+문자 인코딩을 위한 여러 표준 규격이 있었다. 문자열을 정확하게 해석하기 위해서는
+값과 인코딩을 모두 알아야했다. 예를 들어 두 가지 일반적인 인코딩은
+Latin1 (ISO-8859-1, 서유럽 언어들에서 사용)과 Latin2 (ISO-8859-2, 동유럽 언어들에서 사용)이다.
+Latin1에서 바이트 <code>b1</code> 은 ‘±’이지만, Latin2 에서는 ‘ą’이다!
+다행히 오늘날에는 거의 모든 곳에서 지원되는 하나의 표준인 UTF-8 이 있다.
+UTF-8 은 오늘날 인간이 사용하는 거의 모든 문자와 기타 기호들(예: 이모티콘)을
+인코딩할 수 있다.</p>
+<p><strong>readr</strong> 은 모든 곳에서 UTF-8 을 사용한다. 데이터를 읽을 때 UTF-8 이라고 가정하며,
+쓸 때는 항상 사용한다. UTF-8 은 좋은 기본값이지만, 이를 인식하지 못하는
+구형 시스템에서 생성된 데이터에 사용할 수 없다. 이런 상황이면 문자열을
+화면 출력할 때 이상하게 보인다. 한두 개의 문자만 엉망이 될 수도 있고,
+완전히 외계어들을 볼 수도 있다. 다음의 예를 보자.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">x1 &lt;-<span class="st"> &quot;El Ni</span><span class="ch">\xf1</span><span class="st">o was particularly bad this year&quot;</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">x2 &lt;-<span class="st"> &quot;</span><span class="ch">\x82\xb1\x82\xf1\x82\xc9\x82\xbf\x82\xcd</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">x1</a>
+<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="co">#&gt; [1] &quot;El Ni\xf1o was particularly bad this year&quot;</span></a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">x2</a>
+<a class="sourceLine" id="cb32-7" data-line-number="7"><span class="co">#&gt; [1] &quot;\x82\xb1\x82\xf1\x82\u0242\xbf\x82\xcd&quot;</span></a></code></pre></div>
 <p>문제를 해결하려면 <code>parse_character()</code> 에서 인코딩을 지정해야 한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_character</span>(x1, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">encoding =</span> <span class="st">&quot;Latin1&quot;</span>))
-<span class="co">#&gt; [1] &quot;El Niño was particularly bad this year&quot;</span>
-<span class="kw">parse_character</span>(x2, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">encoding =</span> <span class="st">&quot;Shift-JIS&quot;</span>))
-<span class="co">#&gt; [1] &quot;こんにちは&quot;</span></code></pre></div>
-<p>올바른 인코딩을 어떻게 찾을 수 있을까? 운이 좋다면 데이터 문서의 어딘가 에 포함되었을 것이다. 하지만 불행하게도 그런 경우는 거의 없으므로, readr 는 <code>guess_encoding()</code> 을 제공하여 사용자가 알아낼 수 있도록 도와준다. 이것은 완벽하지도 않고, (앞의 사례와 달리) 텍스트가 많아야 더 잘 작동하지만, 한번 시도해볼 만한 방법이다. 올바른 인코딩을 찾기 전에 몇 가지 다른 인코딩을 시도해보라.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">guess_encoding</span>(<span class="kw">charToRaw</span>(x1))
-<span class="co">#&gt; # A tibble: 2 x 2</span>
-<span class="co">#&gt;   encoding   confidence</span>
-<span class="co">#&gt;   &lt;chr&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 ISO-8859-1       0.46</span>
-<span class="co">#&gt; 2 ISO-8859-9       0.23</span>
-<span class="kw">guess_encoding</span>(<span class="kw">charToRaw</span>(x2))
-<span class="co">#&gt; # A tibble: 1 x 2</span>
-<span class="co">#&gt;   encoding confidence</span>
-<span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 KOI8-R         0.42</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">parse_character</span>(x1, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">encoding =</span> <span class="st">&quot;Latin1&quot;</span>))</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co">#&gt; [1] &quot;El Niño was particularly bad this year&quot;</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw">parse_character</span>(x2, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">encoding =</span> <span class="st">&quot;Shift-JIS&quot;</span>))</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="co">#&gt; [1] &quot;こんにちは&quot;</span></a></code></pre></div>
+<p>올바른 인코딩을 어떻게 찾을 수 있을까? 운이 좋다면 데이터 문서의 어딘가
+에 포함되었을 것이다. 하지만 불행하게도 그런 경우는 거의 없으므로, readr 는
+<code>guess_encoding()</code> 을 제공하여 사용자가 알아낼 수 있도록 도와준다. 이것은 완벽하지도 않고, (앞의 사례와 달리) 텍스트가 많아야 더 잘 작동하지만, 한번 시도해볼 만한 방법이다. 올바른 인코딩을 찾기 전에 몇 가지 다른 인코딩을 시도해보라.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">guess_encoding</span>(<span class="kw">charToRaw</span>(x1))</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 2</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#&gt;   encoding   confidence</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;           &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="co">#&gt; 1 ISO-8859-1       0.46</span></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co">#&gt; 2 ISO-8859-9       0.23</span></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="kw">guess_encoding</span>(<span class="kw">charToRaw</span>(x2))</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="co">#&gt;   encoding confidence</span></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb34-11" data-line-number="11"><span class="co">#&gt; 1 KOI8-R         0.42</span></a></code></pre></div>
 <p><code>guess_encoding()</code> 의 첫 번째 인수로는 파일의 경로 혹은, 이 예제와 같이 원시 벡터 (문자열이 이미 R에 있는 경우 유용함)가 될 수 있다.</p>
-<p>인코딩은 방대하고 복잡한 주제이며, 여기서 우리는 단지 겉핥기만 한 것이다. 더 배우고 싶으면 <a href="http://kunststube.net/encoding" class="uri">http://kunststube.net/encoding</a> 에서 자세한 설명을 읽어보길 추천한다.</p>
+<p>인코딩은 방대하고 복잡한 주제이며, 여기서 우리는 단지 겉핥기만 한 것이다. 더 배우고 싶으면 <a href="http://kunststube.net/encoding" class="uri">http://kunststube.net/encoding</a> 에서 자세한 설명을 읽어보길
+추천한다.</p>
 </div>
 <div id="readr-factors" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> 팩터형</h3>
-<p>R 은 팩터형을 사용하여, 가질 수 있는 값을 미리 알고 있는 범주형 변수를 나타낸다. 예상치 못한 값이 있을 때마다 경고를 생성하려면 <code>parse_factor()</code> 에 가질 수 있는 레벨의 벡터를 제공하면 된다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruit &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>)
-<span class="kw">parse_factor</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;bananana&quot;</span>), <span class="dt">levels =</span> fruit)
-<span class="co">#&gt; Warning: 1 parsing failure.</span>
-<span class="co">#&gt; row col           expected   actual</span>
-<span class="co">#&gt;   3  -- value in level set bananana</span>
-<span class="co">#&gt; [1] apple  banana &lt;NA&gt;  </span>
-<span class="co">#&gt; attr(,&quot;problems&quot;)</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;     row   col expected           actual  </span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;   </span>
-<span class="co">#&gt; 1     3    NA value in level set bananana</span>
-<span class="co">#&gt; Levels: apple banana</span></code></pre></div>
-<p>그러나 입력값에 문제가 많이 있는 경우에는, 그 입력값을 우선 문자형 벡터로 남겨두고 <a href="strings.html#strings">문자열</a>과 <a href="factors.html#factors">팩터형</a>에서 배울 도구를 사용하여 정리하는 것이 쉬울 때가 많다.</p>
+<p>R 은 팩터형을 사용하여, 가질 수 있는 값을 미리 알고 있는 범주형 변수를 나타낸다.
+예상치 못한 값이 있을 때마다 경고를 생성하려면 <code>parse_factor()</code> 에 가질
+수 있는 레벨의 벡터를 제공하면 된다.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">fruit &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="kw">parse_factor</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;bananana&quot;</span>), <span class="dt">levels =</span> fruit)</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co">#&gt; Warning: 1 parsing failure.</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co">#&gt; row col           expected   actual</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="co">#&gt;   3  -- value in level set bananana</span></a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="co">#&gt; [1] apple  banana &lt;NA&gt;  </span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co">#&gt; attr(,&quot;problems&quot;)</span></a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
+<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="co">#&gt;     row   col expected           actual  </span></a>
+<a class="sourceLine" id="cb35-10" data-line-number="10"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;   </span></a>
+<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="co">#&gt; 1     3    NA value in level set bananana</span></a>
+<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="co">#&gt; Levels: apple banana</span></a></code></pre></div>
+<p>그러나 입력값에 문제가 많이 있는 경우에는, 그 입력값을 우선 문자형 벡터로
+남겨두고 <a href="strings.html#strings">문자열</a>과 <a href="factors.html#factors">팩터형</a>에서 배울 도구를 사용하여 정리하는 것이 쉬울 때가 많다.</p>
 </div>
 <div id="readr-datetimes" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> 데이트형, 데이트-타임형, 타임형</h3>
-<p>원하는 것이 date (1970-01-01 이후의 일 수), date-time (1970-01-01 자정 이후의 초 수), time (자정 이후의 초 수)인지에 따라 세 가지 파서 중에서 선택하면 된다. 추가 인수 없는 각 파서의 동작은 다음과 같다.</p>
+<p>원하는 것이 date (1970-01-01 이후의 일 수), date-time (1970-01-01 자정 이후의
+초 수), time (자정 이후의 초 수)인지에 따라 세 가지 파서 중에서 선택하면 된다. 추가 인수 없는 각 파서의 동작은 다음과 같다.</p>
 <ul>
-<li><p><code>parse_datetime()</code> 은 ISO 8601 date-time 을 입력으로 한다. ISO 8601 은 국제 표준인데 날짜가 가장 큰 것부터 가장 작은 것(즉, 년, 월, 일, 시, 분, 초)으로 구성된다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_datetime</span>(<span class="st">&quot;2010-10-01T2010&quot;</span>)
-<span class="co">#&gt; [1] &quot;2010-10-01 20:10:00 UTC&quot;</span>
-<span class="co"># 시간이 생략된 경우엔 자정으로 설정됨</span>
-<span class="kw">parse_datetime</span>(<span class="st">&quot;20101010&quot;</span>)
-<span class="co">#&gt; [1] &quot;2010-10-10 UTC&quot;</span></code></pre></div>
+<li><p><code>parse_datetime()</code> 은 ISO 8601 date-time 을 입력으로 한다. ISO
+8601 은 국제 표준인데 날짜가 가장 큰 것부터 가장 작은 것(즉, 년, 월, 일, 시, 분, 초)으로 구성된다.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">parse_datetime</span>(<span class="st">&quot;2010-10-01T2010&quot;</span>)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">#&gt; [1] &quot;2010-10-01 20:10:00 UTC&quot;</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co"># 시간이 생략된 경우엔 자정으로 설정됨</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="kw">parse_datetime</span>(<span class="st">&quot;20101010&quot;</span>)</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="co">#&gt; [1] &quot;2010-10-10 UTC&quot;</span></a></code></pre></div>
 <p>ISO 8601은 가장 중요한 날짜/시간 표준이며, 날짜와 시간을 자주 다루는 경우 <a href="https://en.wikipedia.org/wiki/ISO_8601" class="uri">https://en.wikipedia.org/wiki/ISO_8601</a> 을 읽어볼 것을 추천한다.</p></li>
 <li><p><code>parse_date()</code> 는 네 자리 연도, <code>-</code> 또는 <code>/</code>, 월, <code>-</code> 또는 <code>/</code>, 날짜를 입력으로 한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date</span>(<span class="st">&quot;2010-10-01&quot;</span>)
-<span class="co">#&gt; [1] &quot;2010-10-01&quot;</span></code></pre></div></li>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">parse_date</span>(<span class="st">&quot;2010-10-01&quot;</span>)</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co">#&gt; [1] &quot;2010-10-01&quot;</span></a></code></pre></div></li>
 <li><p><code>parse_time()</code> 은 시, <code>:</code>, 분 그리고 선택적으로 <code>:</code>, 초, 선택적 a.m./p.m 표시를 입력으로 한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(hms)
-<span class="kw">parse_time</span>(<span class="st">&quot;01:10 am&quot;</span>)
-<span class="co">#&gt; 01:10:00</span>
-<span class="kw">parse_time</span>(<span class="st">&quot;20:10:01&quot;</span>)
-<span class="co">#&gt; 20:10:01</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">library</span>(hms)</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="kw">parse_time</span>(<span class="st">&quot;01:10 am&quot;</span>)</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">#&gt; 01:10:00</span></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="kw">parse_time</span>(<span class="st">&quot;20:10:01&quot;</span>)</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="co">#&gt; 20:10:01</span></a></code></pre></div>
 <p>베이스 R에는 시간 데이터를 위한 좋은 내장 클래스가 없기 때문에, 우리는 hms 패키지에서 제공되는 클래스를 사용한다.</p></li>
 </ul>
 <p>이러한 기본 설정으로 주어진 데이터를 처리하지 못한다면 다음의 요소들로 이루어진 자신만의 날짜-시간 형식(<code>format</code>)을 만들어 쓸 수 있다.</p>
@@ -580,7 +760,8 @@ x2
 </dd>
 <dd><code>%OS</code> 실수 초.
 </dd>
-<dd><code>%Z</code> 시간대 (이름, 예 <code>America/Chicago</code>). 참고: 줄임말에 주의하라. ‘EST’는 일광 절약 시간제가 없는 캐나다 표준 시간대임을 주의하라. 그것은 동부 표준시가 아니다! <a href="dates-and-times.html#time-zones">시간대</a>에서 이를 다시 살펴보겠다.
+<dd><code>%Z</code> 시간대 (이름, 예 <code>America/Chicago</code>). 참고: 줄임말에 주의하라. ‘EST’는 일광 절약 시간제가 없는
+캐나다 표준 시간대임을 주의하라. 그것은 동부 표준시가 아니다! <a href="dates-and-times.html#time-zones">시간대</a>에서 이를 다시 살펴보겠다.
 </dd>
 <dd><code>%z</code> (UTC 와의 오프셋, 예: <code>+0800</code>).
 </dd>
@@ -590,60 +771,71 @@ x2
 <dd><code>%*</code> 숫자가 아닌 문자 모두를 건너뛴다.
 </dd>
 </dl>
-<p>올바른 포맷을 파악하는 가장 좋은 방법은 문자형 벡터로 몇 가지 예제를 만들고, 파싱함수 중 하나로 테스트하는 것이다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date</span>(<span class="st">&quot;01/02/15&quot;</span>, <span class="st">&quot;%m/%d/%y&quot;</span>)
-<span class="co">#&gt; [1] &quot;2015-01-02&quot;</span>
-<span class="kw">parse_date</span>(<span class="st">&quot;01/02/15&quot;</span>, <span class="st">&quot;%d/%m/%y&quot;</span>)
-<span class="co">#&gt; [1] &quot;2015-02-01&quot;</span>
-<span class="kw">parse_date</span>(<span class="st">&quot;01/02/15&quot;</span>, <span class="st">&quot;%y/%m/%d&quot;</span>)
-<span class="co">#&gt; [1] &quot;2001-02-15&quot;</span></code></pre></div>
-<p>비영어권의 월 이름에 <code>%b</code> 또는 <code>%B</code> 를 사용하는 경우, <code>locale()</code>의 <code>lang</code> 인수를 설정해야 한다. <code>date_names_langs()</code>에 내장된 언어 목록을 보라. 자신의 언어가 아직 포함되어 있지 않았으면 <code>date_names()</code> 를 사용하여 생성하라.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date</span>(<span class="st">&quot;1 janvier 2015&quot;</span>, <span class="st">&quot;%d %B %Y&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;fr&quot;</span>))
-<span class="co">#&gt; [1] &quot;2015-01-01&quot;</span></code></pre></div>
+<p>올바른 포맷을 파악하는 가장 좋은 방법은 문자형 벡터로 몇 가지 예제를 만들고,
+파싱함수 중 하나로 테스트하는 것이다.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">parse_date</span>(<span class="st">&quot;01/02/15&quot;</span>, <span class="st">&quot;%m/%d/%y&quot;</span>)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="co">#&gt; [1] &quot;2015-01-02&quot;</span></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">parse_date</span>(<span class="st">&quot;01/02/15&quot;</span>, <span class="st">&quot;%d/%m/%y&quot;</span>)</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="co">#&gt; [1] &quot;2015-02-01&quot;</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="kw">parse_date</span>(<span class="st">&quot;01/02/15&quot;</span>, <span class="st">&quot;%y/%m/%d&quot;</span>)</a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co">#&gt; [1] &quot;2001-02-15&quot;</span></a></code></pre></div>
+<p>비영어권의 월 이름에 <code>%b</code> 또는 <code>%B</code> 를 사용하는 경우, <code>locale()</code>의 <code>lang</code> 인수를 설정해야 한다.
+<code>date_names_langs()</code>에 내장된 언어 목록을 보라. 자신의 언어가 아직
+포함되어 있지 않았으면 <code>date_names()</code> 를 사용하여 생성하라.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">parse_date</span>(<span class="st">&quot;1 janvier 2015&quot;</span>, <span class="st">&quot;%d %B %Y&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;fr&quot;</span>))</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="co">#&gt; [1] &quot;2015-01-01&quot;</span></a></code></pre></div>
 </div>
-<div id="-2" class="section level3">
+<div id="연습문제-1" class="section level3">
 <h3><span class="header-section-number">3.3.5</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p><code>locale()</code> 에서 가장 중요한 인수들은 무엇인가?</p></li>
-<li><p><code>decimal_mark</code> 와 <code>grouping_mark</code> 를 동일 문자로 설정하려고 하면 어떻게 되는가? <code>decimal_mark</code> 를 ‘,’로 설정하면 <code>grouping_mark</code> 의 기본값은 어떻게 되는가?</p></li>
-<li><p><code>locale()</code>의 <code>date_format</code> 및 <code>time_format</code> 옵션에 대해서는 논의하지 않았다. 이 들이 하는 일은 무엇인가? 이들이 유용할 수 있는 경우를 보여주는 예제를 작성해보라.</p></li>
-<li><p>가장 많이 읽는 파일 형식에 대한 설정을 압축한 새로운 로캘 객체를 만들어 보라.</p></li>
+<li><p><code>decimal_mark</code> 와 <code>grouping_mark</code> 를 동일 문자로 설정하려고 하면 어떻게 되는가?
+<code>decimal_mark</code> 를 ‘,’로 설정하면 <code>grouping_mark</code> 의 기본값은 어떻게 되는가?</p></li>
+<li><p><code>locale()</code>의 <code>date_format</code> 및 <code>time_format</code> 옵션에 대해서는 논의하지 않았다. 이
+들이 하는 일은 무엇인가? 이들이 유용할 수 있는 경우를 보여주는 예제를
+작성해보라.</p></li>
+<li><p>가장 많이 읽는 파일 형식에 대한 설정을 압축한 새로운 로캘 객체를 만들어
+보라.</p></li>
 <li><p><code>read_csv()</code> 와 <code>read_csv2()</code> 은 무엇이 다른가?</p></li>
 <li><p>유럽에서 사용되는 가장 일반적인 인코딩은 무엇인가? 아시아에서 가장 많이 사용되는 인코딩은 무엇인가? 구글 검색해서 알아보라.</p></li>
 <li><p>올바른 형식 문자열을 생성하여 다음 날짜와 시간을 파싱하라.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d1 &lt;-<span class="st"> &quot;January 1, 2010&quot;</span>
-d2 &lt;-<span class="st"> &quot;2015-Mar-07&quot;</span>
-d3 &lt;-<span class="st"> &quot;06-Jun-2017&quot;</span>
-d4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;August 19 (2015)&quot;</span>, <span class="st">&quot;July 1 (2015)&quot;</span>)
-d5 &lt;-<span class="st"> &quot;12/30/14&quot;</span> <span class="co"># Dec 30, 2014</span>
-t1 &lt;-<span class="st"> &quot;1705&quot;</span>
-t2 &lt;-<span class="st"> &quot;11:15:10.12 PM&quot;</span></code></pre></div></li>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">d1 &lt;-<span class="st"> &quot;January 1, 2010&quot;</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">d2 &lt;-<span class="st"> &quot;2015-Mar-07&quot;</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">d3 &lt;-<span class="st"> &quot;06-Jun-2017&quot;</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">d4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;August 19 (2015)&quot;</span>, <span class="st">&quot;July 1 (2015)&quot;</span>)</a>
+<a class="sourceLine" id="cb41-5" data-line-number="5">d5 &lt;-<span class="st"> &quot;12/30/14&quot;</span> <span class="co"># Dec 30, 2014</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6">t1 &lt;-<span class="st"> &quot;1705&quot;</span></a>
+<a class="sourceLine" id="cb41-7" data-line-number="7">t2 &lt;-<span class="st"> &quot;11:15:10.12 PM&quot;</span></a></code></pre></div></li>
 </ol>
 </div>
 </div>
-<div id="-" class="section level2">
+<div id="파일-파싱하기" class="section level2">
 <h2><span class="header-section-number">3.4</span> 파일 파싱하기</h2>
-<p>이제까지 개별 벡터를 파싱하는 방법을 배웠으므로, 처음으로 돌아가서 readr이 파일을 파싱하는 방법을 알아볼 차례이다. 이 절에서는 다음의 두 방법을 배운다.</p>
+<p>이제까지 개별 벡터를 파싱하는 방법을 배웠으므로, 처음으로 돌아가서 readr이
+파일을 파싱하는 방법을 알아볼 차례이다. 이 절에서는 다음의 두 방법을 배운다.</p>
 <ol style="list-style-type: decimal">
 <li>readr이 각 열의 유형을 자동으로 추측하는 방법.</li>
 <li>기본 사양을 재정의하는 방법.</li>
 </ol>
-<div id="section-3.4.1" class="section level3">
+<div id="전략" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> 전략</h3>
-<p>readr 은 휴리스틱 방법을 사용하여 각 열의 유형을 파악한다. 첫 번째 1000행을 읽고 (적절히 보수적인) 휴리스틱 방법을 사용하여 각 열의 유형을 찾는다. <code>guess_parser()</code>(readr의 추정을 반환)와 <code>parse_guess()</code> (앞의 추정을 사용하여 열을 파싱)를 사용하여 문자형 벡터에 이 과정을 재현해볼 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">guess_parser</span>(<span class="st">&quot;2010-10-01&quot;</span>)
-<span class="co">#&gt; [1] &quot;date&quot;</span>
-<span class="kw">guess_parser</span>(<span class="st">&quot;15:01&quot;</span>)
-<span class="co">#&gt; [1] &quot;time&quot;</span>
-<span class="kw">guess_parser</span>(<span class="kw">c</span>(<span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>))
-<span class="co">#&gt; [1] &quot;logical&quot;</span>
-<span class="kw">guess_parser</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;9&quot;</span>))
-<span class="co">#&gt; [1] &quot;double&quot;</span>
-<span class="kw">guess_parser</span>(<span class="kw">c</span>(<span class="st">&quot;12,352,561&quot;</span>))
-<span class="co">#&gt; [1] &quot;number&quot;</span>
-
-<span class="kw">str</span>(<span class="kw">parse_guess</span>(<span class="st">&quot;2010-10-10&quot;</span>))
-<span class="co">#&gt;  Date[1:1], format: &quot;2010-10-10&quot;</span></code></pre></div>
+<p>readr 은 휴리스틱 방법을 사용하여 각 열의 유형을 파악한다. 첫 번째 1000행을
+읽고 (적절히 보수적인) 휴리스틱 방법을 사용하여 각 열의 유형을 찾는다.
+<code>guess_parser()</code>(readr의 추정을 반환)와 <code>parse_guess()</code> (앞의 추정을 사용하여
+열을 파싱)를 사용하여 문자형 벡터에 이 과정을 재현해볼 수 있다.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">guess_parser</span>(<span class="st">&quot;2010-10-01&quot;</span>)</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="co">#&gt; [1] &quot;date&quot;</span></a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="kw">guess_parser</span>(<span class="st">&quot;15:01&quot;</span>)</a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="co">#&gt; [1] &quot;time&quot;</span></a>
+<a class="sourceLine" id="cb42-5" data-line-number="5"><span class="kw">guess_parser</span>(<span class="kw">c</span>(<span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>))</a>
+<a class="sourceLine" id="cb42-6" data-line-number="6"><span class="co">#&gt; [1] &quot;logical&quot;</span></a>
+<a class="sourceLine" id="cb42-7" data-line-number="7"><span class="kw">guess_parser</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;9&quot;</span>))</a>
+<a class="sourceLine" id="cb42-8" data-line-number="8"><span class="co">#&gt; [1] &quot;double&quot;</span></a>
+<a class="sourceLine" id="cb42-9" data-line-number="9"><span class="kw">guess_parser</span>(<span class="kw">c</span>(<span class="st">&quot;12,352,561&quot;</span>))</a>
+<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="co">#&gt; [1] &quot;number&quot;</span></a>
+<a class="sourceLine" id="cb42-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb42-12" data-line-number="12"><span class="kw">str</span>(<span class="kw">parse_guess</span>(<span class="st">&quot;2010-10-10&quot;</span>))</a>
+<a class="sourceLine" id="cb42-13" data-line-number="13"><span class="co">#&gt;  Date[1:1], format: &quot;2010-10-10&quot;</span></a></code></pre></div>
 <p>이 휴리스틱 방법은 다음 유형들을 각각 시도하여 일치하는 항목을 찾으면 멈춘다.</p>
 <ul>
 <li>논리형: “F”, “T”, “FALSE”, “TRUE”만 포함.</li>
@@ -656,150 +848,159 @@ t2 &lt;-<span class="st"> &quot;11:15:10.12 PM&quot;</span></code></pre></div></
 </ul>
 <p>이러한 규칙 중 어느 것도 적용되지 않으면 해당 열은 문자열 벡터로 그대로 남는다.</p>
 </div>
-<div id="section-3.4.2" class="section level3">
+<div id="문제점" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> 문제점</h3>
-<p>큰 파일의 경우 이러한 기본값이 항상 잘 작동하지는 않는다. 두 가지 문제가 있다.</p>
+<p>큰 파일의 경우 이러한 기본값이 항상 잘 작동하지는 않는다. 두 가지 문제가
+있다.</p>
 <ol style="list-style-type: decimal">
-<li><p>처음 1,000 행이 특수한 경우이어서 readr 이 충분히 일반적이지 않은 유형으로 추측할 수 있다. 예를 들어 첫 번째 1,000개의 행에 정수만 있는 더블형 열이 있을 수 있다.</p></li>
-<li><p>열에 결측값이 많이 있을 수 있다. 첫 번째 1,000 개의 행에 <code>NA</code> 만 있는 경우 readr 이 문자형 벡터로 추측했지만, 여러분은 좀 더 구체적으로 파싱하고 싶을 수 있다.</p></li>
+<li><p>처음 1,000 행이 특수한 경우이어서 readr 이 충분히 일반적이지 않은 유형으로
+추측할 수 있다. 예를 들어 첫 번째 1,000개의 행에 정수만 있는 더블형 열이 있을 수 있다.</p></li>
+<li><p>열에 결측값이 많이 있을 수 있다. 첫 번째 1,000 개의 행에 <code>NA</code> 만 있는 경우
+readr 이 문자형 벡터로 추측했지만, 여러분은 좀 더 구체적으로 파싱하고 싶을 수 있다.</p></li>
 </ol>
 <p>readr 에는 이러한 두 가지 문제를 모두 보여주는 까다로운 CSV 가 포함되어 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>))
-<span class="co">#&gt; Parsed with column specification:</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   x = col_double(),</span>
-<span class="co">#&gt;   y = col_logical()</span>
-<span class="co">#&gt; )</span>
-<span class="co">#&gt; Warning: 1000 parsing failures.</span>
-<span class="co">#&gt;  row col           expected     actual                                                                                         file</span>
-<span class="co">#&gt; 1001   y 1/0/T/F/TRUE/FALSE 2015-01-16 &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv&#39;</span>
-<span class="co">#&gt; 1002   y 1/0/T/F/TRUE/FALSE 2018-05-18 &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv&#39;</span>
-<span class="co">#&gt; 1003   y 1/0/T/F/TRUE/FALSE 2015-09-05 &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv&#39;</span>
-<span class="co">#&gt; 1004   y 1/0/T/F/TRUE/FALSE 2012-11-28 &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv&#39;</span>
-<span class="co">#&gt; 1005   y 1/0/T/F/TRUE/FALSE 2020-01-13 &#39;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/readr/extdata/challenge.csv&#39;</span>
-<span class="co">#&gt; .... ... .................. .......... ............................................................................................</span>
-<span class="co">#&gt; See problems(...) for more details.</span></code></pre></div>
-<p>(패키지에 포함된 파일의 경로를 찾아 주는 <code>readr_example()</code> 을 사용한 것에 주목하라.) 두 가지가 출력되었다. 첫 번째 1,000 개의 행을 보고 생성된 열 상세 내용과 첫 다섯 개의 파싱 오류가 그것이다. 발생한 문제들을 ‘problems()’ 로 명시적으로 추출하여 더 깊이 탐색하는 것은 좋은 방법이다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">problems</span>(challenge)
-<span class="co">#&gt; # A tibble: 1,000 x 5</span>
-<span class="co">#&gt;     row col   expected           actual     file                          </span>
-<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;      &lt;chr&gt;                         </span>
-<span class="co">#&gt; 1  1001 y     1/0/T/F/TRUE/FALSE 2015-01-16 &#39;/Library/Frameworks/R.framew…</span>
-<span class="co">#&gt; 2  1002 y     1/0/T/F/TRUE/FALSE 2018-05-18 &#39;/Library/Frameworks/R.framew…</span>
-<span class="co">#&gt; 3  1003 y     1/0/T/F/TRUE/FALSE 2015-09-05 &#39;/Library/Frameworks/R.framew…</span>
-<span class="co">#&gt; 4  1004 y     1/0/T/F/TRUE/FALSE 2012-11-28 &#39;/Library/Frameworks/R.framew…</span>
-<span class="co">#&gt; 5  1005 y     1/0/T/F/TRUE/FALSE 2020-01-13 &#39;/Library/Frameworks/R.framew…</span>
-<span class="co">#&gt; 6  1006 y     1/0/T/F/TRUE/FALSE 2016-04-17 &#39;/Library/Frameworks/R.framew…</span>
-<span class="co">#&gt; # ... with 994 more rows</span></code></pre></div>
-<p>문제가 남아있지 않을 때까지 열 단위로 작업하는 것은 좋은 전략이다. <code>x</code> 열에 파싱 문제가 많다는 것을 알 수 있다. 정수값 다음에 따라오는 문자가 있었던 것이다. 이는 더블형 파서를 사용해야 함을 암시한다.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co">#&gt;   x = col_double(),</span></a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="co">#&gt;   y = col_logical()</span></a>
+<a class="sourceLine" id="cb43-6" data-line-number="6"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co">#&gt; Warning: 1000 parsing failures.</span></a>
+<a class="sourceLine" id="cb43-8" data-line-number="8"><span class="co">#&gt;  row col           expected     actual                                                                                         file</span></a>
+<a class="sourceLine" id="cb43-9" data-line-number="9"><span class="co">#&gt; 1001   y 1/0/T/F/TRUE/FALSE 2015-01-16 &#39;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv&#39;</span></a>
+<a class="sourceLine" id="cb43-10" data-line-number="10"><span class="co">#&gt; 1002   y 1/0/T/F/TRUE/FALSE 2018-05-18 &#39;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv&#39;</span></a>
+<a class="sourceLine" id="cb43-11" data-line-number="11"><span class="co">#&gt; 1003   y 1/0/T/F/TRUE/FALSE 2015-09-05 &#39;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv&#39;</span></a>
+<a class="sourceLine" id="cb43-12" data-line-number="12"><span class="co">#&gt; 1004   y 1/0/T/F/TRUE/FALSE 2012-11-28 &#39;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv&#39;</span></a>
+<a class="sourceLine" id="cb43-13" data-line-number="13"><span class="co">#&gt; 1005   y 1/0/T/F/TRUE/FALSE 2020-01-13 &#39;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/challenge.csv&#39;</span></a>
+<a class="sourceLine" id="cb43-14" data-line-number="14"><span class="co">#&gt; .... ... .................. .......... ............................................................................................</span></a>
+<a class="sourceLine" id="cb43-15" data-line-number="15"><span class="co">#&gt; See problems(...) for more details.</span></a></code></pre></div>
+<p>(패키지에 포함된 파일의 경로를 찾아 주는 <code>readr_example()</code> 을 사용한 것에 주목하라.)
+두 가지가 출력되었다. 첫 번째 1,000 개의 행을 보고 생성된 열 상세 내용과
+첫 다섯 개의 파싱 오류가 그것이다. 발생한 문제들을 ‘problems()’ 로 명시적으로 추출하여 더
+깊이 탐색하는 것은 좋은 방법이다.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">problems</span>(challenge)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="co">#&gt; # A tibble: 1,000 x 5</span></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="co">#&gt;     row col   expected       actual   file                                      </span></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;                                     </span></a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="co">#&gt; 1  1001 y     1/0/T/F/TRUE/… 2015-01… &#39;/Library/Frameworks/R.framework/Versions…</span></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6"><span class="co">#&gt; 2  1002 y     1/0/T/F/TRUE/… 2018-05… &#39;/Library/Frameworks/R.framework/Versions…</span></a>
+<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="co">#&gt; 3  1003 y     1/0/T/F/TRUE/… 2015-09… &#39;/Library/Frameworks/R.framework/Versions…</span></a>
+<a class="sourceLine" id="cb44-8" data-line-number="8"><span class="co">#&gt; 4  1004 y     1/0/T/F/TRUE/… 2012-11… &#39;/Library/Frameworks/R.framework/Versions…</span></a>
+<a class="sourceLine" id="cb44-9" data-line-number="9"><span class="co">#&gt; 5  1005 y     1/0/T/F/TRUE/… 2020-01… &#39;/Library/Frameworks/R.framework/Versions…</span></a>
+<a class="sourceLine" id="cb44-10" data-line-number="10"><span class="co">#&gt; 6  1006 y     1/0/T/F/TRUE/… 2016-04… &#39;/Library/Frameworks/R.framework/Versions…</span></a>
+<a class="sourceLine" id="cb44-11" data-line-number="11"><span class="co">#&gt; # … with 994 more rows</span></a></code></pre></div>
+<p>문제가 남아있지 않을 때까지 열 단위로 작업하는 것은 좋은 전략이다. <code>x</code> 열에
+파싱 문제가 많다는 것을 알 수 있다. 정수값 다음에 따라오는 문자가 있었던 것이다. 이는 더블형 파서를 사용해야 함을 암시한다.</p>
 <p>이 호출을 수정하기 위해 먼저 열 사양을 복사하여 원래 호출에 붙여 넣어보라.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(
-  <span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), 
-  <span class="dt">col_types =</span> <span class="kw">cols</span>(
-    <span class="dt">x =</span> <span class="kw">col_integer</span>(),
-    <span class="dt">y =</span> <span class="kw">col_character</span>()
-  )
-)</code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">  <span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), </a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">  <span class="dt">col_types =</span> <span class="kw">cols</span>(</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">    <span class="dt">x =</span> <span class="kw">col_integer</span>(),</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">    <span class="dt">y =</span> <span class="kw">col_character</span>()</a>
+<a class="sourceLine" id="cb45-6" data-line-number="6">  )</a>
+<a class="sourceLine" id="cb45-7" data-line-number="7">)</a></code></pre></div>
 <p>그런 다음 <code>x</code> 열의 유형을 조정할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(
-  <span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), 
-  <span class="dt">col_types =</span> <span class="kw">cols</span>(
-    <span class="dt">x =</span> <span class="kw">col_double</span>(),
-    <span class="dt">y =</span> <span class="kw">col_character</span>()
-  )
-)</code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2">  <span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), </a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">  <span class="dt">col_types =</span> <span class="kw">cols</span>(</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">    <span class="dt">x =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb46-5" data-line-number="5">    <span class="dt">y =</span> <span class="kw">col_character</span>()</a>
+<a class="sourceLine" id="cb46-6" data-line-number="6">  )</a>
+<a class="sourceLine" id="cb46-7" data-line-number="7">)</a></code></pre></div>
 <p>첫 번째 문제는 해결되었지만, 마지막 몇 행을 보면 날짜가 문자형 벡터로 저장되었다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(challenge)
-<span class="co">#&gt; # A tibble: 6 x 2</span>
-<span class="co">#&gt;       x y         </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 0.805 2019-11-21</span>
-<span class="co">#&gt; 2 0.164 2018-03-29</span>
-<span class="co">#&gt; 3 0.472 2014-08-04</span>
-<span class="co">#&gt; 4 0.718 2015-08-16</span>
-<span class="co">#&gt; 5 0.270 2020-02-04</span>
-<span class="co">#&gt; 6 0.608 2019-01-06</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">tail</span>(challenge)</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="co">#&gt; # A tibble: 6 x 2</span></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="co">#&gt;       x y         </span></a>
+<a class="sourceLine" id="cb47-4" data-line-number="4"><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;     </span></a>
+<a class="sourceLine" id="cb47-5" data-line-number="5"><span class="co">#&gt; 1 0.805 2019-11-21</span></a>
+<a class="sourceLine" id="cb47-6" data-line-number="6"><span class="co">#&gt; 2 0.164 2018-03-29</span></a>
+<a class="sourceLine" id="cb47-7" data-line-number="7"><span class="co">#&gt; 3 0.472 2014-08-04</span></a>
+<a class="sourceLine" id="cb47-8" data-line-number="8"><span class="co">#&gt; 4 0.718 2015-08-16</span></a>
+<a class="sourceLine" id="cb47-9" data-line-number="9"><span class="co">#&gt; 5 0.270 2020-02-04</span></a>
+<a class="sourceLine" id="cb47-10" data-line-number="10"><span class="co">#&gt; 6 0.608 2019-01-06</span></a></code></pre></div>
 <p><code>y</code> 열을 데이트형으로 설정하여 이를 수정할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(
-  <span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), 
-  <span class="dt">col_types =</span> <span class="kw">cols</span>(
-    <span class="dt">x =</span> <span class="kw">col_double</span>(),
-    <span class="dt">y =</span> <span class="kw">col_date</span>()
-  )
-)
-<span class="kw">tail</span>(challenge)
-<span class="co">#&gt; # A tibble: 6 x 2</span>
-<span class="co">#&gt;       x y         </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span>
-<span class="co">#&gt; 1 0.805 2019-11-21</span>
-<span class="co">#&gt; 2 0.164 2018-03-29</span>
-<span class="co">#&gt; 3 0.472 2014-08-04</span>
-<span class="co">#&gt; 4 0.718 2015-08-16</span>
-<span class="co">#&gt; 5 0.270 2020-02-04</span>
-<span class="co">#&gt; 6 0.608 2019-01-06</span></code></pre></div>
-<p>모든 <code>parse_xyz()</code> 함수는 해당하는 <code>col_xyz()</code> 함수를 가지고 있다. 데이터가 이미 R 의 문자형 벡터인 경우에는 <code>parse_xyz()</code> 를 사용하면 되고, readr 이 데이터를 불러오는 방법을 설정할 경우에는 <code>col_xyz()</code> 를 사용하면 된다.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">challenge &lt;-<span class="st"> </span><span class="kw">read_csv</span>(</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2">  <span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), </a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">  <span class="dt">col_types =</span> <span class="kw">cols</span>(</a>
+<a class="sourceLine" id="cb48-4" data-line-number="4">    <span class="dt">x =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb48-5" data-line-number="5">    <span class="dt">y =</span> <span class="kw">col_date</span>()</a>
+<a class="sourceLine" id="cb48-6" data-line-number="6">  )</a>
+<a class="sourceLine" id="cb48-7" data-line-number="7">)</a>
+<a class="sourceLine" id="cb48-8" data-line-number="8"><span class="kw">tail</span>(challenge)</a>
+<a class="sourceLine" id="cb48-9" data-line-number="9"><span class="co">#&gt; # A tibble: 6 x 2</span></a>
+<a class="sourceLine" id="cb48-10" data-line-number="10"><span class="co">#&gt;       x y         </span></a>
+<a class="sourceLine" id="cb48-11" data-line-number="11"><span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span></a>
+<a class="sourceLine" id="cb48-12" data-line-number="12"><span class="co">#&gt; 1 0.805 2019-11-21</span></a>
+<a class="sourceLine" id="cb48-13" data-line-number="13"><span class="co">#&gt; 2 0.164 2018-03-29</span></a>
+<a class="sourceLine" id="cb48-14" data-line-number="14"><span class="co">#&gt; 3 0.472 2014-08-04</span></a>
+<a class="sourceLine" id="cb48-15" data-line-number="15"><span class="co">#&gt; 4 0.718 2015-08-16</span></a>
+<a class="sourceLine" id="cb48-16" data-line-number="16"><span class="co">#&gt; 5 0.270 2020-02-04</span></a>
+<a class="sourceLine" id="cb48-17" data-line-number="17"><span class="co">#&gt; 6 0.608 2019-01-06</span></a></code></pre></div>
+<p>모든 <code>parse_xyz()</code> 함수는 해당하는 <code>col_xyz()</code> 함수를 가지고 있다. 데이터가 이미
+R 의 문자형 벡터인 경우에는 <code>parse_xyz()</code> 를 사용하면 되고, readr 이 데이터를 불러오는 방법을 설정할 경우에는 <code>col_xyz()</code> 를 사용하면 된다.</p>
 <p><code>col_types</code> 를 항상 설정하여 readr 이 생성하는 출력물로부터 만들어 나가는 것을 강력히 추천한다. 이렇게 하면 일관되고 재현할 수 있는 데이터 불러오기 스크립트를 갖게 된다. 기본값으로 추측하여 데이터를 읽는다면 데이터 변경 시 readr 은 과거 설정으로 읽게 될 것이다. 정말로 엄격하게 하고 싶다면 <code>stop_for_problems()</code> 를 사용하라. 파싱 문제가 생기면 오류를 내며 스크립트를 중단할 것이다.</p>
 </div>
-<div id="-" class="section level3">
+<div id="기타-전략" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> 기타 전략</h3>
 <p>파일을 파싱하는 데 도움이 되는 몇 가지 다른 일반적인 전략이 있다.</p>
 <ul>
 <li><p>앞의 예제에서 우리는 단지 운이 없었다. 즉, 기본값보다 한 행만 더 살펴보면 한 번에 정확하게 파싱할 수 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">challenge2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), <span class="dt">guess_max =</span> <span class="dv">1001</span>)
-<span class="co">#&gt; Parsed with column specification:</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   x = col_double(),</span>
-<span class="co">#&gt;   y = col_date(format = &quot;&quot;)</span>
-<span class="co">#&gt; )</span>
-challenge2
-<span class="co">#&gt; # A tibble: 2,000 x 2</span>
-<span class="co">#&gt;       x y         </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span>
-<span class="co">#&gt; 1   404 NA        </span>
-<span class="co">#&gt; 2  4172 NA        </span>
-<span class="co">#&gt; 3  3004 NA        </span>
-<span class="co">#&gt; 4   787 NA        </span>
-<span class="co">#&gt; 5    37 NA        </span>
-<span class="co">#&gt; 6  2332 NA        </span>
-<span class="co">#&gt; # ... with 1,994 more rows</span></code></pre></div></li>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">challenge2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), <span class="dt">guess_max =</span> <span class="dv">1001</span>)</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb49-4" data-line-number="4"><span class="co">#&gt;   x = col_double(),</span></a>
+<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="co">#&gt;   y = col_date(format = &quot;&quot;)</span></a>
+<a class="sourceLine" id="cb49-6" data-line-number="6"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb49-7" data-line-number="7">challenge2</a>
+<a class="sourceLine" id="cb49-8" data-line-number="8"><span class="co">#&gt; # A tibble: 2,000 x 2</span></a>
+<a class="sourceLine" id="cb49-9" data-line-number="9"><span class="co">#&gt;       x y         </span></a>
+<a class="sourceLine" id="cb49-10" data-line-number="10"><span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span></a>
+<a class="sourceLine" id="cb49-11" data-line-number="11"><span class="co">#&gt; 1   404 NA        </span></a>
+<a class="sourceLine" id="cb49-12" data-line-number="12"><span class="co">#&gt; 2  4172 NA        </span></a>
+<a class="sourceLine" id="cb49-13" data-line-number="13"><span class="co">#&gt; 3  3004 NA        </span></a>
+<a class="sourceLine" id="cb49-14" data-line-number="14"><span class="co">#&gt; 4   787 NA        </span></a>
+<a class="sourceLine" id="cb49-15" data-line-number="15"><span class="co">#&gt; 5    37 NA        </span></a>
+<a class="sourceLine" id="cb49-16" data-line-number="16"><span class="co">#&gt; 6  2332 NA        </span></a>
+<a class="sourceLine" id="cb49-17" data-line-number="17"><span class="co">#&gt; # … with 1,994 more rows</span></a></code></pre></div></li>
 <li><p>모든 열을 문자형 벡터로 읽으면 문제를 쉽게 진단할 수 있는 경우가 많다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">challenge2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), 
-  <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">.default =</span> <span class="kw">col_character</span>())
-)</code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">challenge2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">readr_example</span>(<span class="st">&quot;challenge.csv&quot;</span>), </a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">  <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">.default =</span> <span class="kw">col_character</span>())</a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">)</a></code></pre></div>
 <p>이 방법은 <code>type_convert()</code> 와 함께 사용하면 특히 유용한데, 이 함수는 휴리스틱한 파싱 방법을 데이터프레임의 문자형 열에 적용한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">tribble</span>(
-  <span class="op">~</span>x,  <span class="op">~</span>y,
-  <span class="st">&quot;1&quot;</span>, <span class="st">&quot;1.21&quot;</span>,
-  <span class="st">&quot;2&quot;</span>, <span class="st">&quot;2.32&quot;</span>,
-  <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4.56&quot;</span>
-)
-df
-<span class="co">#&gt; # A tibble: 3 x 2</span>
-<span class="co">#&gt;   x     y    </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 1     1.21 </span>
-<span class="co">#&gt; 2 2     2.32 </span>
-<span class="co">#&gt; 3 3     4.56</span>
-
-<span class="co"># 열 유형을 주의</span>
-<span class="kw">type_convert</span>(df)
-<span class="co">#&gt; Parsed with column specification:</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   x = col_double(),</span>
-<span class="co">#&gt;   y = col_double()</span>
-<span class="co">#&gt; )</span>
-<span class="co">#&gt; # A tibble: 3 x 2</span>
-<span class="co">#&gt;       x     y</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     1  1.21</span>
-<span class="co">#&gt; 2     2  2.32</span>
-<span class="co">#&gt; 3     3  4.56</span></code></pre></div></li>
-<li><p>매우 큰 파일을 읽는 경우, <code>n_max</code> 를 10,000 또는 100,000 과 같이 작은 숫자로 설정할 수 있다. 이렇게 하면 일반적인 문제를 해결하는 동시에 반복작업을 가속화할 수 있다.</p></li>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">  <span class="op">~</span>x,  <span class="op">~</span>y,</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">  <span class="st">&quot;1&quot;</span>, <span class="st">&quot;1.21&quot;</span>,</a>
+<a class="sourceLine" id="cb51-4" data-line-number="4">  <span class="st">&quot;2&quot;</span>, <span class="st">&quot;2.32&quot;</span>,</a>
+<a class="sourceLine" id="cb51-5" data-line-number="5">  <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4.56&quot;</span></a>
+<a class="sourceLine" id="cb51-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb51-7" data-line-number="7">df</a>
+<a class="sourceLine" id="cb51-8" data-line-number="8"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
+<a class="sourceLine" id="cb51-9" data-line-number="9"><span class="co">#&gt;   x     y    </span></a>
+<a class="sourceLine" id="cb51-10" data-line-number="10"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb51-11" data-line-number="11"><span class="co">#&gt; 1 1     1.21 </span></a>
+<a class="sourceLine" id="cb51-12" data-line-number="12"><span class="co">#&gt; 2 2     2.32 </span></a>
+<a class="sourceLine" id="cb51-13" data-line-number="13"><span class="co">#&gt; 3 3     4.56</span></a>
+<a class="sourceLine" id="cb51-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb51-15" data-line-number="15"><span class="co"># 열 유형을 주의</span></a>
+<a class="sourceLine" id="cb51-16" data-line-number="16"><span class="kw">type_convert</span>(df)</a>
+<a class="sourceLine" id="cb51-17" data-line-number="17"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb51-18" data-line-number="18"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb51-19" data-line-number="19"><span class="co">#&gt;   x = col_double(),</span></a>
+<a class="sourceLine" id="cb51-20" data-line-number="20"><span class="co">#&gt;   y = col_double()</span></a>
+<a class="sourceLine" id="cb51-21" data-line-number="21"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb51-22" data-line-number="22"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
+<a class="sourceLine" id="cb51-23" data-line-number="23"><span class="co">#&gt;       x     y</span></a>
+<a class="sourceLine" id="cb51-24" data-line-number="24"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb51-25" data-line-number="25"><span class="co">#&gt; 1     1  1.21</span></a>
+<a class="sourceLine" id="cb51-26" data-line-number="26"><span class="co">#&gt; 2     2  2.32</span></a>
+<a class="sourceLine" id="cb51-27" data-line-number="27"><span class="co">#&gt; 3     3  4.56</span></a></code></pre></div></li>
+<li><p>매우 큰 파일을 읽는 경우, <code>n_max</code> 를 10,000 또는 100,000 과 같이 작은 숫자로 설정할 수 있다. 이렇게 하면 일반적인 문제를 해결하는 동시에 반복작업을
+가속화할 수 있다.</p></li>
 <li><p>파싱에 중대한 문제가 있는 경우에는 <code>read_lines()</code> 을 이용하여 라인으로 이루어진 문자형 벡터로 읽거나 <code>read_file()</code> 을 이용하여 길이가 1인 문자형 벡터로 읽는 것이 더 쉬울 수 있다. 그런 다음 나중에 배울 문자열 파싱 방법을 사용하여 좀 더 특이한 포맷을 파싱하면 된다.</p></li>
 </ul>
 </div>
 </div>
-<div id="-" class="section level2">
+<div id="파일에-쓰기" class="section level2">
 <h2><span class="header-section-number">3.5</span> 파일에 쓰기</h2>
 <p>readr에는 디스크에 데이터를 다시 기록하는 데 유용한 함수, <code>write_csv()</code> 와 <code>write_tsv()</code> 가 있다. 두 함수 모두 다음 동작을 통해 출력 파일이 올바르게 다시 읽힐 수 있게 한다.</p>
 <ul>
@@ -808,78 +1009,82 @@ df
 </ul>
 <p>CSV 파일을 엑셀로 내보내려면 <code>write_excel_csv()</code> 를 사용하라. 이는 파일의 시작 부분에 특수 문자(‘byte order mark’)를 작성하여, UTF-8 인코딩을 사용하고 있음을 엑셀에 전달한다.</p>
 <p>가장 중요한 인수는 <code>x</code> (저장할 데이터프레임)와 <code>path</code> (그 데이터프레임을 저장할 위치)이다. 결측값을 지정하는 인수, <code>na</code> 와 기존 파일에 첨부할지를 지정하는 인수 <code>append</code> 도 있다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_csv</span>(challenge, <span class="st">&quot;challenge.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">write_csv</span>(challenge, <span class="st">&quot;challenge.csv&quot;</span>)</a></code></pre></div>
 <p>CSV 로 저장하면 유형 정보가 없어진다는 것에 유의하라.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">challenge
-<span class="co">#&gt; # A tibble: 2,000 x 2</span>
-<span class="co">#&gt;       x y         </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span>
-<span class="co">#&gt; 1   404 NA        </span>
-<span class="co">#&gt; 2  4172 NA        </span>
-<span class="co">#&gt; 3  3004 NA        </span>
-<span class="co">#&gt; 4   787 NA        </span>
-<span class="co">#&gt; 5    37 NA        </span>
-<span class="co">#&gt; 6  2332 NA        </span>
-<span class="co">#&gt; # ... with 1,994 more rows</span>
-<span class="kw">write_csv</span>(challenge, <span class="st">&quot;challenge-2.csv&quot;</span>)
-<span class="kw">read_csv</span>(<span class="st">&quot;challenge-2.csv&quot;</span>)
-<span class="co">#&gt; Parsed with column specification:</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   x = col_double(),</span>
-<span class="co">#&gt;   y = col_logical()</span>
-<span class="co">#&gt; )</span>
-<span class="co">#&gt; # A tibble: 2,000 x 2</span>
-<span class="co">#&gt;       x y    </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;lgl&gt;</span>
-<span class="co">#&gt; 1   404 NA   </span>
-<span class="co">#&gt; 2  4172 NA   </span>
-<span class="co">#&gt; 3  3004 NA   </span>
-<span class="co">#&gt; 4   787 NA   </span>
-<span class="co">#&gt; 5    37 NA   </span>
-<span class="co">#&gt; 6  2332 NA   </span>
-<span class="co">#&gt; # ... with 1,994 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">challenge</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2,000 x 2</span></a>
+<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="co">#&gt;       x y         </span></a>
+<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span></a>
+<a class="sourceLine" id="cb53-5" data-line-number="5"><span class="co">#&gt; 1   404 NA        </span></a>
+<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="co">#&gt; 2  4172 NA        </span></a>
+<a class="sourceLine" id="cb53-7" data-line-number="7"><span class="co">#&gt; 3  3004 NA        </span></a>
+<a class="sourceLine" id="cb53-8" data-line-number="8"><span class="co">#&gt; 4   787 NA        </span></a>
+<a class="sourceLine" id="cb53-9" data-line-number="9"><span class="co">#&gt; 5    37 NA        </span></a>
+<a class="sourceLine" id="cb53-10" data-line-number="10"><span class="co">#&gt; 6  2332 NA        </span></a>
+<a class="sourceLine" id="cb53-11" data-line-number="11"><span class="co">#&gt; # … with 1,994 more rows</span></a>
+<a class="sourceLine" id="cb53-12" data-line-number="12"><span class="kw">write_csv</span>(challenge, <span class="st">&quot;challenge-2.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb53-13" data-line-number="13"><span class="kw">read_csv</span>(<span class="st">&quot;challenge-2.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb53-14" data-line-number="14"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb53-15" data-line-number="15"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb53-16" data-line-number="16"><span class="co">#&gt;   x = col_double(),</span></a>
+<a class="sourceLine" id="cb53-17" data-line-number="17"><span class="co">#&gt;   y = col_logical()</span></a>
+<a class="sourceLine" id="cb53-18" data-line-number="18"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb53-19" data-line-number="19"><span class="co">#&gt; # A tibble: 2,000 x 2</span></a>
+<a class="sourceLine" id="cb53-20" data-line-number="20"><span class="co">#&gt;       x y    </span></a>
+<a class="sourceLine" id="cb53-21" data-line-number="21"><span class="co">#&gt;   &lt;dbl&gt; &lt;lgl&gt;</span></a>
+<a class="sourceLine" id="cb53-22" data-line-number="22"><span class="co">#&gt; 1   404 NA   </span></a>
+<a class="sourceLine" id="cb53-23" data-line-number="23"><span class="co">#&gt; 2  4172 NA   </span></a>
+<a class="sourceLine" id="cb53-24" data-line-number="24"><span class="co">#&gt; 3  3004 NA   </span></a>
+<a class="sourceLine" id="cb53-25" data-line-number="25"><span class="co">#&gt; 4   787 NA   </span></a>
+<a class="sourceLine" id="cb53-26" data-line-number="26"><span class="co">#&gt; 5    37 NA   </span></a>
+<a class="sourceLine" id="cb53-27" data-line-number="27"><span class="co">#&gt; 6  2332 NA   </span></a>
+<a class="sourceLine" id="cb53-28" data-line-number="28"><span class="co">#&gt; # … with 1,994 more rows</span></a></code></pre></div>
 <p>이런 이유로 중간 결과를 캐싱하기에 CSV 를 아주 신뢰할 수 없다. 불러올 때마다 열 사양을 다시 만들어야 한다. 두 가지 대안이 있다.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>write_rds()</code> 과 <code>read_rds()</code> 는 베이스 함수인 <code>readRDS()</code> 와 <code>saveRDS()</code> 의 래퍼 함수들이다. 이들은 RDS 라는 R 의 커스텀 바이너리 형식으로 데이터를 저장한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_rds</span>(challenge, <span class="st">&quot;challenge.rds&quot;</span>)
-<span class="kw">read_rds</span>(<span class="st">&quot;challenge.rds&quot;</span>)
-<span class="co">#&gt; # A tibble: 2,000 x 2</span>
-<span class="co">#&gt;       x y         </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span>
-<span class="co">#&gt; 1   404 NA        </span>
-<span class="co">#&gt; 2  4172 NA        </span>
-<span class="co">#&gt; 3  3004 NA        </span>
-<span class="co">#&gt; 4   787 NA        </span>
-<span class="co">#&gt; 5    37 NA        </span>
-<span class="co">#&gt; 6  2332 NA        </span>
-<span class="co">#&gt; # ... with 1,994 more rows</span></code></pre></div></li>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">write_rds</span>(challenge, <span class="st">&quot;challenge.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="kw">read_rds</span>(<span class="st">&quot;challenge.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="co">#&gt; # A tibble: 2,000 x 2</span></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="co">#&gt;       x y         </span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;    </span></a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="co">#&gt; 1   404 NA        </span></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7"><span class="co">#&gt; 2  4172 NA        </span></a>
+<a class="sourceLine" id="cb54-8" data-line-number="8"><span class="co">#&gt; 3  3004 NA        </span></a>
+<a class="sourceLine" id="cb54-9" data-line-number="9"><span class="co">#&gt; 4   787 NA        </span></a>
+<a class="sourceLine" id="cb54-10" data-line-number="10"><span class="co">#&gt; 5    37 NA        </span></a>
+<a class="sourceLine" id="cb54-11" data-line-number="11"><span class="co">#&gt; 6  2332 NA        </span></a>
+<a class="sourceLine" id="cb54-12" data-line-number="12"><span class="co">#&gt; # … with 1,994 more rows</span></a></code></pre></div></li>
 <li><p>feather 패키지는 다른 프로그래밍 언어와 공유할 수 있는 빠른 바이너리 파일 형식을 구현한다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(feather)
-<span class="kw">write_feather</span>(challenge, <span class="st">&quot;challenge.feather&quot;</span>)
-<span class="kw">read_feather</span>(<span class="st">&quot;challenge.feather&quot;</span>)
-<span class="co">#&gt; # A tibble: 2,000 x 2</span>
-<span class="co">#&gt;       x      y</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;</span>
-<span class="co">#&gt; 1   404   &lt;NA&gt;</span>
-<span class="co">#&gt; 2  4172   &lt;NA&gt;</span>
-<span class="co">#&gt; 3  3004   &lt;NA&gt;</span>
-<span class="co">#&gt; 4   787   &lt;NA&gt;</span>
-<span class="co">#&gt; 5    37   &lt;NA&gt;</span>
-<span class="co">#&gt; 6  2332   &lt;NA&gt;</span>
-<span class="co">#&gt; # ... with 1,994 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">library</span>(feather)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="kw">write_feather</span>(challenge, <span class="st">&quot;challenge.feather&quot;</span>)</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="kw">read_feather</span>(<span class="st">&quot;challenge.feather&quot;</span>)</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="co">#&gt; # A tibble: 2,000 x 2</span></a>
+<a class="sourceLine" id="cb55-5" data-line-number="5"><span class="co">#&gt;       x      y</span></a>
+<a class="sourceLine" id="cb55-6" data-line-number="6"><span class="co">#&gt;   &lt;dbl&gt; &lt;date&gt;</span></a>
+<a class="sourceLine" id="cb55-7" data-line-number="7"><span class="co">#&gt; 1   404   &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb55-8" data-line-number="8"><span class="co">#&gt; 2  4172   &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb55-9" data-line-number="9"><span class="co">#&gt; 3  3004   &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb55-10" data-line-number="10"><span class="co">#&gt; 4   787   &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb55-11" data-line-number="11"><span class="co">#&gt; 5    37   &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb55-12" data-line-number="12"><span class="co">#&gt; 6  2332   &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb55-13" data-line-number="13"><span class="co">#&gt; # ... with 1,994 more rows</span></a></code></pre></div>
 <p>feather 는 RDS 보다 대체적으로 빠르며 R 외부에서도 사용할 수 있다. RDS 는 리스트-열([many models]에서 배울 것이다)을 지원하지만 feather 는 현재 지원하지 않는다.</p></li>
 </ol>
 </div>
-<div id="--" class="section level2">
+<div id="기타-데이터-유형" class="section level2">
 <h2><span class="header-section-number">3.6</span> 기타 데이터 유형</h2>
-<p>다른 유형의 데이터를 R로 가져오려면 다음에 나열된 tidyverse 패키지로 시작 하는 것이 좋다. 이 패키지들은 완벽하지는 않지만 이들부터 시작하면 좋다. 직사각형 데이터에 대해 다음 패키지들이 있다.</p>
+<p>다른 유형의 데이터를 R로 가져오려면 다음에 나열된 tidyverse 패키지로 시작
+하는 것이 좋다. 이 패키지들은 완벽하지는 않지만 이들부터 시작하면 좋다. 직사각형 데이터에 대해 다음 패키지들이 있다.</p>
 <ul>
 <li><p>haven 은 SPSS, Stata, SAS 파일을 읽을 수 있다.</p></li>
 <li><p>readxl 은 엑셀 파일(<code>.xls</code> 와 <code>.xlsx</code>)을 읽을 수 있다.</p></li>
-<li><p>DBI 를 데이터베이스 특화 백엔드(예: <strong>RMySQL</strong>, <strong>RSQLite</strong>, <strong>RPostgreSQL</strong> 등)와 함께 사용하면 데이터베이스에 대해 SQL 쿼리를 실행하고 데이터프레임을 반환할 수 있다.</p></li>
+<li><p>DBI 를 데이터베이스 특화 백엔드(예: <strong>RMySQL</strong>, <strong>RSQLite</strong>, <strong>RPostgreSQL</strong> 등)와 함께 사용하면 데이터베이스에 대해 SQL 쿼리를 실행하고 데이터프레임을
+반환할 수 있다.</p></li>
 </ul>
-<p>계층적 데이터의 경우, JSON 에는 Jeroen Ooms 가 개발한 <strong>jsonlite</strong>를 사용하고 XML에는 <strong>xml2</strong> 를 사용하면 된다. 이에 관한 좋은 예제는 Jenny Bryan 의 <a href="https://jennybc.github.io/purrr-tutorial" class="uri">https://jennybc.github.io/purrr-tutorial</a> 에서 볼 수 있다.</p>
-<p>다른 파일 유형의 경우, <a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html">R 데이터 가져오기/내보내기 매뉴얼</a> 과 <a href="https://github.com/leeper/rio"><strong>rio</strong></a> 를 참고해보라.</p>
+<p>계층적 데이터의 경우, JSON 에는 Jeroen Ooms 가 개발한 <strong>jsonlite</strong>를
+사용하고 XML에는 <strong>xml2</strong> 를 사용하면 된다. 이에 관한 좋은 예제는 Jenny Bryan 의 <a href="https://jennybc.github.io/purrr-tutorial" class="uri">https://jennybc.github.io/purrr-tutorial</a> 에서 볼 수 있다.</p>
+<p>다른 파일 유형의 경우, <a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html">R 데이터 가져오기/내보내기 매뉴얼</a> 과
+<a href="https://github.com/leeper/rio"><strong>rio</strong></a> 를 참고해보라.</p>
 
 </div>
 </div>
@@ -894,11 +1099,13 @@ df
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -913,6 +1120,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
