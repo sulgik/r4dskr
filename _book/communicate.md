@@ -1,4 +1,3 @@
-
 # (PART) 의사소통하기 {-}
 
 # 소개 {#communicate-intro}
@@ -19,13 +18,3 @@
 *    마지막으로 [R 마트다운 워크플로](#rmarkdonw-workflow) 에서는 ’분석 노트북’을 배우고, 성공과 실패를 체계적으로 기록하여 이로부터 배울 수 있는 법에 대해 배울 것이다.
 
 안타깝게도 이 장에서는 의사소통 기술에만 주로 초점을 맞추고 있고, 정말로 어려운 문제인 다른 사람들에게 생각을 전하는 문제를 다루지는 않는다. 그러나 의사소통에 대한 훌륭한 책이 많이 있다. 각 장의 마지막 부분에서 알아보자. 
-
-* In [R Markdown formats], you'll learn a little about the many other varieties
-  of outputs you can produce using R Markdown, including dashboards, websites,
-  and books.
-  
-* We'll finish up with [R Markdown workflow], where you'll learn about the
-  "analysis notebook" and how to systematically record your successes and 
-  failures so that you can learn from them.
-
-Unfortunately, these chapters focus mostly on the technical mechanics of communication, not the really hard problems of communicating your thoughts to other humans. However, there are lot of other great books about communication, which we'll point you to at the end of each chapter.

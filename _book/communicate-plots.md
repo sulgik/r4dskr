@@ -1,4 +1,3 @@
-
 # 그래프를 통한 의사소통 {#graphics-for-communication}
 
 ## 들어가기
@@ -30,7 +29,7 @@ ggplot(mpg, aes(displ, hwy)) +
   labs(title = "한글")
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" />
 
 The purpose of a plot title is to summarise the main finding. Avoid titles that just describe what the plot is, e.g. "A scatterplot of engine displacement vs. fuel economy". 
 
@@ -53,7 +52,7 @@ ggplot(mpg, aes(displ, hwy)) +
   )
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
 
 You can also use `labs()` to replace the axis and legend titles. It's usually a good idea to replace short variable names with more detailed descriptions, and to include the units.
 
@@ -69,7 +68,7 @@ ggplot(mpg, aes(displ, hwy)) +
   )
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
 
 It's possible to use mathematical equations instead of text strings. Just switch `""` out for `quote()` and read about the available options in `?plotmath`:
 
@@ -87,7 +86,7 @@ ggplot(df, aes(x, y)) +
   )
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-6-1.png" width="50%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-5-1.png" width="50%" style="display: block; margin: auto;" />
 
 ### Exercises
 
@@ -119,7 +118,7 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_text(aes(label = model), data = best_in_class)
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
 
 This is hard to read because the labels overlap with each other, and with the points. We can make things a little better by switching to `geom_label()` which draws a rectangle behind the text. We also use the `nudge_y` parameter to move the labels slightly above the corresponding points:
 
@@ -130,7 +129,7 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_label(aes(label = model), data = best_in_class, nudge_y = 2, alpha = 0.5)
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
 
 That helps a bit, but if you look closely in the top-left hand corner, you'll notice that there are two labels practically on top of each other. This happens because the highway mileage and displacement for the best cars in the compact and subcompact categories are exactly the same. There's no way that we can fix these by applying the same transformation for every label. Instead, we can use the __ggrepel__ package by Kamil Slowikowski. This useful package will automatically adjust labels so that they don't overlap:
 
@@ -142,7 +141,7 @@ ggplot(mpg, aes(displ, hwy)) +
   ggrepel::geom_label_repel(aes(label = model), data = best_in_class)
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
 Note another handy technique used here: I added a second layer of large, hollow points to highlight the points that I've labelled.
 
@@ -156,6 +155,7 @@ class_avg <- mpg %>%
     displ = median(displ),
     hwy = median(hwy)
   )
+#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(mpg, aes(displ, hwy, colour = class)) +
   ggrepel::geom_label_repel(aes(label = class),
@@ -168,7 +168,7 @@ ggplot(mpg, aes(displ, hwy, colour = class)) +
   theme(legend.position = "none")
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 Alternatively, you might just want to add a single label to the plot, but you'll still need to create a data frame. Often, you want the label in the corner of the plot, so it's convenient to create a new data frame using `summarise()` to compute the maximum values of x and y.
 
@@ -186,7 +186,7 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_text(aes(label = label), data = label, vjust = "top", hjust = "right")
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
 If you want to place the text exactly on the borders of the plot, you can use `+Inf` and `-Inf`. Since we're no longer computing the positions from `mpg`, we can use `tibble()` to create the data frame:
 
@@ -203,7 +203,7 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_text(aes(label = label), data = label, vjust = "top", hjust = "right")
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
 
 In these examples, I manually broke the label up into lines using `"\n"`. Another approach is to use `stringr::str_wrap()` to automatically add line breaks, given the number of characters you want per line:
 
@@ -302,7 +302,7 @@ ggplot(mpg, aes(displ, hwy)) +
   scale_y_continuous(breaks = seq(15, 40, by = 5))
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
 
 You can use `labels` in the same way (a character vector the same length as `breaks`), but you can also set it to `NULL` to suppress the labels altogether. This is useful for maps, or for publishing plots where you can't share the absolute numbers.
 
@@ -314,7 +314,7 @@ ggplot(mpg, aes(displ, hwy)) +
   scale_y_continuous(labels = NULL)
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 
 You can also use `breaks` and `labels` to control the appearance of legends. Collectively axes and legends are called __guides__. Axes are used for x and y aesthetics; legends are used for everything else.
 
@@ -330,7 +330,7 @@ presidential %>%
     scale_x_date(NULL, breaks = presidential$start, date_labels = "'%y")
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
 
 Note that the specification of breaks and labels for date and datetime scales is a little different:
 
@@ -356,7 +356,7 @@ base + theme(legend.position = "bottom")
 base + theme(legend.position = "right") # the default
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-18-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-18-2.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-18-3.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-18-4.png" width="50%" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-17-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-17-2.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-17-3.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-17-4.png" width="50%" />
 
 You can also use `legend.position = "none"` to suppress the display of the legend altogether.
 
@@ -372,7 +372,7 @@ ggplot(mpg, aes(displ, hwy)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### Replacing a scale
 
@@ -389,7 +389,7 @@ ggplot(diamonds, aes(log10(carat), log10(price))) +
   geom_bin2d()
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-20-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-20-2.png" width="50%" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-19-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-19-2.png" width="50%" />
 
 However, the disadvantage of this transformation is that the axes are now labelled with the transformed values, making it hard to interpret the plot. Instead of doing the transformation in the aesthetic mapping, we can instead do it with the scale. This is visually identical, except the axes are labelled on the original data scale.
 
@@ -401,7 +401,7 @@ ggplot(diamonds, aes(carat, price)) +
   scale_y_log10()
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
 
 Another scale that is frequently customised is colour. The default categorical scale picks colours that are evenly spaced around the colour wheel. Useful alternatives are the ColorBrewer scales which have been hand tuned to work better for people with common types of colour blindness. The two plots below look similar, but there is enough difference in the shades of red and green that the dots on the right can be distinguished even by people with red-green colour blindness.
 
@@ -415,7 +415,7 @@ ggplot(mpg, aes(displ, hwy)) +
   scale_colour_brewer(palette = "Set1")
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-22-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-22-2.png" width="50%" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-21-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-21-2.png" width="50%" />
 
 Don't forget simpler techniques. If there are just a few colours, you can add a redundant shape mapping. This will also help ensure your plot is interpretable in black and white.
 
@@ -426,7 +426,7 @@ ggplot(mpg, aes(displ, hwy)) +
   scale_colour_brewer(palette = "Set1")
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
 
 The ColorBrewer scales are documented online at <http://colorbrewer2.org/> and made available in R via the __RColorBrewer__ package, by Erich Neuwirth. Figure \@ref(fig:brewer) shows the complete list of all palettes. The sequential (top) and diverging (bottom) palettes are particularly useful if your categorical values are ordered, or have a "middle". This often arises if you've used `cut()` to make a continuous variable into a categorical variable.
 
@@ -447,7 +447,7 @@ presidential %>%
     scale_colour_manual(values = c(Republican = "red", Democratic = "blue"))
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
 
 For continuous colour, you can use the built-in `scale_colour_gradient()` or `scale_fill_gradient()`. If you have a diverging scale, you can use `scale_colour_gradient2()`. That allows you to give, for example, positive and negative values different colours. That's sometimes also useful if you want to distinguish points above or below the mean.
 
@@ -462,14 +462,20 @@ df <- tibble(
 ggplot(df, aes(x, y)) +
   geom_hex() +
   coord_fixed()
+#> Warning: Computation failed in `stat_binhex()`:
+#>   Package `hexbin` required for `stat_binhex`.
+#>   Please install and try again.
 
 ggplot(df, aes(x, y)) +
   geom_hex() +
   viridis::scale_fill_viridis() +
   coord_fixed()
+#> Warning: Computation failed in `stat_binhex()`:
+#>   Package `hexbin` required for `stat_binhex`.
+#>   Please install and try again.
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-25-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-25-2.png" width="50%" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-24-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-24-2.png" width="50%" />
 
 Note that all colour scales come in two variety: `scale_colour_x()` and `scale_fill_x()` for the `colour` and `fill` aesthetics respectively (the colour scales are available in both UK and US spellings).
 
@@ -483,6 +489,9 @@ Note that all colour scales come in two variety: `scale_colour_x()` and `scale_f
       geom_hex() +
       scale_colour_gradient(low = "white", high = "red") +
       coord_fixed()
+    #> Warning: Computation failed in `stat_binhex()`:
+    #>   Package `hexbin` required for `stat_binhex`.
+    #>   Please install and try again.
     ```
 
 1.  What is the first argument to every scale? How does it compare to `labs()`?
@@ -503,7 +512,7 @@ Note that all colour scales come in two variety: `scale_colour_x()` and `scale_f
       geom_point(aes(colour = cut), alpha = 1/20)
     ```
     
-    <img src="communicate-plots_files/figure-html/unnamed-chunk-27-1.png" width="50%" style="display: block; margin: auto;" />
+    <img src="communicate-plots_files/figure-html/unnamed-chunk-26-1.png" width="50%" style="display: block; margin: auto;" />
 
 ## Zooming
 
@@ -529,7 +538,7 @@ mpg %>%
   geom_smooth()
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-28-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-28-2.png" width="50%" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-27-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-27-2.png" width="50%" />
 
 You can also set the `limits` on individual scales. Reducing the limits is basically equivalent to subsetting the data. It is generally more useful if you want _expand_ the limits, for example, to match scales across different plots. For example, if we extract two classes of cars and plot them separately, it's difficult to compare the plots because all three scales (the x-axis, the y-axis, and the colour aesthetic) have different ranges.
 
@@ -545,7 +554,7 @@ ggplot(compact, aes(displ, hwy, colour = drv)) +
   geom_point()
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-29-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-29-2.png" width="50%" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-28-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-28-2.png" width="50%" />
 
 One way to overcome this problem is to share scales across multiple plots, training the scales with the `limits` of the full data.
 
@@ -568,7 +577,7 @@ ggplot(compact, aes(displ, hwy, colour = drv)) +
   col_scale
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-30-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-30-2.png" width="50%" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-29-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-29-2.png" width="50%" />
 
 In this particular case, you could have simply used faceting, but this technique is useful more generally, if for instance, you want spread plots over multiple pages of a report.
 
@@ -584,7 +593,7 @@ ggplot(mpg, aes(displ, hwy)) +
   theme_bw()
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
 
 ggplot2 includes eight themes by default, as shown in Figure \@ref(fig:themes). Many more are included in add-on packages like __ggthemes__ (<https://github.com/jrnold/ggthemes>), by Jeffrey Arnold.
 
@@ -606,11 +615,11 @@ There are two main ways to get your plots out of R and into your final write-up:
 ggplot(mpg, aes(displ, hwy)) + geom_point()
 ```
 
-<img src="communicate-plots_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="communicate-plots_files/figure-html/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" />
 
 ```r
 ggsave("my-plot.pdf")
-#> Saving 6 x 3.71 in image
+#> Saving 7 x 4.33 in image
 ```
 
 
@@ -643,9 +652,9 @@ I only ever use three of the five options:
 If you find that you're having to squint to read the text in your plot, you need to tweak `fig.width`. If `fig.width` is larger than the size the figure is rendered in the final doc, the text will be too small; if `fig.width` is smaller, the text will be too big. You'll often need to do a little experimentation to figure out the right ratio between the `fig.width` and the eventual width in your document. To illustrate the principle, the following three plots have `fig.width` of 4, 6, and 8 respectively:
 
 
+<img src="communicate-plots_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
 <img src="communicate-plots_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
 <img src="communicate-plots_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
-<img src="communicate-plots_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
 
 If you want to make sure the font size is consistent across all your figures, whenever you set `out.width`, you'll also need to adjust `fig.width` to maintain the same ratio with your default `out.width`. For example, if your default `fig.width` is 6 and `out.width` is 0.7, when you set `out.width = "50%"` you'll need to set `fig.width` to 4.3 (6 * 0.5 / 0.7).
 

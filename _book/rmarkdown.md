@@ -1,4 +1,3 @@
-
 # R 마크다운 {#rmarkdown}
 
 ## 들어가기
@@ -77,7 +76,7 @@ smaller %>%
 
 <img src="rmarkdown/diamond-sizes-report.png" width="75%" style="display: block; margin: auto;" />
  
-문서를 니트(knit) 하면 R마크다운은 .Rmd 파일을 [__knitr__](http://yihui.name/knitr/), 로 보내는데, __knitr__는 모든 코드 청크를 실행하고 코드와 그 출력을 포함하는 새로운 마크다운 문서(.md)를 생성한다.<옮긴이 주: 이 책에서 ‘니트하다’는 이런 과정을 의미한다> 이렇게 생성된 마크다운 파일은 이후 [__pandoc__]<http://pandoc.org/>이 처리하는데, pandoc은 완성 파일을 생성하는 역할을 한다. 이와 같이 작업이 두 단계로 나누어져서, 다양한 출력 형식을 만들 수 있다는 장점이 있다. [R markdown formats]에서 이를 배우도록 하겠다. 
+문서를 니트(knit) 하면 R마크다운은 .Rmd 파일을 [__knitr__](http://yihui.name/knitr/), 로 보내는데, __knitr__는 모든 코드 청크를 실행하고 코드와 그 출력을 포함하는 새로운 마크다운 문서(.md)를 생성한다.<옮긴이 주: 이 책에서 ‘니트하다’는 이런 과정을 의미한다> 이렇게 생성된 마크다운 파일은 이후 [__pandoc__](http://pandoc.org/)이 처리하는데, pandoc은 완성 파일을 생성하는 역할을 한다. 이와 같이 작업이 두 단계로 나누어져서, 다양한 출력 형식을 만들 수 있다는 장점이 있다. [R 마크다운 포맷](#rmarkdown-formats)에서 이를 배우도록 하겠다. 
 
 <img src="images/RMarkdownFlow.png" width="75%" style="display: block; margin: auto;" />
 
@@ -256,13 +255,13 @@ knitr::kable(
 
 Table: (\#tab:kable)A knitr kable.
 
-                      mpg   cyl   disp    hp   drat     wt   qsec   vs   am   gear   carb
-------------------  -----  ----  -----  ----  -----  -----  -----  ---  ---  -----  -----
-Mazda RX4            21.0     6    160   110   3.90   2.62   16.5    0    1      4      4
-Mazda RX4 Wag        21.0     6    160   110   3.90   2.88   17.0    0    1      4      4
-Datsun 710           22.8     4    108    93   3.85   2.32   18.6    1    1      4      1
-Hornet 4 Drive       21.4     6    258   110   3.08   3.21   19.4    1    0      3      1
-Hornet Sportabout    18.7     8    360   175   3.15   3.44   17.0    0    0      3      2
+|                  |  mpg| cyl| disp|  hp| drat|   wt| qsec| vs| am| gear| carb|
+|:-----------------|----:|---:|----:|---:|----:|----:|----:|--:|--:|----:|----:|
+|Mazda RX4         | 21.0|   6|  160| 110| 3.90| 2.62| 16.5|  0|  1|    4|    4|
+|Mazda RX4 Wag     | 21.0|   6|  160| 110| 3.90| 2.88| 17.0|  0|  1|    4|    4|
+|Datsun 710        | 22.8|   4|  108|  93| 3.85| 2.32| 18.6|  1|  1|    4|    1|
+|Hornet 4 Drive    | 21.4|   6|  258| 110| 3.08| 3.21| 19.4|  1|  0|    3|    1|
+|Hornet Sportabout | 18.7|   8|  360| 175| 3.15| 3.44| 17.0|  0|  0|    3|    2|
 
 표를 사용자 정의할 수 있는 다른 방법을 보려면 `?knitr::kable`를 통해 설명서를 읽어라. 더 자세한 사용자 정의를 원한다면 __xtable__, __stargazer__, __pander__, __tables__, __ascii__ 패키지를 고려하라. 각각에는 R 코드로 서식화된 표를 반환하는 도구들이 있다. 
 
@@ -271,9 +270,9 @@ Hornet Sportabout    18.7     8    360   175   3.15   3.44   17.0    0    0     
   
 ### 캐싱
 
-Normally, each knit of a document starts from a completely clean slate. This is great for reproducibility, because it ensures that you've captured every important computation in code. However, it can be painful if you have some computations that take a long time. The solution is `cache = TRUE`. When set, this will save the output of the chunk to a specially named file on disk. On subsequent runs, knitr will check to see if the code has changed, and if it hasn't, it will reuse the cached results.
+일반적으로 문서의 각 니트는 완전히 깨끗한 슬레이트에서부터 시작된다. 이는 코드 안에서 중요한 계산 모두가 호출되었다는 것을 확인할 수 있어서 재현성 측면에서는 바람직하다. 그러나 시간이 오래 걸리는 계산이 있다면 힘들 것이다. 해결 방법은 <코드체>cache = TRUE</코드체>이다. 이렇게 설정하면 청크 출력이 특별한 이름을 가진 파일로 디스크에 저장된다. 후속 실행에서 knitr 은 코드가 변경되었는지 확인하고 변경되지 않았다면 캐시된 결과를 재사용한다. 
 
-The caching system must be used with care, because by default it is based on the code only, not its dependencies. For example, here the `processed_data` chunk depends on the `raw_data` chunk:
+기본적으로 캐싱 시스템은 종속 코드가 아닌, 본 코드에만 기반하므로 주의해서 사용해야 한다. 예를 들어 다음에서 <코드체>processed_data</코드체> 청크는 <코드체>raw_data</코드체> 청크에 의존한다. 
 
     ```{r raw_data}
     rawdata <- readr::read_csv("a_very_large_file.csv")
@@ -285,7 +284,7 @@ The caching system must be used with care, because by default it is based on the
       mutate(new_variable = complicated_transformation(x, y, z))
     ```
 
-Caching the `processed_data` chunk means that it will get re-run if the dplyr pipeline is changed, but it won't get rerun if the `read_csv()` call changes. You can avoid that problem with the `dependson` chunk option:
+<코드체>processed_data</코드체> 청크를 캐싱 후 dplyr 파이프 라인이 변경되면 재실행되지만 <코드체>read_csv()</코드체> 호출이 변경되면 재실행되지 않을 것이다. 이 문제는 <코드체>dependson</코드체> 청크 옵션으로 피할 수 있다.
 
     ```{r processed_data, cache = TRUE, dependson = "raw_data"}
     processed_data <- rawdata %>% 
@@ -293,17 +292,18 @@ Caching the `processed_data` chunk means that it will get re-run if the dplyr pi
       mutate(new_variable = complicated_transformation(x, y, z))
     ```
 
-`dependson` should contain a character vector of *every* chunk that the cached chunk depends on. Knitr will update the results for the cached chunk whenever it detects that one of its dependencies have changed.
+<코드체>dependson</코드체> 옵션은 캐시된 청크가 의존하는 *모든* 청크의 문자형 벡터를 포함해야 한다. <볼드>knitr<볼드>는 종속 청크 중 하나가 변경되었음을 감지하면 캐시된 청크의 결과를 업데이트한다. 
 
-Note that the chunks won't update if `a_very_large_file.csv` changes, because knitr caching only tracks changes within the `.Rmd` file. If you want to also track changes to that file you can use the `cache.extra` option. This is an arbitrary R expression that will invalidate the cache whenever it changes. A good function to use is `file.info()`: it returns a bunch of information about the file including when it was last modified. Then you can write:
-
+knitr 캐싱은 <이탤릭>.Rmd</이탤릭> 파일 내의 변경 사항만 추적하기 때문에 <이탤릭>a_very_large_file.csv</이탤릭>가 변경되어도 청크가 업데이트되지 않다. 해당 파일의 변경 사항을 추적하고자 한다면 <코드체>cache.extra</코드체> 옵션을 사용하면 된다. 이는 임의의 R 표현식인데, 이것이 변경될 때마다 캐시를 없앤다. 함께 사용하기 좋은 함수는 <코드체>file.info()</코드체>인데, 마지막으로 수정한 시간 등 파일에 대한 정보를 반환한다. 다음과 같이 작성할 수 있다. 
     ```{r raw_data, cache.extra = file.info("a_very_large_file.csv")}
     rawdata <- readr::read_csv("a_very_large_file.csv")
     ```
 
-As your caching strategies get progressively more complicated, it's a good idea to regularly clear out all your caches with `knitr::clean_cache()`.
+ 
 
-I've used the advice of [David Robinson](https://twitter.com/drob/status/738786604731490304) to name these chunks: each chunk is named after the primary object that it creates. This makes it easier to understand the `dependson` specification.
+캐싱 전략이 점차 복잡해지게 되면 정기적으로 <코드체>knitr::clean_cache()</코드체>를 사용하여 모든 캐시를 지우는 것이 좋다. 
+
+나는 [데이빗 로빈슨(David Robinson)](https://twitter.com/drob/status/738786604731490304)의 조언을 따라 다음과 같이 청크의 이름을 짓고 있다. 각 청크에서 생성되는 주요 객체의 이름을 따서 명명한다. 이렇게 하면 <코드체>dependson</코드체>로 지정된 것을 더 쉽게 이해할 수 있다. 
 
 ### 전역 옵션
 
@@ -330,16 +330,20 @@ knitr::opts_chunk$set(
 
 ### Inline code
 
+R 코드를 R마크다운 문서에 삽입하는 다른 방법도 있다. 텍스트에 직접 `` `r ` `` 하는 것이다. 이것은 텍스트에서 데이터의 속성을 언급할 때 매우 유용할 수 있다. 예를 들어 이번 장 시작 부분에 내가 사용한 예제 문서에서 다음과 같이 썼다. 
+
 There is one other way to embed R code into an R Markdown document: directly into the text, with:  `` `r ` ``. This can be very useful if you mention properties of your data in the text. For example, in the example document I used at the start of the chapter I had:
 
-> We have data about `` `r nrow(diamonds)` `` diamonds. 
-> Only `` `r nrow(diamonds) - nrow(smaller)` `` are larger 
-> than 2.5 carats. The distribution of the remainder is shown below:
+> `` `r nrow(diamonds)` `` 개의 다이아몬드에 관한 데이터가 있다. 
+> `` `r nrow(diamonds) - nrow(smaller)` `` 개만 2.5 캐럿보다 크다. 
+> 나머지 다이아몬드의 크기는 다음과 같다.
 
-When the report is knit, the results of these computations are inserted into the text:
+이 보고서가 니트되면 다음과 같이 계산 결과가 텍스트에 삽입된다.
 
-> We have data about 53940 diamonds. Only 126 are larger than 
-> 2.5 carats. The distribution of the remainder is shown below:
+> 53940개의 다이아몬드에 관한 데이터가 있다. 126개만 2.5캐럿보다 크다. 
+> 나머지 다이아몬드의 분포는 다음과 같다.  
+
+숫자를 텍스트에 삽입할 때 <코드체>format()</코드체>은 친구 같은 함수이다. 엄청난 정확도로 출력되지 않도록 유효숫자(`digits`) 개수를 설정하며, 숫자를 읽기 쉽게 하기 위해 <코드체>big.mark</코드체> 를 설정한다. 나는 이것을 종종 도우미 함수로 결합하곤 한다. 
 
 When inserting numbers into text, `format()` is your friend. It allows you to set the number of `digits` so you don't print to a ridiculous degree of accuracy, and a `big.mark` to make numbers easier to read. I'll often combine these into a helper function:
 
@@ -374,21 +378,21 @@ comma(.12358124331)
 
 ## Troubleshooting
 
-Troubleshooting R Markdown documents can be challenging because you are no longer in an interactive R environment, and you will need to learn some new tricks. The first thing you should always try is to recreate the problem in an interactive session. Restart R, then "Run all chunks" (either from Code menu, under Run region), or with the keyboard shortcut Ctrl + Alt + R. If you're lucky, that will recreate the problem, and you can figure out what's going on interactively.
+R마크다운 세션은 대화식 R 환경이 아니기 때문에, 문제 해결이 어려울 수 있으며, 따라서 새로운 트릭을 배워야 한다. 언제나 대화식 세션에서 문제를 다시 만드는 것부터 시도해 보아야 한다. R을 재시작한 다음 ’모든 청크 실행’을 하라(코드 메뉴의 실행 영역 아래에서 하거나, 키보드 단축키 Ctrl-Alt-R로 할 수 있음). 운이 좋으면 문제가 재현될 것이다. 
 
-If that doesn't help, there must be something different between your interactive environment and the R markdown environment. You're going to need to systematically explore the options. The most common difference is the working directory: the working directory of an R Markdown is the directory in which it lives. Check the working directory is what you expect by including `getwd()` in a chunk.
+이 방법이 도움되지 않는다면 대화형 환경과 R마크다운 환경 간에 무언가 다른 점이 있다는 이야기다. 이 경우 옵션을 체계적으로 탐색할 필요가 있다. 작업 디렉터리가 다른 경우가 가장 일반적이다. R마크다운 문서의 작업 디렉터리는 문서가 있는 디렉터리이다. 청크에 <코드체>getwd()</코드체>를 넣어 작업 디렉터리가 생각하고 있는 곳과 같은지 확인하라. 
 
-Next, brainstorm all the things that might cause the bug. You'll need to systematically check that they're the same in your R session and your R markdown session. The easiest way to do that is to set `error = TRUE` on the chunk causing the problem, then use `print()` and `str()` to check that settings are as you expect.
+그런 다음, 버그를 일으킬만한 모든 것들에 대해 브레인스토밍 하라. 이것들이 R 세션과 R마크다운 세션에서 동일한지를 체계적으로 점검해야 한다. 가장 쉬운 방법은 문제를 일으킨 청크에 <코드체>error = TRUE</코드체>를 설정한 다음 <코드체>print()</코드체> 및 <코드체>str()</코드체>을 사용하여 설정이 예상대로인지 확인하는 것이다. 
 
 ## YAML header
 
-You can control many other "whole document" settings by tweaking the parameters of the YAML header.  You might wonder what YAML stands for: it's "yet another markup language", which is designed for representing hierarchical data in a way that's easy for humans to read and write. R Markdown uses it to control many details of the output. Here we'll discuss two: document parameters and bibliographies.
+YAML 헤더의 파라미터를 조정하여 기타 ’전체 문서‘ 설정을 제어할 수 있다. YAML이 무엇을 의미하는지 궁금할 텐데 이는 ’또 다른 마크 업 언어(Yet another markup language)’이다. 이는 계층적 데이터를 사람이 읽고 쓸 수 있는 방식으로 표현하도록 설계되었다. R마크다운은 이를 사용하여 다양한 출력 세부 정보를 제어한다. 여기서는 문서 파라미터와 참고문헌 두 가지를 논의할 것이다. 
 
 ### Parameters
 
-R Markdown documents can include one or more parameters whose values can be set when you render the report. Parameters are useful when you want to re-render the same report with distinct values for various key inputs. For example, you might be producing sales reports per branch, exam results by student, or demographic summaries by country. To declare one or more parameters, use the `params` field. 
+R마크다운 문서에는 보고서를 렌더링할 때 값을 설정할 수 있는 파라미터가 하나 이상 포함될 수 있다. 주요 입력들에 다른 값들을 넣어서 동일한 보고서를 다시 렌더링하려는 경우에 파라미터는 유용하다. 예를 들어 지점별 판매 보고서, 학생별 시험 결과 또는 국가별 인구통계 요약값을 만들 수 있다. 하나 이상의 파라미터를 선언하려면 <코드체>params</코드체> 필드를 사용하라.  
 
-This example uses a `my_class` parameter to determine which class of cars to display:
+이 예제는 <코드체>my_class</코드체> 파라미터를 사용하여, 어떤 자동차 종류(class)를 보여줄 지를 결정한다. 
 
 
 ````
@@ -414,9 +418,10 @@ ggplot(class, aes(displ, hwy)) +
 ```
 ````
 
-As you can see, parameters are available within the code chunks as a read-only list named `params`.
+보시다시피 코드 청크 내에서 파라미터를 <코드체>params</코드체>라는 이름의 읽기 전용 리스트로 사용할 수 있다.  
 
-You can write atomic vectors directly into the YAML header. You can also run arbitrary R expressions by prefacing the parameter value with `!r`. This is a good way to specify date/time parameters.
+원자 벡터를 YAML 헤더에 직접 적을 수 있다. 또한 파라미터값 앞에 <코드체>!r</코드체>을 붙여서 임의의 R 표현식을 실행시킬 수도 있다. 이는 날짜/시간 파라미터를 지정할 때 좋은 방법이다. 
+
 
 ```yaml
 params:
@@ -424,16 +429,16 @@ params:
   snapshot: !r lubridate::ymd_hms("2015-01-01 12:30:00")
 ```
 
-In RStudio, you can click the "Knit with Parameters" option in the Knit dropdown menu to set parameters, render, and preview the report in a single user friendly step. You can customise the dialog by setting other options in the header. See <http://rmarkdown.rstudio.com/developer_parameterized_reports.html#parameter_user_interfaces> for more details.
+RStudio에서는 니트 드롭 다운 메뉴에서 ’파라미터와 함께 니트(Knit with Parameters)’ 옵션을 클릭하여 파라미터를 설정하고, 보고서 렌더링 및 미리보기를 한 단계로 할 수 있다. 헤더의 다른 옵션을 설정하여 대화 상자를 사용자 정의할 수 있다. 자세한 내용은 다음을 참조하라. <http://rmarkdown.rstudio.com/developer_parameterized_reports.html#parameter_user_interfaces>
 
-Alternatively, if you need to produce many such paramterised reports, you can call `rmarkdown::render()` with a list of `params`:
+또는 여러 개의 ‘파라미터 변경 보고서’를 생성해야 하는 경우, <코드체>rmarkdown::render()</코드체>를 <코드체>params</코드체> 리스트와 함께 호출할 수 있다. 
 
 
 ```r
 rmarkdown::render("fuel-economy.Rmd", params = list(my_class = "suv"))
 ```
 
-This is particularly powerful in conjunction with `purrr:pwalk()`. The following example creates a report for each value of `class` found in `mpg`. First we create a data frame that has one row for each class, giving the `filename` of the report and the `params`:
+이것은 <코드체>purrr:pwalk()</코드체>와 함께 사용하면 강력해 진다. 다음 예제는 <코드체>mpg</코드체>에 있는 <코드체>class</코드체> 각 값에 대해 보고서를 생성한다. 먼저 각 클래스마다 보고서의 <코드체>filename</코드체>과 <코드체>params</코드체>를 포함한 행이 하나씩 있는 데이터프레임 하나를 만든다. 
 
 
 ```r
@@ -444,18 +449,18 @@ reports <- tibble(
 )
 reports
 #> # A tibble: 7 x 3
-#>   class   filename                  params    
-#>   <chr>   <chr>                     <list>    
-#> 1 compact fuel-economy-compact.html <list [1]>
-#> 2 midsize fuel-economy-midsize.html <list [1]>
-#> 3 suv     fuel-economy-suv.html     <list [1]>
-#> 4 2seater fuel-economy-2seater.html <list [1]>
-#> 5 minivan fuel-economy-minivan.html <list [1]>
-#> 6 pickup  fuel-economy-pickup.html  <list [1]>
-#> # ... with 1 more row
+#>   class   filename                  params          
+#>   <chr>   <chr>                     <list>          
+#> 1 compact fuel-economy-compact.html <named list [1]>
+#> 2 midsize fuel-economy-midsize.html <named list [1]>
+#> 3 suv     fuel-economy-suv.html     <named list [1]>
+#> 4 2seater fuel-economy-2seater.html <named list [1]>
+#> 5 minivan fuel-economy-minivan.html <named list [1]>
+#> 6 pickup  fuel-economy-pickup.html  <named list [1]>
+#> # … with 1 more row
 ```
 
-Then we match the column names to the argument names of `render()`, and use purrr's __parallel__ walk to call `render()` once for each row:
+그런 다음 열 이름을 <코드체>render()</코드체>의 인수 이름과 일치시키고 <볼드>purrr</볼드>의 병렬 워크(parrallel walk)를 사용하여 각 행마다 <코드체>render()</코드체>를 한 번 호출한다. 
 
 
 ```r

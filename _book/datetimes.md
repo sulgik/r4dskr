@@ -1,4 +1,3 @@
-
 # 날짜와 시간 {#dates-and-times}
 
 ## 들어가기
@@ -44,9 +43,9 @@ R에는 시간 저장을 위한 네이티브 클래스가 없기 때문에 이 �
 
 ```r
 today()
-#> [1] "2018-12-12"
+#> [1] "2020-07-13"
 now()
-#> [1] "2018-12-12 08:17:06 KST"
+#> [1] "2020-07-13 16:18:59 KST"
 ```
 
 이 외에 날짜/시간을 생성하는 세 가지 방법이 있다.
@@ -115,7 +114,7 @@ flights %>%
 #> 4  2013     1     1     5     45
 #> 5  2013     1     1     6      0
 #> 6  2013     1     1     5     58
-#> # ... with 3.368e+05 more rows
+#> # … with 336,770 more rows
 ```
 
 이러한 입력으로 날짜/시간을 생성하려면 데이트형은 `make_date()` 를, 데이트-타임형은 `make_datetime()` 를 쓰면 된다. 
@@ -134,7 +133,7 @@ flights %>%
 #> 4  2013     1     1     5     45 2013-01-01 05:45:00
 #> 5  2013     1     1     6      0 2013-01-01 06:00:00
 #> 6  2013     1     1     5     58 2013-01-01 05:58:00
-#> # ... with 3.368e+05 more rows
+#> # … with 336,770 more rows
 ```
 
 
@@ -166,7 +165,7 @@ flights_dt
 #> 4 JFK    BQN          -1       -18 2013-01-01 05:44:00 2013-01-01 05:45:00
 #> 5 LGA    ATL          -6       -25 2013-01-01 05:54:00 2013-01-01 06:00:00
 #> 6 EWR    ORD          -4        12 2013-01-01 05:54:00 2013-01-01 05:58:00
-#> # ... with 3.281e+05 more rows, and 3 more variables: arr_time <dttm>,
+#> # … with 328,057 more rows, and 3 more variables: arr_time <dttm>,
 #> #   sched_arr_time <dttm>, air_time <dbl>
 ```
 
@@ -179,7 +178,7 @@ flights_dt %>%
   geom_freqpoly(binwidth = 86400) # 86400 seconds = 1 day
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 하루 내에서의 분포로 보려면
@@ -192,7 +191,7 @@ flights_dt %>%
   geom_freqpoly(binwidth = 600) # 600 s = 10 minutes
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
 수치형 맥락에서 데이트-타임형을 사용할 경우(히스토그램에서와 같이) 1은 1초를 의미하고, 따라서 86400 빈너비(binwidth)는 하루를 의미한다는 것을 주목하라. 데이트형에서는 1은 1일을 의미한다.
 
@@ -203,9 +202,9 @@ flights_dt %>%
 
 ```r
 as_datetime(today())
-#> [1] "2018-12-12 UTC"
+#> [1] "2020-07-13 UTC"
 as_date(now())
-#> [1] "2018-12-12"
+#> [1] "2020-07-13"
 ```
 
 때로 날짜/시간을 ‘유닉스 신기원(Unix Epoch)’인 1970-01-01에서 수치형 오프셋으로 가지고 있을 수 있다. 오프셋이 초 단위인 경우엔 `as_datetime()` , 일 단위인 경우엔 `as_date()` 을 사용한다.
@@ -287,7 +286,7 @@ flights_dt %>%
     geom_bar()
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
 
 출발 지연시간 평균을 매 시의 각 분(0~59 분)에 대해서 살펴보면 흥미로운 패턴이 있다. 20~30분과 50~60분에 출발하는 항공편은 나머지 시간보다 훨씬 덜 지연되는 것으로 보인다.
 
@@ -302,9 +301,10 @@ flights_dt %>%
     n = n()) %>% 
   ggplot(aes(minute, avg_delay)) +
     geom_line()
+#> `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 흥미롭게도 예정된 출발시간으로 보면 이러한 강한 패턴을 볼 수 없다.
 
@@ -316,12 +316,13 @@ sched_dep <- flights_dt %>%
   summarise(
     avg_delay = mean(arr_delay, na.rm = TRUE),
     n = n())
+#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(sched_dep, aes(minute, avg_delay)) +
   geom_line()
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
 
 그러면 왜 실제 출발시간에는 그 패턴이 있는가? 사람에 의해 수집된 많은 데이터가 그런 것처럼, ’좋은‘ 출발시간에 떠나는 항공편 방향으로 편향(bias)이 강하게 존재한다. 인간의 판단이 관여된 데이터로 작업할 때마다 이런 종류의 패턴을 항상 유의해야 한다.
 
@@ -331,7 +332,7 @@ ggplot(sched_dep, aes(minute, n)) +
   geom_line()
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### 반올림
 
@@ -345,7 +346,7 @@ flights_dt %>%
     geom_line()
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
 
 날짜 반올림 전후 차이를 계산하는 것은 특히 유용할 수 있다.
 
@@ -399,7 +400,7 @@ flights_dt %>%
     geom_freqpoly(binwidth = 300)
 ```
 
-<img src="datetimes_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="datetimes_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
 
 날짜의 상위 구성 요소를 상수로 설정하면, 하위 구성 요소의 패턴을 탐색할 수 있어서 매우 유용한 방법이다
 
@@ -438,7 +439,7 @@ R에서 두 데이트형 뺄셈을 하면 difftime형 객체가 생긴다.
 # 해들리의 나이는?
 h_age <- today() - ymd(19791014)
 h_age
-#> Time difference of 14304 days
+#> Time difference of 14883 days
 ```
 
 difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 기록한다. 이러한 애매함 때문에 difftime형으로 작업하는 것이 약간 고통스러울 수 있다. 따라서 **lubridate** 는 항상 초를 사용하는 대안 클래스, **듀레이션형** 을 제공한다. 
@@ -446,7 +447,7 @@ difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 �
 
 ```r
 as.duration(h_age)
-#> [1] "1235865600s (~39.16 years)"
+#> [1] "1285891200s (~40.75 years)"
 ```
 
 듀레이션형에는 편리한 생성자가 많다.
@@ -465,7 +466,7 @@ ddays(0:5)
 dweeks(3)
 #> [1] "1814400s (~3 weeks)"
 dyears(1)
-#> [1] "31536000s (~52.14 weeks)"
+#> [1] "31557600s (~1 years)"
 ```
 
 듀레이션형은 항상 초 단위로 시간 범위를 기록한다. 이보다 큰 단위를 생성하려면 분, 시, 일, 주, 연을 표준비율로 변환해야 한다(분당 60초, 시당 60분, 일당 24시, 주당 7일, 연당 365일). 
@@ -475,9 +476,9 @@ dyears(1)
 
 ```r
 2 * dyears(1)
-#> [1] "63072000s (~2 years)"
+#> [1] "63115200s (~2 years)"
 dyears(1) + dweeks(12) + dhours(15)
-#> [1] "38847600s (~1.23 years)"
+#> [1] "38869200s (~1.23 years)"
 ```
 
 일(day)에서 듀레이션형을 더하고 뺄 수 있다.
@@ -551,7 +552,7 @@ days(50) + hours(25) + minutes(2)
 ```r
 # 윤년
 ymd("2016-01-01") + dyears(1)
-#> [1] "2016-12-31"
+#> [1] "2016-12-31 06:00:00 UTC"
 ymd("2016-01-01") + years(1)
 #> [1] "2017-01-01"
 
@@ -577,7 +578,7 @@ flights_dt %>%
 #> 4 EWR    SJU          -6       -12 2013-01-01 21:02:00 2013-01-01 21:08:00
 #> 5 EWR    SFO          11       -14 2013-01-01 21:08:00 2013-01-01 20:57:00
 #> 6 LGA    FLL         -10        -2 2013-01-01 21:20:00 2013-01-01 21:30:00
-#> # ... with 1.063e+04 more rows, and 3 more variables: arr_time <dttm>,
+#> # … with 10,627 more rows, and 3 more variables: arr_time <dttm>,
 #> #   sched_arr_time <dttm>, air_time <dbl>
 ```
 
@@ -600,10 +601,9 @@ flights_dt <- flights_dt %>%
 flights_dt %>% 
   filter(overnight, arr_time < dep_time) 
 #> # A tibble: 0 x 10
-#> # ... with 10 variables: origin <chr>, dest <chr>, dep_delay <dbl>,
-#> #   arr_delay <dbl>, dep_time <dttm>, sched_dep_time <dttm>,
-#> #   arr_time <dttm>, sched_arr_time <dttm>, air_time <dbl>,
-#> #   overnight <lgl>
+#> # … with 10 variables: origin <chr>, dest <chr>, dep_delay <dbl>,
+#> #   arr_delay <dbl>, dep_time <dttm>, sched_dep_time <dttm>, arr_time <dttm>,
+#> #   sched_arr_time <dttm>, air_time <dbl>, overnight <lgl>
 ```
 
 ### 인터벌형
@@ -616,7 +616,6 @@ flights_dt %>%
 
 ```r
 years(1) / days(1)
-#> estimate only: convert to intervals for accuracy
 #> [1] 365
 ```
 
@@ -634,9 +633,6 @@ next_year <- today() + years(1)
 
 ```r
 (today() %--% next_year) %/% days(1)
-#> Note: method with signature 'Timespan#Timespan' chosen for function '%/%',
-#>  target signature 'Interval#Period'.
-#>  "Interval#ANY", "ANY#Period" would also be valid
 #> [1] 365
 ```
 
@@ -665,7 +661,7 @@ Figure \@ref(fig:dt-algebra) 은 다른 데이터 유형 사이에 허용된 산
 1. 왜 다음은 작동하지 않는가? `(today() %--% (today() + years(1)) / months(1)` 
 
 
-## 시간대
+## 시간대 {#time-zones}
 
 시간대는 엄청나게 복잡한 주제인데, 지정학적 요소들과 상호작용이 있기 때문이다. 다행히 데이터 분석을 할 때 시간대가 항상 중요하지는 않기 때문에 세부사항을 모두 파고들지 않아도 되지만, 정면으로 맞서야 하는 문제가 몇 개 있다.
 
@@ -688,7 +684,7 @@ Sys.timezone()
 
 ```r
 length(OlsonNames())
-#> [1] 592
+#> [1] 594
 head(OlsonNames())
 #> [1] "Africa/Abidjan"     "Africa/Accra"       "Africa/Addis_Ababa"
 #> [4] "Africa/Algiers"     "Africa/Asmara"      "Africa/Asmera"
