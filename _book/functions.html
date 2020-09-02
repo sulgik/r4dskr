@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11 함수 | R 을 활용한 데이터과학</title>
-  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <meta name="description" content="11 함수 | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11 함수 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
-  <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="11 함수 | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
-  <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="개럿 그롤문드" />
@@ -186,9 +186,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>4.2</b> Tidy Data</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>4.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#gather-와-spread"><i class="fa fa-check"></i><b>4.3</b> gather 와 spread</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>4.3.1</b> Gather</a></li>
-<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>4.3.2</b> Spread</a></li>
+<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#피봇팅"><i class="fa fa-check"></i><b>4.3</b> 피봇팅</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#longer"><i class="fa fa-check"></i><b>4.3.1</b> Longer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#wider"><i class="fa fa-check"></i><b>4.3.2</b> Wider</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>4.3.3</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="tidy-data.html"><a href="tidy-data.html#separate-과-unite"><i class="fa fa-check"></i><b>4.4</b> separate 과 unite</a><ul>
@@ -488,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="함수를-언제-작성해야-하나" class="section level2">
 <h2><span class="header-section-number">11.2</span> 함수를 언제 작성해야 하나?</h2>
-<p>코드 블록을 두 번 이상 복사하여 붙여넣을 때마다, 함수를 작성하는 것을 고려해야 한다. (즉, 동일한 코드의 사본이 세 개인 경우이다.) 예를 들어 이 코드를 살펴보라. 무엇을 하는 코드인가?</p>
+<p>코드 블록을 복사하여 붙여넣는 횟수가 두 번 이상이 될 때면 언제나, 함수를 작성하는 것을 고려해야 한다. (즉, 동일한 코드의 사본이 세 개인 경우이다.) 예를 들어 이 코드를 살펴보라. 무엇을 하는 코드인가?</p>
 <div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1">df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tibble</span>(</a>
 <a class="sourceLine" id="cb291-2" data-line-number="2">  <span class="dt">a =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>),</a>
 <a class="sourceLine" id="cb291-3" data-line-number="3">  <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>),</a>
