@@ -1026,7 +1026,7 @@ You can get and set individual attribute values with <code>attr()</code> or see 
 <div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" data-line-number="1">as.Date</a>
 <a class="sourceLine" id="cb376-2" data-line-number="2"><span class="co">#&gt; function (x, ...) </span></a>
 <a class="sourceLine" id="cb376-3" data-line-number="3"><span class="co">#&gt; UseMethod(&quot;as.Date&quot;)</span></a>
-<a class="sourceLine" id="cb376-4" data-line-number="4"><span class="co">#&gt; &lt;bytecode: 0x7fe97651a0e0&gt;</span></a>
+<a class="sourceLine" id="cb376-4" data-line-number="4"><span class="co">#&gt; &lt;bytecode: 0x7fe790863348&gt;</span></a>
 <a class="sourceLine" id="cb376-5" data-line-number="5"><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></a></code></pre></div>
 <p>The call to “UseMethod” means that this is a generic function, and it will call a specific <strong>method</strong>, a function, based on the class of the first argument. (All methods are functions; not all functions are methods). You can list all the methods for a generic with <code>methods()</code>:</p>
 <div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1"><span class="kw">methods</span>(<span class="st">&quot;as.Date&quot;</span>)</a>
@@ -1048,7 +1048,7 @@ You can get and set individual attribute values with <code>attr()</code> or see 
 <a class="sourceLine" id="cb378-10" data-line-number="10"><span class="co">#&gt;     else stop(gettextf(&quot;do not know how to convert &#39;%s&#39; to class %s&quot;, </span></a>
 <a class="sourceLine" id="cb378-11" data-line-number="11"><span class="co">#&gt;         deparse1(substitute(x)), dQuote(&quot;Date&quot;)), domain = NA)</span></a>
 <a class="sourceLine" id="cb378-12" data-line-number="12"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb378-13" data-line-number="13"><span class="co">#&gt; &lt;bytecode: 0x7fe977652e38&gt;</span></a>
+<a class="sourceLine" id="cb378-13" data-line-number="13"><span class="co">#&gt; &lt;bytecode: 0x7fe7944ddcb0&gt;</span></a>
 <a class="sourceLine" id="cb378-14" data-line-number="14"><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></a>
 <a class="sourceLine" id="cb378-15" data-line-number="15"><span class="kw">getS3method</span>(<span class="st">&quot;as.Date&quot;</span>, <span class="st">&quot;numeric&quot;</span>)</a>
 <a class="sourceLine" id="cb378-16" data-line-number="16"><span class="co">#&gt; function (x, origin, ...) </span></a>
@@ -1062,7 +1062,7 @@ You can get and set individual attribute values with <code>attr()</code> or see 
 <a class="sourceLine" id="cb378-24" data-line-number="24"><span class="co">#&gt;     }</span></a>
 <a class="sourceLine" id="cb378-25" data-line-number="25"><span class="co">#&gt;     as.Date(origin, ...) + x</span></a>
 <a class="sourceLine" id="cb378-26" data-line-number="26"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb378-27" data-line-number="27"><span class="co">#&gt; &lt;bytecode: 0x7fe978943ee8&gt;</span></a>
+<a class="sourceLine" id="cb378-27" data-line-number="27"><span class="co">#&gt; &lt;bytecode: 0x7fe79242ff30&gt;</span></a>
 <a class="sourceLine" id="cb378-28" data-line-number="28"><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></a></code></pre></div>
 <p>The most important S3 generic is <code>print()</code>: it controls how the object is printed when you type its name at the console. Other important generics are the subsetting functions <code>[</code>, <code>[[</code>, and <code>$</code>.</p>
 </div>

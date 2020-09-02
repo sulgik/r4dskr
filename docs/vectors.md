@@ -654,7 +654,7 @@ Here's what a typical generic function looks like:
 as.Date
 #> function (x, ...) 
 #> UseMethod("as.Date")
-#> <bytecode: 0x7fe97651a0e0>
+#> <bytecode: 0x7fe790863348>
 #> <environment: namespace:base>
 ```
 
@@ -687,7 +687,7 @@ getS3method("as.Date", "default")
 #>     else stop(gettextf("do not know how to convert '%s' to class %s", 
 #>         deparse1(substitute(x)), dQuote("Date")), domain = NA)
 #> }
-#> <bytecode: 0x7fe977652e38>
+#> <bytecode: 0x7fe7944ddcb0>
 #> <environment: namespace:base>
 getS3method("as.Date", "numeric")
 #> function (x, origin, ...) 
@@ -701,7 +701,7 @@ getS3method("as.Date", "numeric")
 #>     }
 #>     as.Date(origin, ...) + x
 #> }
-#> <bytecode: 0x7fe978943ee8>
+#> <bytecode: 0x7fe79242ff30>
 #> <environment: namespace:base>
 ```
 

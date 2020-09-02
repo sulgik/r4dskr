@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 타이디 데이터 | R 을 활용한 데이터과학</title>
-  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <meta name="description" content="4 타이디 데이터 | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 타이디 데이터 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
-  <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4 타이디 데이터 | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
-  <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="개럿 그롤문드" />
@@ -186,9 +186,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>4.2</b> Tidy Data</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>4.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#gather-와-spread"><i class="fa fa-check"></i><b>4.3</b> gather 와 spread</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>4.3.1</b> Gather</a></li>
-<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>4.3.2</b> Spread</a></li>
+<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#피봇팅"><i class="fa fa-check"></i><b>4.3</b> 피봇팅</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#longer"><i class="fa fa-check"></i><b>4.3.1</b> Longer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#wider"><i class="fa fa-check"></i><b>4.3.2</b> Wider</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>4.3.3</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="tidy-data.html"><a href="tidy-data.html#separate-과-unite"><i class="fa fa-check"></i><b>4.4</b> separate 과 unite</a><ul>
@@ -304,74 +304,154 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
-<li class="part"><span><b>II 의사소통하기</b></span></li>
-<li class="chapter" data-level="9" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a></li>
-<li class="chapter" data-level="10" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>10</b> R 마크다운</a><ul>
+<li class="part"><span><b>II 프로그래밍</b></span></li>
+<li class="chapter" data-level="9" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a><ul>
+<li class="chapter" data-level="9.1" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>9.1</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Pipes.html"><a href="Pipes.html"><i class="fa fa-check"></i><b>10</b> 파이프</a><ul>
 <li class="chapter" data-level="10.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>10.2</b> R 마크다운 기초</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>10.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.2" data-path="Pipes.html"><a href="Pipes.html#파이프-대안"><i class="fa fa-check"></i><b>10.2</b> 파이프 대안</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="Pipes.html"><a href="Pipes.html#중간단계-이용"><i class="fa fa-check"></i><b>10.2.1</b> 중간단계 이용</a></li>
+<li class="chapter" data-level="10.2.2" data-path="Pipes.html"><a href="Pipes.html#원본-덮어쓰기"><i class="fa fa-check"></i><b>10.2.2</b> 원본 덮어쓰기</a></li>
+<li class="chapter" data-level="10.2.3" data-path="Pipes.html"><a href="Pipes.html#함수-작성"><i class="fa fa-check"></i><b>10.2.3</b> 함수 작성</a></li>
+<li class="chapter" data-level="10.2.4" data-path="Pipes.html"><a href="Pipes.html#파이프-사용"><i class="fa fa-check"></i><b>10.2.4</b> 파이프 사용</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>10.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>10.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.3" data-path="Pipes.html"><a href="Pipes.html#파이프를-사용하지-않아야-할-경우"><i class="fa fa-check"></i><b>10.3</b> 파이프를 사용하지 않아야 할 경우</a></li>
+<li class="chapter" data-level="10.4" data-path="Pipes.html"><a href="Pipes.html#magrittr-의-기타-도구"><i class="fa fa-check"></i><b>10.4</b> magrittr 의 기타 도구</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>10.4</b> 코드 청크</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>10.4.1</b> 청크 이름</a></li>
-<li class="chapter" data-level="10.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>10.4.2</b> 청크 옵션</a></li>
-<li class="chapter" data-level="10.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>10.4.3</b> 표</a></li>
-<li class="chapter" data-level="10.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>10.4.4</b> 캐싱</a></li>
-<li class="chapter" data-level="10.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>10.4.5</b> 전역 옵션</a></li>
-<li class="chapter" data-level="10.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>10.4.6</b> Inline code</a></li>
-<li class="chapter" data-level="10.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>10.4.7</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>10.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="10.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>10.6</b> YAML header</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>10.6.1</b> Parameters</a></li>
-<li class="chapter" data-level="10.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>10.6.2</b> Bibliographies and Citations</a></li>
-</ul></li>
-<li class="chapter" data-level="10.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>10.7</b> Learning more</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>11</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> 함수</a><ul>
 <li class="chapter" data-level="11.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>11.2</b> Label</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>11.2.1</b> Exercises</a></li>
+<li class="chapter" data-level="11.2" data-path="functions.html"><a href="functions.html#함수를-언제-작성해야-하나"><i class="fa fa-check"></i><b>11.2</b> 함수를 언제 작성해야 하나?</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>11.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>11.3</b> Annotations</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="11.3" data-path="functions.html"><a href="functions.html#함수는-사람과-컴퓨터를-위한-것"><i class="fa fa-check"></i><b>11.3</b> 함수는 사람과 컴퓨터를 위한 것</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>11.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>11.4</b> Scales</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>11.4.1</b> Axis ticks and legend keys</a></li>
-<li class="chapter" data-level="11.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>11.4.2</b> Legend layout</a></li>
-<li class="chapter" data-level="11.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>11.4.3</b> Replacing a scale</a></li>
-<li class="chapter" data-level="11.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>11.4.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.4" data-path="functions.html"><a href="functions.html#조건부-실행"><i class="fa fa-check"></i><b>11.4</b> 조건부 실행</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="functions.html"><a href="functions.html#조건문"><i class="fa fa-check"></i><b>11.4.1</b> 조건문</a></li>
+<li class="chapter" data-level="11.4.2" data-path="functions.html"><a href="functions.html#다중-조건"><i class="fa fa-check"></i><b>11.4.2</b> 다중 조건</a></li>
+<li class="chapter" data-level="11.4.3" data-path="functions.html"><a href="functions.html#코드-스타일"><i class="fa fa-check"></i><b>11.4.3</b> 코드 스타일</a></li>
+<li class="chapter" data-level="11.4.4" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-2"><i class="fa fa-check"></i><b>11.4.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>11.5</b> Zooming</a></li>
-<li class="chapter" data-level="11.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>11.6</b> Themes</a></li>
-<li class="chapter" data-level="11.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>11.7</b> Saving your plots</a><ul>
-<li class="chapter" data-level="11.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>11.7.1</b> Figure sizing</a></li>
-<li class="chapter" data-level="11.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>11.7.2</b> Other important options</a></li>
+<li class="chapter" data-level="11.5" data-path="functions.html"><a href="functions.html#함수-인수"><i class="fa fa-check"></i><b>11.5</b> 함수 인수</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="functions.html"><a href="functions.html#이름-정하기"><i class="fa fa-check"></i><b>11.5.1</b> 이름 정하기</a></li>
+<li class="chapter" data-level="11.5.2" data-path="functions.html"><a href="functions.html#값-확인하기"><i class="fa fa-check"></i><b>11.5.2</b> 값 확인하기</a></li>
+<li class="chapter" data-level="11.5.3" data-path="functions.html"><a href="functions.html#점-점-점"><i class="fa fa-check"></i><b>11.5.3</b> 점-점-점 (…)</a></li>
+<li class="chapter" data-level="11.5.4" data-path="functions.html"><a href="functions.html#지연-평가"><i class="fa fa-check"></i><b>11.5.4</b> 지연 평가</a></li>
+<li class="chapter" data-level="11.5.5" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-3"><i class="fa fa-check"></i><b>11.5.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.8" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>11.8</b> Learning more</a></li>
+<li class="chapter" data-level="11.6" data-path="functions.html"><a href="functions.html#반환값"><i class="fa fa-check"></i><b>11.6</b> 반환값</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="functions.html"><a href="functions.html#명시적-반환문"><i class="fa fa-check"></i><b>11.6.1</b> 명시적 반환문</a></li>
+<li class="chapter" data-level="11.6.2" data-path="functions.html"><a href="functions.html#파이핑-가능한-함수-작성하기"><i class="fa fa-check"></i><b>11.6.2</b> 파이핑 가능한 함수 작성하기</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>12</b> R 마크다운 유형</a><ul>
-<li class="chapter" data-level="12.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a></li>
-<li class="chapter" data-level="12.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>12.2</b> 출력 옵션</a></li>
-<li class="chapter" data-level="12.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>12.3</b> Document</a></li>
-<li class="chapter" data-level="12.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>12.4</b> Notebook</a></li>
-<li class="chapter" data-level="12.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>12.5</b> Presentation</a></li>
-<li class="chapter" data-level="12.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>12.6</b> Dashboard</a></li>
-<li class="chapter" data-level="12.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>12.7</b> 대화형 동작</a><ul>
-<li class="chapter" data-level="12.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>12.7.1</b> htmlwidgets</a></li>
-<li class="chapter" data-level="12.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>12.7.2</b> Shiny</a></li>
+<li class="chapter" data-level="11.7" data-path="functions.html"><a href="functions.html#환경"><i class="fa fa-check"></i><b>11.7</b> 환경</a></li>
 </ul></li>
-<li class="chapter" data-level="12.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>12.8</b> Website</a></li>
-<li class="chapter" data-level="12.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>12.9</b> Other formats</a></li>
-<li class="chapter" data-level="12.10" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>12.10</b> 더 배우기</a></li>
+<li class="chapter" data-level="12" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>12</b> 벡터</a><ul>
+<li class="chapter" data-level="12.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>13</b> R 마크다운 워크플로</a></li>
+<li class="chapter" data-level="12.2" data-path="vectors.html"><a href="vectors.html#벡터-기본-사항"><i class="fa fa-check"></i><b>12.2</b> 벡터 기본 사항</a></li>
+<li class="chapter" data-level="12.3" data-path="vectors.html"><a href="vectors.html#원자-벡터의-주요-유형"><i class="fa fa-check"></i><b>12.3</b> 원자 벡터의 주요 유형</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="vectors.html"><a href="vectors.html#논리형"><i class="fa fa-check"></i><b>12.3.1</b> 논리형</a></li>
+<li class="chapter" data-level="12.3.2" data-path="vectors.html"><a href="vectors.html#수치형"><i class="fa fa-check"></i><b>12.3.2</b> 수치형</a></li>
+<li class="chapter" data-level="12.3.3" data-path="vectors.html"><a href="vectors.html#문자형"><i class="fa fa-check"></i><b>12.3.3</b> 문자형</a></li>
+<li class="chapter" data-level="12.3.4" data-path="tidy-data.html"><a href="tidy-data.html#결측값"><i class="fa fa-check"></i><b>12.3.4</b> 결측값</a></li>
+<li class="chapter" data-level="12.3.5" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>12.3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="vectors.html"><a href="vectors.html#원자벡터-이용하기"><i class="fa fa-check"></i><b>12.4</b> 원자벡터 이용하기</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="vectors.html"><a href="vectors.html#강제변환"><i class="fa fa-check"></i><b>12.4.1</b> 강제변환</a></li>
+<li class="chapter" data-level="12.4.2" data-path="vectors.html"><a href="vectors.html#테스트-함수"><i class="fa fa-check"></i><b>12.4.2</b> 테스트 함수</a></li>
+<li class="chapter" data-level="12.4.3" data-path="vectors.html"><a href="vectors.html#스칼라와-재활용-규칙"><i class="fa fa-check"></i><b>12.4.3</b> 스칼라와 재활용 규칙</a></li>
+<li class="chapter" data-level="12.4.4" data-path="vectors.html"><a href="vectors.html#벡터-이름-짓기"><i class="fa fa-check"></i><b>12.4.4</b> 벡터 이름 짓기</a></li>
+<li class="chapter" data-level="12.4.5" data-path="vectors.html"><a href="vectors.html#vector-subsetting"><i class="fa fa-check"></i><b>12.4.5</b> 서브셋하기</a></li>
+<li class="chapter" data-level="12.4.6" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>12.4.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>12.5</b> 재귀 벡터 (리스트)</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="vectors.html"><a href="vectors.html#리스트-시각화"><i class="fa fa-check"></i><b>12.5.1</b> 리스트 시각화</a></li>
+<li class="chapter" data-level="12.5.2" data-path="tibble.html"><a href="tibble.html#서브셋하기"><i class="fa fa-check"></i><b>12.5.2</b> 서브셋하기</a></li>
+<li class="chapter" data-level="12.5.3" data-path="vectors.html"><a href="vectors.html#후추-리스트"><i class="fa fa-check"></i><b>12.5.3</b> 후추 리스트</a></li>
+<li class="chapter" data-level="12.5.4" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>12.5.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="vectors.html"><a href="vectors.html#attributes"><i class="fa fa-check"></i><b>12.6</b> Attributes</a></li>
+<li class="chapter" data-level="12.7" data-path="vectors.html"><a href="vectors.html#augmented-vectors"><i class="fa fa-check"></i><b>12.7</b> Augmented vectors</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="factors.html"><a href="factors.html#factors"><i class="fa fa-check"></i><b>12.7.1</b> Factors</a></li>
+<li class="chapter" data-level="12.7.2" data-path="vectors.html"><a href="vectors.html#dates-and-date-times"><i class="fa fa-check"></i><b>12.7.2</b> Dates and date-times</a></li>
+<li class="chapter" data-level="12.7.3" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>12.7.3</b> Tibbles</a></li>
+<li class="chapter" data-level="12.7.4" data-path="vectors.html"><a href="vectors.html#exercises-1"><i class="fa fa-check"></i><b>12.7.4</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III 의사소통하기</b></span></li>
+<li class="chapter" data-level="13" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>13</b> 소개</a></li>
+<li class="chapter" data-level="14" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>14</b> R 마크다운</a><ul>
+<li class="chapter" data-level="14.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>14.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>14.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>14.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>14.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>14.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>14.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>14.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>14.4.1</b> 청크 이름</a></li>
+<li class="chapter" data-level="14.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>14.4.2</b> 청크 옵션</a></li>
+<li class="chapter" data-level="14.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>14.4.3</b> 표</a></li>
+<li class="chapter" data-level="14.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>14.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="14.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>14.4.5</b> 전역 옵션</a></li>
+<li class="chapter" data-level="14.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>14.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="14.4.7" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>14.4.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>14.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="14.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>14.6</b> YAML header</a><ul>
+<li class="chapter" data-level="14.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>14.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="14.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>14.6.2</b> Bibliographies and Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>14.7</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>15</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="15.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>15.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>15.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>15.2</b> Label</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>15.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>15.3</b> Annotations</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="vectors.html"><a href="vectors.html#exercises-1"><i class="fa fa-check"></i><b>15.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>15.4</b> Scales</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>15.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="15.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>15.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="15.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>15.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="15.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>15.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>15.5</b> Zooming</a></li>
+<li class="chapter" data-level="15.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>15.6</b> Themes</a></li>
+<li class="chapter" data-level="15.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>15.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>15.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="15.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>15.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>15.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>16</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="16.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>16.1</b> 들어가기</a></li>
+<li class="chapter" data-level="16.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>16.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="16.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>16.3</b> Document</a></li>
+<li class="chapter" data-level="16.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>16.4</b> Notebook</a></li>
+<li class="chapter" data-level="16.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>16.5</b> Presentation</a></li>
+<li class="chapter" data-level="16.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>16.6</b> Dashboard</a></li>
+<li class="chapter" data-level="16.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>16.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="16.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>16.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="16.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>16.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="16.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>16.8</b> Website</a></li>
+<li class="chapter" data-level="16.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>16.9</b> Other formats</a></li>
+<li class="chapter" data-level="16.10" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>16.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>17</b> R 마크다운 워크플로</a></li>
 </ul>
 
       </nav>
@@ -530,8 +610,8 @@ Figure 4.1: 데이터셋을 타이디하게 만드는 세 가지 규칙: 변수�
 </ol>
 </div>
 </div>
-<div id="gather-와-spread" class="section level2">
-<h2><span class="header-section-number">4.3</span> gather 와 spread</h2>
+<div id="피봇팅" class="section level2">
+<h2><span class="header-section-number">4.3</span> 피봇팅</h2>
 <p>타이디 데이터의 원리는 너무 당연해 보여서, 과연 타이디하지 않은 데이터셋을 볼 일은 있을지 의문이 들 것이다. 하지만, 불행하게도 여러분이 마주치게 될 대부분의 데이터는 타이디하지 않을 것이다. 크게 두 가지 이유가 있다.</p>
 <ol style="list-style-type: decimal">
 <li><p>대부분의 사람들은 타이디 데이터의 원리에 익숙하지 않으며, 데이터 작업에 많은 시간을 써야만 타이디 데이터로 만들 수 있다.</p></li>
@@ -542,8 +622,9 @@ Figure 4.1: 데이터셋을 타이디하게 만드는 세 가지 규칙: 변수�
 <li>하나의 변수가 여러 열에 분산되어 있을 수 있다.</li>
 <li>하나의 관측값이 여러 행에 흩어져 있을 수 있다.</li>
 </ol>
-<div id="gather" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> Gather</h3>
+<p>일반적으로 데이터셋은 위 두가지 문제중 하나를 가지고 있을 것이다; 정말 행운이 없는 경우에는 두 문제 다 가지게 되고, tidyr 에 있는 가장 중요한 함수, <code>pivot_longer()</code> 와 <code>pivot_wider()</code> 가 필요하게 될 것이다.</p>
+<div id="longer" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Longer</h3>
 <p>자주 생기는 문제는 데이터셋의 일부 열 이름이 변수 이름이 아니라 변수 값인 경우이다. <code>table4a</code> 를 보면 열 이름 1999와 2000은 <code>year</code> 변수 값을 나타내며, 각 행은 하나가 아닌 두 개의 관측값을 나타낸다.</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">table4a</a>
 <a class="sourceLine" id="cb59-2" data-line-number="2"><span class="co">#&gt; # A tibble: 3 x 3</span></a>
@@ -552,63 +633,65 @@ Figure 4.1: 데이터셋을 타이디하게 만드는 세 가지 규칙: 변수�
 <a class="sourceLine" id="cb59-5" data-line-number="5"><span class="co">#&gt; 1 Afghanistan    745   2666</span></a>
 <a class="sourceLine" id="cb59-6" data-line-number="6"><span class="co">#&gt; 2 Brazil       37737  80488</span></a>
 <a class="sourceLine" id="cb59-7" data-line-number="7"><span class="co">#&gt; 3 China       212258 213766</span></a></code></pre></div>
-<p>이와 같은 데이터셋을 타이디하게 만들려면 해당 열을 새로운 두 변수로 수집<strong>(gather)</strong> 해야 한다. 이 작업을 설명하기 위해 세 가지 파라미터가 필요하다.</p>
+<p>이와 같은 데이터셋을 타이디하게 만들려면 해당 열을 새로운 두 변수로 피봇<strong>(pivot)</strong> 해야 한다. 이 작업을 설명하기 위해 세 가지 파라미터가 필요하다.</p>
 <ul>
 <li><p>변수가 아니라 값을 나타내는 열 집합. 이 예에서는 열 <code>1999</code> 과 열 <code>2000</code> 이다.</p></li>
 <li><p>열 이름 자리에 나타난 값의 변수 이름. 이를 나는 <code>key</code> 라고 부르며, 여기에서는 <code>year</code> 이다.</p></li>
 <li><p>셀에 값이 분산되어 있는 변수의 이름. 이를 나는 <code>value</code> 라고 부르며, 여기에서는 <code>cases</code> (사례수) 이다.</p></li>
 </ul>
-<p>이러한 파라미터와 함께 <code>gather()</code> 호출을 생성할 수 있다.</p>
+<p>이러한 파라미터와 함께 <code>pivot_longer()</code> 호출을 생성할 수 있다.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">table4a <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>)</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="kw">c</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>), <span class="dt">names_to =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;cases&quot;</span>)</a>
 <a class="sourceLine" id="cb60-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
 <a class="sourceLine" id="cb60-4" data-line-number="4"><span class="co">#&gt;   country     year   cases</span></a>
 <a class="sourceLine" id="cb60-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;</span></a>
 <a class="sourceLine" id="cb60-6" data-line-number="6"><span class="co">#&gt; 1 Afghanistan 1999     745</span></a>
-<a class="sourceLine" id="cb60-7" data-line-number="7"><span class="co">#&gt; 2 Brazil      1999   37737</span></a>
-<a class="sourceLine" id="cb60-8" data-line-number="8"><span class="co">#&gt; 3 China       1999  212258</span></a>
-<a class="sourceLine" id="cb60-9" data-line-number="9"><span class="co">#&gt; 4 Afghanistan 2000    2666</span></a>
-<a class="sourceLine" id="cb60-10" data-line-number="10"><span class="co">#&gt; 5 Brazil      2000   80488</span></a>
+<a class="sourceLine" id="cb60-7" data-line-number="7"><span class="co">#&gt; 2 Afghanistan 2000    2666</span></a>
+<a class="sourceLine" id="cb60-8" data-line-number="8"><span class="co">#&gt; 3 Brazil      1999   37737</span></a>
+<a class="sourceLine" id="cb60-9" data-line-number="9"><span class="co">#&gt; 4 Brazil      2000   80488</span></a>
+<a class="sourceLine" id="cb60-10" data-line-number="10"><span class="co">#&gt; 5 China       1999  212258</span></a>
 <a class="sourceLine" id="cb60-11" data-line-number="11"><span class="co">#&gt; 6 China       2000  213766</span></a></code></pre></div>
 <p>수집하고자 하는 열을 지정하는 법은 <code>dplyr::select()</code> 스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’ 와 ’2000’ 은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 <a href="#select">select() 로 열 선택</a>’ 을 참조하라.</p>
 <div class="figure" style="text-align: center"><span id="fig:tidy-gather"></span>
-<img src="images/tidy-9.png" alt="Gathering `table4` into a tidy form." width="100%" />
+<img src="images/tidy-9.png" alt="`table4` 을 더 긴  타이티 형태로 피봇팅하기" width="100%" />
 <p class="caption">
-Figure 4.2: Gathering <code>table4</code> into a tidy form.
+Figure 4.2: <code>table4</code> 을 더 긴 타이티 형태로 피봇팅하기
 </p>
 </div>
-<p>최종 결과에서, 수집된 열은 삭제되고 새 <code>key</code> 와 <code>value</code> 열이 생성된다. 한편, 원래 변수 간의 관계는 보존된다. 이는 Figure <a href="tidy-data.html#fig:tidy-gather">4.2</a> 에 시각적으로 표현되어 있다. <code>table4b</code> 를 비슷한 방법으로 타이디하게 할 때 <code>gather()</code> 를 사용할 수 있다. 유일한 차이점은 셀 값에 저장된 변수이다.</p>
+<p>최종 결과에서, 수집된 열은 삭제되고 새 <code>key</code> 와 <code>value</code> 열이 생성된다. 한편, 원래 변수 간의 관계는 보존된다. 이는 Figure <a href="tidy-data.html#fig:tidy-gather">4.2</a> 에 시각적으로 표현되어 있다.</p>
+<p><code>pivot_longer</code> 를 사용하면 행 개수를 늘리고 열 개수를 줄여서 데이터셋을 길게 만든다. 나는 데이터셋이 “long form” 이라고 표현하는 것이 맞지 않는다고 믿는다. 길이는 상대적인 용어이고, (예를 들어) 데이터셋 A 가 데이터셋 B 보다 더 길다고만 이야기 할 수 있는 것이다.</p>
+<p><code>table4b</code> 를 비슷한 방법으로 타이디하게 할 때 <code>pivot_longer()</code> 를 사용할 수 있다. 유일한 차이점은 셀 값에 저장된 변수이다.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">table4b <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;population&quot;</span>)</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="kw">c</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>), <span class="dt">names_to =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;population&quot;</span>)</a>
 <a class="sourceLine" id="cb61-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
 <a class="sourceLine" id="cb61-4" data-line-number="4"><span class="co">#&gt;   country     year  population</span></a>
 <a class="sourceLine" id="cb61-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;</span></a>
 <a class="sourceLine" id="cb61-6" data-line-number="6"><span class="co">#&gt; 1 Afghanistan 1999    19987071</span></a>
-<a class="sourceLine" id="cb61-7" data-line-number="7"><span class="co">#&gt; 2 Brazil      1999   172006362</span></a>
-<a class="sourceLine" id="cb61-8" data-line-number="8"><span class="co">#&gt; 3 China       1999  1272915272</span></a>
-<a class="sourceLine" id="cb61-9" data-line-number="9"><span class="co">#&gt; 4 Afghanistan 2000    20595360</span></a>
-<a class="sourceLine" id="cb61-10" data-line-number="10"><span class="co">#&gt; 5 Brazil      2000   174504898</span></a>
+<a class="sourceLine" id="cb61-7" data-line-number="7"><span class="co">#&gt; 2 Afghanistan 2000    20595360</span></a>
+<a class="sourceLine" id="cb61-8" data-line-number="8"><span class="co">#&gt; 3 Brazil      1999   172006362</span></a>
+<a class="sourceLine" id="cb61-9" data-line-number="9"><span class="co">#&gt; 4 Brazil      2000   174504898</span></a>
+<a class="sourceLine" id="cb61-10" data-line-number="10"><span class="co">#&gt; 5 China       1999  1272915272</span></a>
 <a class="sourceLine" id="cb61-11" data-line-number="11"><span class="co">#&gt; 6 China       2000  1280428583</span></a></code></pre></div>
-<p><code>table4a</code> 와 <code>table4b</code> 의 타이디하게 된 버전을 하나의 티블로 결합하려면 <code>dplyr::left_join()</code> 을 사용해야 한다. 이 내용은 <a href="relational-data.html#relational-data">관계형 데이터</a> 에서 다룰 것이다.</p>
+<p>타이디하게 된 <code>table4a</code> 와 <code>table4b</code>을 하나의 티블로 결합하려면 <code>dplyr::left_join()</code> 을 사용해야 한다. 이 내용은 <a href="relational-data.html#relational-data">관계형 데이터</a> 에서 다룰 것이다.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">tidy4a &lt;-<span class="st"> </span>table4a <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>)</a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="kw">c</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>), <span class="dt">names_to =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;cases&quot;</span>)</a>
 <a class="sourceLine" id="cb62-3" data-line-number="3">tidy4b &lt;-<span class="st"> </span>table4b <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="st">  </span><span class="kw">gather</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;population&quot;</span>)</a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="kw">c</span>(<span class="st">`</span><span class="dt">1999</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2000</span><span class="st">`</span>), <span class="dt">names_to =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;population&quot;</span>)</a>
 <a class="sourceLine" id="cb62-5" data-line-number="5"><span class="kw">left_join</span>(tidy4a, tidy4b)</a>
 <a class="sourceLine" id="cb62-6" data-line-number="6"><span class="co">#&gt; Joining, by = c(&quot;country&quot;, &quot;year&quot;)</span></a>
 <a class="sourceLine" id="cb62-7" data-line-number="7"><span class="co">#&gt; # A tibble: 6 x 4</span></a>
 <a class="sourceLine" id="cb62-8" data-line-number="8"><span class="co">#&gt;   country     year   cases population</span></a>
 <a class="sourceLine" id="cb62-9" data-line-number="9"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;      &lt;int&gt;</span></a>
 <a class="sourceLine" id="cb62-10" data-line-number="10"><span class="co">#&gt; 1 Afghanistan 1999     745   19987071</span></a>
-<a class="sourceLine" id="cb62-11" data-line-number="11"><span class="co">#&gt; 2 Brazil      1999   37737  172006362</span></a>
-<a class="sourceLine" id="cb62-12" data-line-number="12"><span class="co">#&gt; 3 China       1999  212258 1272915272</span></a>
-<a class="sourceLine" id="cb62-13" data-line-number="13"><span class="co">#&gt; 4 Afghanistan 2000    2666   20595360</span></a>
-<a class="sourceLine" id="cb62-14" data-line-number="14"><span class="co">#&gt; 5 Brazil      2000   80488  174504898</span></a>
+<a class="sourceLine" id="cb62-11" data-line-number="11"><span class="co">#&gt; 2 Afghanistan 2000    2666   20595360</span></a>
+<a class="sourceLine" id="cb62-12" data-line-number="12"><span class="co">#&gt; 3 Brazil      1999   37737  172006362</span></a>
+<a class="sourceLine" id="cb62-13" data-line-number="13"><span class="co">#&gt; 4 Brazil      2000   80488  174504898</span></a>
+<a class="sourceLine" id="cb62-14" data-line-number="14"><span class="co">#&gt; 5 China       1999  212258 1272915272</span></a>
 <a class="sourceLine" id="cb62-15" data-line-number="15"><span class="co">#&gt; 6 China       2000  213766 1280428583</span></a></code></pre></div>
 </div>
-<div id="spread" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> Spread</h3>
-<p>펼치기는 수집하기의 반대이다. 관측값이 여러 행에 흩어져 있을 때 사용한다. 예를 들어 <code>table2</code> 를 보자. 하나의 관측값은 한 해, 한 국가에 대한 것이지만, 각 관측값이 두 행에 흩어져 있다.</p>
+<div id="wider" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Wider</h3>
+<p><code>pivot_wider()</code> 은 <code>pivot_longer()</code> 의 반대이다. 관측값이 여러 행에 흩어져 있을 때 사용한다. 예를 들어 <code>table2</code> 를 보자. 하나의 관측값은 한 해, 한 국가에 대한 것이지만, 각 관측값이 두 행에 흩어져 있다.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">table2</a>
 <a class="sourceLine" id="cb63-2" data-line-number="2"><span class="co">#&gt; # A tibble: 12 x 4</span></a>
 <a class="sourceLine" id="cb63-3" data-line-number="3"><span class="co">#&gt;   country      year type           count</span></a>
@@ -622,12 +705,12 @@ Figure 4.2: Gathering <code>table4</code> into a tidy form.
 <a class="sourceLine" id="cb63-11" data-line-number="11"><span class="co">#&gt; # … with 6 more rows</span></a></code></pre></div>
 <p>이것을 타이디하게 하기 위해, 먼저 <code>gather()</code> 와 비슷한 방식으로 표현방법을 분석한다. 그러나 이번에는 파라미터가 두 개만 필요하다.</p>
 <ul>
-<li><p>변수 이름을 포함하는 열, 즉 <code>key</code> 열. 여기에서는 <code>type</code> 이다.</p></li>
-<li><p>여러 변수를 형성하는 값을 포함하는 열, 즉 <code>value</code> 열. 여기에서는 <code>count</code> 이다.</p></li>
+<li><p>변수 이름을 포함하는 열, 여기에서는 <code>type</code> 이다.</p></li>
+<li><p>값을 포함하는 열, 여기에서는 <code>count</code> 이다.</p></li>
 </ul>
-<p>이 파라미터들을 정하면 <code>spread()</code> 를 사용할 수 있다. 코드로는 아래에서 보여주고, 시각적으로는 Figure <a href="tidy-data.html#fig:tidy-spread">4.3</a> 에서 보여주고 있다.</p>
+<p>이 파라미터들을 정하면 <code>pivot_wider()</code> 를 사용할 수 있다. 코드로는 아래에서 보여주고, 시각적으로는 Figure <a href="tidy-data.html#fig:tidy-spread">4.3</a> 에서 보여주고 있다.</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">table2 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="st">    </span><span class="kw">spread</span>(<span class="dt">key =</span> type, <span class="dt">value =</span> count)</a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="st">    </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> type, <span class="dt">values_from =</span> count)</a>
 <a class="sourceLine" id="cb64-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 4</span></a>
 <a class="sourceLine" id="cb64-4" data-line-number="4"><span class="co">#&gt;   country      year  cases population</span></a>
 <a class="sourceLine" id="cb64-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;</span></a>
@@ -638,30 +721,30 @@ Figure 4.2: Gathering <code>table4</code> into a tidy form.
 <a class="sourceLine" id="cb64-10" data-line-number="10"><span class="co">#&gt; 5 China        1999 212258 1272915272</span></a>
 <a class="sourceLine" id="cb64-11" data-line-number="11"><span class="co">#&gt; 6 China        2000 213766 1280428583</span></a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:tidy-spread"></span>
-<img src="images/tidy-8.png" alt="Spreading `table2` makes it tidy" width="100%" />
+<img src="images/tidy-8.png" alt="`table2` 을 더 넓은 타이티 형태로 피봇팅하기" width="100%" />
 <p class="caption">
-Figure 4.3: Spreading <code>table2</code> makes it tidy
+Figure 4.3: <code>table2</code> 을 더 넓은 타이티 형태로 피봇팅하기
 </p>
 </div>
-<p>공통의 <code>key</code> 와 <code>value</code> 인수를 통해 추측해 본 사람도 있었겠지만, <code>spread()</code> 와 <code>gather()</code> 는 보완 관계이다. <code>gather()</code> 는 넓은 테이블을 더 좁고 길게, <code>spread()</code> 는 긴 테이블을 더 짧고 넓게 만든다.</p>
+<p>이름을 통해 이미 알아 차린 사람도 있겠지만, <code>pivot_wider()</code> 와 <code>pivot_longer()</code> 는 보완 관계이다. <code>pivot_longer()</code> 는 넓은 테이블을 더 좁고 길게, <code>pivot_longer()</code> 는 긴 테이블을 더 짧고 넓게 만든다.</p>
 </div>
 <div id="연습문제-1" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
-<li><p><code>gather()</code> 와 <code>spread()</code> 가 완벽하게 대칭이 아닌 이유는 무엇인가? 다음 예제를 주의 깊게 살펴보라.</p>
+<li><p><code>pivot_longer()</code> 와 <code>pivot_wider()</code> 가 완벽하게 대칭이 아닌 이유는 무엇인가? 다음 예제를 주의 깊게 살펴보라.</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">stocks &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
 <a class="sourceLine" id="cb65-2" data-line-number="2">  <span class="dt">year   =</span> <span class="kw">c</span>(<span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2016</span>),</a>
 <a class="sourceLine" id="cb65-3" data-line-number="3">  <span class="dt">half  =</span> <span class="kw">c</span>(   <span class="dv">1</span>,    <span class="dv">2</span>,     <span class="dv">1</span>,    <span class="dv">2</span>),</a>
 <a class="sourceLine" id="cb65-4" data-line-number="4">  <span class="dt">return =</span> <span class="kw">c</span>(<span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>)</a>
 <a class="sourceLine" id="cb65-5" data-line-number="5">)</a>
 <a class="sourceLine" id="cb65-6" data-line-number="6">stocks <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb65-7" data-line-number="7"><span class="st">  </span><span class="kw">spread</span>(year, return) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb65-8" data-line-number="8"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;return&quot;</span>, <span class="st">`</span><span class="dt">2015</span><span class="st">`</span><span class="op">:</span><span class="st">`</span><span class="dt">2016</span><span class="st">`</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb65-7" data-line-number="7"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> year, <span class="dt">values_from =</span> return) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb65-8" data-line-number="8"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="st">`</span><span class="dt">2015</span><span class="st">`</span><span class="op">:</span><span class="st">`</span><span class="dt">2016</span><span class="st">`</span>, <span class="dt">names_to =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;return&quot;</span>)</a></code></pre></div>
 <p>(힌트: 변수 유형을 보고 열 이름에 대해 생각해보라.)</p>
-<p><code>spread()</code> 와 <code>gather()</code> 에는 모두 <code>convert</code> 인수가 있다. 어떤 역할을 하는가?</p></li>
+<p><code>pivot_longer()</code> 는 <code>names_ptype</code> 인수, 예를 들어 <code>names_ptype = list(year = double())</code> 가 있다. 어떤 역할을 하는가?</p></li>
 <li><p>이 코드가 작동하지 않는 이유는 무엇인가?</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">table4a <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(<span class="dv">1999</span>, <span class="dv">2000</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>)</a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="kw">c</span>(<span class="dv">1999</span>, <span class="dv">2000</span>), <span class="dt">names_to =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;cases&quot;</span>)</a>
 <a class="sourceLine" id="cb66-3" data-line-number="3"><span class="co">#&gt; Error: Can&#39;t subset columns that don&#39;t exist.</span></a>
 <a class="sourceLine" id="cb66-4" data-line-number="4"><span class="co">#&gt; [31mx[39m Locations 1999 and 2000 don&#39;t exist.</span></a>
 <a class="sourceLine" id="cb66-5" data-line-number="5"><span class="co">#&gt; [34mℹ[39m There are only 3 columns.</span></a></code></pre></div></li>
@@ -675,7 +758,7 @@ Figure 4.3: Spreading <code>table2</code> makes it tidy
 <a class="sourceLine" id="cb67-7" data-line-number="7">  <span class="st">&quot;Jessica Cordero&quot;</span>, <span class="st">&quot;age&quot;</span>,       <span class="dv">37</span>,</a>
 <a class="sourceLine" id="cb67-8" data-line-number="8">  <span class="st">&quot;Jessica Cordero&quot;</span>, <span class="st">&quot;height&quot;</span>,   <span class="dv">156</span></a>
 <a class="sourceLine" id="cb67-9" data-line-number="9">)</a></code></pre></div></li>
-<li><p>다음의 간단한 티블을 타이디하게 하라. 펼치거나 수집할 필요가 있는가? 변수는 무엇인가?</p>
+<li><p>다음의 간단한 티블을 타이디하게 하라. 데이터셋을 길게 혹은 넓게할 필요가 있는가? 변수들은 무엇인가?</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">preg &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
 <a class="sourceLine" id="cb68-2" data-line-number="2">  <span class="op">~</span>pregnant, <span class="op">~</span>male, <span class="op">~</span>female,</a>
 <a class="sourceLine" id="cb68-3" data-line-number="3">  <span class="st">&quot;yes&quot;</span>,     <span class="ot">NA</span>,    <span class="dv">10</span>,</a>
@@ -817,7 +900,7 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 <p>다음의 선문답으로 둘의 차이를 생각해볼 수 있다. 명시적 결측값은 결측의 존재이다. 암묵적 결측값은 존재의 결측이다.</p>
 <p>데이터셋 표현법으로 암묵적 값을 명시적으로 만들 수 있다. 예를 들어 연도를 열로 넣어 암묵적 결측값을 명시적으로 만들 수 있다.</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">stocks <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="st">  </span><span class="kw">spread</span>(year, return)</a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> year, <span class="dt">values_from =</span> return)</a>
 <a class="sourceLine" id="cb78-3" data-line-number="3"><span class="co">#&gt; # A tibble: 4 x 3</span></a>
 <a class="sourceLine" id="cb78-4" data-line-number="4"><span class="co">#&gt;     qtr `2015` `2016`</span></a>
 <a class="sourceLine" id="cb78-5" data-line-number="5"><span class="co">#&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
@@ -827,17 +910,22 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 <a class="sourceLine" id="cb78-9" data-line-number="9"><span class="co">#&gt; 4     4  NA      2.66</span></a></code></pre></div>
 <p>이러한 명시적인 결측값은 어떤 데이터 표현에서는 중요하지 않을 수 있으므로 <code>gather()</code> 에서 <code>na.rm = TRUE</code> 를 설정하여 명시적 결측값을 암묵적으로 전환할 수 있다.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">stocks <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="st">  </span><span class="kw">spread</span>(year, return) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="st">  </span><span class="kw">gather</span>(year, return, <span class="st">`</span><span class="dt">2015</span><span class="st">`</span><span class="op">:</span><span class="st">`</span><span class="dt">2016</span><span class="st">`</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb79-4" data-line-number="4"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb79-5" data-line-number="5"><span class="co">#&gt;     qtr year  return</span></a>
-<a class="sourceLine" id="cb79-6" data-line-number="6"><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb79-7" data-line-number="7"><span class="co">#&gt; 1     1 2015    1.88</span></a>
-<a class="sourceLine" id="cb79-8" data-line-number="8"><span class="co">#&gt; 2     2 2015    0.59</span></a>
-<a class="sourceLine" id="cb79-9" data-line-number="9"><span class="co">#&gt; 3     3 2015    0.35</span></a>
-<a class="sourceLine" id="cb79-10" data-line-number="10"><span class="co">#&gt; 4     2 2016    0.92</span></a>
-<a class="sourceLine" id="cb79-11" data-line-number="11"><span class="co">#&gt; 5     3 2016    0.17</span></a>
-<a class="sourceLine" id="cb79-12" data-line-number="12"><span class="co">#&gt; 6     4 2016    2.66</span></a></code></pre></div>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> year, <span class="dt">values_from =</span> return) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_longer</span>(</a>
+<a class="sourceLine" id="cb79-4" data-line-number="4">    <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">`</span><span class="dt">2015</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2016</span><span class="st">`</span>), </a>
+<a class="sourceLine" id="cb79-5" data-line-number="5">    <span class="dt">names_to =</span> <span class="st">&quot;year&quot;</span>, </a>
+<a class="sourceLine" id="cb79-6" data-line-number="6">    <span class="dt">values_to =</span> <span class="st">&quot;return&quot;</span>, </a>
+<a class="sourceLine" id="cb79-7" data-line-number="7">    <span class="dt">values_drop_na =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb79-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb79-9" data-line-number="9"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb79-10" data-line-number="10"><span class="co">#&gt;     qtr year  return</span></a>
+<a class="sourceLine" id="cb79-11" data-line-number="11"><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb79-12" data-line-number="12"><span class="co">#&gt; 1     1 2015    1.88</span></a>
+<a class="sourceLine" id="cb79-13" data-line-number="13"><span class="co">#&gt; 2     2 2015    0.59</span></a>
+<a class="sourceLine" id="cb79-14" data-line-number="14"><span class="co">#&gt; 3     2 2016    0.92</span></a>
+<a class="sourceLine" id="cb79-15" data-line-number="15"><span class="co">#&gt; 4     3 2015    0.35</span></a>
+<a class="sourceLine" id="cb79-16" data-line-number="16"><span class="co">#&gt; 5     3 2016    0.17</span></a>
+<a class="sourceLine" id="cb79-17" data-line-number="17"><span class="co">#&gt; 6     4 2016    2.66</span></a></code></pre></div>
 <p>타이디 데이터에서 결측값을 명시적으로 표현하는 또 다른 중요한 도구로 <code>complete()</code> 가 있다.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">stocks <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb80-2" data-line-number="2"><span class="st">  </span><span class="kw">complete</span>(year, qtr)</a>
@@ -873,7 +961,7 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 <div id="연습문제-3" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
-<li><p><code>spread()</code> 와 <code>complete()</code> 의 <code>fill</code> 인수를 비교∙대조하라.</p></li>
+<li><p><code>pivot_wider()</code> 와 <code>complete()</code> 의 <code>fill</code> 인수를 비교∙대조하라.</p></li>
 <li><p><code>fill()</code> 의 <code>direction</code> 인수는 무엇을 하는가?</p></li>
 </ol>
 </div>
@@ -919,18 +1007,23 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 </ul>
 <p>따라서 <code>new_sp_m014</code> 에서 <code>newrel_f65</code> 까지의 모든 열을 모을 필요가 있다. 그 값이 무엇을 나타내는지 아직 알지 못하기 때문에 일반 이름인 ’<code>key</code> ’라는 이름을 붙일 것이다. 셀이 사례수를 나타내는 것을 알고 있으므로 변수 <code>cases</code> 를 사용한다. 현재 표현에는 많은 결측값이 있으므로 <code>na.rm</code> 을 사용하여 있는 값에만 집중할 것이다.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">who1 &lt;-<span class="st"> </span>who <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(new_sp_m014<span class="op">:</span>newrel_f65, <span class="dt">key =</span> <span class="st">&quot;key&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb84-3" data-line-number="3">who1</a>
-<a class="sourceLine" id="cb84-4" data-line-number="4"><span class="co">#&gt; # A tibble: 76,046 x 6</span></a>
-<a class="sourceLine" id="cb84-5" data-line-number="5"><span class="co">#&gt;   country     iso2  iso3   year key         cases</span></a>
-<a class="sourceLine" id="cb84-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;       &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb84-7" data-line-number="7"><span class="co">#&gt; 1 Afghanistan AF    AFG    1997 new_sp_m014     0</span></a>
-<a class="sourceLine" id="cb84-8" data-line-number="8"><span class="co">#&gt; 2 Afghanistan AF    AFG    1998 new_sp_m014    30</span></a>
-<a class="sourceLine" id="cb84-9" data-line-number="9"><span class="co">#&gt; 3 Afghanistan AF    AFG    1999 new_sp_m014     8</span></a>
-<a class="sourceLine" id="cb84-10" data-line-number="10"><span class="co">#&gt; 4 Afghanistan AF    AFG    2000 new_sp_m014    52</span></a>
-<a class="sourceLine" id="cb84-11" data-line-number="11"><span class="co">#&gt; 5 Afghanistan AF    AFG    2001 new_sp_m014   129</span></a>
-<a class="sourceLine" id="cb84-12" data-line-number="12"><span class="co">#&gt; 6 Afghanistan AF    AFG    2002 new_sp_m014    90</span></a>
-<a class="sourceLine" id="cb84-13" data-line-number="13"><span class="co">#&gt; # … with 76,040 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(</a>
+<a class="sourceLine" id="cb84-3" data-line-number="3">    <span class="dt">cols =</span> new_sp_m014<span class="op">:</span>newrel_f65, </a>
+<a class="sourceLine" id="cb84-4" data-line-number="4">    <span class="dt">names_to =</span> <span class="st">&quot;key&quot;</span>, </a>
+<a class="sourceLine" id="cb84-5" data-line-number="5">    <span class="dt">values_to =</span> <span class="st">&quot;cases&quot;</span>, </a>
+<a class="sourceLine" id="cb84-6" data-line-number="6">    <span class="dt">values_drop_na =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb84-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb84-8" data-line-number="8">who1</a>
+<a class="sourceLine" id="cb84-9" data-line-number="9"><span class="co">#&gt; # A tibble: 76,046 x 6</span></a>
+<a class="sourceLine" id="cb84-10" data-line-number="10"><span class="co">#&gt;   country     iso2  iso3   year key          cases</span></a>
+<a class="sourceLine" id="cb84-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;        &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb84-12" data-line-number="12"><span class="co">#&gt; 1 Afghanistan AF    AFG    1997 new_sp_m014      0</span></a>
+<a class="sourceLine" id="cb84-13" data-line-number="13"><span class="co">#&gt; 2 Afghanistan AF    AFG    1997 new_sp_m1524    10</span></a>
+<a class="sourceLine" id="cb84-14" data-line-number="14"><span class="co">#&gt; 3 Afghanistan AF    AFG    1997 new_sp_m2534     6</span></a>
+<a class="sourceLine" id="cb84-15" data-line-number="15"><span class="co">#&gt; 4 Afghanistan AF    AFG    1997 new_sp_m3544     3</span></a>
+<a class="sourceLine" id="cb84-16" data-line-number="16"><span class="co">#&gt; 5 Afghanistan AF    AFG    1997 new_sp_m4554     5</span></a>
+<a class="sourceLine" id="cb84-17" data-line-number="17"><span class="co">#&gt; 6 Afghanistan AF    AFG    1997 new_sp_m5564     2</span></a>
+<a class="sourceLine" id="cb84-18" data-line-number="18"><span class="co">#&gt; # … with 76,040 more rows</span></a></code></pre></div>
 <p>새로운 <code>key</code> 열의 값을 세어서 값의 구조에 대한 힌트를 얻을 수 있다.</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">who1 <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb85-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(key)</a>
@@ -972,14 +1065,14 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 <a class="sourceLine" id="cb86-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">key =</span> stringr<span class="op">::</span><span class="kw">str_replace</span>(key, <span class="st">&quot;newrel&quot;</span>, <span class="st">&quot;new_rel&quot;</span>))</a>
 <a class="sourceLine" id="cb86-3" data-line-number="3">who2</a>
 <a class="sourceLine" id="cb86-4" data-line-number="4"><span class="co">#&gt; # A tibble: 76,046 x 6</span></a>
-<a class="sourceLine" id="cb86-5" data-line-number="5"><span class="co">#&gt;   country     iso2  iso3   year key         cases</span></a>
-<a class="sourceLine" id="cb86-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;       &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb86-7" data-line-number="7"><span class="co">#&gt; 1 Afghanistan AF    AFG    1997 new_sp_m014     0</span></a>
-<a class="sourceLine" id="cb86-8" data-line-number="8"><span class="co">#&gt; 2 Afghanistan AF    AFG    1998 new_sp_m014    30</span></a>
-<a class="sourceLine" id="cb86-9" data-line-number="9"><span class="co">#&gt; 3 Afghanistan AF    AFG    1999 new_sp_m014     8</span></a>
-<a class="sourceLine" id="cb86-10" data-line-number="10"><span class="co">#&gt; 4 Afghanistan AF    AFG    2000 new_sp_m014    52</span></a>
-<a class="sourceLine" id="cb86-11" data-line-number="11"><span class="co">#&gt; 5 Afghanistan AF    AFG    2001 new_sp_m014   129</span></a>
-<a class="sourceLine" id="cb86-12" data-line-number="12"><span class="co">#&gt; 6 Afghanistan AF    AFG    2002 new_sp_m014    90</span></a>
+<a class="sourceLine" id="cb86-5" data-line-number="5"><span class="co">#&gt;   country     iso2  iso3   year key          cases</span></a>
+<a class="sourceLine" id="cb86-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;        &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb86-7" data-line-number="7"><span class="co">#&gt; 1 Afghanistan AF    AFG    1997 new_sp_m014      0</span></a>
+<a class="sourceLine" id="cb86-8" data-line-number="8"><span class="co">#&gt; 2 Afghanistan AF    AFG    1997 new_sp_m1524    10</span></a>
+<a class="sourceLine" id="cb86-9" data-line-number="9"><span class="co">#&gt; 3 Afghanistan AF    AFG    1997 new_sp_m2534     6</span></a>
+<a class="sourceLine" id="cb86-10" data-line-number="10"><span class="co">#&gt; 4 Afghanistan AF    AFG    1997 new_sp_m3544     3</span></a>
+<a class="sourceLine" id="cb86-11" data-line-number="11"><span class="co">#&gt; 5 Afghanistan AF    AFG    1997 new_sp_m4554     5</span></a>
+<a class="sourceLine" id="cb86-12" data-line-number="12"><span class="co">#&gt; 6 Afghanistan AF    AFG    1997 new_sp_m5564     2</span></a>
 <a class="sourceLine" id="cb86-13" data-line-number="13"><span class="co">#&gt; # … with 76,040 more rows</span></a></code></pre></div>
 <p>각 코드의 값을 <code>separate()</code> 2회 실행하여 분리할 수 있다. 첫 번째 실행은 각 언더스코어마다 코드를 쪼갠다.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">who3 &lt;-<span class="st"> </span>who2 <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -989,11 +1082,11 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 <a class="sourceLine" id="cb87-5" data-line-number="5"><span class="co">#&gt;   country     iso2  iso3   year new   type  sexage cases</span></a>
 <a class="sourceLine" id="cb87-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;int&gt;</span></a>
 <a class="sourceLine" id="cb87-7" data-line-number="7"><span class="co">#&gt; 1 Afghanistan AF    AFG    1997 new   sp    m014       0</span></a>
-<a class="sourceLine" id="cb87-8" data-line-number="8"><span class="co">#&gt; 2 Afghanistan AF    AFG    1998 new   sp    m014      30</span></a>
-<a class="sourceLine" id="cb87-9" data-line-number="9"><span class="co">#&gt; 3 Afghanistan AF    AFG    1999 new   sp    m014       8</span></a>
-<a class="sourceLine" id="cb87-10" data-line-number="10"><span class="co">#&gt; 4 Afghanistan AF    AFG    2000 new   sp    m014      52</span></a>
-<a class="sourceLine" id="cb87-11" data-line-number="11"><span class="co">#&gt; 5 Afghanistan AF    AFG    2001 new   sp    m014     129</span></a>
-<a class="sourceLine" id="cb87-12" data-line-number="12"><span class="co">#&gt; 6 Afghanistan AF    AFG    2002 new   sp    m014      90</span></a>
+<a class="sourceLine" id="cb87-8" data-line-number="8"><span class="co">#&gt; 2 Afghanistan AF    AFG    1997 new   sp    m1524     10</span></a>
+<a class="sourceLine" id="cb87-9" data-line-number="9"><span class="co">#&gt; 3 Afghanistan AF    AFG    1997 new   sp    m2534      6</span></a>
+<a class="sourceLine" id="cb87-10" data-line-number="10"><span class="co">#&gt; 4 Afghanistan AF    AFG    1997 new   sp    m3544      3</span></a>
+<a class="sourceLine" id="cb87-11" data-line-number="11"><span class="co">#&gt; 5 Afghanistan AF    AFG    1997 new   sp    m4554      5</span></a>
+<a class="sourceLine" id="cb87-12" data-line-number="12"><span class="co">#&gt; 6 Afghanistan AF    AFG    1997 new   sp    m5564      2</span></a>
 <a class="sourceLine" id="cb87-13" data-line-number="13"><span class="co">#&gt; # … with 76,040 more rows</span></a></code></pre></div>
 <p>그런 다음, <code>new</code> 열은 이 데이터셋에서 상수이므로 제거할 수 있다. 이 참에 <code>iso2</code> 와 <code>iso3</code> 도 중복이므로 함께 제거하자.</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">who3 <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -1012,26 +1105,33 @@ Figure 4.5: Uniting <code>table5</code> makes it tidy
 <a class="sourceLine" id="cb89-5" data-line-number="5"><span class="co">#&gt;   country      year type  sex   age   cases</span></a>
 <a class="sourceLine" id="cb89-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;</span></a>
 <a class="sourceLine" id="cb89-7" data-line-number="7"><span class="co">#&gt; 1 Afghanistan  1997 sp    m     014       0</span></a>
-<a class="sourceLine" id="cb89-8" data-line-number="8"><span class="co">#&gt; 2 Afghanistan  1998 sp    m     014      30</span></a>
-<a class="sourceLine" id="cb89-9" data-line-number="9"><span class="co">#&gt; 3 Afghanistan  1999 sp    m     014       8</span></a>
-<a class="sourceLine" id="cb89-10" data-line-number="10"><span class="co">#&gt; 4 Afghanistan  2000 sp    m     014      52</span></a>
-<a class="sourceLine" id="cb89-11" data-line-number="11"><span class="co">#&gt; 5 Afghanistan  2001 sp    m     014     129</span></a>
-<a class="sourceLine" id="cb89-12" data-line-number="12"><span class="co">#&gt; 6 Afghanistan  2002 sp    m     014      90</span></a>
+<a class="sourceLine" id="cb89-8" data-line-number="8"><span class="co">#&gt; 2 Afghanistan  1997 sp    m     1524     10</span></a>
+<a class="sourceLine" id="cb89-9" data-line-number="9"><span class="co">#&gt; 3 Afghanistan  1997 sp    m     2534      6</span></a>
+<a class="sourceLine" id="cb89-10" data-line-number="10"><span class="co">#&gt; 4 Afghanistan  1997 sp    m     3544      3</span></a>
+<a class="sourceLine" id="cb89-11" data-line-number="11"><span class="co">#&gt; 5 Afghanistan  1997 sp    m     4554      5</span></a>
+<a class="sourceLine" id="cb89-12" data-line-number="12"><span class="co">#&gt; 6 Afghanistan  1997 sp    m     5564      2</span></a>
 <a class="sourceLine" id="cb89-13" data-line-number="13"><span class="co">#&gt; # … with 76,040 more rows</span></a></code></pre></div>
 <p>자, 이제 <code>who</code> 데이터셋은 타이디해졌다!</p>
 <p>여기에서 중간 결과를 새로운 변수에 할당하며, 코드를 한 번에 한 조각씩 보았었다. 이는 일반적인 대화식 작업 방식이 아니다. 대신 앞으로 다음과 같이 점차 복잡한 파이프를 만들게 될 것이다.</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">who <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-2" data-line-number="2"><span class="st">  </span><span class="kw">gather</span>(key, value, new_sp_m014<span class="op">:</span>newrel_f65, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">key =</span> stringr<span class="op">::</span><span class="kw">str_replace</span>(key, <span class="st">&quot;newrel&quot;</span>, <span class="st">&quot;new_rel&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-4" data-line-number="4"><span class="st">  </span><span class="kw">separate</span>(key, <span class="kw">c</span>(<span class="st">&quot;new&quot;</span>, <span class="st">&quot;var&quot;</span>, <span class="st">&quot;sexage&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb90-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>new, <span class="op">-</span>iso2, <span class="op">-</span>iso3) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb90-6" data-line-number="6"><span class="st">  </span><span class="kw">separate</span>(sexage, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>), <span class="dt">sep =</span> <span class="dv">1</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb90-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(</a>
+<a class="sourceLine" id="cb90-3" data-line-number="3">    <span class="dt">cols =</span> new_sp_m014<span class="op">:</span>newrel_f65, </a>
+<a class="sourceLine" id="cb90-4" data-line-number="4">    <span class="dt">names_to =</span> <span class="st">&quot;key&quot;</span>, </a>
+<a class="sourceLine" id="cb90-5" data-line-number="5">    <span class="dt">values_to =</span> <span class="st">&quot;cases&quot;</span>, </a>
+<a class="sourceLine" id="cb90-6" data-line-number="6">    <span class="dt">values_drop_na =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb90-7" data-line-number="7">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb90-9" data-line-number="9">    <span class="dt">key =</span> stringr<span class="op">::</span><span class="kw">str_replace</span>(key, <span class="st">&quot;newrel&quot;</span>, <span class="st">&quot;new_rel&quot;</span>)</a>
+<a class="sourceLine" id="cb90-10" data-line-number="10">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-11" data-line-number="11"><span class="st">  </span><span class="kw">separate</span>(key, <span class="kw">c</span>(<span class="st">&quot;new&quot;</span>, <span class="st">&quot;var&quot;</span>, <span class="st">&quot;sexage&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-12" data-line-number="12"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>new, <span class="op">-</span>iso2, <span class="op">-</span>iso3) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-13" data-line-number="13"><span class="st">  </span><span class="kw">separate</span>(sexage, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>), <span class="dt">sep =</span> <span class="dv">1</span>)</a></code></pre></div>
 <div id="연습문제-4" class="section level3">
 <h3><span class="header-section-number">4.6.1</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
-<li><p>이 사례 연구에서 올바른 값을 가지고 있는지 쉽게 확인하기 위해 <code>na.rm = TRUE</code> 로 설정했다. 이것은 합리적인가? 이 데이터셋에서 결측값은 어떻게 표현될지 생각해 보라. 암묵적인 결측값이 있는가? <code>NA</code> 와 0 의 차이점은 무엇인가?</p></li>
-<li><p><code>mutate()</code> 단계를 무시하면 어떻게 되는가? <code>(mutate (key = stringr::str_replace (key, &quot;newrel&quot;, &quot;new_rel&quot;)))</code> .</p></li>
-<li><p><code>iso2</code> 와 <code>iso3</code> 가 <code>country</code> 와 중복된다는 앞의 주장을 확인하라.</p></li>
+<li><p>이 사례 연구에서 올바른 값을 가지고 있는지 쉽게 확인하기 위해 <code>values_drop_na = TRUE</code> 로 설정했다. 이것은 합리적인가? 이 데이터셋에서 결측값은 어떻게 표현될지 생각해 보라. 암묵적인 결측값이 있는가? <code>NA</code> 와 0 의 차이점은 무엇인가?</p></li>
+<li><p><code>mutate()</code> 단계를 무시하면 어떻게 되는가? (<code>mutate(key = stringr::str_replace(key, &quot;newrel&quot;, &quot;new_rel&quot;))</code>).</p></li>
+<li><p>앞서 주장한, <code>iso2</code> 와 <code>iso3</code> 가 <code>country</code> 와 중복된다는 것을 확인하라.</p></li>
 <li><p>각 <code>country, year</code> 및 <code>sex</code> 에 대해 총 결핵 사례수를 계산하라. 정보를 시각적으로 보여라.</p></li>
 </ol>
 </div>

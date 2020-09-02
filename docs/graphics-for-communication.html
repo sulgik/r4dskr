@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 그래프를 통한 의사소통 | R 을 활용한 데이터과학</title>
-  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <title>15 그래프를 통한 의사소통 | R 을 활용한 데이터과학</title>
+  <meta name="description" content="15 그래프를 통한 의사소통 | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 그래프를 통한 의사소통 | R 을 활용한 데이터과학" />
+  <meta property="og:title" content="15 그래프를 통한 의사소통 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
-  <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 그래프를 통한 의사소통 | R 을 활용한 데이터과학" />
+  <meta name="twitter:title" content="15 그래프를 통한 의사소통 | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
-  <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="개럿 그롤문드" />
@@ -186,9 +186,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>4.2</b> Tidy Data</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>4.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#gather-와-spread"><i class="fa fa-check"></i><b>4.3</b> gather 와 spread</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>4.3.1</b> Gather</a></li>
-<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>4.3.2</b> Spread</a></li>
+<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#피봇팅"><i class="fa fa-check"></i><b>4.3</b> 피봇팅</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#longer"><i class="fa fa-check"></i><b>4.3.1</b> Longer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#wider"><i class="fa fa-check"></i><b>4.3.2</b> Wider</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>4.3.3</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="tidy-data.html"><a href="tidy-data.html#separate-과-unite"><i class="fa fa-check"></i><b>4.4</b> separate 과 unite</a><ul>
@@ -304,74 +304,154 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
-<li class="part"><span><b>II 의사소통하기</b></span></li>
-<li class="chapter" data-level="9" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a></li>
-<li class="chapter" data-level="10" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>10</b> R 마크다운</a><ul>
+<li class="part"><span><b>II 프로그래밍</b></span></li>
+<li class="chapter" data-level="9" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a><ul>
+<li class="chapter" data-level="9.1" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>9.1</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Pipes.html"><a href="Pipes.html"><i class="fa fa-check"></i><b>10</b> 파이프</a><ul>
 <li class="chapter" data-level="10.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>10.2</b> R 마크다운 기초</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>10.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.2" data-path="Pipes.html"><a href="Pipes.html#파이프-대안"><i class="fa fa-check"></i><b>10.2</b> 파이프 대안</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="Pipes.html"><a href="Pipes.html#중간단계-이용"><i class="fa fa-check"></i><b>10.2.1</b> 중간단계 이용</a></li>
+<li class="chapter" data-level="10.2.2" data-path="Pipes.html"><a href="Pipes.html#원본-덮어쓰기"><i class="fa fa-check"></i><b>10.2.2</b> 원본 덮어쓰기</a></li>
+<li class="chapter" data-level="10.2.3" data-path="Pipes.html"><a href="Pipes.html#함수-작성"><i class="fa fa-check"></i><b>10.2.3</b> 함수 작성</a></li>
+<li class="chapter" data-level="10.2.4" data-path="Pipes.html"><a href="Pipes.html#파이프-사용"><i class="fa fa-check"></i><b>10.2.4</b> 파이프 사용</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>10.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>10.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.3" data-path="Pipes.html"><a href="Pipes.html#파이프를-사용하지-않아야-할-경우"><i class="fa fa-check"></i><b>10.3</b> 파이프를 사용하지 않아야 할 경우</a></li>
+<li class="chapter" data-level="10.4" data-path="Pipes.html"><a href="Pipes.html#magrittr-의-기타-도구"><i class="fa fa-check"></i><b>10.4</b> magrittr 의 기타 도구</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>10.4</b> 코드 청크</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>10.4.1</b> 청크 이름</a></li>
-<li class="chapter" data-level="10.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>10.4.2</b> 청크 옵션</a></li>
-<li class="chapter" data-level="10.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>10.4.3</b> 표</a></li>
-<li class="chapter" data-level="10.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>10.4.4</b> 캐싱</a></li>
-<li class="chapter" data-level="10.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>10.4.5</b> 전역 옵션</a></li>
-<li class="chapter" data-level="10.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>10.4.6</b> Inline code</a></li>
-<li class="chapter" data-level="10.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>10.4.7</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>10.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="10.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>10.6</b> YAML header</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>10.6.1</b> Parameters</a></li>
-<li class="chapter" data-level="10.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>10.6.2</b> Bibliographies and Citations</a></li>
-</ul></li>
-<li class="chapter" data-level="10.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>10.7</b> Learning more</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>11</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> 함수</a><ul>
 <li class="chapter" data-level="11.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>11.2</b> Label</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>11.2.1</b> Exercises</a></li>
+<li class="chapter" data-level="11.2" data-path="functions.html"><a href="functions.html#함수를-언제-작성해야-하나"><i class="fa fa-check"></i><b>11.2</b> 함수를 언제 작성해야 하나?</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>11.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>11.3</b> Annotations</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="11.3" data-path="functions.html"><a href="functions.html#함수는-사람과-컴퓨터를-위한-것"><i class="fa fa-check"></i><b>11.3</b> 함수는 사람과 컴퓨터를 위한 것</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>11.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>11.4</b> Scales</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>11.4.1</b> Axis ticks and legend keys</a></li>
-<li class="chapter" data-level="11.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>11.4.2</b> Legend layout</a></li>
-<li class="chapter" data-level="11.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>11.4.3</b> Replacing a scale</a></li>
-<li class="chapter" data-level="11.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>11.4.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.4" data-path="functions.html"><a href="functions.html#조건부-실행"><i class="fa fa-check"></i><b>11.4</b> 조건부 실행</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="functions.html"><a href="functions.html#조건문"><i class="fa fa-check"></i><b>11.4.1</b> 조건문</a></li>
+<li class="chapter" data-level="11.4.2" data-path="functions.html"><a href="functions.html#다중-조건"><i class="fa fa-check"></i><b>11.4.2</b> 다중 조건</a></li>
+<li class="chapter" data-level="11.4.3" data-path="functions.html"><a href="functions.html#코드-스타일"><i class="fa fa-check"></i><b>11.4.3</b> 코드 스타일</a></li>
+<li class="chapter" data-level="11.4.4" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-2"><i class="fa fa-check"></i><b>11.4.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>11.5</b> Zooming</a></li>
-<li class="chapter" data-level="11.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>11.6</b> Themes</a></li>
-<li class="chapter" data-level="11.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>11.7</b> Saving your plots</a><ul>
-<li class="chapter" data-level="11.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>11.7.1</b> Figure sizing</a></li>
-<li class="chapter" data-level="11.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>11.7.2</b> Other important options</a></li>
+<li class="chapter" data-level="11.5" data-path="functions.html"><a href="functions.html#함수-인수"><i class="fa fa-check"></i><b>11.5</b> 함수 인수</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="functions.html"><a href="functions.html#이름-정하기"><i class="fa fa-check"></i><b>11.5.1</b> 이름 정하기</a></li>
+<li class="chapter" data-level="11.5.2" data-path="functions.html"><a href="functions.html#값-확인하기"><i class="fa fa-check"></i><b>11.5.2</b> 값 확인하기</a></li>
+<li class="chapter" data-level="11.5.3" data-path="functions.html"><a href="functions.html#점-점-점"><i class="fa fa-check"></i><b>11.5.3</b> 점-점-점 (…)</a></li>
+<li class="chapter" data-level="11.5.4" data-path="functions.html"><a href="functions.html#지연-평가"><i class="fa fa-check"></i><b>11.5.4</b> 지연 평가</a></li>
+<li class="chapter" data-level="11.5.5" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-3"><i class="fa fa-check"></i><b>11.5.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.8" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>11.8</b> Learning more</a></li>
+<li class="chapter" data-level="11.6" data-path="functions.html"><a href="functions.html#반환값"><i class="fa fa-check"></i><b>11.6</b> 반환값</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="functions.html"><a href="functions.html#명시적-반환문"><i class="fa fa-check"></i><b>11.6.1</b> 명시적 반환문</a></li>
+<li class="chapter" data-level="11.6.2" data-path="functions.html"><a href="functions.html#파이핑-가능한-함수-작성하기"><i class="fa fa-check"></i><b>11.6.2</b> 파이핑 가능한 함수 작성하기</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>12</b> R 마크다운 유형</a><ul>
-<li class="chapter" data-level="12.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a></li>
-<li class="chapter" data-level="12.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>12.2</b> 출력 옵션</a></li>
-<li class="chapter" data-level="12.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>12.3</b> Document</a></li>
-<li class="chapter" data-level="12.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>12.4</b> Notebook</a></li>
-<li class="chapter" data-level="12.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>12.5</b> Presentation</a></li>
-<li class="chapter" data-level="12.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>12.6</b> Dashboard</a></li>
-<li class="chapter" data-level="12.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>12.7</b> 대화형 동작</a><ul>
-<li class="chapter" data-level="12.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>12.7.1</b> htmlwidgets</a></li>
-<li class="chapter" data-level="12.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>12.7.2</b> Shiny</a></li>
+<li class="chapter" data-level="11.7" data-path="functions.html"><a href="functions.html#환경"><i class="fa fa-check"></i><b>11.7</b> 환경</a></li>
 </ul></li>
-<li class="chapter" data-level="12.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>12.8</b> Website</a></li>
-<li class="chapter" data-level="12.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>12.9</b> Other formats</a></li>
-<li class="chapter" data-level="12.10" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>12.10</b> 더 배우기</a></li>
+<li class="chapter" data-level="12" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>12</b> 벡터</a><ul>
+<li class="chapter" data-level="12.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>13</b> R 마크다운 워크플로</a></li>
+<li class="chapter" data-level="12.2" data-path="vectors.html"><a href="vectors.html#벡터-기본-사항"><i class="fa fa-check"></i><b>12.2</b> 벡터 기본 사항</a></li>
+<li class="chapter" data-level="12.3" data-path="vectors.html"><a href="vectors.html#원자-벡터의-주요-유형"><i class="fa fa-check"></i><b>12.3</b> 원자 벡터의 주요 유형</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="vectors.html"><a href="vectors.html#논리형"><i class="fa fa-check"></i><b>12.3.1</b> 논리형</a></li>
+<li class="chapter" data-level="12.3.2" data-path="vectors.html"><a href="vectors.html#수치형"><i class="fa fa-check"></i><b>12.3.2</b> 수치형</a></li>
+<li class="chapter" data-level="12.3.3" data-path="vectors.html"><a href="vectors.html#문자형"><i class="fa fa-check"></i><b>12.3.3</b> 문자형</a></li>
+<li class="chapter" data-level="12.3.4" data-path="tidy-data.html"><a href="tidy-data.html#결측값"><i class="fa fa-check"></i><b>12.3.4</b> 결측값</a></li>
+<li class="chapter" data-level="12.3.5" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>12.3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="vectors.html"><a href="vectors.html#원자벡터-이용하기"><i class="fa fa-check"></i><b>12.4</b> 원자벡터 이용하기</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="vectors.html"><a href="vectors.html#강제변환"><i class="fa fa-check"></i><b>12.4.1</b> 강제변환</a></li>
+<li class="chapter" data-level="12.4.2" data-path="vectors.html"><a href="vectors.html#테스트-함수"><i class="fa fa-check"></i><b>12.4.2</b> 테스트 함수</a></li>
+<li class="chapter" data-level="12.4.3" data-path="vectors.html"><a href="vectors.html#스칼라와-재활용-규칙"><i class="fa fa-check"></i><b>12.4.3</b> 스칼라와 재활용 규칙</a></li>
+<li class="chapter" data-level="12.4.4" data-path="vectors.html"><a href="vectors.html#벡터-이름-짓기"><i class="fa fa-check"></i><b>12.4.4</b> 벡터 이름 짓기</a></li>
+<li class="chapter" data-level="12.4.5" data-path="vectors.html"><a href="vectors.html#vector-subsetting"><i class="fa fa-check"></i><b>12.4.5</b> 서브셋하기</a></li>
+<li class="chapter" data-level="12.4.6" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>12.4.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>12.5</b> 재귀 벡터 (리스트)</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="vectors.html"><a href="vectors.html#리스트-시각화"><i class="fa fa-check"></i><b>12.5.1</b> 리스트 시각화</a></li>
+<li class="chapter" data-level="12.5.2" data-path="tibble.html"><a href="tibble.html#서브셋하기"><i class="fa fa-check"></i><b>12.5.2</b> 서브셋하기</a></li>
+<li class="chapter" data-level="12.5.3" data-path="vectors.html"><a href="vectors.html#후추-리스트"><i class="fa fa-check"></i><b>12.5.3</b> 후추 리스트</a></li>
+<li class="chapter" data-level="12.5.4" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>12.5.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="vectors.html"><a href="vectors.html#attributes"><i class="fa fa-check"></i><b>12.6</b> Attributes</a></li>
+<li class="chapter" data-level="12.7" data-path="vectors.html"><a href="vectors.html#augmented-vectors"><i class="fa fa-check"></i><b>12.7</b> Augmented vectors</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="factors.html"><a href="factors.html#factors"><i class="fa fa-check"></i><b>12.7.1</b> Factors</a></li>
+<li class="chapter" data-level="12.7.2" data-path="vectors.html"><a href="vectors.html#dates-and-date-times"><i class="fa fa-check"></i><b>12.7.2</b> Dates and date-times</a></li>
+<li class="chapter" data-level="12.7.3" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>12.7.3</b> Tibbles</a></li>
+<li class="chapter" data-level="12.7.4" data-path="vectors.html"><a href="vectors.html#exercises-1"><i class="fa fa-check"></i><b>12.7.4</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III 의사소통하기</b></span></li>
+<li class="chapter" data-level="13" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>13</b> 소개</a></li>
+<li class="chapter" data-level="14" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>14</b> R 마크다운</a><ul>
+<li class="chapter" data-level="14.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>14.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>14.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>14.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>14.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>14.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>14.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>14.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>14.4.1</b> 청크 이름</a></li>
+<li class="chapter" data-level="14.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>14.4.2</b> 청크 옵션</a></li>
+<li class="chapter" data-level="14.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>14.4.3</b> 표</a></li>
+<li class="chapter" data-level="14.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>14.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="14.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>14.4.5</b> 전역 옵션</a></li>
+<li class="chapter" data-level="14.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>14.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="14.4.7" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>14.4.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>14.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="14.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>14.6</b> YAML header</a><ul>
+<li class="chapter" data-level="14.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>14.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="14.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>14.6.2</b> Bibliographies and Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>14.7</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>15</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="15.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>15.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>15.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>15.2</b> Label</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>15.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>15.3</b> Annotations</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="vectors.html"><a href="vectors.html#exercises-1"><i class="fa fa-check"></i><b>15.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>15.4</b> Scales</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>15.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="15.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>15.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="15.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>15.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="15.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>15.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>15.5</b> Zooming</a></li>
+<li class="chapter" data-level="15.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>15.6</b> Themes</a></li>
+<li class="chapter" data-level="15.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>15.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>15.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="15.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>15.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>15.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>16</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="16.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>16.1</b> 들어가기</a></li>
+<li class="chapter" data-level="16.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>16.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="16.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>16.3</b> Document</a></li>
+<li class="chapter" data-level="16.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>16.4</b> Notebook</a></li>
+<li class="chapter" data-level="16.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>16.5</b> Presentation</a></li>
+<li class="chapter" data-level="16.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>16.6</b> Dashboard</a></li>
+<li class="chapter" data-level="16.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>16.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="16.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>16.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="16.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>16.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="16.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>16.8</b> Website</a></li>
+<li class="chapter" data-level="16.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>16.9</b> Other formats</a></li>
+<li class="chapter" data-level="16.10" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>16.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>17</b> R 마크다운 워크플로</a></li>
 </ul>
 
       </nav>
@@ -390,25 +470,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="graphics-for-communication" class="section level1">
-<h1><span class="header-section-number">11</span> 그래프를 통한 의사소통</h1>
+<h1><span class="header-section-number">15</span> 그래프를 통한 의사소통</h1>
 <div id="들어가기" class="section level2">
-<h2><span class="header-section-number">11.1</span> 들어가기</h2>
+<h2><span class="header-section-number">15.1</span> 들어가기</h2>
 <p><a href="#eda">탐색적 데이터 분석</a> 에서 우리는 플롯을 <이탤릭>탐색</이탤릭> 도구로 사용하는 방법을 배웠다. 탐색용 플롯을 만들 때는 어떤 변수가 플롯에 표시될지 (플롯을 보기도 전에) 알고 있다. 우리는 목적에 따라 플롯을 하나씩 만들었고, 빨리 파악하고, 다음 플롯으로 넘어갔다. 대부분의 분석 과정에서 수십 또는 수백 개의 플롯을 그려보고, 즉시 대부분을 폐기할 것이다.</p>
 <p>데이터를 이해했다면 이제 이해한 바를 다른 사람들과 <이탤릭>의사소통</이탤릭>해야 한다. 의사소통 대상자들은 배경 지식이 없고 해당 데이터를 깊이 살펴보지 않는 경우가 많다. 다른 사람들이 데이터를 신속하게 이해할 수 있게 하려면, 플롯이 최대한 스스로 설명 가능할 수 있게 노력을 많이 기울여야 한다. 이 장에서는 <볼드>ggplot2</볼드>가 제공하는 도구에 대해 학습한다.</p>
 <p>이번 장에서는 좋은 그래픽을 만드는 데 필요한 도구를 중점적으로 살펴본다. 나는 여러분이 자신이 하고자 하는 바가 무엇인지 알고 있지만, 어떻게 하는 지를 모른다고 가정한다. 이런 경우 시각화 개론 책을 이 장과 함께 읽는 것이 좋다. 나는 특히 앨버트 카이로(Albert Cairo)의 <a href="https://amzn.com/0321934075"><em>The Truthful Art</em></a> 를 좋아한다. 이 책은 시각화를 만드는 메커니즘을 가르쳐 주지 않지만 효과적인 그래프를 만들기 위해 무엇을 생각해야하는지를 중점적으로 다룬다.</p>
 <div id="준비하기" class="section level3">
-<h3><span class="header-section-number">11.1.1</span> 준비하기</h3>
+<h3><span class="header-section-number">15.1.1</span> 준비하기</h3>
 <p>이 장에서는 다시 한번 <볼드>ggplot2</볼드>를 집중하여 볼 것이다. 또한 <볼드>dplyr</볼드>을 사용하여 데이터를 처리하고 <볼드>ggrepel</볼드>과 <볼드>viridis</볼드>를 포함한 몇 가지 <볼드>ggplot2</볼드> 확장 패키지를 사용할 것이다. 이 확장 패키지들을 여기에서 로드하지 않고, <코드체>::</코드체> 표기법을 사용하여 함수를 명시적으로 참조할 것이다. 이렇게 하면 어떤 함수가 <볼드>ggplot2</볼드>에 내장되어 있는지, 또 어떤 함수가 다른 패키지에서 온 것인지를 명확히 알 수 있다. 설치되지 않은 패키지는 <코드체>install.packages()</코드체>로 설치해야 한다는 것을 기억하라.</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 </div>
 </div>
 <div id="label" class="section level2">
-<h2><span class="header-section-number">11.2</span> Label</h2>
+<h2><span class="header-section-number">15.2</span> Label</h2>
 <p>The easiest place to start when turning an exploratory graphic into an expository graphic is with good labels. You add labels with the <code>labs()</code> function. This example adds a plot title:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb294-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb294-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb294-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;한글&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb405-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb405-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb405-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;한글&quot;</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>The purpose of a plot title is to summarise the main finding. Avoid titles that just describe what the plot is, e.g. “A scatterplot of engine displacement vs. fuel economy”.</p>
 <p>If you need to add more text, there are two other useful labels that you can use in ggplot2 2.2.0 and above (which should be available by the time you’re reading this book):</p>
@@ -417,39 +497,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>caption</code> adds text at the bottom right of the plot, often used to describe
 the source of the data.</p></li>
 </ul>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb295-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb295-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb295-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb295-5" data-line-number="5">    <span class="dt">title =</span> <span class="st">&quot;연비는 &quot;</span>,</a>
-<a class="sourceLine" id="cb295-6" data-line-number="6">    <span class="dt">subtitle =</span> <span class="st">&quot;Two seaters (sports cars) are an exception because of their light weight&quot;</span>,</a>
-<a class="sourceLine" id="cb295-7" data-line-number="7">    <span class="dt">caption =</span> <span class="st">&quot;Data from fueleconomy.gov&quot;</span></a>
-<a class="sourceLine" id="cb295-8" data-line-number="8">  )</a></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb406-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb406-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb406-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb406-5" data-line-number="5">    <span class="dt">title =</span> <span class="st">&quot;연비는 &quot;</span>,</a>
+<a class="sourceLine" id="cb406-6" data-line-number="6">    <span class="dt">subtitle =</span> <span class="st">&quot;Two seaters (sports cars) are an exception because of their light weight&quot;</span>,</a>
+<a class="sourceLine" id="cb406-7" data-line-number="7">    <span class="dt">caption =</span> <span class="st">&quot;Data from fueleconomy.gov&quot;</span></a>
+<a class="sourceLine" id="cb406-8" data-line-number="8">  )</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>You can also use <code>labs()</code> to replace the axis and legend titles. It’s usually a good idea to replace short variable names with more detailed descriptions, and to include the units.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb296-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb296-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb296-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb296-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Engine displacement (L)&quot;</span>,</a>
-<a class="sourceLine" id="cb296-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Highway fuel economy (mpg)&quot;</span>,</a>
-<a class="sourceLine" id="cb296-7" data-line-number="7">    <span class="dt">colour =</span> <span class="st">&quot;Car type&quot;</span></a>
-<a class="sourceLine" id="cb296-8" data-line-number="8">  )</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb407-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb407-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb407-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb407-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Engine displacement (L)&quot;</span>,</a>
+<a class="sourceLine" id="cb407-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Highway fuel economy (mpg)&quot;</span>,</a>
+<a class="sourceLine" id="cb407-7" data-line-number="7">    <span class="dt">colour =</span> <span class="st">&quot;Car type&quot;</span></a>
+<a class="sourceLine" id="cb407-8" data-line-number="8">  )</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>It’s possible to use mathematical equations instead of text strings. Just switch <code>&quot;&quot;</code> out for <code>quote()</code> and read about the available options in <code>?plotmath</code>:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb297-2" data-line-number="2">  <span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb297-3" data-line-number="3">  <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb297-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb297-5" data-line-number="5"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb297-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb297-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb297-8" data-line-number="8">    <span class="dt">x =</span> <span class="kw">quote</span>(<span class="kw">sum</span>(x[i] <span class="op">^</span><span class="st"> </span><span class="dv">2</span>, i <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, n)),</a>
-<a class="sourceLine" id="cb297-9" data-line-number="9">    <span class="dt">y =</span> <span class="kw">quote</span>(alpha <span class="op">+</span><span class="st"> </span>beta <span class="op">+</span><span class="st"> </span><span class="kw">frac</span>(delta, theta))</a>
-<a class="sourceLine" id="cb297-10" data-line-number="10">  )</a></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb408-2" data-line-number="2">  <span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb408-3" data-line-number="3">  <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb408-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb408-5" data-line-number="5"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb408-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb408-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb408-8" data-line-number="8">    <span class="dt">x =</span> <span class="kw">quote</span>(<span class="kw">sum</span>(x[i] <span class="op">^</span><span class="st"> </span><span class="dv">2</span>, i <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, n)),</a>
+<a class="sourceLine" id="cb408-9" data-line-number="9">    <span class="dt">y =</span> <span class="kw">quote</span>(alpha <span class="op">+</span><span class="st"> </span>beta <span class="op">+</span><span class="st"> </span><span class="kw">frac</span>(delta, theta))</a>
+<a class="sourceLine" id="cb408-10" data-line-number="10">  )</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-5-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div id="exercises" class="section level3">
-<h3><span class="header-section-number">11.2.1</span> Exercises</h3>
+<h3><span class="header-section-number">15.2.1</span> Exercises</h3>
 <ol style="list-style-type: decimal">
 <li><p>Create one plot on the fuel economy data with customised <code>title</code>,
 <code>subtitle</code>, <code>caption</code>, <code>x</code>, <code>y</code>, and <code>colour</code> labels.</p></li>
@@ -463,82 +543,82 @@ informative titles to make it easier for others to understand.</p></li>
 </div>
 </div>
 <div id="annotations" class="section level2">
-<h2><span class="header-section-number">11.3</span> Annotations</h2>
+<h2><span class="header-section-number">15.3</span> Annotations</h2>
 <p>In addition to labelling major components of your plot, it’s often useful to label individual observations or groups of observations. The first tool you have at your disposal is <code>geom_text()</code>. <code>geom_text()</code> is similar to <code>geom_point()</code>, but it has an additional aesthetic: <code>label</code>. This makes it possible to add textual labels to your plots.</p>
 <p>There are two possible sources of labels. First, you might have a tibble that provides labels. The plot below isn’t terribly useful, but it illustrates a useful approach: pull out the most efficient car in each class with dplyr, and then label it on the plot:</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">best_in_class &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb298-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb298-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>(<span class="kw">desc</span>(hwy)) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb298-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb298-5" data-line-number="5"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb298-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb298-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> model), <span class="dt">data =</span> best_in_class)</a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1">best_in_class &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb409-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb409-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>(<span class="kw">desc</span>(hwy)) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb409-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb409-5" data-line-number="5"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb409-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb409-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> model), <span class="dt">data =</span> best_in_class)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This is hard to read because the labels overlap with each other, and with the points. We can make things a little better by switching to <code>geom_label()</code> which draws a rectangle behind the text. We also use the <code>nudge_y</code> parameter to move the labels slightly above the corresponding points:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb299-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb299-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">label =</span> model), <span class="dt">data =</span> best_in_class, <span class="dt">nudge_y =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb410-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb410-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">label =</span> model), <span class="dt">data =</span> best_in_class, <span class="dt">nudge_y =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>That helps a bit, but if you look closely in the top-left hand corner, you’ll notice that there are two labels practically on top of each other. This happens because the highway mileage and displacement for the best cars in the compact and subcompact categories are exactly the same. There’s no way that we can fix these by applying the same transformation for every label. Instead, we can use the <strong>ggrepel</strong> package by Kamil Slowikowski. This useful package will automatically adjust labels so that they don’t overlap:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb300-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb300-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">shape =</span> <span class="dv">1</span>, <span class="dt">data =</span> best_in_class) <span class="op">+</span></a>
-<a class="sourceLine" id="cb300-4" data-line-number="4"><span class="st">  </span>ggrepel<span class="op">::</span><span class="kw">geom_label_repel</span>(<span class="kw">aes</span>(<span class="dt">label =</span> model), <span class="dt">data =</span> best_in_class)</a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb411-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb411-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">shape =</span> <span class="dv">1</span>, <span class="dt">data =</span> best_in_class) <span class="op">+</span></a>
+<a class="sourceLine" id="cb411-4" data-line-number="4"><span class="st">  </span>ggrepel<span class="op">::</span><span class="kw">geom_label_repel</span>(<span class="kw">aes</span>(<span class="dt">label =</span> model), <span class="dt">data =</span> best_in_class)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Note another handy technique used here: I added a second layer of large, hollow points to highlight the points that I’ve labelled.</p>
 <p>You can sometimes use the same idea to replace the legend with labels placed directly on the plot. It’s not wonderful for this plot, but it isn’t too bad. (<code>theme(legend.position = &quot;none&quot;</code>) turns the legend off — we’ll talk about it more shortly.)</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1">class_avg &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb301-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb301-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb301-4" data-line-number="4">    <span class="dt">displ =</span> <span class="kw">median</span>(displ),</a>
-<a class="sourceLine" id="cb301-5" data-line-number="5">    <span class="dt">hwy =</span> <span class="kw">median</span>(hwy)</a>
-<a class="sourceLine" id="cb301-6" data-line-number="6">  )</a>
-<a class="sourceLine" id="cb301-7" data-line-number="7"><span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></a>
-<a class="sourceLine" id="cb301-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb301-9" data-line-number="9"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb301-10" data-line-number="10"><span class="st">  </span>ggrepel<span class="op">::</span><span class="kw">geom_label_repel</span>(<span class="kw">aes</span>(<span class="dt">label =</span> class),</a>
-<a class="sourceLine" id="cb301-11" data-line-number="11">    <span class="dt">data =</span> class_avg,</a>
-<a class="sourceLine" id="cb301-12" data-line-number="12">    <span class="dt">size =</span> <span class="dv">6</span>,</a>
-<a class="sourceLine" id="cb301-13" data-line-number="13">    <span class="dt">label.size =</span> <span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb301-14" data-line-number="14">    <span class="dt">segment.color =</span> <span class="ot">NA</span></a>
-<a class="sourceLine" id="cb301-15" data-line-number="15">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb301-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb301-17" data-line-number="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1">class_avg &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb412-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb412-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb412-4" data-line-number="4">    <span class="dt">displ =</span> <span class="kw">median</span>(displ),</a>
+<a class="sourceLine" id="cb412-5" data-line-number="5">    <span class="dt">hwy =</span> <span class="kw">median</span>(hwy)</a>
+<a class="sourceLine" id="cb412-6" data-line-number="6">  )</a>
+<a class="sourceLine" id="cb412-7" data-line-number="7"><span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></a>
+<a class="sourceLine" id="cb412-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb412-9" data-line-number="9"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb412-10" data-line-number="10"><span class="st">  </span>ggrepel<span class="op">::</span><span class="kw">geom_label_repel</span>(<span class="kw">aes</span>(<span class="dt">label =</span> class),</a>
+<a class="sourceLine" id="cb412-11" data-line-number="11">    <span class="dt">data =</span> class_avg,</a>
+<a class="sourceLine" id="cb412-12" data-line-number="12">    <span class="dt">size =</span> <span class="dv">6</span>,</a>
+<a class="sourceLine" id="cb412-13" data-line-number="13">    <span class="dt">label.size =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb412-14" data-line-number="14">    <span class="dt">segment.color =</span> <span class="ot">NA</span></a>
+<a class="sourceLine" id="cb412-15" data-line-number="15">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb412-16" data-line-number="16"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb412-17" data-line-number="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Alternatively, you might just want to add a single label to the plot, but you’ll still need to create a data frame. Often, you want the label in the corner of the plot, so it’s convenient to create a new data frame using <code>summarise()</code> to compute the maximum values of x and y.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">label &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb302-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb302-3" data-line-number="3">    <span class="dt">displ =</span> <span class="kw">max</span>(displ),</a>
-<a class="sourceLine" id="cb302-4" data-line-number="4">    <span class="dt">hwy =</span> <span class="kw">max</span>(hwy),</a>
-<a class="sourceLine" id="cb302-5" data-line-number="5">    <span class="dt">label =</span> <span class="st">&quot;Increasing engine size is </span><span class="ch">\n</span><span class="st">related to decreasing fuel economy.&quot;</span></a>
-<a class="sourceLine" id="cb302-6" data-line-number="6">  )</a>
-<a class="sourceLine" id="cb302-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb302-8" data-line-number="8"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb302-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb302-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> label), <span class="dt">data =</span> label, <span class="dt">vjust =</span> <span class="st">&quot;top&quot;</span>, <span class="dt">hjust =</span> <span class="st">&quot;right&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1">label &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb413-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb413-3" data-line-number="3">    <span class="dt">displ =</span> <span class="kw">max</span>(displ),</a>
+<a class="sourceLine" id="cb413-4" data-line-number="4">    <span class="dt">hwy =</span> <span class="kw">max</span>(hwy),</a>
+<a class="sourceLine" id="cb413-5" data-line-number="5">    <span class="dt">label =</span> <span class="st">&quot;Increasing engine size is </span><span class="ch">\n</span><span class="st">related to decreasing fuel economy.&quot;</span></a>
+<a class="sourceLine" id="cb413-6" data-line-number="6">  )</a>
+<a class="sourceLine" id="cb413-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb413-8" data-line-number="8"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb413-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb413-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> label), <span class="dt">data =</span> label, <span class="dt">vjust =</span> <span class="st">&quot;top&quot;</span>, <span class="dt">hjust =</span> <span class="st">&quot;right&quot;</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>If you want to place the text exactly on the borders of the plot, you can use <code>+Inf</code> and <code>-Inf</code>. Since we’re no longer computing the positions from <code>mpg</code>, we can use <code>tibble()</code> to create the data frame:</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1">label &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb303-2" data-line-number="2">  <span class="dt">displ =</span> <span class="ot">Inf</span>,</a>
-<a class="sourceLine" id="cb303-3" data-line-number="3">  <span class="dt">hwy =</span> <span class="ot">Inf</span>,</a>
-<a class="sourceLine" id="cb303-4" data-line-number="4">  <span class="dt">label =</span> <span class="st">&quot;Increasing engine size is </span><span class="ch">\n</span><span class="st">related to decreasing fuel economy.&quot;</span></a>
-<a class="sourceLine" id="cb303-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb303-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb303-7" data-line-number="7"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb303-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb303-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> label), <span class="dt">data =</span> label, <span class="dt">vjust =</span> <span class="st">&quot;top&quot;</span>, <span class="dt">hjust =</span> <span class="st">&quot;right&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1">label &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb414-2" data-line-number="2">  <span class="dt">displ =</span> <span class="ot">Inf</span>,</a>
+<a class="sourceLine" id="cb414-3" data-line-number="3">  <span class="dt">hwy =</span> <span class="ot">Inf</span>,</a>
+<a class="sourceLine" id="cb414-4" data-line-number="4">  <span class="dt">label =</span> <span class="st">&quot;Increasing engine size is </span><span class="ch">\n</span><span class="st">related to decreasing fuel economy.&quot;</span></a>
+<a class="sourceLine" id="cb414-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb414-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb414-7" data-line-number="7"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb414-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb414-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> label), <span class="dt">data =</span> label, <span class="dt">vjust =</span> <span class="st">&quot;top&quot;</span>, <span class="dt">hjust =</span> <span class="st">&quot;right&quot;</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>In these examples, I manually broke the label up into lines using <code>&quot;\n&quot;</code>. Another approach is to use <code>stringr::str_wrap()</code> to automatically add line breaks, given the number of characters you want per line:</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="st">&quot;Increasing engine size is related to decreasing fuel economy.&quot;</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb304-2" data-line-number="2"><span class="st">  </span>stringr<span class="op">::</span><span class="kw">str_wrap</span>(<span class="dt">width =</span> <span class="dv">40</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb304-3" data-line-number="3"><span class="st">  </span><span class="kw">writeLines</span>()</a>
-<a class="sourceLine" id="cb304-4" data-line-number="4"><span class="co">#&gt; Increasing engine size is related to</span></a>
-<a class="sourceLine" id="cb304-5" data-line-number="5"><span class="co">#&gt; decreasing fuel economy.</span></a></code></pre></div>
-<p>Note the use of <code>hjust</code> and <code>vjust</code> to control the alignment of the label. Figure <a href="graphics-for-communication.html#fig:just">11.1</a> shows all nine possible combinations.</p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1"><span class="st">&quot;Increasing engine size is related to decreasing fuel economy.&quot;</span> <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb415-2" data-line-number="2"><span class="st">  </span>stringr<span class="op">::</span><span class="kw">str_wrap</span>(<span class="dt">width =</span> <span class="dv">40</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb415-3" data-line-number="3"><span class="st">  </span><span class="kw">writeLines</span>()</a>
+<a class="sourceLine" id="cb415-4" data-line-number="4"><span class="co">#&gt; Increasing engine size is related to</span></a>
+<a class="sourceLine" id="cb415-5" data-line-number="5"><span class="co">#&gt; decreasing fuel economy.</span></a></code></pre></div>
+<p>Note the use of <code>hjust</code> and <code>vjust</code> to control the alignment of the label. Figure <a href="graphics-for-communication.html#fig:just">15.1</a> shows all nine possible combinations.</p>
 <div class="figure" style="text-align: center"><span id="fig:just"></span>
 <img src="communicate-plots_files/figure-html/just-1.png" alt="All nine combinations of `hjust` and `vjust`." width="60%" />
 <p class="caption">
-Figure 11.1: All nine combinations of <code>hjust</code> and <code>vjust</code>.
+Figure 15.1: All nine combinations of <code>hjust</code> and <code>vjust</code>.
 </p>
 </div>
 <p>Remember, in addition to <code>geom_text()</code>, you have many other geoms in ggplot2 available to help annotate your plot. A few ideas:</p>
@@ -556,7 +636,7 @@ starting location, and <code>xend</code> and <code>yend</code> to define the end
 </ul>
 <p>The only limit is your imagination (and your patience with positioning annotations to be aesthetically pleasing)!</p>
 <div id="exercises-1" class="section level3">
-<h3><span class="header-section-number">11.3.1</span> Exercises</h3>
+<h3><span class="header-section-number">15.3.1</span> Exercises</h3>
 <ol style="list-style-type: decimal">
 <li><p>Use <code>geom_text()</code> with infinite positions to place text at the
 four corners of the plot.</p></li>
@@ -573,16 +653,16 @@ of plots that demonstrate the most important options.</p></li>
 </div>
 </div>
 <div id="scales" class="section level2">
-<h2><span class="header-section-number">11.4</span> Scales</h2>
+<h2><span class="header-section-number">15.4</span> Scales</h2>
 <p>The third way you can make your plot better for communication is to adjust the scales. Scales control the mapping from data values to things that you can perceive. Normally, ggplot2 automatically adds scales for you. For example, when you type:</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb305-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class))</a></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb416-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class))</a></code></pre></div>
 <p>ggplot2 automatically adds default scales behind the scenes:</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb306-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb306-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_continuous</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb306-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb306-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_colour_discrete</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb417-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb417-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_continuous</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb417-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb417-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_colour_discrete</span>()</a></code></pre></div>
 <p>Note the naming scheme for scales: <code>scale_</code> followed by the name of the aesthetic, then <code>_</code>, then the name of the scale. The default scales are named according to the type of variable they align with: continuous, discrete, datetime, or date. There are lots of non-default scales which you’ll learn about below.</p>
 <p>The default scales have been carefully chosen to do a good job for a wide range of inputs. Nevertheless, you might want to override the defaults for two reasons:</p>
 <ul>
@@ -594,26 +674,26 @@ different algorithm. Often you can do better than the default because
 you know more about the data.</p></li>
 </ul>
 <div id="axis-ticks-and-legend-keys" class="section level3">
-<h3><span class="header-section-number">11.4.1</span> Axis ticks and legend keys</h3>
+<h3><span class="header-section-number">15.4.1</span> Axis ticks and legend keys</h3>
 <p>There are two primary arguments that affect the appearance of the ticks on the axes and the keys on the legend: <code>breaks</code> and <code>labels</code>. Breaks controls the position of the ticks, or the values associated with the keys. Labels controls the text label associated with each tick/key. The most common use of <code>breaks</code> is to override the default choice:</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb307-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb307-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">40</span>, <span class="dt">by =</span> <span class="dv">5</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb418-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb418-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">40</span>, <span class="dt">by =</span> <span class="dv">5</span>))</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>You can use <code>labels</code> in the same way (a character vector the same length as <code>breaks</code>), but you can also set it to <code>NULL</code> to suppress the labels altogether. This is useful for maps, or for publishing plots where you can’t share the absolute numbers.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb308-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb308-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">labels =</span> <span class="ot">NULL</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb308-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb419-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb419-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">labels =</span> <span class="ot">NULL</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb419-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> <span class="ot">NULL</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>You can also use <code>breaks</code> and <code>labels</code> to control the appearance of legends. Collectively axes and legends are called <strong>guides</strong>. Axes are used for x and y aesthetics; legends are used for everything else.</p>
 <p>Another use of <code>breaks</code> is when you have relatively few data points and want to highlight exactly where the observations occur. For example, take this plot that shows when each US president started and ended their term.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">presidential <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb309-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">33</span> <span class="op">+</span><span class="st"> </span><span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb309-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(start, id)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb309-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb309-5" data-line-number="5"><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">xend =</span> end, <span class="dt">yend =</span> id)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb309-6" data-line-number="6"><span class="st">    </span><span class="kw">scale_x_date</span>(<span class="ot">NULL</span>, <span class="dt">breaks =</span> presidential<span class="op">$</span>start, <span class="dt">date_labels =</span> <span class="st">&quot;&#39;%y&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" data-line-number="1">presidential <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb420-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">33</span> <span class="op">+</span><span class="st"> </span><span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb420-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(start, id)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb420-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb420-5" data-line-number="5"><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">xend =</span> end, <span class="dt">yend =</span> id)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb420-6" data-line-number="6"><span class="st">    </span><span class="kw">scale_x_date</span>(<span class="ot">NULL</span>, <span class="dt">breaks =</span> presidential<span class="op">$</span>start, <span class="dt">date_labels =</span> <span class="st">&quot;&#39;%y&quot;</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Note that the specification of breaks and labels for date and datetime scales is a little different:</p>
 <ul>
@@ -623,105 +703,105 @@ you know more about the data.</p></li>
 </ul>
 </div>
 <div id="legend-layout" class="section level3">
-<h3><span class="header-section-number">11.4.2</span> Legend layout</h3>
+<h3><span class="header-section-number">15.4.2</span> Legend layout</h3>
 <p>You will most often use <code>breaks</code> and <code>labels</code> to tweak the axes. While they both also work for legends, there are a few other techniques you are more likely to use.</p>
 <p>To control the overall position of the legend, you need to use a <code>theme()</code> setting. We’ll come back to themes at the end of the chapter, but in brief, they control the non-data parts of the plot. The theme setting <code>legend.position</code> controls where the legend is drawn:</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">base &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb310-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class))</a>
-<a class="sourceLine" id="cb310-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb310-4" data-line-number="4">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;left&quot;</span>)</a>
-<a class="sourceLine" id="cb310-5" data-line-number="5">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;top&quot;</span>)</a>
-<a class="sourceLine" id="cb310-6" data-line-number="6">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
-<a class="sourceLine" id="cb310-7" data-line-number="7">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;right&quot;</span>) <span class="co"># the default</span></a></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1">base &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb421-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class))</a>
+<a class="sourceLine" id="cb421-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb421-4" data-line-number="4">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;left&quot;</span>)</a>
+<a class="sourceLine" id="cb421-5" data-line-number="5">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;top&quot;</span>)</a>
+<a class="sourceLine" id="cb421-6" data-line-number="6">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb421-7" data-line-number="7">base <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;right&quot;</span>) <span class="co"># the default</span></a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-17-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-17-2.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-17-3.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-17-4.png" width="50%" /></p>
 <p>You can also use <code>legend.position = &quot;none&quot;</code> to suppress the display of the legend altogether.</p>
 <p>To control the display of individual legends, use <code>guides()</code> along with <code>guide_legend()</code> or <code>guide_colourbar()</code>. The following example shows two important settings: controlling the number of rows the legend uses with <code>nrow</code>, and overriding one of the aesthetics to make the points bigger. This is particularly useful if you have used a low <code>alpha</code> to display many points on a plot.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb311-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb311-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb311-4" data-line-number="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb311-5" data-line-number="5"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour =</span> <span class="kw">guide_legend</span>(<span class="dt">nrow =</span> <span class="dv">1</span>, <span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">4</span>)))</a>
-<a class="sourceLine" id="cb311-6" data-line-number="6"><span class="co">#&gt; `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb422-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb422-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb422-4" data-line-number="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb422-5" data-line-number="5"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">colour =</span> <span class="kw">guide_legend</span>(<span class="dt">nrow =</span> <span class="dv">1</span>, <span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb422-6" data-line-number="6"><span class="co">#&gt; `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</span></a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="replacing-a-scale" class="section level3">
-<h3><span class="header-section-number">11.4.3</span> Replacing a scale</h3>
+<h3><span class="header-section-number">15.4.3</span> Replacing a scale</h3>
 <p>Instead of just tweaking the details a little, you can instead replace the scale altogether. There are two types of scales you’re mostly likely to want to switch out: continuous position scales and colour scales. Fortunately, the same principles apply to all the other aesthetics, so once you’ve mastered position and colour, you’ll be able to quickly pick up other scale replacements.</p>
 <p>It’s very useful to plot transformations of your variable. For example, as we’ve seen in <a href="diamond-prices">diamond prices</a> it’s easier to see the precise relationship between <code>carat</code> and <code>price</code> if we log transform them:</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb312-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bin2d</span>()</a>
-<a class="sourceLine" id="cb312-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb312-4" data-line-number="4"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="kw">log10</span>(carat), <span class="kw">log10</span>(price))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb312-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bin2d</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb423-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bin2d</span>()</a>
+<a class="sourceLine" id="cb423-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb423-4" data-line-number="4"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="kw">log10</span>(carat), <span class="kw">log10</span>(price))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb423-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bin2d</span>()</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-19-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-19-2.png" width="50%" /></p>
 <p>However, the disadvantage of this transformation is that the axes are now labelled with the transformed values, making it hard to interpret the plot. Instead of doing the transformation in the aesthetic mapping, we can instead do it with the scale. This is visually identical, except the axes are labelled on the original data scale.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb313-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bin2d</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb313-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb313-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_log10</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb424-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bin2d</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb424-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb424-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_log10</span>()</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Another scale that is frequently customised is colour. The default categorical scale picks colours that are evenly spaced around the colour wheel. Useful alternatives are the ColorBrewer scales which have been hand tuned to work better for people with common types of colour blindness. The two plots below look similar, but there is enough difference in the shades of red and green that the dots on the right can be distinguished even by people with red-green colour blindness.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb314-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> drv))</a>
-<a class="sourceLine" id="cb314-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb314-4" data-line-number="4"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb314-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> drv)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb314-6" data-line-number="6"><span class="st">  </span><span class="kw">scale_colour_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb425-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> drv))</a>
+<a class="sourceLine" id="cb425-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb425-4" data-line-number="4"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb425-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> drv)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb425-6" data-line-number="6"><span class="st">  </span><span class="kw">scale_colour_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-21-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-21-2.png" width="50%" /></p>
 <p>Don’t forget simpler techniques. If there are just a few colours, you can add a redundant shape mapping. This will also help ensure your plot is interpretable in black and white.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb315-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> drv, <span class="dt">shape =</span> drv)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_colour_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb426-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> drv, <span class="dt">shape =</span> drv)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb426-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_colour_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>The ColorBrewer scales are documented online at <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a> and made available in R via the <strong>RColorBrewer</strong> package, by Erich Neuwirth. Figure <a href="graphics-for-communication.html#fig:brewer">11.2</a> shows the complete list of all palettes. The sequential (top) and diverging (bottom) palettes are particularly useful if your categorical values are ordered, or have a “middle”. This often arises if you’ve used <code>cut()</code> to make a continuous variable into a categorical variable.</p>
+<p>The ColorBrewer scales are documented online at <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a> and made available in R via the <strong>RColorBrewer</strong> package, by Erich Neuwirth. Figure <a href="graphics-for-communication.html#fig:brewer">15.2</a> shows the complete list of all palettes. The sequential (top) and diverging (bottom) palettes are particularly useful if your categorical values are ordered, or have a “middle”. This often arises if you’ve used <code>cut()</code> to make a continuous variable into a categorical variable.</p>
 <div class="figure" style="text-align: center"><span id="fig:brewer"></span>
 <img src="communicate-plots_files/figure-html/brewer-1.png" alt="All ColourBrewer scales." width="70%" />
 <p class="caption">
-Figure 11.2: All ColourBrewer scales.
+Figure 15.2: All ColourBrewer scales.
 </p>
 </div>
 <p>When you have a predefined mapping between values and colours, use <code>scale_colour_manual()</code>. For example, if we map presidential party to colour, we want to use the standard mapping of red for Republicans and blue for Democrats:</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">presidential <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb316-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">33</span> <span class="op">+</span><span class="st"> </span><span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb316-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(start, id, <span class="dt">colour =</span> party)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb316-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb316-5" data-line-number="5"><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">xend =</span> end, <span class="dt">yend =</span> id)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb316-6" data-line-number="6"><span class="st">    </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dt">Republican =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">Democratic =</span> <span class="st">&quot;blue&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1">presidential <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb427-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="dv">33</span> <span class="op">+</span><span class="st"> </span><span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb427-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(start, id, <span class="dt">colour =</span> party)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb427-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb427-5" data-line-number="5"><span class="st">    </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">xend =</span> end, <span class="dt">yend =</span> id)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb427-6" data-line-number="6"><span class="st">    </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dt">Republican =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">Democratic =</span> <span class="st">&quot;blue&quot;</span>))</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>For continuous colour, you can use the built-in <code>scale_colour_gradient()</code> or <code>scale_fill_gradient()</code>. If you have a diverging scale, you can use <code>scale_colour_gradient2()</code>. That allows you to give, for example, positive and negative values different colours. That’s sometimes also useful if you want to distinguish points above or below the mean.</p>
 <p>Another option is <code>scale_colour_viridis()</code> provided by the <strong>viridis</strong> package. It’s a continuous analog of the categorical ColorBrewer scales. The designers, Nathaniel Smith and Stéfan van der Walt, carefully tailored a continuous colour scheme that has good perceptual properties. Here’s an example from the viridis vignette.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb317-2" data-line-number="2">  <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">10000</span>),</a>
-<a class="sourceLine" id="cb317-3" data-line-number="3">  <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb317-4" data-line-number="4">)</a>
-<a class="sourceLine" id="cb317-5" data-line-number="5"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb317-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_hex</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb317-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_fixed</span>()</a>
-<a class="sourceLine" id="cb317-8" data-line-number="8"><span class="co">#&gt; Warning: Computation failed in `stat_binhex()`:</span></a>
-<a class="sourceLine" id="cb317-9" data-line-number="9"><span class="co">#&gt;   Package `hexbin` required for `stat_binhex`.</span></a>
-<a class="sourceLine" id="cb317-10" data-line-number="10"><span class="co">#&gt;   Please install and try again.</span></a>
-<a class="sourceLine" id="cb317-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb317-12" data-line-number="12"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb317-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_hex</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb317-14" data-line-number="14"><span class="st">  </span>viridis<span class="op">::</span><span class="kw">scale_fill_viridis</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb317-15" data-line-number="15"><span class="st">  </span><span class="kw">coord_fixed</span>()</a>
-<a class="sourceLine" id="cb317-16" data-line-number="16"><span class="co">#&gt; Warning: Computation failed in `stat_binhex()`:</span></a>
-<a class="sourceLine" id="cb317-17" data-line-number="17"><span class="co">#&gt;   Package `hexbin` required for `stat_binhex`.</span></a>
-<a class="sourceLine" id="cb317-18" data-line-number="18"><span class="co">#&gt;   Please install and try again.</span></a></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb428-2" data-line-number="2">  <span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">10000</span>),</a>
+<a class="sourceLine" id="cb428-3" data-line-number="3">  <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb428-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb428-5" data-line-number="5"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb428-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_hex</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb428-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_fixed</span>()</a>
+<a class="sourceLine" id="cb428-8" data-line-number="8"><span class="co">#&gt; Warning: Computation failed in `stat_binhex()`:</span></a>
+<a class="sourceLine" id="cb428-9" data-line-number="9"><span class="co">#&gt;   Package `hexbin` required for `stat_binhex`.</span></a>
+<a class="sourceLine" id="cb428-10" data-line-number="10"><span class="co">#&gt;   Please install and try again.</span></a>
+<a class="sourceLine" id="cb428-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb428-12" data-line-number="12"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb428-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_hex</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb428-14" data-line-number="14"><span class="st">  </span>viridis<span class="op">::</span><span class="kw">scale_fill_viridis</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb428-15" data-line-number="15"><span class="st">  </span><span class="kw">coord_fixed</span>()</a>
+<a class="sourceLine" id="cb428-16" data-line-number="16"><span class="co">#&gt; Warning: Computation failed in `stat_binhex()`:</span></a>
+<a class="sourceLine" id="cb428-17" data-line-number="17"><span class="co">#&gt;   Package `hexbin` required for `stat_binhex`.</span></a>
+<a class="sourceLine" id="cb428-18" data-line-number="18"><span class="co">#&gt;   Please install and try again.</span></a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-24-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-24-2.png" width="50%" /></p>
 <p>Note that all colour scales come in two variety: <code>scale_colour_x()</code> and <code>scale_fill_x()</code> for the <code>colour</code> and <code>fill</code> aesthetics respectively (the colour scales are available in both UK and US spellings).</p>
 </div>
 <div id="exercises-2" class="section level3">
-<h3><span class="header-section-number">11.4.4</span> Exercises</h3>
+<h3><span class="header-section-number">15.4.4</span> Exercises</h3>
 <ol style="list-style-type: decimal">
 <li><p>Why doesn’t the following code override the default scale?</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb318-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_hex</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb318-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_colour_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb318-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_fixed</span>()</a>
-<a class="sourceLine" id="cb318-5" data-line-number="5"><span class="co">#&gt; Warning: Computation failed in `stat_binhex()`:</span></a>
-<a class="sourceLine" id="cb318-6" data-line-number="6"><span class="co">#&gt;   Package `hexbin` required for `stat_binhex`.</span></a>
-<a class="sourceLine" id="cb318-7" data-line-number="7"><span class="co">#&gt;   Please install and try again.</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" data-line-number="1"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb429-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_hex</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb429-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_colour_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb429-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_fixed</span>()</a>
+<a class="sourceLine" id="cb429-5" data-line-number="5"><span class="co">#&gt; Warning: Computation failed in `stat_binhex()`:</span></a>
+<a class="sourceLine" id="cb429-6" data-line-number="6"><span class="co">#&gt;   Package `hexbin` required for `stat_binhex`.</span></a>
+<a class="sourceLine" id="cb429-7" data-line-number="7"><span class="co">#&gt;   Please install and try again.</span></a></code></pre></div></li>
 <li><p>What is the first argument to every scale? How does it compare to <code>labs()</code>?</p></li>
 <li><p>Change the display of the presidential terms by:</p>
 <ol style="list-style-type: decimal">
@@ -732,14 +812,14 @@ Figure 11.2: All ColourBrewer scales.
 <li>Placing breaks every 4 years (this is trickier than it seems!).</li>
 </ol></li>
 <li><p>Use <code>override.aes</code> to make the legend on the following plot easier to see.</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb319-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cut), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" data-line-number="1"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat, price)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb430-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> cut), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">20</span>)</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-26-1.png" width="50%" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
 </div>
 <div id="zooming" class="section level2">
-<h2><span class="header-section-number">11.5</span> Zooming</h2>
+<h2><span class="header-section-number">15.5</span> Zooming</h2>
 <p>There are three ways to control the plot limits:</p>
 <ol style="list-style-type: decimal">
 <li>Adjusting what data are plotted</li>
@@ -747,75 +827,75 @@ Figure 11.2: All ColourBrewer scales.
 <li>Setting <code>xlim</code> and <code>ylim</code> in <code>coord_cartesian()</code></li>
 </ol>
 <p>To zoom in on a region of the plot, it’s generally best to use <code>coord_cartesian()</code>. Compare the following two plots:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb320-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb320-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb320-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">30</span>))</a>
-<a class="sourceLine" id="cb320-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb320-6" data-line-number="6">mpg <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb320-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(displ <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span>, displ <span class="op">&lt;=</span><span class="st"> </span><span class="dv">7</span>, hwy <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>, hwy <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb320-8" data-line-number="8"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb320-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb320-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="dt">mapping =</span> <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb431-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb431-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb431-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">30</span>))</a>
+<a class="sourceLine" id="cb431-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb431-6" data-line-number="6">mpg <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb431-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(displ <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span>, displ <span class="op">&lt;=</span><span class="st"> </span><span class="dv">7</span>, hwy <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>, hwy <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb431-8" data-line-number="8"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb431-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb431-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-27-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-27-2.png" width="50%" /></p>
 <p>You can also set the <code>limits</code> on individual scales. Reducing the limits is basically equivalent to subsetting the data. It is generally more useful if you want <em>expand</em> the limits, for example, to match scales across different plots. For example, if we extract two classes of cars and plot them separately, it’s difficult to compare the plots because all three scales (the x-axis, the y-axis, and the colour aesthetic) have different ranges.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1">suv &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(class <span class="op">==</span><span class="st"> &quot;suv&quot;</span>)</a>
-<a class="sourceLine" id="cb321-2" data-line-number="2">compact &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(class <span class="op">==</span><span class="st"> &quot;compact&quot;</span>)</a>
-<a class="sourceLine" id="cb321-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb321-4" data-line-number="4"><span class="kw">ggplot</span>(suv, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb321-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb321-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb321-7" data-line-number="7"><span class="kw">ggplot</span>(compact, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb321-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1">suv &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(class <span class="op">==</span><span class="st"> &quot;suv&quot;</span>)</a>
+<a class="sourceLine" id="cb432-2" data-line-number="2">compact &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(class <span class="op">==</span><span class="st"> &quot;compact&quot;</span>)</a>
+<a class="sourceLine" id="cb432-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb432-4" data-line-number="4"><span class="kw">ggplot</span>(suv, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb432-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb432-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb432-7" data-line-number="7"><span class="kw">ggplot</span>(compact, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb432-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-28-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-28-2.png" width="50%" /></p>
 <p>One way to overcome this problem is to share scales across multiple plots, training the scales with the <code>limits</code> of the full data.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1">x_scale &lt;-<span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">range</span>(mpg<span class="op">$</span>displ))</a>
-<a class="sourceLine" id="cb322-2" data-line-number="2">y_scale &lt;-<span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">range</span>(mpg<span class="op">$</span>hwy))</a>
-<a class="sourceLine" id="cb322-3" data-line-number="3">col_scale &lt;-<span class="st"> </span><span class="kw">scale_colour_discrete</span>(<span class="dt">limits =</span> <span class="kw">unique</span>(mpg<span class="op">$</span>drv))</a>
-<a class="sourceLine" id="cb322-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb322-5" data-line-number="5"><span class="kw">ggplot</span>(suv, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-7" data-line-number="7"><span class="st">  </span>x_scale <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-8" data-line-number="8"><span class="st">  </span>y_scale <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-9" data-line-number="9"><span class="st">  </span>col_scale</a>
-<a class="sourceLine" id="cb322-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb322-11" data-line-number="11"><span class="kw">ggplot</span>(compact, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-13" data-line-number="13"><span class="st">  </span>x_scale <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-14" data-line-number="14"><span class="st">  </span>y_scale <span class="op">+</span></a>
-<a class="sourceLine" id="cb322-15" data-line-number="15"><span class="st">  </span>col_scale</a></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">x_scale &lt;-<span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">range</span>(mpg<span class="op">$</span>displ))</a>
+<a class="sourceLine" id="cb433-2" data-line-number="2">y_scale &lt;-<span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">range</span>(mpg<span class="op">$</span>hwy))</a>
+<a class="sourceLine" id="cb433-3" data-line-number="3">col_scale &lt;-<span class="st"> </span><span class="kw">scale_colour_discrete</span>(<span class="dt">limits =</span> <span class="kw">unique</span>(mpg<span class="op">$</span>drv))</a>
+<a class="sourceLine" id="cb433-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb433-5" data-line-number="5"><span class="kw">ggplot</span>(suv, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-7" data-line-number="7"><span class="st">  </span>x_scale <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-8" data-line-number="8"><span class="st">  </span>y_scale <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-9" data-line-number="9"><span class="st">  </span>col_scale</a>
+<a class="sourceLine" id="cb433-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb433-11" data-line-number="11"><span class="kw">ggplot</span>(compact, <span class="kw">aes</span>(displ, hwy, <span class="dt">colour =</span> drv)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-13" data-line-number="13"><span class="st">  </span>x_scale <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-14" data-line-number="14"><span class="st">  </span>y_scale <span class="op">+</span></a>
+<a class="sourceLine" id="cb433-15" data-line-number="15"><span class="st">  </span>col_scale</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-29-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-29-2.png" width="50%" /></p>
 <p>In this particular case, you could have simply used faceting, but this technique is useful more generally, if for instance, you want spread plots over multiple pages of a report.</p>
 </div>
 <div id="themes" class="section level2">
-<h2><span class="header-section-number">11.6</span> Themes</h2>
+<h2><span class="header-section-number">15.6</span> Themes</h2>
 <p>Finally, you can customise the non-data elements of your plot with a theme:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb323-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb323-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb323-4" data-line-number="4"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb434-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb434-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb434-4" data-line-number="4"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>ggplot2 includes eight themes by default, as shown in Figure <a href="graphics-for-communication.html#fig:themes">11.3</a>. Many more are included in add-on packages like <strong>ggthemes</strong> (<a href="https://github.com/jrnold/ggthemes" class="uri">https://github.com/jrnold/ggthemes</a>), by Jeffrey Arnold.</p>
+<p>ggplot2 includes eight themes by default, as shown in Figure <a href="graphics-for-communication.html#fig:themes">15.3</a>. Many more are included in add-on packages like <strong>ggthemes</strong> (<a href="https://github.com/jrnold/ggthemes" class="uri">https://github.com/jrnold/ggthemes</a>), by Jeffrey Arnold.</p>
 <div class="figure" style="text-align: center"><span id="fig:themes"></span>
 <img src="images/visualization-themes.png" alt="The eight themes built-in to ggplot2." width="70%" />
 <p class="caption">
-Figure 11.3: The eight themes built-in to ggplot2.
+Figure 15.3: The eight themes built-in to ggplot2.
 </p>
 </div>
 <p>Many people wonder why the default theme has a grey background. This was a deliberate choice because it puts the data forward while still making the grid lines visible. The white grid lines are visible (which is important because they significantly aid position judgements), but they have little visual impact and we can easily tune them out. The grey background gives the plot a similar typographic colour to the text, ensuring that the graphics fit in with the flow of a document without jumping out with a bright white background. Finally, the grey background creates a continuous field of colour which ensures that the plot is perceived as a single visual entity.</p>
 <p>It’s also possible to control individual components of each theme, like the size and colour of the font used for the y axis. Unfortunately, this level of detail is outside the scope of this book, so you’ll need to read the <a href="https://amzn.com/331924275X">ggplot2 book</a> for the full details. You can also create your own themes, if you are trying to match a particular corporate or journal style.</p>
 </div>
 <div id="saving-your-plots" class="section level2">
-<h2><span class="header-section-number">11.7</span> Saving your plots</h2>
+<h2><span class="header-section-number">15.7</span> Saving your plots</h2>
 <p>There are two main ways to get your plots out of R and into your final write-up: <code>ggsave()</code> and knitr. <code>ggsave()</code> will save the most recent plot to disk:</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1"><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;my-plot.pdf&quot;</span>)</a>
-<a class="sourceLine" id="cb325-2" data-line-number="2"><span class="co">#&gt; Saving 7 x 4.33 in image</span></a></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;my-plot.pdf&quot;</span>)</a>
+<a class="sourceLine" id="cb436-2" data-line-number="2"><span class="co">#&gt; Saving 7 x 4.33 in image</span></a></code></pre></div>
 <p>If you don’t specify the <code>width</code> and <code>height</code> they will be taken from the dimensions of the current plotting device. For reproducible code, you’ll want to specify them.</p>
 <p>Generally, however, I think you should be assembling your final reports using R Markdown, so I want to focus on the important code chunk options that you should know about for graphics. You can learn more about <code>ggsave()</code> in the documentation.</p>
 <div id="figure-sizing" class="section level3">
-<h3><span class="header-section-number">11.7.1</span> Figure sizing</h3>
+<h3><span class="header-section-number">15.7.1</span> Figure sizing</h3>
 <p>The biggest challenge of graphics in R Markdown is getting your figures the right size and shape. There are five main options that control figure sizing: <code>fig.width</code>, <code>fig.height</code>, <code>fig.asp</code>, <code>out.width</code> and <code>out.height</code>. Image sizing is challenging because there are two sizes (the size of the figure created by R and the size at which it is inserted in the output document), and multiple ways of specifying the size (i.e., height, width, and aspect ratio: pick two of three).</p>
 <p>I only ever use three of the five options:</p>
 <ul>
@@ -840,7 +920,7 @@ discussed below.</p></li>
 <p>If you want to make sure the font size is consistent across all your figures, whenever you set <code>out.width</code>, you’ll also need to adjust <code>fig.width</code> to maintain the same ratio with your default <code>out.width</code>. For example, if your default <code>fig.width</code> is 6 and <code>out.width</code> is 0.7, when you set <code>out.width = &quot;50%&quot;</code> you’ll need to set <code>fig.width</code> to 4.3 (6 * 0.5 / 0.7).</p>
 </div>
 <div id="other-important-options" class="section level3">
-<h3><span class="header-section-number">11.7.2</span> Other important options</h3>
+<h3><span class="header-section-number">15.7.2</span> Other important options</h3>
 <p>When mingling code and text, like I do in this book, I recommend setting <code>fig.show = &quot;hold&quot;</code> so that plots are shown after the code. This has the pleasant side effect of forcing you to break up large blocks of code with their explanations.</p>
 <p>To add a caption to the plot, use <code>fig.cap</code>. In R Markdown this will change the figure from inline to “floating”.</p>
 <p>If you’re producing PDF output, the default graphics type is PDF. This is a good default because PDFs are high quality vector graphics. However, they can produce very large and slow plots if you are displaying thousands of points. In that case, set <code>dev = &quot;png&quot;</code> to force the use of PNGs. They are slightly lower quality, but will be much more compact.</p>
@@ -848,7 +928,7 @@ discussed below.</p></li>
 </div>
 </div>
 <div id="learning-more" class="section level2">
-<h2><span class="header-section-number">11.8</span> Learning more</h2>
+<h2><span class="header-section-number">15.8</span> Learning more</h2>
 <p>The absolute best place to learn more is the ggplot2 book: <a href="https://amzn.com/331924275X"><em>ggplot2: Elegant graphics for data analysis</em></a>. It goes into much more depth about the underlying theory, and has many more examples of how to combine the individual pieces to solve practical problems. Unfortunately, the book is not available online for free, although you can find the source code at <a href="https://github.com/hadley/ggplot2-book" class="uri">https://github.com/hadley/ggplot2-book</a>.</p>
 <p>Another great resource is the ggplot2 extensions guide <a href="http://www.ggplot2-exts.org/" class="uri">http://www.ggplot2-exts.org/</a>. This site lists many of the packages that extend ggplot2 with new geoms and scales. It’s a great place to start if you’re trying to do something that seems hard with ggplot2.</p>
 

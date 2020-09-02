@@ -157,7 +157,7 @@ ggplot(table1, aes(year, cases)) +
 
 1. `table1`  대신 `table2` 를 사용하여 시간 경과에 따른 사례수의 변화를 보여주는 플롯을 재생성하라. 먼저 무엇을 해야 하는가? 
 
-## gather 와 spread
+## 피봇팅
 
 타이디 데이터의 원리는 너무 당연해 보여서, 과연 타이디하지 않은 데이터셋을 볼 일은 있을지 의문이 들 것이다. 하지만, 불행하게도 여러분이 마주치게 될 대부분의 데이터는 타이디하지 않을 것이다. 크게 두 가지 이유가 있다. 
 
@@ -170,7 +170,9 @@ ggplot(table1, aes(year, cases)) +
 1. 하나의 변수가 여러 열에 분산되어 있을 수 있다. 
 1. 하나의 관측값이 여러 행에 흩어져 있을 수 있다. 
 
-### Gather
+일반적으로 데이터셋은 위 두가지 문제중 하나를 가지고 있을 것이다; 정말 행운이 없는 경우에는 두 문제 다 가지게 되고, tidyr 에 있는 가장 중요한 함수, `pivot_longer()` 와 `pivot_wider()` 가 필요하게 될 것이다. 
+
+### Longer
 
 자주 생기는 문제는 데이터셋의 일부 열 이름이 변수 이름이 아니라 변수 값인 경우이다. `table4a` 를 보면 열 이름 1999와 2000은 `year`  변수 값을 나타내며, 각 행은 하나가 아닌 두 개의 관측값을 나타낸다. 
 
@@ -185,7 +187,7 @@ table4a
 #> 3 China       212258 213766
 ```
 
-이와 같은 데이터셋을 타이디하게 만들려면 해당 열을 새로운 두 변수로 수집**(gather)** 해야 한다. 이 작업을 설명하기 위해 세 가지 파라미터가 필요하다.
+이와 같은 데이터셋을 타이디하게 만들려면 해당 열을 새로운 두 변수로 피봇**(pivot)** 해야 한다. 이 작업을 설명하기 위해 세 가지 파라미터가 필요하다.
 
 * 변수가 아니라 값을 나타내는 열 집합. 이 예에서는 열 `1999` 과 열 `2000` 이다.
 
@@ -193,71 +195,75 @@ table4a
 
 * 셀에 값이 분산되어 있는 변수의 이름. 이를 나는 `value` 라고 부르며, 여기에서는 `cases` (사례수) 이다.
  
-이러한 파라미터와 함께 `gather()` 호출을 생성할 수 있다.
+이러한 파라미터와 함께 `pivot_longer()` 호출을 생성할 수 있다.
 
 
 ```r
 table4a %>% 
-  gather(`1999`, `2000`, key = "year", value = "cases")
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
 #> # A tibble: 6 x 3
 #>   country     year   cases
 #>   <chr>       <chr>  <int>
 #> 1 Afghanistan 1999     745
-#> 2 Brazil      1999   37737
-#> 3 China       1999  212258
-#> 4 Afghanistan 2000    2666
-#> 5 Brazil      2000   80488
+#> 2 Afghanistan 2000    2666
+#> 3 Brazil      1999   37737
+#> 4 Brazil      2000   80488
+#> 5 China       1999  212258
 #> 6 China       2000  213766
 ```
 
 수집하고자 하는 열을 지정하는 법은 `dplyr::select()` 스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’ 와 ’2000’ 은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 [select() 로 열 선택](#select)’ 을 참조하라.
 
 <div class="figure" style="text-align: center">
-<img src="images/tidy-9.png" alt="Gathering `table4` into a tidy form." width="100%" />
-<p class="caption">(\#fig:tidy-gather)Gathering `table4` into a tidy form.</p>
+<img src="images/tidy-9.png" alt="`table4` 을 더 긴  타이티 형태로 피봇팅하기" width="100%" />
+<p class="caption">(\#fig:tidy-gather)`table4` 을 더 긴  타이티 형태로 피봇팅하기</p>
 </div>
 
-최종 결과에서, 수집된 열은 삭제되고 새 `key` 와 `value`  열이 생성된다. 한편, 원래 변수 간의 관계는 보존된다. 이는 Figure \@ref(fig:tidy-gather) 에 시각적으로 표현되어 있다. `table4b` 를 비슷한 방법으로 타이디하게 할 때 `gather()` 를 사용할 수 있다. 유일한 차이점은 셀 값에 저장된 변수이다.
+최종 결과에서, 수집된 열은 삭제되고 새 `key` 와 `value`  열이 생성된다. 한편, 원래 변수 간의 관계는 보존된다. 이는 Figure \@ref(fig:tidy-gather) 에 시각적으로 표현되어 있다. 
+
+`pivot_longer` 를 사용하면 행 개수를 늘리고 열 개수를 줄여서 데이터셋을 길게 만든다. 나는 데이터셋이 "long form" 이라고 표현하는 것이 맞지 않는다고 믿는다. 길이는 상대적인 용어이고, (예를 들어) 데이터셋 A 가 데이터셋 B 보다 더 길다고만 이야기 할 수 있는 것이다.
+
+`table4b` 를 비슷한 방법으로 타이디하게 할 때 `pivot_longer()` 를 사용할 수 있다. 유일한 차이점은 셀 값에 저장된 변수이다.
 
 
 ```r
 table4b %>% 
-  gather(`1999`, `2000`, key = "year", value = "population")
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population")
 #> # A tibble: 6 x 3
 #>   country     year  population
 #>   <chr>       <chr>      <int>
 #> 1 Afghanistan 1999    19987071
-#> 2 Brazil      1999   172006362
-#> 3 China       1999  1272915272
-#> 4 Afghanistan 2000    20595360
-#> 5 Brazil      2000   174504898
+#> 2 Afghanistan 2000    20595360
+#> 3 Brazil      1999   172006362
+#> 4 Brazil      2000   174504898
+#> 5 China       1999  1272915272
 #> 6 China       2000  1280428583
 ```
 
-`table4a` 와 `table4b` 의 타이디하게 된 버전을 하나의 티블로 결합하려면 `dplyr::left_join()` 을 사용해야 한다. 이 내용은 [관계형 데이터](#relational-data) 에서 다룰 것이다.
+타이디하게 된 `table4a` 와 `table4b`을 하나의 티블로 결합하려면 `dplyr::left_join()` 을 사용해야 한다. 이 내용은 [관계형 데이터](#relational-data) 에서 다룰 것이다.
 
 
 ```r
 tidy4a <- table4a %>% 
-  gather(`1999`, `2000`, key = "year", value = "cases")
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
 tidy4b <- table4b %>% 
-  gather(`1999`, `2000`, key = "year", value = "population")
+  pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population")
 left_join(tidy4a, tidy4b)
 #> Joining, by = c("country", "year")
 #> # A tibble: 6 x 4
 #>   country     year   cases population
 #>   <chr>       <chr>  <int>      <int>
 #> 1 Afghanistan 1999     745   19987071
-#> 2 Brazil      1999   37737  172006362
-#> 3 China       1999  212258 1272915272
-#> 4 Afghanistan 2000    2666   20595360
-#> 5 Brazil      2000   80488  174504898
+#> 2 Afghanistan 2000    2666   20595360
+#> 3 Brazil      1999   37737  172006362
+#> 4 Brazil      2000   80488  174504898
+#> 5 China       1999  212258 1272915272
 #> 6 China       2000  213766 1280428583
 ```
 
-### Spread
+### Wider
 
-펼치기는 수집하기의 반대이다. 관측값이 여러 행에 흩어져 있을 때 사용한다. 예를 들어 `table2` 를 보자. 하나의 관측값은 한 해, 한 국가에 대한 것이지만, 각 관측값이 두 행에 흩어져 있다.
+`pivot_wider()` 은  `pivot_longer()` 의 반대이다. 관측값이 여러 행에 흩어져 있을 때 사용한다. 예를 들어 `table2` 를 보자. 하나의 관측값은 한 해, 한 국가에 대한 것이지만, 각 관측값이 두 행에 흩어져 있다.
 
 
 ```r
@@ -276,16 +282,16 @@ table2
 
 이것을 타이디하게 하기 위해, 먼저 `gather()` 와 비슷한 방식으로 표현방법을 분석한다. 그러나 이번에는 파라미터가 두 개만 필요하다.
 
-* 변수 이름을 포함하는 열, 즉 `key` 열. 여기에서는 `type` 이다.
+* 변수 이름을 포함하는 열, 여기에서는 `type` 이다.
 
-* 여러 변수를 형성하는 값을 포함하는 열, 즉 `value` 열. 여기에서는 `count` 이다.
+* 값을 포함하는 열, 여기에서는 `count` 이다.
 
-이 파라미터들을 정하면 `spread()` 를 사용할 수 있다. 코드로는 아래에서 보여주고, 시각적으로는 Figure \@ref(fig:tidy-spread) 에서 보여주고 있다.
+이 파라미터들을 정하면 `pivot_wider()` 를 사용할 수 있다. 코드로는 아래에서 보여주고, 시각적으로는 Figure \@ref(fig:tidy-spread) 에서 보여주고 있다.
 
 
 ```r
 table2 %>%
-    spread(key = type, value = count)
+    pivot_wider(names_from = type, values_from = count)
 #> # A tibble: 6 x 4
 #>   country      year  cases population
 #>   <chr>       <int>  <int>      <int>
@@ -298,15 +304,15 @@ table2 %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="images/tidy-8.png" alt="Spreading `table2` makes it tidy" width="100%" />
-<p class="caption">(\#fig:tidy-spread)Spreading `table2` makes it tidy</p>
+<img src="images/tidy-8.png" alt="`table2` 을 더 넓은 타이티 형태로 피봇팅하기" width="100%" />
+<p class="caption">(\#fig:tidy-spread)`table2` 을 더 넓은 타이티 형태로 피봇팅하기</p>
 </div>
 
-공통의 `key` 와 `value` 인수를 통해 추측해 본 사람도 있었겠지만, `spread()` 와 `gather()` 는 보완 관계이다. `gather()` 는 넓은 테이블을 더 좁고 길게, `spread()` 는 긴 테이블을 더 짧고 넓게 만든다.
+이름을 통해 이미 알아 차린 사람도 있겠지만, `pivot_wider()` 와 `pivot_longer()` 는 보완 관계이다. `pivot_longer()` 는 넓은 테이블을 더 좁고 길게, `pivot_longer()` 는 긴 테이블을 더 짧고 넓게 만든다.
 
 ### 연습문제
 
-1.  `gather()` 와 `spread()` 가 완벽하게 대칭이 아닌 이유는 무엇인가? 다음 예제를 주의 깊게 살펴보라.
+1.  `pivot_longer()` 와 `pivot_wider()` 가 완벽하게 대칭이 아닌 이유는 무엇인가? 다음 예제를 주의 깊게 살펴보라.
 
     
     ```r
@@ -316,20 +322,20 @@ table2 %>%
       return = c(1.88, 0.59, 0.92, 0.17)
     )
     stocks %>% 
-      spread(year, return) %>% 
-      gather("year", "return", `2015`:`2016`)
+      pivot_wider(names_from = year, values_from = return) %>% 
+      pivot_longer(`2015`:`2016`, names_to = "year", values_to = "return")
     ```
     
     (힌트: 변수 유형을 보고 열 이름에 대해 생각해보라.)
     
-    `spread()` 와 `gather()` 에는 모두 `convert`  인수가 있다. 어떤 역할을 하는가?
+    `pivot_longer()` 는 `names_ptype` 인수, 예를 들어 `names_ptype = list(year = double())` 가 있다. 어떤 역할을 하는가?
 
 1.  이 코드가 작동하지 않는 이유는 무엇인가?
 
     
     ```r
     table4a %>% 
-      gather(1999, 2000, key = "year", value = "cases")
+      pivot_longer(c(1999, 2000), names_to = "year", values_to = "cases")
     #> Error: Can't subset columns that don't exist.
     #> [31mx[39m Locations 1999 and 2000 don't exist.
     #> [34mℹ[39m There are only 3 columns.
@@ -350,7 +356,7 @@ table2 %>%
     )
     ```
 
-1.  다음의 간단한 티블을 타이디하게 하라. 펼치거나 수집할 필요가 있는가? 변수는 무엇인가?
+1.  다음의 간단한 티블을 타이디하게 하라. 데이터셋을 길게 혹은 넓게할 필요가 있는가? 변수들은 무엇인가?
 
     
     ```r
@@ -542,7 +548,7 @@ stocks <- tibble(
 
 ```r
 stocks %>% 
-  spread(year, return)
+  pivot_wider(names_from = year, values_from = return)
 #> # A tibble: 4 x 3
 #>     qtr `2015` `2016`
 #>   <dbl>  <dbl>  <dbl>
@@ -557,15 +563,20 @@ stocks %>%
 
 ```r
 stocks %>% 
-  spread(year, return) %>% 
-  gather(year, return, `2015`:`2016`, na.rm = TRUE)
+  pivot_wider(names_from = year, values_from = return) %>% 
+  pivot_longer(
+    cols = c(`2015`, `2016`), 
+    names_to = "year", 
+    values_to = "return", 
+    values_drop_na = TRUE
+  )
 #> # A tibble: 6 x 3
 #>     qtr year  return
 #>   <dbl> <chr>  <dbl>
 #> 1     1 2015    1.88
 #> 2     2 2015    0.59
-#> 3     3 2015    0.35
-#> 4     2 2016    0.92
+#> 3     2 2016    0.92
+#> 4     3 2015    0.35
 #> 5     3 2016    0.17
 #> 6     4 2016    2.66
 ```
@@ -620,7 +631,7 @@ treatment %>%
 
 ### 연습문제
 
-1.  ` spread()` 와 `complete()` 의 `fill` 인수를 비교∙대조하라.
+1.  `pivot_wider()` 와 `complete()` 의 `fill` 인수를 비교∙대조하라.
 
 1.  `fill()` 의 `direction` 인수는 무엇을 하는가? 
 
@@ -677,17 +688,22 @@ who
 
 ```r
 who1 <- who %>% 
-  gather(new_sp_m014:newrel_f65, key = "key", value = "cases", na.rm = TRUE)
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  )
 who1
 #> # A tibble: 76,046 x 6
-#>   country     iso2  iso3   year key         cases
-#>   <chr>       <chr> <chr> <int> <chr>       <int>
-#> 1 Afghanistan AF    AFG    1997 new_sp_m014     0
-#> 2 Afghanistan AF    AFG    1998 new_sp_m014    30
-#> 3 Afghanistan AF    AFG    1999 new_sp_m014     8
-#> 4 Afghanistan AF    AFG    2000 new_sp_m014    52
-#> 5 Afghanistan AF    AFG    2001 new_sp_m014   129
-#> 6 Afghanistan AF    AFG    2002 new_sp_m014    90
+#>   country     iso2  iso3   year key          cases
+#>   <chr>       <chr> <chr> <int> <chr>        <int>
+#> 1 Afghanistan AF    AFG    1997 new_sp_m014      0
+#> 2 Afghanistan AF    AFG    1997 new_sp_m1524    10
+#> 3 Afghanistan AF    AFG    1997 new_sp_m2534     6
+#> 4 Afghanistan AF    AFG    1997 new_sp_m3544     3
+#> 5 Afghanistan AF    AFG    1997 new_sp_m4554     5
+#> 6 Afghanistan AF    AFG    1997 new_sp_m5564     2
 #> # … with 76,040 more rows
 ```
 
@@ -740,14 +756,14 @@ who2 <- who1 %>%
   mutate(key = stringr::str_replace(key, "newrel", "new_rel"))
 who2
 #> # A tibble: 76,046 x 6
-#>   country     iso2  iso3   year key         cases
-#>   <chr>       <chr> <chr> <int> <chr>       <int>
-#> 1 Afghanistan AF    AFG    1997 new_sp_m014     0
-#> 2 Afghanistan AF    AFG    1998 new_sp_m014    30
-#> 3 Afghanistan AF    AFG    1999 new_sp_m014     8
-#> 4 Afghanistan AF    AFG    2000 new_sp_m014    52
-#> 5 Afghanistan AF    AFG    2001 new_sp_m014   129
-#> 6 Afghanistan AF    AFG    2002 new_sp_m014    90
+#>   country     iso2  iso3   year key          cases
+#>   <chr>       <chr> <chr> <int> <chr>        <int>
+#> 1 Afghanistan AF    AFG    1997 new_sp_m014      0
+#> 2 Afghanistan AF    AFG    1997 new_sp_m1524    10
+#> 3 Afghanistan AF    AFG    1997 new_sp_m2534     6
+#> 4 Afghanistan AF    AFG    1997 new_sp_m3544     3
+#> 5 Afghanistan AF    AFG    1997 new_sp_m4554     5
+#> 6 Afghanistan AF    AFG    1997 new_sp_m5564     2
 #> # … with 76,040 more rows
 ```
 
@@ -762,11 +778,11 @@ who3
 #>   country     iso2  iso3   year new   type  sexage cases
 #>   <chr>       <chr> <chr> <int> <chr> <chr> <chr>  <int>
 #> 1 Afghanistan AF    AFG    1997 new   sp    m014       0
-#> 2 Afghanistan AF    AFG    1998 new   sp    m014      30
-#> 3 Afghanistan AF    AFG    1999 new   sp    m014       8
-#> 4 Afghanistan AF    AFG    2000 new   sp    m014      52
-#> 5 Afghanistan AF    AFG    2001 new   sp    m014     129
-#> 6 Afghanistan AF    AFG    2002 new   sp    m014      90
+#> 2 Afghanistan AF    AFG    1997 new   sp    m1524     10
+#> 3 Afghanistan AF    AFG    1997 new   sp    m2534      6
+#> 4 Afghanistan AF    AFG    1997 new   sp    m3544      3
+#> 5 Afghanistan AF    AFG    1997 new   sp    m4554      5
+#> 6 Afghanistan AF    AFG    1997 new   sp    m5564      2
 #> # … with 76,040 more rows
 ```
 
@@ -795,11 +811,11 @@ who5
 #>   country      year type  sex   age   cases
 #>   <chr>       <int> <chr> <chr> <chr> <int>
 #> 1 Afghanistan  1997 sp    m     014       0
-#> 2 Afghanistan  1998 sp    m     014      30
-#> 3 Afghanistan  1999 sp    m     014       8
-#> 4 Afghanistan  2000 sp    m     014      52
-#> 5 Afghanistan  2001 sp    m     014     129
-#> 6 Afghanistan  2002 sp    m     014      90
+#> 2 Afghanistan  1997 sp    m     1524     10
+#> 3 Afghanistan  1997 sp    m     2534      6
+#> 4 Afghanistan  1997 sp    m     3544      3
+#> 5 Afghanistan  1997 sp    m     4554      5
+#> 6 Afghanistan  1997 sp    m     5564      2
 #> # … with 76,040 more rows
 ```
 
@@ -810,8 +826,15 @@ who5
 
 ```r
 who %>%
-  gather(key, value, new_sp_m014:newrel_f65, na.rm = TRUE) %>% 
-  mutate(key = stringr::str_replace(key, "newrel", "new_rel")) %>%
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  ) %>% 
+  mutate(
+    key = stringr::str_replace(key, "newrel", "new_rel")
+  ) %>%
   separate(key, c("new", "var", "sexage")) %>% 
   select(-new, -iso2, -iso3) %>% 
   separate(sexage, c("sex", "age"), sep = 1)
@@ -819,11 +842,11 @@ who %>%
 
 ### 연습문제
 
-1.  이 사례 연구에서 올바른 값을 가지고 있는지 쉽게 확인하기 위해 `na.rm = TRUE` 로 설정했다. 이것은 합리적인가? 이 데이터셋에서 결측값은 어떻게 표현될지 생각해 보라. 암묵적인 결측값이 있는가? `NA` 와 0 의 차이점은 무엇인가?
+1.  이 사례 연구에서 올바른 값을 가지고 있는지 쉽게 확인하기 위해 `values_drop_na = TRUE` 로 설정했다. 이것은 합리적인가? 이 데이터셋에서 결측값은 어떻게 표현될지 생각해 보라. 암묵적인 결측값이 있는가? `NA` 와 0 의 차이점은 무엇인가?
 
-1. `mutate()` 단계를 무시하면 어떻게 되는가? `(mutate (key = stringr::str_replace (key, "newrel", "new_rel")))` .
+1. `mutate()` 단계를 무시하면 어떻게 되는가? (`mutate(key = stringr::str_replace(key, "newrel", "new_rel"))`).
 
-1. `iso2` 와 `iso3` 가 `country` 와 중복된다는 앞의 주장을 확인하라.
+1. 앞서 주장한, `iso2` 와 `iso3` 가 `country` 와 중복된다는 것을 확인하라.
 
 1. 각 `country, year`  및 `sex` 에 대해 총 결핵 사례수를 계산하라. 정보를 시각적으로 보여라.
 

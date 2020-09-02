@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13 R 마크다운 워크플로 | R 을 활용한 데이터과학</title>
-  <meta name="description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  <title>17 R 마크다운 워크플로 | R 을 활용한 데이터과학</title>
+  <meta name="description" content="17 R 마크다운 워크플로 | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13 R 마크다운 워크플로 | R 을 활용한 데이터과학" />
+  <meta property="og:title" content="17 R 마크다운 워크플로 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds/cover.png" />
-  <meta property="og:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13 R 마크다운 워크플로 | R 을 활용한 데이터과학" />
+  <meta name="twitter:title" content="17 R 마크다운 워크플로 | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
-  <meta name="twitter:description" content="This book will teach you how to do data science with R: You’ll learn how to get your data into R, get it into the most useful structure, transform it, visualise it and model it. In this book, you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides. These are the skills that allow data science to happen, and here you will find the best practices for doing each of these things with R. You’ll learn how to use the grammar of graphics, literate programming, and reproducible research to save time. You’ll also learn how to manage cognitive resources to facilitate discoveries when wrangling, visualising, and exploring data." />
+  
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds/cover.png" />
 
 <meta name="author" content="개럿 그롤문드" />
@@ -186,9 +186,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>4.2</b> Tidy Data</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>4.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#gather-와-spread"><i class="fa fa-check"></i><b>4.3</b> gather 와 spread</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#gather"><i class="fa fa-check"></i><b>4.3.1</b> Gather</a></li>
-<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#spread"><i class="fa fa-check"></i><b>4.3.2</b> Spread</a></li>
+<li class="chapter" data-level="4.3" data-path="tidy-data.html"><a href="tidy-data.html#피봇팅"><i class="fa fa-check"></i><b>4.3</b> 피봇팅</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="tidy-data.html"><a href="tidy-data.html#longer"><i class="fa fa-check"></i><b>4.3.1</b> Longer</a></li>
+<li class="chapter" data-level="4.3.2" data-path="tidy-data.html"><a href="tidy-data.html#wider"><i class="fa fa-check"></i><b>4.3.2</b> Wider</a></li>
 <li class="chapter" data-level="4.3.3" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>4.3.3</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="tidy-data.html"><a href="tidy-data.html#separate-과-unite"><i class="fa fa-check"></i><b>4.4</b> separate 과 unite</a><ul>
@@ -304,74 +304,154 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>8.5</b> 시간대</a></li>
 </ul></li>
-<li class="part"><span><b>II 의사소통하기</b></span></li>
-<li class="chapter" data-level="9" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a></li>
-<li class="chapter" data-level="10" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>10</b> R 마크다운</a><ul>
+<li class="part"><span><b>II 프로그래밍</b></span></li>
+<li class="chapter" data-level="9" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a><ul>
+<li class="chapter" data-level="9.1" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>9.1</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="Pipes.html"><a href="Pipes.html"><i class="fa fa-check"></i><b>10</b> 파이프</a><ul>
 <li class="chapter" data-level="10.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>10.2</b> R 마크다운 기초</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>10.2.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.2" data-path="Pipes.html"><a href="Pipes.html#파이프-대안"><i class="fa fa-check"></i><b>10.2</b> 파이프 대안</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="Pipes.html"><a href="Pipes.html#중간단계-이용"><i class="fa fa-check"></i><b>10.2.1</b> 중간단계 이용</a></li>
+<li class="chapter" data-level="10.2.2" data-path="Pipes.html"><a href="Pipes.html#원본-덮어쓰기"><i class="fa fa-check"></i><b>10.2.2</b> 원본 덮어쓰기</a></li>
+<li class="chapter" data-level="10.2.3" data-path="Pipes.html"><a href="Pipes.html#함수-작성"><i class="fa fa-check"></i><b>10.2.3</b> 함수 작성</a></li>
+<li class="chapter" data-level="10.2.4" data-path="Pipes.html"><a href="Pipes.html#파이프-사용"><i class="fa fa-check"></i><b>10.2.4</b> 파이프 사용</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>10.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>10.3.1</b> 연습문제</a></li>
+<li class="chapter" data-level="10.3" data-path="Pipes.html"><a href="Pipes.html#파이프를-사용하지-않아야-할-경우"><i class="fa fa-check"></i><b>10.3</b> 파이프를 사용하지 않아야 할 경우</a></li>
+<li class="chapter" data-level="10.4" data-path="Pipes.html"><a href="Pipes.html#magrittr-의-기타-도구"><i class="fa fa-check"></i><b>10.4</b> magrittr 의 기타 도구</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>10.4</b> 코드 청크</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>10.4.1</b> 청크 이름</a></li>
-<li class="chapter" data-level="10.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>10.4.2</b> 청크 옵션</a></li>
-<li class="chapter" data-level="10.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>10.4.3</b> 표</a></li>
-<li class="chapter" data-level="10.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>10.4.4</b> 캐싱</a></li>
-<li class="chapter" data-level="10.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>10.4.5</b> 전역 옵션</a></li>
-<li class="chapter" data-level="10.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>10.4.6</b> Inline code</a></li>
-<li class="chapter" data-level="10.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>10.4.7</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>10.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="10.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>10.6</b> YAML header</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>10.6.1</b> Parameters</a></li>
-<li class="chapter" data-level="10.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>10.6.2</b> Bibliographies and Citations</a></li>
-</ul></li>
-<li class="chapter" data-level="10.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>10.7</b> Learning more</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>11</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> 함수</a><ul>
 <li class="chapter" data-level="11.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>11.2</b> Label</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises"><i class="fa fa-check"></i><b>11.2.1</b> Exercises</a></li>
+<li class="chapter" data-level="11.2" data-path="functions.html"><a href="functions.html#함수를-언제-작성해야-하나"><i class="fa fa-check"></i><b>11.2</b> 함수를 언제 작성해야 하나?</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>11.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>11.3</b> Annotations</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="11.3" data-path="functions.html"><a href="functions.html#함수는-사람과-컴퓨터를-위한-것"><i class="fa fa-check"></i><b>11.3</b> 함수는 사람과 컴퓨터를 위한 것</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>11.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>11.4</b> Scales</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>11.4.1</b> Axis ticks and legend keys</a></li>
-<li class="chapter" data-level="11.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>11.4.2</b> Legend layout</a></li>
-<li class="chapter" data-level="11.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>11.4.3</b> Replacing a scale</a></li>
-<li class="chapter" data-level="11.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>11.4.4</b> Exercises</a></li>
+<li class="chapter" data-level="11.4" data-path="functions.html"><a href="functions.html#조건부-실행"><i class="fa fa-check"></i><b>11.4</b> 조건부 실행</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="functions.html"><a href="functions.html#조건문"><i class="fa fa-check"></i><b>11.4.1</b> 조건문</a></li>
+<li class="chapter" data-level="11.4.2" data-path="functions.html"><a href="functions.html#다중-조건"><i class="fa fa-check"></i><b>11.4.2</b> 다중 조건</a></li>
+<li class="chapter" data-level="11.4.3" data-path="functions.html"><a href="functions.html#코드-스타일"><i class="fa fa-check"></i><b>11.4.3</b> 코드 스타일</a></li>
+<li class="chapter" data-level="11.4.4" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-2"><i class="fa fa-check"></i><b>11.4.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>11.5</b> Zooming</a></li>
-<li class="chapter" data-level="11.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>11.6</b> Themes</a></li>
-<li class="chapter" data-level="11.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>11.7</b> Saving your plots</a><ul>
-<li class="chapter" data-level="11.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>11.7.1</b> Figure sizing</a></li>
-<li class="chapter" data-level="11.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>11.7.2</b> Other important options</a></li>
+<li class="chapter" data-level="11.5" data-path="functions.html"><a href="functions.html#함수-인수"><i class="fa fa-check"></i><b>11.5</b> 함수 인수</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="functions.html"><a href="functions.html#이름-정하기"><i class="fa fa-check"></i><b>11.5.1</b> 이름 정하기</a></li>
+<li class="chapter" data-level="11.5.2" data-path="functions.html"><a href="functions.html#값-확인하기"><i class="fa fa-check"></i><b>11.5.2</b> 값 확인하기</a></li>
+<li class="chapter" data-level="11.5.3" data-path="functions.html"><a href="functions.html#점-점-점"><i class="fa fa-check"></i><b>11.5.3</b> 점-점-점 (…)</a></li>
+<li class="chapter" data-level="11.5.4" data-path="functions.html"><a href="functions.html#지연-평가"><i class="fa fa-check"></i><b>11.5.4</b> 지연 평가</a></li>
+<li class="chapter" data-level="11.5.5" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-3"><i class="fa fa-check"></i><b>11.5.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.8" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more"><i class="fa fa-check"></i><b>11.8</b> Learning more</a></li>
+<li class="chapter" data-level="11.6" data-path="functions.html"><a href="functions.html#반환값"><i class="fa fa-check"></i><b>11.6</b> 반환값</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="functions.html"><a href="functions.html#명시적-반환문"><i class="fa fa-check"></i><b>11.6.1</b> 명시적 반환문</a></li>
+<li class="chapter" data-level="11.6.2" data-path="functions.html"><a href="functions.html#파이핑-가능한-함수-작성하기"><i class="fa fa-check"></i><b>11.6.2</b> 파이핑 가능한 함수 작성하기</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>12</b> R 마크다운 유형</a><ul>
-<li class="chapter" data-level="12.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a></li>
-<li class="chapter" data-level="12.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>12.2</b> 출력 옵션</a></li>
-<li class="chapter" data-level="12.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>12.3</b> Document</a></li>
-<li class="chapter" data-level="12.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>12.4</b> Notebook</a></li>
-<li class="chapter" data-level="12.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>12.5</b> Presentation</a></li>
-<li class="chapter" data-level="12.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>12.6</b> Dashboard</a></li>
-<li class="chapter" data-level="12.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>12.7</b> 대화형 동작</a><ul>
-<li class="chapter" data-level="12.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>12.7.1</b> htmlwidgets</a></li>
-<li class="chapter" data-level="12.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>12.7.2</b> Shiny</a></li>
+<li class="chapter" data-level="11.7" data-path="functions.html"><a href="functions.html#환경"><i class="fa fa-check"></i><b>11.7</b> 환경</a></li>
 </ul></li>
-<li class="chapter" data-level="12.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>12.8</b> Website</a></li>
-<li class="chapter" data-level="12.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>12.9</b> Other formats</a></li>
-<li class="chapter" data-level="12.10" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>12.10</b> 더 배우기</a></li>
+<li class="chapter" data-level="12" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>12</b> 벡터</a><ul>
+<li class="chapter" data-level="12.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>13</b> R 마크다운 워크플로</a></li>
+<li class="chapter" data-level="12.2" data-path="vectors.html"><a href="vectors.html#벡터-기본-사항"><i class="fa fa-check"></i><b>12.2</b> 벡터 기본 사항</a></li>
+<li class="chapter" data-level="12.3" data-path="vectors.html"><a href="vectors.html#원자-벡터의-주요-유형"><i class="fa fa-check"></i><b>12.3</b> 원자 벡터의 주요 유형</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="vectors.html"><a href="vectors.html#논리형"><i class="fa fa-check"></i><b>12.3.1</b> 논리형</a></li>
+<li class="chapter" data-level="12.3.2" data-path="vectors.html"><a href="vectors.html#수치형"><i class="fa fa-check"></i><b>12.3.2</b> 수치형</a></li>
+<li class="chapter" data-level="12.3.3" data-path="vectors.html"><a href="vectors.html#문자형"><i class="fa fa-check"></i><b>12.3.3</b> 문자형</a></li>
+<li class="chapter" data-level="12.3.4" data-path="tidy-data.html"><a href="tidy-data.html#결측값"><i class="fa fa-check"></i><b>12.3.4</b> 결측값</a></li>
+<li class="chapter" data-level="12.3.5" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>12.3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="vectors.html"><a href="vectors.html#원자벡터-이용하기"><i class="fa fa-check"></i><b>12.4</b> 원자벡터 이용하기</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="vectors.html"><a href="vectors.html#강제변환"><i class="fa fa-check"></i><b>12.4.1</b> 강제변환</a></li>
+<li class="chapter" data-level="12.4.2" data-path="vectors.html"><a href="vectors.html#테스트-함수"><i class="fa fa-check"></i><b>12.4.2</b> 테스트 함수</a></li>
+<li class="chapter" data-level="12.4.3" data-path="vectors.html"><a href="vectors.html#스칼라와-재활용-규칙"><i class="fa fa-check"></i><b>12.4.3</b> 스칼라와 재활용 규칙</a></li>
+<li class="chapter" data-level="12.4.4" data-path="vectors.html"><a href="vectors.html#벡터-이름-짓기"><i class="fa fa-check"></i><b>12.4.4</b> 벡터 이름 짓기</a></li>
+<li class="chapter" data-level="12.4.5" data-path="vectors.html"><a href="vectors.html#vector-subsetting"><i class="fa fa-check"></i><b>12.4.5</b> 서브셋하기</a></li>
+<li class="chapter" data-level="12.4.6" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>12.4.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>12.5</b> 재귀 벡터 (리스트)</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="vectors.html"><a href="vectors.html#리스트-시각화"><i class="fa fa-check"></i><b>12.5.1</b> 리스트 시각화</a></li>
+<li class="chapter" data-level="12.5.2" data-path="tibble.html"><a href="tibble.html#서브셋하기"><i class="fa fa-check"></i><b>12.5.2</b> 서브셋하기</a></li>
+<li class="chapter" data-level="12.5.3" data-path="vectors.html"><a href="vectors.html#후추-리스트"><i class="fa fa-check"></i><b>12.5.3</b> 후추 리스트</a></li>
+<li class="chapter" data-level="12.5.4" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>12.5.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="vectors.html"><a href="vectors.html#attributes"><i class="fa fa-check"></i><b>12.6</b> Attributes</a></li>
+<li class="chapter" data-level="12.7" data-path="vectors.html"><a href="vectors.html#augmented-vectors"><i class="fa fa-check"></i><b>12.7</b> Augmented vectors</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="factors.html"><a href="factors.html#factors"><i class="fa fa-check"></i><b>12.7.1</b> Factors</a></li>
+<li class="chapter" data-level="12.7.2" data-path="vectors.html"><a href="vectors.html#dates-and-date-times"><i class="fa fa-check"></i><b>12.7.2</b> Dates and date-times</a></li>
+<li class="chapter" data-level="12.7.3" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>12.7.3</b> Tibbles</a></li>
+<li class="chapter" data-level="12.7.4" data-path="vectors.html"><a href="vectors.html#exercises-1"><i class="fa fa-check"></i><b>12.7.4</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III 의사소통하기</b></span></li>
+<li class="chapter" data-level="13" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>13</b> 소개</a></li>
+<li class="chapter" data-level="14" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>14</b> R 마크다운</a><ul>
+<li class="chapter" data-level="14.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>14.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>14.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>14.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="tibble.html"><a href="tibble.html#연습문제"><i class="fa fa-check"></i><b>14.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>14.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="data-import.html"><a href="data-import.html#연습문제-1"><i class="fa fa-check"></i><b>14.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>14.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>14.4.1</b> 청크 이름</a></li>
+<li class="chapter" data-level="14.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>14.4.2</b> 청크 옵션</a></li>
+<li class="chapter" data-level="14.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>14.4.3</b> 표</a></li>
+<li class="chapter" data-level="14.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>14.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="14.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>14.4.5</b> 전역 옵션</a></li>
+<li class="chapter" data-level="14.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>14.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="14.4.7" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>14.4.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>14.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="14.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>14.6</b> YAML header</a><ul>
+<li class="chapter" data-level="14.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>14.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="14.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>14.6.2</b> Bibliographies and Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>14.7</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>15</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="15.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>15.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="tibble.html"><a href="tibble.html#준비하기"><i class="fa fa-check"></i><b>15.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>15.2</b> Label</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="vectors.html"><a href="vectors.html#exercises"><i class="fa fa-check"></i><b>15.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>15.3</b> Annotations</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="vectors.html"><a href="vectors.html#exercises-1"><i class="fa fa-check"></i><b>15.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>15.4</b> Scales</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>15.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="15.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>15.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="15.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>15.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="15.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-2"><i class="fa fa-check"></i><b>15.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>15.5</b> Zooming</a></li>
+<li class="chapter" data-level="15.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>15.6</b> Themes</a></li>
+<li class="chapter" data-level="15.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>15.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>15.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="15.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>15.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="program-intro.html"><a href="program-intro.html#learning-more"><i class="fa fa-check"></i><b>15.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>16</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="16.1" data-path="tibble.html"><a href="tibble.html#들어가기"><i class="fa fa-check"></i><b>16.1</b> 들어가기</a></li>
+<li class="chapter" data-level="16.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>16.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="16.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>16.3</b> Document</a></li>
+<li class="chapter" data-level="16.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>16.4</b> Notebook</a></li>
+<li class="chapter" data-level="16.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>16.5</b> Presentation</a></li>
+<li class="chapter" data-level="16.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>16.6</b> Dashboard</a></li>
+<li class="chapter" data-level="16.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>16.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="16.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>16.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="16.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>16.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="16.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>16.8</b> Website</a></li>
+<li class="chapter" data-level="16.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>16.9</b> Other formats</a></li>
+<li class="chapter" data-level="16.10" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>16.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>17</b> R 마크다운 워크플로</a></li>
 </ul>
 
       </nav>
@@ -390,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="rmarkdown-workflow" class="section level1">
-<h1><span class="header-section-number">13</span> R 마크다운 워크플로</h1>
+<h1><span class="header-section-number">17</span> R 마크다운 워크플로</h1>
 <p>앞서 우리는 콘솔에서 대화형으로 작업하는 R 코드를 캡쳐하고, 또 스크립트 에디터에서 동작하는 것을 캡쳐하는 기본적인 워크플로에 대해 살펴보았다. R 마크다운은 콘솔과 스크립트 에디터를 통합하여 대화형 탐색과 장기 코드 캡쳐간의 경계를 모호하게 만든다. 청크 내에서 반복적으로 빠르게 편집하고 Cmd/Ctrl + Shift + Enter 로 재실행할 수 있다. 더 편집할 게 없으면 새로운 청크로 넘어가면 된다.</p>
 <p>R마크다운은 설명글과 코드를 긴밀하게 통합하기 때문에 중요하다. 코드를 개발하고 생각을 기록할 수 있기 때문에 훌륭한 분석 노트북이 된다. 분석 노트북의 목표는 물리학의 고전적 실험실 노트북의 그것과 상당 부분 같다. 그 목표는 다음과 같다.</p>
 <ul>
@@ -402,7 +482,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>각 노트북에는 설명이 담긴 제목, 연상할 수 있는 파일이름 및 분석 목적을 간략하게 설명하는 첫 번째 단락이 있도록 한다.</p></li>
 <li><p>YAML 헤더 날짜 필드를 이용하여 노트북에서 작업을 시작한 날짜를 기록하라.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb338-1" data-line-number="1"><span class="fu">date:</span><span class="at"> 2016-08-23</span></a></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb449-1" data-line-number="1"><span class="fu">date:</span><span class="at"> 2016-08-23</span></a></code></pre></div>
 <p>모호성을 피하기 위해 ISO8601 YYYY-MM-DD 형식을 사용하라. 개인적으로 날짜를 이런 식으로 쓰지 않는 사람이라도 이렇게 하라!</p></li>
 <li><p>분석 아이디어에 많은 시간을 투자했는데 막다른 골목으로 판명되더라도 삭제하지 마라! 간략하게 실패 이유에 대해 메모를 작성하여 노트북에 남기자. 그러면 향후, 분석을 다시 할 때 막다른 골목으로 똑같이 빠지는 것을 피할 수 있다.</p></li>
 <li><p>데이터 입력을 R 외부에서 하는 것이 일반적으로 좋다. 하지만 소량의 데이터 스니펫을 기록해야 한다면 <code>tibble:tribble()</code> 을 이용하여 명확하게 표시하라.</p></li>
