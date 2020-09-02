@@ -17,3 +17,4 @@ documentclass: book
 책은 [알라딘](http://aladin.kr/p/K2RFR), [yes24](http://www.yes24.com/24/Goods/67856488?Acode=101) 등에서 구입할 수 있습니다.
 
 본 웹북은 [RMarkdown](https://rmarkdown.rstudio.com) 과 [bookdown](https://bookdown.org) 으로 작성되었습니다. 영문 웹북은 <https://r4ds.had.co.nz> 입니다.
+연습문제 해답은 [여기](https://jrnold.github.io/r4ds-exercise-solutions/)에서 볼 수 있습니다.
