@@ -12,6 +12,11 @@ rmd_files: [
   "factors.Rmd",
   "datetimes.Rmd",
 
+  "program.Rmd",
+  "pipes.Rmd",
+  "functions.Rmd",
+  "vectors.Rmd",
+
   "communicate.Rmd",
   "rmarkdown.Rmd",
   "communicate-plots.Rmd",
