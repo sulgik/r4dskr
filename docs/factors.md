@@ -205,7 +205,6 @@ relig_summary <- gss_cat %>%
     tvhours = mean(tvhours, na.rm = TRUE),
     n = n()
   )
-#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(relig_summary, aes(tvhours, relig)) + geom_point()
 ```
@@ -249,7 +248,6 @@ rincome_summary <- gss_cat %>%
     tvhours = mean(tvhours, na.rm = TRUE),
     n = n()
   )
-#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(rincome_summary, aes(age, fct_reorder(rincome, age))) + geom_point()
 ```

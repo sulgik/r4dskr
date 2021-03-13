@@ -460,14 +460,14 @@ x %>%
     flights2 %>% 
       left_join(planes, by = "tailnum")
     #> # A tibble: 336,776 x 16
-    #>   year.x month   day  hour origin dest  tailnum carrier year.y type 
-    #>    <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>    <int> <chr>
-    #> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixe…
-    #> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixe…
-    #> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixe…
-    #> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixe…
-    #> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixe…
-    #> 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixe…
+    #>   year.x month   day  hour origin dest  tailnum carrier year.y type             
+    #>    <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>    <int> <chr>            
+    #> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing multi…
+    #> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing multi…
+    #> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing multi…
+    #> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing multi…
+    #> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing multi…
+    #> 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing multi…
     #> # … with 336,770 more rows, and 6 more variables: manufacturer <chr>,
     #> #   model <chr>, engines <int>, seats <int>, speed <int>, engine <chr>
     ```
@@ -483,28 +483,28 @@ x %>%
     flights2 %>% 
       left_join(airports, c("dest" = "faa"))
     #> # A tibble: 336,776 x 15
-    #>    year month   day  hour origin dest  tailnum carrier name    lat   lon   alt
-    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr> <dbl> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Geor…  30.0 -95.3    97
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      Geor…  30.0 -95.3    97
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miam…  25.8 -80.3     8
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      <NA>   NA    NA      NA
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hart…  33.6 -84.4  1026
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Chic…  42.0 -87.9   668
+    #>    year month   day  hour origin dest  tailnum carrier name      lat   lon   alt
+    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl> <dbl>
+    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      George…  30.0 -95.3    97
+    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      George…  30.0 -95.3    97
+    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami …  25.8 -80.3     8
+    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      <NA>     NA    NA      NA
+    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsf…  33.6 -84.4  1026
+    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Chicag…  42.0 -87.9   668
     #> # … with 336,770 more rows, and 3 more variables: tz <dbl>, dst <chr>,
     #> #   tzone <chr>
     
     flights2 %>% 
       left_join(airports, c("origin" = "faa"))
     #> # A tibble: 336,776 x 15
-    #>    year month   day  hour origin dest  tailnum carrier name    lat   lon   alt
-    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr> <dbl> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newa…  40.7 -74.2    18
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      La G…  40.8 -73.9    22
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John…  40.6 -73.8    13
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John…  40.6 -73.8    13
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La G…  40.8 -73.9    22
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Newa…  40.7 -74.2    18
+    #>    year month   day  hour origin dest  tailnum carrier name      lat   lon   alt
+    #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl> <dbl>
+    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newark…  40.7 -74.2    18
+    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      La Gua…  40.8 -73.9    22
+    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John F…  40.6 -73.8    13
+    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John F…  40.6 -73.8    13
+    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La Gua…  40.8 -73.9    22
+    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Newark…  40.7 -74.2    18
     #> # … with 336,770 more rows, and 3 more variables: tz <dbl>, dst <chr>,
     #> #   tzone <chr>
     ```

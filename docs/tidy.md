@@ -337,8 +337,8 @@ table2 %>%
     table4a %>% 
       pivot_longer(c(1999, 2000), names_to = "year", values_to = "cases")
     #> Error: Can't subset columns that don't exist.
-    #> [31mx[39m Locations 1999 and 2000 don't exist.
-    #> [34mℹ[39m There are only 3 columns.
+    #> x Locations 1999 and 2000 don't exist.
+    #> ℹ There are only 3 columns.
     ```
 
 1.  티블을 펼치는 다음의 코드는 왜 에러가 나는가? 새로운 열을 추가해서 어떻게 문제를 해결할 수 있는가?
@@ -645,14 +645,14 @@ treatment %>%
 ```r
 who
 #> # A tibble: 7,240 x 60
-#>   country iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544
-#>   <chr>   <chr> <chr> <int>       <int>        <int>        <int>        <int>
-#> 1 Afghan… AF    AFG    1980          NA           NA           NA           NA
-#> 2 Afghan… AF    AFG    1981          NA           NA           NA           NA
-#> 3 Afghan… AF    AFG    1982          NA           NA           NA           NA
-#> 4 Afghan… AF    AFG    1983          NA           NA           NA           NA
-#> 5 Afghan… AF    AFG    1984          NA           NA           NA           NA
-#> 6 Afghan… AF    AFG    1985          NA           NA           NA           NA
+#>   country   iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544
+#>   <chr>     <chr> <chr> <int>       <int>        <int>        <int>        <int>
+#> 1 Afghanis… AF    AFG    1980          NA           NA           NA           NA
+#> 2 Afghanis… AF    AFG    1981          NA           NA           NA           NA
+#> 3 Afghanis… AF    AFG    1982          NA           NA           NA           NA
+#> 4 Afghanis… AF    AFG    1983          NA           NA           NA           NA
+#> 5 Afghanis… AF    AFG    1984          NA           NA           NA           NA
+#> 6 Afghanis… AF    AFG    1985          NA           NA           NA           NA
 #> # … with 7,234 more rows, and 52 more variables: new_sp_m4554 <int>,
 #> #   new_sp_m5564 <int>, new_sp_m65 <int>, new_sp_f014 <int>,
 #> #   new_sp_f1524 <int>, new_sp_f2534 <int>, new_sp_f3544 <int>,

@@ -43,9 +43,9 @@ R에는 시간 저장을 위한 네이티브 클래스가 없기 때문에 이 �
 
 ```r
 today()
-#> [1] "2020-09-02"
+#> [1] "2021-03-13"
 now()
-#> [1] "2020-09-02 15:39:17 KST"
+#> [1] "2021-03-13 18:52:01 KST"
 ```
 
 이 외에 날짜/시간을 생성하는 세 가지 방법이 있다.
@@ -202,9 +202,9 @@ flights_dt %>%
 
 ```r
 as_datetime(today())
-#> [1] "2020-09-02 UTC"
+#> [1] "2021-03-13 UTC"
 as_date(now())
-#> [1] "2020-09-02"
+#> [1] "2021-03-13"
 ```
 
 때로 날짜/시간을 ‘유닉스 신기원(Unix Epoch)’인 1970-01-01에서 수치형 오프셋으로 가지고 있을 수 있다. 오프셋이 초 단위인 경우엔 `as_datetime()` , 일 단위인 경우엔 `as_date()` 을 사용한다.
@@ -301,7 +301,6 @@ flights_dt %>%
     n = n()) %>% 
   ggplot(aes(minute, avg_delay)) +
     geom_line()
-#> `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 <img src="datetimes_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
@@ -316,7 +315,6 @@ sched_dep <- flights_dt %>%
   summarise(
     avg_delay = mean(arr_delay, na.rm = TRUE),
     n = n())
-#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(sched_dep, aes(minute, avg_delay)) +
   geom_line()
@@ -439,7 +437,7 @@ R에서 두 데이트형 뺄셈을 하면 difftime형 객체가 생긴다.
 # 해들리의 나이는?
 h_age <- today() - ymd(19791014)
 h_age
-#> Time difference of 14934 days
+#> Time difference of 15126 days
 ```
 
 difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 기록한다. 이러한 애매함 때문에 difftime형으로 작업하는 것이 약간 고통스러울 수 있다. 따라서 **lubridate** 는 항상 초를 사용하는 대안 클래스, **듀레이션형** 을 제공한다. 
@@ -447,7 +445,7 @@ difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 �
 
 ```r
 as.duration(h_age)
-#> [1] "1290297600s (~40.89 years)"
+#> [1] "1306886400s (~41.41 years)"
 ```
 
 듀레이션형에는 편리한 생성자가 많다.
@@ -684,7 +682,7 @@ Sys.timezone()
 
 ```r
 length(OlsonNames())
-#> [1] 594
+#> [1] 593
 head(OlsonNames())
 #> [1] "Africa/Abidjan"     "Africa/Accra"       "Africa/Addis_Ababa"
 #> [4] "Africa/Algiers"     "Africa/Asmara"      "Africa/Asmera"

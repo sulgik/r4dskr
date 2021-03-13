@@ -155,7 +155,6 @@ class_avg <- mpg %>%
     displ = median(displ),
     hwy = median(hwy)
   )
-#> `summarise()` ungrouping output (override with `.groups` argument)
 
 ggplot(mpg, aes(displ, hwy, colour = class)) +
   ggrepel::geom_label_repel(aes(label = class),
@@ -462,17 +461,11 @@ df <- tibble(
 ggplot(df, aes(x, y)) +
   geom_hex() +
   coord_fixed()
-#> Warning: Computation failed in `stat_binhex()`:
-#>   Package `hexbin` required for `stat_binhex`.
-#>   Please install and try again.
 
 ggplot(df, aes(x, y)) +
   geom_hex() +
   viridis::scale_fill_viridis() +
   coord_fixed()
-#> Warning: Computation failed in `stat_binhex()`:
-#>   Package `hexbin` required for `stat_binhex`.
-#>   Please install and try again.
 ```
 
 <img src="communicate-plots_files/figure-html/unnamed-chunk-24-1.png" width="50%" /><img src="communicate-plots_files/figure-html/unnamed-chunk-24-2.png" width="50%" />
@@ -489,9 +482,6 @@ Note that all colour scales come in two variety: `scale_colour_x()` and `scale_f
       geom_hex() +
       scale_colour_gradient(low = "white", high = "red") +
       coord_fixed()
-    #> Warning: Computation failed in `stat_binhex()`:
-    #>   Package `hexbin` required for `stat_binhex`.
-    #>   Please install and try again.
     ```
 
 1.  What is the first argument to every scale? How does it compare to `labs()`?

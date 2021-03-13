@@ -197,7 +197,7 @@ my_pipe(foo_foo)
     
     stop("!") %>% 
       tryCatch(error = function(e) "An error")
-    #> Error in eval(lhs, parent, parent): !
+    #> [1] "An error"
     ```
     
     베이스 R 의 `try(), suppressMessages(), suppressWarnings()` 등, 비교적 광범위한 함수들이 이러한 동작을 한다. 

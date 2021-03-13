@@ -41,7 +41,8 @@ readr 함수 대부분은 플랫 파일을 데이터프레임으로 바꾸는 �
 
 ```r
 heights <- read_csv("data/heights.csv")
-#> Parsed with column specification:
+#> 
+#> ── Column specification ────────────────────────────────────────────────────────
 #> cols(
 #>   earn = col_double(),
 #>   height = col_double(),
@@ -224,8 +225,8 @@ parse_integer(c("1", "231", ".", "456"), na = ".")
 x <- parse_integer(c("123", "345", "abc", "123.45"))
 #> Warning: 2 parsing failures.
 #> row col               expected actual
-#>   3  -- an integer                abc
-#>   4  -- no trailing characters    .45
+#>   3  -- an integer             abc   
+#>   4  -- no trailing characters 123.45
 ```
 
 이런 경우에는 출력에서 누락될 것이다.
@@ -239,7 +240,7 @@ x
 #>     row   col expected               actual
 #>   <int> <int> <chr>                  <chr> 
 #> 1     3    NA an integer             abc   
-#> 2     4    NA no trailing characters .45
+#> 2     4    NA no trailing characters 123.45
 ```
 
 파싱에 실패한 경우가 많으면 `problems()` 를 사용하여 실패 전체를 가져와야 한다. `problems()` 이 반환한 티블을 dplyr로 작업할 수 있다.
@@ -251,7 +252,7 @@ problems(x)
 #>     row   col expected               actual
 #>   <int> <int> <chr>                  <chr> 
 #> 1     3    NA an integer             abc   
-#> 2     4    NA no trailing characters .45
+#> 2     4    NA no trailing characters 123.45
 ```
 
 파서를 잘 활용하려면 어떤 종류가 있는지, 각종 입력 유형을 어떻게 다루는지
@@ -375,7 +376,7 @@ x2 <- "\x82\xb1\x82\xf1\x82\xc9\x82\xbf\x82\xcd"
 x1
 #> [1] "El Ni\xf1o was particularly bad this year"
 x2
-#> [1] "\x82\xb1\x82\xf1\x82\u0242\xbf\x82\xcd"
+#> [1] "\x82\xb1\x82\xf1\x82ɂ\xbf\x82\xcd"
 ```
 
 문제를 해결하려면 `parse_character()` 에서 인코딩을 지정해야 한다.
@@ -622,7 +623,8 @@ readr 에는 이러한 두 가지 문제를 모두 보여주는 까다로운 CSV
 
 ```r
 challenge <- read_csv(readr_example("challenge.csv"))
-#> Parsed with column specification:
+#> 
+#> ── Column specification ────────────────────────────────────────────────────────
 #> cols(
 #>   x = col_double(),
 #>   y = col_logical()
@@ -741,7 +743,8 @@ R 의 문자형 벡터인 경우에는 `parse_xyz()` 를 사용하면 되고, re
     
     ```r
     challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
-    #> Parsed with column specification:
+    #> 
+    #> ── Column specification ────────────────────────────────────────────────────────
     #> cols(
     #>   x = col_double(),
     #>   y = col_date(format = "")
@@ -788,7 +791,8 @@ R 의 문자형 벡터인 경우에는 `parse_xyz()` 를 사용하면 되고, re
     
     # 열 유형을 주의
     type_convert(df)
-    #> Parsed with column specification:
+    #> 
+    #> ── Column specification ────────────────────────────────────────────────────────
     #> cols(
     #>   x = col_double(),
     #>   y = col_double()
@@ -839,7 +843,8 @@ challenge
 #> # … with 1,994 more rows
 write_csv(challenge, "challenge-2.csv")
 read_csv("challenge-2.csv")
-#> Parsed with column specification:
+#> 
+#> ── Column specification ────────────────────────────────────────────────────────
 #> cols(
 #>   x = col_double(),
 #>   y = col_logical()
