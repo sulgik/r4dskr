@@ -3,6 +3,11 @@ new_session: yes
 rmd_files: [
   "index.Rmd",
 
+  "intro.Rmd",
+
+  "explore.Rmd",
+  "data-visualize.Rmd",
+
   "wrangle.Rmd",
   "tibble.Rmd",
   "import.Rmd",
