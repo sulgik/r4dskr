@@ -241,7 +241,7 @@ mean <- function(x) sum(x)
 
 RStudio는 이러한 헤더를 생성하는 키보드 단축키 (Cmd/Ctrl + Shift + R)를 제공하며 편집기의 왼쪽 하단 코드 탐색 드롭 다운에 이를 표시한다. 
 
-<img src="screenshots/rstudio-nav.png" width="125" style="display: block; margin: auto;" />
+<img src="screenshots/rstudio-nav.png" style="display: block; margin: auto;" />
 
 ### 연습문제
 
@@ -305,12 +305,12 @@ has_name <- function(x) {
 
 ```r
 if (c(TRUE, FALSE)) {}
-#> Warning in if (c(TRUE, FALSE)) {: the condition has length > 1 and only the
-#> first element will be used
+#> Warning in if (c(TRUE, FALSE)) {: length > 1 이라는 조건이 있고, 첫번째 요소만이
+#> 사용될 것입니다
 #> NULL
 
 if (NA) {}
-#> Error in if (NA) {: missing value where TRUE/FALSE needed
+#> Error in if (NA) {: TRUE/FALSE가 필요한 곳에 값이 없습니다
 ```
 
 `||` (or)와 `&&` (and)를 사용하여 논리 표현식을 조합할 수 있다. 이 연산자들은 ’단락 (short-circuiting)’한다. 즉, `||` 가 첫 `TRUE` 를 보는 즉시 다른 것 계산없이 `TRUE` 를 반환한다. 마찬가지로 `&&` 가 `FALSE` 를 처음으로 보게 되면 `FALSE` 를 반환한다. `|`  또는 `&` 는 다중값에 적용하는 벡터화 연산이기 때문에(`filter()` 에서 사용하는 이유임) `if`  문에서 절대로 사용해서는 안 된다. 논리형 벡터인 경우 `any()`  또는 `all()` 을 사용하여 단일 값으로 축소할 수 있다. 

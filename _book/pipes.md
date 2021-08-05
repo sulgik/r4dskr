@@ -68,14 +68,11 @@ diamonds2 <- diamonds %>%
   dplyr::mutate(price_per_carat = price / carat)
 
 pryr::object_size(diamonds)
-#> Registered S3 method overwritten by 'pryr':
-#>   method      from
-#>   print.bytes Rcpp
-#> 3.46 MB
+#> 3,456,344 B
 pryr::object_size(diamonds2)
-#> 3.89 MB
+#> 3,887,976 B
 pryr::object_size(diamonds, diamonds2)
-#> 3.89 MB
+#> 3,888,552 B
 ```
 
 `pryr::object_size()` 는 취하는 인수 전체가 메모리를 얼마나 차지하는지를 출력한다. 위의 결과는 첫눈에는 직관에 반하는 것처럼 보인다. 
@@ -90,11 +87,11 @@ pryr::object_size(diamonds, diamonds2)
 ```r
 diamonds$carat[1] <- NA
 pryr::object_size(diamonds)
-#> 3.46 MB
+#> 3,456,344 B
 pryr::object_size(diamonds2)
-#> 3.89 MB
+#> 3,887,976 B
 pryr::object_size(diamonds, diamonds2)
-#> 4.32 MB
+#> 4,320,120 B
 ```
 
 (여기서는 내장 함수 `object.size()` 가 아닌 `pryr::object_size()` 를 사용했다. `object.size()` 는 객체 하나만 취하므로 객체 여러 개를 공유하는 데이터의 크기를 계산할 수 없다.) 

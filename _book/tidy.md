@@ -47,7 +47,7 @@ table2
 #> 4 Afghanistan  2000 population  20595360
 #> 5 Brazil       1999 cases          37737
 #> 6 Brazil       1999 population 172006362
-#> # … with 6 more rows
+#> # ... with 6 more rows
 table3
 #> # A tibble: 6 x 3
 #>   country      year rate             
@@ -277,7 +277,7 @@ table2
 #> 4 Afghanistan  2000 population  20595360
 #> 5 Brazil       1999 cases          37737
 #> 6 Brazil       1999 population 172006362
-#> # … with 6 more rows
+#> # ... with 6 more rows
 ```
 
 이것을 타이디하게 하기 위해, 먼저 `gather()` 와 비슷한 방식으로 표현방법을 분석한다. 그러나 이번에는 파라미터가 두 개만 필요하다.
@@ -338,7 +338,7 @@ table2 %>%
       pivot_longer(c(1999, 2000), names_to = "year", values_to = "cases")
     #> Error: Can't subset columns that don't exist.
     #> x Locations 1999 and 2000 don't exist.
-    #> ℹ There are only 3 columns.
+    #> i There are only 3 columns.
     ```
 
 1.  티블을 펼치는 다음의 코드는 왜 에러가 나는가? 새로운 열을 추가해서 어떻게 문제를 해결할 수 있는가?
@@ -596,7 +596,7 @@ stocks %>%
 #> 4  2015     4  NA   
 #> 5  2016     1  NA   
 #> 6  2016     2   0.92
-#> # … with 2 more rows
+#> # ... with 2 more rows
 ```
 
 `complete()` 는 열 집합을 취해, 고유한 조합을 모두 찾는다. 그런 다음 원본 데이터셋에 모든 값이 포함되도록, 필요한 곳에 명시적 `NA` 를 채운다.
@@ -645,32 +645,21 @@ treatment %>%
 ```r
 who
 #> # A tibble: 7,240 x 60
-#>   country   iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544
-#>   <chr>     <chr> <chr> <int>       <int>        <int>        <int>        <int>
-#> 1 Afghanis… AF    AFG    1980          NA           NA           NA           NA
-#> 2 Afghanis… AF    AFG    1981          NA           NA           NA           NA
-#> 3 Afghanis… AF    AFG    1982          NA           NA           NA           NA
-#> 4 Afghanis… AF    AFG    1983          NA           NA           NA           NA
-#> 5 Afghanis… AF    AFG    1984          NA           NA           NA           NA
-#> 6 Afghanis… AF    AFG    1985          NA           NA           NA           NA
-#> # … with 7,234 more rows, and 52 more variables: new_sp_m4554 <int>,
+#>   country     iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544
+#>   <chr>       <chr> <chr> <int>       <int>        <int>        <int>        <int>
+#> 1 Afghanistan AF    AFG    1980          NA           NA           NA           NA
+#> 2 Afghanistan AF    AFG    1981          NA           NA           NA           NA
+#> 3 Afghanistan AF    AFG    1982          NA           NA           NA           NA
+#> 4 Afghanistan AF    AFG    1983          NA           NA           NA           NA
+#> 5 Afghanistan AF    AFG    1984          NA           NA           NA           NA
+#> 6 Afghanistan AF    AFG    1985          NA           NA           NA           NA
+#> # ... with 7,234 more rows, and 52 more variables: new_sp_m4554 <int>,
 #> #   new_sp_m5564 <int>, new_sp_m65 <int>, new_sp_f014 <int>,
 #> #   new_sp_f1524 <int>, new_sp_f2534 <int>, new_sp_f3544 <int>,
 #> #   new_sp_f4554 <int>, new_sp_f5564 <int>, new_sp_f65 <int>,
 #> #   new_sn_m014 <int>, new_sn_m1524 <int>, new_sn_m2534 <int>,
 #> #   new_sn_m3544 <int>, new_sn_m4554 <int>, new_sn_m5564 <int>,
-#> #   new_sn_m65 <int>, new_sn_f014 <int>, new_sn_f1524 <int>,
-#> #   new_sn_f2534 <int>, new_sn_f3544 <int>, new_sn_f4554 <int>,
-#> #   new_sn_f5564 <int>, new_sn_f65 <int>, new_ep_m014 <int>,
-#> #   new_ep_m1524 <int>, new_ep_m2534 <int>, new_ep_m3544 <int>,
-#> #   new_ep_m4554 <int>, new_ep_m5564 <int>, new_ep_m65 <int>,
-#> #   new_ep_f014 <int>, new_ep_f1524 <int>, new_ep_f2534 <int>,
-#> #   new_ep_f3544 <int>, new_ep_f4554 <int>, new_ep_f5564 <int>,
-#> #   new_ep_f65 <int>, newrel_m014 <int>, newrel_m1524 <int>,
-#> #   newrel_m2534 <int>, newrel_m3544 <int>, newrel_m4554 <int>,
-#> #   newrel_m5564 <int>, newrel_m65 <int>, newrel_f014 <int>,
-#> #   newrel_f1524 <int>, newrel_f2534 <int>, newrel_f3544 <int>,
-#> #   newrel_f4554 <int>, newrel_f5564 <int>, newrel_f65 <int>
+#> #   new_sn_m65 <int>, new_sn_f014 <int>, new_sn_f1524 <int>, ...
 ```
 
 이 데이터셋은 매우 전형적인 실데이터이다. 여기에는 열 중복, 이상한 가변 코드 및 다수의 결측값이 있다. 즉, `who`  데이터는 지저분해서 여러 단계를 통해 타이디하게 만들어야 한다. **dplyr** 처럼, **tidyr** 은 각 함수가 한 가지를 잘하도록 설계되었다. 따라서, 일반적으로 실제 상황에서는 여러 동사를 파이프라인으로 함께 연결해야 한다.
@@ -704,7 +693,7 @@ who1
 #> 4 Afghanistan AF    AFG    1997 new_sp_m3544     3
 #> 5 Afghanistan AF    AFG    1997 new_sp_m4554     5
 #> 6 Afghanistan AF    AFG    1997 new_sp_m5564     2
-#> # … with 76,040 more rows
+#> # ... with 76,040 more rows
 ```
 
 새로운 `key` 열의 값을 세어서 값의 구조에 대한 힌트를 얻을 수 있다.
@@ -722,7 +711,7 @@ who1 %>%
 #> 4 new_ep_f3544  1021
 #> 5 new_ep_f4554  1017
 #> 6 new_ep_f5564  1017
-#> # … with 50 more rows
+#> # ... with 50 more rows
 ```
 
 머리를 굴려보고 몇 가지를 시도하면 나름대로 값의 구조를 분석할 수 있을 것이다. 하지만 다행스럽게도 우리는 데이터 사전을 써먹을 수 있다. 데이터 사전은 다음을 알려준다.
@@ -764,7 +753,7 @@ who2
 #> 4 Afghanistan AF    AFG    1997 new_sp_m3544     3
 #> 5 Afghanistan AF    AFG    1997 new_sp_m4554     5
 #> 6 Afghanistan AF    AFG    1997 new_sp_m5564     2
-#> # … with 76,040 more rows
+#> # ... with 76,040 more rows
 ```
 
 각 코드의 값을 `separate()`  2회 실행하여 분리할 수 있다. 첫 번째 실행은 각 언더스코어마다 코드를 쪼갠다.
@@ -783,7 +772,7 @@ who3
 #> 4 Afghanistan AF    AFG    1997 new   sp    m3544      3
 #> 5 Afghanistan AF    AFG    1997 new   sp    m4554      5
 #> 6 Afghanistan AF    AFG    1997 new   sp    m5564      2
-#> # … with 76,040 more rows
+#> # ... with 76,040 more rows
 ```
 
 그런 다음, `new` 열은 이 데이터셋에서 상수이므로 제거할 수 있다. 이 참에 `iso2` 와 `iso3` 도 중복이므로 함께 제거하자.
@@ -816,7 +805,7 @@ who5
 #> 4 Afghanistan  1997 sp    m     3544      3
 #> 5 Afghanistan  1997 sp    m     4554      5
 #> 6 Afghanistan  1997 sp    m     5564      2
-#> # … with 76,040 more rows
+#> # ... with 76,040 more rows
 ```
 
 자, 이제 `who`  데이터셋은 타이디해졌다!

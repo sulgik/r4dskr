@@ -22,7 +22,7 @@
 
 RStudio의 knit 버튼을 클릭하면 `output`  필드의 첫 번째 형식으로 파일을 렌더링한다. knit 버튼 옆의 드롭다운 메뉴를 클릭하여 다른 형식으로 렌더링할 수 있다.
 
-<img src="screenshots/rmarkdown-knit.png" width="206" style="display: block; margin: auto;" />
+<img src="screenshots/rmarkdown-knit.png" style="display: block; margin: auto;" />
 
 ## 출력 옵션
 
@@ -136,48 +136,48 @@ R마크다운에는 세 가지 프리젠테이션 형식이 내장되어 있다.
 
 
 ````
----
-title: "Diamonds distribution dashboard"
-output: flexdashboard::flex_dashboard
----
-
-```{r setup, include = FALSE}
-library(ggplot2)
-library(dplyr)
-knitr::opts_chunk$set(fig.width = 5, fig.asp = 1/3)
-```
-
-## Column 1
-
-### Carat
-
-```{r}
-ggplot(diamonds, aes(carat)) + geom_histogram(binwidth = 0.1)
-```
-
-### Cut
-
-```{r}
-ggplot(diamonds, aes(cut)) + geom_bar()
-```
-
-### Colour
-
-```{r}
-ggplot(diamonds, aes(color)) + geom_bar()
-```
-
-## Column 2
-
-### The largest diamonds
-
-```{r}
-diamonds %>% 
-  arrange(desc(carat)) %>% 
-  head(100) %>% 
-  select(carat, cut, color, price) %>% 
-  DT::datatable()
-```
+---
+title: "Diamonds distribution dashboard"
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(fig.width = 5, fig.asp = 1/3)
+```
+
+## Column 1
+
+### Carat
+
+```{r}
+ggplot(diamonds, aes(carat)) + geom_histogram(binwidth = 0.1)
+```
+
+### Cut
+
+```{r}
+ggplot(diamonds, aes(cut)) + geom_bar()
+```
+
+### Colour
+
+```{r}
+ggplot(diamonds, aes(color)) + geom_bar()
+```
+
+## Column 2
+
+### The largest diamonds
+
+```{r}
+diamonds %>% 
+  arrange(desc(carat)) %>% 
+  head(100) %>% 
+  select(carat, cut, color, price) %>% 
+  DT::datatable()
+```
 ````
 
 flexdashboard 에는 사이드바, 탭모음, 값상자, 게이지를 생성하는 간단한 도구들이 있다. flexdashboard 에 대한 자세한 내용은 다음을 참고하라. <http://rmarkdown.rstudio.com/flexdashboard/>
@@ -256,16 +256,16 @@ Shiny에 대해서 다음에서 더 알아보라. <http://shiny.rstudio.com/>
 
     
     ```
-    name: "my-website"
-    navbar:
-      title: "My Website"
-      left:
-        - text: "Home"
-          href: index.html
-        - text: "Viridis Colors"
-          href: 1-example.html
-        - text: "Terrain Colors"
-          href: 3-inline.html
+    name: "my-website"
+    navbar:
+      title: "My Website"
+      left:
+        - text: "Home"
+          href: index.html
+        - text: "Viridis Colors"
+          href: 1-example.html
+        - text: "Terrain Colors"
+          href: 3-inline.html
     ```
 
 독립형 정적 웹사이트로 배포할 준비가 된 파일들의 디렉터리인 _site 가 빌드하기 위해, 혹은 RStudio 프로젝트를 사용하고 있다면 `rmarkdown::render_site()` 를 실행하라. RStudio가 IDE에 Build 탭을 추가시키는데, 이 탭은 사이트를 빌드하고 미리보는 데 사용할 수 있다.

@@ -100,54 +100,54 @@ smaller %>%
 
 
 ```
-Text formatting 
-------------------------------------------------------------
-
-*italic*  or _italic_
-**bold**   __bold__
-`code`
-superscript^2^ and subscript~2~
-
-Headings
-------------------------------------------------------------
-
-# 1st Level Header
-
-## 2nd Level Header
-
-### 3rd Level Header
-
-Lists
-------------------------------------------------------------
-
-*   Bulleted list item 1
-
-*   Item 2
-
-    * Item 2a
-
-    * Item 2b
-
-1.  Numbered list item 1
-
-1.  Item 2. The numbers are incremented automatically in the output.
-
-Links and images
-------------------------------------------------------------
-
-<http://example.com>
-
-[linked phrase](http://example.com)
-
-![optional caption text](path/to/img.png)
-
-Tables 
-------------------------------------------------------------
-
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+Text formatting 
+------------------------------------------------------------
+
+*italic*  or _italic_
+**bold**   __bold__
+`code`
+superscript^2^ and subscript~2~
+
+Headings
+------------------------------------------------------------
+
+# 1st Level Header
+
+## 2nd Level Header
+
+### 3rd Level Header
+
+Lists
+------------------------------------------------------------
+
+*   Bulleted list item 1
+
+*   Item 2
+
+    * Item 2a
+
+    * Item 2b
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+
+Links and images
+------------------------------------------------------------
+
+<http://example.com>
+
+[linked phrase](http://example.com)
+
+![optional caption text](path/to/img.png)
+
+Tables 
+------------------------------------------------------------
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 ```
 
 이것들을 익히는 가장 좋은 방법은 한 번 만들어 보는 것이다. 며칠이 걸리겠지만, 곧 익숙해질 것이며, 일부러 생각해 낼 필요도 없게 될 것이다. 잊어버린 경우 *Help > Markdown Quick Reference*를 사용하여 편리한 참조 시트를 찾아볼 수 있다. 
@@ -396,26 +396,27 @@ R마크다운 문서에는 보고서를 렌더링할 때 값을 설정할 수 �
 
 
 ````
----
-output: html_document
-params:
-  my_class: "suv"
----
-
-```{r setup, include = FALSE}
-library(ggplot2)
-library(dplyr)
-
-class <- mpg %>% filter(class == params$my_class)
-```
-
-# Fuel economy for `r params$my_class`s
-
-```{r, message = FALSE}
-ggplot(class, aes(displ, hwy)) + 
-  geom_point() + 
-  geom_smooth(se = FALSE)
-```
+---
+output: html_document
+params:
+  my_class: "suv"
+---
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(dplyr)
+
+class <- mpg %>% filter(class == params$my_class)
+```
+
+# Fuel economy for `r params$my_class`s
+
+```{r, message = FALSE}
+ggplot(class, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
+
 ````
 
 보시다시피 코드 청크 내에서 파라미터를 <코드체>params</코드체>라는 이름의 읽기 전용 리스트로 사용할 수 있다.  
@@ -457,7 +458,7 @@ reports
 #> 4 2seater fuel-economy-2seater.html <named list [1]>
 #> 5 minivan fuel-economy-minivan.html <named list [1]>
 #> 6 pickup  fuel-economy-pickup.html  <named list [1]>
-#> # … with 1 more row
+#> # ... with 1 more row
 ```
 
 그런 다음 열 이름을 <코드체>render()</코드체>의 인수 이름과 일치시키고 <볼드>purrr</볼드>의 병렬 워크(parrallel walk)를 사용하여 각 행마다 <코드체>render()</코드체>를 한 번 호출한다. 

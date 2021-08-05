@@ -45,7 +45,7 @@ library(nycflights13)
     #> 4 B6      JetBlue Airways         
     #> 5 DL      Delta Air Lines Inc.    
     #> 6 EV      ExpressJet Airlines Inc.
-    #> # … with 10 more rows
+    #> # ... with 10 more rows
     ```
 
 *   `airports` 에는 각 공항에 대한 정보가 `faa`  공항 코드로 식별되어 있다.
@@ -54,15 +54,15 @@ library(nycflights13)
     ```r
     airports
     #> # A tibble: 1,458 x 8
-    #>   faa   name                          lat   lon   alt    tz dst   tzone         
-    #>   <chr> <chr>                       <dbl> <dbl> <dbl> <dbl> <chr> <chr>         
-    #> 1 04G   Lansdowne Airport            41.1 -80.6  1044    -5 A     America/New_Y…
-    #> 2 06A   Moton Field Municipal Airp…  32.5 -85.7   264    -6 A     America/Chica…
-    #> 3 06C   Schaumburg Regional          42.0 -88.1   801    -6 A     America/Chica…
-    #> 4 06N   Randall Airport              41.4 -74.4   523    -5 A     America/New_Y…
-    #> 5 09J   Jekyll Island Airport        31.1 -81.4    11    -5 A     America/New_Y…
-    #> 6 0A9   Elizabethton Municipal Air…  36.4 -82.2  1593    -5 A     America/New_Y…
-    #> # … with 1,452 more rows
+    #>   faa   name                             lat   lon   alt    tz dst   tzone      
+    #>   <chr> <chr>                          <dbl> <dbl> <dbl> <dbl> <chr> <chr>      
+    #> 1 04G   Lansdowne Airport               41.1 -80.6  1044    -5 A     America/Ne~
+    #> 2 06A   Moton Field Municipal Airport   32.5 -85.7   264    -6 A     America/Ch~
+    #> 3 06C   Schaumburg Regional             42.0 -88.1   801    -6 A     America/Ch~
+    #> 4 06N   Randall Airport                 41.4 -74.4   523    -5 A     America/Ne~
+    #> 5 09J   Jekyll Island Airport           31.1 -81.4    11    -5 A     America/Ne~
+    #> 6 0A9   Elizabethton Municipal Airport  36.4 -82.2  1593    -5 A     America/Ne~
+    #> # ... with 1,452 more rows
     ```
 
 *   `planes` 에는 각 여객기에 대한 정보가 `tailnum` 으로 식별되어 있다.
@@ -73,13 +73,13 @@ library(nycflights13)
     #> # A tibble: 3,322 x 9
     #>   tailnum  year type           manufacturer   model  engines seats speed engine 
     #>   <chr>   <int> <chr>          <chr>          <chr>    <int> <int> <int> <chr>  
-    #> 1 N10156   2004 Fixed wing mu… EMBRAER        EMB-1…       2    55    NA Turbo-…
-    #> 2 N102UW   1998 Fixed wing mu… AIRBUS INDUST… A320-…       2   182    NA Turbo-…
-    #> 3 N103US   1999 Fixed wing mu… AIRBUS INDUST… A320-…       2   182    NA Turbo-…
-    #> 4 N104UW   1999 Fixed wing mu… AIRBUS INDUST… A320-…       2   182    NA Turbo-…
-    #> 5 N10575   2002 Fixed wing mu… EMBRAER        EMB-1…       2    55    NA Turbo-…
-    #> 6 N105UW   1999 Fixed wing mu… AIRBUS INDUST… A320-…       2   182    NA Turbo-…
-    #> # … with 3,316 more rows
+    #> 1 N10156   2004 Fixed wing mu~ EMBRAER        EMB-1~       2    55    NA Turbo-~
+    #> 2 N102UW   1998 Fixed wing mu~ AIRBUS INDUST~ A320-~       2   182    NA Turbo-~
+    #> 3 N103US   1999 Fixed wing mu~ AIRBUS INDUST~ A320-~       2   182    NA Turbo-~
+    #> 4 N104UW   1999 Fixed wing mu~ AIRBUS INDUST~ A320-~       2   182    NA Turbo-~
+    #> 5 N10575   2002 Fixed wing mu~ EMBRAER        EMB-1~       2    55    NA Turbo-~
+    #> 6 N105UW   1999 Fixed wing mu~ AIRBUS INDUST~ A320-~       2   182    NA Turbo-~
+    #> # ... with 3,316 more rows
     ```
 
 *   `weather` 에는 각 NYC 공항의 매 시각 날씨 정보가 있다.
@@ -96,8 +96,8 @@ library(nycflights13)
     #> 4 EWR     2013     1     1     4  39.9  28.0  62.2      250      12.7         NA
     #> 5 EWR     2013     1     1     5  39.0  28.0  64.4      260      12.7         NA
     #> 6 EWR     2013     1     1     6  37.9  28.0  67.2      240      11.5         NA
-    #> # … with 26,109 more rows, and 4 more variables: precip <dbl>, pressure <dbl>,
-    #> #   visib <dbl>, time_hour <dttm>
+    #> # ... with 26,109 more rows, and 4 more variables: precip <dbl>,
+    #> #   pressure <dbl>, visib <dbl>, time_hour <dttm>
     ```
 
 그림을 사용하여 서로 다른 테이블 간의 관계를 볼 수 있다.
@@ -146,7 +146,7 @@ planes %>%
   count(tailnum) %>% 
   filter(n > 1)
 #> # A tibble: 0 x 2
-#> # … with 2 variables: tailnum <chr>, n <int>
+#> # ... with 2 variables: tailnum <chr>, n <int>
 
 weather %>% 
   count(year, month, day, hour, origin) %>% 
@@ -176,7 +176,7 @@ flights %>%
 #> 4  2013     1     1     11     3
 #> 5  2013     1     1     15     2
 #> 6  2013     1     1     21     2
-#> # … with 29,762 more rows
+#> # ... with 29,762 more rows
 
 flights %>% 
   count(year, month, day, tailnum) %>% 
@@ -190,7 +190,7 @@ flights %>%
 #> 4  2013     1     1 N11544      3
 #> 5  2013     1     1 N11551      2
 #> 6  2013     1     1 N12540      2
-#> # … with 64,922 more rows
+#> # ... with 64,922 more rows
 ```
 
 이 데이터로 작업을 시작할 때 나는 각 항공편 번호(`flight` )가 하루에 한 번만 사용된다고 순진하게 추측했다. 그런 경우라면 특정 항공편의 문제에 대해 훨씬 쉽게 의사 소통할 수 있었을 것이었다. 불행히도 그것은 사실이 아니다! 테이블에 기본키가 없으면 `mutate()` 와 `row_number()` 를 이용하여 기본키를 추가해 보라. 이렇게 하면 필터링을 수행하고 난 후 원래 데이터와 다시 점검할 때 관측값을 쉽게 일치시킬 수 있다. 이를 **대체키(surrogate key)** 라고 한다.
@@ -235,7 +235,7 @@ flights2
 #> 4  2013     1     1     5 JFK    BQN   N804JB  B6     
 #> 5  2013     1     1     6 LGA    ATL   N668DN  DL     
 #> 6  2013     1     1     5 EWR    ORD   N39463  UA     
-#> # … with 336,770 more rows
+#> # ... with 336,770 more rows
 ```
 
 (RStudio에서는 `View()` 를 사용하여 이 문제를 피할 수도 있음을 기억하라.)
@@ -257,7 +257,7 @@ flights2 %>%
 #> 4  2013     1     1     5 N804JB  B6      JetBlue Airways       
 #> 5  2013     1     1     6 N668DN  DL      Delta Air Lines Inc.  
 #> 6  2013     1     1     5 N39463  UA      United Air Lines Inc. 
-#> # … with 336,770 more rows
+#> # ... with 336,770 more rows
 ```
 
 `flights2` 은 `airlines` 와 결합하여, 새로운 변수 `name` 이 추가되었다. 이것이 내가 이 유형의 조인을 뮤테이팅 조인이라고 부르는 이유이다. 이 경우 `mutate()` 와 R 의 베이스 서브셋작업을 사용하여 같은 위치에 도달할 수 있다.
@@ -276,7 +276,7 @@ flights2 %>%
 #> 4  2013     1     1     5 N804JB  B6      JetBlue Airways       
 #> 5  2013     1     1     6 N668DN  DL      Delta Air Lines Inc.  
 #> 6  2013     1     1     5 N39463  UA      United Air Lines Inc. 
-#> # … with 336,770 more rows
+#> # ... with 336,770 more rows
 ```
 
 그러나 이 방법은 여러 변수를 매치시켜야 할 경우 일반화하기 어렵고, 또 전체적인 의도를 파악하기 위해서는 코드를 자세히 읽어야 한다는 단점이 있다.
@@ -448,7 +448,7 @@ x %>%
     #> 4  2013     1     1     5 JFK    BQN   N804JB  B6       39.0  27.0  61.6
     #> 5  2013     1     1     6 LGA    ATL   N668DN  DL       39.9  25.0  54.8
     #> 6  2013     1     1     5 EWR    ORD   N39463  UA       39.0  28.0  64.4
-    #> # … with 336,770 more rows, and 7 more variables: wind_dir <dbl>,
+    #> # ... with 336,770 more rows, and 7 more variables: wind_dir <dbl>,
     #> #   wind_speed <dbl>, wind_gust <dbl>, precip <dbl>, pressure <dbl>,
     #> #   visib <dbl>, time_hour <dttm>
     ```
@@ -462,13 +462,13 @@ x %>%
     #> # A tibble: 336,776 x 16
     #>   year.x month   day  hour origin dest  tailnum carrier year.y type             
     #>    <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>    <int> <chr>            
-    #> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing multi…
-    #> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing multi…
-    #> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing multi…
-    #> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing multi…
-    #> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing multi…
-    #> 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing multi…
-    #> # … with 336,770 more rows, and 6 more variables: manufacturer <chr>,
+    #> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing multi~
+    #> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing multi~
+    #> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing multi~
+    #> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing multi~
+    #> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing multi~
+    #> 6   2013     1     1     5 EWR    ORD   N39463  UA        2012 Fixed wing multi~
+    #> # ... with 336,770 more rows, and 6 more variables: manufacturer <chr>,
     #> #   model <chr>, engines <int>, seats <int>, speed <int>, engine <chr>
     ```
 
@@ -485,13 +485,13 @@ x %>%
     #> # A tibble: 336,776 x 15
     #>    year month   day  hour origin dest  tailnum carrier name      lat   lon   alt
     #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      George…  30.0 -95.3    97
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      George…  30.0 -95.3    97
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami …  25.8 -80.3     8
+    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      George~  30.0 -95.3    97
+    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      George~  30.0 -95.3    97
+    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami ~  25.8 -80.3     8
     #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      <NA>     NA    NA      NA
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsf…  33.6 -84.4  1026
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Chicag…  42.0 -87.9   668
-    #> # … with 336,770 more rows, and 3 more variables: tz <dbl>, dst <chr>,
+    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsf~  33.6 -84.4  1026
+    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Chicag~  42.0 -87.9   668
+    #> # ... with 336,770 more rows, and 3 more variables: tz <dbl>, dst <chr>,
     #> #   tzone <chr>
     
     flights2 %>% 
@@ -499,13 +499,13 @@ x %>%
     #> # A tibble: 336,776 x 15
     #>    year month   day  hour origin dest  tailnum carrier name      lat   lon   alt
     #>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl> <dbl>
-    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newark…  40.7 -74.2    18
-    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      La Gua…  40.8 -73.9    22
-    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John F…  40.6 -73.8    13
-    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John F…  40.6 -73.8    13
-    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La Gua…  40.8 -73.9    22
-    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Newark…  40.7 -74.2    18
-    #> # … with 336,770 more rows, and 3 more variables: tz <dbl>, dst <chr>,
+    #> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newark~  40.7 -74.2    18
+    #> 2  2013     1     1     5 LGA    IAH   N24211  UA      La Gua~  40.8 -73.9    22
+    #> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John F~  40.6 -73.8    13
+    #> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John F~  40.6 -73.8    13
+    #> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La Gua~  40.8 -73.9    22
+    #> 6  2013     1     1     5 EWR    ORD   N39463  UA      Newark~  40.7 -74.2    18
+    #> # ... with 336,770 more rows, and 3 more variables: tz <dbl>, dst <chr>,
     #> #   tzone <chr>
     ```
 
@@ -586,7 +586,7 @@ top_dest
 #> 4 BOS   15508
 #> 5 MCO   14082
 #> 6 CLT   14064
-#> # … with 4 more rows
+#> # ... with 4 more rows
 ```
 
 이제 그 목적지 중 한 곳으로 운행한 항공편을 찾고 싶다면 직접 필터를 만들 수 있다.
@@ -604,7 +604,7 @@ flights %>%
 #> 4  2013     1     1      555            600        -5      913            854
 #> 5  2013     1     1      557            600        -3      838            846
 #> 6  2013     1     1      558            600        -2      753            745
-#> # … with 141,139 more rows, and 11 more variables: arr_delay <dbl>,
+#> # ... with 141,139 more rows, and 11 more variables: arr_delay <dbl>,
 #> #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
 #> #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
@@ -628,7 +628,7 @@ flights %>%
 #> 4  2013     1     1      555            600        -5      913            854
 #> 5  2013     1     1      557            600        -3      838            846
 #> 6  2013     1     1      558            600        -2      753            745
-#> # … with 141,139 more rows, and 11 more variables: arr_delay <dbl>,
+#> # ... with 141,139 more rows, and 11 more variables: arr_delay <dbl>,
 #> #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
 #> #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
@@ -661,7 +661,7 @@ flights %>%
 #> 4 N723MQ    507
 #> 5 N713MQ    483
 #> 6 N735MQ    396
-#> # … with 716 more rows
+#> # ... with 716 more rows
 ```
 
 ### 연습문제
@@ -692,7 +692,7 @@ flights %>%
     ```r
     airports %>% count(alt, lon) %>% filter(n > 1)
     #> # A tibble: 0 x 3
-    #> # … with 3 variables: alt <dbl>, lon <dbl>, n <int>
+    #> # ... with 3 variables: alt <dbl>, lon <dbl>, n <int>
     ```
 
 1.  기본 키의 변수들에 결측값이 없는지 확인하라. 값이 결측된 경우에는 관측값을 식별할 수 없다!

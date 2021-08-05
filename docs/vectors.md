@@ -133,14 +133,11 @@ typeof(1L)
 ```r
 x <- "적당히 긴 문자열입니다."
 pryr::object_size(x)
-#> Registered S3 method overwritten by 'pryr':
-#>   method      from
-#>   print.bytes Rcpp
-#> 152 B
+#> 136 B
 
 y <- rep(x, 1000)
 pryr::object_size(y)
-#> 8.14 kB
+#> 8,128 B
 ```
 
 <코드체>y</코드체>의 각 요소는 같은 문자열에 대한 포인터이기 때문에 <코드체>y</코드체>는 <코드체>x</코드체>의 메모리의 1000배를 차지하지 않는다. 포인터는 8 바이트이므로, 136 B 문자열에 대한 포인터 1000개는 8 * 1000 + 136 = 8.13 kB 이다.
@@ -282,8 +279,7 @@ R에서 기초적인 수학 연산은 벡터에 작동한다. 즉, 간단한 수
 
 ```r
 1:10 + 1:3
-#> Warning in 1:10 + 1:3: longer object length is not a multiple of shorter object
-#> length
+#> Warning in 1:10 + 1:3: 두 객체의 길이가 서로 배수관계에 있지 않습니다
 #>  [1]  2  4  6  5  7  9  8 10 12 11
 ```
 
@@ -295,7 +291,7 @@ tibble(x = 1:4, y = 1:2)
 #> Error: Tibble columns must have compatible sizes.
 #> * Size 4: Existing data.
 #> * Size 2: Column `y`.
-#> ℹ Only values of size one are recycled.
+#> i Only values of size one are recycled.
 
 tibble(x = 1:4, y = rep(1:2, 2))
 #> # A tibble: 4 x 2
@@ -654,7 +650,7 @@ Here's what a typical generic function looks like:
 as.Date
 #> function (x, ...) 
 #> UseMethod("as.Date")
-#> <bytecode: 0x557036ed78f0>
+#> <bytecode: 0x0000000017a99ba8>
 #> <environment: namespace:base>
 ```
 
@@ -687,7 +683,7 @@ getS3method("as.Date", "default")
 #>     else stop(gettextf("do not know how to convert '%s' to class %s", 
 #>         deparse1(substitute(x)), dQuote("Date")), domain = NA)
 #> }
-#> <bytecode: 0x55703a4d3278>
+#> <bytecode: 0x0000000012830940>
 #> <environment: namespace:base>
 getS3method("as.Date", "numeric")
 #> function (x, origin, ...) 
@@ -701,7 +697,7 @@ getS3method("as.Date", "numeric")
 #>     }
 #>     as.Date(origin, ...) + x
 #> }
-#> <bytecode: 0x55703d3808b8>
+#> <bytecode: 0x0000000014f77c08>
 #> <environment: namespace:base>
 ```
 

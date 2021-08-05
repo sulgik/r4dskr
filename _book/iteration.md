@@ -758,7 +758,7 @@ str(safe_log("a"))
 #> List of 2
 #>  $ result: NULL
 #>  $ error :List of 2
-#>   ..$ message: chr "non-numeric argument to mathematical function"
+#>   ..$ message: chr "수학함수에 숫자가 아닌 인자가 전달되었습니다"
 #>   ..$ call   : language .Primitive("log")(x, base)
 #>   ..- attr(*, "class")= chr [1:3] "simpleError" "error" "condition"
 ```
@@ -783,7 +783,7 @@ str(y)
 #>  $ :List of 2
 #>   ..$ result: NULL
 #>   ..$ error :List of 2
-#>   .. ..$ message: chr "non-numeric argument to mathematical function"
+#>   .. ..$ message: chr "수학함수에 숫자가 아닌 인자가 전달되었습니다"
 #>   .. ..$ call   : language .Primitive("log")(x, base)
 #>   .. ..- attr(*, "class")= chr [1:3] "simpleError" "error" "condition"
 ```
@@ -804,7 +804,7 @@ str(y)
 #>   ..$ : NULL
 #>   ..$ : NULL
 #>   ..$ :List of 2
-#>   .. ..$ message: chr "non-numeric argument to mathematical function"
+#>   .. ..$ message: chr "수학함수에 숫자가 아닌 인자가 전달되었습니다"
 #>   .. ..$ call   : language .Primitive("log")(x, base)
 #>   .. ..- attr(*, "class")= chr [1:3] "simpleError" "error" "condition"
 ```
@@ -848,7 +848,7 @@ Purrr provides two other useful adverbs:
     #>  $ :List of 4
     #>   ..$ result  : num NaN
     #>   ..$ output  : chr ""
-    #>   ..$ warnings: chr "NaNs produced"
+    #>   ..$ warnings: chr "NaN이 생성되었습니다"
     #>   ..$ messages: chr(0)
     ```
 
@@ -1003,7 +1003,7 @@ invoke_map(f, param, n = 5) %>% str()
 #>  $ : int [1:5] 6 11 5 8 9
 ```
 
-<img src="diagrams/lists-invoke.png" width="1110" style="display: block; margin: auto;" />
+<img src="diagrams/lists-invoke.png" style="display: block; margin: auto;" />
 
 The first argument is a list of functions or character vector of function names.
 The second argument is a list of lists giving the arguments that vary for each function.
@@ -1075,7 +1075,7 @@ A number of functions work with **predicate** functions that return either a sin
 gss_cat %>% 
   keep(is.factor) %>% 
   str()
-#> tibble [21,483 × 6] (S3: tbl_df/tbl/data.frame)
+#> tibble [21,483 x 6] (S3: tbl_df/tbl/data.frame)
 #>  $ marital: Factor w/ 6 levels "No answer","Never married",..: 2 4 5 2 4 6 2 4 6 6 ...
 #>  $ race   : Factor w/ 4 levels "Other","Black",..: 3 3 3 3 3 3 3 3 3 3 ...
 #>  $ rincome: Factor w/ 16 levels "No answer","Don't know",..: 8 8 16 16 16 5 4 9 4 4 ...
@@ -1086,7 +1086,7 @@ gss_cat %>%
 gss_cat %>% 
   discard(is.factor) %>% 
   str()
-#> tibble [21,483 × 3] (S3: tbl_df/tbl/data.frame)
+#> tibble [21,483 x 3] (S3: tbl_df/tbl/data.frame)
 #>  $ year   : int [1:21483] 2000 2000 2000 2000 2000 2000 2000 2000 2000 2000 ...
 #>  $ age    : int [1:21483] 26 48 67 39 25 25 36 44 44 47 ...
 #>  $ tvhours: int [1:21483] 12 NA 2 4 1 NA 3 NA 0 3 ...

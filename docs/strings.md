@@ -63,7 +63,7 @@ writeLines(x)
 ```r
 x <- "\u00b5"
 x
-#> [1] "µ"
+#> [1] "μ"
 ```
 
 복수의 문자열은 종종 `c()` 로 만들 수 있는 문자형 벡터에 저장된다. 
@@ -194,7 +194,7 @@ x
 str_to_upper(c("i", "ı"))
 #> [1] "I" "I"
 str_to_upper(c("i", "ı"), locale = "tr")
-#> [1] "İ" "I"
+#> [1] "<U+0130>" "I"
 ```
 
 로캘은 두 글자 또는 세 글자 줄임말인 ISO 639 언어 코드로 지정된다. 설정하고자 하는 언어의 ISO639 코드를 모르는 경우, [위키피디아](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)에 잘 정리되어 있다. 로캘을 비워 둘 경우에는 운영체제에서 제공한 현재 로캘을 사용한다. 
@@ -775,7 +775,7 @@ df %>%
 #> 4 absolute     4      4          4
 #> 5 accept       5      2          4
 #> 6 account      6      3          4
-#> # … with 974 more rows
+#> # ... with 974 more rows
 ```
 
 매칭들끼리 서로 겹치지 않는다는 것을 주의하라. 예를 들어 `"abababa"` 에서 `"aba"` 패턴이 몇 번 매칭하는가? 정규표현식에선 세 번이 아닌 두 번이라고 답한다. 
@@ -960,7 +960,7 @@ tibble(sentence = sentences) %>%
 #> 4 These days a chicken leg is a rare dish.    a       chicken
 #> 5 Rice is often served in round bowls.        <NA>    <NA>   
 #> 6 The juice of lemons makes fine punch.       <NA>    <NA>   
-#> # … with 714 more rows
+#> # ... with 714 more rows
 ```
 
 
@@ -1195,9 +1195,9 @@ str_view(fruit, regex("nana"))
       times = 20
     )
     #> Unit: microseconds
-    #>   expr   min    lq mean median  uq max neval
-    #>  fixed  64.6  69.3  130   84.5 100 984    20
-    #>  regex 331.6 338.3  356  342.6 348 570    20
+    #>   expr   min  lq mean median  uq  max neval
+    #>  fixed  94.8 100  161    105 110 1082    20
+    #>  regex 297.4 308  324    313 323  425    20
     ```
     
     `fixed()` 를 비영어에 사용할 때는 조심하라. 같은 문자를 나타내는 방법이 여러 가지이기 때문에 문제가 되는 경우가 많다. 예를 들어 'á'를 정의하는 방법에는 두 가지가 있다. 즉, 단일한 문자로 하거나, 'a'와 악센트로 하는 방법이다.
@@ -1207,7 +1207,7 @@ str_view(fruit, regex("nana"))
     a1 <- "\u00e1"
     a2 <- "a\u0301"
     c(a1, a2)
-    #> [1] "á" "á"
+    #> [1] "a" "a<U+0301>"
     a1 == a2
     #> [1] FALSE
     ```
@@ -1230,12 +1230,12 @@ str_view(fruit, regex("nana"))
     # when doing case insensitive matches:
     i <- c("I", "İ", "i", "ı")
     i
-    #> [1] "I" "İ" "i" "ı"
+    #> [1] "I"        "<U+0130>" "i"        "ı"
     
     str_subset(i, coll("i", ignore_case = TRUE))
     #> [1] "I" "i"
     str_subset(i, coll("i", ignore_case = TRUE, locale = "tr"))
-    #> [1] "İ" "i"
+    #> [1] "i"
     ```
     
     `fixed()` 와 `regex()`  모두에 `ignore_case`  인수가 있지만, 로캘 선택을 허용하지는 않는다. 이들은 항상 기본 로캘을 사용한다. 다음 코드를 통해 이를 알아볼 수 있다. (**stringi** 에서 더 살펴보자)
@@ -1244,16 +1244,16 @@ str_view(fruit, regex("nana"))
     ```r
     stringi::stri_locale_info()
     #> $Language
-    #> [1] "c"
+    #> [1] "ko"
     #> 
     #> $Country
-    #> [1] ""
+    #> [1] "KR"
     #> 
     #> $Variant
     #> [1] ""
     #> 
     #> $Name
-    #> [1] "en_US_POSIX"
+    #> [1] "ko_KR"
     ```
     
     `coll()` 의 단점은 속도이다. 어느 문자가 같은지 인식하는 규칙이 복잡하기 때문에, `coll()` 은 `regex()` 와 `fixed()` 에 비해 상대적으로 느리다. 
@@ -1298,15 +1298,15 @@ str_view(fruit, regex("nana"))
     
     ```r
     head(dir(pattern = "\\.Rmd$"))
-    #> [1] "communicate-plots.Rmd" "communicate.Rmd"       "datetimes.Rmd"        
-    #> [4] "EDA.Rmd"               "explore.Rmd"           "factors.Rmd"
+    #> [1] "communicate-plots.Rmd" "communicate.Rmd"       "data-transform.Rmd"   
+    #> [4] "data-visualize.Rmd"    "datetimes.Rmd"         "EDA.Rmd"
     ```
     
     (`*.Rmd` 같은 '글로브(globs) 패턴'에 익숙한 경우, `glob2rx()` 를 사용하여 이를 정규표현식으로 변환할 수 있다.) 
 
 ## stringi
 
-stringr 은 **stringi**  패키지 기반으로 만들어졌다. **stringr** 은 학습할 때 유용한데, 왜냐하면 이 패키지는 자주 사용하는 문자열 조작 함수들을 다루기 위해 엄선된 최소한의 함수들만 보여주기 때문이다. 반면, **stringi** 는 전체를 포괄하도록 설계되었고, 필요한 거의 모든 함수를 포함한다. **stringi** 에는 252 개의 함수가 있지만, **stringr** 에는 49개가 있다.
+stringr 은 **stringi**  패키지 기반으로 만들어졌다. **stringr** 은 학습할 때 유용한데, 왜냐하면 이 패키지는 자주 사용하는 문자열 조작 함수들을 다루기 위해 엄선된 최소한의 함수들만 보여주기 때문이다. 반면, **stringi** 는 전체를 포괄하도록 설계되었고, 필요한 거의 모든 함수를 포함한다. **stringi** 에는 256 개의 함수가 있지만, **stringr** 에는 49개가 있다.
 
 stringr 에서 잘 안될 경우, **stringi** 에서 한 번 찾아보는 것이 좋다. 두 패키지는 매우 유사하게 동작하므로, **stringr** 에서 배운 것을 자연스럽게 활용할 수 있을 것이다. 주요 차이점은 접두사이다(`str_` 과 `stri_` ).
 

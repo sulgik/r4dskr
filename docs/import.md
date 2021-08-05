@@ -41,16 +41,14 @@ readr 함수 대부분은 플랫 파일을 데이터프레임으로 바꾸는 �
 
 ```r
 heights <- read_csv("data/heights.csv")
+#> Rows: 1192 Columns: 6
+#> -- Column specification --------------------------------------------------------
+#> Delimiter: ","
+#> chr (2): sex, race
+#> dbl (4): earn, height, ed, age
 #> 
-#> ── Column specification ────────────────────────────────────────────────────────
-#> cols(
-#>   earn = col_double(),
-#>   height = col_double(),
-#>   sex = col_character(),
-#>   ed = col_double(),
-#>   age = col_double(),
-#>   race = col_character()
-#> )
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 `read_csv()` 를 실행하면 각 열의 이름과 유형을 제공하는 열 사양이 화면 출력된다. 이는 readr 에서 중요한 부분이다. [파일 파싱하기]에서 다시 살펴보겠다.
@@ -63,6 +61,13 @@ heights <- read_csv("data/heights.csv")
 read_csv("a,b,c
 1,2,3
 4,5,6")
+#> Rows: 2 Columns: 3
+#> -- Column specification --------------------------------------------------------
+#> Delimiter: ","
+#> dbl (3): a, b, c
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 2 x 3
 #>       a     b     c
 #>   <dbl> <dbl> <dbl>
@@ -82,6 +87,13 @@ read_csv("a,b,c
       메타 데이터 두번째 행
       x,y,z
       1,2,3", skip = 2)
+    #> Rows: 1 Columns: 3
+    #> -- Column specification --------------------------------------------------------
+    #> Delimiter: ","
+    #> dbl (3): x, y, z
+    #> 
+    #> i Use `spec()` to retrieve the full column specification for this data.
+    #> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
     #> # A tibble: 1 x 3
     #>       x     y     z
     #>   <dbl> <dbl> <dbl>
@@ -90,6 +102,13 @@ read_csv("a,b,c
     read_csv("# 건너뛰고 싶은 주석
       x,y,z
       1,2,3", comment = "#")
+    #> Rows: 1 Columns: 3
+    #> -- Column specification --------------------------------------------------------
+    #> Delimiter: ","
+    #> dbl (3): x, y, z
+    #> 
+    #> i Use `spec()` to retrieve the full column specification for this data.
+    #> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
     #> # A tibble: 1 x 3
     #>       x     y     z
     #>   <dbl> <dbl> <dbl>
@@ -102,6 +121,13 @@ read_csv("a,b,c
     
     ```r
     read_csv("1,2,3\n4,5,6", col_names = FALSE)
+    #> Rows: 2 Columns: 3
+    #> -- Column specification --------------------------------------------------------
+    #> Delimiter: ","
+    #> dbl (3): X1, X2, X3
+    #> 
+    #> i Use `spec()` to retrieve the full column specification for this data.
+    #> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
     #> # A tibble: 2 x 3
     #>      X1    X2    X3
     #>   <dbl> <dbl> <dbl>
@@ -117,6 +143,13 @@ read_csv("a,b,c
     
     ```r
     read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
+    #> Rows: 2 Columns: 3
+    #> -- Column specification --------------------------------------------------------
+    #> Delimiter: ","
+    #> dbl (3): x, y, z
+    #> 
+    #> i Use `spec()` to retrieve the full column specification for this data.
+    #> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
     #> # A tibble: 2 x 3
     #>       x     y     z
     #>   <dbl> <dbl> <dbl>
@@ -129,6 +162,14 @@ read_csv("a,b,c
 
 ```r
 read_csv("a,b,c\n1,2,.", na = ".")
+#> Rows: 1 Columns: 3
+#> -- Column specification --------------------------------------------------------
+#> Delimiter: ","
+#> dbl (2): a, b
+#> lgl (1): c
+#> 
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 1 x 3
 #>       a     b c    
 #>   <dbl> <dbl> <lgl>
@@ -225,7 +266,7 @@ parse_integer(c("1", "231", ".", "456"), na = ".")
 x <- parse_integer(c("123", "345", "abc", "123.45"))
 #> Warning: 2 parsing failures.
 #> row col               expected actual
-#>   3  -- an integer             abc   
+#>   3  -- no trailing characters abc   
 #>   4  -- no trailing characters 123.45
 ```
 
@@ -239,7 +280,7 @@ x
 #> # A tibble: 2 x 4
 #>     row   col expected               actual
 #>   <int> <int> <chr>                  <chr> 
-#> 1     3    NA an integer             abc   
+#> 1     3    NA no trailing characters abc   
 #> 2     4    NA no trailing characters 123.45
 ```
 
@@ -251,7 +292,7 @@ problems(x)
 #> # A tibble: 2 x 4
 #>     row   col expected               actual
 #>   <int> <int> <chr>                  <chr> 
-#> 1     3    NA an integer             abc   
+#> 1     3    NA no trailing characters abc   
 #> 2     4    NA no trailing characters 123.45
 ```
 
@@ -376,7 +417,7 @@ x2 <- "\x82\xb1\x82\xf1\x82\xc9\x82\xbf\x82\xcd"
 x1
 #> [1] "El Ni\xf1o was particularly bad this year"
 x2
-#> [1] "\x82\xb1\x82\xf1\x82ɂ\xbf\x82\xcd"
+#> [1] "궞귪궸궭궼"
 ```
 
 문제를 해결하려면 `parse_character()` 에서 인코딩을 지정해야 한다.
@@ -384,7 +425,7 @@ x2
 
 ```r
 parse_character(x1, locale = locale(encoding = "Latin1"))
-#> [1] "El Niño was particularly bad this year"
+#> [1] "El Nino was particularly bad this year"
 parse_character(x2, locale = locale(encoding = "Shift-JIS"))
 #> [1] "こんにちは"
 ```
@@ -623,21 +664,14 @@ readr 에는 이러한 두 가지 문제를 모두 보여주는 까다로운 CSV
 
 ```r
 challenge <- read_csv(readr_example("challenge.csv"))
+#> Rows: 2000 Columns: 2
+#> -- Column specification --------------------------------------------------------
+#> Delimiter: ","
+#> dbl  (1): x
+#> date (1): y
 #> 
-#> ── Column specification ────────────────────────────────────────────────────────
-#> cols(
-#>   x = col_double(),
-#>   y = col_logical()
-#> )
-#> Warning: 1000 parsing failures.
-#>  row col           expected     actual                                                                        file
-#> 1001   y 1/0/T/F/TRUE/FALSE 2015-01-16 '/home/sgkim/R/x86_64-pc-linux-gnu-library/4.0/readr/extdata/challenge.csv'
-#> 1002   y 1/0/T/F/TRUE/FALSE 2018-05-18 '/home/sgkim/R/x86_64-pc-linux-gnu-library/4.0/readr/extdata/challenge.csv'
-#> 1003   y 1/0/T/F/TRUE/FALSE 2015-09-05 '/home/sgkim/R/x86_64-pc-linux-gnu-library/4.0/readr/extdata/challenge.csv'
-#> 1004   y 1/0/T/F/TRUE/FALSE 2012-11-28 '/home/sgkim/R/x86_64-pc-linux-gnu-library/4.0/readr/extdata/challenge.csv'
-#> 1005   y 1/0/T/F/TRUE/FALSE 2020-01-13 '/home/sgkim/R/x86_64-pc-linux-gnu-library/4.0/readr/extdata/challenge.csv'
-#> .... ... .................. .......... ...........................................................................
-#> See problems(...) for more details.
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 (패키지에 포함된 파일의 경로를 찾아 주는 `readr_example()` 을 사용한 것에 주목하라.)
@@ -648,16 +682,9 @@ challenge <- read_csv(readr_example("challenge.csv"))
 
 ```r
 problems(challenge)
-#> # A tibble: 1,000 x 5
-#>     row col   expected       actual   file                                      
-#>   <int> <chr> <chr>          <chr>    <chr>                                     
-#> 1  1001 y     1/0/T/F/TRUE/… 2015-01… '/home/sgkim/R/x86_64-pc-linux-gnu-librar…
-#> 2  1002 y     1/0/T/F/TRUE/… 2018-05… '/home/sgkim/R/x86_64-pc-linux-gnu-librar…
-#> 3  1003 y     1/0/T/F/TRUE/… 2015-09… '/home/sgkim/R/x86_64-pc-linux-gnu-librar…
-#> 4  1004 y     1/0/T/F/TRUE/… 2012-11… '/home/sgkim/R/x86_64-pc-linux-gnu-librar…
-#> 5  1005 y     1/0/T/F/TRUE/… 2020-01… '/home/sgkim/R/x86_64-pc-linux-gnu-librar…
-#> 6  1006 y     1/0/T/F/TRUE/… 2016-04… '/home/sgkim/R/x86_64-pc-linux-gnu-librar…
-#> # … with 994 more rows
+#> # A tibble: 0 x 5
+#> # ... with 5 variables: row <int>, col <int>, expected <chr>, actual <chr>,
+#> #   file <chr>
 ```
 
 문제가 남아있지 않을 때까지 열 단위로 작업하는 것은 좋은 전략이다. `x` 열에
@@ -743,23 +770,25 @@ R 의 문자형 벡터인 경우에는 `parse_xyz()` 를 사용하면 되고, re
     
     ```r
     challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+    #> Rows: 2000 Columns: 2
+    #> -- Column specification --------------------------------------------------------
+    #> Delimiter: ","
+    #> dbl  (1): x
+    #> date (1): y
     #> 
-    #> ── Column specification ────────────────────────────────────────────────────────
-    #> cols(
-    #>   x = col_double(),
-    #>   y = col_date(format = "")
-    #> )
+    #> i Use `spec()` to retrieve the full column specification for this data.
+    #> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
     challenge2
     #> # A tibble: 2,000 x 2
-    #>       x y         
-    #>   <dbl> <date>    
-    #> 1   404 NA        
-    #> 2  4172 NA        
-    #> 3  3004 NA        
-    #> 4   787 NA        
-    #> 5    37 NA        
-    #> 6  2332 NA        
-    #> # … with 1,994 more rows
+    #>       x y     
+    #>   <dbl> <date>
+    #> 1   404 NA    
+    #> 2  4172 NA    
+    #> 3  3004 NA    
+    #> 4   787 NA    
+    #> 5    37 NA    
+    #> 6  2332 NA    
+    #> # ... with 1,994 more rows
     ```
 
 *   모든 열을 문자형 벡터로 읽으면 문제를 쉽게 진단할 수 있는 경우가 많다.
@@ -792,7 +821,7 @@ R 의 문자형 벡터인 경우에는 `parse_xyz()` 를 사용하면 되고, re
     # 열 유형을 주의
     type_convert(df)
     #> 
-    #> ── Column specification ────────────────────────────────────────────────────────
+    #> -- Column specification --------------------------------------------------------
     #> cols(
     #>   x = col_double(),
     #>   y = col_double()
@@ -832,33 +861,35 @@ CSV 로 저장하면 유형 정보가 없어진다는 것에 유의하라.
 ```r
 challenge
 #> # A tibble: 2,000 x 2
-#>       x y         
-#>   <dbl> <date>    
-#> 1   404 NA        
-#> 2  4172 NA        
-#> 3  3004 NA        
-#> 4   787 NA        
-#> 5    37 NA        
-#> 6  2332 NA        
-#> # … with 1,994 more rows
+#>       x y     
+#>   <dbl> <date>
+#> 1   404 NA    
+#> 2  4172 NA    
+#> 3  3004 NA    
+#> 4   787 NA    
+#> 5    37 NA    
+#> 6  2332 NA    
+#> # ... with 1,994 more rows
 write_csv(challenge, "challenge-2.csv")
 read_csv("challenge-2.csv")
+#> Rows: 2000 Columns: 2
+#> -- Column specification --------------------------------------------------------
+#> Delimiter: ","
+#> dbl  (1): x
+#> date (1): y
 #> 
-#> ── Column specification ────────────────────────────────────────────────────────
-#> cols(
-#>   x = col_double(),
-#>   y = col_logical()
-#> )
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 2,000 x 2
-#>       x y    
-#>   <dbl> <lgl>
-#> 1   404 NA   
-#> 2  4172 NA   
-#> 3  3004 NA   
-#> 4   787 NA   
-#> 5    37 NA   
-#> 6  2332 NA   
-#> # … with 1,994 more rows
+#>       x y     
+#>   <dbl> <date>
+#> 1   404 NA    
+#> 2  4172 NA    
+#> 3  3004 NA    
+#> 4   787 NA    
+#> 5    37 NA    
+#> 6  2332 NA    
+#> # ... with 1,994 more rows
 ```
 
 이런 이유로 중간 결과를 캐싱하기에 CSV 를 아주 신뢰할 수 없다. 불러올 때마다 열 사양을 다시 만들어야 한다. 두 가지 대안이 있다.
@@ -870,15 +901,15 @@ read_csv("challenge-2.csv")
     write_rds(challenge, "challenge.rds")
     read_rds("challenge.rds")
     #> # A tibble: 2,000 x 2
-    #>       x y         
-    #>   <dbl> <date>    
-    #> 1   404 NA        
-    #> 2  4172 NA        
-    #> 3  3004 NA        
-    #> 4   787 NA        
-    #> 5    37 NA        
-    #> 6  2332 NA        
-    #> # … with 1,994 more rows
+    #>       x y     
+    #>   <dbl> <date>
+    #> 1   404 NA    
+    #> 2  4172 NA    
+    #> 3  3004 NA    
+    #> 4   787 NA    
+    #> 5    37 NA    
+    #> 6  2332 NA    
+    #> # ... with 1,994 more rows
     ```
   
 1.  feather 패키지는 다른 프로그래밍 언어와 공유할 수 있는 빠른 바이너리 파일 형식을 구현한다.

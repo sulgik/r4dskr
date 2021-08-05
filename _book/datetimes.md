@@ -43,9 +43,9 @@ R에는 시간 저장을 위한 네이티브 클래스가 없기 때문에 이 �
 
 ```r
 today()
-#> [1] "2021-07-20"
+#> [1] "2021-08-05"
 now()
-#> [1] "2021-07-20 06:19:32 UTC"
+#> [1] "2021-08-05 17:36:03 KST"
 ```
 
 이 외에 날짜/시간을 생성하는 세 가지 방법이 있다.
@@ -66,7 +66,7 @@ now()
 ymd("2017-01-31")
 #> [1] "2017-01-31"
 mdy("January 31st, 2017")
-#> [1] "2017-01-31"
+#> [1] "2017-03-01"
 dmy("31-Jan-2017")
 #> [1] "2017-01-31"
 ```
@@ -114,7 +114,7 @@ flights %>%
 #> 4  2013     1     1     5     45
 #> 5  2013     1     1     6      0
 #> 6  2013     1     1     5     58
-#> # … with 336,770 more rows
+#> # ... with 336,770 more rows
 ```
 
 이러한 입력으로 날짜/시간을 생성하려면 데이트형은 `make_date()` 를, 데이트-타임형은 `make_datetime()` 를 쓰면 된다. 
@@ -133,7 +133,7 @@ flights %>%
 #> 4  2013     1     1     5     45 2013-01-01 05:45:00
 #> 5  2013     1     1     6      0 2013-01-01 06:00:00
 #> 6  2013     1     1     5     58 2013-01-01 05:58:00
-#> # … with 336,770 more rows
+#> # ... with 336,770 more rows
 ```
 
 
@@ -165,7 +165,7 @@ flights_dt
 #> 4 JFK    BQN          -1       -18 2013-01-01 05:44:00 2013-01-01 05:45:00
 #> 5 LGA    ATL          -6       -25 2013-01-01 05:54:00 2013-01-01 06:00:00
 #> 6 EWR    ORD          -4        12 2013-01-01 05:54:00 2013-01-01 05:58:00
-#> # … with 328,057 more rows, and 3 more variables: arr_time <dttm>,
+#> # ... with 328,057 more rows, and 3 more variables: arr_time <dttm>,
 #> #   sched_arr_time <dttm>, air_time <dbl>
 ```
 
@@ -202,9 +202,9 @@ flights_dt %>%
 
 ```r
 as_datetime(today())
-#> [1] "2021-07-20 UTC"
+#> [1] "2021-08-05 UTC"
 as_date(now())
-#> [1] "2021-07-20"
+#> [1] "2021-08-05"
 ```
 
 때로 날짜/시간을 ‘유닉스 신기원(Unix Epoch)’인 1970-01-01에서 수치형 오프셋으로 가지고 있을 수 있다. 오프셋이 초 단위인 경우엔 `as_datetime()` , 일 단위인 경우엔 `as_date()` 을 사용한다.
@@ -269,11 +269,11 @@ wday(datetime)
 
 ```r
 month(datetime, label = TRUE)
-#> [1] Jul
-#> 12 Levels: Jan < Feb < Mar < Apr < May < Jun < Jul < Aug < Sep < ... < Dec
+#> [1] 7
+#> Levels: 1 < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10 < 11 < 12
 wday(datetime, label = TRUE, abbr = FALSE)
-#> [1] Friday
-#> 7 Levels: Sunday < Monday < Tuesday < Wednesday < Thursday < ... < Saturday
+#> [1] 금요일
+#> Levels: 일요일 < 월요일 < 화요일 < 수요일 < 목요일 < 금요일 < 토요일
 ```
 
 `wday()` 를 사용하여 주말보다 평일에 출발하는 항공편이 더 많다는 것을 확인할 수 있다.
@@ -437,7 +437,7 @@ R에서 두 데이트형 뺄셈을 하면 difftime형 객체가 생긴다.
 # 해들리의 나이는?
 h_age <- today() - ymd(19791014)
 h_age
-#> Time difference of 15255 days
+#> Time difference of 15271 days
 ```
 
 difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 기록한다. 이러한 애매함 때문에 difftime형으로 작업하는 것이 약간 고통스러울 수 있다. 따라서 **lubridate** 는 항상 초를 사용하는 대안 클래스, **듀레이션형** 을 제공한다. 
@@ -445,7 +445,7 @@ difftime 클래스 객체는 초, 분, 시, 일 또는 주의 시간 범위를 �
 
 ```r
 as.duration(h_age)
-#> [1] "1318032000s (~41.77 years)"
+#> [1] "1319414400s (~41.81 years)"
 ```
 
 듀레이션형에는 편리한 생성자가 많다.
@@ -576,7 +576,7 @@ flights_dt %>%
 #> 4 EWR    SJU          -6       -12 2013-01-01 21:02:00 2013-01-01 21:08:00
 #> 5 EWR    SFO          11       -14 2013-01-01 21:08:00 2013-01-01 20:57:00
 #> 6 LGA    FLL         -10        -2 2013-01-01 21:20:00 2013-01-01 21:30:00
-#> # … with 10,627 more rows, and 3 more variables: arr_time <dttm>,
+#> # ... with 10,627 more rows, and 3 more variables: arr_time <dttm>,
 #> #   sched_arr_time <dttm>, air_time <dbl>
 ```
 
@@ -599,7 +599,7 @@ flights_dt <- flights_dt %>%
 flights_dt %>% 
   filter(overnight, arr_time < dep_time) 
 #> # A tibble: 0 x 10
-#> # … with 10 variables: origin <chr>, dest <chr>, dep_delay <dbl>,
+#> # ... with 10 variables: origin <chr>, dest <chr>, dep_delay <dbl>,
 #> #   arr_delay <dbl>, dep_time <dttm>, sched_dep_time <dttm>, arr_time <dttm>,
 #> #   sched_arr_time <dttm>, air_time <dbl>, overnight <lgl>
 ```
@@ -672,7 +672,7 @@ Figure \@ref(fig:dt-algebra) 은 다른 데이터 유형 사이에 허용된 산
 
 ```r
 Sys.timezone()
-#> [1] "Etc/UTC"
+#> [1] "Asia/Seoul"
 ```
 
 (R이 모르는 경우 `NA` 가 나올 것이다.)
@@ -682,7 +682,7 @@ Sys.timezone()
 
 ```r
 length(OlsonNames())
-#> [1] 607
+#> [1] 593
 head(OlsonNames())
 #> [1] "Africa/Abidjan"     "Africa/Accra"       "Africa/Addis_Ababa"
 #> [4] "Africa/Algiers"     "Africa/Asmara"      "Africa/Asmera"

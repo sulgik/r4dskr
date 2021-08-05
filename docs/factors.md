@@ -131,15 +131,15 @@ levels(f2)
 ```r
 gss_cat
 #> # A tibble: 21,483 x 9
-#>    year marital      age race  rincome    partyid     relig     denom    tvhours
-#>   <int> <fct>      <int> <fct> <fct>      <fct>       <fct>     <fct>      <int>
-#> 1  2000 Never mar…    26 White $8000 to … Ind,near r… Protesta… Souther…      12
-#> 2  2000 Divorced      48 White $8000 to … Not str re… Protesta… Baptist…      NA
-#> 3  2000 Widowed       67 White Not appli… Independent Protesta… No deno…       2
-#> 4  2000 Never mar…    39 White Not appli… Ind,near r… Orthodox… Not app…       4
-#> 5  2000 Divorced      25 White Not appli… Not str de… None      Not app…       1
-#> 6  2000 Married       25 White $20000 - … Strong dem… Protesta… Souther…      NA
-#> # … with 21,477 more rows
+#>    year marital         age race  rincome        partyid   relig  denom  tvhours
+#>   <int> <fct>         <int> <fct> <fct>          <fct>     <fct>  <fct>    <int>
+#> 1  2000 Never married    26 White $8000 to 9999  Ind,near~ Prote~ South~      12
+#> 2  2000 Divorced         48 White $8000 to 9999  Not str ~ Prote~ Bapti~      NA
+#> 3  2000 Widowed          67 White Not applicable Independ~ Prote~ No de~       2
+#> 4  2000 Never married    39 White Not applicable Ind,near~ Ortho~ Not a~       4
+#> 5  2000 Divorced         25 White Not applicable Not str ~ None   Not a~       1
+#> 6  2000 Married          25 White $20000 - 24999 Strong d~ Prote~ South~      NA
+#> # ... with 21,477 more rows
 ```
 
 (이 데이터셋은 패키지로 제공되기 때문에 `?gss_cat` 으로 변수들에 관한 자세한 정보를 얻을 수 있다는 것을 잊지 말라.)
@@ -324,7 +324,7 @@ gss_cat %>% count(partyid)
 #> 4 Strong republican   2314
 #> 5 Not str republican  3032
 #> 6 Ind,near rep        1791
-#> # … with 4 more rows
+#> # ... with 4 more rows
 ```
 
 이 레벨들은 짧고 일관성이 없다. 이 레벨들을 풀어쓰고, 병렬 구조를 사용해보자. 
@@ -350,7 +350,7 @@ gss_cat %>%
 #> 4 Republican, strong     2314
 #> 5 Republican, weak       3032
 #> 6 Independent, near rep  1791
-#> # … with 4 more rows
+#> # ... with 4 more rows
 ```
 
 `fct_recode()` 는 명시적으로 언급되지 않은 레벨은 그대로 둔다. 존재하지 않은 레벨을 참조하면 경고를 발생한다.
@@ -382,7 +382,7 @@ gss_cat %>%
 #> 4 Independent, near rep  1791
 #> 5 Independent            4119
 #> 6 Independent, near dem  2499
-#> # … with 2 more rows
+#> # ... with 2 more rows
 ```
 
 이 기술은 신중하게 사용해야 한다. 서로 같지 않은 범주들을 함께 묶는다면 잘못된 결과를 도출하게 될 것이다.
