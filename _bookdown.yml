@@ -1,3 +1,4 @@
+delete_merged_file : true
 new_session: yes
 
 rmd_files: [
@@ -7,6 +8,11 @@ rmd_files: [
 
   "explore.Rmd",
   "data-visualize.Rmd",
+  "workflow-basics.Rmd",
+  "data-transform.Rmd",
+  "workflow-scripts.Rmd",
+  "EDA.Rmd",
+  "workflow-projects.Rmd",
 
   "wrangle.Rmd",
   "tibble.Rmd",
