@@ -606,11 +606,11 @@ There are a few differences between `map_*()` and `col_summary()`:
     #> 3 2
     ```
 
-### Shortcuts
+### 단축어
 
-There are a few shortcuts that you can use with `.f` in order to save a little typing.
-Imagine you want to fit a linear model to each group in a dataset.
-The following toy example splits up the `mtcars` dataset into three pieces (one for each value of cylinder) and fits the same linear model to each piece:
+타이핑을 덜하기 위해 `.f` 와 함께 사용할 수 있는 단축어가 몇개 있다. 
+데이터셋 각 그룹에 선형 모형을 적합하고 싶다고 하자.
+다음 예제에서는 `mtcars` 데이터셋을 (각 cylinder 값마다 하나씩) 세 조각으로 나누어 각 조각마다 선형 모형을 동일하게 적합한다.
 
 
 ```r
@@ -619,21 +619,21 @@ models <- mtcars %>%
   map(function(df) lm(mpg ~ wt, data = df))
 ```
 
-The syntax for creating an anonymous function in R is quite verbose so purrr provides a convenient shortcut: a one-sided formula.
+R 에서 익명 함수를 생성하는 문법은 장황하다. 따라서 purrr 에는 편리한 단축어인 한쪽 공식(one-sided formula)이 있다.
 
 
 ```r
 models <- mtcars %>% 
   split(.$cyl) %>% 
-  map(~lm(mpg ~ wt, data = .x))
+  map(~lm(mpg ~ wt, data = .))
 ```
 
-Here I've used `.x` as a pronoun: it refers to the current list element (in the same way that `i` referred to the current index in the for loop).
-`.x` in a one-sided formula corresponds to an argument in an anonymous function.
+여기에서 `.` 를 대명사로 사용하였는데, 현재 리스트 요소를 가리킨다. 
+for 루프에서 `i` 가 현재 지수를 가리키는 것과 같다.
 
-When you're looking at many models, you might want to extract a summary statistic like the $R^2$.
-To do that we need to first run `summary()` and then extract the component called `r.squared`.
-We could do that using the shorthand for anonymous functions:
+많은 모형을 보다보면 $R^2$ 와 같은 요약 통계량을 추출하고 싶은 경우가 있다. 
+이를 위해서는 먼저 `summary()` 를 실행한 뒤 `r.squared` 라는 요소를 추출해야 한다.
+익명 함수를 위한 단축어를 사용해서 할 수도 있다.
 
 
 ```r
@@ -644,7 +644,8 @@ models %>%
 #> 0.509 0.465 0.423
 ```
 
-But extracting named components is a common operation, so purrr provides an even shorter shortcut: you can use a string.
+그러나 명명된 구성요소를 추출하는 것은 자주하는 연산이므로 
+purrr 에는 더 짧은 단축어가 있는데, 바로 문자열을 사용할 수도 있다.
 
 
 ```r
@@ -655,7 +656,7 @@ models %>%
 #> 0.509 0.465 0.423
 ```
 
-You can also use an integer to select elements by position:
+정수형을 사용하여 위치로 요소를 선택할 수도 있다.
 
 
 ```r

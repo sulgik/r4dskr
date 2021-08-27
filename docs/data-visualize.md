@@ -36,7 +36,7 @@ library(tidyverse)
 함수가 베이스 R 함수들(혹은 이미 로드한 다른 패키지의 함수들)과 충돌하
 는지도 알려준다.
 
-이 코드를 실행한 뒤 "there is no package called 'tidyverse'" 라는 오류 메시지가 
+실행한 뒤 "there is no package called 'tidyverse'" 라는 오류 메시지가 
 뜨면 먼저 아래와 같이 패키지를 설치한 후 `library()` 를 다시 실행해야 한다.
 
 
@@ -132,8 +132,9 @@ ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 
-The rest of this chapter will show you how to complete and extend this template to make different types of graphs.
-We will begin with the `<MAPPINGS>` component.
+이 장의 나머지 부분에서는 이 템플릿을 완성하고 확장하여 다른 유형의 그래프
+들을 만드는 법을 살펴볼 것이다.
+`<MAPPINGS>` 부분부터 시작해보자.
 
 ### 연습문제
 
@@ -151,12 +152,13 @@ We will begin with the `<MAPPINGS>` component.
 5.  What happens if you make a scatterplot of `class` vs `drv`?
     Why is the plot not useful?
 
-## Aesthetic mappings
+## 심미성 매핑
 
-> "The greatest value of a picture is when it forces us to notice what we never expected to see." --- John Tukey
-In the plot below, one group of points (highlighted in red) seems to fall outside of the linear trend.
-These cars have a higher mileage than you might expect.
-How can you explain these cars?
+> "그래프는 전혀 예상하지 못한 것을 보여줄 때 가장 큰 가치를 가진다." --- 존 튜키
+
+다음의 그래프에서 한 그룹의 점들(빨간색으로 강조)은 선형 추세를 벗어나는
+것처럼 보인다. 이 차들은 예상한 것보다 연비가 높다. 이 차들을 어떻게 설명할
+수 있을까?
 
 <img src="data-visualize_files/figure-html/unnamed-chunk-5-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. Cars with engine size greater than 5 litres and highway fuel efficiency greater than 20 miles per gallon stand out from the rest of the data and are highlighted in red." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. Cars with engine size greater than 5 litres and highway fuel efficiency greater than 20 miles per gallon stand out from the rest of the data and are highlighted in red." width="70%" style="display: block; margin: auto;" />
 

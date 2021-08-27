@@ -3,7 +3,7 @@
 ## 들어가기
 
 > "간단한 그래프는 데이터 분석가에게 다른 어떤 것보다도 많은 정보를 제공한다." 
---- 죤 튜키 (John Tukey)
+--- 존 튜키 (John Tukey)
 
 이 장에서는 ggplot2 를 이용하여 데이터를 시각화하는 법을 배울 것이다.
 R 에서 그래프를 만드는 시스템이 몇명 있지만 이 중 가장 우아하고 다재다능한 
@@ -22,10 +22,10 @@ ggplot2 로 하나의 시스템을 배우고 이를 여러 곳에 적용할 수 
 ```r
 library(tidyverse)
 #> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-#> v ggplot2 3.3.3     v purrr   0.3.4
-#> v tibble  3.1.1     v dplyr   1.0.5
+#> v ggplot2 3.3.5     v purrr   0.3.4
+#> v tibble  3.1.3     v dplyr   1.0.7
 #> v tidyr   1.1.3     v stringr 1.4.0
-#> v readr   1.4.0     v forcats 0.5.1
+#> v readr   2.0.0     v forcats 0.5.1
 #> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
@@ -36,7 +36,7 @@ library(tidyverse)
 함수가 베이스 R 함수들(혹은 이미 로드한 다른 패키지의 함수들)과 충돌하
 는지도 알려준다.
 
-이 코드를 실행한 뒤 "there is no package called 'tidyverse'" 라는 오류 메시지가 
+실행한 뒤 "there is no package called 'tidyverse'" 라는 오류 메시지가 
 뜨면 먼저 아래와 같이 패키지를 설치한 후 `library()` 를 다시 실행해야 한다.
 
 
@@ -99,7 +99,9 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-3-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-3-1} \end{center}
 
 이 플롯은 엔진 크기(`displ`)와 연비(`hwy`) 사이에 음의 관계가 있음을 보여준다.
 다른 말로 하면 엔진이 큰 차들은 연료를 더 많이 소비한다. 
@@ -132,8 +134,9 @@ ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
 
-The rest of this chapter will show you how to complete and extend this template to make different types of graphs.
-We will begin with the `<MAPPINGS>` component.
+이 장의 나머지 부분에서는 이 템플릿을 완성하고 확장하여 다른 유형의 그래프
+들을 만드는 법을 살펴볼 것이다.
+`<MAPPINGS>` 부분부터 시작해보자.
 
 ### 연습문제
 
@@ -151,14 +154,16 @@ We will begin with the `<MAPPINGS>` component.
 5.  What happens if you make a scatterplot of `class` vs `drv`?
     Why is the plot not useful?
 
-## Aesthetic mappings
+## 심미성 매핑
 
-> "The greatest value of a picture is when it forces us to notice what we never expected to see." --- John Tukey
-In the plot below, one group of points (highlighted in red) seems to fall outside of the linear trend.
-These cars have a higher mileage than you might expect.
-How can you explain these cars?
+> "그래프는 전혀 예상하지 못한 것을 보여줄 때 가장 큰 가치를 가진다." --- 존 튜키
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-5-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. Cars with engine size greater than 5 litres and highway fuel efficiency greater than 20 miles per gallon stand out from the rest of the data and are highlighted in red." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. Cars with engine size greater than 5 litres and highway fuel efficiency greater than 20 miles per gallon stand out from the rest of the data and are highlighted in red." width="70%" style="display: block; margin: auto;" />
+다음의 그래프에서 한 그룹의 점들(빨간색으로 강조)은 선형 추세를 벗어나는
+것처럼 보인다. 이 차들은 예상한 것보다 연비가 높다. 이 차들을 어떻게 설명할
+수 있을까?
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-5-1} \end{center}
 
 Let's hypothesize that the cars are hybrids.
 One way to test this hypothesis is to look at the `class` value for each car.
@@ -172,7 +177,8 @@ You can display a point (like the one below) in different ways by changing the v
 Since we already use the word "value" to describe data, let's use the word "level" to describe aesthetic properties.
 Here we change the levels of a point's size, shape, and color to make the point small, triangular, or blue:
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-6-1.png" title="Diagram that shows four plotting characters next to each other. The first is a large circle, the second is a small circle, the third is a triangle, and the fourth is a blue circle." alt="Diagram that shows four plotting characters next to each other. The first is a large circle, the second is a small circle, the third is a triangle, and the fourth is a blue circle." width="70%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-6-1} \end{center}
 
 You can convey information about your data by mapping the aesthetics in your plot to the variables in your dataset.
 For example, you can map the colours of your points to the `class` variable to reveal the class of each car.
@@ -183,7 +189,9 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-7-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are coloured according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable: 2seater, compact, midsize, minivan, pickup, or suv." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are coloured according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable: 2seater, compact, midsize, minivan, pickup, or suv." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-7-1} \end{center}
 
 (If you prefer British English, like Hadley, you can use `colour` instead of `color`.)
 
@@ -207,7 +215,9 @@ ggplot(data = mpg) +
 #> Warning: Using size for a discrete variable is not advised.
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-8-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are sized according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable -- going from small to large: 2seater, compact, midsize, minivan, pickup, or suv." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are sized according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable -- going from small to large: 2seater, compact, midsize, minivan, pickup, or suv." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-8-1} \end{center}
 
 Or we could have mapped `class` to the *alpha* aesthetic, which controls the transparency of the points, or to the shape aesthetic, which controls the shape of the points.
 
@@ -221,7 +231,8 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-9-1.png" title="Two scatterplots next to each other, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg and showing a negative association. In the plot on the left class is mapped to the alpha aesthetic, resulting in different transparency levels for each level of class. In the plot on the right class is mapped the shape aesthetic, resulting in different plotting character shapes for each level of class. Each plot comes with a legend that shows the mapping between alpha level or shape and levels of the class variable." alt="Two scatterplots next to each other, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg and showing a negative association. In the plot on the left class is mapped to the alpha aesthetic, resulting in different transparency levels for each level of class. In the plot on the right class is mapped the shape aesthetic, resulting in different plotting character shapes for each level of class. Each plot comes with a legend that shows the mapping between alpha level or shape and levels of the class variable." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-9-2.png" title="Two scatterplots next to each other, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg and showing a negative association. In the plot on the left class is mapped to the alpha aesthetic, resulting in different transparency levels for each level of class. In the plot on the right class is mapped the shape aesthetic, resulting in different plotting character shapes for each level of class. Each plot comes with a legend that shows the mapping between alpha level or shape and levels of the class variable." alt="Two scatterplots next to each other, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg and showing a negative association. In the plot on the left class is mapped to the alpha aesthetic, resulting in different transparency levels for each level of class. In the plot on the right class is mapped the shape aesthetic, resulting in different plotting character shapes for each level of class. Each plot comes with a legend that shows the mapping between alpha level or shape and levels of the class variable." width="50%" />
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-9-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-9-2} \end{figure}
 
 What happened to the SUVs?
 ggplot2 will only use six shapes at a time.
@@ -245,7 +256,9 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-10-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. All points are blue." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. All points are blue." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-10-1} \end{center}
 
 Here, the color doesn't convey information about a variable, but only changes the appearance of the plot.
 To set an aesthetic manually, set the aesthetic by name as an argument of your geom function; i.e. it goes *outside* of `aes()`.
@@ -257,10 +270,14 @@ You'll need to pick a level that makes sense for that aesthetic:
 
 -   The shape of a point as a number, as shown in Figure \@ref(fig:shapes).
 
-<div class="figure" style="text-align: center">
-<img src="data-visualize_files/figure-html/shapes-1.png" alt="Mapping between shapes and the numbers that represent them: 0 - square, 1 - circle, 2 - triangle point up, 3 - plus, 4 - cross, 5 - diamond, 6 - triangle point down, 7 - square cross, 8 - star, 9 - diamond plus, 10 - circle plus, 11 - triangles up and down, 12 - square plus, 13 - circle cross, 14 - square and triangle down, 15 - filled square, 16 - filled circle, 17 - filled triangle point-up, 18 - filled diamond, 19 - solid circle, 20 - bullet (smaller circle), 21 - filled circle blue, 22 - filled square blue, 23 - filled diamond blue, 24 - filled triangle point-up blue, 25 - filled triangle point down blue." width="75%" />
-<p class="caption">(\#fig:shapes)R has 25 built in shapes that are identified by numbers. There are some seeming duplicates: for example, 0, 15, and 22 are all squares. The difference comes from the interaction of the `colour` and `fill` aesthetics. The hollow shapes (0--14) have a border determined by `colour`; the solid shapes (15--20) are filled with `colour`; the filled shapes (21--24) have a border of `colour` and are filled with `fill`.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{data-visualize_files/figure-latex/shapes-1} 
+
+}
+
+\caption{R has 25 built in shapes that are identified by numbers. There are some seeming duplicates: for example, 0, 15, and 22 are all squares. The difference comes from the interaction of the `colour` and `fill` aesthetics. The hollow shapes (0--14) have a border determined by `colour`; the solid shapes (15--20) are filled with `colour`; the filled shapes (21--24) have a border of `colour` and are filled with `fill`.}(\#fig:shapes)
+\end{figure}
 ### Exercises
 1.  What's gone wrong with this code?
     Why are the points not blue?
@@ -270,7 +287,9 @@ You'll need to pick a level that makes sense for that aesthetic:
       geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-11-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. All points are red and the legend shows a red point that is mapped to the word 'blue'." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. All points are red and the legend shows a red point that is mapped to the word 'blue'." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-11-1} \end{center}
 
 2.  Which variables in `mpg` are categorical?
     Which variables are continuous?
@@ -335,7 +354,9 @@ ggplot(data = mpg) +
   facet_grid(drv ~ cyl)
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-12-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by class, with facets spanning two rows." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by class, with facets spanning two rows." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-12-1} \end{center}
 
 To facet your plot on the combination of two variables, add `facet_grid()` to your plot call.
 The first argument of `facet_grid()` is also a formula.
@@ -348,7 +369,9 @@ ggplot(data = mpg) +
   facet_grid(drv ~ cyl)
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-13-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by number of cylinders across rows and by type of drive train across columns. This results in a 4x3 grid of 12 facets. Some of these facets have no observations: 5 cylinders and 4 wheel drive, 4 or 5 cylinders and front wheel drive." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by number of cylinders across rows and by type of drive train across columns. This results in a 4x3 grid of 12 facets. Some of these facets have no observations: 5 cylinders and 4 wheel drive, 4 or 5 cylinders and front wheel drive." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-13-1} \end{center}
 
 If you prefer to not facet in the rows or columns dimension, use a `.` instead of a variable name, e.g. `+ facet_grid(. ~ cyl)`.
 
@@ -365,7 +388,9 @@ If you prefer to not facet in the rows or columns dimension, use a `.` instead o
       geom_point(mapping = aes(x = drv, y = cyl))
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-14-1.png" title="Scatterplot of number of cycles versus type of drive train of cars in ggplot2::mpg. Shows that there are no cars with 5 cylinders that are 4 wheel drive or with 4 or 5 cylinders that are front wheel drive." alt="Scatterplot of number of cycles versus type of drive train of cars in ggplot2::mpg. Shows that there are no cars with 5 cylinders that are 4 wheel drive or with 4 or 5 cylinders that are front wheel drive." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-14-1} \end{center}
 
 3.  What plots does the following code make?
     What does `.` do?
@@ -412,7 +437,9 @@ If you prefer to not facet in the rows or columns dimension, use a `.` instead o
       facet_grid(. ~ drv)
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-17-1.png" title="Two faceted plots, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by drive train. In the top plot, facet are organized across rows and in the second, across columns." alt="Two faceted plots, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by drive train. In the top plot, facet are organized across rows and in the second, across columns." width="70%" style="display: block; margin: auto;" /><img src="data-visualize_files/figure-html/unnamed-chunk-17-2.png" title="Two faceted plots, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by drive train. In the top plot, facet are organized across rows and in the second, across columns." alt="Two faceted plots, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by drive train. In the top plot, facet are organized across rows and in the second, across columns." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-17-1} \includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-17-2} \end{center}
 
 7.  Recreate this plot using `facet_wrap()` instead of `facet_grid()`.
     How do the positions of the facet labels change?
@@ -424,13 +451,16 @@ If you prefer to not facet in the rows or columns dimension, use a `.` instead o
       facet_grid(drv ~ .)
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-18-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by type of drive train across rows." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, faceted by type of drive train across rows." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-18-1} \end{center}
 
 ## Geometric objects
 
 How are these two plots similar?
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-19-1.png" title="Two plots: the plot on the left is a scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg and the plot on the right shows a smooth curve that follows the trajectory of the relationship between these variables. A confidence interval around the smooth curve is also displayed." alt="Two plots: the plot on the left is a scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg and the plot on the right shows a smooth curve that follows the trajectory of the relationship between these variables. A confidence interval around the smooth curve is also displayed." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-19-2.png" title="Two plots: the plot on the left is a scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg and the plot on the right shows a smooth curve that follows the trajectory of the relationship between these variables. A confidence interval around the smooth curve is also displayed." alt="Two plots: the plot on the left is a scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg and the plot on the right shows a smooth curve that follows the trajectory of the relationship between these variables. A confidence interval around the smooth curve is also displayed." width="50%" />
+
+\includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-19-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-19-2} 
 
 Both plots contain the same x variable, the same y variable, and both describe the same data.
 But the plots are not identical.
@@ -469,7 +499,9 @@ ggplot(data = mpg) +
   geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-21-1.png" title="A plot of highway fuel efficiency versus engine size of cars in ggplot2::mpg. The data are represented with smooth curves, which use a different line type (solid, dashed, or long dashed) for each type of drive train. Confidence intervals around the smooth curves are also displayed." alt="A plot of highway fuel efficiency versus engine size of cars in ggplot2::mpg. The data are represented with smooth curves, which use a different line type (solid, dashed, or long dashed) for each type of drive train. Confidence intervals around the smooth curves are also displayed." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-21-1} \end{center}
 
 Here `geom_smooth()` separates the cars into three lines based on their `drv` value, which describes a car's drive train.
 One line describes all of the points with a `4` value, one line describes all of the points with an `f` value, and one line describes all of the points with an `r` value.
@@ -477,7 +509,8 @@ Here, `4` stands for four-wheel drive, `f` for front-wheel drive, and `r` for re
 
 If this sounds strange, we can make it more clear by overlaying the lines on top of the raw data and then colouring everything according to `drv`.
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-22-1.png" title="A plot of highway fuel efficiency versus engine size of cars in ggplot2::mpg. The data are represented with points (coloured by drive train) as well as smooth curves (where line type is determined based on drive train as well). Confidence intervals around the smooth curves are also displayed." alt="A plot of highway fuel efficiency versus engine size of cars in ggplot2::mpg. The data are represented with points (coloured by drive train) as well as smooth curves (where line type is determined based on drive train as well). Confidence intervals around the smooth curves are also displayed." width="70%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-22-1} \end{center}
 
 Notice that this plot contains two geoms in the same graph!
 If this makes you excited, buckle up.
@@ -508,7 +541,8 @@ ggplot(data = mpg) +
   )
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-23-1.png" title="Three plots, each with highway fuel efficiency on the y-axis and engine size of cars in ggplot2::mpg, where data are represented by a smooth curve. The first plot only has these two variables, the center plot has three separate smooth curves for each level of drive train, and the right plot not only has the same three separate smooth curves for each level of drive train but these curves are plotted in different colours, without a legend explaining which color maps to which level. Confidence intervals around the smooth curves are also displayed." alt="Three plots, each with highway fuel efficiency on the y-axis and engine size of cars in ggplot2::mpg, where data are represented by a smooth curve. The first plot only has these two variables, the center plot has three separate smooth curves for each level of drive train, and the right plot not only has the same three separate smooth curves for each level of drive train but these curves are plotted in different colours, without a legend explaining which color maps to which level. Confidence intervals around the smooth curves are also displayed." width="33%" /><img src="data-visualize_files/figure-html/unnamed-chunk-23-2.png" title="Three plots, each with highway fuel efficiency on the y-axis and engine size of cars in ggplot2::mpg, where data are represented by a smooth curve. The first plot only has these two variables, the center plot has three separate smooth curves for each level of drive train, and the right plot not only has the same three separate smooth curves for each level of drive train but these curves are plotted in different colours, without a legend explaining which color maps to which level. Confidence intervals around the smooth curves are also displayed." alt="Three plots, each with highway fuel efficiency on the y-axis and engine size of cars in ggplot2::mpg, where data are represented by a smooth curve. The first plot only has these two variables, the center plot has three separate smooth curves for each level of drive train, and the right plot not only has the same three separate smooth curves for each level of drive train but these curves are plotted in different colours, without a legend explaining which color maps to which level. Confidence intervals around the smooth curves are also displayed." width="33%" /><img src="data-visualize_files/figure-html/unnamed-chunk-23-3.png" title="Three plots, each with highway fuel efficiency on the y-axis and engine size of cars in ggplot2::mpg, where data are represented by a smooth curve. The first plot only has these two variables, the center plot has three separate smooth curves for each level of drive train, and the right plot not only has the same three separate smooth curves for each level of drive train but these curves are plotted in different colours, without a legend explaining which color maps to which level. Confidence intervals around the smooth curves are also displayed." alt="Three plots, each with highway fuel efficiency on the y-axis and engine size of cars in ggplot2::mpg, where data are represented by a smooth curve. The first plot only has these two variables, the center plot has three separate smooth curves for each level of drive train, and the right plot not only has the same three separate smooth curves for each level of drive train but these curves are plotted in different colours, without a legend explaining which color maps to which level. Confidence intervals around the smooth curves are also displayed." width="33%" />
+
+\includegraphics[width=0.33\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-23-1} \includegraphics[width=0.33\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-23-2} \includegraphics[width=0.33\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-23-3} 
 
 To display multiple geoms in the same plot, add multiple geom functions to `ggplot()`:
 
@@ -519,7 +553,9 @@ ggplot(data = mpg) +
   geom_smooth(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-24-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg with a smooth curve overlaid. A confidence interval around the smooth curves is also displayed." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg with a smooth curve overlaid. A confidence interval around the smooth curves is also displayed." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-24-1} \end{center}
 
 This, however, introduces some duplication in our code.
 Imagine if you wanted to change the y-axis to display `cty` instead of `hwy`.
@@ -546,7 +582,9 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_smooth()
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-26-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, where points are coloured according to the car class. A smooth curve following the trajectory of the relationship between highway fuel efficiency versus engine size of cars is overlaid along with a confidence interval around it." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, where points are coloured according to the car class. A smooth curve following the trajectory of the relationship between highway fuel efficiency versus engine size of cars is overlaid along with a confidence interval around it." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-26-1} \end{center}
 
 You can use the same idea to specify different `data` for each layer.
 Here, our smooth line displays just a subset of the `mpg` dataset, the subcompact cars.
@@ -559,7 +597,9 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-27-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, where points are coloured according to the car class. A smooth curve following the trajectory of the relationship between highway fuel efficiency versus engine size of subcompact cars is overlaid along with a confidence interval around it." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg, where points are coloured according to the car class. A smooth curve following the trajectory of the relationship between highway fuel efficiency versus engine size of subcompact cars is overlaid along with a confidence interval around it." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-27-1} \end{center}
 
 (You'll learn how `filter()` works in the chapter on data transformations: for now, just know that this command selects only the subcompact cars.)
 
@@ -602,7 +642,8 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 6.  Recreate the R code necessary to generate the following graphs.
     Note that wherever a categorical variable is used in the plot, it's `drv`.
 
-    <img src="data-visualize_files/figure-html/unnamed-chunk-30-1.png" title="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." alt="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-30-2.png" title="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." alt="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-30-3.png" title="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." alt="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-30-4.png" title="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." alt="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-30-5.png" title="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." alt="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-30-6.png" title="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." alt="There are six scatterplots in this figure, arranged in a 3x2 grid. In all plots highway fuel efficiency of cars in ggplot2::mpg are on the y-axis and engine size is on the x-axis. The first plot shows all points in black with a smooth curve overlaid on them. In the second plot points are also all black, with separate smooth curves overlaid for each level of drive train. On the third plot, points and the smooth curves are represented in different colours for each level of drive train. In the fourth plot the points are represented in different colours for each level of drive train but there is only a single smooth line fitted to the whole data. In the fifth plot, points are represented in different colours for each level of drive train, and a separate smooth curve with different line types are fitted to each level of drive train. And finally in the sixth plot points are represented in different colours for each level of drive train and they have a thick white border." width="50%" />
+    
+    \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-30-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-30-2} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-30-3} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-30-4} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-30-5} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-30-6} 
 ## Statistical transformations
 Next, let's take a look at a bar chart.
 Bar charts seem simple, but they are interesting because they reveal something subtle about plots.
@@ -616,7 +657,9 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-31-1.png" title="Bar chart of number of each each cut of diamond in the ggplots::diamonds dataset. There are roughly 1500 fair diamonds, 5000 good, 12000 very good, 14000 premium, and 22000 ideal cut diamonds." alt="Bar chart of number of each each cut of diamond in the ggplots::diamonds dataset. There are roughly 1500 fair diamonds, 5000 good, 12000 very good, 14000 premium, and 22000 ideal cut diamonds." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-31-1} \end{center}
 
 On the x-axis, the chart displays `cut`, a variable from `diamonds`.
 On the y-axis, it displays count, but count is not a variable in `diamonds`!
@@ -633,7 +676,8 @@ Other graphs, like bar charts, calculate new values to plot:
 The algorithm used to calculate new values for a graph is called a **stat**, short for statistical transformation.
 The figure below describes how this process works with `geom_bar()`.
 
-<img src="images/visualization-stat-bar.png" title="A figure demonstrating three steps of creating a bar chart: 1. geom_bar() begins with the diamonds data set. 2. geom_bar() transforms the data with the &quot;count&quot; stat, which returns a data set of cut values and counts. 3. geom_bar() uses the transformed data to build the plot. cut is mapped to the x-axis, count is mapped to the y-axis." alt="A figure demonstrating three steps of creating a bar chart: 1. geom_bar() begins with the diamonds data set. 2. geom_bar() transforms the data with the &quot;count&quot; stat, which returns a data set of cut values and counts. 3. geom_bar() uses the transformed data to build the plot. cut is mapped to the x-axis, count is mapped to the y-axis." width="100%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=1\linewidth]{images/visualization-stat-bar} \end{center}
 
 You can learn which stat a geom uses by inspecting the default value for the `stat` argument.
 For example, `?geom_bar` shows that the default value for `stat` is "count", which means that `geom_bar()` uses `stat_count()`.
@@ -649,7 +693,9 @@ ggplot(data = diamonds) +
   stat_count(mapping = aes(x = cut))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-33-1.png" title="Bar chart of number of each each cut of diamond in the ggplots::diamonds dataset. There are roughly 1500 fair diamonds, 5000 good, 12000 very good, 14000 premium, and 22000 ideal cut diamonds." alt="Bar chart of number of each each cut of diamond in the ggplots::diamonds dataset. There are roughly 1500 fair diamonds, 5000 good, 12000 very good, 14000 premium, and 22000 ideal cut diamonds." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-33-1} \end{center}
 
 This works because every geom has a default stat; and every stat has a default geom.
 This means that you can typically use geoms without worrying about the underlying statistical transformation.
@@ -674,7 +720,9 @@ There are three reasons you might need to use a stat explicitly:
       geom_bar(mapping = aes(x = cut, y = freq), stat = "identity")
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-34-1.png" title="Bar chart of number of each each cut of diamond in the ggplots::diamonds dataset. There are roughly 1500 fair diamonds, 5000 good, 22000 ideal, 14000 premium, and 12000 very good, cut diamonds." alt="Bar chart of number of each each cut of diamond in the ggplots::diamonds dataset. There are roughly 1500 fair diamonds, 5000 good, 22000 ideal, 14000 premium, and 12000 very good, cut diamonds." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-34-1} \end{center}
 
     (Don't worry that you haven't seen `<-` or `tribble()` before.
     You might be able to guess at their meaning from the context, and you'll learn exactly what they do soon!)
@@ -688,7 +736,9 @@ There are three reasons you might need to use a stat explicitly:
       geom_bar(mapping = aes(x = cut, y = after_stat(prop), group = 1))
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-35-1.png" title="Bar chart of proportion of each each cut of diamond in the ggplots::diamonds dataset. Roughly, fair diamonds make up 0.03, good 0.09, very good 0.22, premium 26, and ideal 0.40." alt="Bar chart of proportion of each each cut of diamond in the ggplots::diamonds dataset. Roughly, fair diamonds make up 0.03, good 0.09, very good 0.22, premium 26, and ideal 0.40." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-35-1} \end{center}
 
     To find the variables computed by the stat, look for the section titled "computed variables" in the help for `geom_bar()`.
 
@@ -706,7 +756,9 @@ There are three reasons you might need to use a stat explicitly:
       )
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-36-1.png" title="A plot with depth on the y-axis and cut on the x-axis (with levels fair, good, very good, premium, and ideal) of diamonds in ggplot2::diamonds. For each level of cut, vertical lines extend from minimum to maximum depth for diamonds in that cut category, and the median depth is indicated on the line with a point." alt="A plot with depth on the y-axis and cut on the x-axis (with levels fair, good, very good, premium, and ideal) of diamonds in ggplot2::diamonds. For each level of cut, vertical lines extend from minimum to maximum depth for diamonds in that cut category, and the median depth is indicated on the line with a point." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-36-1} \end{center}
 
 ggplot2 provides over 20 stats for you to use.
 Each stat is a function, so you can get help in the usual way, e.g. `?stat_bin`.
@@ -752,7 +804,8 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = cut))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-38-1.png" title="Two bar charts of cut of diamonds in ggplot2::diamonds. In the first plot, the bars have coloured borders. In the second plot, they're filled with colours. Heights of the bars correspond to the number of diamonds in each cut category." alt="Two bar charts of cut of diamonds in ggplot2::diamonds. In the first plot, the bars have coloured borders. In the second plot, they're filled with colours. Heights of the bars correspond to the number of diamonds in each cut category." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-38-2.png" title="Two bar charts of cut of diamonds in ggplot2::diamonds. In the first plot, the bars have coloured borders. In the second plot, they're filled with colours. Heights of the bars correspond to the number of diamonds in each cut category." alt="Two bar charts of cut of diamonds in ggplot2::diamonds. In the first plot, the bars have coloured borders. In the second plot, they're filled with colours. Heights of the bars correspond to the number of diamonds in each cut category." width="50%" />
+
+\includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-38-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-38-2} 
 
 Note what happens if you map the fill aesthetic to another variable, like `clarity`: the bars are automatically stacked.
 Each coloured rectangle represents a combination of `cut` and `clarity`.
@@ -763,7 +816,9 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity))
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-39-1.png" title="Segmented bar chart of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Heights of the bars correspond to the number of diamonds in each cut category, and heights of the coloured segments are proportional to the number of diamonds with a given clarity level within a given cut level." alt="Segmented bar chart of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Heights of the bars correspond to the number of diamonds in each cut category, and heights of the coloured segments are proportional to the number of diamonds with a given clarity level within a given cut level." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-39-1} \end{center}
 
 The stacking is performed automatically by the **position adjustment** specified by the `position` argument.
 If you don't want a stacked bar chart, you can use one of three other options: `"identity"`, `"dodge"` or `"fill"`.
@@ -780,7 +835,8 @@ If you don't want a stacked bar chart, you can use one of three other options: `
       geom_bar(fill = NA, position = "identity")
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-40-1.png" title="Two segmented bar charts of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Heights of the bars correspond to the number of diamonds in each cut category, and heights of the coloured segments are proportional to the number of diamonds with a given clarity level within a given cut level. However the segments overlap. In the first plot the segments are filled with transparent colours, in the second plot the segments are only outlined with colours." alt="Two segmented bar charts of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Heights of the bars correspond to the number of diamonds in each cut category, and heights of the coloured segments are proportional to the number of diamonds with a given clarity level within a given cut level. However the segments overlap. In the first plot the segments are filled with transparent colours, in the second plot the segments are only outlined with colours." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-40-2.png" title="Two segmented bar charts of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Heights of the bars correspond to the number of diamonds in each cut category, and heights of the coloured segments are proportional to the number of diamonds with a given clarity level within a given cut level. However the segments overlap. In the first plot the segments are filled with transparent colours, in the second plot the segments are only outlined with colours." alt="Two segmented bar charts of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Heights of the bars correspond to the number of diamonds in each cut category, and heights of the coloured segments are proportional to the number of diamonds with a given clarity level within a given cut level. However the segments overlap. In the first plot the segments are filled with transparent colours, in the second plot the segments are only outlined with colours." width="50%" />
+    
+    \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-40-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-40-2} 
 
     The identity position adjustment is more useful for 2d geoms, like points, where it is the default.
 
@@ -793,7 +849,9 @@ If you don't want a stacked bar chart, you can use one of three other options: `
       geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-41-1.png" title="Segmented bar chart of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Height of each bar is 1 and heights of the coloured segments are proportional to the proportion of diamonds with a given clarity level within a given cut level." alt="Segmented bar chart of cut of diamonds in ggplot2::diamonds, where each bar is filled with colours for the levels of clarity. Height of each bar is 1 and heights of the coloured segments are proportional to the proportion of diamonds with a given clarity level within a given cut level." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-41-1} \end{center}
 
 -   `position = "dodge"` places overlapping objects directly *beside* one another.
     This makes it easier to compare individual values.
@@ -804,13 +862,16 @@ If you don't want a stacked bar chart, you can use one of three other options: `
       geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-42-1.png" title="Dodged bar chart of cut of diamonds in ggplot2::diamonds. Dodged bars are grouped by levels of cut (fair, good, very good, premium, and ideal). In each group there are eight bars, one for each level of clarity, and filled with a different color for each level. Heights of these bars represent the number of diamonds with a given level of cut and clarity." alt="Dodged bar chart of cut of diamonds in ggplot2::diamonds. Dodged bars are grouped by levels of cut (fair, good, very good, premium, and ideal). In each group there are eight bars, one for each level of clarity, and filled with a different color for each level. Heights of these bars represent the number of diamonds with a given level of cut and clarity." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-42-1} \end{center}
 
 There's one other type of adjustment that's not useful for bar charts, but it can be very useful for scatterplots.
 Recall our first scatterplot.
 Did you notice that the plot displays only 126 points, even though there are 234 observations in the dataset?
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-43-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association." width="70%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-43-1} \end{center}
 
 The underlying values of `hwy` and `displ` are rounded so the points appear on a grid and many points overlap each other.
 This problem is known as **overplotting**.
@@ -827,7 +888,9 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 ```
 
-<img src="data-visualize_files/figure-html/unnamed-chunk-44-1.png" title="Jittered scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association." alt="Jittered scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association." width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-44-1} \end{center}
 
 Adding randomness seems like a strange way to improve your plot, but while it makes your graph less accurate at small scales, it makes your graph *more* revealing at large scales.
 Because this is such a useful operation, ggplot2 comes with a shorthand for `geom_point(position = "jitter")`: `geom_jitter()`.
@@ -845,7 +908,9 @@ To learn more about a position adjustment, look up the help page associated with
       geom_point()
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-45-1.png" title="Scatterplot of highway fuel efficiency versus city fuel efficiency of cars in ggplot2::mpg that shows a positive association. The number of points visible in this plot is less than the number of points in the dataset." alt="Scatterplot of highway fuel efficiency versus city fuel efficiency of cars in ggplot2::mpg that shows a positive association. The number of points visible in this plot is less than the number of points in the dataset." width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-45-1} \end{center}
 
 2.  What parameters to `geom_jitter()` control the amount of jittering?
 
@@ -873,7 +938,8 @@ There are a number of other coordinate systems that are occasionally helpful.
       coord_flip()
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-46-1.png" title="Two side-by-side box plots of highway fuel efficiency of cars in ggplot2::mpg. A separate box plot is created for cars in each level of class (2seater, compact, midsize, minivan, pickup, subcompact, and suv). In the first plot class is on the x-axis, in the second plot class is on the y-axis. The second plot makes it easier to read the names of the levels of class since they're listed down the y-axis, avoiding overlap." alt="Two side-by-side box plots of highway fuel efficiency of cars in ggplot2::mpg. A separate box plot is created for cars in each level of class (2seater, compact, midsize, minivan, pickup, subcompact, and suv). In the first plot class is on the x-axis, in the second plot class is on the y-axis. The second plot makes it easier to read the names of the levels of class since they're listed down the y-axis, avoiding overlap." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-46-2.png" title="Two side-by-side box plots of highway fuel efficiency of cars in ggplot2::mpg. A separate box plot is created for cars in each level of class (2seater, compact, midsize, minivan, pickup, subcompact, and suv). In the first plot class is on the x-axis, in the second plot class is on the y-axis. The second plot makes it easier to read the names of the levels of class since they're listed down the y-axis, avoiding overlap." alt="Two side-by-side box plots of highway fuel efficiency of cars in ggplot2::mpg. A separate box plot is created for cars in each level of class (2seater, compact, midsize, minivan, pickup, subcompact, and suv). In the first plot class is on the x-axis, in the second plot class is on the y-axis. The second plot makes it easier to read the names of the levels of class since they're listed down the y-axis, avoiding overlap." width="50%" />
+    
+    \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-46-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-46-2} 
 
     However, note that you can achieve the same result by flipping the aesthetic mappings of the two variables.
 
@@ -883,7 +949,8 @@ There are a number of other coordinate systems that are occasionally helpful.
       geom_boxplot()
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-47-1.png" title="Side-by-side box plots of highway fuel efficiency of cars in ggplot2::mpg. A separate box plot is drawn along the y-axis for cars in each level of class (2seater, compact, midsize, minivan, pickup, subcompact, and suv)." alt="Side-by-side box plots of highway fuel efficiency of cars in ggplot2::mpg. A separate box plot is drawn along the y-axis for cars in each level of class (2seater, compact, midsize, minivan, pickup, subcompact, and suv)." width="70%" />
+    
+    \includegraphics[width=0.7\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-47-1} 
 
 -   `coord_quickmap()` sets the aspect ratio correctly for maps.
     This is very important if you're plotting spatial data with ggplot2 (which unfortunately we don't have the space to cover in this book).
@@ -898,7 +965,8 @@ There are a number of other coordinate systems that are occasionally helpful.
       coord_quickmap()
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-48-1.png" title="Two maps of the boundaries of New Zealand. In the first plot the aspect ratio is incorrect, in the second plot it's correct." alt="Two maps of the boundaries of New Zealand. In the first plot the aspect ratio is incorrect, in the second plot it's correct." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-48-2.png" title="Two maps of the boundaries of New Zealand. In the first plot the aspect ratio is incorrect, in the second plot it's correct." alt="Two maps of the boundaries of New Zealand. In the first plot the aspect ratio is incorrect, in the second plot it's correct." width="50%" />
+    
+    \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-48-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-48-2} 
 
 -   `coord_polar()` uses polar coordinates.
     Polar coordinates reveal an interesting connection between a bar chart and a Coxcomb chart.
@@ -917,7 +985,8 @@ There are a number of other coordinate systems that are occasionally helpful.
     bar + coord_polar()
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-49-1.png" title="Two plots: on the left is a bar chart of cut of diamonds in ggplot2::diamonds, on the right is a Coxcomb chart of the same data." alt="Two plots: on the left is a bar chart of cut of diamonds in ggplot2::diamonds, on the right is a Coxcomb chart of the same data." width="50%" /><img src="data-visualize_files/figure-html/unnamed-chunk-49-2.png" title="Two plots: on the left is a bar chart of cut of diamonds in ggplot2::diamonds, on the right is a Coxcomb chart of the same data." alt="Two plots: on the left is a bar chart of cut of diamonds in ggplot2::diamonds, on the right is a Coxcomb chart of the same data." width="50%" />
+    
+    \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-49-1} \includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-49-2} 
 
 ### Exercises
 
@@ -940,7 +1009,9 @@ There are a number of other coordinate systems that are occasionally helpful.
       coord_fixed()
     ```
     
-    <img src="data-visualize_files/figure-html/unnamed-chunk-50-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The plot also has a straight line that follows the trend of the relationship between the variables but doesn't go through the cloud of points, it's beneath it." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The plot also has a straight line that follows the trend of the relationship between the variables but doesn't go through the cloud of points, it's beneath it." width="50%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.5\linewidth]{data-visualize_files/figure-latex/unnamed-chunk-50-1} \end{center}
 
 ## The layered grammar of graphics
 
@@ -965,20 +1036,23 @@ The grammar of graphics is based on the insight that you can uniquely describe *
 
 To see how this works, consider how you could build a basic plot from scratch: you could start with a dataset and then transform it into the information that you want to display (with a stat).
 
-<img src="images/visualization-grammar-1.png" title="A figure demonstrating the steps for going from raw data (ggplot2::diamonds) to table of counts where each row represents one level of cut and a count column shows how many diamonds are in that cut level. Steps 1 and 2 are annotated: 1. Begin with the diamonds dataset. 2. Compute counts for each cut value with stat_count()." alt="A figure demonstrating the steps for going from raw data (ggplot2::diamonds) to table of counts where each row represents one level of cut and a count column shows how many diamonds are in that cut level. Steps 1 and 2 are annotated: 1. Begin with the diamonds dataset. 2. Compute counts for each cut value with stat_count()." width="100%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=1\linewidth]{images/visualization-grammar-1} \end{center}
 
 Next, you could choose a geometric object to represent each observation in the transformed data.
 You could then use the aesthetic properties of the geoms to represent variables in the data.
 You would map the values of each variable to the levels of an aesthetic.
 
-<img src="images/visualization-grammar-2.png" title="A figure demonstrating the steps for going from raw data (ggplot2::diamonds) to table of counts where each row represents one level of cut and a count column shows how many diamonds are in that cut level. Each level is also mapped to a color. Steps 3 and 4 are annotated: 3. Represent each observation with a bar. 4. Map the fill of each bar to the ..count.. variable." alt="A figure demonstrating the steps for going from raw data (ggplot2::diamonds) to table of counts where each row represents one level of cut and a count column shows how many diamonds are in that cut level. Each level is also mapped to a color. Steps 3 and 4 are annotated: 3. Represent each observation with a bar. 4. Map the fill of each bar to the ..count.. variable." width="100%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=1\linewidth]{images/visualization-grammar-2} \end{center}
 
 You'd then select a coordinate system to place the geoms into.
 You'd use the location of the objects (which is itself an aesthetic property) to display the values of the x and y variables.
 At that point, you would have a complete graph, but you could further adjust the positions of the geoms within the coordinate system (a position adjustment) or split the graph into subplots (faceting).
 You could also extend the plot by adding one or more additional layers, where each additional layer uses a dataset, a geom, a set of mappings, a stat, and a position adjustment.
 
-<img src="images/visualization-grammar-3.png" title="A figure demonstrating the steps for going from raw data (ggplot2::diamonds) to bar chart where each bar represents one level of cut and filled in with a different color. Steps 5 and 6 are annotated: 5. Place geoms in a Cartesian coordinate system. 6. Map the y values to ..count.. and the x values to cut." alt="A figure demonstrating the steps for going from raw data (ggplot2::diamonds) to bar chart where each bar represents one level of cut and filled in with a different color. Steps 5 and 6 are annotated: 5. Place geoms in a Cartesian coordinate system. 6. Map the y values to ..count.. and the x values to cut." width="100%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=1\linewidth]{images/visualization-grammar-3} \end{center}
 
 You could use this method to build *any* plot that you imagine.
 In other words, you can use the code template that you've learned in this chapter to build hundreds of thousands of unique plots.

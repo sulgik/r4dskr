@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16 날짜와 시간 | R 을 활용한 데이터과학</title>
   <meta name="description" content="16 날짜와 시간 | R 을 활용한 데이터과학" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16 날짜와 시간 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="factors.html"/>
 <link rel="next" href="program-intro.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -180,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.3" data-path="data-visualisation.html"><a href="data-visualisation.html#그래프-작성-템플릿"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 템플릿</a></li>
 <li class="chapter" data-level="3.2.4" data-path="data-visualisation.html"><a href="data-visualisation.html#연습문제"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a><ul>
+<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#심미성-매핑"><i class="fa fa-check"></i><b>3.3</b> 심미성 매핑</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises"><i class="fa fa-check"></i><b>3.3.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
@@ -1038,7 +1038,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">16.4.4</span> 요약</h3>
 <p>듀레이션형, 피리어드형, 인터벌형 중에서 선택은 어떻게 해야 하는가? 언제나 그렇듯이 주어진 문제를 해결하는 가장 간단한 데이터 구조를 선택하라. 단지 물리적인 시간만 고려하는 경우에는 듀레이션형을 사용하라. 사람의 시간을 추가해야 하는 경우에는 피리어드형을 사용하라. 사람이 사용하는 시간단위로 파악해야 하는 경우에는 인터벌형을 사용하라.</p>
 <p>Figure <a href="dates-and-times.html#fig:dt-algebra">16.1</a> 은 다른 데이터 유형 사이에 허용된 산술연산을 요약한 것이다.</p>
-<div class="figure" style="text-align: center"><span id="fig:dt-algebra"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dt-algebra"></span>
 <img src="diagrams/datetimes-arithmetic.png" alt="The allowed arithmetic operations between pairs of date/time classes." width="70%" />
 <p class="caption">
 Figure 16.1: The allowed arithmetic operations between pairs of date/time classes.
@@ -1154,6 +1154,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

@@ -4,7 +4,8 @@
 
 여기에서는 시각화 및 모델링하기 편한 형태로 데이터를 R로 가져오는 기술인 데이터 길들이기(wrangling)에 대해 배운다. 이 단계 없이는 데이터 작업을 할 수 없기 때문에 매우 중요한 부분이다. 그림과 같이 ‘데이터 길들이기’에는 세 가지 주요 파트가 있다.
 
-<img src="diagrams/data-science-wrangle-kr.png" width="75%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.75\linewidth]{diagrams/data-science-wrangle-kr} \end{center}
 
 다음과 같이 진행된다. 
  

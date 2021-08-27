@@ -7,7 +7,8 @@
 테스트한 다음 이를 계속해서 반복, 반복, 또 반복하는 기술이다. 
 데이터 탐색의 목표는 나중에 더 깊게 탐색할 단서들을 생성하는 것이다.
 
-<img src="diagrams/data-science-explore.png" width="75%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.75\linewidth]{diagrams/data-science-explore} \end{center}
 
 
 1부에서는 즉각적인 도움을 바로 얻을 수 있는 유용한 도구 몇 개를 배울 것이다.

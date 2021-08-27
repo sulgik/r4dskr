@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 팩터형 | R 을 활용한 데이터과학</title>
   <meta name="description" content="15 팩터형 | R 을 활용한 데이터과학" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 팩터형 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="strings.html"/>
 <link rel="next" href="dates-and-times.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +51,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
@@ -66,18 +66,18 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -97,7 +97,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -148,16 +148,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>환영합니다</a></li>
-<li class="chapter" data-level="1" data-path="서문.html"><a href="서문.html"><i class="fa fa-check"></i><b>1</b> 서문</a><ul>
+<li class="chapter" data-level="1" data-path="서문.html"><a href="서문.html"><i class="fa fa-check"></i><b>1</b> 서문</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="서문.html"><a href="서문.html#무엇을-배우게-될까"><i class="fa fa-check"></i><b>1.1</b> 무엇을 배우게 될까</a></li>
 <li class="chapter" data-level="1.2" data-path="서문.html"><a href="서문.html#이-책의-구성"><i class="fa fa-check"></i><b>1.2</b> 이 책의 구성</a></li>
-<li class="chapter" data-level="1.3" data-path="서문.html"><a href="서문.html#배우지-않는-것"><i class="fa fa-check"></i><b>1.3</b> 배우지 않는 것</a><ul>
+<li class="chapter" data-level="1.3" data-path="서문.html"><a href="서문.html#배우지-않는-것"><i class="fa fa-check"></i><b>1.3</b> 배우지 않는 것</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="서문.html"><a href="서문.html#빅데이터"><i class="fa fa-check"></i><b>1.3.1</b> 빅데이터</a></li>
 <li class="chapter" data-level="1.3.2" data-path="서문.html"><a href="서문.html#python-julia"><i class="fa fa-check"></i><b>1.3.2</b> Python, Julia</a></li>
 <li class="chapter" data-level="1.3.3" data-path="서문.html"><a href="서문.html#비직사각형-데이터"><i class="fa fa-check"></i><b>1.3.3</b> 비직사각형 데이터</a></li>
 <li class="chapter" data-level="1.3.4" data-path="서문.html"><a href="서문.html#가설-확인"><i class="fa fa-check"></i><b>1.3.4</b> 가설 확인</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="서문.html"><a href="서문.html#준비하기"><i class="fa fa-check"></i><b>1.4</b> 준비하기</a><ul>
+<li class="chapter" data-level="1.4" data-path="서문.html"><a href="서문.html#준비하기"><i class="fa fa-check"></i><b>1.4</b> 준비하기</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="서문.html"><a href="서문.html#r"><i class="fa fa-check"></i><b>1.4.1</b> R</a></li>
 <li class="chapter" data-level="1.4.2" data-path="서문.html"><a href="서문.html#rstudio"><i class="fa fa-check"></i><b>1.4.2</b> RStudio</a></li>
 <li class="chapter" data-level="1.4.3" data-path="서문.html"><a href="서문.html#tidyverse"><i class="fa fa-check"></i><b>1.4.3</b> Tidyverse</a></li>
@@ -170,48 +173,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>I 탐색하기</b></span></li>
 <li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> 소개</a></li>
-<li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> 데이터 시각화</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#들어가기"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> 데이터 시각화</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#들어가기"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="data-visualisation.html"><a href="data-visualisation.html#준비하기-1"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="data-visualisation.html"><a href="data-visualisation.html#첫-단계"><i class="fa fa-check"></i><b>3.2</b> 첫 단계</a><ul>
+<li class="chapter" data-level="3.2" data-path="data-visualisation.html"><a href="data-visualisation.html#첫-단계"><i class="fa fa-check"></i><b>3.2</b> 첫 단계</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="data-visualisation.html"><a href="data-visualisation.html#mpg-데이터프레임"><i class="fa fa-check"></i><b>3.2.1</b> <code>mpg</code> 데이터프레임</a></li>
 <li class="chapter" data-level="3.2.2" data-path="data-visualisation.html"><a href="data-visualisation.html#ggplot-생성하기"><i class="fa fa-check"></i><b>3.2.2</b> ggplot 생성하기</a></li>
 <li class="chapter" data-level="3.2.3" data-path="data-visualisation.html"><a href="data-visualisation.html#그래프-작성-템플릿"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 템플릿</a></li>
 <li class="chapter" data-level="3.2.4" data-path="data-visualisation.html"><a href="data-visualisation.html#연습문제"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a><ul>
+<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#심미성-매핑"><i class="fa fa-check"></i><b>3.3</b> 심미성 매핑</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises"><i class="fa fa-check"></i><b>3.3.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
-<li class="chapter" data-level="3.5" data-path="data-visualisation.html"><a href="data-visualisation.html#facets"><i class="fa fa-check"></i><b>3.5</b> Facets</a><ul>
+<li class="chapter" data-level="3.5" data-path="data-visualisation.html"><a href="data-visualisation.html#facets"><i class="fa fa-check"></i><b>3.5</b> Facets</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="data-visualisation.html"><a href="data-visualisation.html#geometric-objects"><i class="fa fa-check"></i><b>3.6</b> Geometric objects</a><ul>
+<li class="chapter" data-level="3.6" data-path="data-visualisation.html"><a href="data-visualisation.html#geometric-objects"><i class="fa fa-check"></i><b>3.6</b> Geometric objects</a>
+<ul>
 <li class="chapter" data-level="3.6.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-2"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
 <li class="chapter" data-level="3.6.2" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-3"><i class="fa fa-check"></i><b>3.6.2</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="data-visualisation.html"><a href="data-visualisation.html#position-adjustments"><i class="fa fa-check"></i><b>3.7</b> Position adjustments</a><ul>
+<li class="chapter" data-level="3.7" data-path="data-visualisation.html"><a href="data-visualisation.html#position-adjustments"><i class="fa fa-check"></i><b>3.7</b> Position adjustments</a>
+<ul>
 <li class="chapter" data-level="3.7.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-4"><i class="fa fa-check"></i><b>3.7.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="data-visualisation.html"><a href="data-visualisation.html#coordinate-systems"><i class="fa fa-check"></i><b>3.8</b> Coordinate systems</a><ul>
+<li class="chapter" data-level="3.8" data-path="data-visualisation.html"><a href="data-visualisation.html#coordinate-systems"><i class="fa fa-check"></i><b>3.8</b> Coordinate systems</a>
+<ul>
 <li class="chapter" data-level="3.8.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-5"><i class="fa fa-check"></i><b>3.8.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.9" data-path="data-visualisation.html"><a href="data-visualisation.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>3.9</b> The layered grammar of graphics</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="workflow-basics.html"><a href="workflow-basics.html#coding-basics"><i class="fa fa-check"></i><b>4.1</b> Coding basics</a></li>
 <li class="chapter" data-level="4.2" data-path="workflow-basics.html"><a href="workflow-basics.html#whats-in-a-name"><i class="fa fa-check"></i><b>4.2</b> What’s in a name?</a></li>
 <li class="chapter" data-level="4.3" data-path="workflow-basics.html"><a href="workflow-basics.html#calling-functions"><i class="fa fa-check"></i><b>4.3</b> Calling functions</a></li>
 <li class="chapter" data-level="4.4" data-path="workflow-basics.html"><a href="workflow-basics.html#exercises-6"><i class="fa fa-check"></i><b>4.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-transform.html"><a href="data-transform.html"><i class="fa fa-check"></i><b>5</b> Data transformation</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-transform.html"><a href="data-transform.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5" data-path="data-transform.html"><a href="data-transform.html"><i class="fa fa-check"></i><b>5</b> Data transformation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-transform.html"><a href="data-transform.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="data-transform.html"><a href="data-transform.html#prerequisites"><i class="fa fa-check"></i><b>5.1.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="5.1.2" data-path="data-transform.html"><a href="data-transform.html#nycflights13"><i class="fa fa-check"></i><b>5.1.2</b> nycflights13</a></li>
 <li class="chapter" data-level="5.1.3" data-path="data-transform.html"><a href="data-transform.html#dplyr-basics"><i class="fa fa-check"></i><b>5.1.3</b> dplyr basics</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="data-transform.html"><a href="data-transform.html#rows"><i class="fa fa-check"></i><b>5.2</b> Rows</a><ul>
+<li class="chapter" data-level="5.2" data-path="data-transform.html"><a href="data-transform.html#rows"><i class="fa fa-check"></i><b>5.2</b> Rows</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="data-transform.html"><a href="data-transform.html#filter"><i class="fa fa-check"></i><b>5.2.1</b> <code>filter()</code></a></li>
 <li class="chapter" data-level="5.2.2" data-path="data-transform.html"><a href="data-transform.html#arrange"><i class="fa fa-check"></i><b>5.2.2</b> <code>arrange()</code></a></li>
 <li class="chapter" data-level="5.2.3" data-path="data-transform.html"><a href="data-transform.html#exercises-7"><i class="fa fa-check"></i><b>5.2.3</b> Exercises</a></li>
@@ -221,7 +236,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.7" data-path="data-transform.html"><a href="data-transform.html#relocate"><i class="fa fa-check"></i><b>5.2.7</b> <code>relocate()</code></a></li>
 <li class="chapter" data-level="5.2.8" data-path="data-transform.html"><a href="data-transform.html#exercises-8"><i class="fa fa-check"></i><b>5.2.8</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="data-transform.html"><a href="data-transform.html#groups"><i class="fa fa-check"></i><b>5.3</b> Groups</a><ul>
+<li class="chapter" data-level="5.3" data-path="data-transform.html"><a href="data-transform.html#groups"><i class="fa fa-check"></i><b>5.3</b> Groups</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="data-transform.html"><a href="data-transform.html#group_by"><i class="fa fa-check"></i><b>5.3.1</b> <code>group_by()</code></a></li>
 <li class="chapter" data-level="5.3.2" data-path="data-transform.html"><a href="data-transform.html#summarise"><i class="fa fa-check"></i><b>5.3.2</b> <code>summarise()</code></a></li>
 <li class="chapter" data-level="5.3.3" data-path="data-transform.html"><a href="data-transform.html#combining-multiple-operations"><i class="fa fa-check"></i><b>5.3.3</b> Combining multiple operations</a></li>
@@ -232,26 +248,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.8" data-path="data-transform.html"><a href="data-transform.html#exercises-9"><i class="fa fa-check"></i><b>5.3.8</b> Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a><ul>
+<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
 <li class="chapter" data-level="6.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
 <li class="chapter" data-level="6.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#exercises-10"><i class="fa fa-check"></i><b>6.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html"><i class="fa fa-check"></i><b>7</b> 탐색적 데이터 분석</a><ul>
-<li class="chapter" data-level="7.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#들어가기-1"><i class="fa fa-check"></i><b>7.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="7" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html"><i class="fa fa-check"></i><b>7</b> 탐색적 데이터 분석</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#들어가기-1"><i class="fa fa-check"></i><b>7.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#준비하기-2"><i class="fa fa-check"></i><b>7.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#questions"><i class="fa fa-check"></i><b>7.2</b> Questions</a></li>
-<li class="chapter" data-level="7.3" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#변동"><i class="fa fa-check"></i><b>7.3</b> 변동</a><ul>
+<li class="chapter" data-level="7.3" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#변동"><i class="fa fa-check"></i><b>7.3</b> 변동</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#분포-시각화"><i class="fa fa-check"></i><b>7.3.1</b> 분포 시각화</a></li>
 <li class="chapter" data-level="7.3.2" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#typical-values"><i class="fa fa-check"></i><b>7.3.2</b> Typical values</a></li>
 <li class="chapter" data-level="7.3.3" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#unusual-values"><i class="fa fa-check"></i><b>7.3.3</b> Unusual values</a></li>
 <li class="chapter" data-level="7.3.4" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#exercises-11"><i class="fa fa-check"></i><b>7.3.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#missing-values"><i class="fa fa-check"></i><b>7.4</b> Missing values</a><ul>
+<li class="chapter" data-level="7.4" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#missing-values"><i class="fa fa-check"></i><b>7.4</b> Missing values</a>
+<ul>
 <li class="chapter" data-level="7.4.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#exercises-12"><i class="fa fa-check"></i><b>7.4.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#covariation"><i class="fa fa-check"></i><b>7.5</b> Covariation</a><ul>
+<li class="chapter" data-level="7.5" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#covariation"><i class="fa fa-check"></i><b>7.5</b> Covariation</a>
+<ul>
 <li class="chapter" data-level="7.5.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#cat-cont"><i class="fa fa-check"></i><b>7.5.1</b> A categorical and continuous variable</a></li>
 <li class="chapter" data-level="7.5.2" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#two-categorical-variables"><i class="fa fa-check"></i><b>7.5.2</b> Two categorical variables</a></li>
 <li class="chapter" data-level="7.5.3" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#two-continuous-variables"><i class="fa fa-check"></i><b>7.5.3</b> Two continuous variables</a></li>
@@ -260,41 +282,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#ggplot2-calls"><i class="fa fa-check"></i><b>7.7</b> ggplot2 calls</a></li>
 <li class="chapter" data-level="7.8" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#learning-more"><i class="fa fa-check"></i><b>7.8</b> Learning more</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="workflow-projects.html"><a href="workflow-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: projects</a><ul>
+<li class="chapter" data-level="8" data-path="workflow-projects.html"><a href="workflow-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: projects</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="workflow-projects.html"><a href="workflow-projects.html#where-does-your-analysis-live"><i class="fa fa-check"></i><b>8.1</b> Where does your analysis live?</a></li>
 <li class="chapter" data-level="8.2" data-path="workflow-projects.html"><a href="workflow-projects.html#paths-and-directories"><i class="fa fa-check"></i><b>8.2</b> Paths and directories</a></li>
 <li class="chapter" data-level="8.3" data-path="workflow-projects.html"><a href="workflow-projects.html#rstudio-projects"><i class="fa fa-check"></i><b>8.3</b> RStudio projects</a></li>
 </ul></li>
 <li class="part"><span><b>II 데이터 길들이기</b></span></li>
 <li class="chapter" data-level="9" data-path="wrangle-intro.html"><a href="wrangle-intro.html"><i class="fa fa-check"></i><b>9</b> 소개</a></li>
-<li class="chapter" data-level="10" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>10</b> 티블</a><ul>
-<li class="chapter" data-level="10.1" data-path="tibble.html"><a href="tibble.html#들어가기-2"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="10" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>10</b> 티블</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="tibble.html"><a href="tibble.html#들어가기-2"><i class="fa fa-check"></i><b>10.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="tibble.html"><a href="tibble.html#준비하기-3"><i class="fa fa-check"></i><b>10.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="tibble.html"><a href="tibble.html#tibbles"><i class="fa fa-check"></i><b>10.2</b> tibble 생성하기</a></li>
-<li class="chapter" data-level="10.3" data-path="tibble.html"><a href="tibble.html#tibble-vs.-data.frame"><i class="fa fa-check"></i><b>10.3</b> Tibble vs. data.frame</a><ul>
+<li class="chapter" data-level="10.3" data-path="tibble.html"><a href="tibble.html#tibble-vs.-data.frame"><i class="fa fa-check"></i><b>10.3</b> Tibble vs. data.frame</a>
+<ul>
 <li class="chapter" data-level="10.3.1" data-path="tibble.html"><a href="tibble.html#화면출력"><i class="fa fa-check"></i><b>10.3.1</b> 화면출력</a></li>
 <li class="chapter" data-level="10.3.2" data-path="tibble.html"><a href="tibble.html#서브셋하기"><i class="fa fa-check"></i><b>10.3.2</b> 서브셋하기</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="tibble.html"><a href="tibble.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>10.4</b> 이전 코드와 상호작용</a></li>
 <li class="chapter" data-level="10.5" data-path="tibble.html"><a href="tibble.html#연습문제-1"><i class="fa fa-check"></i><b>10.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>11</b> 데이터 불러오기</a><ul>
-<li class="chapter" data-level="11.1" data-path="data-import.html"><a href="data-import.html#들어가기-3"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="11" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>11</b> 데이터 불러오기</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="data-import.html"><a href="data-import.html#들어가기-3"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="data-import.html"><a href="data-import.html#준비하기-4"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="data-import.html"><a href="data-import.html#시작하기"><i class="fa fa-check"></i><b>11.2</b> 시작하기</a><ul>
+<li class="chapter" data-level="11.2" data-path="data-import.html"><a href="data-import.html#시작하기"><i class="fa fa-check"></i><b>11.2</b> 시작하기</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="data-import.html"><a href="data-import.html#베이스-r과-비교"><i class="fa fa-check"></i><b>11.2.1</b> 베이스 R과 비교</a></li>
 <li class="chapter" data-level="11.2.2" data-path="data-import.html"><a href="data-import.html#연습문제-2"><i class="fa fa-check"></i><b>11.2.2</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="data-import.html"><a href="data-import.html#벡터-파싱하기"><i class="fa fa-check"></i><b>11.3</b> 벡터 파싱하기</a><ul>
+<li class="chapter" data-level="11.3" data-path="data-import.html"><a href="data-import.html#벡터-파싱하기"><i class="fa fa-check"></i><b>11.3</b> 벡터 파싱하기</a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="data-import.html"><a href="data-import.html#숫자"><i class="fa fa-check"></i><b>11.3.1</b> 숫자</a></li>
 <li class="chapter" data-level="11.3.2" data-path="data-import.html"><a href="data-import.html#readr-strings"><i class="fa fa-check"></i><b>11.3.2</b> 문자열</a></li>
 <li class="chapter" data-level="11.3.3" data-path="data-import.html"><a href="data-import.html#readr-factors"><i class="fa fa-check"></i><b>11.3.3</b> 팩터형</a></li>
 <li class="chapter" data-level="11.3.4" data-path="data-import.html"><a href="data-import.html#readr-datetimes"><i class="fa fa-check"></i><b>11.3.4</b> 데이트형, 데이트-타임형, 타임형</a></li>
 <li class="chapter" data-level="11.3.5" data-path="data-import.html"><a href="data-import.html#연습문제-3"><i class="fa fa-check"></i><b>11.3.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="data-import.html"><a href="data-import.html#파일-파싱하기"><i class="fa fa-check"></i><b>11.4</b> 파일 파싱하기</a><ul>
+<li class="chapter" data-level="11.4" data-path="data-import.html"><a href="data-import.html#파일-파싱하기"><i class="fa fa-check"></i><b>11.4</b> 파일 파싱하기</a>
+<ul>
 <li class="chapter" data-level="11.4.1" data-path="data-import.html"><a href="data-import.html#전략"><i class="fa fa-check"></i><b>11.4.1</b> 전략</a></li>
 <li class="chapter" data-level="11.4.2" data-path="data-import.html"><a href="data-import.html#문제점"><i class="fa fa-check"></i><b>11.4.2</b> 문제점</a></li>
 <li class="chapter" data-level="11.4.3" data-path="data-import.html"><a href="data-import.html#기타-전략"><i class="fa fa-check"></i><b>11.4.3</b> 기타 전략</a></li>
@@ -302,42 +333,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="data-import.html"><a href="data-import.html#파일에-쓰기"><i class="fa fa-check"></i><b>11.5</b> 파일에 쓰기</a></li>
 <li class="chapter" data-level="11.6" data-path="data-import.html"><a href="data-import.html#기타-데이터-유형"><i class="fa fa-check"></i><b>11.6</b> 기타 데이터 유형</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>12</b> 타이디 데이터</a><ul>
-<li class="chapter" data-level="12.1" data-path="tidy-data.html"><a href="tidy-data.html#들어가기-4"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="12" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>12</b> 타이디 데이터</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="tidy-data.html"><a href="tidy-data.html#들어가기-4"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="12.1.1" data-path="tidy-data.html"><a href="tidy-data.html#준비하기-5"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>12.2</b> Tidy Data</a><ul>
+<li class="chapter" data-level="12.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>12.2</b> Tidy Data</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-4"><i class="fa fa-check"></i><b>12.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="tidy-data.html"><a href="tidy-data.html#피봇팅"><i class="fa fa-check"></i><b>12.3</b> 피봇팅</a><ul>
+<li class="chapter" data-level="12.3" data-path="tidy-data.html"><a href="tidy-data.html#피봇팅"><i class="fa fa-check"></i><b>12.3</b> 피봇팅</a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="tidy-data.html"><a href="tidy-data.html#longer"><i class="fa fa-check"></i><b>12.3.1</b> Longer</a></li>
 <li class="chapter" data-level="12.3.2" data-path="tidy-data.html"><a href="tidy-data.html#wider"><i class="fa fa-check"></i><b>12.3.2</b> Wider</a></li>
 <li class="chapter" data-level="12.3.3" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-5"><i class="fa fa-check"></i><b>12.3.3</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="tidy-data.html"><a href="tidy-data.html#separate-과-unite"><i class="fa fa-check"></i><b>12.4</b> separate 과 unite</a><ul>
+<li class="chapter" data-level="12.4" data-path="tidy-data.html"><a href="tidy-data.html#separate-과-unite"><i class="fa fa-check"></i><b>12.4</b> separate 과 unite</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="tidy-data.html"><a href="tidy-data.html#separate"><i class="fa fa-check"></i><b>12.4.1</b> separate</a></li>
 <li class="chapter" data-level="12.4.2" data-path="tidy-data.html"><a href="tidy-data.html#unite"><i class="fa fa-check"></i><b>12.4.2</b> unite</a></li>
 <li class="chapter" data-level="12.4.3" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-6"><i class="fa fa-check"></i><b>12.4.3</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="tidy-data.html"><a href="tidy-data.html#결측값"><i class="fa fa-check"></i><b>12.5</b> 결측값</a><ul>
+<li class="chapter" data-level="12.5" data-path="tidy-data.html"><a href="tidy-data.html#결측값"><i class="fa fa-check"></i><b>12.5</b> 결측값</a>
+<ul>
 <li class="chapter" data-level="12.5.1" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-7"><i class="fa fa-check"></i><b>12.5.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="tidy-data.html"><a href="tidy-data.html#사례-연구"><i class="fa fa-check"></i><b>12.6</b> 사례 연구</a><ul>
+<li class="chapter" data-level="12.6" data-path="tidy-data.html"><a href="tidy-data.html#사례-연구"><i class="fa fa-check"></i><b>12.6</b> 사례 연구</a>
+<ul>
 <li class="chapter" data-level="12.6.1" data-path="tidy-data.html"><a href="tidy-data.html#연습문제-8"><i class="fa fa-check"></i><b>12.6.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="12.7" data-path="tidy-data.html"><a href="tidy-data.html#타이디하지-않은-데이터"><i class="fa fa-check"></i><b>12.7</b> 타이디하지 않은 데이터</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>13</b> 관계형 데이터</a><ul>
-<li class="chapter" data-level="13.1" data-path="relational-data.html"><a href="relational-data.html#들어가기-5"><i class="fa fa-check"></i><b>13.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="13" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>13</b> 관계형 데이터</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="relational-data.html"><a href="relational-data.html#들어가기-5"><i class="fa fa-check"></i><b>13.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="13.1.1" data-path="relational-data.html"><a href="relational-data.html#준비하기-6"><i class="fa fa-check"></i><b>13.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>13.2</b> nycflights13</a><ul>
+<li class="chapter" data-level="13.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>13.2</b> nycflights13</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="relational-data.html"><a href="relational-data.html#연습문제-9"><i class="fa fa-check"></i><b>13.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="relational-data.html"><a href="relational-data.html#키"><i class="fa fa-check"></i><b>13.3</b> 키</a><ul>
+<li class="chapter" data-level="13.3" data-path="relational-data.html"><a href="relational-data.html#키"><i class="fa fa-check"></i><b>13.3</b> 키</a>
+<ul>
 <li class="chapter" data-level="13.3.1" data-path="relational-data.html"><a href="relational-data.html#연습문제-10"><i class="fa fa-check"></i><b>13.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>13.4</b> 뮤테이팅 조인</a><ul>
+<li class="chapter" data-level="13.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>13.4</b> 뮤테이팅 조인</a>
+<ul>
 <li class="chapter" data-level="13.4.1" data-path="relational-data.html"><a href="relational-data.html#조인-이해하기"><i class="fa fa-check"></i><b>13.4.1</b> 조인 이해하기</a></li>
 <li class="chapter" data-level="13.4.2" data-path="relational-data.html"><a href="relational-data.html#inner-join"><i class="fa fa-check"></i><b>13.4.2</b> 내부 조인</a></li>
 <li class="chapter" data-level="13.4.3" data-path="relational-data.html"><a href="relational-data.html#outer-join"><i class="fa fa-check"></i><b>13.4.3</b> 외부 조인</a></li>
@@ -346,31 +389,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4.6" data-path="relational-data.html"><a href="relational-data.html#연습문제-11"><i class="fa fa-check"></i><b>13.4.6</b> 연습문제</a></li>
 <li class="chapter" data-level="13.4.7" data-path="relational-data.html"><a href="relational-data.html#기타-구현"><i class="fa fa-check"></i><b>13.4.7</b> 기타 구현</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>13.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="13.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>13.5</b> 필터링 조인</a>
+<ul>
 <li class="chapter" data-level="13.5.1" data-path="relational-data.html"><a href="relational-data.html#연습문제-12"><i class="fa fa-check"></i><b>13.5.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="13.6" data-path="relational-data.html"><a href="relational-data.html#조인-문제"><i class="fa fa-check"></i><b>13.6</b> 조인 문제</a></li>
 <li class="chapter" data-level="13.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>13.7</b> 집합 연산</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>14</b> 문자열</a><ul>
-<li class="chapter" data-level="14.1" data-path="strings.html"><a href="strings.html#들어가기-6"><i class="fa fa-check"></i><b>14.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="14" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>14</b> 문자열</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="strings.html"><a href="strings.html#들어가기-6"><i class="fa fa-check"></i><b>14.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="14.1.1" data-path="strings.html"><a href="strings.html#준비하기-7"><i class="fa fa-check"></i><b>14.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>14.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="14.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>14.2</b> 문자열 기초</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="strings.html"><a href="strings.html#문자열-길이"><i class="fa fa-check"></i><b>14.2.1</b> 문자열 길이</a></li>
 <li class="chapter" data-level="14.2.2" data-path="strings.html"><a href="strings.html#문자열-결합"><i class="fa fa-check"></i><b>14.2.2</b> 문자열 결합</a></li>
 <li class="chapter" data-level="14.2.3" data-path="strings.html"><a href="strings.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>14.2.3</b> 문자열 서브셋하기</a></li>
 <li class="chapter" data-level="14.2.4" data-path="strings.html"><a href="strings.html#로캘"><i class="fa fa-check"></i><b>14.2.4</b> 로캘</a></li>
 <li class="chapter" data-level="14.2.5" data-path="strings.html"><a href="strings.html#연습문제-13"><i class="fa fa-check"></i><b>14.2.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="strings.html"><a href="strings.html#정규표현식을-이용한-패턴-매칭"><i class="fa fa-check"></i><b>14.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="14.3" data-path="strings.html"><a href="strings.html#정규표현식을-이용한-패턴-매칭"><i class="fa fa-check"></i><b>14.3</b> 정규표현식을 이용한 패턴 매칭</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="strings.html"><a href="strings.html#기초-매칭"><i class="fa fa-check"></i><b>14.3.1</b> 기초 매칭</a></li>
 <li class="chapter" data-level="14.3.2" data-path="strings.html"><a href="strings.html#앵커"><i class="fa fa-check"></i><b>14.3.2</b> 앵커</a></li>
 <li class="chapter" data-level="14.3.3" data-path="strings.html"><a href="strings.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>14.3.3</b> 문자 클래스와 대체구문</a></li>
 <li class="chapter" data-level="14.3.4" data-path="strings.html"><a href="strings.html#반복"><i class="fa fa-check"></i><b>14.3.4</b> 반복</a></li>
 <li class="chapter" data-level="14.3.5" data-path="strings.html"><a href="strings.html#그룹화와-역참조"><i class="fa fa-check"></i><b>14.3.5</b> 그룹화와 역참조</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="strings.html"><a href="strings.html#도구"><i class="fa fa-check"></i><b>14.4</b> 도구</a><ul>
+<li class="chapter" data-level="14.4" data-path="strings.html"><a href="strings.html#도구"><i class="fa fa-check"></i><b>14.4</b> 도구</a>
+<ul>
 <li class="chapter" data-level="14.4.1" data-path="strings.html"><a href="strings.html#매칭-탐지"><i class="fa fa-check"></i><b>14.4.1</b> 매칭 탐지</a></li>
 <li class="chapter" data-level="14.4.2" data-path="strings.html"><a href="strings.html#매칭-추출"><i class="fa fa-check"></i><b>14.4.2</b> 매칭 추출</a></li>
 <li class="chapter" data-level="14.4.3" data-path="strings.html"><a href="strings.html#그룹화-매칭"><i class="fa fa-check"></i><b>14.4.3</b> 그룹화 매칭</a></li>
@@ -378,47 +427,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.4.5" data-path="strings.html"><a href="strings.html#splitting"><i class="fa fa-check"></i><b>14.4.5</b> Splitting</a></li>
 <li class="chapter" data-level="14.4.6" data-path="strings.html"><a href="strings.html#매치-찾기"><i class="fa fa-check"></i><b>14.4.6</b> 매치 찾기</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="strings.html"><a href="strings.html#기타-패턴-유형"><i class="fa fa-check"></i><b>14.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="14.5" data-path="strings.html"><a href="strings.html#기타-패턴-유형"><i class="fa fa-check"></i><b>14.5</b> 기타 패턴 유형</a>
+<ul>
 <li class="chapter" data-level="14.5.1" data-path="strings.html"><a href="strings.html#연습문제-24"><i class="fa fa-check"></i><b>14.5.1</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="strings.html"><a href="strings.html#정규표현식의-기타-용도"><i class="fa fa-check"></i><b>14.6</b> 정규표현식의 기타 용도</a></li>
-<li class="chapter" data-level="14.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>14.7</b> stringi</a><ul>
+<li class="chapter" data-level="14.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>14.7</b> stringi</a>
+<ul>
 <li class="chapter" data-level="14.7.1" data-path="strings.html"><a href="strings.html#연습문제-25"><i class="fa fa-check"></i><b>14.7.1</b> 연습문제</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> 팩터형</a><ul>
-<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#들어가기-7"><i class="fa fa-check"></i><b>15.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> 팩터형</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#들어가기-7"><i class="fa fa-check"></i><b>15.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="15.1.1" data-path="factors.html"><a href="factors.html#준비하기-8"><i class="fa fa-check"></i><b>15.1.1</b> 준비하기</a></li>
 <li class="chapter" data-level="15.1.2" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>15.1.2</b> 더 배우기</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="factors.html"><a href="factors.html#팩터형-생성하기"><i class="fa fa-check"></i><b>15.2</b> 팩터형 생성하기</a></li>
-<li class="chapter" data-level="15.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>15.3</b> General Social Survey</a><ul>
+<li class="chapter" data-level="15.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>15.3</b> General Social Survey</a>
+<ul>
 <li class="chapter" data-level="15.3.1" data-path="factors.html"><a href="factors.html#연습문제-26"><i class="fa fa-check"></i><b>15.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="factors.html"><a href="factors.html#팩터-순서-수정하기"><i class="fa fa-check"></i><b>15.4</b> 팩터 순서 수정하기</a><ul>
+<li class="chapter" data-level="15.4" data-path="factors.html"><a href="factors.html#팩터-순서-수정하기"><i class="fa fa-check"></i><b>15.4</b> 팩터 순서 수정하기</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="factors.html"><a href="factors.html#연습문제-27"><i class="fa fa-check"></i><b>15.4.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="factors.html"><a href="factors.html#팩터-레벨-수정하기"><i class="fa fa-check"></i><b>15.5</b> 팩터 레벨 수정하기</a><ul>
+<li class="chapter" data-level="15.5" data-path="factors.html"><a href="factors.html#팩터-레벨-수정하기"><i class="fa fa-check"></i><b>15.5</b> 팩터 레벨 수정하기</a>
+<ul>
 <li class="chapter" data-level="15.5.1" data-path="factors.html"><a href="factors.html#연습문제-28"><i class="fa fa-check"></i><b>15.5.1</b> 연습문제</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>16</b> 날짜와 시간</a><ul>
-<li class="chapter" data-level="16.1" data-path="dates-and-times.html"><a href="dates-and-times.html#들어가기-8"><i class="fa fa-check"></i><b>16.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="16" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>16</b> 날짜와 시간</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="dates-and-times.html"><a href="dates-and-times.html#들어가기-8"><i class="fa fa-check"></i><b>16.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="16.1.1" data-path="dates-and-times.html"><a href="dates-and-times.html#준비하기-9"><i class="fa fa-check"></i><b>16.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="16.2" data-path="dates-and-times.html"><a href="dates-and-times.html#날짜시간-생성하기"><i class="fa fa-check"></i><b>16.2</b> 날짜/시간 생성하기</a><ul>
+<li class="chapter" data-level="16.2" data-path="dates-and-times.html"><a href="dates-and-times.html#날짜시간-생성하기"><i class="fa fa-check"></i><b>16.2</b> 날짜/시간 생성하기</a>
+<ul>
 <li class="chapter" data-level="16.2.1" data-path="dates-and-times.html"><a href="dates-and-times.html#문자열에서-생성"><i class="fa fa-check"></i><b>16.2.1</b> 문자열에서 생성</a></li>
 <li class="chapter" data-level="16.2.2" data-path="dates-and-times.html"><a href="dates-and-times.html#개별-구성요소에서-생성"><i class="fa fa-check"></i><b>16.2.2</b> 개별 구성요소에서 생성</a></li>
 <li class="chapter" data-level="16.2.3" data-path="dates-and-times.html"><a href="dates-and-times.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>16.2.3</b> 기타 유형에서 생성</a></li>
 <li class="chapter" data-level="16.2.4" data-path="dates-and-times.html"><a href="dates-and-times.html#연습문제-29"><i class="fa fa-check"></i><b>16.2.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="dates-and-times.html"><a href="dates-and-times.html#데이트-타임형-구성요소"><i class="fa fa-check"></i><b>16.3</b> 데이트-타임형 구성요소</a><ul>
+<li class="chapter" data-level="16.3" data-path="dates-and-times.html"><a href="dates-and-times.html#데이트-타임형-구성요소"><i class="fa fa-check"></i><b>16.3</b> 데이트-타임형 구성요소</a>
+<ul>
 <li class="chapter" data-level="16.3.1" data-path="dates-and-times.html"><a href="dates-and-times.html#구성요소-가져오기"><i class="fa fa-check"></i><b>16.3.1</b> 구성요소 가져오기</a></li>
 <li class="chapter" data-level="16.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#반올림"><i class="fa fa-check"></i><b>16.3.2</b> 반올림</a></li>
 <li class="chapter" data-level="16.3.3" data-path="dates-and-times.html"><a href="dates-and-times.html#구성요소-설정"><i class="fa fa-check"></i><b>16.3.3</b> 구성요소 설정</a></li>
 <li class="chapter" data-level="16.3.4" data-path="dates-and-times.html"><a href="dates-and-times.html#연습문제-30"><i class="fa fa-check"></i><b>16.3.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="16.4" data-path="dates-and-times.html"><a href="dates-and-times.html#시간-범위"><i class="fa fa-check"></i><b>16.4</b> 시간 범위</a><ul>
+<li class="chapter" data-level="16.4" data-path="dates-and-times.html"><a href="dates-and-times.html#시간-범위"><i class="fa fa-check"></i><b>16.4</b> 시간 범위</a>
+<ul>
 <li class="chapter" data-level="16.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#듀레이션형"><i class="fa fa-check"></i><b>16.4.1</b> 듀레이션형</a></li>
 <li class="chapter" data-level="16.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#피리어드형"><i class="fa fa-check"></i><b>16.4.2</b> 피리어드형</a></li>
 <li class="chapter" data-level="16.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#인터벌형"><i class="fa fa-check"></i><b>16.4.3</b> 인터벌형</a></li>
@@ -428,14 +489,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>16.5</b> 시간대</a></li>
 </ul></li>
 <li class="part"><span><b>III 프로그래밍</b></span></li>
-<li class="chapter" data-level="17" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a><ul>
+<li class="chapter" data-level="17" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>17</b> 소개</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="program-intro.html"><a href="program-intro.html#learning-more-1"><i class="fa fa-check"></i><b>17.1</b> Learning more</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="Pipes.html"><a href="Pipes.html"><i class="fa fa-check"></i><b>18</b> 파이프</a><ul>
-<li class="chapter" data-level="18.1" data-path="Pipes.html"><a href="Pipes.html#들어가기-9"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="18" data-path="Pipes.html"><a href="Pipes.html"><i class="fa fa-check"></i><b>18</b> 파이프</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="Pipes.html"><a href="Pipes.html#들어가기-9"><i class="fa fa-check"></i><b>18.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="18.1.1" data-path="Pipes.html"><a href="Pipes.html#준비하기-10"><i class="fa fa-check"></i><b>18.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="Pipes.html"><a href="Pipes.html#파이프-대안"><i class="fa fa-check"></i><b>18.2</b> 파이프 대안</a><ul>
+<li class="chapter" data-level="18.2" data-path="Pipes.html"><a href="Pipes.html#파이프-대안"><i class="fa fa-check"></i><b>18.2</b> 파이프 대안</a>
+<ul>
 <li class="chapter" data-level="18.2.1" data-path="Pipes.html"><a href="Pipes.html#중간단계-이용"><i class="fa fa-check"></i><b>18.2.1</b> 중간단계 이용</a></li>
 <li class="chapter" data-level="18.2.2" data-path="Pipes.html"><a href="Pipes.html#원본-덮어쓰기"><i class="fa fa-check"></i><b>18.2.2</b> 원본 덮어쓰기</a></li>
 <li class="chapter" data-level="18.2.3" data-path="Pipes.html"><a href="Pipes.html#함수-작성"><i class="fa fa-check"></i><b>18.2.3</b> 함수 작성</a></li>
@@ -444,48 +509,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.3" data-path="Pipes.html"><a href="Pipes.html#파이프를-사용하지-않아야-할-경우"><i class="fa fa-check"></i><b>18.3</b> 파이프를 사용하지 않아야 할 경우</a></li>
 <li class="chapter" data-level="18.4" data-path="Pipes.html"><a href="Pipes.html#magrittr-의-기타-도구"><i class="fa fa-check"></i><b>18.4</b> magrittr 의 기타 도구</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>19</b> 함수</a><ul>
-<li class="chapter" data-level="19.1" data-path="functions.html"><a href="functions.html#들어가기-10"><i class="fa fa-check"></i><b>19.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="19" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>19</b> 함수</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="functions.html"><a href="functions.html#들어가기-10"><i class="fa fa-check"></i><b>19.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="19.1.1" data-path="functions.html"><a href="functions.html#준비하기-11"><i class="fa fa-check"></i><b>19.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="functions.html"><a href="functions.html#함수를-언제-작성해야-하나"><i class="fa fa-check"></i><b>19.2</b> 함수를 언제 작성해야 하나?</a><ul>
+<li class="chapter" data-level="19.2" data-path="functions.html"><a href="functions.html#함수를-언제-작성해야-하나"><i class="fa fa-check"></i><b>19.2</b> 함수를 언제 작성해야 하나?</a>
+<ul>
 <li class="chapter" data-level="19.2.1" data-path="functions.html"><a href="functions.html#연습문제-32"><i class="fa fa-check"></i><b>19.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="functions.html"><a href="functions.html#함수는-사람과-컴퓨터를-위한-것"><i class="fa fa-check"></i><b>19.3</b> 함수는 사람과 컴퓨터를 위한 것</a><ul>
+<li class="chapter" data-level="19.3" data-path="functions.html"><a href="functions.html#함수는-사람과-컴퓨터를-위한-것"><i class="fa fa-check"></i><b>19.3</b> 함수는 사람과 컴퓨터를 위한 것</a>
+<ul>
 <li class="chapter" data-level="19.3.1" data-path="functions.html"><a href="functions.html#연습문제-33"><i class="fa fa-check"></i><b>19.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="19.4" data-path="functions.html"><a href="functions.html#조건부-실행"><i class="fa fa-check"></i><b>19.4</b> 조건부 실행</a><ul>
+<li class="chapter" data-level="19.4" data-path="functions.html"><a href="functions.html#조건부-실행"><i class="fa fa-check"></i><b>19.4</b> 조건부 실행</a>
+<ul>
 <li class="chapter" data-level="19.4.1" data-path="functions.html"><a href="functions.html#조건문"><i class="fa fa-check"></i><b>19.4.1</b> 조건문</a></li>
 <li class="chapter" data-level="19.4.2" data-path="functions.html"><a href="functions.html#다중-조건"><i class="fa fa-check"></i><b>19.4.2</b> 다중 조건</a></li>
 <li class="chapter" data-level="19.4.3" data-path="functions.html"><a href="functions.html#코드-스타일"><i class="fa fa-check"></i><b>19.4.3</b> 코드 스타일</a></li>
 <li class="chapter" data-level="19.4.4" data-path="functions.html"><a href="functions.html#연습문제-34"><i class="fa fa-check"></i><b>19.4.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="19.5" data-path="functions.html"><a href="functions.html#함수-인수"><i class="fa fa-check"></i><b>19.5</b> 함수 인수</a><ul>
+<li class="chapter" data-level="19.5" data-path="functions.html"><a href="functions.html#함수-인수"><i class="fa fa-check"></i><b>19.5</b> 함수 인수</a>
+<ul>
 <li class="chapter" data-level="19.5.1" data-path="functions.html"><a href="functions.html#이름-정하기"><i class="fa fa-check"></i><b>19.5.1</b> 이름 정하기</a></li>
 <li class="chapter" data-level="19.5.2" data-path="functions.html"><a href="functions.html#값-확인하기"><i class="fa fa-check"></i><b>19.5.2</b> 값 확인하기</a></li>
 <li class="chapter" data-level="19.5.3" data-path="functions.html"><a href="functions.html#점-점-점"><i class="fa fa-check"></i><b>19.5.3</b> 점-점-점 (…)</a></li>
 <li class="chapter" data-level="19.5.4" data-path="functions.html"><a href="functions.html#지연-평가"><i class="fa fa-check"></i><b>19.5.4</b> 지연 평가</a></li>
 <li class="chapter" data-level="19.5.5" data-path="functions.html"><a href="functions.html#연습문제-35"><i class="fa fa-check"></i><b>19.5.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="19.6" data-path="functions.html"><a href="functions.html#반환값"><i class="fa fa-check"></i><b>19.6</b> 반환값</a><ul>
+<li class="chapter" data-level="19.6" data-path="functions.html"><a href="functions.html#반환값"><i class="fa fa-check"></i><b>19.6</b> 반환값</a>
+<ul>
 <li class="chapter" data-level="19.6.1" data-path="functions.html"><a href="functions.html#명시적-반환문"><i class="fa fa-check"></i><b>19.6.1</b> 명시적 반환문</a></li>
 <li class="chapter" data-level="19.6.2" data-path="functions.html"><a href="functions.html#파이핑-가능한-함수-작성하기"><i class="fa fa-check"></i><b>19.6.2</b> 파이핑 가능한 함수 작성하기</a></li>
 </ul></li>
 <li class="chapter" data-level="19.7" data-path="functions.html"><a href="functions.html#환경"><i class="fa fa-check"></i><b>19.7</b> 환경</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>20</b> 벡터</a><ul>
-<li class="chapter" data-level="20.1" data-path="vectors.html"><a href="vectors.html#들어가기-11"><i class="fa fa-check"></i><b>20.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="20" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>20</b> 벡터</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="vectors.html"><a href="vectors.html#들어가기-11"><i class="fa fa-check"></i><b>20.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="20.1.1" data-path="vectors.html"><a href="vectors.html#준비하기-12"><i class="fa fa-check"></i><b>20.1.1</b> 준비하기</a></li>
 </ul></li>
 <li class="chapter" data-level="20.2" data-path="vectors.html"><a href="vectors.html#벡터-기본-사항"><i class="fa fa-check"></i><b>20.2</b> 벡터 기본 사항</a></li>
-<li class="chapter" data-level="20.3" data-path="vectors.html"><a href="vectors.html#원자-벡터의-주요-유형"><i class="fa fa-check"></i><b>20.3</b> 원자 벡터의 주요 유형</a><ul>
+<li class="chapter" data-level="20.3" data-path="vectors.html"><a href="vectors.html#원자-벡터의-주요-유형"><i class="fa fa-check"></i><b>20.3</b> 원자 벡터의 주요 유형</a>
+<ul>
 <li class="chapter" data-level="20.3.1" data-path="vectors.html"><a href="vectors.html#논리형"><i class="fa fa-check"></i><b>20.3.1</b> 논리형</a></li>
 <li class="chapter" data-level="20.3.2" data-path="vectors.html"><a href="vectors.html#수치형"><i class="fa fa-check"></i><b>20.3.2</b> 수치형</a></li>
 <li class="chapter" data-level="20.3.3" data-path="vectors.html"><a href="vectors.html#문자형"><i class="fa fa-check"></i><b>20.3.3</b> 문자형</a></li>
 <li class="chapter" data-level="20.3.4" data-path="vectors.html"><a href="vectors.html#결측값-1"><i class="fa fa-check"></i><b>20.3.4</b> 결측값</a></li>
 <li class="chapter" data-level="20.3.5" data-path="vectors.html"><a href="vectors.html#연습문제-36"><i class="fa fa-check"></i><b>20.3.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="vectors.html"><a href="vectors.html#원자벡터-이용하기"><i class="fa fa-check"></i><b>20.4</b> 원자벡터 이용하기</a><ul>
+<li class="chapter" data-level="20.4" data-path="vectors.html"><a href="vectors.html#원자벡터-이용하기"><i class="fa fa-check"></i><b>20.4</b> 원자벡터 이용하기</a>
+<ul>
 <li class="chapter" data-level="20.4.1" data-path="vectors.html"><a href="vectors.html#강제변환"><i class="fa fa-check"></i><b>20.4.1</b> 강제변환</a></li>
 <li class="chapter" data-level="20.4.2" data-path="vectors.html"><a href="vectors.html#테스트-함수"><i class="fa fa-check"></i><b>20.4.2</b> 테스트 함수</a></li>
 <li class="chapter" data-level="20.4.3" data-path="vectors.html"><a href="vectors.html#스칼라와-재활용-규칙"><i class="fa fa-check"></i><b>20.4.3</b> 스칼라와 재활용 규칙</a></li>
@@ -493,48 +569,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.4.5" data-path="vectors.html"><a href="vectors.html#vector-subsetting"><i class="fa fa-check"></i><b>20.4.5</b> 서브셋하기</a></li>
 <li class="chapter" data-level="20.4.6" data-path="vectors.html"><a href="vectors.html#연습문제-37"><i class="fa fa-check"></i><b>20.4.6</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="20.5" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>20.5</b> 재귀 벡터 (리스트)</a><ul>
+<li class="chapter" data-level="20.5" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>20.5</b> 재귀 벡터 (리스트)</a>
+<ul>
 <li class="chapter" data-level="20.5.1" data-path="vectors.html"><a href="vectors.html#리스트-시각화"><i class="fa fa-check"></i><b>20.5.1</b> 리스트 시각화</a></li>
 <li class="chapter" data-level="20.5.2" data-path="vectors.html"><a href="vectors.html#서브셋하기-1"><i class="fa fa-check"></i><b>20.5.2</b> 서브셋하기</a></li>
 <li class="chapter" data-level="20.5.3" data-path="vectors.html"><a href="vectors.html#후추-리스트"><i class="fa fa-check"></i><b>20.5.3</b> 후추 리스트</a></li>
 <li class="chapter" data-level="20.5.4" data-path="vectors.html"><a href="vectors.html#exercises-16"><i class="fa fa-check"></i><b>20.5.4</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="20.6" data-path="vectors.html"><a href="vectors.html#attributes"><i class="fa fa-check"></i><b>20.6</b> Attributes</a></li>
-<li class="chapter" data-level="20.7" data-path="vectors.html"><a href="vectors.html#augmented-vectors"><i class="fa fa-check"></i><b>20.7</b> Augmented vectors</a><ul>
+<li class="chapter" data-level="20.7" data-path="vectors.html"><a href="vectors.html#augmented-vectors"><i class="fa fa-check"></i><b>20.7</b> Augmented vectors</a>
+<ul>
 <li class="chapter" data-level="20.7.1" data-path="vectors.html"><a href="vectors.html#factors-1"><i class="fa fa-check"></i><b>20.7.1</b> Factors</a></li>
 <li class="chapter" data-level="20.7.2" data-path="vectors.html"><a href="vectors.html#dates-and-date-times"><i class="fa fa-check"></i><b>20.7.2</b> Dates and date-times</a></li>
 <li class="chapter" data-level="20.7.3" data-path="vectors.html"><a href="vectors.html#tibbles-1"><i class="fa fa-check"></i><b>20.7.3</b> Tibbles</a></li>
 <li class="chapter" data-level="20.7.4" data-path="vectors.html"><a href="vectors.html#exercises-17"><i class="fa fa-check"></i><b>20.7.4</b> Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>21</b> 반복</a><ul>
-<li class="chapter" data-level="21.1" data-path="iteration.html"><a href="iteration.html#들어가기-12"><i class="fa fa-check"></i><b>21.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="21" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>21</b> 반복</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="iteration.html"><a href="iteration.html#들어가기-12"><i class="fa fa-check"></i><b>21.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="21.1.1" data-path="iteration.html"><a href="iteration.html#준비하기-13"><i class="fa fa-check"></i><b>21.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="21.2" data-path="iteration.html"><a href="iteration.html#for-loops"><i class="fa fa-check"></i><b>21.2</b> For loops</a><ul>
+<li class="chapter" data-level="21.2" data-path="iteration.html"><a href="iteration.html#for-loops"><i class="fa fa-check"></i><b>21.2</b> For loops</a>
+<ul>
 <li class="chapter" data-level="21.2.1" data-path="iteration.html"><a href="iteration.html#exercises-18"><i class="fa fa-check"></i><b>21.2.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="21.3" data-path="iteration.html"><a href="iteration.html#for-loop-variations"><i class="fa fa-check"></i><b>21.3</b> For loop variations</a><ul>
+<li class="chapter" data-level="21.3" data-path="iteration.html"><a href="iteration.html#for-loop-variations"><i class="fa fa-check"></i><b>21.3</b> For loop variations</a>
+<ul>
 <li class="chapter" data-level="21.3.1" data-path="iteration.html"><a href="iteration.html#modifying-an-existing-object"><i class="fa fa-check"></i><b>21.3.1</b> Modifying an existing object</a></li>
 <li class="chapter" data-level="21.3.2" data-path="iteration.html"><a href="iteration.html#looping-patterns"><i class="fa fa-check"></i><b>21.3.2</b> Looping patterns</a></li>
 <li class="chapter" data-level="21.3.3" data-path="iteration.html"><a href="iteration.html#unknown-output-length"><i class="fa fa-check"></i><b>21.3.3</b> Unknown output length</a></li>
 <li class="chapter" data-level="21.3.4" data-path="iteration.html"><a href="iteration.html#unknown-sequence-length"><i class="fa fa-check"></i><b>21.3.4</b> Unknown sequence length</a></li>
 <li class="chapter" data-level="21.3.5" data-path="iteration.html"><a href="iteration.html#exercises-19"><i class="fa fa-check"></i><b>21.3.5</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="iteration.html"><a href="iteration.html#for-loops-vs.-functionals"><i class="fa fa-check"></i><b>21.4</b> For loops vs. functionals</a><ul>
+<li class="chapter" data-level="21.4" data-path="iteration.html"><a href="iteration.html#for-loops-vs.-functionals"><i class="fa fa-check"></i><b>21.4</b> For loops vs. functionals</a>
+<ul>
 <li class="chapter" data-level="21.4.1" data-path="iteration.html"><a href="iteration.html#exercises-20"><i class="fa fa-check"></i><b>21.4.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="21.5" data-path="iteration.html"><a href="iteration.html#the-map-functions"><i class="fa fa-check"></i><b>21.5</b> The map functions</a><ul>
-<li class="chapter" data-level="21.5.1" data-path="iteration.html"><a href="iteration.html#shortcuts"><i class="fa fa-check"></i><b>21.5.1</b> Shortcuts</a></li>
+<li class="chapter" data-level="21.5" data-path="iteration.html"><a href="iteration.html#the-map-functions"><i class="fa fa-check"></i><b>21.5</b> The map functions</a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="iteration.html"><a href="iteration.html#단축어"><i class="fa fa-check"></i><b>21.5.1</b> 단축어</a></li>
 <li class="chapter" data-level="21.5.2" data-path="iteration.html"><a href="iteration.html#base-r"><i class="fa fa-check"></i><b>21.5.2</b> Base R</a></li>
 <li class="chapter" data-level="21.5.3" data-path="iteration.html"><a href="iteration.html#exercises-21"><i class="fa fa-check"></i><b>21.5.3</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="21.6" data-path="iteration.html"><a href="iteration.html#dealing-with-failure"><i class="fa fa-check"></i><b>21.6</b> Dealing with failure</a></li>
-<li class="chapter" data-level="21.7" data-path="iteration.html"><a href="iteration.html#mapping-over-multiple-arguments"><i class="fa fa-check"></i><b>21.7</b> Mapping over multiple arguments</a><ul>
+<li class="chapter" data-level="21.7" data-path="iteration.html"><a href="iteration.html#mapping-over-multiple-arguments"><i class="fa fa-check"></i><b>21.7</b> Mapping over multiple arguments</a>
+<ul>
 <li class="chapter" data-level="21.7.1" data-path="iteration.html"><a href="iteration.html#invoking-different-functions"><i class="fa fa-check"></i><b>21.7.1</b> Invoking different functions</a></li>
 </ul></li>
 <li class="chapter" data-level="21.8" data-path="iteration.html"><a href="iteration.html#walk"><i class="fa fa-check"></i><b>21.8</b> Walk</a></li>
-<li class="chapter" data-level="21.9" data-path="iteration.html"><a href="iteration.html#other-patterns-of-for-loops"><i class="fa fa-check"></i><b>21.9</b> Other patterns of for loops</a><ul>
+<li class="chapter" data-level="21.9" data-path="iteration.html"><a href="iteration.html#other-patterns-of-for-loops"><i class="fa fa-check"></i><b>21.9</b> Other patterns of for loops</a>
+<ul>
 <li class="chapter" data-level="21.9.1" data-path="iteration.html"><a href="iteration.html#predicate-functions"><i class="fa fa-check"></i><b>21.9.1</b> Predicate functions</a></li>
 <li class="chapter" data-level="21.9.2" data-path="iteration.html"><a href="iteration.html#reduce-and-accumulate"><i class="fa fa-check"></i><b>21.9.2</b> Reduce and accumulate</a></li>
 <li class="chapter" data-level="21.9.3" data-path="iteration.html"><a href="iteration.html#exercises-22"><i class="fa fa-check"></i><b>21.9.3</b> Exercises</a></li>
@@ -543,17 +629,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>IV 의사소통하기</b></span></li>
 <li class="chapter" data-level="22" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>22</b> 소개</a></li>
-<li class="chapter" data-level="23" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>23</b> R 마크다운</a><ul>
-<li class="chapter" data-level="23.1" data-path="rmarkdown.html"><a href="rmarkdown.html#들어가기-13"><i class="fa fa-check"></i><b>23.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="23" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>23</b> R 마크다운</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="rmarkdown.html"><a href="rmarkdown.html#들어가기-13"><i class="fa fa-check"></i><b>23.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="23.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#준비하기-14"><i class="fa fa-check"></i><b>23.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="23.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>23.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="23.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>23.2</b> R 마크다운 기초</a>
+<ul>
 <li class="chapter" data-level="23.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#연습문제-38"><i class="fa fa-check"></i><b>23.2.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="23.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>23.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="23.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>23.3</b> 마크다운으로 텍스트 서식 지정하기</a>
+<ul>
 <li class="chapter" data-level="23.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#연습문제-39"><i class="fa fa-check"></i><b>23.3.1</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="23.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>23.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="23.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>23.4</b> 코드 청크</a>
+<ul>
 <li class="chapter" data-level="23.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>23.4.1</b> 청크 이름</a></li>
 <li class="chapter" data-level="23.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>23.4.2</b> 청크 옵션</a></li>
 <li class="chapter" data-level="23.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>23.4.3</b> 표</a></li>
@@ -563,23 +654,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises-23"><i class="fa fa-check"></i><b>23.4.7</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="23.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>23.5</b> Troubleshooting</a></li>
-<li class="chapter" data-level="23.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>23.6</b> YAML header</a><ul>
+<li class="chapter" data-level="23.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>23.6</b> YAML header</a>
+<ul>
 <li class="chapter" data-level="23.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>23.6.1</b> Parameters</a></li>
 <li class="chapter" data-level="23.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>23.6.2</b> Bibliographies and Citations</a></li>
 </ul></li>
 <li class="chapter" data-level="23.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more-2"><i class="fa fa-check"></i><b>23.7</b> Learning more</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>24</b> 그래프를 통한 의사소통</a><ul>
-<li class="chapter" data-level="24.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#들어가기-14"><i class="fa fa-check"></i><b>24.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="24" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>24</b> 그래프를 통한 의사소통</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#들어가기-14"><i class="fa fa-check"></i><b>24.1</b> 들어가기</a>
+<ul>
 <li class="chapter" data-level="24.1.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#준비하기-15"><i class="fa fa-check"></i><b>24.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="24.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>24.2</b> Label</a><ul>
+<li class="chapter" data-level="24.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>24.2</b> Label</a>
+<ul>
 <li class="chapter" data-level="24.2.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-24"><i class="fa fa-check"></i><b>24.2.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="24.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>24.3</b> Annotations</a><ul>
+<li class="chapter" data-level="24.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>24.3</b> Annotations</a>
+<ul>
 <li class="chapter" data-level="24.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-25"><i class="fa fa-check"></i><b>24.3.1</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="24.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>24.4</b> Scales</a><ul>
+<li class="chapter" data-level="24.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>24.4</b> Scales</a>
+<ul>
 <li class="chapter" data-level="24.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>24.4.1</b> Axis ticks and legend keys</a></li>
 <li class="chapter" data-level="24.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>24.4.2</b> Legend layout</a></li>
 <li class="chapter" data-level="24.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>24.4.3</b> Replacing a scale</a></li>
@@ -587,20 +684,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="24.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>24.5</b> Zooming</a></li>
 <li class="chapter" data-level="24.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>24.6</b> Themes</a></li>
-<li class="chapter" data-level="24.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>24.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="24.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>24.7</b> Saving your plots</a>
+<ul>
 <li class="chapter" data-level="24.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>24.7.1</b> Figure sizing</a></li>
 <li class="chapter" data-level="24.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>24.7.2</b> Other important options</a></li>
 </ul></li>
 <li class="chapter" data-level="24.8" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#learning-more-3"><i class="fa fa-check"></i><b>24.8</b> Learning more</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>25</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="25" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>25</b> R 마크다운 유형</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#들어가기-15"><i class="fa fa-check"></i><b>25.1</b> 들어가기</a></li>
 <li class="chapter" data-level="25.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>25.2</b> 출력 옵션</a></li>
 <li class="chapter" data-level="25.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>25.3</b> Document</a></li>
 <li class="chapter" data-level="25.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>25.4</b> Notebook</a></li>
 <li class="chapter" data-level="25.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>25.5</b> Presentation</a></li>
 <li class="chapter" data-level="25.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>25.6</b> Dashboard</a></li>
-<li class="chapter" data-level="25.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>25.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="25.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>25.7</b> 대화형 동작</a>
+<ul>
 <li class="chapter" data-level="25.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>25.7.1</b> htmlwidgets</a></li>
 <li class="chapter" data-level="25.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>25.7.2</b> Shiny</a></li>
 </ul></li>
@@ -626,112 +726,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="factors" class="section level1">
+<div id="factors" class="section level1" number="15">
 <h1><span class="header-section-number">15</span> 팩터형</h1>
-<div id="들어가기-7" class="section level2">
+<div id="들어가기-7" class="section level2" number="15.1">
 <h2><span class="header-section-number">15.1</span> 들어가기</h2>
 <p>R에서 팩터형은 범주형 변수에 사용되는데, 범주형 변수란 가질 수 있는 값이 미리 고정되고 또 알려진 변수를 말한다. 팩터형은 문자형 벡터를 알파벳순이 아닌 순서로 표시하고 싶을 때도 이용할 수 있다.</p>
 <p>역사적으로 팩터형은 문자형보다 다루기가 훨씬 쉬웠다. 이런 이유로 베이스R 의 함수들은 문자형을 자동으로 팩터형으로 변환한다. 즉, 팩터형이 사실 도움이 되지 않는 경우에서도, 나타나는 경우가 많다. 다행스럽게도 tidyverse에서는 이런 경우를 걱정할 필요가 없으며 팩터형이 실제로 유용한 경우에만 집중할 수 있다.</p>
-<div id="준비하기-8" class="section level3">
+<div id="준비하기-8" class="section level3" number="15.1.1">
 <h3><span class="header-section-number">15.1.1</span> 준비하기</h3>
 <p>팩터형을 다루기 위해, <strong>forcats</strong> 패키지를 사용할 것인데, 이 패키지에는 범주형 변수(팩터형의 다른 말)에 적용하는 도구들이 있다.<주석> 이 패키지는 팩터형에 적용하는 도우미 함수를 다양하게 제공한다. <strong>forcats</strong> 는 핵심 tidyverse에 포함되어 있지 않기 때문에 명시적으로 로드해야 한다.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="factors.html#cb330-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb330-2"><a href="factors.html#cb330-2"></a><span class="kw">library</span>(forcats)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="factors.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb330-2"><a href="factors.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span></code></pre></div>
 </div>
-<div id="더-배우기" class="section level3">
+<div id="더-배우기" class="section level3" number="15.1.2">
 <h3><span class="header-section-number">15.1.2</span> 더 배우기</h3>
 <p>팩터형에 대해 더 알고 싶으면, 아멜리아 맥나마라(Amelia McNamara) 와 니콜라스 호튼(Nicholas Horton)의 논문, <a href="https://peerj.com/preprints/3163/"><em>Wrangling categorical data in R</em></a> 을 추천한다. 이 논문은 로저 펭(Roger Peng)의 <a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/"><em>stringsAsFactors: An unauthorized biography</em></a> 와 토마스 럼리(Thomas Lumley)의 <a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh"><em>stringsAsFactors = &lt;sigh&gt;</em></a> 에서 논의한 역사를 담고 있고, 범주형 변수에 대해 이 책에서 설명한 타이디 접근법과 베이스 R 방법을 비교한다. 이 논문의 초기버전은 forcats 패키지를 만드는데 동기를 부여하였다.</p>
 </div>
 </div>
-<div id="팩터형-생성하기" class="section level2">
+<div id="팩터형-생성하기" class="section level2" number="15.2">
 <h2><span class="header-section-number">15.2</span> 팩터형 생성하기</h2>
 <p>월을 기록한 변수가 있다고 가정하자.</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="factors.html#cb331-1"></a>x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Dec&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="factors.html#cb331-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Dec&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</span></code></pre></div>
 <p>이 변수를 문자열을 이용하여 기록하면 두 가지 문제가 생긴다.</p>
 <ol style="list-style-type: decimal">
 <li><p>가능한 달 열 두 개가 아닌 오타를 입력해도 경고가 발생하지 않는다.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="factors.html#cb332-1"></a>x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Dec&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Jam&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</span></code></pre></div></li>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="factors.html#cb332-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Dec&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;Jam&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</span></code></pre></div></li>
 <li><p>유용한 순서로 정렬되지 않는다.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="factors.html#cb333-1"></a><span class="kw">sort</span>(x1)</span>
-<span id="cb333-2"><a href="factors.html#cb333-2"></a><span class="co">#&gt; [1] &quot;Apr&quot; &quot;Dec&quot; &quot;Jan&quot; &quot;Mar&quot;</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="factors.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(x1)</span>
+<span id="cb333-2"><a href="factors.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apr&quot; &quot;Dec&quot; &quot;Jan&quot; &quot;Mar&quot;</span></span></code></pre></div></li>
 </ol>
 <p>팩터형을 이용하면 이러한 문제를 모두 해결할 수 있다. 팩터형을 생성하기 위해 유효한 레벨들의 리스트를 생성하는 것부터 시작해야 한다.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="factors.html#cb334-1"></a>month_levels &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb334-2"><a href="factors.html#cb334-2"></a>  <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Feb&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;May&quot;</span>, <span class="st">&quot;Jun&quot;</span>, </span>
-<span id="cb334-3"><a href="factors.html#cb334-3"></a>  <span class="st">&quot;Jul&quot;</span>, <span class="st">&quot;Aug&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Oct&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Dec&quot;</span></span>
-<span id="cb334-4"><a href="factors.html#cb334-4"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="factors.html#cb334-1" aria-hidden="true" tabindex="-1"></a>month_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb334-2"><a href="factors.html#cb334-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Feb&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Apr&quot;</span>, <span class="st">&quot;May&quot;</span>, <span class="st">&quot;Jun&quot;</span>, </span>
+<span id="cb334-3"><a href="factors.html#cb334-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Jul&quot;</span>, <span class="st">&quot;Aug&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Oct&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Dec&quot;</span></span>
+<span id="cb334-4"><a href="factors.html#cb334-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>이제 팩터형을 생성할 수 있다.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="factors.html#cb335-1"></a>y1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> month_levels)</span>
-<span id="cb335-2"><a href="factors.html#cb335-2"></a>y1</span>
-<span id="cb335-3"><a href="factors.html#cb335-3"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
-<span id="cb335-4"><a href="factors.html#cb335-4"></a><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></span>
-<span id="cb335-5"><a href="factors.html#cb335-5"></a><span class="kw">sort</span>(y1)</span>
-<span id="cb335-6"><a href="factors.html#cb335-6"></a><span class="co">#&gt; [1] Jan Mar Apr Dec</span></span>
-<span id="cb335-7"><a href="factors.html#cb335-7"></a><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="factors.html#cb335-1" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x1, <span class="at">levels =</span> month_levels)</span>
+<span id="cb335-2"><a href="factors.html#cb335-2" aria-hidden="true" tabindex="-1"></a>y1</span>
+<span id="cb335-3"><a href="factors.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
+<span id="cb335-4"><a href="factors.html#cb335-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></span>
+<span id="cb335-5"><a href="factors.html#cb335-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y1)</span>
+<span id="cb335-6"><a href="factors.html#cb335-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Jan Mar Apr Dec</span></span>
+<span id="cb335-7"><a href="factors.html#cb335-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></span></code></pre></div>
 <p>그리고 이 레벨 집합에 포함되지 않는 값은 조용히 <code>NA</code> 로 변환된다.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="factors.html#cb336-1"></a>y2 &lt;-<span class="st"> </span><span class="kw">factor</span>(x2, <span class="dt">levels =</span> month_levels)</span>
-<span id="cb336-2"><a href="factors.html#cb336-2"></a>y2</span>
-<span id="cb336-3"><a href="factors.html#cb336-3"></a><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></span>
-<span id="cb336-4"><a href="factors.html#cb336-4"></a><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="factors.html#cb336-1" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x2, <span class="at">levels =</span> month_levels)</span>
+<span id="cb336-2"><a href="factors.html#cb336-2" aria-hidden="true" tabindex="-1"></a>y2</span>
+<span id="cb336-3"><a href="factors.html#cb336-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Dec  Apr  &lt;NA&gt; Mar </span></span>
+<span id="cb336-4"><a href="factors.html#cb336-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span></span></code></pre></div>
 <p>경고가 발생되길 원하는 경우에는 <code>readr::parse_factor()</code> 를 사용하면 된다.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="factors.html#cb337-1"></a>y2 &lt;-<span class="st"> </span><span class="kw">parse_factor</span>(x2, <span class="dt">levels =</span> month_levels)</span>
-<span id="cb337-2"><a href="factors.html#cb337-2"></a><span class="co">#&gt; Warning: 1 parsing failure.</span></span>
-<span id="cb337-3"><a href="factors.html#cb337-3"></a><span class="co">#&gt; row col           expected actual</span></span>
-<span id="cb337-4"><a href="factors.html#cb337-4"></a><span class="co">#&gt;   3  -- value in level set    Jam</span></span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="factors.html#cb337-1" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">parse_factor</span>(x2, <span class="at">levels =</span> month_levels)</span>
+<span id="cb337-2"><a href="factors.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: 1 parsing failure.</span></span>
+<span id="cb337-3"><a href="factors.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; row col           expected actual</span></span>
+<span id="cb337-4"><a href="factors.html#cb337-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   3  -- value in level set    Jam</span></span></code></pre></div>
 <p>앞의 <code>levels</code> 를 생략하면 데이터로부터 알파벳 순서로 취할 것이다.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="factors.html#cb338-1"></a><span class="kw">factor</span>(x1)</span>
-<span id="cb338-2"><a href="factors.html#cb338-2"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
-<span id="cb338-3"><a href="factors.html#cb338-3"></a><span class="co">#&gt; Levels: Apr Dec Jan Mar</span></span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="factors.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(x1)</span>
+<span id="cb338-2"><a href="factors.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
+<span id="cb338-3"><a href="factors.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Apr Dec Jan Mar</span></span></code></pre></div>
 <p>때때로 레벨의 순서가 데이터에서 처음으로 등장하는 순서와 일치되길 원할 수 있다. 팩터형 생성 시 레벨을 <code>unique(x)</code> 로 설정하거나 사후적으로는 <code>fct_inorder()</code> 를 사용하면 된다.</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="factors.html#cb339-1"></a>f1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> <span class="kw">unique</span>(x1))</span>
-<span id="cb339-2"><a href="factors.html#cb339-2"></a>f1</span>
-<span id="cb339-3"><a href="factors.html#cb339-3"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
-<span id="cb339-4"><a href="factors.html#cb339-4"></a><span class="co">#&gt; Levels: Dec Apr Jan Mar</span></span>
-<span id="cb339-5"><a href="factors.html#cb339-5"></a></span>
-<span id="cb339-6"><a href="factors.html#cb339-6"></a>f2 &lt;-<span class="st"> </span>x1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">factor</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_inorder</span>()</span>
-<span id="cb339-7"><a href="factors.html#cb339-7"></a>f2</span>
-<span id="cb339-8"><a href="factors.html#cb339-8"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
-<span id="cb339-9"><a href="factors.html#cb339-9"></a><span class="co">#&gt; Levels: Dec Apr Jan Mar</span></span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="factors.html#cb339-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">factor</span>(x1, <span class="at">levels =</span> <span class="fu">unique</span>(x1))</span>
+<span id="cb339-2"><a href="factors.html#cb339-2" aria-hidden="true" tabindex="-1"></a>f1</span>
+<span id="cb339-3"><a href="factors.html#cb339-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
+<span id="cb339-4"><a href="factors.html#cb339-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Dec Apr Jan Mar</span></span>
+<span id="cb339-5"><a href="factors.html#cb339-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-6"><a href="factors.html#cb339-6" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> x1 <span class="sc">%&gt;%</span> <span class="fu">factor</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_inorder</span>()</span>
+<span id="cb339-7"><a href="factors.html#cb339-7" aria-hidden="true" tabindex="-1"></a>f2</span>
+<span id="cb339-8"><a href="factors.html#cb339-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Dec Apr Jan Mar</span></span>
+<span id="cb339-9"><a href="factors.html#cb339-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Dec Apr Jan Mar</span></span></code></pre></div>
 <p>만약 유효한 레벨 집합에 직접 접근하려면 <code>levels()</code> 로 할 수 있다.</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="factors.html#cb340-1"></a><span class="kw">levels</span>(f2)</span>
-<span id="cb340-2"><a href="factors.html#cb340-2"></a><span class="co">#&gt; [1] &quot;Dec&quot; &quot;Apr&quot; &quot;Jan&quot; &quot;Mar&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="factors.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(f2)</span>
+<span id="cb340-2"><a href="factors.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Dec&quot; &quot;Apr&quot; &quot;Jan&quot; &quot;Mar&quot;</span></span></code></pre></div>
 </div>
-<div id="general-social-survey" class="section level2">
+<div id="general-social-survey" class="section level2" number="15.3">
 <h2><span class="header-section-number">15.3</span> General Social Survey</h2>
 <p>이 장의 남은 부분에서는 <code>forcats::gss_cat</code> 에 초점을 맞출 것이다. 이는 시카고 대학 독립 연구기관인 NORC에서 장기간 수행한 <a href="http://gss.norc.org">General Social Survey</a> 의 샘플 데이터이다. 이 설문조사에는 수천 개의 문항이 있는데, 이 중에서 팩터형과 작업할 때 자주 발생하는 문제를 보여주는 것들을 <code>gss_cat</code> 으로 선택했다.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="factors.html#cb341-1"></a>gss_cat</span>
-<span id="cb341-2"><a href="factors.html#cb341-2"></a><span class="co">#&gt; # A tibble: 21,483 x 9</span></span>
-<span id="cb341-3"><a href="factors.html#cb341-3"></a><span class="co">#&gt;    year marital         age race  rincome        partyid   relig  denom  tvhours</span></span>
-<span id="cb341-4"><a href="factors.html#cb341-4"></a><span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;          &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span></span>
-<span id="cb341-5"><a href="factors.html#cb341-5"></a><span class="co">#&gt; 1  2000 Never married    26 White $8000 to 9999  Ind,near~ Prote~ South~      12</span></span>
-<span id="cb341-6"><a href="factors.html#cb341-6"></a><span class="co">#&gt; 2  2000 Divorced         48 White $8000 to 9999  Not str ~ Prote~ Bapti~      NA</span></span>
-<span id="cb341-7"><a href="factors.html#cb341-7"></a><span class="co">#&gt; 3  2000 Widowed          67 White Not applicable Independ~ Prote~ No de~       2</span></span>
-<span id="cb341-8"><a href="factors.html#cb341-8"></a><span class="co">#&gt; 4  2000 Never married    39 White Not applicable Ind,near~ Ortho~ Not a~       4</span></span>
-<span id="cb341-9"><a href="factors.html#cb341-9"></a><span class="co">#&gt; 5  2000 Divorced         25 White Not applicable Not str ~ None   Not a~       1</span></span>
-<span id="cb341-10"><a href="factors.html#cb341-10"></a><span class="co">#&gt; 6  2000 Married          25 White $20000 - 24999 Strong d~ Prote~ South~      NA</span></span>
-<span id="cb341-11"><a href="factors.html#cb341-11"></a><span class="co">#&gt; # ... with 21,477 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="factors.html#cb341-1" aria-hidden="true" tabindex="-1"></a>gss_cat</span>
+<span id="cb341-2"><a href="factors.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 21,483 x 9</span></span>
+<span id="cb341-3"><a href="factors.html#cb341-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year marital         age race  rincome        partyid   relig  denom  tvhours</span></span>
+<span id="cb341-4"><a href="factors.html#cb341-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;          &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span></span>
+<span id="cb341-5"><a href="factors.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2000 Never married    26 White $8000 to 9999  Ind,near~ Prote~ South~      12</span></span>
+<span id="cb341-6"><a href="factors.html#cb341-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2000 Divorced         48 White $8000 to 9999  Not str ~ Prote~ Bapti~      NA</span></span>
+<span id="cb341-7"><a href="factors.html#cb341-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2000 Widowed          67 White Not applicable Independ~ Prote~ No de~       2</span></span>
+<span id="cb341-8"><a href="factors.html#cb341-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2000 Never married    39 White Not applicable Ind,near~ Ortho~ Not a~       4</span></span>
+<span id="cb341-9"><a href="factors.html#cb341-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2000 Divorced         25 White Not applicable Not str ~ None   Not a~       1</span></span>
+<span id="cb341-10"><a href="factors.html#cb341-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2000 Married          25 White $20000 - 24999 Strong d~ Prote~ South~      NA</span></span>
+<span id="cb341-11"><a href="factors.html#cb341-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 21,477 more rows</span></span></code></pre></div>
 <p>(이 데이터셋은 패키지로 제공되기 때문에 <code>?gss_cat</code> 으로 변수들에 관한 자세한 정보를 얻을 수 있다는 것을 잊지 말라.)</p>
 <p>팩터형이 티블로 저장되면 해당하는 레벨들을 쉽게 볼 수 없게 된다. 볼 수 있는 한 가지 방법은 <code>count()</code> 이다.</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="factors.html#cb342-1"></a>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb342-2"><a href="factors.html#cb342-2"></a><span class="st">  </span><span class="kw">count</span>(race)</span>
-<span id="cb342-3"><a href="factors.html#cb342-3"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb342-4"><a href="factors.html#cb342-4"></a><span class="co">#&gt;   race      n</span></span>
-<span id="cb342-5"><a href="factors.html#cb342-5"></a><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt;</span></span>
-<span id="cb342-6"><a href="factors.html#cb342-6"></a><span class="co">#&gt; 1 Other  1959</span></span>
-<span id="cb342-7"><a href="factors.html#cb342-7"></a><span class="co">#&gt; 2 Black  3129</span></span>
-<span id="cb342-8"><a href="factors.html#cb342-8"></a><span class="co">#&gt; 3 White 16395</span></span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="factors.html#cb342-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb342-2"><a href="factors.html#cb342-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race)</span>
+<span id="cb342-3"><a href="factors.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
+<span id="cb342-4"><a href="factors.html#cb342-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   race      n</span></span>
+<span id="cb342-5"><a href="factors.html#cb342-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt;</span></span>
+<span id="cb342-6"><a href="factors.html#cb342-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Other  1959</span></span>
+<span id="cb342-7"><a href="factors.html#cb342-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Black  3129</span></span>
+<span id="cb342-8"><a href="factors.html#cb342-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 White 16395</span></span></code></pre></div>
 <p>또는 막대 차트로 볼 수 있다.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="factors.html#cb343-1"></a><span class="kw">ggplot</span>(gss_cat, <span class="kw">aes</span>(race)) <span class="op">+</span></span>
-<span id="cb343-2"><a href="factors.html#cb343-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="factors.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gss_cat, <span class="fu">aes</span>(race)) <span class="sc">+</span></span>
+<span id="cb343-2"><a href="factors.html#cb343-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>기본적으로 ggplot2는 값이 없는 레벨을 제거한다. 다음과 같이 강제적으로 표시하도록 할 수 있다.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="factors.html#cb344-1"></a><span class="kw">ggplot</span>(gss_cat, <span class="kw">aes</span>(race)) <span class="op">+</span></span>
-<span id="cb344-2"><a href="factors.html#cb344-2"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span></span>
-<span id="cb344-3"><a href="factors.html#cb344-3"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">drop =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="factors.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gss_cat, <span class="fu">aes</span>(race)) <span class="sc">+</span></span>
+<span id="cb344-2"><a href="factors.html#cb344-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb344-3"><a href="factors.html#cb344-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">drop =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>이 레벨들은 유효하지만 이 데이터셋에서 나타나지 않는 값을 나타낸다. dplyr에는 <code>drop</code> 옵션이 아직 없지만 향후 제공될 예정이다.</p>
 <p>팩터형으로 작업할 때 자주하는 작업 두 가지는 레벨의 순서를 변경하는 것과 레벨의 값을 변경하는 것이다. 이러한 작업은 다음 절에서 설명한다.</p>
-<div id="연습문제-26" class="section level3">
+<div id="연습문제-26" class="section level3" number="15.3.1">
 <h3><span class="header-section-number">15.3.1</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p><code>rincome</code> (reported income, 보고된 소득)의 분포를 탐색하라. 기본 막대 차트가 이해하기 어려운 이유는 무엇인가? 어떻게 플롯을 개선하겠는가?</p></li>
@@ -740,18 +840,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="팩터-순서-수정하기" class="section level2">
+<div id="팩터-순서-수정하기" class="section level2" number="15.4">
 <h2><span class="header-section-number">15.4</span> 팩터 순서 수정하기</h2>
 <p>시각화에서 팩터 레벨의 순서를 변경하는 것이 유용할 때가 종종 있다. 예를 들어 종교에 따른 하루 TV 시청시간의 평균을 탐색하고 싶다고 가정하자.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="factors.html#cb345-1"></a>relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb345-2"><a href="factors.html#cb345-2"></a><span class="st">  </span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span></span>
-<span id="cb345-3"><a href="factors.html#cb345-3"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
-<span id="cb345-4"><a href="factors.html#cb345-4"></a>    <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb345-5"><a href="factors.html#cb345-5"></a>    <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb345-6"><a href="factors.html#cb345-6"></a>    <span class="dt">n =</span> <span class="kw">n</span>()</span>
-<span id="cb345-7"><a href="factors.html#cb345-7"></a>  )</span>
-<span id="cb345-8"><a href="factors.html#cb345-8"></a></span>
-<span id="cb345-9"><a href="factors.html#cb345-9"></a><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(tvhours, relig)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="factors.html#cb345-1" aria-hidden="true" tabindex="-1"></a>relig_summary <span class="ot">&lt;-</span> gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb345-2"><a href="factors.html#cb345-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(relig) <span class="sc">%&gt;%</span></span>
+<span id="cb345-3"><a href="factors.html#cb345-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb345-4"><a href="factors.html#cb345-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb345-5"><a href="factors.html#cb345-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">tvhours =</span> <span class="fu">mean</span>(tvhours, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb345-6"><a href="factors.html#cb345-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb345-7"><a href="factors.html#cb345-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb345-8"><a href="factors.html#cb345-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb345-9"><a href="factors.html#cb345-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(relig_summary, <span class="fu">aes</span>(tvhours, relig)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>전반적인 패턴이 없기 때문에 이 플롯을 해석하기는 어렵다. <code>fct_reorder()</code> 를 사용하여 <code>relig</code> 의 레벨을 재정렬해서 개선할 수 있다. <code>fct_reorder()</code> 에는 세 개의 인수가 있다.</p>
 <ul>
@@ -759,53 +859,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>x</code> : 레벨을 재정렬하기 위해 사용할 수치형 벡터</li>
 <li>선택적으로 <code>fun</code> : <code>f</code> 의 각 값에 대해 <code>x</code> 값이 여러 개가 있을 경우, 사용할 함수. 기본값은 <code>median</code> 이다.</li>
 </ul>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="factors.html#cb346-1"></a><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(tvhours, <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span></span>
-<span id="cb346-2"><a href="factors.html#cb346-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="factors.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(relig_summary, <span class="fu">aes</span>(tvhours, <span class="fu">fct_reorder</span>(relig, tvhours))) <span class="sc">+</span></span>
+<span id="cb346-2"><a href="factors.html#cb346-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>종교를 재배열하면 ’모름(Don’t know)’ 범주의 사람들이 TV를 훨씬 많이 보고, 힌두교와 다른 동양 종교 사람들이 훨씬 덜 본다는 것을 쉽게 알 수 있다.</p>
 <p>좀 더 복잡한 변환을 해야 된다면 <code>aes()</code> 내부보다는 별도의 <code>mutate()</code> 단계에서 변환할 것을 추천한다. 예를 들어 앞의 플롯을 다음과 같이 다시 작성할 수 있다.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="factors.html#cb347-1"></a>relig_summary <span class="op">%&gt;%</span></span>
-<span id="cb347-2"><a href="factors.html#cb347-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">relig =</span> <span class="kw">fct_reorder</span>(relig, tvhours)) <span class="op">%&gt;%</span></span>
-<span id="cb347-3"><a href="factors.html#cb347-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(tvhours, relig)) <span class="op">+</span></span>
-<span id="cb347-4"><a href="factors.html#cb347-4"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="factors.html#cb347-1" aria-hidden="true" tabindex="-1"></a>relig_summary <span class="sc">%&gt;%</span></span>
+<span id="cb347-2"><a href="factors.html#cb347-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relig =</span> <span class="fu">fct_reorder</span>(relig, tvhours)) <span class="sc">%&gt;%</span></span>
+<span id="cb347-3"><a href="factors.html#cb347-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(tvhours, relig)) <span class="sc">+</span></span>
+<span id="cb347-4"><a href="factors.html#cb347-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p>보고된 소득 레벨에 따라 평균 나이가 어떻게 변화하는지를 보여주는 플롯을 유사하게 만들어 보면 어떨까?</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="factors.html#cb348-1"></a>rincome_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb348-2"><a href="factors.html#cb348-2"></a><span class="st">  </span><span class="kw">group_by</span>(rincome) <span class="op">%&gt;%</span></span>
-<span id="cb348-3"><a href="factors.html#cb348-3"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
-<span id="cb348-4"><a href="factors.html#cb348-4"></a>    <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb348-5"><a href="factors.html#cb348-5"></a>    <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb348-6"><a href="factors.html#cb348-6"></a>    <span class="dt">n =</span> <span class="kw">n</span>()</span>
-<span id="cb348-7"><a href="factors.html#cb348-7"></a>  )</span>
-<span id="cb348-8"><a href="factors.html#cb348-8"></a></span>
-<span id="cb348-9"><a href="factors.html#cb348-9"></a><span class="kw">ggplot</span>(rincome_summary, <span class="kw">aes</span>(age, <span class="kw">fct_reorder</span>(rincome, age))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="factors.html#cb348-1" aria-hidden="true" tabindex="-1"></a>rincome_summary <span class="ot">&lt;-</span> gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb348-2"><a href="factors.html#cb348-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rincome) <span class="sc">%&gt;%</span></span>
+<span id="cb348-3"><a href="factors.html#cb348-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb348-4"><a href="factors.html#cb348-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb348-5"><a href="factors.html#cb348-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">tvhours =</span> <span class="fu">mean</span>(tvhours, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb348-6"><a href="factors.html#cb348-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb348-7"><a href="factors.html#cb348-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb348-8"><a href="factors.html#cb348-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-9"><a href="factors.html#cb348-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rincome_summary, <span class="fu">aes</span>(age, <span class="fu">fct_reorder</span>(rincome, age))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>여기에서 레벨을 임의로 재정렬하는 것은 좋은 생각이 아니다! <code>rincome</code> 은 이미 원칙 있게 정렬되어 있어서 건드리지 말아야 하기 때문이다. <code>fct_reorder()</code> 는 레벨이 임의적으로 정렬된 팩터의 경우에만 사용해야 한다.</p>
 <p>한편, ’해당 없음(Not applicable)’을 다른 특별한 레벨들과 함께 앞으로 가져오는 것이 좋다. <code>fct_relevel()</code> 을 사용하면 된다. 이 함수는 팩터, <code>f</code> 와 앞으로 옮기고자 하는 레벨(개수에 관계 없음)을 취한다.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="factors.html#cb349-1"></a><span class="kw">ggplot</span>(rincome_summary, <span class="kw">aes</span>(age, <span class="kw">fct_relevel</span>(rincome, <span class="st">&quot;Not applicable&quot;</span>))) <span class="op">+</span></span>
-<span id="cb349-2"><a href="factors.html#cb349-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="factors.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rincome_summary, <span class="fu">aes</span>(age, <span class="fu">fct_relevel</span>(rincome, <span class="st">&quot;Not applicable&quot;</span>))) <span class="sc">+</span></span>
+<span id="cb349-2"><a href="factors.html#cb349-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>‘Not applicable’ 의 평균 연령이 왜 이렇게 높을까?</p>
 <p>재정렬이 유용한 경우가 또 있는데, 플롯의 선에 색상을 입힐 때이다. <code>fct_reorder2()</code> 는 가장 큰 <code>x</code> 값과 연관된 <code>y</code> 값으로 팩터를 재정렬 한다. 선 색상은 범례와 정렬되므로 이렇게 하면 플롯을 읽기 쉬워진다.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="factors.html#cb350-1"></a>by_age &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb350-2"><a href="factors.html#cb350-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(age)) <span class="op">%&gt;%</span></span>
-<span id="cb350-3"><a href="factors.html#cb350-3"></a><span class="st">  </span><span class="kw">count</span>(age, marital) <span class="op">%&gt;%</span></span>
-<span id="cb350-4"><a href="factors.html#cb350-4"></a><span class="st">  </span><span class="kw">group_by</span>(age) <span class="op">%&gt;%</span></span>
-<span id="cb350-5"><a href="factors.html#cb350-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))</span>
-<span id="cb350-6"><a href="factors.html#cb350-6"></a></span>
-<span id="cb350-7"><a href="factors.html#cb350-7"></a><span class="kw">ggplot</span>(by_age, <span class="kw">aes</span>(age, prop, <span class="dt">colour =</span> marital)) <span class="op">+</span></span>
-<span id="cb350-8"><a href="factors.html#cb350-8"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb350-9"><a href="factors.html#cb350-9"></a></span>
-<span id="cb350-10"><a href="factors.html#cb350-10"></a><span class="kw">ggplot</span>(by_age, <span class="kw">aes</span>(age, prop, <span class="dt">colour =</span> <span class="kw">fct_reorder2</span>(marital, age, prop))) <span class="op">+</span></span>
-<span id="cb350-11"><a href="factors.html#cb350-11"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb350-12"><a href="factors.html#cb350-12"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&quot;marital&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="factors.html#cb350-1" aria-hidden="true" tabindex="-1"></a>by_age <span class="ot">&lt;-</span> gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb350-2"><a href="factors.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span></span>
+<span id="cb350-3"><a href="factors.html#cb350-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(age, marital) <span class="sc">%&gt;%</span></span>
+<span id="cb350-4"><a href="factors.html#cb350-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age) <span class="sc">%&gt;%</span></span>
+<span id="cb350-5"><a href="factors.html#cb350-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb350-6"><a href="factors.html#cb350-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-7"><a href="factors.html#cb350-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(by_age, <span class="fu">aes</span>(age, prop, <span class="at">colour =</span> marital)) <span class="sc">+</span></span>
+<span id="cb350-8"><a href="factors.html#cb350-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb350-9"><a href="factors.html#cb350-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-10"><a href="factors.html#cb350-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(by_age, <span class="fu">aes</span>(age, prop, <span class="at">colour =</span> <span class="fu">fct_reorder2</span>(marital, age, prop))) <span class="sc">+</span></span>
+<span id="cb350-11"><a href="factors.html#cb350-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb350-12"><a href="factors.html#cb350-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">&quot;marital&quot;</span>)</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-20-1.png" width="50%" /><img src="factors_files/figure-html/unnamed-chunk-20-2.png" width="50%" /></p>
 <p>마지막으로, <code>fct_infreq()</code> 를 사용하여 빈도 오름차순으로 레벨을 정렬할 수 있다. 추가 변수가 필요 없기 때문에, 재정렬 방법 중 가장 간단한 유형이다. <code>fct_rev()</code> 와 조합하여 사용할 수 있다.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="factors.html#cb351-1"></a>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb351-2"><a href="factors.html#cb351-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">marital =</span> marital <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_infreq</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_rev</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb351-3"><a href="factors.html#cb351-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(marital)) <span class="op">+</span></span>
-<span id="cb351-4"><a href="factors.html#cb351-4"></a><span class="st">    </span><span class="kw">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="factors.html#cb351-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb351-2"><a href="factors.html#cb351-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">marital =</span> marital <span class="sc">%&gt;%</span> <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb351-3"><a href="factors.html#cb351-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(marital)) <span class="sc">+</span></span>
+<span id="cb351-4"><a href="factors.html#cb351-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="factors_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div id="연습문제-27" class="section level3">
+<div id="연습문제-27" class="section level3" number="15.4.1">
 <h3><span class="header-section-number">15.4.1</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p><code>tvhours</code> 에 의심스러운 큰 숫자들이 몇 있다. 평균(mean)은 좋은 요약값인가?</p></li>
@@ -814,112 +914,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="팩터-레벨-수정하기" class="section level2">
+<div id="팩터-레벨-수정하기" class="section level2" number="15.5">
 <h2><span class="header-section-number">15.5</span> 팩터 레벨 수정하기</h2>
 <p>레벨의 순서 변경보다 값을 변경하는 게 더 강력한 방법이다. 이렇게 하면 화면 출력 시 라벨을 명확히 할 수 있고, 레벨을 병합하여 상위 레벨 시각화를 할 수 있다. 가장 일반적이고 강력한 것은 <code>fct_recode()</code> 이다. 이를 사용하여 각 레벨값을 다시 주거나 변경할 수 있다. 예를 들어 <code>gss_cat$partyid</code> 를 보자.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="factors.html#cb352-1"></a>gss_cat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(partyid)</span>
-<span id="cb352-2"><a href="factors.html#cb352-2"></a><span class="co">#&gt; # A tibble: 10 x 2</span></span>
-<span id="cb352-3"><a href="factors.html#cb352-3"></a><span class="co">#&gt;   partyid                n</span></span>
-<span id="cb352-4"><a href="factors.html#cb352-4"></a><span class="co">#&gt;   &lt;fct&gt;              &lt;int&gt;</span></span>
-<span id="cb352-5"><a href="factors.html#cb352-5"></a><span class="co">#&gt; 1 No answer            154</span></span>
-<span id="cb352-6"><a href="factors.html#cb352-6"></a><span class="co">#&gt; 2 Don&#39;t know             1</span></span>
-<span id="cb352-7"><a href="factors.html#cb352-7"></a><span class="co">#&gt; 3 Other party          393</span></span>
-<span id="cb352-8"><a href="factors.html#cb352-8"></a><span class="co">#&gt; 4 Strong republican   2314</span></span>
-<span id="cb352-9"><a href="factors.html#cb352-9"></a><span class="co">#&gt; 5 Not str republican  3032</span></span>
-<span id="cb352-10"><a href="factors.html#cb352-10"></a><span class="co">#&gt; 6 Ind,near rep        1791</span></span>
-<span id="cb352-11"><a href="factors.html#cb352-11"></a><span class="co">#&gt; # ... with 4 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="factors.html#cb352-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span> <span class="fu">count</span>(partyid)</span>
+<span id="cb352-2"><a href="factors.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 x 2</span></span>
+<span id="cb352-3"><a href="factors.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   partyid                n</span></span>
+<span id="cb352-4"><a href="factors.html#cb352-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;              &lt;int&gt;</span></span>
+<span id="cb352-5"><a href="factors.html#cb352-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 No answer            154</span></span>
+<span id="cb352-6"><a href="factors.html#cb352-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Don&#39;t know             1</span></span>
+<span id="cb352-7"><a href="factors.html#cb352-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Other party          393</span></span>
+<span id="cb352-8"><a href="factors.html#cb352-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Strong republican   2314</span></span>
+<span id="cb352-9"><a href="factors.html#cb352-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Not str republican  3032</span></span>
+<span id="cb352-10"><a href="factors.html#cb352-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Ind,near rep        1791</span></span>
+<span id="cb352-11"><a href="factors.html#cb352-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 4 more rows</span></span></code></pre></div>
 <p>이 레벨들은 짧고 일관성이 없다. 이 레벨들을 풀어쓰고, 병렬 구조를 사용해보자.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="factors.html#cb353-1"></a>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb353-2"><a href="factors.html#cb353-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partyid =</span> <span class="kw">fct_recode</span>(partyid,</span>
-<span id="cb353-3"><a href="factors.html#cb353-3"></a>    <span class="st">&quot;Republican, strong&quot;</span>    =<span class="st"> &quot;Strong republican&quot;</span>,</span>
-<span id="cb353-4"><a href="factors.html#cb353-4"></a>    <span class="st">&quot;Republican, weak&quot;</span>      =<span class="st"> &quot;Not str republican&quot;</span>,</span>
-<span id="cb353-5"><a href="factors.html#cb353-5"></a>    <span class="st">&quot;Independent, near rep&quot;</span> =<span class="st"> &quot;Ind,near rep&quot;</span>,</span>
-<span id="cb353-6"><a href="factors.html#cb353-6"></a>    <span class="st">&quot;Independent, near dem&quot;</span> =<span class="st"> &quot;Ind,near dem&quot;</span>,</span>
-<span id="cb353-7"><a href="factors.html#cb353-7"></a>    <span class="st">&quot;Democrat, weak&quot;</span>        =<span class="st"> &quot;Not str democrat&quot;</span>,</span>
-<span id="cb353-8"><a href="factors.html#cb353-8"></a>    <span class="st">&quot;Democrat, strong&quot;</span>      =<span class="st"> &quot;Strong democrat&quot;</span></span>
-<span id="cb353-9"><a href="factors.html#cb353-9"></a>  )) <span class="op">%&gt;%</span></span>
-<span id="cb353-10"><a href="factors.html#cb353-10"></a><span class="st">  </span><span class="kw">count</span>(partyid)</span>
-<span id="cb353-11"><a href="factors.html#cb353-11"></a><span class="co">#&gt; # A tibble: 10 x 2</span></span>
-<span id="cb353-12"><a href="factors.html#cb353-12"></a><span class="co">#&gt;   partyid                   n</span></span>
-<span id="cb353-13"><a href="factors.html#cb353-13"></a><span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span></span>
-<span id="cb353-14"><a href="factors.html#cb353-14"></a><span class="co">#&gt; 1 No answer               154</span></span>
-<span id="cb353-15"><a href="factors.html#cb353-15"></a><span class="co">#&gt; 2 Don&#39;t know                1</span></span>
-<span id="cb353-16"><a href="factors.html#cb353-16"></a><span class="co">#&gt; 3 Other party             393</span></span>
-<span id="cb353-17"><a href="factors.html#cb353-17"></a><span class="co">#&gt; 4 Republican, strong     2314</span></span>
-<span id="cb353-18"><a href="factors.html#cb353-18"></a><span class="co">#&gt; 5 Republican, weak       3032</span></span>
-<span id="cb353-19"><a href="factors.html#cb353-19"></a><span class="co">#&gt; 6 Independent, near rep  1791</span></span>
-<span id="cb353-20"><a href="factors.html#cb353-20"></a><span class="co">#&gt; # ... with 4 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="factors.html#cb353-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb353-2"><a href="factors.html#cb353-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">partyid =</span> <span class="fu">fct_recode</span>(partyid,</span>
+<span id="cb353-3"><a href="factors.html#cb353-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Republican, strong&quot;</span>    <span class="ot">=</span> <span class="st">&quot;Strong republican&quot;</span>,</span>
+<span id="cb353-4"><a href="factors.html#cb353-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Republican, weak&quot;</span>      <span class="ot">=</span> <span class="st">&quot;Not str republican&quot;</span>,</span>
+<span id="cb353-5"><a href="factors.html#cb353-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Independent, near rep&quot;</span> <span class="ot">=</span> <span class="st">&quot;Ind,near rep&quot;</span>,</span>
+<span id="cb353-6"><a href="factors.html#cb353-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Independent, near dem&quot;</span> <span class="ot">=</span> <span class="st">&quot;Ind,near dem&quot;</span>,</span>
+<span id="cb353-7"><a href="factors.html#cb353-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Democrat, weak&quot;</span>        <span class="ot">=</span> <span class="st">&quot;Not str democrat&quot;</span>,</span>
+<span id="cb353-8"><a href="factors.html#cb353-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Democrat, strong&quot;</span>      <span class="ot">=</span> <span class="st">&quot;Strong democrat&quot;</span></span>
+<span id="cb353-9"><a href="factors.html#cb353-9" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb353-10"><a href="factors.html#cb353-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(partyid)</span>
+<span id="cb353-11"><a href="factors.html#cb353-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 x 2</span></span>
+<span id="cb353-12"><a href="factors.html#cb353-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   partyid                   n</span></span>
+<span id="cb353-13"><a href="factors.html#cb353-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span></span>
+<span id="cb353-14"><a href="factors.html#cb353-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 No answer               154</span></span>
+<span id="cb353-15"><a href="factors.html#cb353-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Don&#39;t know                1</span></span>
+<span id="cb353-16"><a href="factors.html#cb353-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Other party             393</span></span>
+<span id="cb353-17"><a href="factors.html#cb353-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Republican, strong     2314</span></span>
+<span id="cb353-18"><a href="factors.html#cb353-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Republican, weak       3032</span></span>
+<span id="cb353-19"><a href="factors.html#cb353-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Independent, near rep  1791</span></span>
+<span id="cb353-20"><a href="factors.html#cb353-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 4 more rows</span></span></code></pre></div>
 <p><code>fct_recode()</code> 는 명시적으로 언급되지 않은 레벨은 그대로 둔다. 존재하지 않은 레벨을 참조하면 경고를 발생한다.</p>
 <p>그룹을 결합하려면 이전 레벨들을 같은 새로운 레벨로 할당하면 된다.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="factors.html#cb354-1"></a>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb354-2"><a href="factors.html#cb354-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partyid =</span> <span class="kw">fct_recode</span>(partyid,</span>
-<span id="cb354-3"><a href="factors.html#cb354-3"></a>    <span class="st">&quot;Republican, strong&quot;</span>    =<span class="st"> &quot;Strong republican&quot;</span>,</span>
-<span id="cb354-4"><a href="factors.html#cb354-4"></a>    <span class="st">&quot;Republican, weak&quot;</span>      =<span class="st"> &quot;Not str republican&quot;</span>,</span>
-<span id="cb354-5"><a href="factors.html#cb354-5"></a>    <span class="st">&quot;Independent, near rep&quot;</span> =<span class="st"> &quot;Ind,near rep&quot;</span>,</span>
-<span id="cb354-6"><a href="factors.html#cb354-6"></a>    <span class="st">&quot;Independent, near dem&quot;</span> =<span class="st"> &quot;Ind,near dem&quot;</span>,</span>
-<span id="cb354-7"><a href="factors.html#cb354-7"></a>    <span class="st">&quot;Democrat, weak&quot;</span>        =<span class="st"> &quot;Not str democrat&quot;</span>,</span>
-<span id="cb354-8"><a href="factors.html#cb354-8"></a>    <span class="st">&quot;Democrat, strong&quot;</span>      =<span class="st"> &quot;Strong democrat&quot;</span>,</span>
-<span id="cb354-9"><a href="factors.html#cb354-9"></a>    <span class="st">&quot;Other&quot;</span>                 =<span class="st"> &quot;No answer&quot;</span>,</span>
-<span id="cb354-10"><a href="factors.html#cb354-10"></a>    <span class="st">&quot;Other&quot;</span>                 =<span class="st"> &quot;Don&#39;t know&quot;</span>,</span>
-<span id="cb354-11"><a href="factors.html#cb354-11"></a>    <span class="st">&quot;Other&quot;</span>                 =<span class="st"> &quot;Other party&quot;</span></span>
-<span id="cb354-12"><a href="factors.html#cb354-12"></a>  )) <span class="op">%&gt;%</span></span>
-<span id="cb354-13"><a href="factors.html#cb354-13"></a><span class="st">  </span><span class="kw">count</span>(partyid)</span>
-<span id="cb354-14"><a href="factors.html#cb354-14"></a><span class="co">#&gt; # A tibble: 8 x 2</span></span>
-<span id="cb354-15"><a href="factors.html#cb354-15"></a><span class="co">#&gt;   partyid                   n</span></span>
-<span id="cb354-16"><a href="factors.html#cb354-16"></a><span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span></span>
-<span id="cb354-17"><a href="factors.html#cb354-17"></a><span class="co">#&gt; 1 Other                   548</span></span>
-<span id="cb354-18"><a href="factors.html#cb354-18"></a><span class="co">#&gt; 2 Republican, strong     2314</span></span>
-<span id="cb354-19"><a href="factors.html#cb354-19"></a><span class="co">#&gt; 3 Republican, weak       3032</span></span>
-<span id="cb354-20"><a href="factors.html#cb354-20"></a><span class="co">#&gt; 4 Independent, near rep  1791</span></span>
-<span id="cb354-21"><a href="factors.html#cb354-21"></a><span class="co">#&gt; 5 Independent            4119</span></span>
-<span id="cb354-22"><a href="factors.html#cb354-22"></a><span class="co">#&gt; 6 Independent, near dem  2499</span></span>
-<span id="cb354-23"><a href="factors.html#cb354-23"></a><span class="co">#&gt; # ... with 2 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="factors.html#cb354-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb354-2"><a href="factors.html#cb354-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">partyid =</span> <span class="fu">fct_recode</span>(partyid,</span>
+<span id="cb354-3"><a href="factors.html#cb354-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Republican, strong&quot;</span>    <span class="ot">=</span> <span class="st">&quot;Strong republican&quot;</span>,</span>
+<span id="cb354-4"><a href="factors.html#cb354-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Republican, weak&quot;</span>      <span class="ot">=</span> <span class="st">&quot;Not str republican&quot;</span>,</span>
+<span id="cb354-5"><a href="factors.html#cb354-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Independent, near rep&quot;</span> <span class="ot">=</span> <span class="st">&quot;Ind,near rep&quot;</span>,</span>
+<span id="cb354-6"><a href="factors.html#cb354-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Independent, near dem&quot;</span> <span class="ot">=</span> <span class="st">&quot;Ind,near dem&quot;</span>,</span>
+<span id="cb354-7"><a href="factors.html#cb354-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Democrat, weak&quot;</span>        <span class="ot">=</span> <span class="st">&quot;Not str democrat&quot;</span>,</span>
+<span id="cb354-8"><a href="factors.html#cb354-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Democrat, strong&quot;</span>      <span class="ot">=</span> <span class="st">&quot;Strong democrat&quot;</span>,</span>
+<span id="cb354-9"><a href="factors.html#cb354-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Other&quot;</span>                 <span class="ot">=</span> <span class="st">&quot;No answer&quot;</span>,</span>
+<span id="cb354-10"><a href="factors.html#cb354-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Other&quot;</span>                 <span class="ot">=</span> <span class="st">&quot;Don&#39;t know&quot;</span>,</span>
+<span id="cb354-11"><a href="factors.html#cb354-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Other&quot;</span>                 <span class="ot">=</span> <span class="st">&quot;Other party&quot;</span></span>
+<span id="cb354-12"><a href="factors.html#cb354-12" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb354-13"><a href="factors.html#cb354-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(partyid)</span>
+<span id="cb354-14"><a href="factors.html#cb354-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 8 x 2</span></span>
+<span id="cb354-15"><a href="factors.html#cb354-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   partyid                   n</span></span>
+<span id="cb354-16"><a href="factors.html#cb354-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;                 &lt;int&gt;</span></span>
+<span id="cb354-17"><a href="factors.html#cb354-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Other                   548</span></span>
+<span id="cb354-18"><a href="factors.html#cb354-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Republican, strong     2314</span></span>
+<span id="cb354-19"><a href="factors.html#cb354-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Republican, weak       3032</span></span>
+<span id="cb354-20"><a href="factors.html#cb354-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Independent, near rep  1791</span></span>
+<span id="cb354-21"><a href="factors.html#cb354-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Independent            4119</span></span>
+<span id="cb354-22"><a href="factors.html#cb354-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Independent, near dem  2499</span></span>
+<span id="cb354-23"><a href="factors.html#cb354-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 2 more rows</span></span></code></pre></div>
 <p>이 기술은 신중하게 사용해야 한다. 서로 같지 않은 범주들을 함께 묶는다면 잘못된 결과를 도출하게 될 것이다.</p>
 <p>다수의 레벨을 병합하고자 하면 <code>fct_recode()</code> 의 변형 함수인 <code>fct_collapse()</code> 가 편리하다. 각각의 새로운 변수에 대해 이전 레벨로 이루어진 벡터를 제공해야 한다.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="factors.html#cb355-1"></a>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb355-2"><a href="factors.html#cb355-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">partyid =</span> <span class="kw">fct_collapse</span>(partyid,</span>
-<span id="cb355-3"><a href="factors.html#cb355-3"></a>    <span class="dt">other =</span> <span class="kw">c</span>(<span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Don&#39;t know&quot;</span>, <span class="st">&quot;Other party&quot;</span>),</span>
-<span id="cb355-4"><a href="factors.html#cb355-4"></a>    <span class="dt">rep =</span> <span class="kw">c</span>(<span class="st">&quot;Strong republican&quot;</span>, <span class="st">&quot;Not str republican&quot;</span>),</span>
-<span id="cb355-5"><a href="factors.html#cb355-5"></a>    <span class="dt">ind =</span> <span class="kw">c</span>(<span class="st">&quot;Ind,near rep&quot;</span>, <span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Ind,near dem&quot;</span>),</span>
-<span id="cb355-6"><a href="factors.html#cb355-6"></a>    <span class="dt">dem =</span> <span class="kw">c</span>(<span class="st">&quot;Not str democrat&quot;</span>, <span class="st">&quot;Strong democrat&quot;</span>)</span>
-<span id="cb355-7"><a href="factors.html#cb355-7"></a>  )) <span class="op">%&gt;%</span></span>
-<span id="cb355-8"><a href="factors.html#cb355-8"></a><span class="st">  </span><span class="kw">count</span>(partyid)</span>
-<span id="cb355-9"><a href="factors.html#cb355-9"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
-<span id="cb355-10"><a href="factors.html#cb355-10"></a><span class="co">#&gt;   partyid     n</span></span>
-<span id="cb355-11"><a href="factors.html#cb355-11"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt;</span></span>
-<span id="cb355-12"><a href="factors.html#cb355-12"></a><span class="co">#&gt; 1 other     548</span></span>
-<span id="cb355-13"><a href="factors.html#cb355-13"></a><span class="co">#&gt; 2 rep      5346</span></span>
-<span id="cb355-14"><a href="factors.html#cb355-14"></a><span class="co">#&gt; 3 ind      8409</span></span>
-<span id="cb355-15"><a href="factors.html#cb355-15"></a><span class="co">#&gt; 4 dem      7180</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="factors.html#cb355-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb355-2"><a href="factors.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">partyid =</span> <span class="fu">fct_collapse</span>(partyid,</span>
+<span id="cb355-3"><a href="factors.html#cb355-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">other =</span> <span class="fu">c</span>(<span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Don&#39;t know&quot;</span>, <span class="st">&quot;Other party&quot;</span>),</span>
+<span id="cb355-4"><a href="factors.html#cb355-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rep =</span> <span class="fu">c</span>(<span class="st">&quot;Strong republican&quot;</span>, <span class="st">&quot;Not str republican&quot;</span>),</span>
+<span id="cb355-5"><a href="factors.html#cb355-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ind =</span> <span class="fu">c</span>(<span class="st">&quot;Ind,near rep&quot;</span>, <span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Ind,near dem&quot;</span>),</span>
+<span id="cb355-6"><a href="factors.html#cb355-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem =</span> <span class="fu">c</span>(<span class="st">&quot;Not str democrat&quot;</span>, <span class="st">&quot;Strong democrat&quot;</span>)</span>
+<span id="cb355-7"><a href="factors.html#cb355-7" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb355-8"><a href="factors.html#cb355-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(partyid)</span>
+<span id="cb355-9"><a href="factors.html#cb355-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 x 2</span></span>
+<span id="cb355-10"><a href="factors.html#cb355-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   partyid     n</span></span>
+<span id="cb355-11"><a href="factors.html#cb355-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt;</span></span>
+<span id="cb355-12"><a href="factors.html#cb355-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 other     548</span></span>
+<span id="cb355-13"><a href="factors.html#cb355-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 rep      5346</span></span>
+<span id="cb355-14"><a href="factors.html#cb355-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 ind      8409</span></span>
+<span id="cb355-15"><a href="factors.html#cb355-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 dem      7180</span></span></code></pre></div>
 <p>가끔은 플롯이나 테이블을 간단하게 만들기 위해 소규모 그룹 모두를 묶고 싶을 수도 있다. <code>fct_lump()</code> 가 바로 이 작업을 한다.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="factors.html#cb356-1"></a>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb356-2"><a href="factors.html#cb356-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">relig =</span> <span class="kw">fct_lump</span>(relig)) <span class="op">%&gt;%</span></span>
-<span id="cb356-3"><a href="factors.html#cb356-3"></a><span class="st">  </span><span class="kw">count</span>(relig)</span>
-<span id="cb356-4"><a href="factors.html#cb356-4"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
-<span id="cb356-5"><a href="factors.html#cb356-5"></a><span class="co">#&gt;   relig          n</span></span>
-<span id="cb356-6"><a href="factors.html#cb356-6"></a><span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span></span>
-<span id="cb356-7"><a href="factors.html#cb356-7"></a><span class="co">#&gt; 1 Protestant 10846</span></span>
-<span id="cb356-8"><a href="factors.html#cb356-8"></a><span class="co">#&gt; 2 Other      10637</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="factors.html#cb356-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb356-2"><a href="factors.html#cb356-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relig =</span> <span class="fu">fct_lump</span>(relig)) <span class="sc">%&gt;%</span></span>
+<span id="cb356-3"><a href="factors.html#cb356-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(relig)</span>
+<span id="cb356-4"><a href="factors.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 x 2</span></span>
+<span id="cb356-5"><a href="factors.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   relig          n</span></span>
+<span id="cb356-6"><a href="factors.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;</span></span>
+<span id="cb356-7"><a href="factors.html#cb356-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Protestant 10846</span></span>
+<span id="cb356-8"><a href="factors.html#cb356-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Other      10637</span></span></code></pre></div>
 <p>기본 동작은 묶은 그룹이 가장 작은 그룹이 되는 조건을 유지하면서 작은 그룹들을 점진적으로 묶는다. 위의 경우에는 매우 도움이 되지는 않는다. 즉, 이 조사에서 대부분의 미국인이 개신교인 것은 사실이지만, 아마도 우리는 과하게 병합한 것 같다.</p>
 <p>대신, <code>n</code> 인수를 사용하여 유지하고 싶은 그룹 개수(other 제외)를 지정할 수 있다.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="factors.html#cb357-1"></a>gss_cat <span class="op">%&gt;%</span></span>
-<span id="cb357-2"><a href="factors.html#cb357-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">relig =</span> <span class="kw">fct_lump</span>(relig, <span class="dt">n =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb357-3"><a href="factors.html#cb357-3"></a><span class="st">  </span><span class="kw">count</span>(relig, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb357-4"><a href="factors.html#cb357-4"></a><span class="st">  </span><span class="kw">print</span>(<span class="dt">n =</span> <span class="ot">Inf</span>)</span>
-<span id="cb357-5"><a href="factors.html#cb357-5"></a><span class="co">#&gt; # A tibble: 10 x 2</span></span>
-<span id="cb357-6"><a href="factors.html#cb357-6"></a><span class="co">#&gt;    relig                       n</span></span>
-<span id="cb357-7"><a href="factors.html#cb357-7"></a><span class="co">#&gt;    &lt;fct&gt;                   &lt;int&gt;</span></span>
-<span id="cb357-8"><a href="factors.html#cb357-8"></a><span class="co">#&gt;  1 Protestant              10846</span></span>
-<span id="cb357-9"><a href="factors.html#cb357-9"></a><span class="co">#&gt;  2 Catholic                 5124</span></span>
-<span id="cb357-10"><a href="factors.html#cb357-10"></a><span class="co">#&gt;  3 None                     3523</span></span>
-<span id="cb357-11"><a href="factors.html#cb357-11"></a><span class="co">#&gt;  4 Christian                 689</span></span>
-<span id="cb357-12"><a href="factors.html#cb357-12"></a><span class="co">#&gt;  5 Other                     458</span></span>
-<span id="cb357-13"><a href="factors.html#cb357-13"></a><span class="co">#&gt;  6 Jewish                    388</span></span>
-<span id="cb357-14"><a href="factors.html#cb357-14"></a><span class="co">#&gt;  7 Buddhism                  147</span></span>
-<span id="cb357-15"><a href="factors.html#cb357-15"></a><span class="co">#&gt;  8 Inter-nondenominational   109</span></span>
-<span id="cb357-16"><a href="factors.html#cb357-16"></a><span class="co">#&gt;  9 Moslem/islam              104</span></span>
-<span id="cb357-17"><a href="factors.html#cb357-17"></a><span class="co">#&gt; 10 Orthodox-christian         95</span></span></code></pre></div>
-<div id="연습문제-28" class="section level3">
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="factors.html#cb357-1" aria-hidden="true" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span></span>
+<span id="cb357-2"><a href="factors.html#cb357-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relig =</span> <span class="fu">fct_lump</span>(relig, <span class="at">n =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb357-3"><a href="factors.html#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(relig, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb357-4"><a href="factors.html#cb357-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span>
+<span id="cb357-5"><a href="factors.html#cb357-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 x 2</span></span>
+<span id="cb357-6"><a href="factors.html#cb357-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    relig                       n</span></span>
+<span id="cb357-7"><a href="factors.html#cb357-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;                   &lt;int&gt;</span></span>
+<span id="cb357-8"><a href="factors.html#cb357-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Protestant              10846</span></span>
+<span id="cb357-9"><a href="factors.html#cb357-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Catholic                 5124</span></span>
+<span id="cb357-10"><a href="factors.html#cb357-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 None                     3523</span></span>
+<span id="cb357-11"><a href="factors.html#cb357-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Christian                 689</span></span>
+<span id="cb357-12"><a href="factors.html#cb357-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Other                     458</span></span>
+<span id="cb357-13"><a href="factors.html#cb357-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Jewish                    388</span></span>
+<span id="cb357-14"><a href="factors.html#cb357-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Buddhism                  147</span></span>
+<span id="cb357-15"><a href="factors.html#cb357-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Inter-nondenominational   109</span></span>
+<span id="cb357-16"><a href="factors.html#cb357-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Moslem/islam              104</span></span>
+<span id="cb357-17"><a href="factors.html#cb357-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Orthodox-christian         95</span></span></code></pre></div>
+<div id="연습문제-28" class="section level3" number="15.5.1">
 <h3><span class="header-section-number">15.5.1</span> 연습문제</h3>
 <ol style="list-style-type: decimal">
 <li><p>민주당(Democrat), 공화당(Republican), 독립정당(Independent)의 비율이 시간이 지남에 따라 어떻게 변화했는가?</p></li>
@@ -969,6 +1069,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

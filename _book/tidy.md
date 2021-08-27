@@ -86,10 +86,14 @@ table4b  # population
 
 Figure \@ref(fig:tidy-structure) 은 이러한 규칙을 시각적으로 보여준다. 
 
-<div class="figure" style="text-align: center">
-<img src="images/tidy-1kr.png" alt="데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다." width="100%" />
-<p class="caption">(\#fig:tidy-structure)데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/tidy-1kr} 
+
+}
+
+\caption{데이터셋을 타이디하게 만드는 세 가지 규칙: 변수는 열에 있고, 관측값은 행에 있고, 값은 셀에 있다.}(\#fig:tidy-structure)
+\end{figure}
 
 이 세 가지 규칙은 서로 연관되어 있다. 이 셋 중 두 가지만 충족시키는 것은 불가능하기 때문이다. 이 상호 관계때문에 다음의 더 간단하고 실용적인 지침이 도출된다. 
  
@@ -137,7 +141,9 @@ ggplot(table1, aes(year, cases)) +
   geom_point(aes(colour = country))
 ```
 
-<img src="tidy_files/figure-html/unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.5\linewidth]{tidy_files/figure-latex/unnamed-chunk-2-1} \end{center}
 
 ### 연습문제
 
@@ -214,10 +220,14 @@ table4a %>%
 
 수집하고자 하는 열을 지정하는 법은 `dplyr::select()` 스타일 표기법을 따른다. 여기에는 두 개의 열만 있으므로 개별적으로 나열한다. ’1999’ 와 ’2000’ 은 구문론적 이름이 아니므로 역따옴표로 둘러쌓아야 함을 주목하라. 열을 선택하는 다른 방법에 대해 기억이 나지 않는다면 [select() 로 열 선택](#select)’ 을 참조하라.
 
-<div class="figure" style="text-align: center">
-<img src="images/tidy-9.png" alt="`table4` 을 더 긴  타이티 형태로 피봇팅하기" width="100%" />
-<p class="caption">(\#fig:tidy-gather)`table4` 을 더 긴  타이티 형태로 피봇팅하기</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/tidy-9} 
+
+}
+
+\caption{`table4` 을 더 긴  타이티 형태로 피봇팅하기}(\#fig:tidy-gather)
+\end{figure}
 
 최종 결과에서, 수집된 열은 삭제되고 새 `key` 와 `value`  열이 생성된다. 한편, 원래 변수 간의 관계는 보존된다. 이는 Figure \@ref(fig:tidy-gather) 에 시각적으로 표현되어 있다. 
 
@@ -303,10 +313,14 @@ table2 %>%
 #> 6 China        2000 213766 1280428583
 ```
 
-<div class="figure" style="text-align: center">
-<img src="images/tidy-8.png" alt="`table2` 을 더 넓은 타이티 형태로 피봇팅하기" width="100%" />
-<p class="caption">(\#fig:tidy-spread)`table2` 을 더 넓은 타이티 형태로 피봇팅하기</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/tidy-8} 
+
+}
+
+\caption{`table2` 을 더 넓은 타이티 형태로 피봇팅하기}(\#fig:tidy-spread)
+\end{figure}
 
 이름을 통해 이미 알아 차린 사람도 있겠지만, `pivot_wider()` 와 `pivot_longer()` 는 보완 관계이다. `pivot_longer()` 는 넓은 테이블을 더 좁고 길게, `pivot_longer()` 는 긴 테이블을 더 짧고 넓게 만든다.
 
@@ -406,10 +420,14 @@ table3 %>%
 #> 6 China        2000 213766 1280428583
 ```
 
-<div class="figure" style="text-align: center">
-<img src="images/tidy-17.png" alt="Separating `table3` makes it tidy" width="75%" />
-<p class="caption">(\#fig:tidy-separate)Separating `table3` makes it tidy</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/tidy-17} 
+
+}
+
+\caption{Separating `table3` makes it tidy}(\#fig:tidy-separate)
+\end{figure}
 
 기본적으로 `separate()` 는 숫자나 글자가 아닌 문자를 볼 때마다 값을 쪼갠다. 예를 들어 앞의 코드에서 `separate()` 는 슬래시 문자로 `rate` 값을 쪼갠다. 특정 문자를 사용하여 열을 구분하려면 이를 `separate()` 의 `sep` 인수로 전달하면 된다. 예를 들어 이전 코드를 다음과 같이 다시 작성할 수 있다.
 
@@ -461,10 +479,14 @@ table3 %>%
 
 `unite()` 는 `separate()` 의 반대이다. 여러 열을 하나의 열로 결합한다. `separate()` 보다 훨씬 드물게 필요하겠지만, 포켓에 가지고 다닐 만큼 유용한 도구이다.
 
-<div class="figure" style="text-align: center">
-<img src="images/tidy-18.png" alt="Uniting `table5` makes it tidy" width="75%" />
-<p class="caption">(\#fig:tidy-unite)Uniting `table5` makes it tidy</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/tidy-18} 
+
+}
+
+\caption{Uniting `table5` makes it tidy}(\#fig:tidy-unite)
+\end{figure}
 
 `unite()` 를 사용하여 마지막 예제에서 만든 `century` 열과 `year` 열을 다시 결합할 수 있다. 이 데이터는 `tidyr::table5` 로 저장되어 있다. `unite()` 는 데이터프레임, 생성할 새 변수의 이름 및 결합할 열 집합 (이번에도 `dplyr::select()` 방식으로 표현) 을 필요로 한다.
 

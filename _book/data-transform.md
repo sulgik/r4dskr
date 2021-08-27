@@ -774,7 +774,9 @@ ggplot(data = delays, mapping = aes(x = delay)) +
 #> Warning: Removed 874 rows containing non-finite values (stat_bin).
 ```
 
-<img src="data-transform_files/figure-html/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-transform_files/figure-latex/unnamed-chunk-29-1} \end{center}
 
 Wow, there are some planes that have an *average* delay of 5 hours (300 minutes)!
 
@@ -794,7 +796,9 @@ ggplot(data = delays, mapping = aes(x = n, y = delay)) +
 #> Warning: Removed 874 rows containing missing values (geom_point).
 ```
 
-<img src="data-transform_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-transform_files/figure-latex/unnamed-chunk-30-1} \end{center}
 
 Not surprisingly, there is much greater variation in the average delay when there are few flights.
 The shape of this plot is very characteristic: whenever you plot a mean (or other summary) vs. group size, you'll see that the variation decreases as the sample size increases.
@@ -812,7 +816,9 @@ delays %>%
 #> Warning: Removed 828 rows containing missing values (geom_point).
 ```
 
-<img src="data-transform_files/figure-html/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-transform_files/figure-latex/unnamed-chunk-31-1} \end{center}
 
 There's another common variation of this type of pattern.
 Let's look at how the average performance of batters in baseball is related to the number of times they're at bat.
@@ -843,7 +849,9 @@ batters %>%
 #> `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
 ```
 
-<img src="data-transform_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{data-transform_files/figure-latex/unnamed-chunk-32-1} \end{center}
 
 This also has important implications for ranking.
 If you naively sort on `desc(ba)`, the people with the best batting averages are clearly lucky, not skilled:

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>24 그래프를 통한 의사소통 | R 을 활용한 데이터과학</title>
   <meta name="description" content="24 그래프를 통한 의사소통 | R 을 활용한 데이터과학" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="24 그래프를 통한 의사소통 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="rmarkdown.html"/>
 <link rel="next" href="rmarkdown-formats.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -180,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.3" data-path="data-visualisation.html"><a href="data-visualisation.html#그래프-작성-템플릿"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 템플릿</a></li>
 <li class="chapter" data-level="3.2.4" data-path="data-visualisation.html"><a href="data-visualisation.html#연습문제"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a><ul>
+<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#심미성-매핑"><i class="fa fa-check"></i><b>3.3</b> 심미성 매핑</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises"><i class="fa fa-check"></i><b>3.3.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
@@ -771,7 +771,7 @@ informative titles to make it easier for others to understand.</p></li>
 <span id="cb609-4"><a href="graphics-for-communication.html#cb609-4"></a><span class="co">#&gt; Increasing engine size is related to</span></span>
 <span id="cb609-5"><a href="graphics-for-communication.html#cb609-5"></a><span class="co">#&gt; decreasing fuel economy.</span></span></code></pre></div>
 <p>Note the use of <code>hjust</code> and <code>vjust</code> to control the alignment of the label. Figure <a href="graphics-for-communication.html#fig:just">24.1</a> shows all nine possible combinations.</p>
-<div class="figure" style="text-align: center"><span id="fig:just"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:just"></span>
 <img src="communicate-plots_files/figure-html/just-1.png" alt="All nine combinations of `hjust` and `vjust`." width="60%" />
 <p class="caption">
 Figure 24.1: All nine combinations of <code>hjust</code> and <code>vjust</code>.
@@ -910,7 +910,7 @@ you know more about the data.</p></li>
 <span id="cb620-3"><a href="graphics-for-communication.html#cb620-3"></a><span class="st">  </span><span class="kw">scale_colour_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</span></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>The ColorBrewer scales are documented online at <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a> and made available in R via the <strong>RColorBrewer</strong> package, by Erich Neuwirth. Figure <a href="graphics-for-communication.html#fig:brewer">24.2</a> shows the complete list of all palettes. The sequential (top) and diverging (bottom) palettes are particularly useful if your categorical values are ordered, or have a “middle”. This often arises if you’ve used <code>cut()</code> to make a continuous variable into a categorical variable.</p>
-<div class="figure" style="text-align: center"><span id="fig:brewer"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:brewer"></span>
 <img src="communicate-plots_files/figure-html/brewer-1.png" alt="All ColourBrewer scales." width="70%" />
 <p class="caption">
 Figure 24.2: All ColourBrewer scales.
@@ -1029,7 +1029,7 @@ Figure 24.2: All ColourBrewer scales.
 <span id="cb628-4"><a href="graphics-for-communication.html#cb628-4"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
 <p><img src="communicate-plots_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>ggplot2 includes eight themes by default, as shown in Figure <a href="graphics-for-communication.html#fig:themes">24.3</a>. Many more are included in add-on packages like <strong>ggthemes</strong> (<a href="https://github.com/jrnold/ggthemes" class="uri">https://github.com/jrnold/ggthemes</a>), by Jeffrey Arnold.</p>
-<div class="figure" style="text-align: center"><span id="fig:themes"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:themes"></span>
 <img src="images/visualization-themes.png" alt="The eight themes built-in to ggplot2." width="70%" />
 <p class="caption">
 Figure 24.3: The eight themes built-in to ggplot2.
@@ -1127,6 +1127,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

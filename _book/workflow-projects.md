@@ -20,7 +20,8 @@ You'll either have to retype a lot of code from memory (making mistakes all the 
 
 To foster this behaviour, I highly recommend that you instruct RStudio not to preserve your workspace between sessions:
 
-<img src="screenshots/rstudio-workspace.png" width="75%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.75\linewidth]{screenshots/rstudio-workspace} \end{center}
 
 This will cause you some short-term pain, because now when you restart RStudio it will not remember the results of the code that you ran last time.
 But this short-term pain will save you long-term agony because it forces you to capture all important interactions in your code.
@@ -39,7 +40,8 @@ R has a powerful notion of the **working directory**.
 This is where R looks for files that you ask it to load, and where it will put any files that you ask it to save.
 RStudio shows your current working directory at the top of the console:
 
-  <img src="screenshots/rstudio-wd.png" width="50%" style="display: block; margin: auto;" />
+  
+  \begin{center}\includegraphics[width=0.5\linewidth]{screenshots/rstudio-wd} \end{center}
 
 And you can print this out in R code by running `getwd()`:
 
@@ -88,7 +90,8 @@ R can work with either type (no matter what platform you're currently using), bu
                              Let's make a project for you to use while you're working through the rest of this book.
                              Click File \> New Project, then:
 
-                               <img src="screenshots/rstudio-project-1.png" width="50%" style="display: block; margin: auto;" /><img src="screenshots/rstudio-project-2.png" width="50%" style="display: block; margin: auto;" /><img src="screenshots/rstudio-project-3.png" width="50%" style="display: block; margin: auto;" />
+                               
+                               \begin{center}\includegraphics[width=0.5\linewidth]{screenshots/rstudio-project-1} \includegraphics[width=0.5\linewidth]{screenshots/rstudio-project-2} \includegraphics[width=0.5\linewidth]{screenshots/rstudio-project-3} \end{center}
 
                              Call your project `r4ds` and think carefully about which *subdirectory* you put the project in.
                              If you don't store it somewhere sensible, it will be hard to find it in the future!

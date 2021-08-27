@@ -95,7 +95,9 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-1-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-1-1} \end{center}
 
 The height of the bars displays how many observations occurred with each x value. You can compute these values manually with `dplyr::count()`:
 
@@ -121,7 +123,9 @@ ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = carat), binwidth = 0.5)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-3-1} \end{center}
 
 You can compute this by hand by combining `dplyr::count()` and `ggplot2::cut_width()`:
 
@@ -154,7 +158,9 @@ ggplot(data = smaller, mapping = aes(x = carat)) +
   geom_histogram(binwidth = 0.1)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-5-1} \end{center}
 
 If you wish to overlay multiple histograms in the same plot, I recommend using `geom_freqpoly()` instead of `geom_histogram()`. `geom_freqpoly()` performs the same calculation as `geom_histogram()`, but instead of displaying the counts with bars, uses lines instead. It's much easier to understand overlapping lines than bars.
 
@@ -164,7 +170,9 @@ ggplot(data = smaller, mapping = aes(x = carat, colour = cut)) +
   geom_freqpoly(binwidth = 0.1)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-6-1} \end{center}
 
 There are a few challenges with this type of plot, which we will come back to in [visualising a categorical and a continuous variable](#cat-cont).
 
@@ -195,7 +203,9 @@ ggplot(data = smaller, mapping = aes(x = carat)) +
   geom_histogram(binwidth = 0.01)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-7-1} \end{center}
 
 Clusters of similar values suggest that subgroups exist in your data. To understand the subgroups, ask:
 
@@ -215,7 +225,9 @@ ggplot(data = faithful, mapping = aes(x = eruptions)) +
   geom_histogram(binwidth = 0.25)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-8-1} \end{center}
 
 Many of the questions above will prompt you to explore a relationship *between* variables, for example, to see if the values of one variable can explain the behavior of another variable. We'll get to that shortly.
 
@@ -229,7 +241,9 @@ ggplot(diamonds) +
   geom_histogram(mapping = aes(x = y), binwidth = 0.5)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-9-1} \end{center}
 
 There are so many observations in the common bins that the rare bins are so short that you can't see them (although maybe if you stare intently at 0 you'll spot something). To make it easy to see the unusual values, we need to zoom to small values of the y-axis with `coord_cartesian()`:
 
@@ -240,7 +254,9 @@ ggplot(diamonds) +
   coord_cartesian(ylim = c(0, 50))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-10-1} \end{center}
 
 (`coord_cartesian()` also has an `xlim()` argument for when you need to zoom into the x-axis. ggplot2 also has `xlim()` and `ylim()` functions that work slightly differently: they throw away the data outside the limits.)
 
@@ -332,7 +348,9 @@ ggplot(data = diamonds2, mapping = aes(x = x, y = y)) +
 #> Warning: Removed 9 rows containing missing values (geom_point).
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-16-1} \end{center}
 
 To suppress that warning, set `na.rm = TRUE`:
 
@@ -357,7 +375,9 @@ nycflights13::flights %>%
     geom_freqpoly(mapping = aes(colour = cancelled), binwidth = 1/4)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-18-1} \end{center}
 
 However this plot isn't great because there are many more non-cancelled flights than cancelled flights. In the next section we'll explore some techniques for improving this comparison.
 
@@ -382,7 +402,9 @@ ggplot(data = diamonds, mapping = aes(x = price)) +
   geom_freqpoly(mapping = aes(colour = cut), binwidth = 500)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-19-1} \end{center}
 
 It's hard to see the difference in distribution because the overall counts differ so much:
 
@@ -392,7 +414,9 @@ ggplot(diamonds) +
   geom_bar(mapping = aes(x = cut))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-20-1} \end{center}
 
 To make the comparison easier we need to swap what is displayed on the y-axis. Instead of displaying count, we'll display __density__, which is the count standardised so that the area under each frequency polygon is one.
 
@@ -402,7 +426,9 @@ ggplot(data = diamonds, mapping = aes(x = price, y = ..density..)) +
   geom_freqpoly(mapping = aes(colour = cut), binwidth = 500)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-21-1} \end{center}
 
 There's something rather surprising about this plot - it appears that fair diamonds (the lowest quality) have the highest average price!  But maybe that's because frequency polygons are a little hard to interpret - there's a lot going on in this plot.
 
@@ -422,7 +448,8 @@ Another alternative to display the distribution of a continuous variable broken 
 * A line (or whisker) that extends from each end of the box and goes to the   
   farthest non-outlier point in the distribution.
 
-<img src="images/EDA-boxplot.png" width="100%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=1\linewidth]{images/EDA-boxplot} \end{center}
 
 Let's take a look at the distribution of price by cut using `geom_boxplot()`:
 
@@ -432,7 +459,9 @@ ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
   geom_boxplot()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-23-1} \end{center}
 
 We see much less information about the distribution, but the boxplots are much more compact so we can more easily compare them (and fit more on one plot). It supports the counterintuitive finding that better quality diamonds are cheaper on average! In the exercises, you'll be challenged to figure out why.
 
@@ -446,7 +475,9 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   geom_boxplot()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-24-1} \end{center}
 
 To make the trend easier to see, we can reorder `class` based on the median value of `hwy`:
 
@@ -456,7 +487,9 @@ ggplot(data = mpg) +
   geom_boxplot(mapping = aes(x = reorder(class, hwy, FUN = median), y = hwy))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-25-1} \end{center}
 
 If you have long variable names, `geom_boxplot()` will work better if you flip it 90°. You can do that with `coord_flip()`.
 
@@ -467,7 +500,9 @@ ggplot(data = mpg) +
   coord_flip()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-26-1} \end{center}
 
 #### Exercises
 
@@ -508,7 +543,9 @@ ggplot(data = diamonds) +
   geom_count(mapping = aes(x = cut, y = color))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-27-1} \end{center}
 
 The size of each circle in the plot displays how many observations occurred at each combination of values. Covariation will appear as a strong correlation between specific x values and specific y values. 
 
@@ -540,7 +577,9 @@ diamonds %>%
     geom_tile(mapping = aes(fill = n))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-29-1} \end{center}
 
 If the categorical variables are unordered, you might want to use the seriation package to simultaneously reorder the rows and columns in order to more clearly reveal interesting patterns. For larger plots, you might want to try the d3heatmap or heatmaply packages, which create interactive plots.
 
@@ -566,7 +605,9 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-30-1} \end{center}
 
 Scatterplots become less useful as the size of your dataset grows, because points begin to overplot, and pile up into areas of uniform black (as above).
 You've already seen one way to fix the problem: using the `alpha` aesthetic to add transparency.
@@ -577,7 +618,9 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price), alpha = 1 / 100)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-31-1} \end{center}
 
 But using transparency can be challenging for very large datasets. Another solution is to use bin. Previously you used `geom_histogram()` and `geom_freqpoly()` to bin in one dimension. Now you'll learn how to use `geom_bin2d()` and `geom_hex()` to bin in two dimensions.
 
@@ -595,7 +638,8 @@ ggplot(data = smaller) +
 #> The `hexbin` package is required for `stat_binhex()`
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-32-1.png" width="50%" /><img src="EDA_files/figure-html/unnamed-chunk-32-2.png" width="50%" />
+
+\includegraphics[width=0.5\linewidth]{EDA_files/figure-latex/unnamed-chunk-32-1} \includegraphics[width=0.5\linewidth]{EDA_files/figure-latex/unnamed-chunk-32-2} 
 
 Another option is to bin one continuous variable so it acts like a categorical variable. Then you can use one of the techniques for visualising the combination of a categorical and a continuous variable that you learned about. For example, you could bin `carat` and then for each group, display a boxplot:
 
@@ -605,7 +649,9 @@ ggplot(data = smaller, mapping = aes(x = carat, y = price)) +
   geom_boxplot(mapping = aes(group = cut_width(carat, 0.1)))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-33-1} \end{center}
 
 `cut_width(x, width)`, as used above, divides `x` into bins of width `width`. By default, boxplots look roughly the same (apart from number of outliers) regardless of how many observations there are, so it's difficult to tell that each boxplot summarises a different number of points. One way to show that is to make the width of the boxplot proportional to the number of points with `varwidth = TRUE`.
 
@@ -617,7 +663,9 @@ ggplot(data = smaller, mapping = aes(x = carat, y = price)) +
   geom_boxplot(mapping = aes(group = cut_number(carat, 20)))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-34-1} \end{center}
 
 #### Exercises
 
@@ -646,7 +694,9 @@ ggplot(data = smaller, mapping = aes(x = carat, y = price)) +
       coord_cartesian(xlim = c(4, 11), ylim = c(4, 11))
     ```
     
-    <img src="EDA_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
+    
+    
+    \begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-35-1} \end{center}
     
     Why is a scatterplot a better display than a binned plot for this case?
 
@@ -672,7 +722,9 @@ ggplot(data = faithful) +
   geom_point(mapping = aes(x = eruptions, y = waiting))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-36-1} \end{center}
 
 Patterns provide one of the most useful tools for data scientists because they reveal covariation. If you think of variation as a phenomenon that creates uncertainty, covariation is a phenomenon that reduces it. If two variables covary, you can use the values of one variable to make better predictions about the values of the second. If the covariation is due to a causal relationship (a special case), then you can use the value of one variable to control the value of the second.
 
@@ -692,7 +744,9 @@ ggplot(data = diamonds2) +
   geom_point(mapping = aes(x = carat, y = resid))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-37-1} \end{center}
 
 Once you've removed the strong relationship between carat and price, you can see what you expect in the relationship between cut and price: relative to their size, better quality diamonds are more expensive. 
 
@@ -702,7 +756,9 @@ ggplot(data = diamonds2) +
   geom_boxplot(mapping = aes(x = cut, y = resid))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=0.7\linewidth]{EDA_files/figure-latex/unnamed-chunk-38-1} \end{center}
 
 You'll learn how models, and the modelr package, work in the final part of the book, [model](#model-intro). We're saving modelling for later because understanding what models are and how they work is easiest once you have tools of data wrangling and programming in hand.
 

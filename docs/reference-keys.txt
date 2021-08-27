@@ -37,7 +37,7 @@ mpg-데이터프레임
 ggplot-생성하기
 그래프-작성-템플릿
 연습문제
-aesthetic-mappings
+심미성-매핑
 exercises
 common-problems
 facets
@@ -316,7 +316,7 @@ exercises-19
 for-loops-vs.-functionals
 exercises-20
 the-map-functions
-shortcuts
+단축어
 base-r
 exercises-21
 dealing-with-failure

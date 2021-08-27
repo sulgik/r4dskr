@@ -169,7 +169,8 @@ This common action can be shortened by surrounding the assignment with parenthes
 
 Now look at your environment in the upper right pane:
 
-  <img src="screenshots/rstudio-env.png" style="display: block; margin: auto;" />
+  
+  \begin{center}\includegraphics[width=16.58in]{screenshots/rstudio-env} \end{center}
 
 Here you can see all of the objects that you've created.
 

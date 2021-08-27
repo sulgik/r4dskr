@@ -6,7 +6,8 @@ To give yourself more room to work, it's a great idea to use the script editor.
 Open it up either by clicking the File menu, and selecting New File, then R script, or using the keyboard shortcut Cmd/Ctrl + Shift + N.
 Now you'll see four panes:
 
-<img src="diagrams/rstudio-editor.png" width="75%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.75\linewidth]{diagrams/rstudio-editor} \end{center}
 
 The script editor is a great place to put code you care about.
 Keep experimenting in the console, but once you have written code that works and does what you want, put it in the script editor.
@@ -49,15 +50,18 @@ Over time, sending code to the console in this way will become so natural that y
 
 The script editor will also highlight syntax errors with a red squiggly line and a cross in the sidebar:
 
-  <img src="screenshots/rstudio-diagnostic.png" style="display: block; margin: auto;" />
+  
+  \begin{center}\includegraphics[width=3.58in]{screenshots/rstudio-diagnostic} \end{center}
 
 Hover over the cross to see what the problem is:
 
-  <img src="screenshots/rstudio-diagnostic-tip.png" style="display: block; margin: auto;" />
+  
+  \begin{center}\includegraphics[width=5.61in]{screenshots/rstudio-diagnostic-tip} \end{center}
 
 RStudio will also let you know about potential problems:
 
-  <img src="screenshots/rstudio-diagnostic-warn.png" style="display: block; margin: auto;" />
+  
+  \begin{center}\includegraphics[width=12.19in]{screenshots/rstudio-diagnostic-warn} \end{center}
 
 ## Exercises
 

@@ -102,7 +102,8 @@ library(nycflights13)
 
 그림을 사용하여 서로 다른 테이블 간의 관계를 볼 수 있다.
 
-<img src="diagrams/relational-nycflights.png" width="70%" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=0.7\linewidth]{diagrams/relational-nycflights} \end{center}
 
 이 다이어그램은 꽤 복잡해 보이지만, 실전에서 보게 될 것과 비교하면 간단한 것이다! 이와 같은 다이어그램을 이해하는 데 핵심은 각 관계가 항상 한 쌍의 테이블과 관련되어 있음을 기억하는 것이다. 여러분은 모든 것을 이해할 필요는 없다. 관심 있는 테이블 사이의 연쇄적인 관계를 이해하면 된다.
 
@@ -287,7 +288,8 @@ flights2 %>%
 
 조인이 어떻게 작동하는지 배우기 위해 시각적 표현을 사용한다.
 
-<img src="diagrams/join-setup.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=3.28in]{diagrams/join-setup} \end{center}
 
 ```r
 x <- tribble(
@@ -308,19 +310,22 @@ y <- tribble(
 
 조인은 `x` 의 각 행을 `y` 의 0, 1 개 또는 여러 행에 연결하는 방법이다. 다음 다이어그램은 각각의 매칭 후보를 한 쌍의 선의 교차점으로 보여준다.
 
-<img src="diagrams/join-setup2.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=4.61in]{diagrams/join-setup2} \end{center}
 
 (주의 깊게 살펴보면 `x` 의 키 열과 값 열의 순서가 바뀌었음을 알 수 있다. 이는 조인이 키를 기반으로 매칭하며 값은 단지 따라간다는 것을 강조하기 위한 것이다.)
 
 실제 조인에서는 매치 항목이 점으로 표시된다. 도트 수 = 매치 수 = 출력의 행 수이다.
 
-<img src="diagrams/join-inner.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=9.39in]{diagrams/join-inner} \end{center}
 
 ### 내부 조인 {#inner-join}
 
 가장 간단한 조인 유형은 **내부 조인** 이다. 내부 조인은 키가 같을 때마다 두 관측값을 매칭한다.
 
-<img src="diagrams/join-inner.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=9.39in]{diagrams/join-inner} \end{center}
 
 (정확하게 말하면 같음연산자(equality operator)를 사용하여 키가 매치되기 때문에 내부 **동등 조인(equijoin)** 이다. 대부분의 조인은 동등 조인이므로 우리는 일반적으로 이러한 상세한 내용을 생략한다.)
 
@@ -352,13 +357,15 @@ x %>%
 그래픽으로 보면 다음과 같다.
 
 
-<img src="diagrams/join-outer.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=9.86in]{diagrams/join-outer} \end{center}
 
 가장 일반적으로 사용되는 조인은 왼쪽 조인이다. 매칭되지 않는 경우에도 원본 관측값을 보존하므로 다른 테이블에서 추가 데이터를 조회할 때마다 이 작업을 사용한다. 왼쪽 조인이, 작업 시 기본 조인이 되어야 한다. 다른 조인을 선호해야 하는 명백한 이유가 없다면 왼쪽 조인을 사용하라.
 
 서로 다른 유형의 조인을 묘사하는 또 다른 방법은 벤 다이어그램을 사용하는 것이다.
 
-<img src="diagrams/join-venn.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=15.31in]{diagrams/join-venn} \end{center}
 
 그러나 이 표현법은 완벽하지 않다. 조인 유형들이 각각 어떤 테이블의 관측값을 보존하는지 알려주긴 하지만, 커다란 제약사항이 있다. 벤 다이어그램은 키가 고유하게 관측값을 식별하지 못할 때 어떤 일이 발생하는지를 표현할 수 없다.
 
@@ -368,7 +375,8 @@ x %>%
 
 1.  하나의 테이블에 중복키가 있다. 중복키는 추가적인 정보를 넣을 때 유용한데 일반적으로 일대다 관계가 있기 때문이다.
 
-    <img src="diagrams/join-one-to-many.png" style="display: block; margin: auto;" />
+    
+    \begin{center}\includegraphics[width=7.75in]{diagrams/join-one-to-many} \end{center}
 
     출력에서 약간 다른 위치에 키 열을 놓은 것을 확인하라. 이것은 키가 `y` 의 기본키이고 `x` 의 외래키임을 보여준다.
     
@@ -398,7 +406,8 @@ x %>%
 
 1.  두 테이블 모두 중복 키가 있다. 키가 어느 테이블에서도 고유하게 관측값을 식별하지 않기 때문에 이것은 일반적으로 에러이다. 중복 키를 결합하면 가능한 모든 조합인 데카르트곱(Cartesian product)을 얻을 수 있다.
 
-    <img src="diagrams/join-many-to-many.png" style="display: block; margin: auto;" />
+    
+    \begin{center}\includegraphics[width=9.51in]{diagrams/join-many-to-many} \end{center}
 
     
     ```r
@@ -635,15 +644,18 @@ flights %>%
 
 세미 조인은 그래픽으로 다음과 같이 표현된다.
 
-<img src="diagrams/join-semi.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=8.53in]{diagrams/join-semi} \end{center}
 
 매칭되었는지 여부만이 중요하다. 즉, 어떤 관측값이 매칭되는지는 중요하지 않다. 이는 필터링 조인은 뮤테이팅 조인처럼 행을 복제하지는 않는다는 것을 의미한다.
 
-<img src="diagrams/join-semi-many.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=8.65in]{diagrams/join-semi-many} \end{center}
 
 세미 조인의 반대는 안티 조인이다. 안티 조인은 매칭되지 않는 행을 보존한다.
 
-<img src="diagrams/join-anti.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics[width=8.53in]{diagrams/join-anti} \end{center}
 
 안티 조인(Anti-join)은 조인 불일치를 진단하는 데 유용하다. 예를 들어 `flights`과 `planes` 를 연결하는 경우, `planes` 에 매치되지 않는 `flights` 이 많다는 것을 알고 싶을 수 있다.
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>20 벡터 | R 을 활용한 데이터과학</title>
   <meta name="description" content="20 벡터 | R 을 활용한 데이터과학" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="20 벡터 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="functions.html"/>
 <link rel="next" href="iteration.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -180,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.3" data-path="data-visualisation.html"><a href="data-visualisation.html#그래프-작성-템플릿"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 템플릿</a></li>
 <li class="chapter" data-level="3.2.4" data-path="data-visualisation.html"><a href="data-visualisation.html#연습문제"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a><ul>
+<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#심미성-매핑"><i class="fa fa-check"></i><b>3.3</b> 심미성 매핑</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises"><i class="fa fa-check"></i><b>3.3.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
@@ -646,7 +646,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><이탤릭>리스트</이탤릭>: 재귀적 벡터라고 할 수 있는데, 한 리스트가 다른 리스트를 포함할 수 있기 때문이다.</p></li>
 </ol>
 <p>원자 벡터와 리스트의 가장 큰 차이점은 원자 벡터가 <이탤릭>동질적</이탤릭>인 반면, 리스트는 <이탤릭>이질적</이탤릭>이 될 수 있다는 것이다. 이와 관련한 또 다른 객체는 <코드체>NULL</코드체> 이다. <코드체>NULL</코드체> 은 벡터가 없는 것을 나타내기 위해 종종 사용된다(반면, <코드체>NA</코드체>는 벡터의 값이 없음을 나타내는데 사용됨). <코드체>NULL</코드체>은 일반적으로 길이가 0 인 벡터처럼 동작한다. <a href="vectors.html#fig:datatypes">20.1</a> 에는 상호 관계가 요약되어 있다.</p>
-<div class="figure" style="text-align: center"><span id="fig:datatypes"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:datatypes"></span>
 <img src="diagrams/data-structures-overview.png" alt="R 벡터 유형의 체계" width="50%" />
 <p class="caption">
 Figure 20.1: R 벡터 유형의 체계
@@ -1121,7 +1121,7 @@ str(a[4])
 <span id="cb506-4"><a href="vectors.html#cb506-4"></a><span class="co">#&gt; [1] 1 2 3</span></span></code></pre></div></li>
 </ul>
 <p><코드체>[</코드체>과 <코드체>[[</코드체>의 차이는 리스트에 있어서 정말 중요하다. <코드체>[[</코드체>은 리스트 안으로 내려가는 반면 <코드체>[</코드체>은 더 작은 새 리스트를 반환하기 때문이다. 앞의 코드와 출력을 Figure <a href="vectors.html#fig:lists-subsetting">20.2</a> 의 시각화 표현과 비교하라.</p>
-<div class="figure" style="text-align: center"><span id="fig:lists-subsetting"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:lists-subsetting"></span>
 <img src="diagrams/lists-subsetting.png" alt="Subsetting a list, visually." width="75%" />
 <p class="caption">
 Figure 20.2: Subsetting a list, visually.
@@ -1379,6 +1379,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
