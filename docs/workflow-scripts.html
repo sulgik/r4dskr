@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R 을 활용한 데이터과학</title>
-  <meta name="description" content="R 을 활용한 데이터과학" />
+  <title>6 Workflow: scripts | R 을 활용한 데이터과학</title>
+  <meta name="description" content="6 Workflow: scripts | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R 을 활용한 데이터과학" />
+  <meta property="og:title" content="6 Workflow: scripts | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R 을 활용한 데이터과학" />
+  <meta name="twitter:title" content="6 Workflow: scripts | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
   
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="서문.html"/>
+<link rel="prev" href="data-transform.html"/>
+<link rel="next" href="탐색적-데이터-분석.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -726,26 +726,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R 을 활용한 데이터과학</h1>
-<p class="author"><em>개럿 그롤문드</em></p>
-<p class="author"><em>해들리 위컴</em></p>
+<div id="workflow-scripts" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Workflow: scripts</h1>
+<p>So far you’ve been using the console to run code.
+That’s a great place to start, but you’ll find it gets cramped pretty quickly as you create more complex ggplot2 graphics and dplyr pipes.
+To give yourself more room to work, it’s a great idea to use the script editor.
+Open it up either by clicking the File menu, and selecting New File, then R script, or using the keyboard shortcut Cmd/Ctrl + Shift + N.
+Now you’ll see four panes:</p>
+<p><img src="diagrams/rstudio-editor.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>The script editor is a great place to put code you care about.
+Keep experimenting in the console, but once you have written code that works and does what you want, put it in the script editor.
+RStudio will automatically save the contents of the editor when you quit RStudio, and will automatically load it when you re-open.
+Nevertheless, it’s a good idea to save your scripts regularly and to back them up.</p>
+<div id="running-code" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Running code</h2>
+<p>The script editor is also a great place to build up complex ggplot2 plots or long sequences of dplyr manipulations.
+The key to using the script editor effectively is to memorise one of the most important keyboard shortcuts: Cmd/Ctrl + Enter.
+This executes the current R expression in the console.
+For example, take the code below.
+If your cursor is at █, pressing Cmd/Ctrl + Enter will run the complete command that generates <code>not_cancelled</code>.
+It will also move the cursor to the next statement (beginning with <code>not_cancelled %&gt;%</code>).
+That makes it easy to run your complete script by repeatedly pressing Cmd/Ctrl + Enter.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="workflow-scripts.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb101-2"><a href="workflow-scripts.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb101-3"><a href="workflow-scripts.html#cb101-3" aria-hidden="true" tabindex="-1"></a>not_cancelled <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb101-4"><a href="workflow-scripts.html#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)█, <span class="sc">!</span><span class="fu">is.na</span>(arr_delay))</span>
+<span id="cb101-5"><a href="workflow-scripts.html#cb101-5" aria-hidden="true" tabindex="-1"></a>not_cancelled <span class="sc">%&gt;%</span></span>
+<span id="cb101-6"><a href="workflow-scripts.html#cb101-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">%&gt;%</span></span>
+<span id="cb101-7"><a href="workflow-scripts.html#cb101-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay))</span></code></pre></div>
+<p>Instead of running expression-by-expression, you can also execute the complete script in one step: Cmd/Ctrl + Shift + S.
+Doing this regularly is a great way to check that you’ve captured all the important parts of your code in the script.</p>
+<p>I recommend that you always start your script with the packages that you need.
+That way, if you share your code with others, they can easily see what packages they need to install.
+Note, however, that you should never include <code>install.packages()</code> or <code>setwd()</code> in a script that you share.
+It’s very antisocial to change settings on someone else’s computer!</p>
+<p>When working through future chapters, I highly recommend starting in the editor and practicing your keyboard shortcuts.
+Over time, sending code to the console in this way will become so natural that you won’t even think about it.</p>
 </div>
-<div id="환영합니다" class="section level1 unnumbered">
-<h1>환영합니다</h1>
-<p><img src="IMG_5734.jpg" height="50%" width ="50%" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> 이 곳은 해들리 위컴과 개럿 그롤문드의 책 <a href="http://amzn.to/2aHLAQ1"><strong>“R for Data Science”</strong></a> 의 번역본인 <strong>“R 을 활용한 데이터과학 (인사이트)”</strong> (번역: <a href="https://github.com/sulgik">김설기</a>, 최혜민)의 웹북입니다. 책의 일부를 담고 있으며 꾸준히 업데이트되고 있습니다.</p>
-<p>책은 <a href="http://aladin.kr/p/K2RFR">알라딘</a>, <a href="http://www.yes24.com/24/Goods/67856488?Acode=101">yes24</a> 등에서 구입할 수 있습니다.</p>
-<p>본 웹북은 <a href="https://rmarkdown.rstudio.com">RMarkdown</a> 과 <a href="https://bookdown.org">bookdown</a> 으로 작성되었습니다. 영문 웹북은 <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a> 입니다.
-연습문제 해답은 <a href="https://jrnold.github.io/r4ds-exercise-solutions/">여기</a>에서 볼 수 있습니다.</p>
+<div id="rstudio-diagnostics" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> RStudio diagnostics</h2>
+<p>The script editor will also highlight syntax errors with a red squiggly line and a cross in the sidebar:</p>
+<p><img src="screenshots/rstudio-diagnostic.png" width="129" style="display: block; margin: auto;" /></p>
+<p>Hover over the cross to see what the problem is:</p>
+<p><img src="screenshots/rstudio-diagnostic-tip.png" width="202" style="display: block; margin: auto;" /></p>
+<p>RStudio will also let you know about potential problems:</p>
+<p><img src="screenshots/rstudio-diagnostic-warn.png" width="439" style="display: block; margin: auto;" /></p>
+</div>
+<div id="exercises-10" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Go to the RStudio Tips Twitter account, <a href="https://twitter.com/rstudiotips" class="uri">https://twitter.com/rstudiotips</a> and find one tip that looks interesting.
+Practice using it!</p></li>
+<li><p>What other common mistakes will RStudio diagnostics report?
+Read <a href="https://support.rstudio.com/hc/en-us/articles/205753617-Code-Diagnostics" class="uri">https://support.rstudio.com/hc/en-us/articles/205753617-Code-Diagnostics</a> to find out.</p></li>
+</ol>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="서문.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-transform.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="탐색적-데이터-분석.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -767,7 +811,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hadley/r4ds/edit/master/index.Rmd",
+"link": "https://github.com/hadley/r4ds/edit/master/workflow-scripts.Rmd",
 "text": "Edit"
 },
 "history": {

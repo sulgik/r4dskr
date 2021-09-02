@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R 을 활용한 데이터과학</title>
-  <meta name="description" content="R 을 활용한 데이터과학" />
+  <title>22 소개 | R 을 활용한 데이터과학</title>
+  <meta name="description" content="22 소개 | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R 을 활용한 데이터과학" />
+  <meta property="og:title" content="22 소개 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R 을 활용한 데이터과학" />
+  <meta name="twitter:title" content="22 소개 | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
   
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="서문.html"/>
+<link rel="prev" href="iteration.html"/>
+<link rel="next" href="rmarkdown.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -726,17 +726,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R 을 활용한 데이터과학</h1>
-<p class="author"><em>개럿 그롤문드</em></p>
-<p class="author"><em>해들리 위컴</em></p>
-</div>
-<div id="환영합니다" class="section level1 unnumbered">
-<h1>환영합니다</h1>
-<p><img src="IMG_5734.jpg" height="50%" width ="50%" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> 이 곳은 해들리 위컴과 개럿 그롤문드의 책 <a href="http://amzn.to/2aHLAQ1"><strong>“R for Data Science”</strong></a> 의 번역본인 <strong>“R 을 활용한 데이터과학 (인사이트)”</strong> (번역: <a href="https://github.com/sulgik">김설기</a>, 최혜민)의 웹북입니다. 책의 일부를 담고 있으며 꾸준히 업데이트되고 있습니다.</p>
-<p>책은 <a href="http://aladin.kr/p/K2RFR">알라딘</a>, <a href="http://www.yes24.com/24/Goods/67856488?Acode=101">yes24</a> 등에서 구입할 수 있습니다.</p>
-<p>본 웹북은 <a href="https://rmarkdown.rstudio.com">RMarkdown</a> 과 <a href="https://bookdown.org">bookdown</a> 으로 작성되었습니다. 영문 웹북은 <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a> 입니다.
-연습문제 해답은 <a href="https://jrnold.github.io/r4ds-exercise-solutions/">여기</a>에서 볼 수 있습니다.</p>
+<div id="communicate-intro" class="section level1" number="22">
+<h1><span class="header-section-number">22</span> 소개</h1>
+<p>지금까지 R로 데이터를 가져와서 분석에 편리한 형식으로 정리하고, 변환, 시각화 및 모델링을 통해 데이터를 이해하는 도구를 배웠다. 그러나 다른 사람에게 설명할 수 없다면 분석이 얼마나 훌륭한지는 중요하지 않다. 결과를 가지고 의사소통해야 한다.</p>
+<p><img src="diagrams/data-science-communicate.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>다음 네 개 장에서 의사소통을 주제로 다룰 것이다.</p>
+<ul>
+<li><p><a href="rmarkdown.html#rmarkdown">R 마크다운</a> 에서는 풀어쓴 해설, 코드, 결과물을 통합하는 도구인 R마크다운에 대해 배울 것이다. 분석가 사이의 소통을 위해 노트북 모드로, 그리고 분석가와 의사결정권자 사이의 소통을 위해 리포트 모드에서 R마크다운을 사용할 수 있다. R마크다운 포맷의 강력한 기능 때문에 두 가지 용도에 같은 문서를 사용할 수 있다.</p></li>
+<li><p><a href="#Graphics-for-communication">그래픽를 통한 의사소통</a> 에서는 탐색적 그래프를 해설적 그래프로 바꾸어, 새로운 사람이 여러분의 분석을 가능한 한 빠르고 쉽게 이해할 수 있도록 하는 법을 배운다.</p></li>
+<li><p><a href="rmarkdown-formats.html#rmarkdown-formats">R 마크다운 유형</a> 에서는 대시보드, 웹사이트, 서적을 포함하여 R마크다운을 사용하여 생성할 수 있는 다양한 출력물에 대해 알아본다.</p></li>
+<li><p>마지막으로 <a href="#rmarkdonw-workflow">R 마트다운 워크플로</a> 에서는 ’분석 노트북’을 배우고, 성공과 실패를 체계적으로 기록하여 이로부터 배울 수 있는 법에 대해 배울 것이다.</p></li>
+</ul>
+<p>안타깝게도 이 장에서는 의사소통 기술에만 주로 초점을 맞추고 있고, 정말로 어려운 문제인 다른 사람들에게 생각을 전하는 문제를 다루지는 않는다. 그러나 의사소통에 대한 훌륭한 책이 많이 있다. 각 장의 마지막 부분에서 알아보자.</p>
 
 </div>
             </section>
@@ -744,8 +745,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="서문.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="iteration.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmarkdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -767,7 +768,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hadley/r4ds/edit/master/index.Rmd",
+"link": "https://github.com/hadley/r4ds/edit/master/communicate.Rmd",
 "text": "Edit"
 },
 "history": {

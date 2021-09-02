@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R 을 활용한 데이터과학</title>
-  <meta name="description" content="R 을 활용한 데이터과학" />
+  <title>8 Workflow: projects | R 을 활용한 데이터과학</title>
+  <meta name="description" content="8 Workflow: projects | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R 을 활용한 데이터과학" />
+  <meta property="og:title" content="8 Workflow: projects | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R 을 활용한 데이터과학" />
+  <meta name="twitter:title" content="8 Workflow: projects | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
   
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="서문.html"/>
+<link rel="prev" href="탐색적-데이터-분석.html"/>
+<link rel="next" href="wrangle-intro.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -726,26 +726,136 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R 을 활용한 데이터과학</h1>
-<p class="author"><em>개럿 그롤문드</em></p>
-<p class="author"><em>해들리 위컴</em></p>
+<div id="workflow-projects" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Workflow: projects</h1>
+<p>One day you will need to quit R, go do something else and return to your analysis the next day.
+One day you will be working on multiple analyses simultaneously that all use R and you want to keep them separate.
+One day you will need to bring data from the outside world into R and send numerical results and figures from R back out into the world.
+To handle these real life situations, you need to make two decisions:</p>
+<ol style="list-style-type: decimal">
+<li><p>What about your analysis is “real”, i.e. what will you save as your lasting record of what happened?</p></li>
+<li><p>Where does your analysis “live”?</p></li>
+</ol>
+<p>## What is real?</p>
+<p>As a beginning R user, it’s OK to consider your environment (i.e. the objects listed in the environment pane) “real”.
+However, in the long run, you’ll be much better off if you consider your R scripts as “real”.</p>
+<p>With your R scripts (and your data files), you can recreate the environment.
+It’s much harder to recreate your R scripts from your environment!
+You’ll either have to retype a lot of code from memory (making mistakes all the way) or you’ll have to carefully mine your R history.</p>
+<p>To foster this behaviour, I highly recommend that you instruct RStudio not to preserve your workspace between sessions:</p>
+<p><img src="screenshots/rstudio-workspace.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>This will cause you some short-term pain, because now when you restart RStudio it will not remember the results of the code that you ran last time.
+But this short-term pain will save you long-term agony because it forces you to capture all important interactions in your code.
+There’s nothing worse than discovering three months after the fact that you’ve only stored the results of an important calculation in your workspace, not the calculation itself in your code.</p>
+<p>There is a great pair of keyboard shortcuts that will work together to make sure you’ve captured the important parts of your code in the editor:</p>
+<ol style="list-style-type: decimal">
+<li>Press Cmd/Ctrl + Shift + F10 to restart RStudio.</li>
+<li>Press Cmd/Ctrl + Shift + S to rerun the current script.</li>
+</ol>
+<p>I use this pattern hundreds of times a week.</p>
+<div id="where-does-your-analysis-live" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Where does your analysis live?</h2>
+<p>R has a powerful notion of the <strong>working directory</strong>.
+This is where R looks for files that you ask it to load, and where it will put any files that you ask it to save.
+RStudio shows your current working directory at the top of the console:</p>
+<p><img src="screenshots/rstudio-wd.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>And you can print this out in R code by running <code>getwd()</code>:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="workflow-projects.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb141-2"><a href="workflow-projects.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;/Users/hadley/Documents/r4ds/r4ds&quot;</span></span></code></pre></div>
+<p>As a beginning R user, it’s OK to let your home directory, documents directory, or any other weird directory on your computer be R’s working directory.
+But you’re six chapters into this book, and you’re no longer a rank beginner.
+Very soon now you should evolve to organising your analytical projects into directories and, when working on a project, setting R’s working directory to the associated directory.</p>
+<p><strong>I do not recommend it</strong>, but you can also set the working directory from within R:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="workflow-projects.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/path/to/my/CoolProject&quot;</span>)</span></code></pre></div>
+<p>But you should never do this because there’s a better way; a way that also puts you on the path to managing your R work like an expert.</p>
 </div>
-<div id="환영합니다" class="section level1 unnumbered">
-<h1>환영합니다</h1>
-<p><img src="IMG_5734.jpg" height="50%" width ="50%" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> 이 곳은 해들리 위컴과 개럿 그롤문드의 책 <a href="http://amzn.to/2aHLAQ1"><strong>“R for Data Science”</strong></a> 의 번역본인 <strong>“R 을 활용한 데이터과학 (인사이트)”</strong> (번역: <a href="https://github.com/sulgik">김설기</a>, 최혜민)의 웹북입니다. 책의 일부를 담고 있으며 꾸준히 업데이트되고 있습니다.</p>
-<p>책은 <a href="http://aladin.kr/p/K2RFR">알라딘</a>, <a href="http://www.yes24.com/24/Goods/67856488?Acode=101">yes24</a> 등에서 구입할 수 있습니다.</p>
-<p>본 웹북은 <a href="https://rmarkdown.rstudio.com">RMarkdown</a> 과 <a href="https://bookdown.org">bookdown</a> 으로 작성되었습니다. 영문 웹북은 <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a> 입니다.
-연습문제 해답은 <a href="https://jrnold.github.io/r4ds-exercise-solutions/">여기</a>에서 볼 수 있습니다.</p>
+<div id="paths-and-directories" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Paths and directories</h2>
+<p>Paths and directories are a little complicated because there are two basic styles of paths: Mac/Linux and Windows.
+There are three chief ways in which they differ:</p>
+<ol style="list-style-type: decimal">
+<li><p>The most important difference is how you separate the components of the path.
+Mac and Linux uses slashes (e.g. <code>plots/diamonds.pdf</code>) and Windows uses backslashes (e.g. <code>plots\diamonds.pdf</code>).
+R can work with either type (no matter what platform you’re currently using), but unfortunately, backslashes mean something special to R, and to get a single backslash in the path, you need to type two backslashes!
+That makes life frustrating, so I recommend always using the Linux/Mac style with forward slashes.</p></li>
+<li><p>Absolute paths (i.e. paths that point to the same place regardless of your working directory) look different.
+In Windows they start with a drive letter (e.g. <code>C:</code>) or two backslashes (e.g. <code>\\servername</code>) and in Mac/Linux they start with a slash “/” (e.g. <code>/users/hadley</code>).
+You should <strong>never</strong> use absolute paths in your scripts, because they hinder sharing: no one else will have exactly the same directory configuration as you.</p></li>
+<li><p>The last minor difference is the place that <code>~</code> points to.
+<code>~</code> is a convenient shortcut to your home directory.
+Windows doesn’t really have the notion of a home directory, so it instead points to your documents directory.</p></li>
+</ol>
+</div>
+<div id="rstudio-projects" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> RStudio projects</h2>
+<pre><code>                         R experts keep all the files associated with a project together --- input data, R scripts, analytical results, figures.
+                         This is such a wise and common practice that RStudio has built-in support for this via **projects**.
+
+                         Let&#39;s make a project for you to use while you&#39;re working through the rest of this book.
+                         Click File \&gt; New Project, then:
+
+                           &lt;img src=&quot;screenshots/rstudio-project-1.png&quot; width=&quot;50%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;&lt;img src=&quot;screenshots/rstudio-project-2.png&quot; width=&quot;50%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;&lt;img src=&quot;screenshots/rstudio-project-3.png&quot; width=&quot;50%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
+
+                         Call your project `r4ds` and think carefully about which *subdirectory* you put the project in.
+                         If you don&#39;t store it somewhere sensible, it will be hard to find it in the future!</code></pre>
+<p>Once this process is complete, you’ll get a new RStudio project just for this book.
+Check that the “home” directory of your project is the current working directory:</p>
+<pre><code>                           ```r
+                                                        getwd()
+                                                        #&gt; [1] /Users/hadley/Documents/r4ds/r4ds
+                           ```
+
+                         Whenever you refer to a file with a relative path it will look for it here.
+
+                         Now enter the following commands in the script editor, and save the file, calling it &quot;diamonds.R&quot;.
+                         Next, run the complete script which will save a PDF and CSV file into your project directory.
+                         Don&#39;t worry about the details, you&#39;ll learn them later in the book.
+
+
+                         ```r
+                         library(tidyverse)
+                         ggplot(diamonds, aes(carat, price)) +
+                           geom_hex()
+                         ggsave(&quot;diamonds.pdf&quot;)
+                         write_csv(diamonds, &quot;diamonds.csv&quot;)
+                         ```
+
+                         Quit RStudio.
+                         Inspect the folder associated with your project --- notice the `.Rproj` file.
+                         Double-click that file to re-open the project.
+                         Notice you get back to where you left off: it&#39;s the same working directory and command history, and all the files you were working on are still open.</code></pre>
+<p>Because you followed my instructions above, you will, however, have a completely fresh environment, guaranteeing that you’re starting with a clean slate.</p>
+<pre><code>                         In your favorite OS-specific way, search your computer for `diamonds.pdf` and you will find the PDF (no surprise) but *also the script that created it* (`diamonds.R`).
+                         This is a huge win!
+                           One day you will want to remake a figure or just understand where it came from.
+                         If you rigorously save figures to files **with R code** and never with the mouse or the clipboard, you will be able to reproduce old work with ease!
+
+                           ## Summary
+
+                           In summary, RStudio projects give you a solid workflow that will serve you well in the future:
+
+                           -   Create an RStudio project for each data analysis project.
+
+                         -   Keep data files there; we&#39;ll talk about loading them into R in [data import].</code></pre>
+<ul>
+<li><p>Keep scripts there; edit them, run them in bits or as a whole.</p></li>
+<li><p>Save your outputs (plots and cleaned data) there.</p></li>
+<li><p>Only ever use relative paths, not absolute paths.</p></li>
+</ul>
+<p>Everything you need is in one place, and cleanly separated from all the other projects that you are working on.</p>
 
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="서문.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="탐색적-데이터-분석.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="wrangle-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -767,7 +877,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hadley/r4ds/edit/master/index.Rmd",
+"link": "https://github.com/hadley/r4ds/edit/master/workflow-projects.Rmd",
 "text": "Edit"
 },
 "history": {

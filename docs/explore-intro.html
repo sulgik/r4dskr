@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R 을 활용한 데이터과학</title>
-  <meta name="description" content="R 을 활용한 데이터과학" />
+  <title>2 소개 | R 을 활용한 데이터과학</title>
+  <meta name="description" content="2 소개 | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R 을 활용한 데이터과학" />
+  <meta property="og:title" content="2 소개 | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R 을 활용한 데이터과학" />
+  <meta name="twitter:title" content="2 소개 | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
   
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="서문.html"/>
+<link rel="prev" href="서문.html"/>
+<link rel="next" href="data-visualisation.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -726,17 +726,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R 을 활용한 데이터과학</h1>
-<p class="author"><em>개럿 그롤문드</em></p>
-<p class="author"><em>해들리 위컴</em></p>
-</div>
-<div id="환영합니다" class="section level1 unnumbered">
-<h1>환영합니다</h1>
-<p><img src="IMG_5734.jpg" height="50%" width ="50%" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> 이 곳은 해들리 위컴과 개럿 그롤문드의 책 <a href="http://amzn.to/2aHLAQ1"><strong>“R for Data Science”</strong></a> 의 번역본인 <strong>“R 을 활용한 데이터과학 (인사이트)”</strong> (번역: <a href="https://github.com/sulgik">김설기</a>, 최혜민)의 웹북입니다. 책의 일부를 담고 있으며 꾸준히 업데이트되고 있습니다.</p>
-<p>책은 <a href="http://aladin.kr/p/K2RFR">알라딘</a>, <a href="http://www.yes24.com/24/Goods/67856488?Acode=101">yes24</a> 등에서 구입할 수 있습니다.</p>
-<p>본 웹북은 <a href="https://rmarkdown.rstudio.com">RMarkdown</a> 과 <a href="https://bookdown.org">bookdown</a> 으로 작성되었습니다. 영문 웹북은 <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a> 입니다.
-연습문제 해답은 <a href="https://jrnold.github.io/r4ds-exercise-solutions/">여기</a>에서 볼 수 있습니다.</p>
+<div id="explore-intro" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 소개</h1>
+<p>첫번째 파트의 목표는 데이터 탐색 도구를 이용하여 가능한 한 빨리 작업 속도를
+높이는 것이다. 데이터 탐색은 데이터를 보고 신속하게 가설을 세우고 신속하게
+테스트한 다음 이를 계속해서 반복, 반복, 또 반복하는 기술이다.
+데이터 탐색의 목표는 나중에 더 깊게 탐색할 단서들을 생성하는 것이다.</p>
+<p><img src="diagrams/data-science-explore.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>1부에서는 즉각적인 도움을 바로 얻을 수 있는 유용한 도구 몇 개를 배울 것이다.</p>
+<ul>
+<li><p>시각화부터 R 프로그래밍을 시작하면 매우 좋은데, 장점이 명확하기 때문이다.
+데이터를 이해하는 데 도움이 되는 우아하고 유익한 플롯을 만들 수 있다.
+<a href="#data-visualization">데이터 시각화</a> 에서는 시각화에 대해 깊이 들어가서
+<strong>ggplot2</strong> 플롯의 기본 구조와 데이터를 플롯으로 바꾸는 강력한 기술들을 배울
+것이다.</p></li>
+<li><p>일반적으로 시각화만으로는 충분하지 않으므로
+<a href="#transform">데이터 변형 (Transform)</a> 에서 중요한 변수를 선택하고, 필터링하고,
+새 변수를 만들고, 요약값을 계산하는 주요 동사들을 배울 것이다.</p></li>
+<li><p>마지막으로, <a href="#exploratory-data-analysis">탐색적 데이터 분석</a> 에서는 시각화와
+변환을 호기심과 비판적 시각을 결합하여 데이터에 대한 흥미로운 질문을 만들고 답할
+것이다.</p></li>
+</ul>
+<p>모델링은 탐색 과정에서 중요한 부분이지만 아직 효과적으로 학습하거나 적용할
+기술을 가질 필요는 없다. 데이터 처리와 프로그래밍 도구가 더 잘 갖춰진 후
+<a href="#model-intro">모델링</a> 에서 이를 살펴볼 것이다.</p>
+<p>탐색 도구를 가르쳐 주는 이 세 개 장 사이사이에, R 워크플로에 중점을 둔 세 개의
+장도 자리잡고 있다. <a href="#workflow-basic">워크플로: 기초</a>,
+<a href="workflow-scripts.html#workflow-scripts">워크플로: 스크립트</a>, <a href="workflow-projects.html#workflow-projects">워크플로: 프로젝트</a>
+에서는 R 코드를 작성하고 조직하는 좋은 사례들을 배울 것이다.
+이 장들에서는 실제 프로젝트에서 잘 정리할 수 있는 도구들을 배워 장기적으로
+성공할 수 있는 틀을 갖추게 될 것이다.</p>
 
 </div>
             </section>
@@ -744,8 +763,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="서문.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="서문.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-visualisation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -767,7 +786,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hadley/r4ds/edit/master/index.Rmd",
+"link": "https://github.com/hadley/r4ds/edit/master/explore.Rmd",
 "text": "Edit"
 },
 "history": {

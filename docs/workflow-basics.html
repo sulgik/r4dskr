@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R 을 활용한 데이터과학</title>
-  <meta name="description" content="R 을 활용한 데이터과학" />
+  <title>4 Workflow: basics | R 을 활용한 데이터과학</title>
+  <meta name="description" content="4 Workflow: basics | R 을 활용한 데이터과학" />
   <meta name="generator" content="bookdown 0.23.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R 을 활용한 데이터과학" />
+  <meta property="og:title" content="4 Workflow: basics | R 을 활용한 데이터과학" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
   <meta property="og:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sulgik/r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R 을 활용한 데이터과학" />
+  <meta name="twitter:title" content="4 Workflow: basics | R 을 활용한 데이터과학" />
   <meta name="twitter:site" content="@sulgik" />
   
   <meta name="twitter:image" content="https://sulgik.github.io/r4ds//cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="서문.html"/>
+<link rel="prev" href="data-visualisation.html"/>
+<link rel="next" href="data-transform.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -726,26 +726,134 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R 을 활용한 데이터과학</h1>
-<p class="author"><em>개럿 그롤문드</em></p>
-<p class="author"><em>해들리 위컴</em></p>
+<div id="workflow-basics" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Workflow: basics</h1>
+<p>You now have some experience running R code.
+We didn’t give you many details, but you’ve obviously figured out the basics, or you would’ve thrown this book away in frustration!
+Frustration is natural when you start programming in R, because it is such a stickler for punctuation, and even one character out of place will cause it to complain.
+But while you should expect to be a little frustrated, take comfort in that it’s both typical and temporary: it happens to everyone, and the only way to get over it is to keep trying.</p>
+<p>Before we go any further, let’s make sure you’ve got a solid foundation in running R code, and that you know about some of the most helpful RStudio features.</p>
+<div id="coding-basics" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Coding basics</h2>
+<p>Let’s review some basics we’ve so far omitted in the interests of getting you plotting as quickly as possible.
+You can use R as a calculator:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="workflow-basics.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">200</span> <span class="sc">*</span> <span class="dv">30</span></span>
+<span id="cb53-2"><a href="workflow-basics.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.15</span></span>
+<span id="cb53-3"><a href="workflow-basics.html#cb53-3" aria-hidden="true" tabindex="-1"></a>(<span class="dv">59</span> <span class="sc">+</span> <span class="dv">73</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">3</span></span>
+<span id="cb53-4"><a href="workflow-basics.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 44.7</span></span>
+<span id="cb53-5"><a href="workflow-basics.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb53-6"><a href="workflow-basics.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<p>You can create new objects with <code>&lt;-</code>:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="workflow-basics.html#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span></span></code></pre></div>
+<p>All R statements where you create objects, <strong>assignment</strong> statements, have the same form:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="workflow-basics.html#cb55-1" aria-hidden="true" tabindex="-1"></a>object_name <span class="ot">&lt;-</span> value</span></code></pre></div>
+<p>When reading that code say “object name gets value” in your head.</p>
+<p>You will make lots of assignments and <code>&lt;-</code> is a pain to type.
+Don’t be lazy and use <code>=</code>: it will work, but it will cause confusion later.
+Instead, use RStudio’s keyboard shortcut: Alt + - (the minus sign).
+Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which is a good code formatting practice.
+Code is miserable to read on a good day, so giveyoureyesabreak and use spaces.</p>
 </div>
-<div id="환영합니다" class="section level1 unnumbered">
-<h1>환영합니다</h1>
-<p><img src="IMG_5734.jpg" height="50%" width ="50%" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /> 이 곳은 해들리 위컴과 개럿 그롤문드의 책 <a href="http://amzn.to/2aHLAQ1"><strong>“R for Data Science”</strong></a> 의 번역본인 <strong>“R 을 활용한 데이터과학 (인사이트)”</strong> (번역: <a href="https://github.com/sulgik">김설기</a>, 최혜민)의 웹북입니다. 책의 일부를 담고 있으며 꾸준히 업데이트되고 있습니다.</p>
-<p>책은 <a href="http://aladin.kr/p/K2RFR">알라딘</a>, <a href="http://www.yes24.com/24/Goods/67856488?Acode=101">yes24</a> 등에서 구입할 수 있습니다.</p>
-<p>본 웹북은 <a href="https://rmarkdown.rstudio.com">RMarkdown</a> 과 <a href="https://bookdown.org">bookdown</a> 으로 작성되었습니다. 영문 웹북은 <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a> 입니다.
-연습문제 해답은 <a href="https://jrnold.github.io/r4ds-exercise-solutions/">여기</a>에서 볼 수 있습니다.</p>
+<div id="whats-in-a-name" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> What’s in a name?</h2>
+<p>Object names must start with a letter, and can only contain letters, numbers, <code>_</code> and <code>.</code>.
+You want your object names to be descriptive, so you’ll need a convention for multiple words.
+We recommend <strong>snake_case</strong> where you separate lowercase words with <code>_</code>.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="workflow-basics.html#cb56-1" aria-hidden="true" tabindex="-1"></a>i_use_snake_case</span>
+<span id="cb56-2"><a href="workflow-basics.html#cb56-2" aria-hidden="true" tabindex="-1"></a>otherPeopleUseCamelCase</span>
+<span id="cb56-3"><a href="workflow-basics.html#cb56-3" aria-hidden="true" tabindex="-1"></a>some.people.use.periods</span>
+<span id="cb56-4"><a href="workflow-basics.html#cb56-4" aria-hidden="true" tabindex="-1"></a>And_aFew.People_RENOUNCEconvention</span></code></pre></div>
+<p>We’ll come back to code style later, in Chapter <a href="functions.html#functions">19</a> on functions.
+If you’re interested in learning more about about best practices for code style, I also recommend The tidyverse style guide: <a href="https://style.tidyverse.org/">https://style.tidyverse.org</a>.</p>
+<p>You can inspect an object by typing its name:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="workflow-basics.html#cb57-1" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb57-2"><a href="workflow-basics.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 12</span></span></code></pre></div>
+<p>Make another assignment:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="workflow-basics.html#cb58-1" aria-hidden="true" tabindex="-1"></a>this_is_a_really_long_name <span class="ot">&lt;-</span> <span class="fl">2.5</span></span></code></pre></div>
+<p>To inspect this object, try out RStudio’s completion facility: type “this”, press TAB, add characters until you have a unique prefix, then press return.</p>
+<p>Ooops, you made a mistake!
+<code>this_is_a_really_long_name</code> should have value 3.5 not 2.5.
+Use another keyboard shortcut to help you fix it.
+Type “this” then press Cmd/Ctrl + ↑.
+That will list all the commands you’ve typed that start those letters.
+Use the arrow keys to navigate, then press enter to retype the command.
+Change 2.5 to 3.5 and rerun.</p>
+<p>Make yet another assignment:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="workflow-basics.html#cb59-1" aria-hidden="true" tabindex="-1"></a>r_rocks <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">^</span> <span class="dv">3</span></span></code></pre></div>
+<p>Let’s try to inspect it:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="workflow-basics.html#cb60-1" aria-hidden="true" tabindex="-1"></a>r_rock</span>
+<span id="cb60-2"><a href="workflow-basics.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error: object &#39;r_rock&#39; not found</span></span>
+<span id="cb60-3"><a href="workflow-basics.html#cb60-3" aria-hidden="true" tabindex="-1"></a>R_rocks</span>
+<span id="cb60-4"><a href="workflow-basics.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error: object &#39;R_rocks&#39; not found</span></span></code></pre></div>
+<p>There’s an implied contract between you and R: it will do the tedious computation for you, but in return, you must be completely precise in your instructions.
+Typos matter.
+Case matters.</p>
+</div>
+<div id="calling-functions" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Calling functions</h2>
+<p>R has a large collection of built-in functions that are called like this:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="workflow-basics.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name</span>(<span class="at">arg1 =</span> val1, <span class="at">arg2 =</span> val2, ...)</span></code></pre></div>
+<p>Let’s try using <code>seq()</code> which makes regular <strong>seq</strong>uences of numbers and, while we’re at it, learn more helpful features of RStudio.
+Type <code>se</code> and hit TAB.
+A popup shows you possible completions.
+Specify <code>seq()</code> by typing more (a <code>q</code>) to disambiguate, or by using ↑/↓ arrows to select.
+Notice the floating tooltip that pops up, reminding you of the function’s arguments and purpose.
+If you want more help, press F1 to get all the details in the help tab in the lower right pane.</p>
+<p>Press TAB once more when you’ve selected the function you want.
+RStudio will add matching opening (<code>(</code>) and closing (<code>)</code>) parentheses for you.
+Type the arguments <code>1, 10</code> and hit return.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="workflow-basics.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb62-2"><a href="workflow-basics.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
+<p>Type this code and notice you get similar assistance with the paired quotation marks:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="workflow-basics.html#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;hello world&quot;</span></span></code></pre></div>
+<p>Quotation marks and parentheses must always come in a pair.
+RStudio does its best to help you, but it’s still possible to mess up and end up with a mismatch.
+If this happens, R will show you the continuation character “+”:</p>
+<blockquote>
+<p>x &lt;- "hello
++
+The <code>+</code> tells you that R is waiting for more input; it doesn’t think you’re done yet.
+Usually that means you’ve forgotten either a <code>"</code> or a <code>)</code>. Either add the missing pair, or press ESCAPE to abort the expression and try again.</p>
+</blockquote>
+<p>If you make an assignment, you don’t get to see the value.
+You’re then tempted to immediately double-check the result:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="workflow-basics.html#cb64-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">5</span>)</span>
+<span id="cb64-2"><a href="workflow-basics.html#cb64-2" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb64-3"><a href="workflow-basics.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  1.00  3.25  5.50  7.75 10.00</span></span></code></pre></div>
+<p>This common action can be shortened by surrounding the assignment with parentheses, which causes assignment and “print to screen” to happen.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="workflow-basics.html#cb65-1" aria-hidden="true" tabindex="-1"></a>(y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">5</span>))</span>
+<span id="cb65-2"><a href="workflow-basics.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  1.00  3.25  5.50  7.75 10.00</span></span></code></pre></div>
+<p>Now look at your environment in the upper right pane:</p>
+<p><img src="screenshots/rstudio-env.png" width="597" style="display: block; margin: auto;" /></p>
+<p>Here you can see all of the objects that you’ve created.</p>
+</div>
+<div id="exercises-6" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Why does this code not work?</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="workflow-basics.html#cb66-1" aria-hidden="true" tabindex="-1"></a>my_variable <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb66-2"><a href="workflow-basics.html#cb66-2" aria-hidden="true" tabindex="-1"></a>my_varıable</span>
+<span id="cb66-3"><a href="workflow-basics.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in eval(expr, envir, enclos): 객체 &#39;my_varıable&#39;를 찾을 수 없습니다</span></span></code></pre></div>
+<p>Look carefully!
+(This may seem like an exercise in pointlessness, but training your brain to notice even the tiniest difference will pay off when programming.)</p></li>
+<li><p>Tweak each of the following R commands so that they run correctly:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="workflow-basics.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">libary</span>(tidyverse)</span>
+<span id="cb67-2"><a href="workflow-basics.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">dota =</span> mpg) <span class="sc">+</span></span>
+<span id="cb67-3"><a href="workflow-basics.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">maping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div></li>
+<li><p>Press Alt + Shift + K.
+What happens?
+How can you get to the same place using the menus?</p></li>
+</ol>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="서문.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-visualisation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-transform.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -767,7 +875,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hadley/r4ds/edit/master/index.Rmd",
+"link": "https://github.com/hadley/r4ds/edit/master/workflow-basics.Rmd",
 "text": "Edit"
 },
 "history": {
