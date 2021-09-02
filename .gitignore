@@ -6,4 +6,3 @@ search_index.json
 *.rds
 _main.*
 tmp-pdfcrop-*
-_book/

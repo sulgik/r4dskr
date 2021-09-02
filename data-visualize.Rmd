@@ -191,7 +191,7 @@ ggplot2는 어떤 수준이 어떤 값에 해당하는지를 설명하는 범례
 방법으로 크기(size) 심미성에 매핑할 수도 있다. 
 이 경우, 각 점의 크기는 차종을 나타낼 것이다. 
 여기서 경고가 뜨는데, 순서형이 아닌 변수(`class`)를 순서형 심미성(`size`)으로 
-매핑하는 것은 바람직하지 않기 때문이다.
+매핑하는 것은 바람직하지 않기 때문이다. s
 
 ```{r, fig.alt = "Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are sized according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable -- going from small to large: 2seater, compact, midsize, minivan, pickup, or suv."}
 ggplot(data = mpg) + 
