@@ -591,7 +591,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="21.1.1" data-path="iteration.html"><a href="iteration.html#준비하기-13"><i class="fa fa-check"></i><b>21.1.1</b> 준비하기</a></li>
 </ul></li>
-<li class="chapter" data-level="21.2" data-path="iteration.html"><a href="iteration.html#for-loops"><i class="fa fa-check"></i><b>21.2</b> For loops</a>
+<li class="chapter" data-level="21.2" data-path="iteration.html"><a href="iteration.html#for-루프"><i class="fa fa-check"></i><b>21.2</b> For 루프</a>
 <ul>
 <li class="chapter" data-level="21.2.1" data-path="iteration.html"><a href="iteration.html#exercises-18"><i class="fa fa-check"></i><b>21.2.1</b> Exercises</a></li>
 </ul></li>
@@ -749,8 +749,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="iteration.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
 </div>
-<div id="for-loops" class="section level2" number="21.2">
-<h2><span class="header-section-number">21.2</span> For loops</h2>
+<div id="for-루프" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> For 루프</h2>
 <p>Imagine we have this simple tibble:</p>
 <div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="iteration.html#cb519-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb519-2"><a href="iteration.html#cb519-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
@@ -776,7 +776,7 @@ Instead, we could use a for loop:</p>
 <span id="cb521-4"><a href="iteration.html#cb521-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb521-5"><a href="iteration.html#cb521-5" aria-hidden="true" tabindex="-1"></a>output</span>
 <span id="cb521-6"><a href="iteration.html#cb521-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.2458 -0.2873 -0.0567  0.1443</span></span></code></pre></div>
-<p>Every for loop has three components:</p>
+<p>for 루프는 모두 세가지 요소가 있다:</p>
 <ol style="list-style-type: decimal">
 <li><p>The <strong>output</strong>: <code>output &lt;- vector("double", length(x))</code>.
 Before you start the loop, you must always allocate sufficient space for the output.

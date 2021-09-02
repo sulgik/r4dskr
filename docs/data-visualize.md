@@ -162,22 +162,24 @@ ggplot(data = <DATA>) +
 
 <img src="data-visualize_files/figure-html/unnamed-chunk-5-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. Cars with engine size greater than 5 litres and highway fuel efficiency greater than 20 miles per gallon stand out from the rest of the data and are highlighted in red." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. Cars with engine size greater than 5 litres and highway fuel efficiency greater than 20 miles per gallon stand out from the rest of the data and are highlighted in red." width="70%" style="display: block; margin: auto;" />
 
-Let's hypothesize that the cars are hybrids.
-One way to test this hypothesis is to look at the `class` value for each car.
-The `class` variable of the `mpg` dataset classifies cars into groups such as compact, midsize, and SUV.
-If the outlying points are hybrids, they should be classified as compact cars or, perhaps, subcompact cars (keep in mind that this data was collected before hybrid trucks and SUVs became popular).
 
-You can add a third variable, like `class`, to a two dimensional scatterplot by mapping it to an **aesthetic**.
-An aesthetic is a visual property of the objects in your plot.
-Aesthetics include things like the size, the shape, or the color of your points.
-You can display a point (like the one below) in different ways by changing the values of its aesthetic properties.
-Since we already use the word "value" to describe data, let's use the word "level" to describe aesthetic properties.
-Here we change the levels of a point's size, shape, and color to make the point small, triangular, or blue:
+연비가 높은 차들은 하이브리드 차라고 가설을 세워보자. 
+이 가설을 검정하는 방법으로 각 차의 `class` 값(차종)을 살펴보는 방법이 있다. 
+`mpg` 데이터셋의 `class` 변수는 차를 소형, 중형, SUV 같은 그룹으로 분류한다. 
+이상값들이 하이브리드 차들이라면 소형이나 경차로 분류되었을 것이다. 
+(이 데이터들은 하이브리드 트럭이나 SUV가 대중화되기 전에 수집되었음을 염두에 두자.)
+`class` 같은 세 번째 변수를 **심미성(aesthetic)** 에 매핑하여 이차원 산점도에 
+추가할 수도 있다. 
+심미성은 플롯 객체들의 시각적 속성이다. 심미성에는 점의 크기, 모양, 색상 같은 것들이 포함된다. 심미성 속성값을 변경하여 점을 (다음 그림처럼) 다른 방법으로 표시할 수 있다. 
+데이터를 설명할 때 ‘값’이라는 용어를 이미 사용했으므로 심미성 속성을 설명할 때는 ‘수준(level)’이라는 용어를 사용하자. 
+여기에서는 크기, 모양, 색상의 수준을 변경하여 다음과 같이 점을 작게
+혹은 삼각형이나 파란색으로 만들었다.
 
 <img src="data-visualize_files/figure-html/unnamed-chunk-6-1.png" title="Diagram that shows four plotting characters next to each other. The first is a large circle, the second is a small circle, the third is a triangle, and the fourth is a blue circle." alt="Diagram that shows four plotting characters next to each other. The first is a large circle, the second is a small circle, the third is a triangle, and the fourth is a blue circle." width="70%" style="display: block; margin: auto;" />
 
-You can convey information about your data by mapping the aesthetics in your plot to the variables in your dataset.
-For example, you can map the colours of your points to the `class` variable to reveal the class of each car.
+플롯의 심미성을 데이터셋의 변수들에 매핑해서 데이터에 대한 정보를 전달할
+수 있다. 
+예를 들어 점의 색상을 `class` 변수에 매핑하여 각 차의 차종을 나타낼 수 있다.
 
 
 ```r
@@ -187,20 +189,24 @@ ggplot(data = mpg) +
 
 <img src="data-visualize_files/figure-html/unnamed-chunk-7-1.png" title="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are coloured according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable: 2seater, compact, midsize, minivan, pickup, or suv." alt="Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are coloured according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable: 2seater, compact, midsize, minivan, pickup, or suv." width="70%" style="display: block; margin: auto;" />
 
-(If you prefer British English, like Hadley, you can use `colour` instead of `color`.)
+(해들리처럼 영국식 영어를 선호한다면 `color` 대신 `colour`를 사용할 수도 있다.)
+심미성을 변수에 매핑하기 위해서는 `aes()` 내부에서 심미성 이름을 변수 이름과 
+연결해야 한다. 
+ggplot2는 변수의 고유한 값에 심미성의 고유한 수준(여기서는 고유한 색상)을 
+자동으로 지정하는데, 이 과정을 **스케일링(scaling)** 이라고 한다. 
+ggplot2는 어떤 수준이 어떤 값에 해당하는지를 설명하는 범례도 추가한다.
 
-To map an aesthetic to a variable, associate the name of the aesthetic to the name of the variable inside `aes()`.
-ggplot2 will automatically assign a unique level of the aesthetic (here a unique color) to each unique value of the variable, a process known as **scaling**.
-ggplot2 will also add a legend that explains which levels correspond to which values.
-
-The colours reveal that many of the unusual points (with engine size greater than 5 litres and highway fuel efficiency greater than 20 miles per gallon) are two-seater cars.
-These cars don't seem like hybrids, and are, in fact, sports cars!
-Sports cars have large engines like SUVs and pickup trucks, but small bodies like midsize and compact cars, which improves their gas mileage.
-In hindsight, these cars were unlikely to be hybrids since they have large engines.
-
-In the above example, we mapped `class` to the color aesthetic, but we could have mapped `class` to the size aesthetic in the same way.
-In this case, the exact size of each point would reveal its class affiliation.
-We get a *warning* here, because mapping an unordered variable (`class`) to an ordered aesthetic (`size`) is not a good idea.
+플롯의 색상들을 보면 이상값 중 다수가 2인승 차임을 보여준다. 
+이 차들은 하이브리드 차가 아닌 것 같고, 놀랍게도 스포츠카들이다! 
+스포츠카들은 SUV와 픽업트럭처럼 엔진이 크지만, 차체가 중형차나 소형차처럼 작아서 
+연비가 좋다.
+다시 생각해보면 이 차들은 엔진 크기가 컸기 때문에 하이브리드일 가능성이
+낮다.
+앞의 예제에서 `class` 변수를 색상 심미성에 매핑했지만 이 변수를 같은 
+방법으로 크기(size) 심미성에 매핑할 수도 있다. 
+이 경우, 각 점의 크기는 차종을 나타낼 것이다. 
+여기서 경고가 뜨는데, 순서형이 아닌 변수(`class`)를 순서형 심미성(`size`)으로 
+매핑하는 것은 바람직하지 않기 때문이다.
 
 
 ```r

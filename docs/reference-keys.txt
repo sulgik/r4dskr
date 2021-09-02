@@ -305,7 +305,7 @@ exercises-17
 iteration
 들어가기-12
 준비하기-13
-for-loops
+for-루프
 exercises-18
 for-loop-variations
 modifying-an-existing-object

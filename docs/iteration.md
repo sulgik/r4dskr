@@ -27,7 +27,7 @@ Once you've mastered the for loops provided by base R, you'll learn some of the 
 library(tidyverse)
 ```
 
-## For loops
+## For 루프
 
 Imagine we have this simple tibble:
 
@@ -69,7 +69,7 @@ output
 #> [1] -0.2458 -0.2873 -0.0567  0.1443
 ```
 
-Every for loop has three components:
+for 루프는 모두 세가지 요소가 있다:
 
 1.  The **output**: `output <- vector("double", length(x))`.
     Before you start the loop, you must always allocate sufficient space for the output.
