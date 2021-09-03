@@ -185,20 +185,20 @@ ggplot2는 어떤 수준이 어떤 값에 해당하는지를 설명하는 범례
 이 차들은 하이브리드 차가 아닌 것 같고, 놀랍게도 스포츠카들이다! 
 스포츠카들은 SUV와 픽업트럭처럼 엔진이 크지만, 차체가 중형차나 소형차처럼 작아서 
 연비가 좋다.
-다시 생각해보면 이 차들은 엔진 크기가 컸기 때문에 하이브리드일 가능성이
-낮다.
+다시 생각해보면 이 차들은 엔진 크기가 컸기 때문에 하이브리드일 가능성이 낮다.
 앞의 예제에서 `class` 변수를 색상 심미성에 매핑했지만 이 변수를 같은 
 방법으로 크기(size) 심미성에 매핑할 수도 있다. 
 이 경우, 각 점의 크기는 차종을 나타낼 것이다. 
 여기서 경고가 뜨는데, 순서형이 아닌 변수(`class`)를 순서형 심미성(`size`)으로 
-매핑하는 것은 바람직하지 않기 때문이다. s
+매핑하는 것은 바람직하지 않기 때문이다.
 
 ```{r, fig.alt = "Scatterplot of highway fuel efficiency versus engine size of cars in ggplot2::mpg that shows a negative association. The points representing each car are sized according to the class of the car. The legend on the right of the plot shows the mapping between colours and levels of the class variable -- going from small to large: 2seater, compact, midsize, minivan, pickup, or suv."}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, size = class))
 ```
 
-Or we could have mapped `class` to the *alpha* aesthetic, which controls the transparency of the points, or to the shape aesthetic, which controls the shape of the points.
+`class` 를 점의 투명도를 제어하는 *알파(alpha)* 심미성이나 점의 모양을 제어하는
+모양(shape) 심미성에 매핑할 수도 있다.
 
 ```{r, out.width = "50%", fig.align = 'default', warning = FALSE, fig.asp = 1/2, fig.cap ="", fig.alt = "Two scatterplots next to each other, both visualizing highway fuel efficiency versus engine size of cars in ggplot2::mpg and showing a negative association. In the plot on the left class is mapped to the alpha aesthetic, resulting in different transparency levels for each level of class. In the plot on the right class is mapped the shape aesthetic, resulting in different plotting character shapes for each level of class. Each plot comes with a legend that shows the mapping between alpha level or shape and levels of the class variable."}
 # Left
