@@ -1,0 +1,313 @@
+# 데이터 불러오기 {#data-import}
+
+## 들어가기
+
+R 패키지가 제공하는 데이터를 이용하여 데이터 과학 도구를 익히는 것은 좋은
+방법이다. 그렇지만 어느 시점에 이르러서는 학습을 중단하고 자신의 데이터로
+작업해보고 싶어질 것이다. 이 장에서는 일반 텍스트 직사각형 파일을 R로 불러오는
+방법을 배운다. 데이터 불러오기 맛보기만 할 뿐이지만, 여기에서 배우는
+많은 원칙을 다른 형태의 데이터에도 적용할 수 있다. 이 장의 마무리에서 다른
+유형의 데이터에 유용한 패키지 몇 가지를 소개한다.
+
+### 준비하기
+
+이 장에서는 tidyverse 의 핵심 구성요소인 **readr** 패키지를 사용하여 플랫 파일을 불러오는 방법을 학습한다.
+
+
+```r
+library(tidyverse)
+```
+
+## 시작하기
+
+readr 함수 대부분은 플랫 파일을 데이터프레임으로 바꾸는 것과 연관이 있다.
+
+* `read_csv()` 는 쉼표로 구분된 파일을 읽고, `read_tsv()` 는 탭-구분 파일을 읽는다. `read_delim()` 은 임의의 구분자로 된 파일을 읽는다.
+
+* `read_fwf()` 는 고정 너비 파일을 읽는다. 필드 너비는 `fwf_widths()` 를 이용하여,
+필드 위치는 `fwf_positions()` 를 이용하여 지정할 수 있다. `read_table()` 은 고정
+너비 파일의 일반적 변형 형태인 열이 공백으로 구분된 파일을 읽는다.
+
+* `read_log()` 는 Apache 스타일의 로그 파일을 읽는다. (하지만 `read_log()` 기반
+구축되어 더 많은 유용한 도구를 제공하는 [webreadr](https://github.com/Ironholds/webreadr) 도 확인하라.)
+
+이 함수들은 문법이 모두 비슷하다. 하나를 익히면 나머지는 쉽게 사용할 수 있다.
+이 장의 나머지 부분에서는 `read_csv()` 에 초점을 맞출 것이다. CSV 파일은 가장
+일반적인 형태의 데이터 저장 형태일 뿐 아니라 `read_csv()` 를 이해하면 readr 의
+다른 모든 함수에 쉽게 적용할 수 있다.
+
+## 파일에서 데이터 읽어오기
+
+Here is what a simple CSV file with a row for column names (also commonly referred to as the header row) and six rows of data looks like.
+
+```{r echo = FALSE, message = FALSE}
+read_lines("data/students.csv") %>% cat(sep = "\n")
+```
+
+Note that the `,`s separate the columns.
+Table \@ref(tab:students-table) shows a representation of the same data as a table.
+
+```{r students-table, echo = FALSE, message = FALSE}
+read_csv("data/students.csv") %>%
+  knitr::kable(caption = "Data from the students.csv file as a table.")
+```
+
+`read_csv()` 의 첫 번째 인수가 가장 중요한데 바로 읽으려고 하는 파일의 경로다.
+
+```{r message = TRUE}
+heights <- read_csv("data/students.csv")
+```
+
+`read_csv()` 를 실행하면 각 열의 이름과 유형을 제공하는 열 사양이 화면 출력된다. 이는 readr 에서 중요한 부분이다. [파일 파싱하기]에서 다시 살펴보겠다.
+
+인라인 CSV 파일을 넣을 수도 있다. 이것은 readr 로 실험해볼 때와 다른 사람들과
+공유할 재현 가능한 예제를 만들 때 유용하다.
+
+
+```{r message = FALSE}
+read_csv("a,b,c
+1,2,3
+4,5,6")
+```
+
+두 경우 모두 `read_csv()` 는 데이터의 첫 번째 줄을 열 이름으로 사용한다. 이는 매우 일반적인 규칙이다. 이 동작을 조정해야 하는 경우는 두 가지이다.
+
+1.  파일 앞 부분에 메타 데이터 몇 줄이 있는 경우가 있다. `skip = n` 을 사용하여
+첫 `n` 줄을 건너 뛸 수 있다. 또는 `comment = "#"` 을 사용하여 `#` 으로 시작하는
+모든 줄을 무시할 수 있다.
+
+
+    ```{r}
+    read_csv("메타 데이터 첫번째 행
+      메타 데이터 두번째 행
+      x,y,z
+      1,2,3", skip = 2)
+
+    read_csv("# 건너뛰고 싶은 주석
+      x,y,z
+      1,2,3", comment = "#")
+    ```
+
+1.  데이터에 열 이름이 없을 수 있다. `col_names = FALSE` 를 사용하면 `read_csv()` 가
+첫 행을 헤드로 취급하지 않고 대신 X1에서 Xn까지 순차적으로 이름을 붙인다.
+
+
+    ```{r message = FALSE}
+    read_csv("1,2,3\n4,5,6", col_names = FALSE)
+    ```
+
+    (`"\n"` 은 새 줄을 추가하는 편리한 단축키이다. [문자열 기초](#strings-basics)에서 이
+    단축어와 문자열 이스케이프의 다른 유형에 대해 자세히 배운다.)
+    다른 방법으로는 `col_names` 에 열 이름으로 사용할 문자형 벡터를 전달할
+    수도 있다.
+
+    ```{r}
+    read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
+    ```
+
+일반적으로 조정이 필요한 또 다른 옵션은 `na` 이다. 파일에서 결측값을 나타내는데 사용되는 값(들)을 지정한다.
+
+
+    ```{r}
+    read_csv("a,b,c\n1,2,.", na = ".")
+    ```
+
+여기까지 배운 것들로 실제로 마주하게 될 CSV 파일의 75% 정도를 불러올 수
+있다. 또한 탭으로 구분된 파일을 `read_tsv()` 를 사용하여, 혹은 고정간격 파일을
+`read_fwf()` 를 사용하여 불러오는 데도 쉽게 적용할 수 있다. 더 복잡한 파일을 읽으려면
+readr 이 각 열을 파싱하여 R 벡터로 바꾸는 방법에 대해 자세히 배워야한다.
+
+
+
+
+
+### First steps
+
+Let's take another look at the `students` data.
+In the `favourite.food` column, there are a bunch of foot items and then the character string `N/A`, which should have been an real `NA` that R will recognize as "not available".
+This is something we can address using the `na` argument.
+
+```{r message = FALSE}
+students <- read_csv("data/students.csv", na = c("N/A", ""))
+students
+```
+
+Once you read data in, the first step is usually involve transforming it in some way to make it easier to work with in the rest of your analysis.
+For example, the column names in the `students` file we read in are formatted in non-standard ways.
+You might consider renaming them one by one with `dplyr::rename()` or you might use the `janitor::clean_names()` function turn them all into snake case at once.[^data-import-1]
+This function takes in a data frame and returns a data frame with variable names converted to snake case.
+
+[^data-import-1]: The [janitor](http://sfirke.github.io/janitor/) package is not part of the tidyverse, but it offers handy functions for data cleaning and works well within data pipelines that uses `%>%`.
+
+```{r message = FALSE}
+library(janitor)
+students %>%
+  clean_names()
+```
+
+Another common task after reading in data is to consider the variable types.
+For example, `meal_type` is a categorical variable with a known set of possible values.
+In R, factors can be used to work with categorical variables.
+We can convert this variable to a factor using the `factor()` function.
+You'll learn more about factors in Chapter \@ref(factors).
+
+```{r}
+students <- students %>%
+  clean_names() %>%
+  mutate(meal_plan = factor(meal_plan))
+students
+```
+
+Note that the values in the `meal_type` variable has stayed exactly the same, but the type of variable denoted underneath the variable name has changed from character (`<chr>`) to factor (`<fct>`).
+
+Before you move on to analyzing these data, you'll probably want to fix the `age` column as well: currently it's a character variable because of the one observation that is typed out as `five` instead of a numeric `5`.
+We discuss the details of fixing this issue in Chapter \@ref(import-spreadsheets) in further detail.
+
+
+
+
+
+
+
+
+
+### 베이스 R과 비교
+
+R을 이전에 사용한 사람은 우리가 `read.csv()` 를 사용하지 않는 이유가 궁금할 것이다. 베이스 함수보다 readr 함수가 좋은 이유는 다음과 같다.
+
+* 일반적으로 베이스 함수보다 훨씬 더(~10배) 빠르다. 오래 걸리는 작업은 진
+행 표시줄을 통해 상황을 알 수 있다. raw speed로 작업하려면
+`data.table::fread()` 를 사용해보라. 이 함수는 tidyverse 에 잘 어울리지는 않지만, 훨씬 더 빠를 수 있다.
+
+* 티블을 생성한다. 문자 벡터를 팩터형으로 변환하지도, 행 이름을 사용하거
+나 열 이름을 변경하지도 않는다. 베이스 R 함수는 변환, 변경하기 때문에 불
+편하다.
+
+* 좀 더 재현 가능하다. 베이스 R 함수는 운영체제 및 환경 변수의 일부 동작을
+상속하므로 자신의 컴퓨터에서 작동하는 불러오기 코드가 다른 사람의 컴퓨터에서
+작동하지 않을 수 있다.
+
+
+### 연습문제
+
+1.  필드가 “|” 로 분리된 파일을 읽으려면 어떤 함수를 사용하겠는가?
+
+1.  `read_csv()` 와 `read_tsv()` 가 공통으로 가진 인수는 `file`, `skip`, `comment` 외에 또 무엇이 있는가?
+
+1. `read_fwf()` 에서 가장 중요한 인수는 무엇인가?
+
+
+1.  CSV 파일의 문자열에 쉼표가 포함되는 경우가 있다. 그것들이 문제를 일으
+키지 않게 하려면 `"` 혹은 `'`와 같은 인용 문자로 둘러싸일 필요가 있다.
+`read_csv()` 는 인용 문자가 `"`라고 가정한다. 이를 변경하려면 `read_delim()` 을 대신
+사용하면 된다. 다음 텍스트를 데이터프레임으로 읽으려면 어떤 인수를 설정해야하는가?
+
+
+    ```r
+    "x,y\n1,'a,b'"
+    ```
+
+1.  다음 각 인라인 CSV 파일에 어떤 문제가 있는지 확인하라. 코드를 실행하면
+어떻게 되는가?
+
+
+    ```r
+    read_csv("a,b\n1,2,3\n4,5,6")
+    read_csv("a,b,c\n1,2\n1,2,3,4")
+    read_csv("a,b\n\"1")
+    read_csv("a,b\n1,2\na,b")
+    read_csv("a;b\n1;3")
+    ```
+
+## Reading data from multiple files
+
+Sometimes your data is split across multiple files instead of being contained in a single file.
+For example, you might have sales data for multiple months, with each month's data in a separate file: `01-sales.csv` for January, `02-sales.csv` for February, and `03-sales.csv` for March.
+With `read_csv()` you can read these data in at once and stack them on top of each other in a single data frame.
+
+```{r}
+sales_files <- c("data/01-sales.csv", "data/02-sales.csv", "data/03-sales.csv")
+read_csv(sales_files, id = "file")
+```
+
+With the additional `id` parameter we have added a new column called `file` to the resulting data frame that identifies the file the data come from.
+This is especially helpful in circumstances where the files you're reading in do not have an identifying column that can help you trace the observations back to their original sources.
+
+If you have many files you want to read in, it can get cumbersome to write out their names as a list.
+Instead, you can use the `dir_ls()` function from the fs package to find the files for you by matching a pattern in the file names.
+
+```{r}
+library(fs)
+sales_files <- dir_ls("data", glob = "*sales.csv")
+sales_files
+```
+
+## 파일에 쓰기
+
+readr에는 디스크에 데이터를 다시 기록하는 데 유용한 함수, `write_csv()` 와 `write_tsv()` 가 있다. 두 함수 모두 다음 동작을 통해 출력 파일이 올바르게 다시 읽힐 수 있게 한다.
+
+-   항상 UTF-8로 문자열을 인코딩한다.
+-   날짜와 날짜-시간을 ISO 8601 형식으로 저장하여 어디에서든 쉽게 파싱될 수 있게 한다.
+
+CSV 파일을 엑셀로 내보내려면 `write_excel_csv()` 를 사용하라. 이는 파일의 시작 부분에 특수 문자(‘byte order mark’)를 작성하여, UTF-8 인코딩을 사용하고 있음을 엑셀에 전달한다.
+
+가장 중요한 인수는 `x` (저장할 데이터프레임)와 `path` (그 데이터프레임을 저장할 위치)이다. 결측값을 지정하는 인수, `na` 와 기존 파일에 첨부할지를 지정하는 인수 `append` 도 있다.
+
+```{r, eval = FALSE}
+write_csv(students, "students.csv")
+```
+
+CSV 로 저장하면 유형 정보가 없어진다는 것에 유의하라.
+
+```{r, warning = FALSE, message = FALSE}
+students
+write_csv(students, "students-2.csv")
+read_csv("students-2.csv")
+```
+
+이런 이유로 중간 결과를 캐싱하기에 CSV 를 아주 신뢰할 수 없다. 불러올 때마다 열 사양을 다시 만들어야 한다. 두 가지 대안이 있다.
+
+1.  `write_rds()` 과 `read_rds()` 는 베이스 함수인 `readRDS()` 와 `saveRDS()` 의 래퍼 함수들이다. 이들은 RDS 라는 R 의 커스텀 바이너리 형식으로 데이터를 저장한다.
+
+    ```{r}
+    write_rds(students, "students.rds")
+    read_rds("students.rds")
+    ```
+
+2.  feather 패키지는 다른 프로그래밍 언어와 공유할 수 있는 빠른 바이너리 파일 형식을 구현한다.
+
+    ```{r, eval = FALSE}
+    library(feather)
+    write_feather(students, "students.feather")
+    read_feather("students.feather")
+    ```
+
+    feather 는 RDS 보다 대체적으로 빠르며 R 외부에서도 사용할 수 있다. RDS 는 리스트-열(\@ref(list-columns) 장에서 배울 것이다)을 지원하지만 feather 는 현재 지원하지 않는다.
+
+```{r, include = FALSE}
+file.remove("students-2.csv")
+file.remove("students.rds")
+```
+
+
+## 기타 데이터 유형
+
+다른 유형의 데이터를 R로 가져오려면 다음에 나열된 tidyverse 패키지로 시작
+하는 것이 좋다. 이 패키지들은 완벽하지는 않지만 이들부터 시작하면 좋다. 직사각형 데이터에 대해 다음 패키지들이 있다.
+
+-   **readxl** 은 엑셀 파일(`.xls` 와 `.xlsx`)을 읽을 수 있다. \@ref(import-spreadsheets) 장에서 엑셀 스프레드시트에 저장된 데이터로 작업하는 것에 대해 더 살펴보라.
+
+-   **googlesheets4** reads Google Sheets.
+    Also see Chapter \@ref(import-spreadsheets) for more on working with data stored in Google Sheets.
+
+-   **DBI** 를 데이터베이스 특화 백엔드(예: **RMySQL**, **RSQLite**, **RPostgreSQL** 등)와 함께 사용하면 데이터베이스에 대해 SQL 쿼리를 실행하고 데이터프레임을 반환할 수 있다. See Chapter \@ref(import-databases) for more on working with databases .
+
+
+-   **haven** 은 SPSS, Stata, SAS 파일을 읽을 수 있다.
+
+계층적 데이터의 경우, JSON 에는 Jeroen Ooms 가 개발한 **jsonlite**를
+사용하고 XML에는 **xml2** 를 사용하면 된다. 이에 관한 좋은 예제는 Jenny Bryan 의 <https://jennybc.github.io/purrr-tutorial> 에서 볼 수 있다.
+
+다른 파일 유형의 경우, [R 데이터 가져오기/내보내기 매뉴얼](https://cran.r-project.org/doc/manuals/r-release/R-data.html) 과
+[**rio**](https://github.com/leeper/rio) 패키지를 참고해보라.
+

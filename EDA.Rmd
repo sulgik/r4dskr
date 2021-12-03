@@ -25,14 +25,14 @@ EDA의 초기 단계에서는 떠오르는 모든 아이디어를 마음껏 탐�
 
 ### 준비하기
 
-이 장에서는 dplyr과 ggplot2에 대해 배운 내용을 질문하기, 데이터로 답하기 및
+이 장에서는 dplyr 과 ggplot2 에 대해 배운 내용을 질문하기, 데이터로 답하기 및
 새롭게 질문하는 과정과 결합할 것이다.
 
 ```{r setup, message = FALSE}
 library(tidyverse)
 ```
 
-## Questions
+## 질문
 
 > "판에 박힌 통계적 질문은 없으며 오직 의심스러운 통계적 질문만이 있다."
 > --- 데이빗 콕스 경 (Sir David Cox)
@@ -79,10 +79,14 @@ EDA는 근본적으로 창의적인 과정이다. 대부분의 창의적인 과�
 지금까지 보았던 모든 데이터는 타이디 데이터였다. 실제로 데이터 
 대부분은 타이디하지 않기 때문에 [tidy data]에서는 이 부분에 대해 다시 다룰 것이다.
 
-## 변동
+## 변량 (variation)
 
-**Variation** is the tendency of the values of a variable to change from measurement to measurement. You can see variation easily in real life; if you measure any continuous variable twice, you will get two different results. This is true even if you measure quantities that are constant, like the speed of light. Each of your measurements will include a small amount of error that varies from measurement to measurement. Categorical variables can also vary if you measure across different subjects (e.g. the eye colors of different people), or different times (e.g. the energy levels of an electron at different moments). 
-Every variable has its own pattern of variation, which can reveal interesting information. The best way to understand that pattern is to visualise the distribution of the variable's values.
+**변량(variation)** 은 변수의 측정값이 변하는 경향을 말한다. 실생활에서 변량을
+쉽게 볼 수 있다. 예를 들어 연속형 변수를 두 번 측정하면 두 개의 다른 결과가
+나온다. 이것은 광속과 같은 일정한 양을 측정하더라도 사실이다. 각각의 측정값은 서로 다른 약간의 오차를 포함한다. 범주형 변수도 서로 다른 피실험자(예,
+다른 사람들의 눈동자색 차이) 또는 다른 시간(예, 다른 순간의 전자의 에너지
+수준)을 측정하는 경우, 다를 수 있다. 모든 변수는 흥미로운 정보를 나타낼 수
+있는 고유한 변동 패턴을 가지고 있으며, 이러한 패턴을 이해하는 가장 좋은 방법은 변수들 값의 분포를 시각화하는 것이다.
 
 ### 분포 시각화
 

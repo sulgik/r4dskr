@@ -1,95 +1,92 @@
-# Data transformation {#data-transform}
+# 데이터 변환 {#data-transform}
 
-## Introduction
+## 들어가기
 
-Visualisation is an important tool for insight generation, but it is rare that you get the data in exactly the right form you need.
-Often you'll need to create some new variables or summaries, or maybe you just want to rename the variables or reorder the observations in order to make the data a little easier to work with.
-You'll learn how to do all that (and more!) in this chapter, which will teach you how to transform your data using the dplyr package and a new dataset on flights departing New York City in 2013.
+시각화는 직관을 얻을 수 있는 중요한 도구이다. 하지만 데이터가 정확히 필요한 형태를 취하는 경우는 거의 없다. 데이터를 좀 더 쉽게 사용할 수 있도록 새로운 변수나 요약값을 만들어야 할 수도 있고, 아니면 변수 이름을 변경하거나
+관측값들을 재정렬해야 되는 경우가 종종 있다. 이 장에서 이 모든 것(과 그 이상!)을 배울 것인데, dplyr 패키지와 2013년 뉴욕시 출발 항공편 데이터셋을 이용하여 데이터 변환 방법을 배워보자.
 
-### Prerequisites
+### 준비하기
 
-In this chapter we're going to focus on how to use the dplyr package, another core member of the tidyverse.
-We'll illustrate the key ideas using data from the nycflights13 package, and use ggplot2 to help us understand the data.
+이 장에서 우리는 tidyverse의 또 다른 핵심 구성원인 dplyr 패키지를 사용하는
+법에 집중할 것이다. nycflights13 패키지의 데이터를 이용하여 핵심 아이디어를
+배우고, ggplot2를 이용하여 데이터를 이해해볼 것이다.
 
 ```{r setup}
 library(nycflights13)
 library(tidyverse)
 ```
 
-Take careful note of the conflicts message that's printed when you load the tidyverse.
-It tells you that dplyr overwrites some functions in base R.
-If you want to use the base version of these functions after loading dplyr, you'll need to use their full names: `stats::filter()` and `stats::lag()`.
+tidyverse를 로드할 때 출력되는 충돌 메시지를 조심히 살펴보라. dplyr이 베이스 R 함수 몇 개를 덮어쓴다고 알려준다. dplyr를 로딩한 후 이 함수들의 베이스
+버전을 사용하고 싶다면 `stats::filter()`, `stats::lag()` 와 같이 전체 이름을
+사용해야 한다.
 
 ### nycflights13
 
-To explore the basic dplyr verbs, we're going to look at `nycflights13::flights`.
-This data frame contains all `r format(nrow(nycflights13::flights), big.mark = ",")` flights that departed from New York City in 2013.
-The data comes from the US [Bureau of Transportation Statistics](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0), and is documented in `?flights`.
+dplyr의 기본 데이터 작업(manipulation) 동사를 탐색하기 위해서 `nycflights13::flights` 를 사용할 것이다. 이 데이터프레임에는 뉴욕시에서 2013년에 출발한
+`r format(nrow(nycflights13::flights), big.mark = ",")` 편의 모든 항공편이 포함되어 있다. 데이터의 출처는 [Bureau of Transportation Statistics](http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0)이며 `?flights` 에 문서화되어 있다.
 
 ```{r}
 flights
 ```
 
-If you've used R before, you might notice that this data frame prints a little differently to data frames you might've worked with in the past.
-That's because it's a **tibble**, a special type of data frame designed by the tidyverse team to avoid some common data.frame gotchas.
-The most important difference is the way it prints: tibbles are designed for large datasets, so only show the first few rows and only the columns that fit on one screen.
-If you want to see everything you can use `View(flights)` to open the dataset in the RStudio viewer.
-We'll come back to other important differences in Chapter \@ref(tibbles).
+R 을 사용해본 독자라면 이 데이터프레임은 이전에 사용했던 데이터프레임과 조금 다르게 출력되는 것을 알아차렸을 것이다. 데이터가 **티블(tibble)** 이기 때문인데, tidyverse 팀에서 data.frame 의 불편한 점을 피하기 위해 고안한 특수한 종류의 데이터프레임이다. 
+가장 중요한 차이는 출력하는 방법에 있다. 티블은 큰 데이터셋을 위해 설계되었기 때문에 처음 몇 행과 한 화면에 들어갈 개수의 열만 표시된다. 
+데이터셋 전체를 보려면 `View(flights)` 를 실행하여 RStudio 뷰어에서 데이터셋을 열 수 있다.
+다른 중요한 차이점들은 \@ref(tibbles) 장에서 살펴볼 것이다.
 
-You might also have noticed the row of short abbreviations under the column names.
-These describe the type of each variable:
+열 이름 아래의 세 글자(또는 네 글자) 줄임말 행을 봤을 것이다. 이는 각 변수의 유형을 설명한다.
 
-  -   `int` stands for integer.
 
--   `dbl` stands for double, a vector of real numbers.
+-   `int` 는 정수(integer).
 
--   `chr` stands for character, a vector of strings.
+-   `dbl` 은 더블형(double), 즉 실수.
 
--   `dttm` stands for date-time (a date + a time).
+-   `chr` 는 문자형(character) 벡터.
 
-There are three other common types that aren't used here but you'll encounter later in the book:
+-   `dttm` 은 데이트-타임형(날짜 + 시간).
 
-  -   `lgl` stands for logical, a vector that contains only `TRUE` or `FALSE`.
+이 데이터셋에서 사용되지 않은 세 가지 일반적인 변수 유형이 있는데 이 책 뒤에서 살펴볼 것이다.
 
--   `fctr` stands for factor, which R uses to represent categorical variables with fixed possible values.
+-   `lgl` 은 `TRUE` 나 `FALSE` 만 포함하는 벡터인 논리형(logical).
 
--   `date` stands for date.
+-   `fctr` 는 팩터형을 의미하는데, R 은 이를 이용하여 가능한 값이 미리 정해진 범주형 변수를 나타냄. 
 
-### dplyr basics
+-   `date` 는 데이트형.
 
-In this chapter you are going to learn the primary dplyr verbs which will allow you to solve the vast majority of your data manipulation challenges.
-They are organised into four camps:
+### dplyr 기초
 
-  -   Functions that operate on **rows**: `filter()` subsets rows based on the values of the columns, `slice()` and friends subsets rows based on their position, and `arrange()` changes the order of the rows.
+이 장에서는 데이터 작업 문제 대부분을 풀 수 있는 핵심 dplyr 동사들을 배울 것이다. 이러한 함수들은 네가지 종류로 정리할 수 있다:
 
--   Functions that operate on **columns**: `mutate()` creates new columns, `select()` columns, `rename()` changes their names, and `relocate()` which changes their positions.
+  -   **행(rows)** 에 작동하는 함수들: `filter()` 는 열의 값을 기준으로 행들을 서브셋하고, `slice()` 와 이웃함수들은 행의 위치를 기준으로 서브셋하고, `arrange()` 는 행의 순서를 바꾼다.
 
--   Functions that operate on **groups**: `group_by()` divides data up into groups for analysis, and `summarise()` reduces each group to a single row.
+-   **열(columns)** 에 작동하는 함수들: `mutate()` 는 새 열을 생성하고, `select()` 는 열을 선택하고, `rename()` 은 열의 이름을 바꾸고, `relocate()` 은 열의 위치를 바꾼다.
 
-Later, in Chapter \@ref(relational-data), you'll learn about other verbs that work with **tables**, like the join functions and the set operations.
+-   **그룹(groups)** 에 작동하는 함수들: `group_by()` 는 분석을 위해 데이터를 그룹으로 나누고 `summarise()` 는 각 그룹을 하나의 행으로 요약한다.
 
-All dplyr verbs work the same way:
+조인 함수나 집합연산과 같이 **테이블(tables)** 에 작동하는 동사들에 대해서도 \@ref(relational-data) 장에서 배울 것이다.
 
-1.  The first argument is a data frame.
+모든 dplyr 동사들은 비슷하게 작동한다:
 
-2.  The subsequent arguments describe what to do with the data frame, using the variable names (without quotes).
+1.  첫번째 인수는 데이터프레임이다.
 
-3.  The result is a new data frame.
+2.  그 이후의 인수들은 (따옴표가 없는) 변수 이름을 사용하여 데이터프레임에
+무엇을 할지를 설명한다.
 
-Together these properties make it easy to chain together multiple simple steps to achieve a complex result.
-Let's dive in and see how these verbs work.
+3.  겨로가는 새로운 데이터프레임이다.
 
-## Rows
+이 속성들을 함께 이용하면 여러 단순한 단계를 쉽게 연결하여 복잡한 결과를
+얻을 수 있다. 이 동사들이 어떻게 작동하는지 좀 더 살펴보자.
 
-These functions affect the rows (the observations), leaving the columns (the variables) unchanged.
-`filter()` changes which rows are included without changing the order, `arrange()` changes the order without changing the membership.
+## 행
+
+아래의 함수들은 행 (관측값들) 에 영향을 주지만 열 (변수들) 에는 변화를 주지 않는다.
+`filter()` 는 순서를 변화시키지 않고 어떤 행이 포함될지를 결정하고, `arrange()` 는 멤버십을 변화시키지 않으면서 순서만 바꾼다.
 
 ### `filter()`
 
-`filter()` allows you to choose rows based on their values[^data-transform-1].
-The first argument is the name of the data frame.
-The second and subsequent arguments are the expressions that filter the data frame.
-For example, we can select all flights on January 1st with:
+`filter()` 를 이용하면 값을 기준으로 데이터를 서브셋 할 수 있다[^data-transform-1].
+첫 번째 인수는 데이터프레임 이름이다. 두 번째 이후의 인수들은 데이터프레임을 필터링하는
+표현식들이다. 예를 들어 1월 1일 항공편 모두를 다음과 같이 선택할 수 있다.
 
   [^data-transform-1]: Later, you'll learn about the `slice_*()` family which allows you to choose rows based on their positions
 
@@ -97,19 +94,17 @@ For example, we can select all flights on January 1st with:
 filter(flights, month == 1, day == 1)
 ```
 
-When you run that line of code, dplyr executes the filtering operation and returns a new data frame.
-dplyr functions never modify their inputs, so if you want to save the result, you'll need to use the assignment operator, `<-`:
+해당 코드 라인을 실행하면 dplyr 은 필터링 연산을 실행하고 새로운 데이터프레임을 반환한다. dplyr 함수들은 입력을 절대 수정하지 않기 때문에, 결과를 저장하려면 할당 연산자 `<-` 를 사용해야 한다.
 
-  ```{r}
+```{r}
 jan1 <- filter(flights, month == 1, day == 1)
 ```
 
-To use filtering effectively, you have to know how to select the observations that you want using the comparison operators.
-R provides the standard suite: `>`, `>=`, `<`, `<=`, `!=` (not equal), and `==` (equal).
-It also provides `%in%`: `filter(df, x %in% c(a, b, c))` will return all rows where `x` is `a`, `b`, or `c`.
+필터링을 효과적으로 사용하기 위해서는, 비교 연산자들을 사용하여 관측값을 선택하는 방법을 알아야한다.
+R 은 표준 스위트를 제공한다: `>`, `>=`, `<`, `<=`, `!=` (not equal), and `==` (equal).
+`%in%` 도 제공한다: `filter(df, x %in% c(a, b, c))` 는 `x` 가 `a` 이거나, `b` 이거나, `c` 인 모든 행을 반환한다.
 
-When you're starting out with R, the easiest mistake to make is to use `=` instead of `==` when testing for equality.
-`filter()` will let you know when this happens:
+R 을 배우기 시작할 때 가장 범하기 쉬운 실수는, 같음을 테스트할 때 `==` 대신 `=` 를 사용하는 것이다. 이런 실수를 하면 `filter()` 는 해당 내용을 알려준다.
 
 ```{r, error = TRUE}
 filter(flights, month = 1)
@@ -117,15 +112,15 @@ filter(flights, month = 1)
 
 ### `arrange()`
 
-`arrange()` works similarly to `filter()` except that instead of selecting rows, it changes their order.
-It takes a data frame and a set of column names (or more complicated expressions) to order by.
-If you provide more than one column name, each additional column will be used to break ties in the values of preceding columns:
+`arrange()` 는 `filter()` 와 비슷하게 작동하는데, 차이점은 행을 선택하는 대신 행의 순서를 바꾼다.
+데이터프레임과 순서의 기준으로 삼을 열 이름 (혹은 더 복잡한 표현식) 을 입력으로 한다.
+열 이름이 하나 이상 입력된다면 추가된 열은 이전 열 값 동전값(tie) 상황을 해결하는 데에 사용된다.
 
 ```{r}
 arrange(flights, year, month, day)
 ```
 
-You can use `desc()` to re-order by a column in descending order:
+`desc()` 을 사용하면 내림차순 (descending order) 으로 정렬한다:
 
 ```{r}
 arrange(flights, desc(dep_delay))
@@ -152,16 +147,16 @@ Find the flights that left earliest.
 4.  Which flights travelled the farthest?
   Which travelled the shortest?
 
-  ## Columns
+## 열
 
-  These functions affect the columns (the variables) without changing the rows (the observations).
-`mutate()` creates new variables that are functions of the existing variables; `select()`, `rename()`, and `relocate()` changes which variables are present, their names, and their positions.
+아래의 함수들은 열 (변수들) 에 영향을 주지만, 행 (관측값) 을 변환시키지는 않는다.
+`mutate()` 는 존재하는 변수들의 함수인 새로운 변수들을 생성시킨다.; `select()`, `rename()`, `relocate()` 은 어떤 변수가 있어야하는지를 정하고, 변수이름과 위치를 변화시킨다.
 
 ### `mutate()`
 
-The job of `mutate()` is to add new columns that are functions of existing column.
-In the later chapters, you'll learn the full set of functions that you can use to manipulate different types of variables.
-For now, we'll stick with basic mathematical operators, which allows us to compute the `gain`, how much time a delayed flight made up in the air, and the `speed` in miles per hour:
+`mutate()` 이 하는 일은 존재하는 열의 함수인 새로운 열을 추가하는 것이다. 
+이후 나올 장에서 다양한 종류의 변수들을 다루는데 사용할 수 있는 함수 모두를 배우게 될 것이다.
+여기에서는 기초 수학 연산자들만 볼 것인데, 연착 비행기가 비행 중에 얼마나 따라 잡았는지를 나타내는 `gain` 과, 시간당 마일단위의 `speed` 를 계산해보자:
 
   ```{r}
 mutate(flights,
@@ -170,8 +165,8 @@ mutate(flights,
 )
 ```
 
-By default, `mutate()` adds new columns at the right hand side of your dataset, which makes it hard to see what's happening here.
-We can use the `.before` argument to instead add the variables to the left hand side[^data-transform-2]:
+`mutate()` 의 기본값 동작은 새로운 열을 항상 데이터셋 오른쪽에 추가하기 때문에 일어나는 일을 보기가 어렵다.
+`.before` 인수를 사용하여 왼쪽에 변수들을 추가할 수 있다[^data-transform-2]:
 
 [^data-transform-2]: Remember that when you're in RStudio, the easiest way to see all the columns is `View()`.
 
@@ -183,10 +178,10 @@ mutate(flights,
 )
 ```
 
-The leading `.` is a sign that `.before` is an argument to the function, not a new variable being created.
-You can also use `.after` to add after a variable, and use a variable name instead of a position:
+맨 앞의 `.` 은 `.before` 가 생성되는 변수가 아니라 함수의 인수라는 것을 나타낸다.
+`.after` 를 사용하여 어떤 변수 뒤에 추가하고, 또 위치 대신 변수이름을 사용할 수도 있다.
 
-  ```{r}
+```{r}
 mutate(flights,
        gain = dep_delay - arr_delay,
        speed = distance / air_time * 60,
@@ -194,9 +189,9 @@ mutate(flights,
 )
 ```
 
-Alternatively, can control which variables are kept with the `.keep` argument:
+다른 방법으로, `.keep` 인수를 사용하여 어떤 변수들을 유지할지를 조정할 수 있다:
 
-  ```{r}
+```{r}
 mutate(flights,
        gain = dep_delay - arr_delay,
        hours = air_time / 60,
@@ -207,13 +202,12 @@ mutate(flights,
 
 ### `select()` {#select}
 
-It's not uncommon to get datasets with hundreds or even thousands of variables.
-In this case, the first challenge is often narrowing in on the variables you're actually interested in.
-`select()` allows you to rapidly zoom in on a useful subset using operations based on the names of the variables.
+변수가 수백, 수천 개인 데이터셋을 심심치 않게 만날 것이다. 이 경우 첫 과제는 실제로 관심 있는 변수들로 좁히는 것이다. 
+`select()` 와 변수 이름에 기반한 연산들을 이용하면 유용한 서브셋으로 신속하게 줌-인해 볼 수 있다.
+변수가 19개밖에 없는 항공편 데이터에서는 `select()` 가 엄청나게 유용하지는
+않지만 일반적인 개념을 볼 수는 있다.
 
-`select()` is not terribly useful with the flights data because we only have 19 variables, but you can still get the general idea of how it works:
-
-  ```{r}
+```{r}
 # Select columns by name
 select(flights, year, month, day)
 # Select all columns between year and day (inclusive)
@@ -222,21 +216,21 @@ select(flights, year:day)
 select(flights, -(year:day))
 ```
 
-There are a number of helper functions you can use within `select()`:
+`select()` 안에서 사용할 수 있는 도우미 함수들이 많다:
 
-  -   `starts_with("abc")`: matches names that begin with "abc".
+-   `starts_with("abc")`: "abc" 로 시작하는 이름에 매칭.
 
--   `ends_with("xyz")`: matches names that end with "xyz".
+-   `ends_with("xyz")`: "xyz" 로 끝나는 이름에 매칭.
 
--   `contains("ijk")`: matches names that contain "ijk".
+-   `contains("ijk")`: "ijk" 를 포함하는 이름에 매칭.
 
--   `num_range("x", 1:3)`: matches `x1`, `x2` and `x3`.
+-   `num_range("x", 1:3)`: `x1`, `x2` `x3` 에 매칭.
 
-See `?select` for more details.
-Once you know regular expressions (the topic of Chapter \@ref(regular-expressions)) you'll also be use `matches()` to select variables that match a regexp.
+자세한 내용은 `?select` 를 보자.
+정규표현식 (\@ref(regular-expressions) 장의 주제) 을 배우면, `matches()` 를 사용하여 정규표현식에 매칭되는 변수들을 선택할 수 있게 될 것이다.
 
-You can rename variables as you `select()` them by using `=`.
-The new name appears on the left hand side of the `=`, and the old variable appears on the right hand side:
+변수명을 바꾸는 작업을, `=` 를 사용하여 변수를 선택하는 방법으로 `select()` 를 이용하여 할 수 있다.
+새 이름은 `=` 의 왼편에, 이전 이름은 오른편에 둔다.
 
 ```{r}
 select(flights, tail_num = tailnum)
@@ -244,31 +238,31 @@ select(flights, tail_num = tailnum)
 
 ### `rename()`
 
-If you just want to keep all the existing variables and just want to rename a few, you can use `rename()` instead of `select()`:
+모든 변수들을 유지하면서, 변수 몇 개의 이름만 바꾸고 싶다면, `select()` 대신 `rename()` 을 사용하면 된다:
 
 ```{r}
 rename(flights, tail_num = tailnum)
 ```
 
-It works exactly the same way as `select()`, but keeps all the variables that aren't explicitly selected.
+`select()` 와 완벽히 같은 방법으로 작동하지만 명시적으로 선택하지 않은 변수 모두를 유지한다.
 
 ### `relocate()`
 
-You can move variables around with `relocate`.
-By default it moves variables to the front:
+`relocate` 으로 변수를 여기저기 이동시킬 수 있다.
+기본값으로 맨 앞으로 변수들을 이동시킨다:
 
-  ```{r}
+```{r}
 relocate(flights, time_hour, air_time)
 ```
 
-But you can use the `.before` and `.after` arguments to choose where to place them:
+`.before` 인수와 `.after` 인수를 사용하여 변수를 위치시킬 곳을 정할 수 있다:
 
-  ```{r}
+```{r}
 relocate(flights, year:dep_time, .after = time_hour)
 relocate(flights, starts_with("arr"), .before = dep_time)
 ```
 
-These work the same way as the `.before` and `.after` arguments to `mutate()` --- they can be a numeric position, the name of a variable, or any of the other functions that you can use with `select()`.
+`mutate()` 의 `.before` 인수와 `.after` 인수와 같은 방법으로 작동한다 --- 수치형의 위치, 변수의 이름, `select()` 에서 사용할 수 있는 함수들 어떤 것으로 할 수 있다.
 
 ### Exercises
 
@@ -315,28 +309,28 @@ ggplot(flights, aes(air_time - airtime2)) + geom_histogram()
     select(flights, contains("TIME"))
     ```
 
-## Groups
+## 그룹
 
-The real power of dplyr comes when you add grouping into the mix.
-The two key functions are `group_by()` and `summarise()`, but as you'll learn `group_by()` affects many other dplyr verbs in interesting ways.
+dplyr 의 진정한 유용성은 그룹화를 추가할 때 나온다.
+핵심 함수는 `group_by()` 와 `summarise()` 인데, `group_by()` 는 다른 dplyr 동사들을 흥미로운 방법으로 영향을 준다.
 
 ### `group_by()`
 
-Use `group_by()` to divide your dataset into groups meaningful for your analysis:
+`group_by()` 를 사용하여 분석에 의미있는 그룹으로 데이터셋을 나눌 수 있다:
 
-  ```{r}
+```{r}
 by_month <- group_by(flights, month)
 by_month
 ```
 
-`group_by()` doesn't change the data but, if you look closely, you'll notice that it's now "grouped by" month.
-The reason to group your data is because it changes the operation of subsequent verbs.
+`group_by()` 는 데이터를 변화시키지는 않지만 자세하기 보면, 데이터가 월로 그룹화 ("grouped by" month) 되었음을 알 수 있다.
+데이터를 그룹화하는 이유는 이후 동사들의 연산이 변화되기 때문이다.
 
 ### `summarise()`
 
-The most important operation that you might apply to grouped data is a summary.
-It collapses each group to a single row[^data-transform-3].
-Here we compute the average departure delay by month:
+그룹화된 데이터에 적용할 연산 중 가장 중요한 연산은 요약일 것이다.
+각 그룹을 하나의 행으로 축약한다[^data-transform-3].
+여기에서 월별 평균 출발지연시간을 계산한다:
 
 [^data-transform-3]: This is a slightly simplification; later on you'll learn how to use `summarise()` to produce multiple summary rows for each group.
 
@@ -344,17 +338,17 @@ Here we compute the average departure delay by month:
 summarise(by_month, delay = mean(dep_delay, na.rm = TRUE))
 ```
 
-You can create any number of summaries in a single call to `summarise()`.
-You'll learn various useful summaries in the upcoming chapters on individual data types, but one very useful summary is `n()`, which returns the number of rows in each group:
+`summarise()` 한 번의 호출로 요약값 여러개를 생성할 수 있다.
+각 데이터 타잎을 다루는 이후 장들에서 유용한 요약값들에 대해 배울 것이다. 유용한 요약값 중 하나는 `n()` 인데 이는 각 그룹의 행 개수를 반환한다:
 
 ```{r}
 summarise(by_month, delay = mean(dep_delay, na.rm = TRUE), n = n())
 ```
 
-(In fact, `count()`, which we've used a bunch in previous chapters, is just shorthand for `group_by()` + `summarise(n = n())`.)
+(사실, 앞 장에서 여러 번 사용한 `count()` 는 `group_by()` + `summarise(n = n())` 의 단축어이다.)
 
-We'll come back to discuss missing values in Chapter \@ref(missing-values).
-For now, know you can drop them in summary functions by using `na.rm = TRUE` or remove them with a filter by using `!is.na()`:
+\@ref(missing-values) 장에서 결측값들을 논의할 것이다.
+여기에서는 `na.rm = TRUE` 으로 요약함수에서 빼거나 `!is.na()` 를 사용하여 필터함수로 제거할 수 있다:
 
 ```{r}
 not_cancelled <- filter(flights, !is.na(dep_delay))
@@ -362,11 +356,11 @@ by_month <- group_by(not_cancelled, month)
 summarise(by_month, delay = mean(dep_delay))
 ```
 
-### Combining multiple operations
+### 다중 연산 결합하기
 
-This code is starting to get a little frustrating to write because each intermediate data frame has to be given a name, even though we don't care about them.
-Naming things is hard, so this slows down our analysis.
-There's another way to tackle the same problem with the **pipe**, `%>%`:
+코드를 작성하기 조금씩 힘들어 지고 있는데, 별로 중요하지 않은 중간 단계의 데이터 프레임에 이름을 지어줘야 하기 때문이다.
+이름을 짓는 것은 쉽지 않아서 분석에 속도가 나지 않는다.
+이 문제를 **파이프**, `%>%` 로 해결하는 방법이 있다:
 
 ```{r}
 flights %>%
@@ -375,45 +369,46 @@ flights %>%
   summarise(delay = mean(dep_delay), n = n())
 ```
 
-When you see `%>%` in code, a good way to "pronounce" it in your head is as "then".
-That way you can read this code as a series of imperative statements: take the flights dataset, then filter it to remove rows with missing `dep_delay`, then group it by month, then summarise it with the average `dep_delay` and the number of observations.
+코드의 `%>%` 를 볼 때마다 이를 마음속으로 "그런다음(then)" 로 "읽는" 것이 좋다.
+이렇게 하면 다음과 같이 연속된 명령문으로 읽을 수 있다: flights 데이터셋을 가져오라, 그런다음, `dep_delay` 에 결측값이 있는 행을 필터하라, 그런다음, month 로 그룹화하라, 그런다음, 평균 `dep_delay` 와 관측값 개수로 요약하라.
 
-Behind the scenes, `x %>% f(y)` turns into `f(x, y)`, and `x %>% f(y) %>% g(z)` turns into `g(f(x, y), z)` and so on.
-You can use the pipe to rewrite multiple operations in a way that you can read left-to-right, top-to-bottom.
-We'll use piping frequently from now on because it considerably improves the readability of code, and we'll come back to it in more detail in Chapter \@ref(workflow-pipes).
+내부적으로는, `x %>% f(y)` 은 `f(x, y)` 으로 변환되고 `x %>% f(y) %>% g(z)` 은 `g(f(x, y), z)` 로 변환되는 식이다.
+파이프를 사용하여 다중 작업을 왼쪽에서 오른쪽으로, 위에서 아래
+로 읽을 수 있게 다시 쓸 수 있다.
+파이프를 사용하면 코드 가독성이 훨씬 좋아지므로 지금부터는 파이프를 자주 사용할 것이다. 파이프의 세부사항에 대해서는 \@ref(workflow-pipes) 장에서 다시 살펴보자.
 
-### Grouping by multiple variables
+### 다중변수로 그룹화하기
 
-You can group a data frame by multiple variables:
+데이터프레임을 다중변수로 그룹화할 수 있다:
 
 ```{r}
 daily <- flights %>% group_by(year, month, day)
 daily
 ```
 
-When you group by multiple variables, each summary peels off one level of the grouping by default, and a message is printed that tells you how you can change this behaviour.
+다중변수로 그룹화하면, 기본적으로 각 요약함수는 그룹의 한 수준을 벗겨내고 이 동작을 바꾸는 법을 출력한다.
 
 ```{r}
 daily %>% summarise(n = n())
 ```
 
-If you're happy with this behaviour, you can explicitly define it in order to suppress the message:
+이러한 동작에 만족한다면, 메세지를 없애기 위해 명시적으로 정의할 수 있다:
 
-  ```{r results = FALSE}
+```{r results = FALSE}
 daily %>% summarise(n = n(), .groups = "drop_last")
 ```
 
-Alternatively, you can change the default behaviour by setting a different value, e.g. `"drop"` for dropping all levels of grouping or `"keep"` for same grouping structure as `daily`:
+다른 방법으로는, 이러한 기본동작을 다른 값을 설정하여 바꿀 수 있다. 예를 들어 `"drop"` 은 그룹의 모든 수준을 풀고 `"keep"` 은 `daily` 와 같은 그룹화 구조가 유지된다:
 
-  ```{r results = FALSE}
+```{r results = FALSE}
 daily %>% summarise(n = n(), .groups = "drop")
 daily %>% summarise(n = n(), .groups = "keep")
 ```
 
-### Ungrouping
+### 그룹화풀기 (ungrouping)
 
-You might also want to remove grouping outside of `summarise()`.
-You can do this and return to operations on ungrouped data using `ungroup()`.
+`summarise()` 의 바깥에서 그룹화를 제거하고 싶을 수도 있다.
+`ungroup()` 을 사용하여 그룹화되지 않은 데이터 작업으로 돌아갈 수 있다.
 
 ```{r}
 daily %>%
@@ -424,27 +419,27 @@ daily %>%
   )
 ```
 
-For the purposes of summarising, ungrouped data is treated as if all your data was in a single group, so you get one row back.
+그룹화되지 않은 데이터는 모든 데이터가 하나의 그룹에 속한 것 같이 취급하기 때문에 하나의 행만 반환받는다.
 
-### Selecting rows
+### 행 선택하기
 
-`arrange()` and `filter()` are mostly unaffected by grouping.
-But the slice functions are super useful:
+`arrange()` 와 `filter()` 는 그룹화에 대부분 영향을 받지 않는다.
+하지만 슬라이스 함수들은 핵유용하다:
 
-  -   `slice_head()` and `slice_tail()` select the first or last rows in each group.
+-   `slice_head()`, `slice_tail()` 는 각 그룹의 처음과 마지막 행들을 선택한다.
 
--   `slice_max()` and `slice_min()` select the rows in each group with highest or lowest values.
+-   `slice_max()`, `slice_min()` 는 각 그룹에서 가장 크거나 작은 값을 가진 행들을 선택한다.
 
--   `slice_sample()` random selects rows from each group.
+-   `slice_sample()` 은 각 그룹에서 행들을 랜덤하게 선택한다.
 
-Each of these verbs takes either a `n` or `prop` argument depending on whether you want to select a fixed number of rows, or a number of rows proportional to the group size.
+이러한 동사들은 일정 개수의 행이나 그룹크기에 비례한 개수의 행들을 선택하고 싶은지에 따라 `n` 이나 `prop` 인수를 사용한다.
 
-### Other verbs
+### 기타 동사들
 
--   `select()`, `rename()`, `relocate()`: grouping has no affect
+-   `select()`, `rename()`, `relocate()`: 그룹화가 영향을 주지 않음
 
--   `filter()`, `mutate()`: computation happens per group.
-This doesn't affect the functions you currently know but is very useful once you learn about window functions, Section \@ref(window-functions).
+-   `filter()`, `mutate()`: 계산이 그룹마다 일어남.
+여러분들이 현재 알고있는 함수들에 영향을 주지 않지만, \@ref(window-functions) 섹션의 윈도함수(window functions) 에 대해 배우면 매우 유용할 것이다.
 
 ### Exercises
 
@@ -456,11 +451,10 @@ This doesn't affect the functions you currently know but is very useful once you
 2.  What does the `sort` argument to `count()` do.
     Can you explain it in terms of the dplyr verbs you've learned so far?
 
-  ## Case study: aggregates and sample size
+## 케이스 스터디: 집계(aggregates) 과 샘플사이즈
 
-  Whenever you do any aggregation, it's always a good idea to include either a count (`n()`), or a count of non-missing values (`sum(!is.na(x))`).
-That way you can check that you're not drawing conclusions based on very small amounts of data.
-For example, let's look at the planes (identified by their tail number) that have the highest average delays:
+집계를 수행할 때마다 카운트 (`n()`) 혹은, 결측이 아닌 값의 카운트 (`sum(!is.na(x))`) 를 포함하는 것이 좋다. 이렇게 하면 매우 적은 양의 데이터를 기반으로
+결론을 도출하지 않는지 확인할 수 있다. 예를 들어 평균 지연시간이 가장 긴 항공편(꼬리 번호(tail number)로 식별)을 보자.
 
 ```{r}
 delays <- not_cancelled %>%
@@ -472,10 +466,9 @@ ggplot(data = delays, mapping = aes(x = delay)) +
   geom_freqpoly(binwidth = 10)
 ```
 
-Wow, there are some planes that have an *average* delay of 5 hours (300 minutes)!
-
-The story is actually a little more nuanced.
-We can get more insight if we draw a scatterplot of number of flights vs. average delay:
+우와, 어떤 항공기들은 **평균** 5시간 (300분) 지연되었다!
+이 이야기는 사실 좀 더 복잡한 문제이다. 
+비행 횟수 대 평균 지연시간의 산점도를 그리면 더 많은 통찰력을 얻을 수 있다.
 
 ```{r}
 delays <- not_cancelled %>%
@@ -488,12 +481,13 @@ ggplot(data = delays, mapping = aes(x = n, y = delay)) +
   geom_point(alpha = 1/10)
 ```
 
-Not surprisingly, there is much greater variation in the average delay when there are few flights.
-The shape of this plot is very characteristic: whenever you plot a mean (or other summary) vs. group size, you'll see that the variation decreases as the sample size increases.
+당연히 비행이 적을 때 평균 지연시간에 변동이 훨씬 더 크다. 이 플롯의 모양은
+매우 특징적이다. 평균(혹은 다른 요약값) 대 그룹 크기의 플롯을 그리면 표본
+크기가 커짐에 따라 변동이 줄어드는 것을 볼 수 있다.
 
-When looking at this sort of plot, it's often useful to filter out the groups with the smallest numbers of observations, so you can see more of the pattern and less of the extreme variation in the smallest groups.
-This is what the following code does, as well as showing you a handy pattern for integrating ggplot2 into dplyr flows.
-It's a bit painful that you have to switch from `%>%` to `+`, but once you get the hang of it, it's quite convenient.
+이런 종류의 플롯을 살펴볼 때는, 관측값 개수가 가장 적은 그룹을 필터링하는 것이 좋은 경우가 많다. 심한 변동이 아닌 패턴이 더 잘 보이기 때문이다. 이를 수행하는 다음 코드는 ggplot2 를 dplyr 플로우에 통합하는 편리한 패턴도
+보여준다. `%>%` 에서 `+` 로 전환해야 한다는 것은 조금 고통스러운 일이지만, 일단
+요령을 터득하면 꽤 편리하다.
 
 ```{r}
 delays %>%
@@ -502,16 +496,17 @@ delays %>%
   geom_point(alpha = 1/10)
 ```
 
-There's another common variation of this type of pattern.
-Let's look at how the average performance of batters in baseball is related to the number of times they're at bat.
-Here I use data from the **Lahman** package to compute the batting average (number of hits / number of attempts) of every major league baseball player.
+이와 비슷한 유형도 자주 볼 수 있다. 야구에서 타자의 평균 능력치가 타석 수와
+어떻게 관련되었는지 살펴보자. 여기에서 **Lahman** 패키지 데이터를 사용하여
+메이저리그의 모든 야구 선수의 타율(안타수/유효타석수)을 계산한다.
 
-When I plot the skill of the batter (measured by the batting average, `ba`) against the number of opportunities to hit the ball (measured by at bat, `ab`), you see two patterns:
+타자의 기술(타율, `ba` 로 측정)을 안타 기회 횟수(타석수, `ab` 로 측정) 에 대해 플롯을 그리면 두 가지
+패턴이 보인다.
 
-  1.  As above, the variation in our aggregate decreases as we get more data points.
+1.  앞에서와 같이 집계값의 변동량은 데이터 포인트가 많아짐에 따라 감소한다.
 
-2.  There's a positive correlation between skill (`ba`) and opportunities to hit the ball (`ab`).
-    This is because teams control who gets to play, and obviously they'll pick their best players.
+2.  기술 수준(`ba`)과 볼을 칠 기회(`ab`) 사이에 양의 상관관계가 있다. 팀이 누구를
+타석에 내보낼지 선택할 때 당연히 최고의 선수를 선택할 것이기 때문이다.
 
 ```{r}
 # Convert to a tibble so it prints nicely
@@ -529,12 +524,12 @@ batters %>%
   geom_smooth(se = FALSE)
 ```
 
-This also has important implications for ranking.
-If you naively sort on `desc(ba)`, the people with the best batting averages are clearly lucky, not skilled:
+이 사실은 랭킹에 관해 중요한 시사점을 제공한다. 단순히 `desc(ba)` 로 정렬하면 평균 타율이
+가장 높은 선수는 능력치가 좋은 것이 아니라 단순히 운이 좋은 선수들이다.
 
-  ```{r}
+```{r}
 batters %>%
   arrange(desc(ba))
 ```
 
-You can find a good explanation of this problem at <http://varianceexplained.org/r/empirical_bayes_baseball/> and <http://www.evanmiller.org/how-not-to-sort-by-average-rating.html>.
+다음 사이트에 이 문제에 관해 설명이 잘 되어 있다:  <http://varianceexplained.org/r/empirical_bayes_baseball/>, <http://www.evanmiller.org/how-not-to-sort-by-average-rating.html>.

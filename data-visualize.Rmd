@@ -209,8 +209,8 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 ```
 
-What happened to the SUVs?
-ggplot2 will only use six shapes at a time.
+SUV 에는 무슨 일이 일어난 건가?
+ggplot2 는 한번에 여섯 번.
 By default, additional groups will go unplotted when you use the shape aesthetic.
 
 For each aesthetic, you use `aes()` to associate the name of the aesthetic with a variable to display.
@@ -587,7 +587,8 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
       geom_point(size = 4, colour = "white") + 
       geom_point(aes(colour = drv))
     ```
-## Statistical transformations
+
+## 통계적 변환
 Next, let's take a look at a bar chart.
 Bar charts seem simple, but they are interesting because they reveal something subtle about plots.
 Consider a basic bar chart, as drawn with `geom_bar()`.
