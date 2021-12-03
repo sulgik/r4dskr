@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>19 스프레드시트 | R 을 활용한 데이터과학</title>
+  <meta name="description" content="19 스프레드시트 | R 을 활용한 데이터과학" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="19 스프레드시트 | R 을 활용한 데이터과학" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://sulgik.github.io/r4ds/" />
+  <meta property="og:image" content="https://sulgik.github.io/r4ds//cover.png" />
+  
+  <meta name="github-repo" content="sulgik/r4ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="19 스프레드시트 | R 을 활용한 데이터과학" />
+  <meta name="twitter:site" content="@sulgik" />
+  
+  <meta name="twitter:image" content="https://sulgik.github.io/r4ds//cover.png" />
+
+<meta name="author" content="해들리 위컴" />
+<meta name="author" content="개럿 그롤문드" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="import-rectangular.html"/>
+<link rel="next" href="program-intro.html"/>
+<script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="r4ds.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R for Data Science</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>환영합니다</a></li>
+<li class="chapter" data-level="1" data-path="서문.html"><a href="서문.html"><i class="fa fa-check"></i><b>1</b> 서문</a><ul>
+<li class="chapter" data-level="1.1" data-path="서문.html"><a href="서문.html#무엇을-배우게-될까"><i class="fa fa-check"></i><b>1.1</b> 무엇을 배우게 될까</a></li>
+<li class="chapter" data-level="1.2" data-path="서문.html"><a href="서문.html#이-책의-구성"><i class="fa fa-check"></i><b>1.2</b> 이 책의 구성</a></li>
+<li class="chapter" data-level="1.3" data-path="서문.html"><a href="서문.html#배우지-않는-것"><i class="fa fa-check"></i><b>1.3</b> 배우지 않는 것</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="서문.html"><a href="서문.html#빅데이터"><i class="fa fa-check"></i><b>1.3.1</b> 빅데이터</a></li>
+<li class="chapter" data-level="1.3.2" data-path="서문.html"><a href="서문.html#python-julia"><i class="fa fa-check"></i><b>1.3.2</b> Python, Julia</a></li>
+<li class="chapter" data-level="1.3.3" data-path="서문.html"><a href="서문.html#비직사각형-데이터"><i class="fa fa-check"></i><b>1.3.3</b> 비직사각형 데이터</a></li>
+<li class="chapter" data-level="1.3.4" data-path="서문.html"><a href="서문.html#가설-확인"><i class="fa fa-check"></i><b>1.3.4</b> 가설 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="서문.html"><a href="서문.html#준비하기"><i class="fa fa-check"></i><b>1.4</b> 준비하기</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="서문.html"><a href="서문.html#r"><i class="fa fa-check"></i><b>1.4.1</b> R</a></li>
+<li class="chapter" data-level="1.4.2" data-path="서문.html"><a href="서문.html#rstudio"><i class="fa fa-check"></i><b>1.4.2</b> RStudio</a></li>
+<li class="chapter" data-level="1.4.3" data-path="서문.html"><a href="서문.html#tidyverse"><i class="fa fa-check"></i><b>1.4.3</b> Tidyverse</a></li>
+<li class="chapter" data-level="1.4.4" data-path="서문.html"><a href="서문.html#기타-패키지들"><i class="fa fa-check"></i><b>1.4.4</b> 기타 패키지들</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="서문.html"><a href="서문.html#r-코드-실행하기"><i class="fa fa-check"></i><b>1.5</b> R 코드 실행하기</a></li>
+<li class="chapter" data-level="1.6" data-path="서문.html"><a href="서문.html#도움받기-더-배우기"><i class="fa fa-check"></i><b>1.6</b> 도움받기, 더 배우기</a></li>
+<li class="chapter" data-level="1.7" data-path="서문.html"><a href="서문.html#acknowledgements"><i class="fa fa-check"></i><b>1.7</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.8" data-path="서문.html"><a href="서문.html#colophon"><i class="fa fa-check"></i><b>1.8</b> Colophon</a></li>
+</ul></li>
+<li class="part"><span><b>I 탐색하기</b></span></li>
+<li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> 소개</a></li>
+<li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> 데이터 시각화</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#들어가기"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-visualisation.html"><a href="data-visualisation.html#준비하기-1"><i class="fa fa-check"></i><b>3.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-visualisation.html"><a href="data-visualisation.html#첫-단계"><i class="fa fa-check"></i><b>3.2</b> 첫 단계</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-visualisation.html"><a href="data-visualisation.html#mpg-데이터프레임"><i class="fa fa-check"></i><b>3.2.1</b> <code>mpg</code> 데이터프레임</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-visualisation.html"><a href="data-visualisation.html#ggplot-생성하기"><i class="fa fa-check"></i><b>3.2.2</b> ggplot 생성하기</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-visualisation.html"><a href="data-visualisation.html#그래프-작성-템플릿"><i class="fa fa-check"></i><b>3.2.3</b> 그래프 작성 템플릿</a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-visualisation.html"><a href="data-visualisation.html#연습문제"><i class="fa fa-check"></i><b>3.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#심미성-매핑"><i class="fa fa-check"></i><b>3.3</b> 심미성 매핑</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises"><i class="fa fa-check"></i><b>3.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
+<li class="chapter" data-level="3.5" data-path="data-visualisation.html"><a href="data-visualisation.html#facets"><i class="fa fa-check"></i><b>3.5</b> Facets</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-visualisation.html"><a href="data-visualisation.html#geometric-objects"><i class="fa fa-check"></i><b>3.6</b> Geometric objects</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-2"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="data-visualisation.html"><a href="data-visualisation.html#통계적-변환"><i class="fa fa-check"></i><b>3.7</b> 통계적 변환</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-3"><i class="fa fa-check"></i><b>3.7.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="data-visualisation.html"><a href="data-visualisation.html#position-adjustments"><i class="fa fa-check"></i><b>3.8</b> Position adjustments</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-4"><i class="fa fa-check"></i><b>3.8.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="data-visualisation.html"><a href="data-visualisation.html#coordinate-systems"><i class="fa fa-check"></i><b>3.9</b> Coordinate systems</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="data-visualisation.html"><a href="data-visualisation.html#exercises-5"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="data-visualisation.html"><a href="data-visualisation.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>3.10</b> The layered grammar of graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="워크플로우-기초.html"><a href="워크플로우-기초.html"><i class="fa fa-check"></i><b>4</b> 워크플로우: 기초</a><ul>
+<li class="chapter" data-level="4.1" data-path="워크플로우-기초.html"><a href="워크플로우-기초.html#코딩-기초"><i class="fa fa-check"></i><b>4.1</b> 코딩 기초</a></li>
+<li class="chapter" data-level="4.2" data-path="워크플로우-기초.html"><a href="워크플로우-기초.html#이름짓기"><i class="fa fa-check"></i><b>4.2</b> 이름짓기</a></li>
+<li class="chapter" data-level="4.3" data-path="워크플로우-기초.html"><a href="워크플로우-기초.html#함수-호출하기"><i class="fa fa-check"></i><b>4.3</b> 함수 호출하기</a></li>
+<li class="chapter" data-level="4.4" data-path="워크플로우-기초.html"><a href="워크플로우-기초.html#연습문제-1"><i class="fa fa-check"></i><b>4.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-transform.html"><a href="data-transform.html"><i class="fa fa-check"></i><b>5</b> 데이터 변환</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-transform.html"><a href="data-transform.html#들어가기-1"><i class="fa fa-check"></i><b>5.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="data-transform.html"><a href="data-transform.html#준비하기-2"><i class="fa fa-check"></i><b>5.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-transform.html"><a href="data-transform.html#nycflights13"><i class="fa fa-check"></i><b>5.1.2</b> nycflights13</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-transform.html"><a href="data-transform.html#dplyr-기초"><i class="fa fa-check"></i><b>5.1.3</b> dplyr 기초</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="data-transform.html"><a href="data-transform.html#행"><i class="fa fa-check"></i><b>5.2</b> 행</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="data-transform.html"><a href="data-transform.html#filter"><i class="fa fa-check"></i><b>5.2.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.2.2" data-path="data-transform.html"><a href="data-transform.html#arrange"><i class="fa fa-check"></i><b>5.2.2</b> <code>arrange()</code></a></li>
+<li class="chapter" data-level="5.2.3" data-path="data-transform.html"><a href="data-transform.html#exercises-6"><i class="fa fa-check"></i><b>5.2.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="data-transform.html"><a href="data-transform.html#열"><i class="fa fa-check"></i><b>5.3</b> 열</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="data-transform.html"><a href="data-transform.html#mutate"><i class="fa fa-check"></i><b>5.3.1</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-transform.html"><a href="data-transform.html#select"><i class="fa fa-check"></i><b>5.3.2</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.3.3" data-path="data-transform.html"><a href="data-transform.html#rename"><i class="fa fa-check"></i><b>5.3.3</b> <code>rename()</code></a></li>
+<li class="chapter" data-level="5.3.4" data-path="data-transform.html"><a href="data-transform.html#relocate"><i class="fa fa-check"></i><b>5.3.4</b> <code>relocate()</code></a></li>
+<li class="chapter" data-level="5.3.5" data-path="data-transform.html"><a href="data-transform.html#exercises-7"><i class="fa fa-check"></i><b>5.3.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="data-transform.html"><a href="data-transform.html#그룹"><i class="fa fa-check"></i><b>5.4</b> 그룹</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="data-transform.html"><a href="data-transform.html#group_by"><i class="fa fa-check"></i><b>5.4.1</b> <code>group_by()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="data-transform.html"><a href="data-transform.html#summarise"><i class="fa fa-check"></i><b>5.4.2</b> <code>summarise()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="data-transform.html"><a href="data-transform.html#다중-연산-결합하기"><i class="fa fa-check"></i><b>5.4.3</b> 다중 연산 결합하기</a></li>
+<li class="chapter" data-level="5.4.4" data-path="data-transform.html"><a href="data-transform.html#다중변수로-그룹화하기"><i class="fa fa-check"></i><b>5.4.4</b> 다중변수로 그룹화하기</a></li>
+<li class="chapter" data-level="5.4.5" data-path="data-transform.html"><a href="data-transform.html#그룹화풀기-ungrouping"><i class="fa fa-check"></i><b>5.4.5</b> 그룹화풀기 (ungrouping)</a></li>
+<li class="chapter" data-level="5.4.6" data-path="data-transform.html"><a href="data-transform.html#행-선택하기"><i class="fa fa-check"></i><b>5.4.6</b> 행 선택하기</a></li>
+<li class="chapter" data-level="5.4.7" data-path="data-transform.html"><a href="data-transform.html#기타-동사들"><i class="fa fa-check"></i><b>5.4.7</b> 기타 동사들</a></li>
+<li class="chapter" data-level="5.4.8" data-path="data-transform.html"><a href="data-transform.html#exercises-8"><i class="fa fa-check"></i><b>5.4.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="data-transform.html"><a href="data-transform.html#케이스-스터디-집계aggregates-과-샘플사이즈"><i class="fa fa-check"></i><b>5.5</b> 케이스 스터디: 집계(aggregates) 과 샘플사이즈</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-tidy.html"><a href="data-tidy.html"><i class="fa fa-check"></i><b>6</b> 데이터 타이디하게 하기</a><ul>
+<li class="chapter" data-level="6.1" data-path="data-tidy.html"><a href="data-tidy.html#들어가기-2"><i class="fa fa-check"></i><b>6.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="data-tidy.html"><a href="data-tidy.html#준비하기-3"><i class="fa fa-check"></i><b>6.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="data-tidy.html"><a href="data-tidy.html#tidy-data"><i class="fa fa-check"></i><b>6.2</b> Tidy Data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="data-tidy.html"><a href="data-tidy.html#연습문제-2"><i class="fa fa-check"></i><b>6.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="data-tidy.html"><a href="data-tidy.html#피봇팅"><i class="fa fa-check"></i><b>6.3</b> 피봇팅</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="data-tidy.html"><a href="data-tidy.html#longer"><i class="fa fa-check"></i><b>6.3.1</b> Longer</a></li>
+<li class="chapter" data-level="6.3.2" data-path="data-tidy.html"><a href="data-tidy.html#wider"><i class="fa fa-check"></i><b>6.3.2</b> Wider</a></li>
+<li class="chapter" data-level="6.3.3" data-path="data-tidy.html"><a href="data-tidy.html#연습문제-3"><i class="fa fa-check"></i><b>6.3.3</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="data-tidy.html"><a href="data-tidy.html#사례-연구"><i class="fa fa-check"></i><b>6.4</b> 사례 연구</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="data-tidy.html"><a href="data-tidy.html#연습문제-4"><i class="fa fa-check"></i><b>6.4.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="data-tidy.html"><a href="data-tidy.html#타이디하지-않은-데이터"><i class="fa fa-check"></i><b>6.5</b> 타이디하지 않은 데이터</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="워크플로우-스크립트.html"><a href="워크플로우-스크립트.html"><i class="fa fa-check"></i><b>7</b> 워크플로우: 스크립트</a><ul>
+<li class="chapter" data-level="7.1" data-path="워크플로우-스크립트.html"><a href="워크플로우-스크립트.html#코드-실행하기"><i class="fa fa-check"></i><b>7.1</b> 코드 실행하기</a></li>
+<li class="chapter" data-level="7.2" data-path="워크플로우-스크립트.html"><a href="워크플로우-스크립트.html#rstudio-진단"><i class="fa fa-check"></i><b>7.2</b> RStudio 진단</a></li>
+<li class="chapter" data-level="7.3" data-path="워크플로우-스크립트.html"><a href="워크플로우-스크립트.html#exercises-9"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html"><i class="fa fa-check"></i><b>8</b> 탐색적 데이터 분석</a><ul>
+<li class="chapter" data-level="8.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#들어가기-3"><i class="fa fa-check"></i><b>8.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#준비하기-4"><i class="fa fa-check"></i><b>8.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#질문"><i class="fa fa-check"></i><b>8.2</b> 질문</a></li>
+<li class="chapter" data-level="8.3" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#변량-variation"><i class="fa fa-check"></i><b>8.3</b> 변량 (variation)</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#분포-시각화"><i class="fa fa-check"></i><b>8.3.1</b> 분포 시각화</a></li>
+<li class="chapter" data-level="8.3.2" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#typical-values"><i class="fa fa-check"></i><b>8.3.2</b> Typical values</a></li>
+<li class="chapter" data-level="8.3.3" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#unusual-values"><i class="fa fa-check"></i><b>8.3.3</b> Unusual values</a></li>
+<li class="chapter" data-level="8.3.4" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#exercises-10"><i class="fa fa-check"></i><b>8.3.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#missing-values-eda"><i class="fa fa-check"></i><b>8.4</b> Missing values</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#exercises-11"><i class="fa fa-check"></i><b>8.4.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#covariation"><i class="fa fa-check"></i><b>8.5</b> Covariation</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#cat-cont"><i class="fa fa-check"></i><b>8.5.1</b> A categorical and continuous variable</a></li>
+<li class="chapter" data-level="8.5.2" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#two-categorical-variables"><i class="fa fa-check"></i><b>8.5.2</b> Two categorical variables</a></li>
+<li class="chapter" data-level="8.5.3" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#two-continuous-variables"><i class="fa fa-check"></i><b>8.5.3</b> Two continuous variables</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#patterns-and-models"><i class="fa fa-check"></i><b>8.6</b> Patterns and models</a></li>
+<li class="chapter" data-level="8.7" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#ggplot2-calls"><i class="fa fa-check"></i><b>8.7</b> ggplot2 calls</a></li>
+<li class="chapter" data-level="8.8" data-path="탐색적-데이터-분석.html"><a href="탐색적-데이터-분석.html#learning-more"><i class="fa fa-check"></i><b>8.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="워크플로우-프로젝트.html"><a href="워크플로우-프로젝트.html"><i class="fa fa-check"></i><b>9</b> 워크플로우: 프로젝트</a><ul>
+<li class="chapter" data-level="9.1" data-path="워크플로우-프로젝트.html"><a href="워크플로우-프로젝트.html#무엇이-리얼인가"><i class="fa fa-check"></i><b>9.1</b> 무엇이 리얼인가?</a></li>
+<li class="chapter" data-level="9.2" data-path="워크플로우-프로젝트.html"><a href="워크플로우-프로젝트.html#where-does-your-analysis-live"><i class="fa fa-check"></i><b>9.2</b> Where does your analysis live?</a></li>
+<li class="chapter" data-level="9.3" data-path="워크플로우-프로젝트.html"><a href="워크플로우-프로젝트.html#paths-and-directories"><i class="fa fa-check"></i><b>9.3</b> Paths and directories</a></li>
+<li class="chapter" data-level="9.4" data-path="워크플로우-프로젝트.html"><a href="워크플로우-프로젝트.html#rstudio-프로젝트"><i class="fa fa-check"></i><b>9.4</b> RStudio 프로젝트</a></li>
+<li class="chapter" data-level="9.5" data-path="워크플로우-프로젝트.html"><a href="워크플로우-프로젝트.html#summary"><i class="fa fa-check"></i><b>9.5</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II 변환하기</b></span></li>
+<li class="chapter" data-level="10" data-path="data-types-intro.html"><a href="data-types-intro.html"><i class="fa fa-check"></i><b>10</b> 들어가기</a></li>
+<li class="chapter" data-level="11" data-path="tibbles.html"><a href="tibbles.html"><i class="fa fa-check"></i><b>11</b> 티블</a><ul>
+<li class="chapter" data-level="11.1" data-path="tibbles.html"><a href="tibbles.html#들어가기-4"><i class="fa fa-check"></i><b>11.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="tibbles.html"><a href="tibbles.html#준비하기-5"><i class="fa fa-check"></i><b>11.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="tibbles.html"><a href="tibbles.html#tibble-생성하기"><i class="fa fa-check"></i><b>11.2</b> tibble 생성하기</a></li>
+<li class="chapter" data-level="11.3" data-path="tibbles.html"><a href="tibbles.html#tibble-vs.-data.frame"><i class="fa fa-check"></i><b>11.3</b> Tibble vs. data.frame</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="tibbles.html"><a href="tibbles.html#화면출력"><i class="fa fa-check"></i><b>11.3.1</b> 화면출력</a></li>
+<li class="chapter" data-level="11.3.2" data-path="tibbles.html"><a href="tibbles.html#서브셋하기"><i class="fa fa-check"></i><b>11.3.2</b> 서브셋하기</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="tibbles.html"><a href="tibbles.html#이전-코드와-상호작용"><i class="fa fa-check"></i><b>11.4</b> 이전 코드와 상호작용</a></li>
+<li class="chapter" data-level="11.5" data-path="tibbles.html"><a href="tibbles.html#연습문제-5"><i class="fa fa-check"></i><b>11.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>12</b> 관계형 데이터</a><ul>
+<li class="chapter" data-level="12.1" data-path="relational-data.html"><a href="relational-data.html#들어가기-5"><i class="fa fa-check"></i><b>12.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="relational-data.html"><a href="relational-data.html#준비하기-6"><i class="fa fa-check"></i><b>12.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13-relational"><i class="fa fa-check"></i><b>12.2</b> nycflights13</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="relational-data.html"><a href="relational-data.html#연습문제-6"><i class="fa fa-check"></i><b>12.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="relational-data.html"><a href="relational-data.html#키"><i class="fa fa-check"></i><b>12.3</b> 키</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="relational-data.html"><a href="relational-data.html#연습문제-7"><i class="fa fa-check"></i><b>12.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="relational-data.html"><a href="relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>12.4</b> 뮤테이팅 조인</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="relational-data.html"><a href="relational-data.html#조인-이해하기"><i class="fa fa-check"></i><b>12.4.1</b> 조인 이해하기</a></li>
+<li class="chapter" data-level="12.4.2" data-path="relational-data.html"><a href="relational-data.html#inner-join"><i class="fa fa-check"></i><b>12.4.2</b> 내부 조인</a></li>
+<li class="chapter" data-level="12.4.3" data-path="relational-data.html"><a href="relational-data.html#outer-join"><i class="fa fa-check"></i><b>12.4.3</b> 외부 조인</a></li>
+<li class="chapter" data-level="12.4.4" data-path="relational-data.html"><a href="relational-data.html#join-matches"><i class="fa fa-check"></i><b>12.4.4</b> 중복키</a></li>
+<li class="chapter" data-level="12.4.5" data-path="relational-data.html"><a href="relational-data.html#join-by"><i class="fa fa-check"></i><b>12.4.5</b> 키열 정의하기</a></li>
+<li class="chapter" data-level="12.4.6" data-path="relational-data.html"><a href="relational-data.html#연습문제-8"><i class="fa fa-check"></i><b>12.4.6</b> 연습문제</a></li>
+<li class="chapter" data-level="12.4.7" data-path="relational-data.html"><a href="relational-data.html#기타-구현"><i class="fa fa-check"></i><b>12.4.7</b> 기타 구현</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="relational-data.html"><a href="relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>12.5</b> 필터링 조인</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="relational-data.html"><a href="relational-data.html#연습문제-9"><i class="fa fa-check"></i><b>12.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="relational-data.html"><a href="relational-data.html#조인-문제"><i class="fa fa-check"></i><b>12.6</b> 조인 문제</a></li>
+<li class="chapter" data-level="12.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>12.7</b> 집합 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>13</b> 결측값</a><ul>
+<li class="chapter" data-level="13.1" data-path="missing-values.html"><a href="missing-values.html#들어가기-6"><i class="fa fa-check"></i><b>13.1</b> 들어가기</a></li>
+<li class="chapter" data-level="13.2" data-path="missing-values.html"><a href="missing-values.html#기초"><i class="fa fa-check"></i><b>13.2</b> 기초</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="missing-values.html"><a href="missing-values.html#missing-values-filter"><i class="fa fa-check"></i><b>13.2.1</b> 결측값</a></li>
+<li class="chapter" data-level="13.2.2" data-path="missing-values.html"><a href="missing-values.html#exercises-15"><i class="fa fa-check"></i><b>13.2.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="missing-values.html"><a href="missing-values.html#missing-values-tidy"><i class="fa fa-check"></i><b>13.3</b> 명시적 vs 암묵적 결측값</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="missing-values.html"><a href="missing-values.html#exercises-16"><i class="fa fa-check"></i><b>13.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="missing-values.html"><a href="missing-values.html#dplyr-verbs"><i class="fa fa-check"></i><b>13.4</b> dplyr verbs</a></li>
+<li class="chapter" data-level="13.5" data-path="missing-values.html"><a href="missing-values.html#exercises-17"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>14</b> 문자열</a><ul>
+<li class="chapter" data-level="14.1" data-path="strings.html"><a href="strings.html#들어가기-7"><i class="fa fa-check"></i><b>14.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="strings.html"><a href="strings.html#준비하기-7"><i class="fa fa-check"></i><b>14.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="strings.html"><a href="strings.html#strings-basics"><i class="fa fa-check"></i><b>14.2</b> 문자열 기초</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="strings.html"><a href="strings.html#문자열-길이"><i class="fa fa-check"></i><b>14.2.1</b> 문자열 길이</a></li>
+<li class="chapter" data-level="14.2.2" data-path="strings.html"><a href="strings.html#문자열-결합"><i class="fa fa-check"></i><b>14.2.2</b> 문자열 결합</a></li>
+<li class="chapter" data-level="14.2.3" data-path="strings.html"><a href="strings.html#문자열-서브셋하기"><i class="fa fa-check"></i><b>14.2.3</b> 문자열 서브셋하기</a></li>
+<li class="chapter" data-level="14.2.4" data-path="strings.html"><a href="strings.html#로캘"><i class="fa fa-check"></i><b>14.2.4</b> 로캘</a></li>
+<li class="chapter" data-level="14.2.5" data-path="strings.html"><a href="strings.html#연습문제-10"><i class="fa fa-check"></i><b>14.2.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="strings.html"><a href="strings.html#정규표현식을-이용한-패턴-매칭"><i class="fa fa-check"></i><b>14.3</b> 정규표현식을 이용한 패턴 매칭</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="strings.html"><a href="strings.html#기초-매칭"><i class="fa fa-check"></i><b>14.3.1</b> 기초 매칭</a></li>
+<li class="chapter" data-level="14.3.2" data-path="strings.html"><a href="strings.html#앵커"><i class="fa fa-check"></i><b>14.3.2</b> 앵커</a></li>
+<li class="chapter" data-level="14.3.3" data-path="strings.html"><a href="strings.html#문자-클래스와-대체구문"><i class="fa fa-check"></i><b>14.3.3</b> 문자 클래스와 대체구문</a></li>
+<li class="chapter" data-level="14.3.4" data-path="strings.html"><a href="strings.html#반복"><i class="fa fa-check"></i><b>14.3.4</b> 반복</a></li>
+<li class="chapter" data-level="14.3.5" data-path="strings.html"><a href="strings.html#그룹화와-역참조"><i class="fa fa-check"></i><b>14.3.5</b> 그룹화와 역참조</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="strings.html"><a href="strings.html#도구"><i class="fa fa-check"></i><b>14.4</b> 도구</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="strings.html"><a href="strings.html#매칭-탐지"><i class="fa fa-check"></i><b>14.4.1</b> 매칭 탐지</a></li>
+<li class="chapter" data-level="14.4.2" data-path="strings.html"><a href="strings.html#매칭-추출"><i class="fa fa-check"></i><b>14.4.2</b> 매칭 추출</a></li>
+<li class="chapter" data-level="14.4.3" data-path="strings.html"><a href="strings.html#그룹화-매칭"><i class="fa fa-check"></i><b>14.4.3</b> 그룹화 매칭</a></li>
+<li class="chapter" data-level="14.4.4" data-path="strings.html"><a href="strings.html#매칭-치환"><i class="fa fa-check"></i><b>14.4.4</b> 매칭 치환</a></li>
+<li class="chapter" data-level="14.4.5" data-path="strings.html"><a href="strings.html#splitting"><i class="fa fa-check"></i><b>14.4.5</b> Splitting</a></li>
+<li class="chapter" data-level="14.4.6" data-path="strings.html"><a href="strings.html#매치-찾기"><i class="fa fa-check"></i><b>14.4.6</b> 매치 찾기</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="strings.html"><a href="strings.html#기타-패턴-유형"><i class="fa fa-check"></i><b>14.5</b> 기타 패턴 유형</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="strings.html"><a href="strings.html#연습문제-21"><i class="fa fa-check"></i><b>14.5.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="strings.html"><a href="strings.html#정규표현식의-기타-용도"><i class="fa fa-check"></i><b>14.6</b> 정규표현식의 기타 용도</a></li>
+<li class="chapter" data-level="14.7" data-path="strings.html"><a href="strings.html#stringi"><i class="fa fa-check"></i><b>14.7</b> stringi</a><ul>
+<li class="chapter" data-level="14.7.1" data-path="strings.html"><a href="strings.html#연습문제-22"><i class="fa fa-check"></i><b>14.7.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> 팩터형</a><ul>
+<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#들어가기-8"><i class="fa fa-check"></i><b>15.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="factors.html"><a href="factors.html#준비하기-8"><i class="fa fa-check"></i><b>15.1.1</b> 준비하기</a></li>
+<li class="chapter" data-level="15.1.2" data-path="factors.html"><a href="factors.html#더-배우기"><i class="fa fa-check"></i><b>15.1.2</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="factors.html"><a href="factors.html#팩터형-생성하기"><i class="fa fa-check"></i><b>15.2</b> 팩터형 생성하기</a></li>
+<li class="chapter" data-level="15.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>15.3</b> General Social Survey</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="factors.html"><a href="factors.html#연습문제-23"><i class="fa fa-check"></i><b>15.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="factors.html"><a href="factors.html#팩터-순서-수정하기"><i class="fa fa-check"></i><b>15.4</b> 팩터 순서 수정하기</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="factors.html"><a href="factors.html#연습문제-24"><i class="fa fa-check"></i><b>15.4.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="factors.html"><a href="factors.html#팩터-레벨-수정하기"><i class="fa fa-check"></i><b>15.5</b> 팩터 레벨 수정하기</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="factors.html"><a href="factors.html#연습문제-25"><i class="fa fa-check"></i><b>15.5.1</b> 연습문제</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>16</b> 날짜와 시간</a><ul>
+<li class="chapter" data-level="16.1" data-path="dates-and-times.html"><a href="dates-and-times.html#들어가기-9"><i class="fa fa-check"></i><b>16.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="dates-and-times.html"><a href="dates-and-times.html#준비하기-9"><i class="fa fa-check"></i><b>16.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="dates-and-times.html"><a href="dates-and-times.html#날짜시간-생성하기"><i class="fa fa-check"></i><b>16.2</b> 날짜/시간 생성하기</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="dates-and-times.html"><a href="dates-and-times.html#문자열에서-생성"><i class="fa fa-check"></i><b>16.2.1</b> 문자열에서 생성</a></li>
+<li class="chapter" data-level="16.2.2" data-path="dates-and-times.html"><a href="dates-and-times.html#개별-구성요소에서-생성"><i class="fa fa-check"></i><b>16.2.2</b> 개별 구성요소에서 생성</a></li>
+<li class="chapter" data-level="16.2.3" data-path="dates-and-times.html"><a href="dates-and-times.html#기타-유형에서-생성"><i class="fa fa-check"></i><b>16.2.3</b> 기타 유형에서 생성</a></li>
+<li class="chapter" data-level="16.2.4" data-path="dates-and-times.html"><a href="dates-and-times.html#연습문제-26"><i class="fa fa-check"></i><b>16.2.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="dates-and-times.html"><a href="dates-and-times.html#데이트-타임형-구성요소"><i class="fa fa-check"></i><b>16.3</b> 데이트-타임형 구성요소</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="dates-and-times.html"><a href="dates-and-times.html#구성요소-가져오기"><i class="fa fa-check"></i><b>16.3.1</b> 구성요소 가져오기</a></li>
+<li class="chapter" data-level="16.3.2" data-path="dates-and-times.html"><a href="dates-and-times.html#반올림"><i class="fa fa-check"></i><b>16.3.2</b> 반올림</a></li>
+<li class="chapter" data-level="16.3.3" data-path="dates-and-times.html"><a href="dates-and-times.html#구성요소-설정"><i class="fa fa-check"></i><b>16.3.3</b> 구성요소 설정</a></li>
+<li class="chapter" data-level="16.3.4" data-path="dates-and-times.html"><a href="dates-and-times.html#연습문제-27"><i class="fa fa-check"></i><b>16.3.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="dates-and-times.html"><a href="dates-and-times.html#시간-범위"><i class="fa fa-check"></i><b>16.4</b> 시간 범위</a><ul>
+<li class="chapter" data-level="16.4.1" data-path="dates-and-times.html"><a href="dates-and-times.html#듀레이션형"><i class="fa fa-check"></i><b>16.4.1</b> 듀레이션형</a></li>
+<li class="chapter" data-level="16.4.2" data-path="dates-and-times.html"><a href="dates-and-times.html#피리어드형"><i class="fa fa-check"></i><b>16.4.2</b> 피리어드형</a></li>
+<li class="chapter" data-level="16.4.3" data-path="dates-and-times.html"><a href="dates-and-times.html#인터벌형"><i class="fa fa-check"></i><b>16.4.3</b> 인터벌형</a></li>
+<li class="chapter" data-level="16.4.4" data-path="dates-and-times.html"><a href="dates-and-times.html#요약"><i class="fa fa-check"></i><b>16.4.4</b> 요약</a></li>
+<li class="chapter" data-level="16.4.5" data-path="dates-and-times.html"><a href="dates-and-times.html#연습문제-28"><i class="fa fa-check"></i><b>16.4.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="dates-and-times.html"><a href="dates-and-times.html#time-zones"><i class="fa fa-check"></i><b>16.5</b> 시간대</a></li>
+</ul></li>
+<li class="part"><span><b>III 불러오기</b></span></li>
+<li class="chapter" data-level="17" data-path="import-intro.html"><a href="import-intro.html"><i class="fa fa-check"></i><b>17</b> 들어가기</a></li>
+<li class="chapter" data-level="18" data-path="import-rectangular.html"><a href="import-rectangular.html"><i class="fa fa-check"></i><b>18</b> 직사각형 데이터</a><ul>
+<li class="chapter" data-level="18.1" data-path="import-rectangular.html"><a href="import-rectangular.html#벡터-파싱하기"><i class="fa fa-check"></i><b>18.1</b> 벡터 파싱하기</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="import-rectangular.html"><a href="import-rectangular.html#숫자"><i class="fa fa-check"></i><b>18.1.1</b> 숫자</a></li>
+<li class="chapter" data-level="18.1.2" data-path="import-rectangular.html"><a href="import-rectangular.html#readr-strings"><i class="fa fa-check"></i><b>18.1.2</b> 문자열</a></li>
+<li class="chapter" data-level="18.1.3" data-path="import-rectangular.html"><a href="import-rectangular.html#readr-factors"><i class="fa fa-check"></i><b>18.1.3</b> 팩터형</a></li>
+<li class="chapter" data-level="18.1.4" data-path="import-rectangular.html"><a href="import-rectangular.html#readr-datetimes"><i class="fa fa-check"></i><b>18.1.4</b> 데이트형, 데이트-타임형, 타임형</a></li>
+<li class="chapter" data-level="18.1.5" data-path="import-rectangular.html"><a href="import-rectangular.html#연습문제-29"><i class="fa fa-check"></i><b>18.1.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="import-rectangular.html"><a href="import-rectangular.html#파일-파싱하기"><i class="fa fa-check"></i><b>18.2</b> 파일 파싱하기</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="import-rectangular.html"><a href="import-rectangular.html#전략"><i class="fa fa-check"></i><b>18.2.1</b> 전략</a></li>
+<li class="chapter" data-level="18.2.2" data-path="import-rectangular.html"><a href="import-rectangular.html#문제점"><i class="fa fa-check"></i><b>18.2.2</b> 문제점</a></li>
+<li class="chapter" data-level="18.2.3" data-path="import-rectangular.html"><a href="import-rectangular.html#기타-전략"><i class="fa fa-check"></i><b>18.2.3</b> 기타 전략</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html"><i class="fa fa-check"></i><b>19</b> 스프레드시트</a><ul>
+<li class="chapter" data-level="19.1" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#들어가기-10"><i class="fa fa-check"></i><b>19.1</b> 들어가기</a></li>
+<li class="chapter" data-level="19.2" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#엑셀"><i class="fa fa-check"></i><b>19.2</b> 엑셀</a><ul>
+<li class="chapter" data-level="19.2.1" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#준비하기-10"><i class="fa fa-check"></i><b>19.2.1</b> 준비하기</a></li>
+<li class="chapter" data-level="19.2.2" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#시작하기"><i class="fa fa-check"></i><b>19.2.2</b> 시작하기</a></li>
+<li class="chapter" data-level="19.2.3" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#스프레드시트-읽어오기"><i class="fa fa-check"></i><b>19.2.3</b> 스프레드시트 읽어오기</a></li>
+<li class="chapter" data-level="19.2.4" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#개별-시트-읽어오기"><i class="fa fa-check"></i><b>19.2.4</b> 개별 시트 읽어오기</a></li>
+<li class="chapter" data-level="19.2.5" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#reading-part-of-a-sheet"><i class="fa fa-check"></i><b>19.2.5</b> Reading part of a sheet</a></li>
+<li class="chapter" data-level="19.2.6" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#data-types"><i class="fa fa-check"></i><b>19.2.6</b> Data types</a></li>
+<li class="chapter" data-level="19.2.7" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#data-not-in-cell-values"><i class="fa fa-check"></i><b>19.2.7</b> Data not in cell values</a></li>
+<li class="chapter" data-level="19.2.8" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#writing-to-excel"><i class="fa fa-check"></i><b>19.2.8</b> Writing to Excel</a></li>
+<li class="chapter" data-level="19.2.9" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#formatted-output"><i class="fa fa-check"></i><b>19.2.9</b> Formatted output</a></li>
+<li class="chapter" data-level="19.2.10" data-path="import-spreadsheets.html"><a href="import-spreadsheets.html#exercises-18"><i class="fa fa-check"></i><b>19.2.10</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV 프로그래밍</b></span></li>
+<li class="chapter" data-level="20" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>20</b> 소개</a><ul>
+<li class="chapter" data-level="20.1" data-path="program-intro.html"><a href="program-intro.html#learning-more-1"><i class="fa fa-check"></i><b>20.1</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="Pipes.html"><a href="Pipes.html"><i class="fa fa-check"></i><b>21</b> 파이프</a><ul>
+<li class="chapter" data-level="21.1" data-path="Pipes.html"><a href="Pipes.html#들어가기-11"><i class="fa fa-check"></i><b>21.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="Pipes.html"><a href="Pipes.html#준비하기-11"><i class="fa fa-check"></i><b>21.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="Pipes.html"><a href="Pipes.html#파이프-대안"><i class="fa fa-check"></i><b>21.2</b> 파이프 대안</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="Pipes.html"><a href="Pipes.html#중간단계-이용"><i class="fa fa-check"></i><b>21.2.1</b> 중간단계 이용</a></li>
+<li class="chapter" data-level="21.2.2" data-path="Pipes.html"><a href="Pipes.html#원본-덮어쓰기"><i class="fa fa-check"></i><b>21.2.2</b> 원본 덮어쓰기</a></li>
+<li class="chapter" data-level="21.2.3" data-path="Pipes.html"><a href="Pipes.html#함수-작성"><i class="fa fa-check"></i><b>21.2.3</b> 함수 작성</a></li>
+<li class="chapter" data-level="21.2.4" data-path="Pipes.html"><a href="Pipes.html#파이프-사용"><i class="fa fa-check"></i><b>21.2.4</b> 파이프 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="Pipes.html"><a href="Pipes.html#파이프를-사용하지-않아야-할-경우"><i class="fa fa-check"></i><b>21.3</b> 파이프를 사용하지 않아야 할 경우</a></li>
+<li class="chapter" data-level="21.4" data-path="Pipes.html"><a href="Pipes.html#magrittr-의-기타-도구"><i class="fa fa-check"></i><b>21.4</b> magrittr 의 기타 도구</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>22</b> 함수</a><ul>
+<li class="chapter" data-level="22.1" data-path="functions.html"><a href="functions.html#들어가기-12"><i class="fa fa-check"></i><b>22.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="22.1.1" data-path="functions.html"><a href="functions.html#준비하기-12"><i class="fa fa-check"></i><b>22.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="functions.html"><a href="functions.html#함수를-언제-작성해야-하나"><i class="fa fa-check"></i><b>22.2</b> 함수를 언제 작성해야 하나?</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="functions.html"><a href="functions.html#연습문제-30"><i class="fa fa-check"></i><b>22.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="functions.html"><a href="functions.html#함수는-사람과-컴퓨터를-위한-것"><i class="fa fa-check"></i><b>22.3</b> 함수는 사람과 컴퓨터를 위한 것</a><ul>
+<li class="chapter" data-level="22.3.1" data-path="functions.html"><a href="functions.html#연습문제-31"><i class="fa fa-check"></i><b>22.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="functions.html"><a href="functions.html#조건부-실행"><i class="fa fa-check"></i><b>22.4</b> 조건부 실행</a><ul>
+<li class="chapter" data-level="22.4.1" data-path="functions.html"><a href="functions.html#조건문"><i class="fa fa-check"></i><b>22.4.1</b> 조건문</a></li>
+<li class="chapter" data-level="22.4.2" data-path="functions.html"><a href="functions.html#다중-조건"><i class="fa fa-check"></i><b>22.4.2</b> 다중 조건</a></li>
+<li class="chapter" data-level="22.4.3" data-path="functions.html"><a href="functions.html#코드-스타일"><i class="fa fa-check"></i><b>22.4.3</b> 코드 스타일</a></li>
+<li class="chapter" data-level="22.4.4" data-path="functions.html"><a href="functions.html#연습문제-32"><i class="fa fa-check"></i><b>22.4.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="22.5" data-path="functions.html"><a href="functions.html#함수-인수"><i class="fa fa-check"></i><b>22.5</b> 함수 인수</a><ul>
+<li class="chapter" data-level="22.5.1" data-path="functions.html"><a href="functions.html#이름-정하기"><i class="fa fa-check"></i><b>22.5.1</b> 이름 정하기</a></li>
+<li class="chapter" data-level="22.5.2" data-path="functions.html"><a href="functions.html#값-확인하기"><i class="fa fa-check"></i><b>22.5.2</b> 값 확인하기</a></li>
+<li class="chapter" data-level="22.5.3" data-path="functions.html"><a href="functions.html#점-점-점"><i class="fa fa-check"></i><b>22.5.3</b> 점-점-점 (…)</a></li>
+<li class="chapter" data-level="22.5.4" data-path="functions.html"><a href="functions.html#지연-평가"><i class="fa fa-check"></i><b>22.5.4</b> 지연 평가</a></li>
+<li class="chapter" data-level="22.5.5" data-path="functions.html"><a href="functions.html#연습문제-33"><i class="fa fa-check"></i><b>22.5.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="22.6" data-path="functions.html"><a href="functions.html#반환값"><i class="fa fa-check"></i><b>22.6</b> 반환값</a><ul>
+<li class="chapter" data-level="22.6.1" data-path="functions.html"><a href="functions.html#명시적-반환문"><i class="fa fa-check"></i><b>22.6.1</b> 명시적 반환문</a></li>
+<li class="chapter" data-level="22.6.2" data-path="functions.html"><a href="functions.html#파이핑-가능한-함수-작성하기"><i class="fa fa-check"></i><b>22.6.2</b> 파이핑 가능한 함수 작성하기</a></li>
+</ul></li>
+<li class="chapter" data-level="22.7" data-path="functions.html"><a href="functions.html#환경"><i class="fa fa-check"></i><b>22.7</b> 환경</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>23</b> 벡터</a><ul>
+<li class="chapter" data-level="23.1" data-path="vectors.html"><a href="vectors.html#들어가기-13"><i class="fa fa-check"></i><b>23.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="vectors.html"><a href="vectors.html#준비하기-13"><i class="fa fa-check"></i><b>23.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="vectors.html"><a href="vectors.html#벡터-기본-사항"><i class="fa fa-check"></i><b>23.2</b> 벡터 기본 사항</a></li>
+<li class="chapter" data-level="23.3" data-path="vectors.html"><a href="vectors.html#원자-벡터의-주요-유형"><i class="fa fa-check"></i><b>23.3</b> 원자 벡터의 주요 유형</a><ul>
+<li class="chapter" data-level="23.3.1" data-path="vectors.html"><a href="vectors.html#논리형"><i class="fa fa-check"></i><b>23.3.1</b> 논리형</a></li>
+<li class="chapter" data-level="23.3.2" data-path="vectors.html"><a href="vectors.html#수치형"><i class="fa fa-check"></i><b>23.3.2</b> 수치형</a></li>
+<li class="chapter" data-level="23.3.3" data-path="vectors.html"><a href="vectors.html#문자형"><i class="fa fa-check"></i><b>23.3.3</b> 문자형</a></li>
+<li class="chapter" data-level="23.3.4" data-path="vectors.html"><a href="vectors.html#결측값"><i class="fa fa-check"></i><b>23.3.4</b> 결측값</a></li>
+<li class="chapter" data-level="23.3.5" data-path="vectors.html"><a href="vectors.html#연습문제-34"><i class="fa fa-check"></i><b>23.3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="vectors.html"><a href="vectors.html#원자벡터-이용하기"><i class="fa fa-check"></i><b>23.4</b> 원자벡터 이용하기</a><ul>
+<li class="chapter" data-level="23.4.1" data-path="vectors.html"><a href="vectors.html#강제변환"><i class="fa fa-check"></i><b>23.4.1</b> 강제변환</a></li>
+<li class="chapter" data-level="23.4.2" data-path="vectors.html"><a href="vectors.html#테스트-함수"><i class="fa fa-check"></i><b>23.4.2</b> 테스트 함수</a></li>
+<li class="chapter" data-level="23.4.3" data-path="vectors.html"><a href="vectors.html#스칼라와-재활용-규칙"><i class="fa fa-check"></i><b>23.4.3</b> 스칼라와 재활용 규칙</a></li>
+<li class="chapter" data-level="23.4.4" data-path="vectors.html"><a href="vectors.html#벡터-이름-짓기"><i class="fa fa-check"></i><b>23.4.4</b> 벡터 이름 짓기</a></li>
+<li class="chapter" data-level="23.4.5" data-path="vectors.html"><a href="vectors.html#vector-subsetting"><i class="fa fa-check"></i><b>23.4.5</b> 서브셋하기</a></li>
+<li class="chapter" data-level="23.4.6" data-path="vectors.html"><a href="vectors.html#연습문제-35"><i class="fa fa-check"></i><b>23.4.6</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="23.5" data-path="vectors.html"><a href="vectors.html#lists"><i class="fa fa-check"></i><b>23.5</b> 재귀 벡터 (리스트)</a><ul>
+<li class="chapter" data-level="23.5.1" data-path="vectors.html"><a href="vectors.html#리스트-시각화"><i class="fa fa-check"></i><b>23.5.1</b> 리스트 시각화</a></li>
+<li class="chapter" data-level="23.5.2" data-path="vectors.html"><a href="vectors.html#서브셋하기-1"><i class="fa fa-check"></i><b>23.5.2</b> 서브셋하기</a></li>
+<li class="chapter" data-level="23.5.3" data-path="vectors.html"><a href="vectors.html#후추-리스트"><i class="fa fa-check"></i><b>23.5.3</b> 후추 리스트</a></li>
+<li class="chapter" data-level="23.5.4" data-path="vectors.html"><a href="vectors.html#exercises-19"><i class="fa fa-check"></i><b>23.5.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="vectors.html"><a href="vectors.html#attributes"><i class="fa fa-check"></i><b>23.6</b> Attributes</a></li>
+<li class="chapter" data-level="23.7" data-path="vectors.html"><a href="vectors.html#augmented-vectors"><i class="fa fa-check"></i><b>23.7</b> Augmented vectors</a><ul>
+<li class="chapter" data-level="23.7.1" data-path="vectors.html"><a href="vectors.html#factors-1"><i class="fa fa-check"></i><b>23.7.1</b> Factors</a></li>
+<li class="chapter" data-level="23.7.2" data-path="vectors.html"><a href="vectors.html#dates-and-date-times"><i class="fa fa-check"></i><b>23.7.2</b> Dates and date-times</a></li>
+<li class="chapter" data-level="23.7.3" data-path="vectors.html"><a href="vectors.html#tibbles-1"><i class="fa fa-check"></i><b>23.7.3</b> Tibbles</a></li>
+<li class="chapter" data-level="23.7.4" data-path="vectors.html"><a href="vectors.html#exercises-20"><i class="fa fa-check"></i><b>23.7.4</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>24</b> 반복</a><ul>
+<li class="chapter" data-level="24.1" data-path="iteration.html"><a href="iteration.html#들어가기-14"><i class="fa fa-check"></i><b>24.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="iteration.html"><a href="iteration.html#준비하기-14"><i class="fa fa-check"></i><b>24.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="iteration.html"><a href="iteration.html#for-루프"><i class="fa fa-check"></i><b>24.2</b> For 루프</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="iteration.html"><a href="iteration.html#exercises-21"><i class="fa fa-check"></i><b>24.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="iteration.html"><a href="iteration.html#for-loop-variations"><i class="fa fa-check"></i><b>24.3</b> For loop variations</a><ul>
+<li class="chapter" data-level="24.3.1" data-path="iteration.html"><a href="iteration.html#modifying-an-existing-object"><i class="fa fa-check"></i><b>24.3.1</b> Modifying an existing object</a></li>
+<li class="chapter" data-level="24.3.2" data-path="iteration.html"><a href="iteration.html#looping-patterns"><i class="fa fa-check"></i><b>24.3.2</b> Looping patterns</a></li>
+<li class="chapter" data-level="24.3.3" data-path="iteration.html"><a href="iteration.html#unknown-output-length"><i class="fa fa-check"></i><b>24.3.3</b> Unknown output length</a></li>
+<li class="chapter" data-level="24.3.4" data-path="iteration.html"><a href="iteration.html#unknown-sequence-length"><i class="fa fa-check"></i><b>24.3.4</b> Unknown sequence length</a></li>
+<li class="chapter" data-level="24.3.5" data-path="iteration.html"><a href="iteration.html#exercises-22"><i class="fa fa-check"></i><b>24.3.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="iteration.html"><a href="iteration.html#for-loops-vs.-functionals"><i class="fa fa-check"></i><b>24.4</b> For loops vs. functionals</a><ul>
+<li class="chapter" data-level="24.4.1" data-path="iteration.html"><a href="iteration.html#exercises-23"><i class="fa fa-check"></i><b>24.4.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24.5" data-path="iteration.html"><a href="iteration.html#the-map-functions"><i class="fa fa-check"></i><b>24.5</b> The map functions</a><ul>
+<li class="chapter" data-level="24.5.1" data-path="iteration.html"><a href="iteration.html#단축어"><i class="fa fa-check"></i><b>24.5.1</b> 단축어</a></li>
+<li class="chapter" data-level="24.5.2" data-path="iteration.html"><a href="iteration.html#base-r"><i class="fa fa-check"></i><b>24.5.2</b> Base R</a></li>
+<li class="chapter" data-level="24.5.3" data-path="iteration.html"><a href="iteration.html#exercises-24"><i class="fa fa-check"></i><b>24.5.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24.6" data-path="iteration.html"><a href="iteration.html#dealing-with-failure"><i class="fa fa-check"></i><b>24.6</b> Dealing with failure</a></li>
+<li class="chapter" data-level="24.7" data-path="iteration.html"><a href="iteration.html#mapping-over-multiple-arguments"><i class="fa fa-check"></i><b>24.7</b> Mapping over multiple arguments</a><ul>
+<li class="chapter" data-level="24.7.1" data-path="iteration.html"><a href="iteration.html#invoking-different-functions"><i class="fa fa-check"></i><b>24.7.1</b> Invoking different functions</a></li>
+</ul></li>
+<li class="chapter" data-level="24.8" data-path="iteration.html"><a href="iteration.html#walk"><i class="fa fa-check"></i><b>24.8</b> Walk</a></li>
+<li class="chapter" data-level="24.9" data-path="iteration.html"><a href="iteration.html#other-patterns-of-for-loops"><i class="fa fa-check"></i><b>24.9</b> Other patterns of for loops</a><ul>
+<li class="chapter" data-level="24.9.1" data-path="iteration.html"><a href="iteration.html#predicate-functions"><i class="fa fa-check"></i><b>24.9.1</b> Predicate functions</a></li>
+<li class="chapter" data-level="24.9.2" data-path="iteration.html"><a href="iteration.html#reduce-and-accumulate"><i class="fa fa-check"></i><b>24.9.2</b> Reduce and accumulate</a></li>
+<li class="chapter" data-level="24.9.3" data-path="iteration.html"><a href="iteration.html#exercises-25"><i class="fa fa-check"></i><b>24.9.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24.10" data-path="iteration.html"><a href="iteration.html#case-study"><i class="fa fa-check"></i><b>24.10</b> Case study</a></li>
+</ul></li>
+<li class="part"><span><b>V 의사소통하기</b></span></li>
+<li class="chapter" data-level="25" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>25</b> 소개</a></li>
+<li class="chapter" data-level="26" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>26</b> R 마크다운</a><ul>
+<li class="chapter" data-level="26.1" data-path="rmarkdown.html"><a href="rmarkdown.html#들어가기-15"><i class="fa fa-check"></i><b>26.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="26.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#준비하기-15"><i class="fa fa-check"></i><b>26.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="rmarkdown.html"><a href="rmarkdown.html#r-마크다운-기초"><i class="fa fa-check"></i><b>26.2</b> R 마크다운 기초</a><ul>
+<li class="chapter" data-level="26.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#연습문제-36"><i class="fa fa-check"></i><b>26.2.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="rmarkdown.html"><a href="rmarkdown.html#마크다운으로-텍스트-서식-지정하기"><i class="fa fa-check"></i><b>26.3</b> 마크다운으로 텍스트 서식 지정하기</a><ul>
+<li class="chapter" data-level="26.3.1" data-path="rmarkdown.html"><a href="rmarkdown.html#연습문제-37"><i class="fa fa-check"></i><b>26.3.1</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="rmarkdown.html"><a href="rmarkdown.html#코드-청크"><i class="fa fa-check"></i><b>26.4</b> 코드 청크</a><ul>
+<li class="chapter" data-level="26.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-이름"><i class="fa fa-check"></i><b>26.4.1</b> 청크 이름</a></li>
+<li class="chapter" data-level="26.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#청크-옵션"><i class="fa fa-check"></i><b>26.4.2</b> 청크 옵션</a></li>
+<li class="chapter" data-level="26.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#표"><i class="fa fa-check"></i><b>26.4.3</b> 표</a></li>
+<li class="chapter" data-level="26.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#캐싱"><i class="fa fa-check"></i><b>26.4.4</b> 캐싱</a></li>
+<li class="chapter" data-level="26.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#전역-옵션"><i class="fa fa-check"></i><b>26.4.5</b> 전역 옵션</a></li>
+<li class="chapter" data-level="26.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>26.4.6</b> Inline code</a></li>
+<li class="chapter" data-level="26.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#exercises-26"><i class="fa fa-check"></i><b>26.4.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="26.5" data-path="rmarkdown.html"><a href="rmarkdown.html#troubleshooting"><i class="fa fa-check"></i><b>26.5</b> Troubleshooting</a></li>
+<li class="chapter" data-level="26.6" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-header"><i class="fa fa-check"></i><b>26.6</b> YAML header</a><ul>
+<li class="chapter" data-level="26.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#parameters"><i class="fa fa-check"></i><b>26.6.1</b> Parameters</a></li>
+<li class="chapter" data-level="26.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#bibliographies-and-citations"><i class="fa fa-check"></i><b>26.6.2</b> Bibliographies and Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="26.7" data-path="rmarkdown.html"><a href="rmarkdown.html#learning-more-2"><i class="fa fa-check"></i><b>26.7</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>27</b> 그래프를 통한 의사소통</a><ul>
+<li class="chapter" data-level="27.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#들어가기-16"><i class="fa fa-check"></i><b>27.1</b> 들어가기</a><ul>
+<li class="chapter" data-level="27.1.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#준비하기-16"><i class="fa fa-check"></i><b>27.1.1</b> 준비하기</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>27.2</b> Label</a><ul>
+<li class="chapter" data-level="27.2.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-27"><i class="fa fa-check"></i><b>27.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="27.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#annotations"><i class="fa fa-check"></i><b>27.3</b> Annotations</a><ul>
+<li class="chapter" data-level="27.3.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-28"><i class="fa fa-check"></i><b>27.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="27.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#scales"><i class="fa fa-check"></i><b>27.4</b> Scales</a><ul>
+<li class="chapter" data-level="27.4.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#axis-ticks-and-legend-keys"><i class="fa fa-check"></i><b>27.4.1</b> Axis ticks and legend keys</a></li>
+<li class="chapter" data-level="27.4.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#legend-layout"><i class="fa fa-check"></i><b>27.4.2</b> Legend layout</a></li>
+<li class="chapter" data-level="27.4.3" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#replacing-a-scale"><i class="fa fa-check"></i><b>27.4.3</b> Replacing a scale</a></li>
+<li class="chapter" data-level="27.4.4" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#exercises-29"><i class="fa fa-check"></i><b>27.4.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="27.5" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#zooming"><i class="fa fa-check"></i><b>27.5</b> Zooming</a></li>
+<li class="chapter" data-level="27.6" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#themes"><i class="fa fa-check"></i><b>27.6</b> Themes</a></li>
+<li class="chapter" data-level="27.7" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#saving-your-plots"><i class="fa fa-check"></i><b>27.7</b> Saving your plots</a><ul>
+<li class="chapter" data-level="27.7.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#figure-sizing"><i class="fa fa-check"></i><b>27.7.1</b> Figure sizing</a></li>
+<li class="chapter" data-level="27.7.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#other-important-options"><i class="fa fa-check"></i><b>27.7.2</b> Other important options</a></li>
+</ul></li>
+<li class="chapter" data-level="27.8" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#learning-more-3"><i class="fa fa-check"></i><b>27.8</b> Learning more</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html"><i class="fa fa-check"></i><b>28</b> R 마크다운 유형</a><ul>
+<li class="chapter" data-level="28.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#들어가기-17"><i class="fa fa-check"></i><b>28.1</b> 들어가기</a></li>
+<li class="chapter" data-level="28.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#출력-옵션"><i class="fa fa-check"></i><b>28.2</b> 출력 옵션</a></li>
+<li class="chapter" data-level="28.3" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#document"><i class="fa fa-check"></i><b>28.3</b> Document</a></li>
+<li class="chapter" data-level="28.4" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#notebook"><i class="fa fa-check"></i><b>28.4</b> Notebook</a></li>
+<li class="chapter" data-level="28.5" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#presentation"><i class="fa fa-check"></i><b>28.5</b> Presentation</a></li>
+<li class="chapter" data-level="28.6" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#dashboard"><i class="fa fa-check"></i><b>28.6</b> Dashboard</a></li>
+<li class="chapter" data-level="28.7" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#대화형-동작"><i class="fa fa-check"></i><b>28.7</b> 대화형 동작</a><ul>
+<li class="chapter" data-level="28.7.1" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#htmlwidgets"><i class="fa fa-check"></i><b>28.7.1</b> htmlwidgets</a></li>
+<li class="chapter" data-level="28.7.2" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#shiny"><i class="fa fa-check"></i><b>28.7.2</b> Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="28.8" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#website"><i class="fa fa-check"></i><b>28.8</b> Website</a></li>
+<li class="chapter" data-level="28.9" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#other-formats"><i class="fa fa-check"></i><b>28.9</b> Other formats</a></li>
+<li class="chapter" data-level="28.10" data-path="rmarkdown-formats.html"><a href="rmarkdown-formats.html#더-배우기-1"><i class="fa fa-check"></i><b>28.10</b> 더 배우기</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="rmarkdown-workflow.html"><a href="rmarkdown-workflow.html"><i class="fa fa-check"></i><b>29</b> R 마크다운 워크플로</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 을 활용한 데이터과학</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="import-spreadsheets" class="section level1">
+<h1><span class="header-section-number">19</span> 스프레드시트</h1>
+<div id="들어가기-10" class="section level2">
+<h2><span class="header-section-number">19.1</span> 들어가기</h2>
+<p>지금까지 우리는 플레인 텍스트 파일들, 즉 <code>.csv</code>, <code>.tsv</code> 파일들을 불러오는 것에 대해 배웠었다. 어떤 경우에는 스프레드시트에 있는 데이터를 분석해야 할 때가 있을 것이다.
+이번 장에서 엑셀 스프레드시트와 구글 시트 데이터와 작업하는 도구에 대해 소개할 것이다.
+<a href="#data-import"><strong>??</strong></a> 장과 <a href="import-rectangular.html#import-rectangular">18</a> 장에서 배운 것을 기반으로 이루어질 것이지만 스프레드시트 데이터로 작업할 때 생기는 추가적인 고려사항과 복잡성에 대해서도 논의할 것이다.</p>
+<p>여러분, 혹은 여러분의 동료가 스프레드시트를 이용해서 데이터를 정리하고 있다면, Karl Broman 과 Kara Woo 이 쓴 논문, “Data Organization in Spreadsheets” 를 읽어보기를 강력히 추천한다: <a href="https://doi.org/10.1080/00031305.2017.1375989" class="uri">https://doi.org/10.1080/00031305.2017.1375989</a>.
+이 페이퍼에서 제공한 가장 좋은 실천방법을 따르면, 분석과 시각화를 위해 데이터를 스프레드시트에서 R 로 읽어올 때 훨씬 머리가 덜 아프게 만들어 줄 것이다.</p>
+</div>
+<div id="엑셀" class="section level2">
+<h2><span class="header-section-number">19.2</span> 엑셀</h2>
+<div id="준비하기-10" class="section level3">
+<h3><span class="header-section-number">19.2.1</span> 준비하기</h3>
+<p>In this chapter, you’ll learn how to load data from Excel spreadsheets in R with the <strong>readxl</strong> package.
+This package is non-core tidyverse, so you need to load it explicitly but it is installed automatically when you install the tidyverse package.</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="import-spreadsheets.html#cb400-1"></a><span class="kw">library</span>(readxl)</span>
+<span id="cb400-2"><a href="import-spreadsheets.html#cb400-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb400-3"><a href="import-spreadsheets.html#cb400-3"></a><span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span></span>
+<span id="cb400-4"><a href="import-spreadsheets.html#cb400-4"></a><span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
+<span id="cb400-5"><a href="import-spreadsheets.html#cb400-5"></a><span class="co">#&gt; ✓ tibble  3.1.5     ✓ dplyr   1.0.7</span></span>
+<span id="cb400-6"><a href="import-spreadsheets.html#cb400-6"></a><span class="co">#&gt; ✓ tidyr   1.1.4     ✓ stringr 1.4.0</span></span>
+<span id="cb400-7"><a href="import-spreadsheets.html#cb400-7"></a><span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.1</span></span>
+<span id="cb400-8"><a href="import-spreadsheets.html#cb400-8"></a><span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb400-9"><a href="import-spreadsheets.html#cb400-9"></a><span class="co">#&gt; x dplyr::filter() masks stats::filter()</span></span>
+<span id="cb400-10"><a href="import-spreadsheets.html#cb400-10"></a><span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
+<p><strong>xlsx</strong> 과 <strong>XLConnect</strong> 을 사용하여 엑셀 스프레드시트에서 데이터를 읽거나 쓸 수 있다.
+그러나, 이 두 패키지는 컴퓨터에 Java 가 설치되어 있고, rJava 패키지가 있어야 한다.
+설치할 때 문제가 생길 수 있으므로, 이 장에서 소개하는 다른 패키지들을 사용하길 추천한다.</p>
+</div>
+<div id="시작하기" class="section level3">
+<h3><span class="header-section-number">19.2.2</span> 시작하기</h3>
+<p>readxl 함수 대부분을 사용하여 엑셀 스프레드시트를 R 로 가져올 수 있다:</p>
+<ul>
+<li><code>read_xls()</code> reads Excel files with <code>xls</code> format.</li>
+<li><code>read_xlsx()</code> read Excel files with <code>xlsx</code> format.</li>
+<li><code>read_excel()</code> can read files with both <code>xls</code> and <code>xlsx</code> format. It guesses the file type based on the input.</li>
+</ul>
+<p>이 함수들은 앞서 다른 종류의 파일을 읽는데 소개한 <code>read_csv()</code>, <code>read_table()</code> 과 같은 다른 함수과 유사한 문법을 갖는다.
+이번 장 나머지 부분에서는 <code>read_excel()</code> 사용하는 법에 집중하도록 한다.</p>
+</div>
+<div id="스프레드시트-읽어오기" class="section level3">
+<h3><span class="header-section-number">19.2.3</span> 스프레드시트 읽어오기</h3>
+<p>R 로 읽어올 스프레드시트는 엑셀에서 Figure <a href="import-spreadsheets.html#fig:students-excel">19.1</a> 과 같이 생겼다.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:students-excel"></span>
+<img src="images/import-spreadsheets-students.png" alt="A look at the students spreadsheet in Excel. The spreadsheet contains information on 6 students, their ID, full name, favourite food, meal plan, and age." width="70%" />
+<p class="caption">
+Figure 19.1: Spreadsheet called students.xlsx in Excel.
+</p>
+</div>
+<p><code>read_excel()</code> 첫번째 인수는 읽을 파일의 경로이다.</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="import-spreadsheets.html#cb401-1"></a>students &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/students.xlsx&quot;</span>)</span></code></pre></div>
+<p><code>read_excel()</code> 은 파일을 티블로 읽는다.</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="import-spreadsheets.html#cb402-1"></a>students</span>
+<span id="cb402-2"><a href="import-spreadsheets.html#cb402-2"></a><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span id="cb402-3"><a href="import-spreadsheets.html#cb402-3"></a><span class="co">#&gt;   `Student ID` `Full Name`      favourite.food     mealPlan            AGE  </span></span>
+<span id="cb402-4"><a href="import-spreadsheets.html#cb402-4"></a><span class="co">#&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span id="cb402-5"><a href="import-spreadsheets.html#cb402-5"></a><span class="co">#&gt; 1            1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span id="cb402-6"><a href="import-spreadsheets.html#cb402-6"></a><span class="co">#&gt; 2            2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span id="cb402-7"><a href="import-spreadsheets.html#cb402-7"></a><span class="co">#&gt; 3            3 Jayendra Lyne    N/A                Breakfast and lunch 7    </span></span>
+<span id="cb402-8"><a href="import-spreadsheets.html#cb402-8"></a><span class="co">#&gt; 4            4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span id="cb402-9"><a href="import-spreadsheets.html#cb402-9"></a><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span id="cb402-10"><a href="import-spreadsheets.html#cb402-10"></a><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div>
+<p>데이터에는 학생 여섯이 있고 각 학생마다 변수 다섯개가 있다.
+하지만 이 데이터셋에 관해 이야기 하고 싶은 것 몇개가 있다.</p>
+<ol style="list-style-type: decimal">
+<li><p>The column names are all over the place.
+You can provide column names that follow a consistent format; we recommend <code>snake_case</code> using the <code>col_names</code> argument.</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="import-spreadsheets.html#cb403-1"></a><span class="kw">read_excel</span>(</span>
+<span id="cb403-2"><a href="import-spreadsheets.html#cb403-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
+<span id="cb403-3"><a href="import-spreadsheets.html#cb403-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
+<span id="cb403-4"><a href="import-spreadsheets.html#cb403-4"></a>)</span>
+<span id="cb403-5"><a href="import-spreadsheets.html#cb403-5"></a><span class="co">#&gt; # A tibble: 7 × 5</span></span>
+<span id="cb403-6"><a href="import-spreadsheets.html#cb403-6"></a><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
+<span id="cb403-7"><a href="import-spreadsheets.html#cb403-7"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span id="cb403-8"><a href="import-spreadsheets.html#cb403-8"></a><span class="co">#&gt; 1 Student ID Full Name        favourite.food     mealPlan            AGE  </span></span>
+<span id="cb403-9"><a href="import-spreadsheets.html#cb403-9"></a><span class="co">#&gt; 2 1          Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span id="cb403-10"><a href="import-spreadsheets.html#cb403-10"></a><span class="co">#&gt; 3 2          Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span id="cb403-11"><a href="import-spreadsheets.html#cb403-11"></a><span class="co">#&gt; 4 3          Jayendra Lyne    N/A                Breakfast and lunch 7    </span></span>
+<span id="cb403-12"><a href="import-spreadsheets.html#cb403-12"></a><span class="co">#&gt; 5 4          Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span id="cb403-13"><a href="import-spreadsheets.html#cb403-13"></a><span class="co">#&gt; 6 5          Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span id="cb403-14"><a href="import-spreadsheets.html#cb403-14"></a><span class="co">#&gt; # … with 1 more row</span></span></code></pre></div>
+<p>Unfortunately, this didn’t quite do the trick.
+You now have the variable names we want, but what was previously the header row now shows up as the first observation in the data.
+You can explicitly skip that row using the <code>skip</code> argument.</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="import-spreadsheets.html#cb404-1"></a><span class="kw">read_excel</span>(</span>
+<span id="cb404-2"><a href="import-spreadsheets.html#cb404-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
+<span id="cb404-3"><a href="import-spreadsheets.html#cb404-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb404-4"><a href="import-spreadsheets.html#cb404-4"></a>  <span class="dt">skip =</span> <span class="dv">1</span></span>
+<span id="cb404-5"><a href="import-spreadsheets.html#cb404-5"></a>)</span>
+<span id="cb404-6"><a href="import-spreadsheets.html#cb404-6"></a><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span id="cb404-7"><a href="import-spreadsheets.html#cb404-7"></a><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
+<span id="cb404-8"><a href="import-spreadsheets.html#cb404-8"></a><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span id="cb404-9"><a href="import-spreadsheets.html#cb404-9"></a><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span id="cb404-10"><a href="import-spreadsheets.html#cb404-10"></a><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span id="cb404-11"><a href="import-spreadsheets.html#cb404-11"></a><span class="co">#&gt; 3          3 Jayendra Lyne    N/A                Breakfast and lunch 7    </span></span>
+<span id="cb404-12"><a href="import-spreadsheets.html#cb404-12"></a><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span id="cb404-13"><a href="import-spreadsheets.html#cb404-13"></a><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span id="cb404-14"><a href="import-spreadsheets.html#cb404-14"></a><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div></li>
+<li><p>In the <code>favourite_food</code> column, one of the observations is <code>N/A</code>, which stands for “not available” but it’s currently not recognized as an <code>NA</code> (note the contrast between this <code>N/A</code> and the age of the fourth student in the list).
+You can specify which character strings should be recognized as <code>NA</code>s with the <code>na</code> argument.
+By default, only <code>""</code> (empty string, or, in the case of reading from a spreadsheet, an empty cell) is recognized as an <code>NA</code>.</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="import-spreadsheets.html#cb405-1"></a><span class="kw">read_excel</span>(</span>
+<span id="cb405-2"><a href="import-spreadsheets.html#cb405-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
+<span id="cb405-3"><a href="import-spreadsheets.html#cb405-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb405-4"><a href="import-spreadsheets.html#cb405-4"></a>  <span class="dt">skip =</span> <span class="dv">1</span>,</span>
+<span id="cb405-5"><a href="import-spreadsheets.html#cb405-5"></a>  <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;N/A&quot;</span>)</span>
+<span id="cb405-6"><a href="import-spreadsheets.html#cb405-6"></a>)</span>
+<span id="cb405-7"><a href="import-spreadsheets.html#cb405-7"></a><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span id="cb405-8"><a href="import-spreadsheets.html#cb405-8"></a><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan           age  </span></span>
+<span id="cb405-9"><a href="import-spreadsheets.html#cb405-9"></a><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span id="cb405-10"><a href="import-spreadsheets.html#cb405-10"></a><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    </span></span>
+<span id="cb405-11"><a href="import-spreadsheets.html#cb405-11"></a><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only          5    </span></span>
+<span id="cb405-12"><a href="import-spreadsheets.html#cb405-12"></a><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    </span></span>
+<span id="cb405-13"><a href="import-spreadsheets.html#cb405-13"></a><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
+<span id="cb405-14"><a href="import-spreadsheets.html#cb405-14"></a><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
+<span id="cb405-15"><a href="import-spreadsheets.html#cb405-15"></a><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div></li>
+<li><p>One other remaining issue is that <code>age</code> is read in as a character variable, but it really should be numeric.
+Just like with <code>read_csv()</code> and friends for reading data from flat files, you can supply a <code>col_types</code> argument to <code>read_excel()</code> and specify the column types for the variables you read in.
+The syntax is a bit different, though.
+Your options are <code>"skip"</code>, <code>"guess"</code>, <code>"logical"</code>, <code>"numeric"</code>, <code>"date"</code>, <code>"text"</code> or <code>"list"</code>.</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="import-spreadsheets.html#cb406-1"></a><span class="kw">read_excel</span>(</span>
+<span id="cb406-2"><a href="import-spreadsheets.html#cb406-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
+<span id="cb406-3"><a href="import-spreadsheets.html#cb406-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb406-4"><a href="import-spreadsheets.html#cb406-4"></a>  <span class="dt">skip =</span> <span class="dv">1</span>,</span>
+<span id="cb406-5"><a href="import-spreadsheets.html#cb406-5"></a>  <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;N/A&quot;</span>),</span>
+<span id="cb406-6"><a href="import-spreadsheets.html#cb406-6"></a>  <span class="dt">col_types =</span> <span class="kw">c</span>(<span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;numeric&quot;</span>)</span>
+<span id="cb406-7"><a href="import-spreadsheets.html#cb406-7"></a>)</span>
+<span id="cb406-8"><a href="import-spreadsheets.html#cb406-8"></a><span class="co">#&gt; Warning in read_fun(path = enc2native(normalizePath(path)), sheet_i = sheet, :</span></span>
+<span id="cb406-9"><a href="import-spreadsheets.html#cb406-9"></a><span class="co">#&gt; Expecting numeric in E6 / R6C5: got &#39;five&#39;</span></span>
+<span id="cb406-10"><a href="import-spreadsheets.html#cb406-10"></a><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span id="cb406-11"><a href="import-spreadsheets.html#cb406-11"></a><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan             age</span></span>
+<span id="cb406-12"><a href="import-spreadsheets.html#cb406-12"></a><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt;</span></span>
+<span id="cb406-13"><a href="import-spreadsheets.html#cb406-13"></a><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4</span></span>
+<span id="cb406-14"><a href="import-spreadsheets.html#cb406-14"></a><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only              5</span></span>
+<span id="cb406-15"><a href="import-spreadsheets.html#cb406-15"></a><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
+<span id="cb406-16"><a href="import-spreadsheets.html#cb406-16"></a><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
+<span id="cb406-17"><a href="import-spreadsheets.html#cb406-17"></a><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch    NA</span></span>
+<span id="cb406-18"><a href="import-spreadsheets.html#cb406-18"></a><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code></pre></div>
+<p>However, this didn’t quite produce the desired result either.
+By specifying that <code>age</code> should be numeric, we have turned the one cell with the non-numeric entry (which had the value <code>five</code>) into an <code>NA</code>.
+In this case, we should read age in as <code>"text"</code> and then make the change once the data is loaded in R.</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="import-spreadsheets.html#cb407-1"></a>students &lt;-<span class="st"> </span><span class="kw">read_excel</span>(</span>
+<span id="cb407-2"><a href="import-spreadsheets.html#cb407-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
+<span id="cb407-3"><a href="import-spreadsheets.html#cb407-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb407-4"><a href="import-spreadsheets.html#cb407-4"></a>  <span class="dt">skip =</span> <span class="dv">1</span>,</span>
+<span id="cb407-5"><a href="import-spreadsheets.html#cb407-5"></a>  <span class="dt">na =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;N/A&quot;</span>),</span>
+<span id="cb407-6"><a href="import-spreadsheets.html#cb407-6"></a>  <span class="dt">col_types =</span> <span class="kw">c</span>(<span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;text&quot;</span>)</span>
+<span id="cb407-7"><a href="import-spreadsheets.html#cb407-7"></a>)</span>
+<span id="cb407-8"><a href="import-spreadsheets.html#cb407-8"></a></span>
+<span id="cb407-9"><a href="import-spreadsheets.html#cb407-9"></a>students &lt;-<span class="st"> </span>students <span class="op">%&gt;%</span></span>
+<span id="cb407-10"><a href="import-spreadsheets.html#cb407-10"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
+<span id="cb407-11"><a href="import-spreadsheets.html#cb407-11"></a>    <span class="dt">age =</span> <span class="kw">if_else</span>(age <span class="op">==</span><span class="st"> &quot;five&quot;</span>, <span class="st">&quot;5&quot;</span>, age),</span>
+<span id="cb407-12"><a href="import-spreadsheets.html#cb407-12"></a>    <span class="dt">age =</span> <span class="kw">parse_number</span>(age)</span>
+<span id="cb407-13"><a href="import-spreadsheets.html#cb407-13"></a>  )</span>
+<span id="cb407-14"><a href="import-spreadsheets.html#cb407-14"></a></span>
+<span id="cb407-15"><a href="import-spreadsheets.html#cb407-15"></a>students</span>
+<span id="cb407-16"><a href="import-spreadsheets.html#cb407-16"></a><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span id="cb407-17"><a href="import-spreadsheets.html#cb407-17"></a><span class="co">#&gt;   student_id full_name        favourite_food     meal_plan             age</span></span>
+<span id="cb407-18"><a href="import-spreadsheets.html#cb407-18"></a><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt;</span></span>
+<span id="cb407-19"><a href="import-spreadsheets.html#cb407-19"></a><span class="co">#&gt; 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4</span></span>
+<span id="cb407-20"><a href="import-spreadsheets.html#cb407-20"></a><span class="co">#&gt; 2          2 Barclay Lynn     French fries       Lunch only              5</span></span>
+<span id="cb407-21"><a href="import-spreadsheets.html#cb407-21"></a><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
+<span id="cb407-22"><a href="import-spreadsheets.html#cb407-22"></a><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
+<span id="cb407-23"><a href="import-spreadsheets.html#cb407-23"></a><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5</span></span>
+<span id="cb407-24"><a href="import-spreadsheets.html#cb407-24"></a><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code></pre></div></li>
+</ol>
+<p>It took us multiple steps and trial-and-error to load the data in exactly the format we want, and this is not unexpected.
+Data science is an iterative process.
+There is no way to know exactly what the data will look like until you load it and take a look at it.
+Well, there is one way, actually.
+You can open the file in Excel and take a peek.
+That might be tempting, but it’s strongly not recommended.
+<!--# TO DO: Provide reason why it's not recommended. --> Instead, you should not be afraid of doing what we did here: load the data, take a peek, make adjustments to your code, load it again, and repeat until you’re happy with the result.</p>
+</div>
+<div id="개별-시트-읽어오기" class="section level3">
+<h3><span class="header-section-number">19.2.4</span> 개별 시트 읽어오기</h3>
+<p>An important feature that distinguishes spreadsheets from flat files is the notion of multiple sheets.
+Figure <a href="import-spreadsheets.html#fig:penguins-islands">19.2</a> shows an Excel spreadsheet with multiple sheets.
+The data come from the <strong>palmerpenguins</strong> package.
+Each sheet contains information on penguins from a different island where data were collected.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:penguins-islands"></span>
+<img src="images/import-spreadsheets-penguins-islands.png" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three sheets: Torgersen Island, Biscoe Island, and Dream Island." width="70%" />
+<p class="caption">
+Figure 19.2: Spreadsheet called penguins.xlsx in Excel.
+</p>
+</div>
+<p>You can read a single sheet from a spreadsheet with the <code>sheet</code> argument in <code>read_excel()</code>.</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="import-spreadsheets.html#cb408-1"></a><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Torgersen Island&quot;</span>)</span>
+<span id="cb408-2"><a href="import-spreadsheets.html#cb408-2"></a><span class="co">#&gt; # A tibble: 52 × 8</span></span>
+<span id="cb408-3"><a href="import-spreadsheets.html#cb408-3"></a><span class="co">#&gt;   species island bill_length_mm bill_depth_mm flipper_length_… body_mass_g sex  </span></span>
+<span id="cb408-4"><a href="import-spreadsheets.html#cb408-4"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;</span></span>
+<span id="cb408-5"><a href="import-spreadsheets.html#cb408-5"></a><span class="co">#&gt; 1 Adelie  Torge… 39.1           18.7          181              3750        male </span></span>
+<span id="cb408-6"><a href="import-spreadsheets.html#cb408-6"></a><span class="co">#&gt; 2 Adelie  Torge… 39.5           17.399999999… 186              3800        fema…</span></span>
+<span id="cb408-7"><a href="import-spreadsheets.html#cb408-7"></a><span class="co">#&gt; 3 Adelie  Torge… 40.2999999999… 18            195              3250        fema…</span></span>
+<span id="cb408-8"><a href="import-spreadsheets.html#cb408-8"></a><span class="co">#&gt; 4 Adelie  Torge… NA             NA            NA               NA          NA   </span></span>
+<span id="cb408-9"><a href="import-spreadsheets.html#cb408-9"></a><span class="co">#&gt; 5 Adelie  Torge… 36.7000000000… 19.3          193              3450        fema…</span></span>
+<span id="cb408-10"><a href="import-spreadsheets.html#cb408-10"></a><span class="co">#&gt; 6 Adelie  Torge… 39.2999999999… 20.6          190              3650        male </span></span>
+<span id="cb408-11"><a href="import-spreadsheets.html#cb408-11"></a><span class="co">#&gt; # … with 46 more rows, and 1 more variable: year &lt;dbl&gt;</span></span></code></pre></div>
+<p>Some variables that appear to contain numerical data are read in as characters due to the character string <code>"NA"</code> not being recognized as a true <code>NA</code>.</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="import-spreadsheets.html#cb409-1"></a>penguins_torgersen &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Torgersen Island&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>)</span>
+<span id="cb409-2"><a href="import-spreadsheets.html#cb409-2"></a></span>
+<span id="cb409-3"><a href="import-spreadsheets.html#cb409-3"></a>penguins_torgersen</span>
+<span id="cb409-4"><a href="import-spreadsheets.html#cb409-4"></a><span class="co">#&gt; # A tibble: 52 × 8</span></span>
+<span id="cb409-5"><a href="import-spreadsheets.html#cb409-5"></a><span class="co">#&gt;   species island bill_length_mm bill_depth_mm flipper_length_… body_mass_g sex  </span></span>
+<span id="cb409-6"><a href="import-spreadsheets.html#cb409-6"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb409-7"><a href="import-spreadsheets.html#cb409-7"></a><span class="co">#&gt; 1 Adelie  Torge…           39.1          18.7              181        3750 male </span></span>
+<span id="cb409-8"><a href="import-spreadsheets.html#cb409-8"></a><span class="co">#&gt; 2 Adelie  Torge…           39.5          17.4              186        3800 fema…</span></span>
+<span id="cb409-9"><a href="import-spreadsheets.html#cb409-9"></a><span class="co">#&gt; 3 Adelie  Torge…           40.3          18                195        3250 fema…</span></span>
+<span id="cb409-10"><a href="import-spreadsheets.html#cb409-10"></a><span class="co">#&gt; 4 Adelie  Torge…           NA            NA                 NA          NA &lt;NA&gt; </span></span>
+<span id="cb409-11"><a href="import-spreadsheets.html#cb409-11"></a><span class="co">#&gt; 5 Adelie  Torge…           36.7          19.3              193        3450 fema…</span></span>
+<span id="cb409-12"><a href="import-spreadsheets.html#cb409-12"></a><span class="co">#&gt; 6 Adelie  Torge…           39.3          20.6              190        3650 male </span></span>
+<span id="cb409-13"><a href="import-spreadsheets.html#cb409-13"></a><span class="co">#&gt; # … with 46 more rows, and 1 more variable: year &lt;dbl&gt;</span></span></code></pre></div>
+<p>However, we cheated here a bit.
+We looked inside the Excel spreadsheet, which is not a recommended workflow.
+Instead, you can use <code>excel_sheets()</code> to get information on all sheets in an Excel spreadsheet, and then read the one(s) you’re interested in.</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="import-spreadsheets.html#cb410-1"></a><span class="kw">excel_sheets</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>)</span>
+<span id="cb410-2"><a href="import-spreadsheets.html#cb410-2"></a><span class="co">#&gt; [1] &quot;Torgersen Island&quot; &quot;Biscoe Island&quot;    &quot;Dream Island&quot;</span></span></code></pre></div>
+<p>Once you know the names of the sheets, you can read them in individually with <code>read_excel()</code>.</p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="import-spreadsheets.html#cb411-1"></a>penguins_biscoe &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Biscoe Island&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>)</span>
+<span id="cb411-2"><a href="import-spreadsheets.html#cb411-2"></a>penguins_dream  &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Dream Island&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>)</span></code></pre></div>
+<p>In this case the full penguins dataset is spread across three sheets in the spreadsheet.
+Each sheet has the same number of columns but different numbers of rows.</p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="import-spreadsheets.html#cb412-1"></a><span class="kw">dim</span>(penguins_torgersen)</span>
+<span id="cb412-2"><a href="import-spreadsheets.html#cb412-2"></a><span class="co">#&gt; [1] 52  8</span></span>
+<span id="cb412-3"><a href="import-spreadsheets.html#cb412-3"></a><span class="kw">dim</span>(penguins_biscoe)</span>
+<span id="cb412-4"><a href="import-spreadsheets.html#cb412-4"></a><span class="co">#&gt; [1] 168   8</span></span>
+<span id="cb412-5"><a href="import-spreadsheets.html#cb412-5"></a><span class="kw">dim</span>(penguins_dream)</span>
+<span id="cb412-6"><a href="import-spreadsheets.html#cb412-6"></a><span class="co">#&gt; [1] 124   8</span></span></code></pre></div>
+<p>We can put them together with <code>bind_rows()</code>.</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="import-spreadsheets.html#cb413-1"></a>penguins &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(penguins_torgersen, penguins_biscoe, penguins_dream)</span>
+<span id="cb413-2"><a href="import-spreadsheets.html#cb413-2"></a>penguins</span>
+<span id="cb413-3"><a href="import-spreadsheets.html#cb413-3"></a><span class="co">#&gt; # A tibble: 344 × 8</span></span>
+<span id="cb413-4"><a href="import-spreadsheets.html#cb413-4"></a><span class="co">#&gt;   species island bill_length_mm bill_depth_mm flipper_length_… body_mass_g sex  </span></span>
+<span id="cb413-5"><a href="import-spreadsheets.html#cb413-5"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb413-6"><a href="import-spreadsheets.html#cb413-6"></a><span class="co">#&gt; 1 Adelie  Torge…           39.1          18.7              181        3750 male </span></span>
+<span id="cb413-7"><a href="import-spreadsheets.html#cb413-7"></a><span class="co">#&gt; 2 Adelie  Torge…           39.5          17.4              186        3800 fema…</span></span>
+<span id="cb413-8"><a href="import-spreadsheets.html#cb413-8"></a><span class="co">#&gt; 3 Adelie  Torge…           40.3          18                195        3250 fema…</span></span>
+<span id="cb413-9"><a href="import-spreadsheets.html#cb413-9"></a><span class="co">#&gt; 4 Adelie  Torge…           NA            NA                 NA          NA &lt;NA&gt; </span></span>
+<span id="cb413-10"><a href="import-spreadsheets.html#cb413-10"></a><span class="co">#&gt; 5 Adelie  Torge…           36.7          19.3              193        3450 fema…</span></span>
+<span id="cb413-11"><a href="import-spreadsheets.html#cb413-11"></a><span class="co">#&gt; 6 Adelie  Torge…           39.3          20.6              190        3650 male </span></span>
+<span id="cb413-12"><a href="import-spreadsheets.html#cb413-12"></a><span class="co">#&gt; # … with 338 more rows, and 1 more variable: year &lt;dbl&gt;</span></span></code></pre></div>
+<p>In Chapter <a href="iteration.html#iteration">24</a> we’ll talk about ways of doing this sort of task without repetitive code <!--# Check to make sure that's the right place to present it -->.</p>
+</div>
+<div id="reading-part-of-a-sheet" class="section level3">
+<h3><span class="header-section-number">19.2.5</span> Reading part of a sheet</h3>
+<p>Since many use Excel spreadsheets for presentation as well as for data storage, it’s quite common to find cell entries in a spreadsheet that are not part of the data you want to read into R.
+Figure <a href="import-spreadsheets.html#fig:deaths-excel">19.3</a> shows such a spreadsheet: in the middle of the sheet is what looks like a data frame but there is extraneous text in cells above and below the data.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:deaths-excel"></span>
+<img src="images/import-spreadsheets-deaths.png" alt="A look at the deaths spreadsheet in Excel. The spreadsheet has four rows on top that contain non-data information; the text 'For the same of consistency in the data layout, which is really a beautiful thing, I will keep making notes up here.' is spread across cells in these top four rows. Then, there is a data frame that includes information on deaths of 10 famous people, including their names, professions, ages, whether they have kids r not, date of birth and death. At the bottom, there are four more rows of non-data information; the text 'This has been really fun, but we're signing off now!' is spread across cells in these bottom four rows." width="70%" />
+<p class="caption">
+Figure 19.3: Spreadsheet called deaths.xlsx in Excel.
+</p>
+</div>
+<p>This spreadsheet is one of the example spreadsheets provided in the readxl package.
+You can use the <code>readxl_example()</code> function to locate the spreadsheet on your system in the directory where the package is installed.
+This function returns the path to the spreadsheet, which you can use in <code>read_excel()</code> as usual.</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="import-spreadsheets.html#cb414-1"></a>deaths_path &lt;-<span class="st"> </span><span class="kw">readxl_example</span>(<span class="st">&quot;deaths.xlsx&quot;</span>)</span>
+<span id="cb414-2"><a href="import-spreadsheets.html#cb414-2"></a>deaths &lt;-<span class="st"> </span><span class="kw">read_excel</span>(deaths_path)</span>
+<span id="cb414-3"><a href="import-spreadsheets.html#cb414-3"></a><span class="co">#&gt; New names:</span></span>
+<span id="cb414-4"><a href="import-spreadsheets.html#cb414-4"></a><span class="co">#&gt; * `` -&gt; ...2</span></span>
+<span id="cb414-5"><a href="import-spreadsheets.html#cb414-5"></a><span class="co">#&gt; * `` -&gt; ...3</span></span>
+<span id="cb414-6"><a href="import-spreadsheets.html#cb414-6"></a><span class="co">#&gt; * `` -&gt; ...4</span></span>
+<span id="cb414-7"><a href="import-spreadsheets.html#cb414-7"></a><span class="co">#&gt; * `` -&gt; ...5</span></span>
+<span id="cb414-8"><a href="import-spreadsheets.html#cb414-8"></a><span class="co">#&gt; * `` -&gt; ...6</span></span>
+<span id="cb414-9"><a href="import-spreadsheets.html#cb414-9"></a>deaths</span>
+<span id="cb414-10"><a href="import-spreadsheets.html#cb414-10"></a><span class="co">#&gt; # A tibble: 18 × 6</span></span>
+<span id="cb414-11"><a href="import-spreadsheets.html#cb414-11"></a><span class="co">#&gt;   `Lots of people`             ...2       ...3  ...4     ...5          ...6     </span></span>
+<span id="cb414-12"><a href="import-spreadsheets.html#cb414-12"></a><span class="co">#&gt;   &lt;chr&gt;                        &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;    </span></span>
+<span id="cb414-13"><a href="import-spreadsheets.html#cb414-13"></a><span class="co">#&gt; 1 simply cannot resist writing &lt;NA&gt;       &lt;NA&gt;  &lt;NA&gt;     &lt;NA&gt;          some not…</span></span>
+<span id="cb414-14"><a href="import-spreadsheets.html#cb414-14"></a><span class="co">#&gt; 2 at                           the        top   &lt;NA&gt;     of            their sp…</span></span>
+<span id="cb414-15"><a href="import-spreadsheets.html#cb414-15"></a><span class="co">#&gt; 3 or                           merging    &lt;NA&gt;  &lt;NA&gt;     &lt;NA&gt;          cells    </span></span>
+<span id="cb414-16"><a href="import-spreadsheets.html#cb414-16"></a><span class="co">#&gt; 4 Name                         Profession Age   Has kids Date of birth Date of …</span></span>
+<span id="cb414-17"><a href="import-spreadsheets.html#cb414-17"></a><span class="co">#&gt; 5 David Bowie                  musician   69    TRUE     17175         42379    </span></span>
+<span id="cb414-18"><a href="import-spreadsheets.html#cb414-18"></a><span class="co">#&gt; 6 Carrie Fisher                actor      60    TRUE     20749         42731    </span></span>
+<span id="cb414-19"><a href="import-spreadsheets.html#cb414-19"></a><span class="co">#&gt; # … with 12 more rows</span></span></code></pre></div>
+<p>맨 위 세 행과 맨 아래 네 행은 데이터프레임의 부분이 아니다.</p>
+<p>맨 위 행들은 <code>skip</code> 으로 건너뛸 수 있다.
+Note that we set <code>skip = 4</code> since the fourth row contains column names, not the data.</p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="import-spreadsheets.html#cb415-1"></a><span class="kw">read_excel</span>(deaths_path, <span class="dt">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb415-2"><a href="import-spreadsheets.html#cb415-2"></a><span class="co">#&gt; # A tibble: 14 × 6</span></span>
+<span id="cb415-3"><a href="import-spreadsheets.html#cb415-3"></a><span class="co">#&gt;   Name          Profession Age   `Has kids` `Date of birth`     `Date of death`</span></span>
+<span id="cb415-4"><a href="import-spreadsheets.html#cb415-4"></a><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;      &lt;dttm&gt;              &lt;chr&gt;          </span></span>
+<span id="cb415-5"><a href="import-spreadsheets.html#cb415-5"></a><span class="co">#&gt; 1 David Bowie   musician   69    TRUE       1947-01-08 00:00:00 42379          </span></span>
+<span id="cb415-6"><a href="import-spreadsheets.html#cb415-6"></a><span class="co">#&gt; 2 Carrie Fisher actor      60    TRUE       1956-10-21 00:00:00 42731          </span></span>
+<span id="cb415-7"><a href="import-spreadsheets.html#cb415-7"></a><span class="co">#&gt; 3 Chuck Berry   musician   90    TRUE       1926-10-18 00:00:00 42812          </span></span>
+<span id="cb415-8"><a href="import-spreadsheets.html#cb415-8"></a><span class="co">#&gt; 4 Bill Paxton   actor      61    TRUE       1955-05-17 00:00:00 42791          </span></span>
+<span id="cb415-9"><a href="import-spreadsheets.html#cb415-9"></a><span class="co">#&gt; 5 Prince        musician   57    TRUE       1958-06-07 00:00:00 42481          </span></span>
+<span id="cb415-10"><a href="import-spreadsheets.html#cb415-10"></a><span class="co">#&gt; 6 Alan Rickman  actor      69    FALSE      1946-02-21 00:00:00 42383          </span></span>
+<span id="cb415-11"><a href="import-spreadsheets.html#cb415-11"></a><span class="co">#&gt; # … with 8 more rows</span></span></code></pre></div>
+<p>We could also set <code>n_max</code> to omit the extraneous rows at the bottom.</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="import-spreadsheets.html#cb416-1"></a><span class="kw">read_excel</span>(deaths_path, <span class="dt">skip =</span> <span class="dv">4</span>, <span class="dt">n_max =</span> <span class="dv">10</span>)</span>
+<span id="cb416-2"><a href="import-spreadsheets.html#cb416-2"></a><span class="co">#&gt; # A tibble: 10 × 6</span></span>
+<span id="cb416-3"><a href="import-spreadsheets.html#cb416-3"></a><span class="co">#&gt;   Name       Profession   Age `Has kids` `Date of birth`     `Date of death`    </span></span>
+<span id="cb416-4"><a href="import-spreadsheets.html#cb416-4"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt; &lt;lgl&gt;      &lt;dttm&gt;              &lt;dttm&gt;             </span></span>
+<span id="cb416-5"><a href="import-spreadsheets.html#cb416-5"></a><span class="co">#&gt; 1 David Bow… musician      69 TRUE       1947-01-08 00:00:00 2016-01-10 00:00:00</span></span>
+<span id="cb416-6"><a href="import-spreadsheets.html#cb416-6"></a><span class="co">#&gt; 2 Carrie Fi… actor         60 TRUE       1956-10-21 00:00:00 2016-12-27 00:00:00</span></span>
+<span id="cb416-7"><a href="import-spreadsheets.html#cb416-7"></a><span class="co">#&gt; 3 Chuck Ber… musician      90 TRUE       1926-10-18 00:00:00 2017-03-18 00:00:00</span></span>
+<span id="cb416-8"><a href="import-spreadsheets.html#cb416-8"></a><span class="co">#&gt; 4 Bill Paxt… actor         61 TRUE       1955-05-17 00:00:00 2017-02-25 00:00:00</span></span>
+<span id="cb416-9"><a href="import-spreadsheets.html#cb416-9"></a><span class="co">#&gt; 5 Prince     musician      57 TRUE       1958-06-07 00:00:00 2016-04-21 00:00:00</span></span>
+<span id="cb416-10"><a href="import-spreadsheets.html#cb416-10"></a><span class="co">#&gt; 6 Alan Rick… actor         69 FALSE      1946-02-21 00:00:00 2016-01-14 00:00:00</span></span>
+<span id="cb416-11"><a href="import-spreadsheets.html#cb416-11"></a><span class="co">#&gt; # … with 4 more rows</span></span></code></pre></div>
+<p>Another approach is using cell ranges.
+In Excel, the top left cell is <code>A1</code>.
+As you move across columns to the right, the cell label moves down the alphabet, i.e.
+<code>B1</code>, <code>C1</code>, etc.
+And as you move down a column, the number in the cell label increases, i.e.
+<code>A2</code>, <code>A3</code>, etc.</p>
+<p>The data we want to read in starts in cell <code>A5</code> and ends in cell <code>F15</code>.
+In spreadsheet notation, this is <code>A5:F15</code>.</p>
+<ul>
+<li><p>Supply this information to the <code>range</code> argument:</p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="import-spreadsheets.html#cb417-1"></a><span class="kw">read_excel</span>(deaths_path, <span class="dt">range =</span> <span class="st">&quot;A5:F15&quot;</span>)</span></code></pre></div></li>
+<li><p>Specify rows:</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="import-spreadsheets.html#cb418-1"></a><span class="kw">read_excel</span>(deaths_path, <span class="dt">range =</span> <span class="kw">cell_rows</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">15</span>)))</span></code></pre></div></li>
+<li><p>Specify cells that mark the top-left and bottom-right corners of the data – the top-left corner, <code>A5</code>, translates to <code>c(5, 1)</code> (5th row down, 1st column) and the bottom-right corner, <code>F15</code>, translates to <code>c(15, 6)</code>:</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="import-spreadsheets.html#cb419-1"></a><span class="kw">read_excel</span>(deaths_path, <span class="dt">range =</span> <span class="kw">cell_limits</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">6</span>)))</span></code></pre></div></li>
+</ul>
+<p>If you have control over the sheet, an even better way is to create a “named range”.
+This is useful within Excel because named ranges help repeat formulas easier to create and they have some useful properties for creating dynamic charts and graphs as well.
+Even if you’re not working in Excel, named ranges can be useful for identifying which cells to read into R.
+In the example above, the table we’re reading in is named <code>Table1</code>, so we can read it in with the following.</p>
+<p><strong>TO DO:</strong> Add this once reading in named ranges are implemented in readxl.</p>
+</div>
+<div id="data-types" class="section level3">
+<h3><span class="header-section-number">19.2.6</span> Data types</h3>
+<p>In CSV files, all values are strings.
+This is not particularly true to the data, but it is simple: everything is a string.</p>
+<p>The underlying data in Excel spreadsheets is more complex.
+A cell can be one of five things:</p>
+<ul>
+<li><p>A logical, like TRUE / FALSE</p></li>
+<li><p>A number, like “10” or “10.5”</p></li>
+<li><p>A date, which can also include time like “11/1/21” or “11/1/21 3:00 PM”</p></li>
+<li><p>A string, like “ten”</p></li>
+<li><p>A currency, which allows numeric values in a limited range and four decimal digits of fixed precision</p></li>
+</ul>
+<p>When working with spreadsheet data, it’s important to keep in mind that how the underlying data is stored can be very different than what you see in the cell.
+For example, Excel has no notion of an integer.
+All numbers are stored as floating points, but you can choose to display the data with a customizable number of decimal points.
+Similarly, dates are actually stored as numbers, specifically the number of seconds since January 1, 1970.
+You can customize how you display the date by applying formatting in Excel.
+Confusingly, it’s also possible to have something that looks like a number but is actually a string (e.g. type <code>'10</code> into a cell in Excel).</p>
+<p>These differences between how the underlying data are stored vs. how they’re displayed can cause surprises when the data are loaded into R.
+By default readxl will guess the data type in a given column.
+A recommended workflow is to let readxl guess the column types, confirm that you’re happy with the guessed column types, and if not, go back and re-import specifying <code>col_types</code> as shown in Section <a href="#reading-spreadsheets"><strong>??</strong></a>.</p>
+<p>Another challenge is when you have a column in your Excel spreadsheet that has a mix of these types, e.g. some cells are numeric, others text, others dates.
+When importing the data into R readxl has to make some decisions.
+In these cases you can set the type for this column to <code>"list"</code>, which will load the column as a list of length 1 vectors, where the type of each element of the vector is guessed.</p>
+</div>
+<div id="data-not-in-cell-values" class="section level3">
+<h3><span class="header-section-number">19.2.7</span> Data not in cell values</h3>
+<p><strong>tidyxl</strong> is useful for importing non-tabular data from Excel files into R.
+For example, tidyxl doesn’t coerce a pivot table into a data frame.
+See <a href="https://nacnudus.github.io/spreadsheet-munging-strategies/" class="uri">https://nacnudus.github.io/spreadsheet-munging-strategies/</a> for more on strategies for working with non-tabular data from Excel.</p>
+</div>
+<div id="writing-to-excel" class="section level3">
+<h3><span class="header-section-number">19.2.8</span> Writing to Excel</h3>
+<p>Let’s create a small data frame that we can then write out.
+Note that <code>item</code> is a factor and <code>quantity</code> is an integer.</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="import-spreadsheets.html#cb420-1"></a>bake_sale &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
+<span id="cb420-2"><a href="import-spreadsheets.html#cb420-2"></a>  <span class="dt">item     =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;brownie&quot;</span>, <span class="st">&quot;cupcake&quot;</span>, <span class="st">&quot;cookie&quot;</span>)),</span>
+<span id="cb420-3"><a href="import-spreadsheets.html#cb420-3"></a>  <span class="dt">quantity =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
+<span id="cb420-4"><a href="import-spreadsheets.html#cb420-4"></a>)</span>
+<span id="cb420-5"><a href="import-spreadsheets.html#cb420-5"></a></span>
+<span id="cb420-6"><a href="import-spreadsheets.html#cb420-6"></a>bake_sale</span>
+<span id="cb420-7"><a href="import-spreadsheets.html#cb420-7"></a><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span id="cb420-8"><a href="import-spreadsheets.html#cb420-8"></a><span class="co">#&gt;   item    quantity</span></span>
+<span id="cb420-9"><a href="import-spreadsheets.html#cb420-9"></a><span class="co">#&gt;   &lt;fct&gt;      &lt;dbl&gt;</span></span>
+<span id="cb420-10"><a href="import-spreadsheets.html#cb420-10"></a><span class="co">#&gt; 1 brownie       10</span></span>
+<span id="cb420-11"><a href="import-spreadsheets.html#cb420-11"></a><span class="co">#&gt; 2 cupcake        5</span></span>
+<span id="cb420-12"><a href="import-spreadsheets.html#cb420-12"></a><span class="co">#&gt; 3 cookie         8</span></span></code></pre></div>
+<p>You can write data back to disk as an Excel file using the <code>write_xlsx()</code> from the <strong>writexl</strong> package.</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="import-spreadsheets.html#cb421-1"></a><span class="kw">library</span>(writexl)</span>
+<span id="cb421-2"><a href="import-spreadsheets.html#cb421-2"></a><span class="kw">write_xlsx</span>(bake_sale, <span class="dt">path =</span> <span class="st">&quot;data/bake-sale.xlsx&quot;</span>)</span></code></pre></div>
+<p>Figure <a href="import-spreadsheets.html#fig:bake-sale-excel">19.4</a> shows what the data looks like in Excel.
+Note that column names are included and bolded.
+These can be turned off by setting <code>col_names</code> and <code>format_headers</code> arguments to <code>FALSE</code>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bake-sale-excel"></span>
+<img src="images/import-spreadsheets-bake-sale.png" alt="Bake sale data frame created earlier in Excel." width="70%" />
+<p class="caption">
+Figure 19.4: Spreadsheet called bake_sale.xlsx in Excel.
+</p>
+</div>
+<p>Just like reading from a CSV, information on data type is lost when we read the data back in.
+This makes Excel files unreliable for caching interim results as well.
+For alternatives, see Section <a href="#writing-to-a-file"><strong>??</strong></a>.</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="import-spreadsheets.html#cb422-1"></a><span class="kw">read_excel</span>(<span class="st">&quot;data/bake-sale.xlsx&quot;</span>)</span>
+<span id="cb422-2"><a href="import-spreadsheets.html#cb422-2"></a><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span id="cb422-3"><a href="import-spreadsheets.html#cb422-3"></a><span class="co">#&gt;   item    quantity</span></span>
+<span id="cb422-4"><a href="import-spreadsheets.html#cb422-4"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;</span></span>
+<span id="cb422-5"><a href="import-spreadsheets.html#cb422-5"></a><span class="co">#&gt; 1 brownie       10</span></span>
+<span id="cb422-6"><a href="import-spreadsheets.html#cb422-6"></a><span class="co">#&gt; 2 cupcake        5</span></span>
+<span id="cb422-7"><a href="import-spreadsheets.html#cb422-7"></a><span class="co">#&gt; 3 cookie         8</span></span></code></pre></div>
+</div>
+<div id="formatted-output" class="section level3">
+<h3><span class="header-section-number">19.2.9</span> Formatted output</h3>
+<p>The readxl package is a light-weight solution for writing a simple Excel spreadsheet, but if you’re interested in additional features like writing to sheets within a spreadsheet and styling, you will want to use the <strong>openxlsx</strong> package.
+Note that this package is not part of the tidyverse so the functions and workflows may feel unfamiliar.
+For example, function names are camelCase, multiple functions can’t be composed in pipelines, and arguments are in a different order than they tend to be in the tidyverse.
+However, this is ok.
+As your R learning and usage expands outside of this book you will encounter lots of different styles used in various R packages that you might need to use to accomplish specific goals in R.
+A good way of familiarizing yourself with the coding style used in a new package is to run the examples provided in function documentation to get a feel for the syntax and the output formats as well as reading any vignettes that might come with the package.</p>
+<p>Below we show how to write a spreadsheet with three sheets, one for each species of penguins in the <code>penguins</code> data frame.</p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="import-spreadsheets.html#cb423-1"></a><span class="kw">library</span>(openxlsx)</span>
+<span id="cb423-2"><a href="import-spreadsheets.html#cb423-2"></a><span class="kw">library</span>(palmerpenguins)</span>
+<span id="cb423-3"><a href="import-spreadsheets.html#cb423-3"></a></span>
+<span id="cb423-4"><a href="import-spreadsheets.html#cb423-4"></a><span class="co"># Create a workbook (spreadsheet)</span></span>
+<span id="cb423-5"><a href="import-spreadsheets.html#cb423-5"></a>penguins_species &lt;-<span class="st"> </span><span class="kw">createWorkbook</span>()</span>
+<span id="cb423-6"><a href="import-spreadsheets.html#cb423-6"></a></span>
+<span id="cb423-7"><a href="import-spreadsheets.html#cb423-7"></a><span class="co"># Add three sheets to the spreadsheet</span></span>
+<span id="cb423-8"><a href="import-spreadsheets.html#cb423-8"></a><span class="kw">addWorksheet</span>(penguins_species, <span class="dt">sheetName =</span> <span class="st">&quot;Adelie&quot;</span>)</span>
+<span id="cb423-9"><a href="import-spreadsheets.html#cb423-9"></a><span class="kw">addWorksheet</span>(penguins_species, <span class="dt">sheetName =</span> <span class="st">&quot;Gentoo&quot;</span>)</span>
+<span id="cb423-10"><a href="import-spreadsheets.html#cb423-10"></a><span class="kw">addWorksheet</span>(penguins_species, <span class="dt">sheetName =</span> <span class="st">&quot;Chinstrap&quot;</span>)</span>
+<span id="cb423-11"><a href="import-spreadsheets.html#cb423-11"></a></span>
+<span id="cb423-12"><a href="import-spreadsheets.html#cb423-12"></a><span class="co"># Write data to each sheet</span></span>
+<span id="cb423-13"><a href="import-spreadsheets.html#cb423-13"></a><span class="kw">writeDataTable</span>(</span>
+<span id="cb423-14"><a href="import-spreadsheets.html#cb423-14"></a>  penguins_species,</span>
+<span id="cb423-15"><a href="import-spreadsheets.html#cb423-15"></a>  <span class="dt">sheet =</span> <span class="st">&quot;Adelie&quot;</span>,</span>
+<span id="cb423-16"><a href="import-spreadsheets.html#cb423-16"></a>  <span class="dt">x =</span> penguins <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(species <span class="op">==</span><span class="st"> &quot;Adelie&quot;</span>)</span>
+<span id="cb423-17"><a href="import-spreadsheets.html#cb423-17"></a>)</span>
+<span id="cb423-18"><a href="import-spreadsheets.html#cb423-18"></a><span class="kw">writeDataTable</span>(</span>
+<span id="cb423-19"><a href="import-spreadsheets.html#cb423-19"></a>  penguins_species,</span>
+<span id="cb423-20"><a href="import-spreadsheets.html#cb423-20"></a>  <span class="dt">sheet =</span> <span class="st">&quot;Gentoo&quot;</span>,</span>
+<span id="cb423-21"><a href="import-spreadsheets.html#cb423-21"></a>  <span class="dt">x =</span> penguins <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(species <span class="op">==</span><span class="st"> &quot;Gentoo&quot;</span>)</span>
+<span id="cb423-22"><a href="import-spreadsheets.html#cb423-22"></a>)</span>
+<span id="cb423-23"><a href="import-spreadsheets.html#cb423-23"></a><span class="kw">writeDataTable</span>(</span>
+<span id="cb423-24"><a href="import-spreadsheets.html#cb423-24"></a>  penguins_species,</span>
+<span id="cb423-25"><a href="import-spreadsheets.html#cb423-25"></a>  <span class="dt">sheet =</span> <span class="st">&quot;Chinstrap&quot;</span>,</span>
+<span id="cb423-26"><a href="import-spreadsheets.html#cb423-26"></a>  <span class="dt">x =</span> penguins <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(species <span class="op">==</span><span class="st"> &quot;Chinstrap&quot;</span>)</span>
+<span id="cb423-27"><a href="import-spreadsheets.html#cb423-27"></a>)</span></code></pre></div>
+<p>This creates a workbook object:</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="import-spreadsheets.html#cb424-1"></a>penguins_species</span>
+<span id="cb424-2"><a href="import-spreadsheets.html#cb424-2"></a><span class="co">#&gt; A Workbook object.</span></span>
+<span id="cb424-3"><a href="import-spreadsheets.html#cb424-3"></a><span class="co">#&gt;  </span></span>
+<span id="cb424-4"><a href="import-spreadsheets.html#cb424-4"></a><span class="co">#&gt; Worksheets:</span></span>
+<span id="cb424-5"><a href="import-spreadsheets.html#cb424-5"></a><span class="co">#&gt;  Sheet 1: &quot;Adelie&quot;</span></span>
+<span id="cb424-6"><a href="import-spreadsheets.html#cb424-6"></a><span class="co">#&gt;  </span></span>
+<span id="cb424-7"><a href="import-spreadsheets.html#cb424-7"></a><span class="co">#&gt; </span></span>
+<span id="cb424-8"><a href="import-spreadsheets.html#cb424-8"></a><span class="co">#&gt;  Sheet 2: &quot;Gentoo&quot;</span></span>
+<span id="cb424-9"><a href="import-spreadsheets.html#cb424-9"></a><span class="co">#&gt;  </span></span>
+<span id="cb424-10"><a href="import-spreadsheets.html#cb424-10"></a><span class="co">#&gt; </span></span>
+<span id="cb424-11"><a href="import-spreadsheets.html#cb424-11"></a><span class="co">#&gt;  Sheet 3: &quot;Chinstrap&quot;</span></span>
+<span id="cb424-12"><a href="import-spreadsheets.html#cb424-12"></a><span class="co">#&gt;  </span></span>
+<span id="cb424-13"><a href="import-spreadsheets.html#cb424-13"></a><span class="co">#&gt; </span></span>
+<span id="cb424-14"><a href="import-spreadsheets.html#cb424-14"></a><span class="co">#&gt;  </span></span>
+<span id="cb424-15"><a href="import-spreadsheets.html#cb424-15"></a><span class="co">#&gt;  Worksheet write order: 1, 2, 3</span></span>
+<span id="cb424-16"><a href="import-spreadsheets.html#cb424-16"></a><span class="co">#&gt;  Active Sheet 1: &quot;Adelie&quot; </span></span>
+<span id="cb424-17"><a href="import-spreadsheets.html#cb424-17"></a><span class="co">#&gt;  Position: 1</span></span></code></pre></div>
+<p>And we can write this to this with <code>saveWorkbook()</code>.</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="import-spreadsheets.html#cb425-1"></a><span class="kw">saveWorkbook</span>(penguins_species, <span class="st">&quot;data/penguins-species.xlsx&quot;</span>)</span></code></pre></div>
+<p>The resulting spreadsheet is shown in Figure <a href="import-spreadsheets.html#fig:penguins-species">19.5</a>.
+By default, openxlsx formats the data as an Excel table.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:penguins-species"></span>
+<img src="images/import-spreadsheets-penguins-species.png" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three sheets: Torgersen Island, Biscoe Island, and Dream Island." width="70%" />
+<p class="caption">
+Figure 19.5: Spreadsheet called penguins.xlsx in Excel.
+</p>
+</div>
+<p>See <a href="https://ycphs.github.io/openxlsx/articles/Formatting.html" class="uri">https://ycphs.github.io/openxlsx/articles/Formatting.html</a> for an extensive discussion on further formatting functionality for data written from R to Excel with openxlsx.</p>
+</div>
+<div id="exercises-18" class="section level3">
+<h3><span class="header-section-number">19.2.10</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Recreate the <code>bake_sale</code> data frame, write it out to an Excel file using the <code>write.xlsx()</code> function from the openxlsx package.</li>
+<li>What happens if you try to read in a file with <code>.xlsx</code> extension with <code>read_xls()</code>?</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="import-rectangular.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="program-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/hadley/r4ds/edit/master/import-spreadsheets.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

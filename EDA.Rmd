@@ -243,7 +243,7 @@ It's good practice to repeat your analysis with and without the outliers. If the
     zooming in on a histogram. What happens if you leave `binwidth` unset?
     What happens if you try and zoom so only half a bar shows?
     
-## Missing values
+## Missing values {#missing-values-eda}
 
 If you've encountered unusual values in your dataset, and simply want to move on to the rest of your analysis, you have two options.
 
