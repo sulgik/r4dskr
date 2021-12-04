@@ -164,23 +164,23 @@ penguins_torgersen <- read_excel("data/penguins.xlsx", sheet = "Torgersen Island
 penguins_torgersen
 ```
 
-However, we cheated here a bit.
-We looked inside the Excel spreadsheet, which is not a recommended workflow.
-Instead, you can use `excel_sheets()` to get information on all sheets in an Excel spreadsheet, and then read the one(s) you're interested in.
+하지만 여기서 우리는 약간 반칙을 했다.
+엑셀 스프레드시트 내부를 살펴봤는데, 이는 추천하는 워크플로우가 아니다.
+대신, `excel_sheets()` 을 사용하여 엑셀 스프레드시트의 모든 시트 정보를 본 뒤 관심 있는 시트를 읽을 수 있다.
 
 ```{r}
 excel_sheets("data/penguins.xlsx")
 ```
 
-Once you know the names of the sheets, you can read them in individually with `read_excel()`.
+시트의 이름을 알면, 개별적으로 `read_excel()` 로 읽을 수 있다.
 
 ```{r}
 penguins_biscoe <- read_excel("data/penguins.xlsx", sheet = "Biscoe Island", na = "NA")
 penguins_dream  <- read_excel("data/penguins.xlsx", sheet = "Dream Island", na = "NA")
 ```
 
-In this case the full penguins dataset is spread across three sheets in the spreadsheet.
-Each sheet has the same number of columns but different numbers of rows.
+이 경우 총 펭귄 데이터셋이 스프레드 시트의 세 개의 시트에 퍼져있다.
+각 시트는 열 개수가 서로 같지만 행 수는 다르다.
 
 ```{r}
 dim(penguins_torgersen)
@@ -188,14 +188,14 @@ dim(penguins_biscoe)
 dim(penguins_dream)
 ```
 
-We can put them together with `bind_rows()`.
+`bind_rows()`로 이 시트를 합칠 수 있다.
 
 ```{r}
 penguins <- bind_rows(penguins_torgersen, penguins_biscoe, penguins_dream)
 penguins
 ```
 
-In Chapter \@ref(iteration) we'll talk about ways of doing this sort of task without repetitive code <!--# Check to make sure that's the right place to present it -->.
+\@ref(iteration) 장에서 우리는 we'll talk about ways of doing this sort of task without repetitive code <!--# Check to make sure that's the right place to present it -->.
 
 ### Reading part of a sheet
 

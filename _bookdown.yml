@@ -6,7 +6,7 @@ rmd_files: [
 
   "intro.Rmd",
 
-  "explore.Rmd",
+  "whoel-game.Rmd",
   "data-visualize.Rmd",
   "workflow-basics.Rmd",
   "data-transform.Rmd",

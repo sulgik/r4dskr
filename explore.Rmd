@@ -1,4 +1,4 @@
-# (PART) 탐색하기 {-}
+# (PART) 전체게임 {.unnumbered}
 
 # 소개 {#explore-intro}
 

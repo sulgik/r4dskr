@@ -78,7 +78,7 @@ students
 ```
 
 데이터에는 학생 여섯이 있고 각 학생마다 변수 다섯개가 있다.
-하지만 이 데이터셋에 관해 이야기 하고 싶은 것 몇개가 있다.
+하지만 이 데이터셋에 관해 이야기 하고 싶은 것 몇 가지가 있다.
 
 1.  The column names are all over the place.
     You can provide column names that follow a consistent format; we recommend `snake_case` using the `col_names` argument.
@@ -101,9 +101,9 @@ students
     #> # … with 1 more row
     ```
 
-    Unfortunately, this didn't quite do the trick.
-    You now have the variable names we want, but what was previously the header row now shows up as the first observation in the data.
-    You can explicitly skip that row using the `skip` argument.
+    이렇게 해서 아직도 해결되지 않았다.
+    우리가 원하는 변수 이름을 갖게 되었지만 이전 해더행이 데이터에서 첫번째 관측값으로 보여지고 있다.
+    `skip` 인수를 써서 해당 행을 명시적으로 건너뛸 수 있다.
 
     
     ```r
@@ -123,9 +123,9 @@ students
     #> 6          6 Güvenç Attila    Ice cream          Lunch only          6
     ```
 
-2.  In the `favourite_food` column, one of the observations is `N/A`, which stands for "not available" but it's currently not recognized as an `NA` (note the contrast between this `N/A` and the age of the fourth student in the list).
-    You can specify which character strings should be recognized as `NA`s with the `na` argument.
-    By default, only `""` (empty string, or, in the case of reading from a spreadsheet, an empty cell) is recognized as an `NA`.
+2.  `favourite_food` 열의 한 관측값은 `N/A` 인데 이는 "해당없음 (not available)" 을 의마한다. 하지만 현재 `NA` 로 인식되고 있지 않다 (이 `N/A` 와 리스트에서 네번째 학생의 나이 사이의 차이를 살펴보자).
+    `na` 인수를 사용해서 어떤 문자열이 `NA` 로 인식되어야 하는지를 설정할 수 있다.
+    기본값으로는 `""` (빈 문자열, 혹은 스프레드시트의 경우 빈 셀) 만 `NA` 로 인식된다.
 
     
     ```r
@@ -146,10 +146,10 @@ students
     #> 6          6 Güvenç Attila    Ice cream          Lunch only          6
     ```
 
-3.  One other remaining issue is that `age` is read in as a character variable, but it really should be numeric.
-    Just like with `read_csv()` and friends for reading data from flat files, you can supply a `col_types` argument to `read_excel()` and specify the column types for the variables you read in.
-    The syntax is a bit different, though.
-    Your options are `"skip"`, `"guess"`, `"logical"`, `"numeric"`, `"date"`, `"text"` or `"list"`.
+3.  하나 남은 이슈는 `age` 가 문자열로 읽히고 있는데 실제는 수치형이 되어야 한다는 것이다.
+    `read_csv()` 와 이웃함수들이 플랫 파일에서 데이터를 읽을 때와 같이 `col_types` 인수를 `read_excel()` 의 `col_types` 인수를 제공하고 읽고 있는 변수의 열 타잎을 명시해야한다. 
+    문법은 약간 다르다.
+    옵션은 `"skip"`, `"guess"`, `"logical"`, `"numeric"`, `"date"`, `"text"`, `"list"` 중 하나이다.
 
     
     ```r
@@ -173,9 +173,9 @@ students
     #> 6          6 Güvenç Attila    Ice cream          Lunch only              6
     ```
 
-    However, this didn't quite produce the desired result either.
-    By specifying that `age` should be numeric, we have turned the one cell with the non-numeric entry (which had the value `five`) into an `NA`.
-    In this case, we should read age in as `"text"` and then make the change once the data is loaded in R.
+    하지만 이것도 원하는 결과를 만들지 못했다.
+    `age` 가 수치형이라고 명시해서, 수치가 아닌 값을 가진 셀 (`five` 값을 가짐) 이 `NA` 로 변환되었다.
+    이 경우, 나이를 `"text"` 로 읽은 후 데이터가 R 에 다 읽어진 후 작업을 해야 한다.
 
     
     ```r
@@ -215,17 +215,17 @@ That might be tempting, but it's strongly not recommended.
 
 ### 개별 시트 읽어오기
 
-An important feature that distinguishes spreadsheets from flat files is the notion of multiple sheets.
-Figure \@ref(fig:penguins-islands) shows an Excel spreadsheet with multiple sheets.
-The data come from the **palmerpenguins** package.
-Each sheet contains information on penguins from a different island where data were collected.
+스프레드시트가 플랫 파일과 다른 중요한 특징은 다중 시트라는 개념이다.
+Figure \@ref(fig:penguins-islands) 은 다중 시트가 있는 엑셀 스프레드시트를 보여준다.
+**palmerpenguins** 패키지의 데이터이다.
+각 시트에는 데이터가 수집된 개별 섬들의 펭귄에 관한 정보가 들어있다.
 
 <div class="figure" style="text-align: center">
 <img src="images/import-spreadsheets-penguins-islands.png" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three sheets: Torgersen Island, Biscoe Island, and Dream Island." width="70%" />
 <p class="caption">(\#fig:penguins-islands)Spreadsheet called penguins.xlsx in Excel.</p>
 </div>
 
-You can read a single sheet from a spreadsheet with the `sheet` argument in `read_excel()`.
+`read_excel()` 의 `sheet` 인수를 이용하여 스프레드시트의 단일 시트를 읽을 수 있다.
 
 
 ```r
@@ -242,7 +242,7 @@ read_excel("data/penguins.xlsx", sheet = "Torgersen Island")
 #> # … with 46 more rows, and 1 more variable: year <dbl>
 ```
 
-Some variables that appear to contain numerical data are read in as characters due to the character string `"NA"` not being recognized as a true `NA`.
+수치형 데이터를 포함한 것 같은 변수들이 문자열 `"NA"` 가 실제 `NA` 로 인식되지 않기 때문에 문자형으로 읽힌다.
 
 
 ```r
@@ -261,9 +261,9 @@ penguins_torgersen
 #> # … with 46 more rows, and 1 more variable: year <dbl>
 ```
 
-However, we cheated here a bit.
-We looked inside the Excel spreadsheet, which is not a recommended workflow.
-Instead, you can use `excel_sheets()` to get information on all sheets in an Excel spreadsheet, and then read the one(s) you're interested in.
+하지만 여기서 우리는 약간 반칙을 했다.
+엑셀 스프레드시트 내부를 살펴봤는데, 이는 추천하는 워크플로우가 아니다.
+대신, `excel_sheets()` 을 사용하여 엑셀 스프레드시트의 모든 시트 정보를 본 뒤 관심 있는 시트를 읽을 수 있다.
 
 
 ```r
@@ -271,7 +271,7 @@ excel_sheets("data/penguins.xlsx")
 #> [1] "Torgersen Island" "Biscoe Island"    "Dream Island"
 ```
 
-Once you know the names of the sheets, you can read them in individually with `read_excel()`.
+시트의 이름을 알면, 개별적으로 `read_excel()` 로 읽을 수 있다.
 
 
 ```r
@@ -279,8 +279,8 @@ penguins_biscoe <- read_excel("data/penguins.xlsx", sheet = "Biscoe Island", na 
 penguins_dream  <- read_excel("data/penguins.xlsx", sheet = "Dream Island", na = "NA")
 ```
 
-In this case the full penguins dataset is spread across three sheets in the spreadsheet.
-Each sheet has the same number of columns but different numbers of rows.
+이 경우 총 펭귄 데이터셋이 스프레드 시트의 세 개의 시트에 퍼져있다.
+각 시트는 열 개수가 서로 같지만 행 수는 다르다.
 
 
 ```r
@@ -292,7 +292,7 @@ dim(penguins_dream)
 #> [1] 124   8
 ```
 
-We can put them together with `bind_rows()`.
+`bind_rows()`로 이 시트를 합칠 수 있다.
 
 
 ```r
@@ -310,7 +310,7 @@ penguins
 #> # … with 338 more rows, and 1 more variable: year <dbl>
 ```
 
-In Chapter \@ref(iteration) we'll talk about ways of doing this sort of task without repetitive code <!--# Check to make sure that's the right place to present it -->.
+\@ref(iteration) 장에서 우리는 we'll talk about ways of doing this sort of task without repetitive code <!--# Check to make sure that's the right place to present it -->.
 
 ### Reading part of a sheet
 

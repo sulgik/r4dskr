@@ -168,7 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="서문.html"><a href="서문.html#acknowledgements"><i class="fa fa-check"></i><b>1.7</b> Acknowledgements</a></li>
 <li class="chapter" data-level="1.8" data-path="서문.html"><a href="서문.html#colophon"><i class="fa fa-check"></i><b>1.8</b> Colophon</a></li>
 </ul></li>
-<li class="part"><span><b>I 탐색하기</b></span></li>
+<li class="part"><span><b>I 전체게임</b></span></li>
 <li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> 소개</a></li>
 <li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> 데이터 시각화</a><ul>
 <li class="chapter" data-level="3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#들어가기"><i class="fa fa-check"></i><b>3.1</b> 들어가기</a><ul>
@@ -709,7 +709,7 @@ Figure 19.1: Spreadsheet called students.xlsx in Excel.
 <span id="cb402-9"><a href="import-spreadsheets.html#cb402-9"></a><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
 <span id="cb402-10"><a href="import-spreadsheets.html#cb402-10"></a><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div>
 <p>데이터에는 학생 여섯이 있고 각 학생마다 변수 다섯개가 있다.
-하지만 이 데이터셋에 관해 이야기 하고 싶은 것 몇개가 있다.</p>
+하지만 이 데이터셋에 관해 이야기 하고 싶은 것 몇 가지가 있다.</p>
 <ol style="list-style-type: decimal">
 <li><p>The column names are all over the place.
 You can provide column names that follow a consistent format; we recommend <code>snake_case</code> using the <code>col_names</code> argument.</p>
@@ -727,9 +727,9 @@ You can provide column names that follow a consistent format; we recommend <code
 <span id="cb403-12"><a href="import-spreadsheets.html#cb403-12"></a><span class="co">#&gt; 5 4          Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span id="cb403-13"><a href="import-spreadsheets.html#cb403-13"></a><span class="co">#&gt; 6 5          Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
 <span id="cb403-14"><a href="import-spreadsheets.html#cb403-14"></a><span class="co">#&gt; # … with 1 more row</span></span></code></pre></div>
-<p>Unfortunately, this didn’t quite do the trick.
-You now have the variable names we want, but what was previously the header row now shows up as the first observation in the data.
-You can explicitly skip that row using the <code>skip</code> argument.</p>
+<p>이렇게 해서 아직도 해결되지 않았다.
+우리가 원하는 변수 이름을 갖게 되었지만 이전 해더행이 데이터에서 첫번째 관측값으로 보여지고 있다.
+<code>skip</code> 인수를 써서 해당 행을 명시적으로 건너뛸 수 있다.</p>
 <div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="import-spreadsheets.html#cb404-1"></a><span class="kw">read_excel</span>(</span>
 <span id="cb404-2"><a href="import-spreadsheets.html#cb404-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
 <span id="cb404-3"><a href="import-spreadsheets.html#cb404-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
@@ -744,9 +744,9 @@ You can explicitly skip that row using the <code>skip</code> argument.</p>
 <span id="cb404-12"><a href="import-spreadsheets.html#cb404-12"></a><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span id="cb404-13"><a href="import-spreadsheets.html#cb404-13"></a><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
 <span id="cb404-14"><a href="import-spreadsheets.html#cb404-14"></a><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div></li>
-<li><p>In the <code>favourite_food</code> column, one of the observations is <code>N/A</code>, which stands for “not available” but it’s currently not recognized as an <code>NA</code> (note the contrast between this <code>N/A</code> and the age of the fourth student in the list).
-You can specify which character strings should be recognized as <code>NA</code>s with the <code>na</code> argument.
-By default, only <code>""</code> (empty string, or, in the case of reading from a spreadsheet, an empty cell) is recognized as an <code>NA</code>.</p>
+<li><p><code>favourite_food</code> 열의 한 관측값은 <code>N/A</code> 인데 이는 “해당없음 (not available)” 을 의마한다. 하지만 현재 <code>NA</code> 로 인식되고 있지 않다 (이 <code>N/A</code> 와 리스트에서 네번째 학생의 나이 사이의 차이를 살펴보자).
+<code>na</code> 인수를 사용해서 어떤 문자열이 <code>NA</code> 로 인식되어야 하는지를 설정할 수 있다.
+기본값으로는 <code>""</code> (빈 문자열, 혹은 스프레드시트의 경우 빈 셀) 만 <code>NA</code> 로 인식된다.</p>
 <div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="import-spreadsheets.html#cb405-1"></a><span class="kw">read_excel</span>(</span>
 <span id="cb405-2"><a href="import-spreadsheets.html#cb405-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
 <span id="cb405-3"><a href="import-spreadsheets.html#cb405-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
@@ -762,10 +762,10 @@ By default, only <code>""</code> (empty string, or, in the case of reading from 
 <span id="cb405-13"><a href="import-spreadsheets.html#cb405-13"></a><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span id="cb405-14"><a href="import-spreadsheets.html#cb405-14"></a><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
 <span id="cb405-15"><a href="import-spreadsheets.html#cb405-15"></a><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div></li>
-<li><p>One other remaining issue is that <code>age</code> is read in as a character variable, but it really should be numeric.
-Just like with <code>read_csv()</code> and friends for reading data from flat files, you can supply a <code>col_types</code> argument to <code>read_excel()</code> and specify the column types for the variables you read in.
-The syntax is a bit different, though.
-Your options are <code>"skip"</code>, <code>"guess"</code>, <code>"logical"</code>, <code>"numeric"</code>, <code>"date"</code>, <code>"text"</code> or <code>"list"</code>.</p>
+<li><p>하나 남은 이슈는 <code>age</code> 가 문자열로 읽히고 있는데 실제는 수치형이 되어야 한다는 것이다.
+<code>read_csv()</code> 와 이웃함수들이 플랫 파일에서 데이터를 읽을 때와 같이 <code>col_types</code> 인수를 <code>read_excel()</code> 의 <code>col_types</code> 인수를 제공하고 읽고 있는 변수의 열 타잎을 명시해야한다.
+문법은 약간 다르다.
+옵션은 <code>"skip"</code>, <code>"guess"</code>, <code>"logical"</code>, <code>"numeric"</code>, <code>"date"</code>, <code>"text"</code>, <code>"list"</code> 중 하나이다.</p>
 <div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="import-spreadsheets.html#cb406-1"></a><span class="kw">read_excel</span>(</span>
 <span id="cb406-2"><a href="import-spreadsheets.html#cb406-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
 <span id="cb406-3"><a href="import-spreadsheets.html#cb406-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
@@ -784,9 +784,9 @@ Your options are <code>"skip"</code>, <code>"guess"</code>, <code>"logical"</cod
 <span id="cb406-16"><a href="import-spreadsheets.html#cb406-16"></a><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
 <span id="cb406-17"><a href="import-spreadsheets.html#cb406-17"></a><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch    NA</span></span>
 <span id="cb406-18"><a href="import-spreadsheets.html#cb406-18"></a><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code></pre></div>
-<p>However, this didn’t quite produce the desired result either.
-By specifying that <code>age</code> should be numeric, we have turned the one cell with the non-numeric entry (which had the value <code>five</code>) into an <code>NA</code>.
-In this case, we should read age in as <code>"text"</code> and then make the change once the data is loaded in R.</p>
+<p>하지만 이것도 원하는 결과를 만들지 못했다.
+<code>age</code> 가 수치형이라고 명시해서, 수치가 아닌 값을 가진 셀 (<code>five</code> 값을 가짐) 이 <code>NA</code> 로 변환되었다.
+이 경우, 나이를 <code>"text"</code> 로 읽은 후 데이터가 R 에 다 읽어진 후 작업을 해야 한다.</p>
 <div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="import-spreadsheets.html#cb407-1"></a>students &lt;-<span class="st"> </span><span class="kw">read_excel</span>(</span>
 <span id="cb407-2"><a href="import-spreadsheets.html#cb407-2"></a>  <span class="st">&quot;data/students.xlsx&quot;</span>,</span>
 <span id="cb407-3"><a href="import-spreadsheets.html#cb407-3"></a>  <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;student_id&quot;</span>, <span class="st">&quot;full_name&quot;</span>, <span class="st">&quot;favourite_food&quot;</span>, <span class="st">&quot;meal_plan&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
@@ -822,17 +822,17 @@ That might be tempting, but it’s strongly not recommended.
 </div>
 <div id="개별-시트-읽어오기" class="section level3">
 <h3><span class="header-section-number">19.2.4</span> 개별 시트 읽어오기</h3>
-<p>An important feature that distinguishes spreadsheets from flat files is the notion of multiple sheets.
-Figure <a href="import-spreadsheets.html#fig:penguins-islands">19.2</a> shows an Excel spreadsheet with multiple sheets.
-The data come from the <strong>palmerpenguins</strong> package.
-Each sheet contains information on penguins from a different island where data were collected.</p>
+<p>스프레드시트가 플랫 파일과 다른 중요한 특징은 다중 시트라는 개념이다.
+Figure <a href="import-spreadsheets.html#fig:penguins-islands">19.2</a> 은 다중 시트가 있는 엑셀 스프레드시트를 보여준다.
+<strong>palmerpenguins</strong> 패키지의 데이터이다.
+각 시트에는 데이터가 수집된 개별 섬들의 펭귄에 관한 정보가 들어있다.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:penguins-islands"></span>
 <img src="images/import-spreadsheets-penguins-islands.png" alt="A look at the penguins spreadsheet in Excel. The spreadsheet contains has three sheets: Torgersen Island, Biscoe Island, and Dream Island." width="70%" />
 <p class="caption">
 Figure 19.2: Spreadsheet called penguins.xlsx in Excel.
 </p>
 </div>
-<p>You can read a single sheet from a spreadsheet with the <code>sheet</code> argument in <code>read_excel()</code>.</p>
+<p><code>read_excel()</code> 의 <code>sheet</code> 인수를 이용하여 스프레드시트의 단일 시트를 읽을 수 있다.</p>
 <div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="import-spreadsheets.html#cb408-1"></a><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Torgersen Island&quot;</span>)</span>
 <span id="cb408-2"><a href="import-spreadsheets.html#cb408-2"></a><span class="co">#&gt; # A tibble: 52 × 8</span></span>
 <span id="cb408-3"><a href="import-spreadsheets.html#cb408-3"></a><span class="co">#&gt;   species island bill_length_mm bill_depth_mm flipper_length_… body_mass_g sex  </span></span>
@@ -844,7 +844,7 @@ Figure 19.2: Spreadsheet called penguins.xlsx in Excel.
 <span id="cb408-9"><a href="import-spreadsheets.html#cb408-9"></a><span class="co">#&gt; 5 Adelie  Torge… 36.7000000000… 19.3          193              3450        fema…</span></span>
 <span id="cb408-10"><a href="import-spreadsheets.html#cb408-10"></a><span class="co">#&gt; 6 Adelie  Torge… 39.2999999999… 20.6          190              3650        male </span></span>
 <span id="cb408-11"><a href="import-spreadsheets.html#cb408-11"></a><span class="co">#&gt; # … with 46 more rows, and 1 more variable: year &lt;dbl&gt;</span></span></code></pre></div>
-<p>Some variables that appear to contain numerical data are read in as characters due to the character string <code>"NA"</code> not being recognized as a true <code>NA</code>.</p>
+<p>수치형 데이터를 포함한 것 같은 변수들이 문자열 <code>"NA"</code> 가 실제 <code>NA</code> 로 인식되지 않기 때문에 문자형으로 읽힌다.</p>
 <div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="import-spreadsheets.html#cb409-1"></a>penguins_torgersen &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Torgersen Island&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>)</span>
 <span id="cb409-2"><a href="import-spreadsheets.html#cb409-2"></a></span>
 <span id="cb409-3"><a href="import-spreadsheets.html#cb409-3"></a>penguins_torgersen</span>
@@ -858,23 +858,23 @@ Figure 19.2: Spreadsheet called penguins.xlsx in Excel.
 <span id="cb409-11"><a href="import-spreadsheets.html#cb409-11"></a><span class="co">#&gt; 5 Adelie  Torge…           36.7          19.3              193        3450 fema…</span></span>
 <span id="cb409-12"><a href="import-spreadsheets.html#cb409-12"></a><span class="co">#&gt; 6 Adelie  Torge…           39.3          20.6              190        3650 male </span></span>
 <span id="cb409-13"><a href="import-spreadsheets.html#cb409-13"></a><span class="co">#&gt; # … with 46 more rows, and 1 more variable: year &lt;dbl&gt;</span></span></code></pre></div>
-<p>However, we cheated here a bit.
-We looked inside the Excel spreadsheet, which is not a recommended workflow.
-Instead, you can use <code>excel_sheets()</code> to get information on all sheets in an Excel spreadsheet, and then read the one(s) you’re interested in.</p>
+<p>하지만 여기서 우리는 약간 반칙을 했다.
+엑셀 스프레드시트 내부를 살펴봤는데, 이는 추천하는 워크플로우가 아니다.
+대신, <code>excel_sheets()</code> 을 사용하여 엑셀 스프레드시트의 모든 시트 정보를 본 뒤 관심 있는 시트를 읽을 수 있다.</p>
 <div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="import-spreadsheets.html#cb410-1"></a><span class="kw">excel_sheets</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>)</span>
 <span id="cb410-2"><a href="import-spreadsheets.html#cb410-2"></a><span class="co">#&gt; [1] &quot;Torgersen Island&quot; &quot;Biscoe Island&quot;    &quot;Dream Island&quot;</span></span></code></pre></div>
-<p>Once you know the names of the sheets, you can read them in individually with <code>read_excel()</code>.</p>
+<p>시트의 이름을 알면, 개별적으로 <code>read_excel()</code> 로 읽을 수 있다.</p>
 <div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="import-spreadsheets.html#cb411-1"></a>penguins_biscoe &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Biscoe Island&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>)</span>
 <span id="cb411-2"><a href="import-spreadsheets.html#cb411-2"></a>penguins_dream  &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;data/penguins.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Dream Island&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;NA&quot;</span>)</span></code></pre></div>
-<p>In this case the full penguins dataset is spread across three sheets in the spreadsheet.
-Each sheet has the same number of columns but different numbers of rows.</p>
+<p>이 경우 총 펭귄 데이터셋이 스프레드 시트의 세 개의 시트에 퍼져있다.
+각 시트는 열 개수가 서로 같지만 행 수는 다르다.</p>
 <div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="import-spreadsheets.html#cb412-1"></a><span class="kw">dim</span>(penguins_torgersen)</span>
 <span id="cb412-2"><a href="import-spreadsheets.html#cb412-2"></a><span class="co">#&gt; [1] 52  8</span></span>
 <span id="cb412-3"><a href="import-spreadsheets.html#cb412-3"></a><span class="kw">dim</span>(penguins_biscoe)</span>
 <span id="cb412-4"><a href="import-spreadsheets.html#cb412-4"></a><span class="co">#&gt; [1] 168   8</span></span>
 <span id="cb412-5"><a href="import-spreadsheets.html#cb412-5"></a><span class="kw">dim</span>(penguins_dream)</span>
 <span id="cb412-6"><a href="import-spreadsheets.html#cb412-6"></a><span class="co">#&gt; [1] 124   8</span></span></code></pre></div>
-<p>We can put them together with <code>bind_rows()</code>.</p>
+<p><code>bind_rows()</code>로 이 시트를 합칠 수 있다.</p>
 <div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="import-spreadsheets.html#cb413-1"></a>penguins &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(penguins_torgersen, penguins_biscoe, penguins_dream)</span>
 <span id="cb413-2"><a href="import-spreadsheets.html#cb413-2"></a>penguins</span>
 <span id="cb413-3"><a href="import-spreadsheets.html#cb413-3"></a><span class="co">#&gt; # A tibble: 344 × 8</span></span>
@@ -887,7 +887,7 @@ Each sheet has the same number of columns but different numbers of rows.</p>
 <span id="cb413-10"><a href="import-spreadsheets.html#cb413-10"></a><span class="co">#&gt; 5 Adelie  Torge…           36.7          19.3              193        3450 fema…</span></span>
 <span id="cb413-11"><a href="import-spreadsheets.html#cb413-11"></a><span class="co">#&gt; 6 Adelie  Torge…           39.3          20.6              190        3650 male </span></span>
 <span id="cb413-12"><a href="import-spreadsheets.html#cb413-12"></a><span class="co">#&gt; # … with 338 more rows, and 1 more variable: year &lt;dbl&gt;</span></span></code></pre></div>
-<p>In Chapter <a href="iteration.html#iteration">24</a> we’ll talk about ways of doing this sort of task without repetitive code <!--# Check to make sure that's the right place to present it -->.</p>
+<p><a href="iteration.html#iteration">24</a> 장에서 우리는 we’ll talk about ways of doing this sort of task without repetitive code <!--# Check to make sure that's the right place to present it -->.</p>
 </div>
 <div id="reading-part-of-a-sheet" class="section level3">
 <h3><span class="header-section-number">19.2.5</span> Reading part of a sheet</h3>

@@ -2,7 +2,7 @@
 
 # 소개 {#explore-intro}
 
-이 책의 첫번째 파트는 데이터 **불러오기**, **정리하기**, 데이터 **탐색하기** 를 포함하는 데이터 과학 워크플로를 소개한다.
+이 책의 첫번째 파트는 데이터 **불러오기**, **타이디하게하기**, 데이터 **탐색하기** 로 이루어진 데이터과학 워크플로를 소개한다.
 데이터 탐색이란 데이터를 보고, 빠르게 가설들을 만들고, 빠르게 가설들을 테스트한 뒤 이를 계속 계속 반복하는 기술이다.
 데이터 탐색의 목적은 깊게 살펴볼 가능성있는 단서들을 만들어내는 데에 있다.
 
@@ -13,21 +13,29 @@ knitr::include_graphics("diagrams/data-science-explore.png")
 
 이 파트에서 즉각적으로 도움이 되는 유용한 도구들을 배울 것이다:
 
--   시각화는 바로 도움이 되기 때문에, R 프로그래밍을 시작하기 좋은 주제이다. Visualisation is a great place to start with R programming, because the payoff is so clear: you get to make elegant and informative plots that help you understand data.
-    \@ref(data-visualization) 장에서 you'll dive into visualisation, learning the basic structure of a ggplot2 plot, and powerful techniques for turning data into plots.
+-   시각화는 바로 도움이 되기 때문에, R 프로그래밍을 시작하기 좋은 주제이다. 시각화부터 R 프로그래밍을 시작하면 매우 좋은데, 장점이 명확하기 때문이다. 데이터를 이해하는 데 도움이 되는 우아하고 정보성있는 플롯을 만들 수 있다.  
+    \@ref(data-visualization) 장에서 시각화에 대해 깊이 들어가서 ggplot2 플롯의 기본 구조와 데이터를 플롯으로 바꾸는 강력한 기술들을 배울 
+것이다.
 
--   Visualisation alone is typically not enough, so in Chapter \@ref(data-transform) you'll learn the key verbs that allow you to select important variables, filter out key observations, create new variables, and compute summaries.
+-   일반적으로 시각화만으로는 충분하지 않으므로 \@ref(data-transform) 장에서 중요한 변수를 선택하고, 필터링하고, 
+새 변수를 만들고, 요약값을 계산하는 주요 동사들을 배울 것이다.
 
--   In Chapter \@ref(data-tidy), you'll learn about tidy data, a consistent way of storing your data that makes transformation, visualisation, and modelling easier.
+-   \@ref(data-tidy) 장에서 타이디한 데이터에 대해 배울 것인데, 이는 데이터를 변형, 시각화, 모델링하기에 쉬운 일관성있는 저장방법이다. 기본적인 원칙들과 데이터를 타이디한 형태로 만드는 법에 대해 배울 것이다.
     You'll learn the underlying principles, and how to get your data into a tidy form.
 
--   Before you can transform and visualise your data, you need to first get your data into R.
-    In Chapter \@ref(data-import) you'll learn the basics of getting plain-text, rectangular data into R.
+-   데이터를 변환하고 시각화하기 전에 먼저 데이터를 R 로 불러와야 한다.
+    \@ref(data-import) 장에서 플레인텍스트의 직사각형 데이터를 R 로 불러오는 기초에 대해 배울 것이다.
 
--   Finally, in Chapter \@ref(exploratory-data-analysis), you'll combine visualisation and transformation with your curiosity and scepticism to ask and answer interesting questions about data.
+-   마지막으로 \@ref(exploratory-data-analysis) 장에서 시각화와 
+변환을 호기심과 비판적 시각을 결합하여 데이터에 대한 흥미로운 질문을 만들고 답할 
+것이다.
 
-Modelling is an important part of the exploratory process, but you don't have the skills to effectively learn or apply it yet and details of modeling fall outside the scope of this book.
 
-Nestled among these five chapters that teach you the tools for doing data science are three chapters that focus on your R workflow.
-In Chapters \@ref(workflow-basics), \@ref(workflow-scripts), and \@ref(workflow-projects), you'll learn good workflow practices for writing and organising your R code.
-These will set you up for success in the long run, as they'll give you the tools to stay organised when you tackle real projects.
+모델링은 탐색 과정에서 중요한 부분이지만 아직 효과적으로 학습하거나 적용할 
+기술을 가질 필요는 없다. 모델링의 자세한 내용은 이 책에서 다루지 않을 것이다.
+
+탐색 도구를 가르쳐 주는 다섯개 장 사이사이에, R 워크플로에 중점을 둔 세 개의 
+장도 자리잡고 있다. \@ref(workflow-basic), \@(workflow-scripts), \@ref(workflow-projects) 장들에서는 R 코드를 작성하고 조직하는 좋은 사례들을 배울 것이다. 
+이 장들에서는 실제 프로젝트에서 잘 정리할 수 있는 도구들을 배워 장기적으로 
+성공할 수 있는 틀을 갖추게 될 것이다.
+
