@@ -6,7 +6,7 @@ rmd_files: [
 
   "intro.Rmd",
 
-  "whoel-game.Rmd",
+  "whole-game.Rmd",
   "data-visualize.Rmd",
   "workflow-basics.Rmd",
   "data-transform.Rmd",
